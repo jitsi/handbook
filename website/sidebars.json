@@ -1,6 +1,6 @@
 {
   "docs": {
-    "Getting Started": ["intro", "architecture"],
+    "Getting Started": ["intro", "architecture", "security"],
     "User Guide": ["user-guide-start", "user-guide-basic", "user-guide-advanced"],
     "Developer Guide": ["dev-guide-start", "dev-guide-web", "dev-guide-mobile"],
     "DevOps Guide": ["devops-guide-start",  "devops-guide-quickstart", "devops-guide-docker"]

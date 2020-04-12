@@ -62,8 +62,8 @@ Finally on the same machine test that you can ping the FQDN with:
 This will modify your Debian or Ubuntu system package sources to make available the Jitsi Meet packages.
 
 ```sh
-echo 'deb https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.list
-wget -qO -  https://download.jitsi.org/jitsi-key.gpg.key | sudo apt-key add -
+curl https://download.jitsi.org/jitsi-key.gpg.key | gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg
+echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/' >> /etc/apt/sources.list.d/jitsi-stable.list
 
 # Retrieve the latest package versions across all repositories
 sudo apt update

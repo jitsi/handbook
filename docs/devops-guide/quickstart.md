@@ -176,7 +176,7 @@ _Note_: By default, anyone who has access to your jitsi instance will be able to
 
 ### Confirm that your installation is working
 
-Launch a web browser (Chrome, Chromium or latest Opera) and enter the hostname or IP address from the previous step into the address bar.
+Launch a web browser (such as Chrome, Safari or Firefox) and enter the hostname or IP address from the previous step into the address bar.
 
 If you used a self-signed certificate (as opposed to using Let's Encrypt), your web browser will ask you to confirm that you trust the certificate. If you are testing from the iOS or Android app, it will probably fail at this point, if you are using a self-signed certificate.
 

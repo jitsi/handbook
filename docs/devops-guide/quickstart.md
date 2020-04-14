@@ -8,7 +8,7 @@ This guide helps you  ___host your own Jitsi server___. If you want to have a vi
 
 This document describes the required steps for a quick Jitsi Meet installation on a Debian based GNU/Linux system. Debian 9 (Stretch) or later, and Ubuntu 18.04 (Bionic Beaver) or later are supported out-of-the-box.
 
-On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run `apt-add-repository universe` at the command-line.
+On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run `sudo apt-add-repository universe` at the command-line.
 
 _Note_: Many of the installation steps require elevated privileges. If you are logged in using a regular user account, you may need to temporarily increase your permissions (for example, by using `sudo` for individual commands).
 

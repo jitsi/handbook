@@ -1,8 +1,32 @@
 {
   "docs": {
-    "Getting Started": ["intro", "architecture", "security"],
-    "User Guide": ["user-guide-start", "user-guide-basic", "user-guide-advanced"],
-    "Developer Guide": ["dev-guide-start", "dev-guide-web", "dev-guide-mobile"],
-    "DevOps Guide": ["devops-guide-start",  "devops-guide-quickstart", "devops-guide-docker"]
+    "Getting Started": [
+      "intro",
+      "architecture",
+      "security"
+    ],
+    "User Guide": [
+      "user-guide-start",
+      "user-guide-basic",
+      "user-guide-advanced"
+    ],
+    "Developer Guide": [
+      "dev-guide-start",
+      "dev-guide-web",
+      "dev-guide-web-integrations",
+      "dev-guide-iframe",
+      "dev-guide-mobile",
+      "dev-guide-android-sdk",
+      "dev-guide-ios-sdk"
+    ],
+    "DevOps Guide": [
+      "devops-guide-start",
+      "devops-guide-quickstart",
+      "devops-guide-docker",
+      "devops-guide-manual",
+      "devops-guide-scalable",
+      "devops-guide-videotutorials",
+      "devops-guide-extras"
+    ]
   }
 }

@@ -4,16 +4,86 @@ title: Developer Guide (Web)
 sidebar_label: Web
 ---
 
-Welcome to the developers guide for web!
+Welcome to the developers guide for web! This guide will help you setup a development
+environment to start working on the Jitsi Meet codebase.
 
-## Overview
+## Building the sources
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac euismod odio, eu consequat dui. Nullam molestie consectetur risus id imperdiet. Proin sodales ornare turpis, non mollis massa ultricies id. Nam at nibh scelerisque, feugiat ante non, dapibus tortor. Vivamus volutpat diam quis tellus elementum bibendum. Praesent semper gravida velit quis aliquam. Etiam in cursus neque. Nam lectus ligula, malesuada et mauris a, bibendum faucibus mi. Phasellus ut interdum felis. Phasellus in odio pulvinar, porttitor urna eget, fringilla lectus. Aliquam sollicitudin est eros. Mauris consectetur quam vitae mauris interdum hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+Node.js >= 12 and npm >= 6 are required.
 
-Duis et egestas libero, imperdiet faucibus ipsum. Sed posuere eget urna vel feugiat. Vivamus a arcu sagittis, fermentum urna dapibus, congue lectus. Fusce vulputate porttitor nisl, ac cursus elit volutpat vitae. Nullam vitae ipsum egestas, convallis quam non, porta nibh. Morbi gravida erat nec neque bibendum, eu pellentesque velit posuere. Fusce aliquam erat eu massa eleifend tristique.
+On Debian/Ubuntu systems, the required packages can be installed with:
+```
+sudo apt-get install npm nodejs
+cd jitsi-meet
+npm install
+```
 
-Sed consequat sollicitudin ipsum eget tempus. Integer a aliquet velit. In justo nibh, pellentesque non suscipit eget, gravida vel lacus. Donec odio ante, malesuada in massa quis, pharetra tristique ligula. Donec eros est, tristique eget finibus quis, semper non nisl. Vivamus et elit nec enim ornare placerat. Sed posuere odio a elit cursus sagittis.
+To build the Jitsi Meet application, just type
+```
+make
+```
 
-Phasellus feugiat purus eu tortor ultrices finibus. Ut libero nibh, lobortis et libero nec, dapibus posuere eros. Sed sagittis euismod justo at consectetur. Nulla finibus libero placerat, cursus sapien at, eleifend ligula. Vivamus elit nisl, hendrerit ac nibh eu, ultrices tempus dui. Nam tellus neque, commodo non rhoncus eu, gravida in risus. Nullam id iaculis tortor.
+### Working with the library sources (lib-jitsi-meet)
 
-Nullam at odio in sem varius tempor sit amet vel lorem. Etiam eu hendrerit nisl. Fusce nibh mauris, vulputate sit amet ex vitae, congue rhoncus nisl. Sed eget tellus purus. Nullam tempus commodo erat ut tristique. Cras accumsan massa sit amet justo consequat eleifend. Integer scelerisque vitae tellus id consectetur.
+By default the library is build from its git repository sources. The default dependency path in package.json is:
+```json
+"lib-jitsi-meet": "jitsi/lib-jitsi-meet",
+```
+
+To work with local copy you must change the path to:
+```json
+"lib-jitsi-meet": "file:///Users/name/local-lib-jitsi-meet-copy",
+```
+
+To make the project you must force it to take the sources as 'npm update':
+```
+npm install lib-jitsi-meet --force && make
+```
+
+Or if you are making only changes to the library:
+```
+npm install lib-jitsi-meet --force && make deploy-lib-jitsi-meet
+```
+
+Alternative way is to use [npm link](https://docs.npmjs.com/cli/link).
+It allows to link `lib-jitsi-meet` dependency to local source in few steps:
+
+```bash
+cd lib-jitsi-meet
+
+#### create global symlink for lib-jitsi-meet package
+npm link
+
+cd ../jitsi-meet
+
+#### create symlink from the local node_modules folder to the global lib-jitsi-meet symlink
+npm link lib-jitsi-meet
+```
+
+ After changes in local `lib-jitsi-meet` repository, you can rebuild it with `npm run install` and your `jitsi-meet` repository will use that modified library.
+Note: when using node version 4.x, the make file of jitsi-meet do npm update which will delete the link. It is no longer the case with version 6.x.
+
+If you do not want to use local repository anymore you should run
+```bash
+cd jitsi-meet
+npm unlink lib-jitsi-meet
+npm install
+```
+### Running with webpack-dev-server for development
+
+Use it at the CLI, type
+```
+make dev
+```
+
+By default the backend deployment used is `alpha.jitsi.net`. You can point the Jitsi-Meet app at a different backend by using a proxy server. To do this, set the WEBPACK_DEV_SERVER_PROXY_TARGET variable:
+```
+export WEBPACK_DEV_SERVER_PROXY_TARGET=https://your-example-server.com
+make dev
+```
+
+The app should be running at https://localhost:8080/
+
+#### Chrome Privacy Error
+
+Newer versions of Chrome may block localhost under https and show `NET::ERR_CERT_INVALID` on the page. To solve this open [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost) and select Enable, then press Relaunch or quit and restart Chrome.

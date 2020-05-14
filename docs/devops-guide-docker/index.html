@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>DevOps Guide (Docker) · Jitsi Meet Handbook</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Welcome to the DevOps guide!"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="DevOps Guide (Docker) · Jitsi Meet Handbook"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bettercallsaghul.com/docusaurus-test/"/><meta property="og:description" content="Welcome to the DevOps guide!"/><meta property="og:image" content="https://bettercallsaghul.com/docusaurus-test/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bettercallsaghul.com/docusaurus-test/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus-test/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus-test/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus-test/css/main.css"/><script src="/docusaurus-test/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus-test/"><img class="logo" src="/docusaurus-test/img/logo-white.png" alt="Jitsi Meet Handbook"/><h2 class="headerTitleWithLogo">Jitsi Meet Handbook</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docusaurus-test/docs/intro" target="_self">Docs</a></li><li class=""><a href="/docusaurus-test/help" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>DevOps Guide</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/architecture">Architecture</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/security">Security</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">User Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-basic">Basic options</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-advanced">Advanced options</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Developer Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-web">Web</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-mobile">Mobile</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DevOps Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-quickstart">Dedicated VM</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus-test/docs/devops-guide-docker">Doker</a></li></ul></div></div></section></div><script>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>DevOps Guide (Docker) · Jitsi Meet Handbook</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Quick start"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="DevOps Guide (Docker) · Jitsi Meet Handbook"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bettercallsaghul.com/docusaurus-test/"/><meta property="og:description" content="## Quick start"/><meta property="og:image" content="https://bettercallsaghul.com/docusaurus-test/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bettercallsaghul.com/docusaurus-test/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus-test/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus-test/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus-test/css/main.css"/><script src="/docusaurus-test/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus-test/"><img class="logo" src="/docusaurus-test/img/logo-white.png" alt="Jitsi Meet Handbook"/><h2 class="headerTitleWithLogo">Jitsi Meet Handbook</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docusaurus-test/docs/intro" target="_self">Docs</a></li><li class=""><a href="/docusaurus-test/help" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>DevOps Guide</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/architecture">Architecture</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/security">Security</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">User Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-basic">Basic options</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-advanced">Advanced options</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Developer Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-web">Web</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-web-integrations">Web integrations</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-iframe">IFrame API</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-mobile">Mobile</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-android-sdk">Android SDK</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-ios-sdk">iOS SDK</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DevOps Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-quickstart">Dedicated server</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus-test/docs/devops-guide-docker">Doker</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-manual">Manual installation</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-scalable">Scalable setup</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-videotutorials">Video Tutorials</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-extras">Extras</a></li></ul></div></div></section></div><script>
             var coll = document.getElementsByClassName('collapsible');
             var checkActiveCategory = true;
             for (var i = 0; i < coll.length; i++) {
@@ -54,11 +54,415 @@
                 };
               }
             });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">DevOps Guide (Docker)</h1></header><article><div><span><p>Welcome to the DevOps guide!</p>
-<h2><a class="anchor" aria-hidden="true" id="overview"></a><a href="#overview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Overview</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In ac euismod odio, eu consequat dui. Nullam molestie consectetur risus id imperdiet. Proin sodales ornare turpis, non mollis massa ultricies id. Nam at nibh scelerisque, feugiat ante non, dapibus tortor. Vivamus volutpat diam quis tellus elementum bibendum. Praesent semper gravida velit quis aliquam. Etiam in cursus neque. Nam lectus ligula, malesuada et mauris a, bibendum faucibus mi. Phasellus ut interdum felis. Phasellus in odio pulvinar, porttitor urna eget, fringilla lectus. Aliquam sollicitudin est eros. Mauris consectetur quam vitae mauris interdum hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-<p>Duis et egestas libero, imperdiet faucibus ipsum. Sed posuere eget urna vel feugiat. Vivamus a arcu sagittis, fermentum urna dapibus, congue lectus. Fusce vulputate porttitor nisl, ac cursus elit volutpat vitae. Nullam vitae ipsum egestas, convallis quam non, porta nibh. Morbi gravida erat nec neque bibendum, eu pellentesque velit posuere. Fusce aliquam erat eu massa eleifend tristique.</p>
-<p>Sed consequat sollicitudin ipsum eget tempus. Integer a aliquet velit. In justo nibh, pellentesque non suscipit eget, gravida vel lacus. Donec odio ante, malesuada in massa quis, pharetra tristique ligula. Donec eros est, tristique eget finibus quis, semper non nisl. Vivamus et elit nec enim ornare placerat. Sed posuere odio a elit cursus sagittis.</p>
-<p>Phasellus feugiat purus eu tortor ultrices finibus. Ut libero nibh, lobortis et libero nec, dapibus posuere eros. Sed sagittis euismod justo at consectetur. Nulla finibus libero placerat, cursus sapien at, eleifend ligula. Vivamus elit nisl, hendrerit ac nibh eu, ultrices tempus dui. Nam tellus neque, commodo non rhoncus eu, gravida in risus. Nullam id iaculis tortor.</p>
-<p>Nullam at odio in sem varius tempor sit amet vel lorem. Etiam eu hendrerit nisl. Fusce nibh mauris, vulputate sit amet ex vitae, congue rhoncus nisl. Sed eget tellus purus. Nullam tempus commodo erat ut tristique. Cras accumsan massa sit amet justo consequat eleifend. Integer scelerisque vitae tellus id consectetur.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus-test/docs/devops-guide-quickstart"><span class="arrow-prev">← </span><span>Dedicated VM</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#overview">Overview</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus-test/" class="nav-home"><img src="/docusaurus-test/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docusaurus-test/docs/en/intro.html">Introduction</a><a href="/docusaurus-test/docs/en/user-guide-start.html">User Guide</a><a href="/docusaurus-test/docs/en/user-guide-start.html">Developer Guide</a><a href="/docusaurus-test/docs/en/user-guide-start.html">DevOps Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div></div></section><section class="copyright">Copyright © 2020</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">DevOps Guide (Docker)</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="quick-start"></a><a href="#quick-start" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quick start</h2>
+<p>In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
+follow these steps:</p>
+<ul>
+<li>Download and extract the <a href="https://github.com/jitsi/docker-jitsi-meet/releases/latest">latest release</a>
+<ul>
+<li>Alternatively, to test the latest changes clone the repository: <code>git clone https://github.com/jitsi/docker-jitsi-meet &amp;&amp; cd docker-jitsi-meet</code></li>
+</ul></li>
+<li>Create a <code>.env</code> file by copying and adjusting <code>env.example</code>
+<ul>
+<li><code>cp env.example .env</code></li>
+</ul></li>
+<li>Set strong passwords in the security section options of <code>.env</code> file by running the following bash script
+<ul>
+<li><code>./gen-passwords.sh</code></li>
+</ul></li>
+<li>Create required <code>CONFIG</code> directories
+<ul>
+<li><code>mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}</code></li>
+</ul></li>
+<li>Run <code>docker-compose up -d</code></li>
+<li>Access the web UI at <a href="https://localhost:8443"><code>https://localhost:8443</code></a> (or a different port, in case you edited the compose file).</li>
+</ul>
+<p>Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
+direct access via HTTP instead HTTPS leads to WebRTC errors such as <em>Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined</em> or <em>navigator.mediaDevices is undefined</em>.</p>
+<p>If you want to use jigasi too, first configure your env file with SIP credentials
+and then run Docker Compose as follows: <code>docker-compose -f docker-compose.yml -f jigasi.yml up</code></p>
+<p>If you want to enable document sharing via <a href="https://github.com/ether/etherpad-lite">Etherpad</a>, configure it and run Docker Compose as
+follows: <code>docker-compose -f docker-compose.yml -f etherpad.yml up</code></p>
+<p>If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
+and then run Docker Compose as follows: <code>docker-compose -f docker-compose.yml -f jibri.yml up -d</code>
+or to use jigasi too: <code>docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d</code></p>
+<h3><a class="anchor" aria-hidden="true" id="security-note"></a><a href="#security-note" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Security note</h3>
+<p>This setup used to have default passwords for internal accounts used across components. In order to make the default setup
+secure by default these have been removed and the respective containers won't start without having a password set.</p>
+<p>Strong passwords may be generated as follows: <code>./gen-passwords.sh</code>
+This will modify your <code>.env</code> file (a backup is saved in <code>.env.bak</code>) and set strong passwords for each of the
+required options. Passwords are generated using <code>openssl rand -hex 16</code> .</p>
+<p>DO NOT reuse any of the passwords.</p>
+<h2><a class="anchor" aria-hidden="true" id="architecture"></a><a href="#architecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Architecture</h2>
+<p>A Jitsi Meet installation can be broken down into the following components:</p>
+<ul>
+<li>A web interface</li>
+<li>An XMPP server</li>
+<li>A conference focus component</li>
+<li>A video router (could be more than one)</li>
+<li>A SIP gateway for audio calls</li>
+<li>A Broadcasting Infrastructure for recording or streaming a conference.</li>
+</ul>
+<p><img src="/docusaurus-test/docs/assets/docker-jitsi-meet.png" alt=""></p>
+<p>The diagram shows a typical deployment in a host running Docker. This project
+separates each of the components above into interlinked containers. To this end,
+several container images are provided.</p>
+<h3><a class="anchor" aria-hidden="true" id="external-ports"></a><a href="#external-ports" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>External Ports</h3>
+<p>The following external ports must be opened on a firewall:</p>
+<ul>
+<li>80/tcp for Web UI HTTP (really just to redirect, after uncommenting ENABLE_HTTP_REDIRECT=1 in .env)</li>
+<li>443/tcp for Web UI HTTPS</li>
+<li>4443/tcp for RTP media over TCP</li>
+<li>10000/udp for RTP media over UDP</li>
+</ul>
+<p>Also 20000-20050/udp for jigasi, in case you choose to deploy that to facilitate SIP access.</p>
+<p>E.g. on a CentOS/Fedora server this would be done like this (without SIP access):</p>
+<pre><code class="hljs css language-shell">    $ sudo firewall-cmd --permanent --add-port=80/tcp
+    $ sudo firewall-cmd --permanent --add-port=443/tcp
+    $ sudo firewall-cmd --permanent --add-port=4443/tcp
+    $ sudo firewall-cmd --permanent --add-port=10000/udp
+    $ sudo firewall-cmd --reload
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="images"></a><a href="#images" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Images</h3>
+<ul>
+<li><strong>base</strong>: Debian stable base image with the <a href="https://github.com/just-containers/s6-overlay">S6 Overlay</a> for process control and the
+<a href="https://jitsi.org/downloads/">Jitsi repositories</a> enabled. All other images are based on this one.</li>
+<li><strong>base-java</strong>: Same as the above, plus Java (OpenJDK).</li>
+<li><strong>web</strong>: Jitsi Meet web UI, served with nginx.</li>
+<li><strong>prosody</strong>: <a href="https://prosody.im/">Prosody</a>, the XMPP server.</li>
+<li><strong>jicofo</strong>: <a href="https://github.com/jitsi/jicofo">Jicofo</a>, the XMPP focus component.</li>
+<li><strong>jvb</strong>: <a href="https://github.com/jitsi/jitsi-videobridge">Jitsi Videobridge</a>, the video router.</li>
+<li><strong>jigasi</strong>: <a href="https://github.com/jitsi/jigasi">Jigasi</a>, the SIP (audio only) gateway.</li>
+<li><strong>etherpad</strong>: <a href="https://github.com/ether/etherpad-lite">Etherpad</a>, shared document editing addon.</li>
+<li><strong>jibri</strong>: <a href="https://github.com/jitsi/jibri">Jibri</a>, the broadcasting infrastructure.</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="design-considerations"></a><a href="#design-considerations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Design considerations</h3>
+<p>Jitsi Meet uses XMPP for signaling, thus the need for the XMPP server. The setup provided
+by these containers does not expose the XMPP server to the outside world. Instead, it's kept
+completely sealed, and routing of XMPP traffic only happens on a user-defined network.</p>
+<p>The XMPP server can be exposed to the outside world, but that's out of the scope of this
+project.</p>
+<h2><a class="anchor" aria-hidden="true" id="configuration"></a><a href="#configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h2>
+<p>The configuration is performed via environment variables contained in a <code>.env</code> file. You
+can copy the provided <code>env.example</code> file as a reference.</p>
+<p><strong>IMPORTANT</strong>: At the moment, the configuration is not regenerated on every container boot, so
+if you make any changes to your <code>.env</code> file, make sure you remove the configuration directory
+before starting your containers again.</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>CONFIG</code></td><td>Directory where all configuration will be stored</td><td>/opt/jitsi-meet-cfg</td></tr>
+<tr><td><code>TZ</code></td><td>System Time Zone</td><td>Europe/Amsterdam</td></tr>
+<tr><td><code>HTTP_PORT</code></td><td>Exposed port for HTTP traffic</td><td>8000</td></tr>
+<tr><td><code>HTTPS_PORT</code></td><td>Exposed port for HTTPS traffic</td><td>8443</td></tr>
+<tr><td><code>DOCKER_HOST_ADDRESS</code></td><td>IP address of the Docker host, needed for LAN environments</td><td>192.168.1.1</td></tr>
+<tr><td><code>PUBLIC_URL</code></td><td>Public URL for the web service</td><td><a href="https://meet.example.com">https://meet.example.com</a></td></tr>
+</tbody>
+</table>
+<p><strong>NOTE</strong>: The mobile apps won't work with self-signed certificates (the default).
+See below for instructions on how to obtain a proper certificate with Let's Encrypt.</p>
+<h3><a class="anchor" aria-hidden="true" id="lets-encrypt-configuration"></a><a href="#lets-encrypt-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Let's Encrypt configuration</h3>
+<p>If you plan on exposing this container setup to the outside traffic directly and
+want a proper TLS certificate, you are in luck because Let's Encrypt support is
+built right in. Here are the required options:</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ENABLE_LETSENCRYPT</code></td><td>Enable Let's Encrypt certificate generation</td><td>1</td></tr>
+<tr><td><code>LETSENCRYPT_DOMAIN</code></td><td>Domain for which to generate the certificate</td><td>meet.example.com</td></tr>
+<tr><td><code>LETSENCRYPT_EMAIL</code></td><td>E-Mail for receiving important account notifications (mandatory)</td><td><a href="mailto:alice@atlanta.net">alice@atlanta.net</a></td></tr>
+</tbody>
+</table>
+<p>In addition, you will need to set <code>HTTP_PORT</code> to 80 and <code>HTTPS_PORT</code> to 443.</p>
+<h3><a class="anchor" aria-hidden="true" id="sip-gateway-configuration"></a><a href="#sip-gateway-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SIP gateway configuration</h3>
+<p>If you want to enable the SIP gateway, these options are required:</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>JIGASI_SIP_URI</code></td><td>SIP URI for incoming / outgoing calls</td><td><a href="mailto:test@sip2sip.info">test@sip2sip.info</a></td></tr>
+<tr><td><code>JIGASI_SIP_PASSWORD</code></td><td>Password for the specified SIP account</td><td>passw0rd</td></tr>
+<tr><td><code>JIGASI_SIP_SERVER</code></td><td>SIP server (use the SIP account domain if in doubt)</td><td>sip2sip.info</td></tr>
+<tr><td><code>JIGASI_SIP_PORT</code></td><td>SIP server port</td><td>5060</td></tr>
+<tr><td><code>JIGASI_SIP_TRANSPORT</code></td><td>SIP transport</td><td>UDP</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="jitsi-broadcasting-infrastructure-jibri-configuration"></a><a href="#jitsi-broadcasting-infrastructure-jibri-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JItsi BRoadcasting Infrastructure (Jibri) configuration</h3>
+<p>Before running Jibri, you need to set up an ALSA loopback device on the host. This <strong>will not</strong>
+work on a non-Linux host.</p>
+<p>For CentOS 7, the module is already compiled with the kernel, so just run:</p>
+<pre><code class="hljs"><span class="hljs-comment"># configure 5 capture/playback interfaces</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4"</span> &gt; <span class="hljs-string">/etc/modprobe.d/alsa-loopback.conf</span>
+<span class="hljs-comment"># setup autoload the module</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"snd_aloop"</span> &gt; <span class="hljs-string">/etc/modules-load.d/snd_aloop.conf</span>
+<span class="hljs-comment"># load the module</span>
+modprobe snd-aloop
+<span class="hljs-comment"># check that the module is loaded</span>
+lsmod | grep snd_aloop
+</code></pre>
+<p>For Ubuntu:</p>
+<pre><code class="hljs"><span class="hljs-comment"># install the module</span>
+apt update &amp;&amp; apt install linux-image-extra-virtual
+<span class="hljs-comment"># configure 5 capture/playback interfaces</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4"</span> &gt; <span class="hljs-string">/etc/modprobe.d/alsa-loopback.conf</span>
+<span class="hljs-comment"># setup autoload the module</span>
+<span class="hljs-keyword">echo</span> <span class="hljs-string">"snd-aloop"</span> &gt;&gt; <span class="hljs-string">/etc/modules</span>
+<span class="hljs-comment"># check that the module is loaded</span>
+lsmod | grep snd_aloop
+</code></pre>
+<p>NOTE: If you are running on AWS you may need to reboot your machine to use the generic kernel instead
+of the &quot;aws&quot; kernel. If after reboot, your machine is still using the &quot;aws&quot; kernel, you'll need to manually update the grub file. So just run:</p>
+<pre><code class="hljs"># <span class="hljs-keyword">open</span> the grub file <span class="hljs-keyword">in</span> editor
+nano /etc/<span class="hljs-keyword">default</span>/grub
+# Modify the <span class="hljs-keyword">value</span> <span class="hljs-keyword">of</span> GRUB_DEFAULT <span class="hljs-keyword">from</span> "0" <span class="hljs-keyword">to</span> "1&gt;2"
+# Save <span class="hljs-keyword">and</span> <span class="hljs-keyword">exit</span> <span class="hljs-keyword">from</span> file
+
+# <span class="hljs-keyword">Update</span> grub
+<span class="hljs-keyword">update</span>-grub
+# Reboot the machine
+reboot now
+</code></pre>
+<p>If you want to enable Jibri these options are required:</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ENABLE_RECORDING</code></td><td>Enable recording conference to local disk</td><td>1</td></tr>
+</tbody>
+</table>
+<p>Extended Jibri configuration:</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>JIBRI_RECORDER_USER</code></td><td>Internal recorder user for Jibri client connections</td><td>recorder</td></tr>
+<tr><td><code>JIBRI_RECORDER_PASSWORD</code></td><td>Internal recorder password for Jibri client connections</td><td>passw0rd</td></tr>
+<tr><td><code>JIBRI_RECORDING_DIR</code></td><td>Directory for recordings inside Jibri container</td><td>/config/recordings</td></tr>
+<tr><td><code>JIBRI_FINALIZE_RECORDING_SCRIPT_PATH</code></td><td>The finalizing script. Will run after recording is complete</td><td>/config/finalize.sh</td></tr>
+<tr><td><code>JIBRI_XMPP_USER</code></td><td>Internal user for Jibri client connections.</td><td>jibri</td></tr>
+<tr><td><code>JIBRI_RECORDER_PASSWORD</code></td><td>Internal user for Jibri client connections</td><td>passw0rd</td></tr>
+<tr><td><code>JIBRI_STRIP_DOMAIN_JID</code></td><td>Prefix domain for strip inside Jibri (please see env.example for details)</td><td>muc</td></tr>
+<tr><td><code>JIBRI_BREWERY_MUC</code></td><td>MUC name for the Jibri pool</td><td>jibribrewery</td></tr>
+<tr><td><code>JIBRI_PENDING_TIMEOUT</code></td><td>MUC connection timeout</td><td>90</td></tr>
+<tr><td><code>JIBRI_LOGS_DIR</code></td><td>Directory for logs inside Jibri container</td><td>/config/logs</td></tr>
+</tbody>
+</table>
+<p>For using multiple Jibri instances, you have to select different loopback interfaces for each instance manually.</p>
+<p><details>
+<summary>Set interface in file <code>/home/jibri/.asoundrc</code> inside a docker container.</summary></p>
+<p>Default the first instance has:</p>
+<pre><code class="hljs">...
+slave.pcm <span class="hljs-string">"hw:Loopback,0,0"</span>
+...
+slave.pcm <span class="hljs-string">"hw:Loopback,0,1"</span>
+...
+slave.pcm <span class="hljs-string">"hw:Loopback,1,1"</span>
+...
+slave.pcm <span class="hljs-string">"hw:Loopback,1,0"</span>
+...
+</code></pre>
+<p>To setup the second instance, run container with changed <code>/home/jibri/.asoundrc</code>:</p>
+<pre><code class="hljs">...
+slave.pcm <span class="hljs-string">"hw:Loopback_1,0,0"</span>
+...
+slave.pcm <span class="hljs-string">"hw:Loopback_1,0,1"</span>
+...
+slave.pcm <span class="hljs-string">"hw:Loopback_1,1,1"</span>
+...
+slave.pcm <span class="hljs-string">"hw:Loopback_1,1,0"</span>
+...
+</code></pre>
+<p>Also you can use numbering id for set loopback interface. The third instance will have <code>.asoundrc</code> that looks like:</p>
+<pre><code class="hljs">...
+slave.pcm <span class="hljs-string">"hw:2,0,0"</span>
+...
+slave.pcm <span class="hljs-string">"hw:2,0,1"</span>
+...
+slave.pcm <span class="hljs-string">"hw:2,1,1"</span>
+...
+slave.pcm <span class="hljs-string">"hw:2,1,0"</span>
+...
+
+</code></pre>
+<p></details></p>
+<h3><a class="anchor" aria-hidden="true" id="authentication"></a><a href="#authentication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication</h3>
+<p>Authentication can be controlled with the environment variables below. If guest
+access is enabled, unauthenticated users will need to wait until a user authenticates
+before they can join a room. If guest access is not enabled, every user will need
+to authenticate before they can join.</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ENABLE_AUTH</code></td><td>Enable authentication</td><td>1</td></tr>
+<tr><td><code>ENABLE_GUESTS</code></td><td>Enable guest access</td><td>1</td></tr>
+<tr><td><code>AUTH_TYPE</code></td><td>Select authentication type (internal, jwt or ldap)</td><td>internal</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="internal-authentication"></a><a href="#internal-authentication" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Internal authentication</h4>
+<p>The default authentication mode (<code>internal</code>) uses XMPP credentials to authenticate users.
+To enable it you have to enable authentication with <code>ENABLE_AUTH</code> and set <code>AUTH_TYPE</code> to <code>internal</code>,
+then configure the settings you can see below.</p>
+<p>Internal users must be created with the <code>prosodyctl</code> utility in the <code>prosody</code> container.
+In order to do that, first, execute a shell in the corresponding container:</p>
+<p><code>docker-compose exec prosody /bin/bash</code></p>
+<p>Once in the container, run the following command to create a user:</p>
+<p><code>prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword</code></p>
+<p>Note that the command produces no output.</p>
+<h4><a class="anchor" aria-hidden="true" id="authentication-using-ldap"></a><a href="#authentication-using-ldap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication using LDAP</h4>
+<p>You can use LDAP to authenticate users. To enable it you have to enable authentication with <code>ENABLE_AUTH</code> and
+set <code>AUTH_TYPE</code> to <code>ldap</code>, then configure the settings you can see below.</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>LDAP_URL</code></td><td>URL for ldap connection</td><td><a href="ldaps://ldap.domain.com/">ldaps://ldap.domain.com/</a></td></tr>
+<tr><td><code>LDAP_BASE</code></td><td>LDAP base DN. Can be empty.</td><td>DC=example,DC=domain,DC=com</td></tr>
+<tr><td><code>LDAP_BINDDN</code></td><td>LDAP user DN. Do not specify this parameter for the anonymous bind.</td><td>CN=binduser,OU=users,DC=example,DC=domain,DC=com</td></tr>
+<tr><td><code>LDAP_BINDPW</code></td><td>LDAP user password. Do not specify this parameter for the anonymous bind.</td><td>LdapUserPassw0rd</td></tr>
+<tr><td><code>LDAP_FILTER</code></td><td>LDAP filter.</td><td>(sAMAccountName=%u)</td></tr>
+<tr><td><code>LDAP_AUTH_METHOD</code></td><td>LDAP authentication method.</td><td>bind</td></tr>
+<tr><td><code>LDAP_VERSION</code></td><td>LDAP protocol version</td><td>3</td></tr>
+<tr><td><code>LDAP_USE_TLS</code></td><td>Enable LDAP TLS</td><td>1</td></tr>
+<tr><td><code>LDAP_TLS_CIPHERS</code></td><td>Set TLS ciphers list to allow</td><td>SECURE256:SECURE128</td></tr>
+<tr><td><code>LDAP_TLS_CHECK_PEER</code></td><td>Require and verify LDAP server certificate</td><td>1</td></tr>
+<tr><td><code>LDAP_TLS_CACERT_FILE</code></td><td>Path to CA cert file. Used when server certificate verification is enabled</td><td>/etc/ssl/certs/ca-certificates.crt</td></tr>
+<tr><td><code>LDAP_TLS_CACERT_DIR</code></td><td>Path to CA certs directory. Used when server certificate verification is enabled.</td><td>/etc/ssl/certs</td></tr>
+<tr><td><code>LDAP_START_TLS</code></td><td>Enable START_TLS, requires LDAPv3, URL must be ldap:// not ldaps://</td><td>0</td></tr>
+</tbody>
+</table>
+<h4><a class="anchor" aria-hidden="true" id="authentication-using-jwt-tokens"></a><a href="#authentication-using-jwt-tokens" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication using JWT tokens</h4>
+<p>You can use JWT tokens to authenticate users. To enable it you have to enable authentication with <code>ENABLE_AUTH</code> and
+set <code>AUTH_TYPE</code> to <code>jwt</code>, then configure the settings you can see below.</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>JWT_APP_ID</code></td><td>Application identifier</td><td>my_jitsi_app_id</td></tr>
+<tr><td><code>JWT_APP_SECRET</code></td><td>Application secret known only to your token</td><td>my_jitsi_app_secret</td></tr>
+<tr><td><code>JWT_ACCEPTED_ISSUERS</code></td><td>(Optional) Set asap_accepted_issuers as a comma separated list</td><td>my_web_client,my_app_client</td></tr>
+<tr><td><code>JWT_ACCEPTED_AUDIENCES</code></td><td>(Optional) Set asap_accepted_audiences as a comma separated list</td><td>my_server1,my_server2</td></tr>
+<tr><td><code>JWT_ASAP_KEYSERVER</code></td><td>(Optional) Set asap_keyserver to a url where public keys can be found</td><td><a href="https://example.com/asap">https://example.com/asap</a></td></tr>
+<tr><td><code>JWT_ALLOW_EMPTY</code></td><td>(Optional) Allow anonymous users with no JWT while validating JWTs when provided</td><td>0</td></tr>
+<tr><td><code>JWT_AUTH_TYPE</code></td><td>(Optional) Controls which module is used for processing incoming JWTs</td><td>token</td></tr>
+<tr><td><code>JWT_TOKEN_AUTH_MODULE</code></td><td>(Optional) Controls which module is used for validating JWTs</td><td>token_verification</td></tr>
+</tbody>
+</table>
+<p>This can be tested using the <a href="https://jwt.io/#debugger-io">jwt.io</a> debugger. Use the following sample payload:</p>
+<pre><code class="hljs">{
+  <span class="hljs-attr">"context"</span>: {
+    <span class="hljs-attr">"user"</span>: {
+      <span class="hljs-attr">"avatar"</span>: <span class="hljs-string">"https://robohash.org/john-doe"</span>,
+      <span class="hljs-attr">"name"</span>: <span class="hljs-string">"John Doe"</span>,
+      <span class="hljs-attr">"email"</span>: <span class="hljs-string">"jdoe@example.com"</span>
+    }
+  },
+  <span class="hljs-attr">"aud"</span>: <span class="hljs-string">"my_jitsi_app_id"</span>,
+  <span class="hljs-attr">"iss"</span>: <span class="hljs-string">"my_jitsi_app_id"</span>,
+  <span class="hljs-attr">"sub"</span>: <span class="hljs-string">"meet.jitsi"</span>,
+  <span class="hljs-attr">"room"</span>: <span class="hljs-string">"*"</span>
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="shared-document-editing-using-etherpad"></a><a href="#shared-document-editing-using-etherpad" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Shared document editing using Etherpad</h3>
+<p>You can collaboratively edit a document via <a href="https://github.com/ether/etherpad-lite">Etherpad</a>. In order to enable it, set the config options below and run
+Docker Compose with the additional config file <code>etherpad.yml</code>.</p>
+<p>Here are the required options:</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ETHERPAD_URL_BASE</code></td><td>Set etherpad-lite URL</td><td><a href="http://etherpad.meet.jitsi:9001">http://etherpad.meet.jitsi:9001</a></td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="transcription-configuration"></a><a href="#transcription-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transcription configuration</h3>
+<p>If you want to enable the Transcribing function, these options are required:</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Example</th></tr>
+</thead>
+<tbody>
+<tr><td><code>ENABLE_TRANSCRIPTIONS</code></td><td>Enable Jigasi transcription in a conference</td><td>1</td></tr>
+<tr><td><code>GC_PROJECT_ID</code></td><td><code>project_id</code> from Google Cloud Credentials</td></tr>
+<tr><td><code>GC_PRIVATE_KEY_ID</code></td><td><code>private_key_id</code> from Google Cloud Credentials</td></tr>
+<tr><td><code>GC_PRIVATE_KEY</code></td><td><code>private_key</code> from Google Cloud Credentials</td></tr>
+<tr><td><code>GC_CLIENT_EMAIL</code></td><td><code>client_email</code> from Google Cloud Credentials</td></tr>
+<tr><td><code>GC_CLIENT_ID</code></td><td><code>client_id</code> from Google Cloud Credentials</td></tr>
+<tr><td><code>GC_CLIENT_CERT_URL</code></td><td><code>client_x509_cert_url</code> from Google Cloud Credentials</td></tr>
+</tbody>
+</table>
+<p>For setting the Google Cloud Credentials please read <a href="https://cloud.google.com/text-to-speech/docs/quickstart-protocol">https://cloud.google.com/text-to-speech/docs/quickstart-protocol</a> section &quot;Before you begin&quot; paragraph 1 to 5.</p>
+<h3><a class="anchor" aria-hidden="true" id="advanced-configuration"></a><a href="#advanced-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Advanced configuration</h3>
+<p>These configuration options are already set and generally don't need to be changed.</p>
+<table>
+<thead>
+<tr><th>Variable</th><th>Description</th><th>Default value</th></tr>
+</thead>
+<tbody>
+<tr><td><code>XMPP_DOMAIN</code></td><td>Internal XMPP domain</td><td>meet.jitsi</td></tr>
+<tr><td><code>XMPP_AUTH_DOMAIN</code></td><td>Internal XMPP domain for authenticated services</td><td>auth.meet.jitsi</td></tr>
+<tr><td><code>XMPP_SERVER</code></td><td>Internal XMPP server name xmpp.meet.jitsi</td><td>xmpp.meet.jitsi</td></tr>
+<tr><td><code>XMPP_BOSH_URL_BASE</code></td><td>Internal XMPP server URL for BOSH module</td><td><a href="http://xmpp.meet.jitsi:5280">http://xmpp.meet.jitsi:5280</a></td></tr>
+<tr><td><code>XMPP_MUC_DOMAIN</code></td><td>XMPP domain for the MUC</td><td>muc.meet.jitsi</td></tr>
+<tr><td><code>XMPP_INTERNAL_MUC_DOMAIN</code></td><td>XMPP domain for the internal MUC</td><td>internal-muc.meet.jitsi</td></tr>
+<tr><td><code>XMPP_GUEST_DOMAIN</code></td><td>XMPP domain for unauthenticated users</td><td>guest.meet.jitsi</td></tr>
+<tr><td><code>XMPP_RECORDER_DOMAIN</code></td><td>Domain for the jibri recorder</td><td>recorder.meet.jitsi</td></tr>
+<tr><td><code>XMPP_MODULES</code></td><td>Custom Prosody modules for XMPP_DOMAIN (comma separated)</td><td>info,alert</td></tr>
+<tr><td><code>XMPP_MUC_MODULES</code></td><td>Custom Prosody modules for MUC component (comma separated)</td><td>info,alert</td></tr>
+<tr><td><code>XMPP_INTERNAL_MUC_MODULES</code></td><td>Custom Prosody modules for internal MUC component (comma separated)</td><td>info,alert</td></tr>
+<tr><td><code>GLOBAL_MODULES</code></td><td>Custom prosody modules to load in global configuration (comma separated)</td><td>statistics,alert</td></tr>
+<tr><td><code>GLOBAL_CONFIG</code></td><td>Custom configuration string with escaped newlines</td><td>foo = bar;\nkey = val;</td></tr>
+<tr><td><code>RESTART_POLICY</code></td><td>Container restart policy</td><td>defaults to <code>unless-stopped</code></td></tr>
+<tr><td><code>JICOFO_COMPONENT_SECRET</code></td><td>XMPP component password for Jicofo</td><td>s3cr37</td></tr>
+<tr><td><code>JICOFO_AUTH_USER</code></td><td>XMPP user for Jicofo client connections</td><td>focus</td></tr>
+<tr><td><code>JICOFO_AUTH_PASSWORD</code></td><td>XMPP password for Jicofo client connections</td><td>passw0rd</td></tr>
+<tr><td><code>JICOFO_ENABLE_HEALTH_CHECKS</code></td><td>Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status</td><td>false</td></tr>
+<tr><td><code>JVB_AUTH_USER</code></td><td>XMPP user for JVB MUC client connections</td><td>jvb</td></tr>
+<tr><td><code>JVB_AUTH_PASSWORD</code></td><td>XMPP password for JVB MUC client connections</td><td>passw0rd</td></tr>
+<tr><td><code>JVB_STUN_SERVERS</code></td><td>STUN servers used to discover the server's public IP</td><td>stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302</td></tr>
+<tr><td><code>JVB_PORT</code></td><td>UDP port for media used by Jitsi Videobridge</td><td>10000</td></tr>
+<tr><td><code>JVB_TCP_HARVESTER_DISABLED</code></td><td>Disable the additional harvester which allows video over TCP (rather than just UDP)</td><td>true</td></tr>
+<tr><td><code>JVB_TCP_PORT</code></td><td>TCP port for media used by Jitsi Videobridge when the TCP Harvester is enabled</td><td>4443</td></tr>
+<tr><td><code>JVB_TCP_MAPPED_PORT</code></td><td>TCP port advertised by Jitsi Videobridge</td><td>4443</td></tr>
+<tr><td><code>JVB_BREWERY_MUC</code></td><td>MUC name for the JVB pool</td><td>jvbbrewery</td></tr>
+<tr><td><code>JVB_ENABLE_APIS</code></td><td>Comma separated list of JVB APIs to enable</td><td>none</td></tr>
+<tr><td><code>JIGASI_XMPP_USER</code></td><td>XMPP user for Jigasi MUC client connections</td><td>jigasi</td></tr>
+<tr><td><code>JIGASI_XMPP_PASSWORD</code></td><td>XMPP password for Jigasi MUC client connections</td><td>passw0rd</td></tr>
+<tr><td><code>JIGASI_BREWERY_MUC</code></td><td>MUC name for the Jigasi pool</td><td>jigasibrewery</td></tr>
+<tr><td><code>JIGASI_PORT_MIN</code></td><td>Minimum port for media used by Jigasi</td><td>20000</td></tr>
+<tr><td><code>JIGASI_PORT_MAX</code></td><td>Maximum port for media used by Jigasi</td><td>20050</td></tr>
+<tr><td><code>JIGASI_ENABLE_SDES_SRTP</code></td><td>Enable SDES srtp</td><td>1</td></tr>
+<tr><td><code>JIGASI_SIP_KEEP_ALIVE_METHOD</code></td><td>Keepalive method</td><td>OPTIONS</td></tr>
+<tr><td><code>JIGASI_HEALTH_CHECK_SIP_URI</code></td><td>Health-check extension. Jigasi will call it for health check</td><td>keepalive</td></tr>
+<tr><td><code>JIGASI_HEALTH_CHECK_INTERVAL</code></td><td>Interval of health check in milliseconds</td><td>300000</td></tr>
+<tr><td><code>JIGASI_TRANSCRIBER_RECORD_AUDIO</code></td><td>Jigasi will record audio when transcriber is on</td><td>true</td></tr>
+<tr><td><code>JIGASI_TRANSCRIBER_SEND_TXT</code></td><td>Jigasi will send a transcribed text to the chat when transcriber is on</td><td>true</td></tr>
+<tr><td><code>JIGASI_TRANSCRIBER_ADVERTISE_URL</code></td><td>Jigasi will post an URL to the chat with transcription file</td><td>true</td></tr>
+<tr><td><code>DISABLE_HTTPS</code></td><td>Handle TLS connections outside of this setup</td><td>1</td></tr>
+<tr><td><code>ENABLE_HTTP_REDIRECT</code></td><td>Redirect HTTP traffic to HTTPS (necessary for Let's Encrypt)</td><td>1</td></tr>
+<tr><td><code>LOG_LEVEL</code></td><td>Controls which logs are output from prosody and associated modules</td><td>info</td></tr>
+</tbody>
+</table>
+<h3><a class="anchor" aria-hidden="true" id="running-behind-nat-or-on-a-lan-environment"></a><a href="#running-behind-nat-or-on-a-lan-environment" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Running behind NAT or on a LAN environment</h3>
+<p>If running in a LAN environment (as well as on the public Internet, via NAT) is a requirement,
+the <code>DOCKER_HOST_ADDRESS</code> should be set. This way, the Videobridge will advertise the IP address
+of the host running Docker instead of the internal IP address that Docker assigned it, thus making <a href="https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment">ICE</a>
+succeed. If your users are coming in over the Internet (and not over LAN), this will likely be your public IP address. If this is not set up correctly, calls will crash when more than two users join a meeting.</p>
+<p>The public IP address is discovered via <a href="https://en.wikipedia.org/wiki/STUN">STUN</a>. STUN servers can be specified with the <code>JVB_STUN_SERVERS</code>
+option.</p>
+<h2><a class="anchor" aria-hidden="true" id="build-instructions"></a><a href="#build-instructions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build Instructions</h2>
+<p>Building your images allows you to edit the configuration files of each image individually, providing more customization for your deployment.</p>
+<p>The docker images can be built by running the <code>make</code> command in the main repository folder. If you need to overwrite existing images from the remote source, use <code>FORCE_REBUILD=1 make</code>.</p>
+<p>If you are on the unstable branch, build the images with <code>FORCE_REBUILD=1 JITSI_RELEASE=unstable make</code>.</p>
+<p>You are now able to run <code>docker-compose up</code> as usual.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus-test/docs/devops-guide-quickstart"><span class="arrow-prev">← </span><span>Dedicated server</span></a><a class="docs-next button" href="/docusaurus-test/docs/devops-guide-manual"><span>Manual installation</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#quick-start">Quick start</a><ul class="toc-headings"><li><a href="#security-note">Security note</a></li></ul></li><li><a href="#architecture">Architecture</a><ul class="toc-headings"><li><a href="#external-ports">External Ports</a></li><li><a href="#images">Images</a></li><li><a href="#design-considerations">Design considerations</a></li></ul></li><li><a href="#configuration">Configuration</a><ul class="toc-headings"><li><a href="#lets-encrypt-configuration">Let's Encrypt configuration</a></li><li><a href="#sip-gateway-configuration">SIP gateway configuration</a></li><li><a href="#jitsi-broadcasting-infrastructure-jibri-configuration">JItsi BRoadcasting Infrastructure (Jibri) configuration</a></li><li><a href="#authentication">Authentication</a></li><li><a href="#shared-document-editing-using-etherpad">Shared document editing using Etherpad</a></li><li><a href="#transcription-configuration">Transcription configuration</a></li><li><a href="#advanced-configuration">Advanced configuration</a></li><li><a href="#running-behind-nat-or-on-a-lan-environment">Running behind NAT or on a LAN environment</a></li></ul></li><li><a href="#build-instructions">Build Instructions</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus-test/" class="nav-home"><img src="/docusaurus-test/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docusaurus-test/docs/en/intro.html">Introduction</a><a href="/docusaurus-test/docs/en/user-guide-start.html">User Guide</a><a href="/docusaurus-test/docs/en/user-guide-start.html">Developer Guide</a><a href="/docusaurus-test/docs/en/user-guide-start.html">DevOps Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div></div></section><section class="copyright">Copyright © 2020</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

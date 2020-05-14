@@ -1,0 +1,241 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>iOS SDK · Jitsi Meet Handbook</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="iOS SDK · Jitsi Meet Handbook"/><meta property="og:type" content="website"/><meta property="og:url" content="https://bettercallsaghul.com/docusaurus-test/"/><meta property="og:description" content="The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,"/><meta property="og:image" content="https://bettercallsaghul.com/docusaurus-test/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://bettercallsaghul.com/docusaurus-test/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/docusaurus-test/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/docusaurus-test/js/scrollSpy.js"></script><link rel="stylesheet" href="/docusaurus-test/css/main.css"/><script src="/docusaurus-test/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/docusaurus-test/"><img class="logo" src="/docusaurus-test/img/logo-white.png" alt="Jitsi Meet Handbook"/><h2 class="headerTitleWithLogo">Jitsi Meet Handbook</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docusaurus-test/docs/intro" target="_self">Docs</a></li><li class=""><a href="/docusaurus-test/help" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Developer Guide</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/architecture">Architecture</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/security">Security</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">User Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-basic">Basic options</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/user-guide-advanced">Advanced options</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Developer Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-web">Web</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-web-integrations">Web integrations</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-iframe">IFrame API</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-mobile">Mobile</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/dev-guide-android-sdk">Android SDK</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docusaurus-test/docs/dev-guide-ios-sdk">iOS SDK</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DevOps Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-quickstart">Dedicated server</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-docker">Doker</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-manual">Manual installation</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-scalable">Scalable setup</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-videotutorials">Video Tutorials</a></li><li class="navListItem"><a class="navItem" href="/docusaurus-test/docs/devops-guide-extras">Extras</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">iOS SDK</h1></header><article><div><span><p>The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,
+in a customizable way which you can embed in your apps.</p>
+<h2><a class="anchor" aria-hidden="true" id="sample-applications-using-the-sdk"></a><a href="#sample-applications-using-the-sdk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sample applications using the SDK</h2>
+<p>If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the
+<a href="https://github.com/jitsi/jitsi-meet-sdk-samples">sample applications repository</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="usage"></a><a href="#usage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Usage</h2>
+<p>There are 2 ways to integrate the SDK into your project:</p>
+<ul>
+<li>Using CocoaPods</li>
+<li>Building it yourself</li>
+</ul>
+<h3><a class="anchor" aria-hidden="true" id="using-cocoapods"></a><a href="#using-cocoapods" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using CocoaPods</h3>
+<p>The recommended way for using the SDK is by using CocoaPods. In order to
+do so, add the <code>JitsiMeetSDK</code> dependency to your existing <code>Podfile</code> or create
+a new one following this example:</p>
+<pre><code class="hljs">platform <span class="hljs-symbol">:ios</span>, <span class="hljs-string">'11.0'</span>
+
+workspace <span class="hljs-string">'JitsiMeetSDKTest.xcworkspace'</span>
+
+target <span class="hljs-string">'JitsiMeetSDKTest'</span> <span class="hljs-keyword">do</span>
+  project <span class="hljs-string">'JitsiMeetSDKTest.xcodeproj'</span>
+
+  pod <span class="hljs-string">'JitsiMeetSDK'</span>
+<span class="hljs-keyword">end</span>
+
+post_install <span class="hljs-keyword">do</span> <span class="hljs-params">|installer|</span>
+  installer.pods_project.targets.each <span class="hljs-keyword">do</span> <span class="hljs-params">|target|</span>
+    target.build_configurations.each <span class="hljs-keyword">do</span> <span class="hljs-params">|config|</span>
+      config.build_settings[<span class="hljs-string">'ENABLE_BITCODE'</span>] = <span class="hljs-string">'NO'</span>
+    <span class="hljs-keyword">end</span>
+  <span class="hljs-keyword">end</span>
+<span class="hljs-keyword">end</span>
+</code></pre>
+<p>Replace <code>JitsiMeetSDKTest</code> with your project and target names.</p>
+<p>Bitcode is not supported, so turn it off for your project.</p>
+<p>The SDK uses Swift code, so make sure you select <code>Always Embed Swift Standard Libraries</code>
+in your project.</p>
+<p>Since the SDK requests camera and microphone access, make sure to include the
+required entries for <code>NSCameraUsageDescription</code> and <code>NSMicrophoneUsageDescription</code>
+in your <code>Info.plist</code> file.</p>
+<p>In order for app to properly work in the background, select the &quot;audio&quot; and &quot;voip&quot;
+background modes.</p>
+<p>Last, since the SDK shows and hides the status bar based on the conference state,
+you may want to set <code>UIViewControllerBasedStatusBarAppearance</code> to <code>NO</code> in your
+<code>Info.plist</code> file.</p>
+<h3><a class="anchor" aria-hidden="true" id="building-it-yourself"></a><a href="#building-it-yourself" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building it yourself</h3>
+<ol>
+<li><p>Install all required <a href="/docusaurus-test/docs/dev-guide-mobile">dependencies</a>.</p></li>
+<li><p><code>xcodebuild -workspace ios/jitsi-meet.xcworkspace -scheme JitsiMeet -destination='generic/platform=iOS' -configuration Release archive</code></p></li>
+</ol>
+<p>After successfully building Jitsi Meet SDK for iOS, copy
+<code>ios/sdk/JitsiMeet.framework</code> (if the path points to a symbolic link, follow the
+symbolic link) and
+<code>node_modules/react-native-webrtc/ios/WebRTC.framework</code> into your project.</p>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<p>JitsiMeet is an iOS framework which embodies the whole Jitsi Meet experience and
+makes it reusable by third-party apps.</p>
+<p>To get started:</p>
+<ol>
+<li><p>Add a <code>JitsiMeetView</code> to your app using a Storyboard or Interface Builder,
+for example.</p></li>
+<li><p>Then, once the view has loaded, set the delegate in your controller and load
+the desired URL:</p></li>
+</ol>
+<pre><code class="hljs css language-objc">- (<span class="hljs-keyword">void</span>)viewDidLoad {
+  [<span class="hljs-keyword">super</span> viewDidLoad];
+
+  JitsiMeetView *jitsiMeetView = (JitsiMeetView *) <span class="hljs-keyword">self</span>.view;
+  jitsiMeetView.delegate = <span class="hljs-keyword">self</span>;
+
+  JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {
+      builder.serverURL = [<span class="hljs-built_in">NSURL</span> URLWithString:<span class="hljs-string">@"https://meet.jit.si"</span>];
+      builder.room = <span class="hljs-string">@"test123"</span>;
+      builder.audioOnly = <span class="hljs-literal">YES</span>;
+  }];
+
+  [jitsiMeetView join:options];
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="jitsimeetview-class"></a><a href="#jitsimeetview-class" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetView class</h3>
+<p>The <code>JitsiMeetView</code> class is the entry point to the SDK. It a subclass of
+<code>UIView</code> which renders a full conference in the designated area.</p>
+<h4><a class="anchor" aria-hidden="true" id="delegate"></a><a href="#delegate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>delegate</h4>
+<p>Property to get/set the <code>JitsiMeetViewDelegate</code> on <code>JitsiMeetView</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="joinjitsimeetconferenceoptions"></a><a href="#joinjitsimeetconferenceoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>join:JitsiMeetConferenceOptions</h4>
+<p>Joins the conference specified by the given options.</p>
+<pre><code class="hljs css language-objc">  JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {
+      builder.serverURL = [<span class="hljs-built_in">NSURL</span> URLWithString:<span class="hljs-string">@"https://meet.jit.si"</span>];
+      builder.room = <span class="hljs-string">@"test123"</span>;
+      builder.audioOnly = <span class="hljs-literal">NO</span>;
+      builder.audioMuted = <span class="hljs-literal">NO</span>;
+      builder.videoMuted = <span class="hljs-literal">NO</span>;
+      builder.welcomePageEnabled = <span class="hljs-literal">NO</span>;
+  }];
+
+  [jitsiMeetView join:options];
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="leave"></a><a href="#leave" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>leave</h4>
+<p>Leaves the currently active conference.</p>
+<h4><a class="anchor" aria-hidden="true" id="universal--deep-linking"></a><a href="#universal--deep-linking" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Universal / deep linking</h4>
+<p>In order to support Universal / deep linking, <code>JitsiMeet</code> offers 2 class
+methods that you app's delegate should call in order for the app to follow those
+links.</p>
+<p>If these functions return NO it means the URL wasn't handled by the SDK. This
+is useful when the host application uses other SDKs which also use linking.</p>
+<pre><code class="hljs css language-objc">-  (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)application
+continueUserActivity:(<span class="hljs-built_in">NSUserActivity</span> *)userActivity
+  restorationHandler:(<span class="hljs-keyword">void</span> (^)(<span class="hljs-built_in">NSArray</span> *restorableObjects))restorationHandler
+{
+  <span class="hljs-keyword">return</span> [[JitsiMeet sharedInstance] application:application
+               continueUserActivity:userActivity
+                 restorationHandler:restorationHandler];
+}
+</code></pre>
+<p>And also one of the following:</p>
+<pre><code class="hljs css language-objc"><span class="hljs-comment">// See https://developer.apple.com/documentation/uikit/uiapplicationdelegate/1623073-application?language=objc</span>
+- (<span class="hljs-built_in">BOOL</span>)application:(<span class="hljs-built_in">UIApplication</span> *)app
+            openURL:(<span class="hljs-built_in">NSURL</span> *)url
+            options:(<span class="hljs-built_in">NSDictionary</span>&lt;<span class="hljs-built_in">UIApplicationOpenURLOptionsKey</span>,<span class="hljs-keyword">id</span>&gt; *)options {
+  <span class="hljs-keyword">return</span> [[JitsiMeet sharedInstance] application:app
+                            openURL:url
+                            options: options];
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="jitsimeetviewdelegate"></a><a href="#jitsimeetviewdelegate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetViewDelegate</h3>
+<p>This delegate is optional, and can be set on the <code>JitsiMeetView</code> instance using
+the <code>delegate</code> property.</p>
+<p>It provides information about the conference state: was it joined, left, did it
+fail?</p>
+<p>All methods in this delegate are optional.</p>
+<h4><a class="anchor" aria-hidden="true" id="conferencejoined"></a><a href="#conferencejoined" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>conferenceJoined</h4>
+<p>Called when a conference was joined.</p>
+<p>The <code>data</code> dictionary contains a &quot;url&quot; key with the conference URL.</p>
+<h4><a class="anchor" aria-hidden="true" id="conferenceterminated"></a><a href="#conferenceterminated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>conferenceTerminated</h4>
+<p>Called when a conference was terminated either by user choice or due to a
+failure.</p>
+<p>The <code>data</code> dictionary contains an &quot;error&quot; key with the error and a &quot;url&quot; key
+with the conference URL. If the conference finished gracefully no <code>error</code>
+key will be present.</p>
+<h4><a class="anchor" aria-hidden="true" id="conferencewilljoin"></a><a href="#conferencewilljoin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>conferenceWillJoin</h4>
+<p>Called before a conference is joined.</p>
+<p>The <code>data</code> dictionary contains a &quot;url&quot; key with the conference URL.</p>
+<h4><a class="anchor" aria-hidden="true" id="enterpictureinpicture"></a><a href="#enterpictureinpicture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>enterPictureInPicture</h4>
+<p>Called when entering Picture-in-Picture is requested by the user. The app should
+now activate its Picture-in-Picture implementation (and resize the associated
+<code>JitsiMeetView</code>. The latter will automatically detect its new size and adjust
+its user interface to a variant appropriate for the small size ordinarily
+associated with Picture-in-Picture.)</p>
+<p>The <code>data</code> dictionary is empty.</p>
+<h3><a class="anchor" aria-hidden="true" id="picture-in-picture"></a><a href="#picture-in-picture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Picture-in-Picture</h3>
+<p><code>JitsiMeetView</code> will automatically adjust its UI when presented in a
+Picture-in-Picture style scenario, in a rectangle too small to accommodate its
+&quot;full&quot; UI.</p>
+<p>Jitsi Meet SDK does not currently implement native Picture-in-Picture on iOS. If
+desired, apps need to implement non-native Picture-in-Picture themselves and
+resize <code>JitsiMeetView</code>.</p>
+<p>If <code>delegate</code> implements <code>enterPictureInPicture:</code>, the in-call toolbar will
+render a button to afford the user to request entering Picture-in-Picture.</p>
+<h2><a class="anchor" aria-hidden="true" id="dropbox-integration"></a><a href="#dropbox-integration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dropbox integration</h2>
+<p>To setup the Dropbox integration, follow these steps:</p>
+<ol>
+<li>Add the following to the app's Info.plist and change <code>&lt;APP_KEY&gt;</code> to your
+Dropbox app key:</li>
+</ol>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>CFBundleURLTypes<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">dict</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>CFBundleURLName<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>CFBundleURLSchemes<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>db-<span class="hljs-tag">&lt;<span class="hljs-name">APP_KEY</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">dict</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">key</span>&gt;</span>LSApplicationQueriesSchemes<span class="hljs-tag">&lt;/<span class="hljs-name">key</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">array</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>dbapi-2<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">string</span>&gt;</span>dbapi-8-emm<span class="hljs-tag">&lt;/<span class="hljs-name">string</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">array</span>&gt;</span>
+</code></pre>
+<ol start="2">
+<li>Make sure your app calls the Jitsi Meet SDK universal / deep linking delegate methods.</li>
+</ol>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docusaurus-test/docs/dev-guide-android-sdk"><span class="arrow-prev">← </span><span>Android SDK</span></a><a class="docs-next button" href="/docusaurus-test/docs/devops-guide-start"><span>Overview</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sample-applications-using-the-sdk">Sample applications using the SDK</a></li><li><a href="#usage">Usage</a><ul class="toc-headings"><li><a href="#using-cocoapods">Using CocoaPods</a></li><li><a href="#building-it-yourself">Building it yourself</a></li></ul></li><li><a href="#api">API</a><ul class="toc-headings"><li><a href="#jitsimeetview-class">JitsiMeetView class</a></li><li><a href="#jitsimeetviewdelegate">JitsiMeetViewDelegate</a></li><li><a href="#picture-in-picture">Picture-in-Picture</a></li></ul></li><li><a href="#dropbox-integration">Dropbox integration</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/docusaurus-test/" class="nav-home"><img src="/docusaurus-test/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/docusaurus-test/docs/en/intro.html">Introduction</a><a href="/docusaurus-test/docs/en/user-guide-start.html">User Guide</a><a href="/docusaurus-test/docs/en/user-guide-start.html">Developer Guide</a><a href="/docusaurus-test/docs/en/user-guide-start.html">DevOps Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div></div></section><section class="copyright">Copyright © 2020</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

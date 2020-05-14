@@ -10,9 +10,9 @@
 
 const siteConfig = {
   title: 'Jitsi Meet Handbook', // Title for your website.
-  tagline: 'The best Open Source video-cconferencing service. Period.',
-  url: 'https://bettercallsaghul.com', // Your website URL
-  baseUrl: '/docusaurus-test/', // Base URL for your project */
+  tagline: 'The best Open Source video-cconferencing service. Now with docs.',
+  url: 'https://jitsi.github.io', // Your website URL
+  baseUrl: '/handbook/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
   //   url: 'https://facebook.github.io',
   //   baseUrl: '/test-site/',

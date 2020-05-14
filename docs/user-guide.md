@@ -6,4 +6,4 @@ sidebar_label: Overview
 
 Welcome to the user guide!
 
-TODO.
+Check back soon!

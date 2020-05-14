@@ -3,4 +3,4 @@ id: architecture
 title: Architecture
 ---
 
-TODO.
+Check back soon!

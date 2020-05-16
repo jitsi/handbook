@@ -1,0 +1,341 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Android SDK · Jitsi Meet Handbook</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet app,"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Android SDK · Jitsi Meet Handbook"/><meta property="og:type" content="website"/><meta property="og:url" content="https://jitsi.github.io/handbook/"/><meta property="og:description" content="The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet app,"/><meta property="og:image" content="https://jitsi.github.io/handbook/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="https://jitsi.github.io/handbook/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/handbook/img/favicon.ico"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/handbook/js/scrollSpy.js"></script><link rel="stylesheet" href="/handbook/css/main.css"/><script src="/handbook/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/handbook/"><img class="logo" src="/handbook/img/logo-white.png" alt="Jitsi Meet Handbook"/><h2 class="headerTitleWithLogo">Jitsi Meet Handbook</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/handbook/docs/intro" target="_self">Docs</a></li><li class=""><a href="/handbook/help" target="_self">Help</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Developer Guide</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Getting Started</h3><ul class=""><li class="navListItem"><a class="navItem" href="/handbook/docs/intro">Introduction</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/architecture">Architecture</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/security">Security</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">User Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/handbook/docs/user-guide/user-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/user-guide/user-guide-basic">Basic options</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/user-guide/user-guide-advanced">Advanced options</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Developer Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-web">Web</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-web-integrations">Web integrations</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-iframe">IFrame API</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-mobile">Mobile</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-android-sdk">Android SDK</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/dev-guide/dev-guide-ios-sdk">iOS SDK</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">DevOps Guide</h3><ul class=""><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-start">Overview</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-quickstart">Dedicated server</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-docker">Docker</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-manual">Manual installation</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-scalable">Scalable setup</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-videotutorials">Video Tutorials</a></li><li class="navListItem"><a class="navItem" href="/handbook/docs/devops-guide/devops-guide-extras">Extras</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Android SDK</h1></header><article><div><span><p>The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet app,
+in a customizable way which you can embed in your apps.</p>
+<h2><a class="anchor" aria-hidden="true" id="sample-applications-using-the-sdk"></a><a href="#sample-applications-using-the-sdk" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sample applications using the SDK</h2>
+<p>If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the
+<a href="https://github.com/jitsi/jitsi-meet-sdk-samples">sample applications repository</a>.</p>
+<h2><a class="anchor" aria-hidden="true" id="build-your-own-or-use-a-pre-build-sdk-artifactsbinaries"></a><a href="#build-your-own-or-use-a-pre-build-sdk-artifactsbinaries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build your own, or use a pre-build SDK artifacts/binaries</h2>
+<p>Jitsi conveniently provides a pre-build SDK artifacts/binaries in its Maven repository. When you do not require any
+modification to the SDK itself or any of its dependencies, it's suggested to use the pre-build SDK. This avoids the
+complexity of building and installing your own SDK artifacts/binaries.</p>
+<h3><a class="anchor" aria-hidden="true" id="use-pre-build-sdk-artifactsbinaries"></a><a href="#use-pre-build-sdk-artifactsbinaries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Use pre-build SDK artifacts/binaries</h3>
+<p>In your project, add the Maven repository
+<code>https://github.com/jitsi/jitsi-maven-repository/raw/master/releases</code> and the
+dependency <code>org.jitsi.react:jitsi-meet-sdk</code> into your <code>build.gradle</code> files.</p>
+<p>The repository typically goes into the <code>build.gradle</code> file in the root of your project:</p>
+<pre><code class="hljs css language-gradle"><span class="hljs-keyword">allprojects</span> {
+    <span class="hljs-keyword">repositories</span> {
+        google()
+        jcenter()
+        maven {
+            url <span class="hljs-string">"https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"</span>
+        }
+    }
+}
+</code></pre>
+<p>Dependency definitions belong in the individual module <code>build.gradle</code> files:</p>
+<pre><code class="hljs css language-gradle"><span class="hljs-keyword">dependencies</span> {
+    <span class="hljs-comment">// (other dependencies)</span>
+    implementation (<span class="hljs-string">'org.jitsi.react:jitsi-meet-sdk:2.+'</span>) { transitive = <span class="hljs-keyword">true</span> }
+}
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="build-and-use-your-own-sdk-artifactsbinaries"></a><a href="#build-and-use-your-own-sdk-artifactsbinaries" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Build and use your own SDK artifacts/binaries</h3>
+<p><details>
+<summary>Show building instructions</summary></p>
+<p>Start by making sure that your development environment <a href="/handbook/docs/dev-guide/dev-guide-mobile">is set up correctly</a>.</p>
+<p>A note on dependencies: Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least <em>different</em>) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.</p>
+<p>If you want to use a SDK that is built from source, you will likely benefit from composing a local Maven repository that contains these dependencies. The text below describes how you create a repository that includes both the SDK as well as these dependencies. For illustration purposes, we'll define the location of this local Maven repository as <code>/tmp/repo</code></p>
+<p>In source code form, the Android SDK dependencies are locked/pinned by package.json and package-lock.json of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:</p>
+<pre><code class="hljs">npm install
+</code></pre>
+<p>This will pull in the dependencies in either binary format, or in source code format, somewhere under /node_modules/</p>
+<p>Third-party React Native <em>modules</em>, which Jitsi Meet SDK for Android depends on, are download by NPM in source code
+or binary form. These need to be assembled into Maven artifacts, and then published to your local Maven repository.
+A script is provided to facilitate this. From the root of the jitsi-meet project repository, run:</p>
+<pre><code class="hljs">./android/scripts/release-sdk.sh /tmp/repo
+</code></pre>
+<p>This will build and publish the SDK, and all of its dependencies to the specified Maven repository (<code>/tmp/repo</code>) in
+this example.</p>
+<p>You're now ready to use the artifacts. In <em>your</em> project, add the Maven repository that you used above (<code>/tmp/repo</code>) into your top-level <code>build.gradle</code> file:</p>
+<pre><code class="hljs">allprojects {
+    repositories {
+        maven { url &quot;file:/tmp/repo&quot; }
+        google()
+        jcenter()
+    }
+}
+</code></pre>
+<p>You can use your local repository to replace the Jitsi repository (<code>maven { url &quot;https://github.com/jitsi/jitsi-maven-repository/raw/master/releases&quot; }</code>) when you published <em>all</em> subprojects. If you didn't do that, you'll have to add both repositories. Make sure your local repository is listed first!</p>
+<p>Then, define the dependency <code>org.jitsi.react:jitsi-meet-sdk</code> into the <code>build.gradle</code> file of your module:</p>
+<pre><code class="hljs">implementation ('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
+</code></pre>
+<p>Note that there should not be a need to explicitly add the other dependencies, as they will be pulled in as transitive
+dependencies of <code>jitsi-meet-sdk</code>.</p>
+<p></details></p>
+<h2><a class="anchor" aria-hidden="true" id="using-the-api"></a><a href="#using-the-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Using the API</h2>
+<p>Jitsi Meet SDK is an Android library which embodies the whole Jitsi Meet
+experience and makes it reusable by third-party apps.</p>
+<p>First, add Java 1.8 compatibility support to your project by adding the
+following lines into your <code>build.gradle</code> file:</p>
+<pre><code class="hljs"><span class="hljs-attr">compileOptions</span> <span class="hljs-string">{</span>
+    <span class="hljs-attr">sourceCompatibility</span> <span class="hljs-string">JavaVersion.VERSION_1_8</span>
+    <span class="hljs-attr">targetCompatibility</span> <span class="hljs-string">JavaVersion.VERSION_1_8</span>
+<span class="hljs-attr">}</span>
+</code></pre>
+<p>To get started, extends your <code>android.app.Activity</code> from
+<code>org.jitsi.meet.sdk.JitsiMeetActivity</code>:</p>
+<pre><code class="hljs css language-java"><span class="hljs-keyword">package</span> org.jitsi.example;
+
+<span class="hljs-keyword">import</span> org.jitsi.meet.sdk.JitsiMeetActivity;
+
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">JitsiMeetActivity</span> </span>{
+}
+</code></pre>
+<p>Alternatively, you can use the <code>org.jitsi.meet.sdk.JitsiMeetView</code> class which
+extends <code>android.view.View</code>.</p>
+<p>Note that this should only be needed when <code>JitsiMeetActivity</code> cannot be used for
+some reason. Extending <code>JitsiMeetView</code> requires manual wiring of the view to
+the activity, using a lot of boilerplate code. Using the Activity instead of the
+View is strongly recommended.</p>
+<p><details>
+<summary>Show example</summary></p>
+<pre><code class="hljs css language-java"><span class="hljs-keyword">package</span> org.jitsi.example;
+
+<span class="hljs-keyword">import</span> android.os.Bundle;
+<span class="hljs-keyword">import</span> android.support.v4.app.FragmentActivity;
+
+<span class="hljs-keyword">import</span> org.jitsi.meet.sdk.JitsiMeetView;
+<span class="hljs-keyword">import</span> org.jitsi.meet.sdk.ReactActivityLifecycleCallbacks;
+
+<span class="hljs-comment">// Example</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">MainActivity</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">FragmentActivity</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">JitsiMeetActivityInterface</span> </span>{
+    <span class="hljs-keyword">private</span> JitsiMeetView view;
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onActivityResult</span><span class="hljs-params">(
+            <span class="hljs-keyword">int</span> requestCode,
+            <span class="hljs-keyword">int</span> resultCode,
+            Intent data)</span> </span>{
+        JitsiMeetActivityDelegate.onActivityResult(
+                <span class="hljs-keyword">this</span>, requestCode, resultCode, data);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onBackPressed</span><span class="hljs-params">()</span> </span>{
+        JitsiMeetActivityDelegate.onBackPressed();
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onCreate</span><span class="hljs-params">(Bundle savedInstanceState)</span> </span>{
+        <span class="hljs-keyword">super</span>.onCreate(savedInstanceState);
+
+        view = <span class="hljs-keyword">new</span> JitsiMeetView(<span class="hljs-keyword">this</span>);
+        JitsiMeetConferenceOptions options = <span class="hljs-keyword">new</span> JitsiMeetConferenceOptions.Builder()
+            .setRoom(<span class="hljs-string">"https://meet.jit.si/test123"</span>)
+            .build();
+        view.join(options);
+
+        setContentView(view);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onDestroy</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onDestroy();
+
+        view.dispose();
+        view = <span class="hljs-keyword">null</span>;
+
+        JitsiMeetActivityDelegate.onHostDestroy(<span class="hljs-keyword">this</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onNewIntent</span><span class="hljs-params">(Intent intent)</span> </span>{
+        JitsiMeetActivityDelegate.onNewIntent(intent);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onRequestPermissionsResult</span><span class="hljs-params">(
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span> requestCode,
+            <span class="hljs-keyword">final</span> String[] permissions,
+            <span class="hljs-keyword">final</span> <span class="hljs-keyword">int</span>[] grantResults)</span> </span>{
+        JitsiMeetActivityDelegate.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onResume</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onResume();
+
+        JitsiMeetActivityDelegate.onHostResume(<span class="hljs-keyword">this</span>);
+    }
+
+    <span class="hljs-meta">@Override</span>
+    <span class="hljs-function"><span class="hljs-keyword">protected</span> <span class="hljs-keyword">void</span> <span class="hljs-title">onStop</span><span class="hljs-params">()</span> </span>{
+        <span class="hljs-keyword">super</span>.onStop();
+
+        JitsiMeetActivityDelegate.onHostPause(<span class="hljs-keyword">this</span>);
+    }
+}
+</code></pre>
+<p></details></p>
+<h3><a class="anchor" aria-hidden="true" id="jitsimeetactivity"></a><a href="#jitsimeetactivity" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetActivity</h3>
+<p>This class encapsulates a high level API in the form of an Android <code>FragmentActivity</code>
+which displays a single <code>JitsiMeetView</code>. You can pass a URL as a <code>ACTION_VIEW</code>
+on the Intent when starting it and it will join the conference, and will be
+automatically terminated (finish() will be called on the activity) when the
+conference ends or fails.</p>
+<h3><a class="anchor" aria-hidden="true" id="jitsimeetview"></a><a href="#jitsimeetview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetView</h3>
+<p>The <code>JitsiMeetView</code> class is the core of Jitsi Meet SDK. It's designed to
+display a Jitsi Meet conference (or a welcome page).</p>
+<h4><a class="anchor" aria-hidden="true" id="joinoptions"></a><a href="#joinoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>join(options)</h4>
+<p>Joins the conference specified by the given <code>JitsiMeetConferenceOptions</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="leave"></a><a href="#leave" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>leave()</h4>
+<p>Leaves the currently active conference. If the welcome page is enabled it will
+go back to it, otherwise a black window will be shown.</p>
+<h4><a class="anchor" aria-hidden="true" id="dispose"></a><a href="#dispose" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dispose()</h4>
+<p>Releases all resources associated with this view. This method MUST be called
+when the Activity holding this view is going to be destroyed, usually in the
+<code>onDestroy()</code> method.</p>
+<h4><a class="anchor" aria-hidden="true" id="getlistener"></a><a href="#getlistener" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getListener()</h4>
+<p>Returns the <code>JitsiMeetViewListener</code> instance attached to the view.</p>
+<h4><a class="anchor" aria-hidden="true" id="setlistenerlistener"></a><a href="#setlistenerlistener" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setListener(listener)</h4>
+<p>Sets the given listener (class implementing the <code>JitsiMeetViewListener</code>
+interface) on the view.</p>
+<h3><a class="anchor" aria-hidden="true" id="jitsimeetconferenceoptions"></a><a href="#jitsimeetconferenceoptions" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetConferenceOptions</h3>
+<p>This object encapsulates all the options that can be tweaked when joining
+a conference.</p>
+<p>Example:</p>
+<pre><code class="hljs css language-java">JitsiMeetConferenceOptions options = <span class="hljs-keyword">new</span> JitsiMeetConferenceOptions.Builder()
+    .setServerURL(<span class="hljs-keyword">new</span> URL(<span class="hljs-string">"https://meet.jit.si"</span>))
+    .setRoom(<span class="hljs-string">"test123"</span>)
+    .setAudioMuted(<span class="hljs-keyword">false</span>)
+    .setVideoMuted(<span class="hljs-keyword">false</span>)
+    .setAudioOnly(<span class="hljs-keyword">false</span>)
+    .setWelcomePageEnabled(<span class="hljs-keyword">false</span>)
+    .build();
+</code></pre>
+<p>See the <code>JitsiMeetConferenceOptions</code> implementation for all available options.</p>
+<h3><a class="anchor" aria-hidden="true" id="jitsimeetactivitydelegate"></a><a href="#jitsimeetactivitydelegate" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetActivityDelegate</h3>
+<p>This class handles the interaction between <code>JitsiMeetView</code> and its enclosing
+<code>Activity</code>. Generally this shouldn't be consumed by users, because they'd be
+using <code>JitsiMeetActivity</code> instead, which is already completely integrated.</p>
+<p>All its methods are static.</p>
+<h4><a class="anchor" aria-hidden="true" id="onactivityresult"></a><a href="#onactivityresult" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onActivityResult(...)</h4>
+<p>Helper method to handle results of auxiliary activities launched by the SDK.
+Should be called from the activity method of the same name.</p>
+<h4><a class="anchor" aria-hidden="true" id="onbackpressed"></a><a href="#onbackpressed" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onBackPressed()</h4>
+<p>Helper method which should be called from the activity's <code>onBackPressed</code> method.
+If this function returns <code>true</code>, it means the action was handled and thus no
+extra processing is required; otherwise the app should call the parent's
+<code>onBackPressed</code> method.</p>
+<h4><a class="anchor" aria-hidden="true" id="onhostdestroy"></a><a href="#onhostdestroy" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onHostDestroy(...)</h4>
+<p>Helper method which should be called from the activity's <code>onDestroy</code> method.</p>
+<h4><a class="anchor" aria-hidden="true" id="onhostresume"></a><a href="#onhostresume" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onHostResume(...)</h4>
+<p>Helper method which should be called from the activity's <code>onResume</code> or <code>onStop</code>
+method.</p>
+<h4><a class="anchor" aria-hidden="true" id="onhoststop"></a><a href="#onhoststop" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onHostStop(...)</h4>
+<p>Helper method which should be called from the activity's <code>onSstop</code> method.</p>
+<h4><a class="anchor" aria-hidden="true" id="onnewintent"></a><a href="#onnewintent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onNewIntent(...)</h4>
+<p>Helper method for integrating the <em>deep linking</em> functionality. If your app's
+activity is launched in &quot;singleTask&quot; mode this method should be called from the
+activity's <code>onNewIntent</code> method.</p>
+<h4><a class="anchor" aria-hidden="true" id="onrequestpermissionsresult"></a><a href="#onrequestpermissionsresult" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onRequestPermissionsResult(...)</h4>
+<p>Helper method to handle permission requests inside the SDK. It should be called
+from the activity method of the same name.</p>
+<h4><a class="anchor" aria-hidden="true" id="onuserleavehint"></a><a href="#onuserleavehint" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onUserLeaveHint()</h4>
+<p>Helper method for integrating automatic Picture-in-Picture. It should be called
+from the activity's <code>onUserLeaveHint</code> method.</p>
+<p>This is a static method.</p>
+<h4><a class="anchor" aria-hidden="true" id="jitsimeetviewlistener"></a><a href="#jitsimeetviewlistener" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JitsiMeetViewListener</h4>
+<p><code>JitsiMeetViewListener</code> provides an interface apps can implement to listen to
+the state of the Jitsi Meet conference displayed in a <code>JitsiMeetView</code>.</p>
+<h4><a class="anchor" aria-hidden="true" id="onconferencejoined"></a><a href="#onconferencejoined" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onConferenceJoined</h4>
+<p>Called when a conference was joined.</p>
+<p>The <code>data</code> <code>Map</code> contains a &quot;url&quot; key with the conference URL.</p>
+<h4><a class="anchor" aria-hidden="true" id="onconferenceterminated"></a><a href="#onconferenceterminated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onConferenceTerminated</h4>
+<p>Called when a conference was terminated either by user choice or due to a
+failure.</p>
+<p>The <code>data</code> <code>Map</code> contains an &quot;error&quot; key with the error and a &quot;url&quot; key
+with the conference URL. If the conference finished gracefully no <code>error</code>
+key will be present.</p>
+<h4><a class="anchor" aria-hidden="true" id="onconferencewilljoin"></a><a href="#onconferencewilljoin" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>onConferenceWillJoin</h4>
+<p>Called before a conference is joined.</p>
+<p>The <code>data</code> <code>Map</code> contains a &quot;url&quot; key with the conference URL.</p>
+<h2><a class="anchor" aria-hidden="true" id="proguard-rules"></a><a href="#proguard-rules" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>ProGuard rules</h2>
+<p>When using the SDK on a project some proguard rules have to be added in order
+to avoid necessary code being stripped. Add the following to your project's
+rules file: <a href="https://github.com/jitsi/jitsi-meet/blob/master/android/app/proguard-rules.pro">https://github.com/jitsi/jitsi-meet/blob/master/android/app/proguard-rules.pro</a></p>
+<h2><a class="anchor" aria-hidden="true" id="picture-in-picture"></a><a href="#picture-in-picture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Picture-in-Picture</h2>
+<p><code>JitsiMeetView</code> will automatically adjust its UI when presented in a
+Picture-in-Picture style scenario, in a rectangle too small to accommodate its
+&quot;full&quot; UI.</p>
+<h2><a class="anchor" aria-hidden="true" id="dropbox-integration"></a><a href="#dropbox-integration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dropbox integration</h2>
+<p>To setup the Dropbox integration, follow these steps:</p>
+<ol>
+<li>Add the following to the app's AndroidManifest.xml and change <code>&lt;APP_KEY&gt;</code> to
+your Dropbox app key:</li>
+</ol>
+<pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">activity</span>
+    <span class="hljs-attr">android:configChanges</span>=<span class="hljs-string">"keyboard|orientation"</span>
+    <span class="hljs-attr">android:launchMode</span>=<span class="hljs-string">"singleTask"</span>
+    <span class="hljs-attr">android:name</span>=<span class="hljs-string">"com.dropbox.core.android.AuthActivity"</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">intent-filter</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">action</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.action.VIEW"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.BROWSABLE"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">category</span> <span class="hljs-attr">android:name</span>=<span class="hljs-string">"android.intent.category.DEFAULT"</span> /&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">data</span> <span class="hljs-attr">android:scheme</span>=<span class="hljs-string">"db-&lt;APP_KEY&gt;"</span> /&gt;</span>
+  <span class="hljs-tag">&lt;/<span class="hljs-name">intent-filter</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">activity</span>&gt;</span>
+</code></pre>
+<ol start="2">
+<li>Add the following to the app's strings.xml and change <code>&lt;APP_KEY&gt;</code> to your
+Dropbox app key:</li>
+</ol>
+<pre><code class="hljs">&lt;<span class="hljs-built_in">string</span> <span class="hljs-built_in">name</span>=<span class="hljs-string">"dropbox_app_key"</span>&gt;&lt;APP_KEY&gt;&lt;/<span class="hljs-built_in">string</span>&gt;
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/handbook/docs/dev-guide/dev-guide-mobile"><span class="arrow-prev">← </span><span>Mobile</span></a><a class="docs-next button" href="/handbook/docs/dev-guide/dev-guide-ios-sdk"><span class="function-name-prevnext">iOS SDK</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sample-applications-using-the-sdk">Sample applications using the SDK</a></li><li><a href="#build-your-own-or-use-a-pre-build-sdk-artifactsbinaries">Build your own, or use a pre-build SDK artifacts/binaries</a><ul class="toc-headings"><li><a href="#use-pre-build-sdk-artifactsbinaries">Use pre-build SDK artifacts/binaries</a></li><li><a href="#build-and-use-your-own-sdk-artifactsbinaries">Build and use your own SDK artifacts/binaries</a></li></ul></li><li><a href="#using-the-api">Using the API</a><ul class="toc-headings"><li><a href="#jitsimeetactivity">JitsiMeetActivity</a></li><li><a href="#jitsimeetview">JitsiMeetView</a></li><li><a href="#jitsimeetconferenceoptions">JitsiMeetConferenceOptions</a></li><li><a href="#jitsimeetactivitydelegate">JitsiMeetActivityDelegate</a></li></ul></li><li><a href="#proguard-rules">ProGuard rules</a></li><li><a href="#picture-in-picture">Picture-in-Picture</a></li><li><a href="#dropbox-integration">Dropbox integration</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/handbook/" class="nav-home"><img src="/handbook/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/handbook/docs/en/intro.html">Introduction</a><a href="/handbook/docs/en/user-guide-start.html">User Guide</a><a href="/handbook/docs/en/user-guide-start.html">Developer Guide</a><a href="/handbook/docs/en/user-guide-start.html">DevOps Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div></div></section><section class="copyright">Copyright © 2020</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

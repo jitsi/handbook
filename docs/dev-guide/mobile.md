@@ -1,7 +1,7 @@
 ---
 id: dev-guide-mobile
 title: Developer Guide (Mobile)
-sidebar_label: Mobile
+sidebar_label: Start
 ---
 
 Welcome to the developers guide for mobile applications! This guide will help you setup a development

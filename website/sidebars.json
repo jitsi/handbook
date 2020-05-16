@@ -3,7 +3,8 @@
     "Getting Started": [
       "intro",
       "architecture",
-      "security"
+      "security",
+      "faq"
     ],
     "User Guide": [
       "user-guide/user-guide-start",
@@ -12,21 +13,45 @@
     ],
     "Developer Guide": [
       "dev-guide/dev-guide-start",
-      "dev-guide/dev-guide-web",
-      "dev-guide/dev-guide-web-integrations",
-      "dev-guide/dev-guide-iframe",
-      "dev-guide/dev-guide-mobile",
-      "dev-guide/dev-guide-android-sdk",
-      "dev-guide/dev-guide-ios-sdk"
+      {
+        "type": "subcategory",
+        "label": "Web",
+        "ids": [
+          "dev-guide/dev-guide-web",
+          "dev-guide/dev-guide-web-integrations",
+          "dev-guide/dev-guide-iframe"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Mobile",
+        "ids": [
+          "dev-guide/dev-guide-mobile",
+          "dev-guide/dev-guide-android-sdk",
+          "dev-guide/dev-guide-ios-sdk"
+        ]
+      }
     ],
     "DevOps Guide": [
       "devops-guide/devops-guide-start",
-      "devops-guide/devops-guide-quickstart",
-      "devops-guide/devops-guide-docker",
-      "devops-guide/devops-guide-manual",
-      "devops-guide/devops-guide-scalable",
-      "devops-guide/devops-guide-videotutorials",
-      "devops-guide/devops-guide-extras"
+      {
+        "type": "subcategory",
+        "label": "Deployment",
+        "ids": [
+          "devops-guide/devops-guide-quickstart",
+          "devops-guide/devops-guide-docker",
+          "devops-guide/devops-guide-manual"
+        ]
+      },
+      {
+        "type": "subcategory",
+        "label": "Configuration",
+        "ids": [
+          "devops-guide/devops-guide-scalable",
+          "devops-guide/devops-guide-extras"
+        ]
+      },
+      "devops-guide/devops-guide-videotutorials"
     ]
   }
 }

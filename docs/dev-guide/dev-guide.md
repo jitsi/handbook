@@ -6,5 +6,5 @@ sidebar_label: Overview
 
 Welcome to the developers guide! Pick your poison:
 
-* [Web](dev-guide-web.md)
-* [Mobile](dev-guide-mobile.md)
+* [Web](web.md)
+* [Mobile](mobile.md)

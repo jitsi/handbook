@@ -1,6 +1,7 @@
 ---
 id: dev-guide-web-integrations
 title: Web integrations
+sidebar_label: Integrations
 ---
 
 ## Creating the Google API client for Google Calendar and YouTube integration

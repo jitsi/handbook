@@ -64,7 +64,7 @@ you may want to set `UIViewControllerBasedStatusBarAppearance` to `NO` in your
 
 ### Building it yourself
 
-1. Install all required [dependencies](dev-guide-mobile.md).
+1. Install all required [dependencies](mobile.md).
 
 2. `xcodebuild -workspace ios/jitsi-meet.xcworkspace -scheme JitsiMeet -destination='generic/platform=iOS' -configuration Release archive`
 

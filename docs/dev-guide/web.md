@@ -1,7 +1,7 @@
 ---
 id: dev-guide-web
 title: Developer Guide (Web)
-sidebar_label: Web
+sidebar_label: Start
 ---
 
 Welcome to the developers guide for web! This guide will help you setup a development

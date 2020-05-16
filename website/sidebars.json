@@ -6,27 +6,27 @@
       "security"
     ],
     "User Guide": [
-      "user-guide-start",
-      "user-guide-basic",
-      "user-guide-advanced"
+      "user-guide/user-guide-start",
+      "user-guide/user-guide-basic",
+      "user-guide/user-guide-advanced"
     ],
     "Developer Guide": [
-      "dev-guide-start",
-      "dev-guide-web",
-      "dev-guide-web-integrations",
-      "dev-guide-iframe",
-      "dev-guide-mobile",
-      "dev-guide-android-sdk",
-      "dev-guide-ios-sdk"
+      "dev-guide/dev-guide-start",
+      "dev-guide/dev-guide-web",
+      "dev-guide/dev-guide-web-integrations",
+      "dev-guide/dev-guide-iframe",
+      "dev-guide/dev-guide-mobile",
+      "dev-guide/dev-guide-android-sdk",
+      "dev-guide/dev-guide-ios-sdk"
     ],
     "DevOps Guide": [
-      "devops-guide-start",
-      "devops-guide-quickstart",
-      "devops-guide-docker",
-      "devops-guide-manual",
-      "devops-guide-scalable",
-      "devops-guide-videotutorials",
-      "devops-guide-extras"
+      "devops-guide/devops-guide-start",
+      "devops-guide/devops-guide-quickstart",
+      "devops-guide/devops-guide-docker",
+      "devops-guide/devops-guide-manual",
+      "devops-guide/devops-guide-scalable",
+      "devops-guide/devops-guide-videotutorials",
+      "devops-guide/devops-guide-extras"
     ]
   }
 }

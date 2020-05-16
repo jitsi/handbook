@@ -1,7 +1,7 @@
 ---
 id: devops-guide-docker
 title: DevOps Guide (Docker)
-sidebar_label: Doker
+sidebar_label: Docker
 ---
 
 ## Quick start

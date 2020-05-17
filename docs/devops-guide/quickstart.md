@@ -43,7 +43,7 @@ Open the following ports in your firewall, to allow traffic to the machine runni
 
  - 443 TCP
  - 10000 UDP
- 
+
 (If you are setting up Let's Encrypt for the first time, you may also need to permit traffic to port 80 TCP.)
 
 If you are running Jitsi Meet on a server behind NAT, forward the ports on your router to your server's IP address.

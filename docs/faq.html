@@ -55,10 +55,11 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">FAQ</h1></header><article><div><span><p><strong>1. How to tell if my server instance is behind NAT?</strong></p>
-<p>A. In general, if the tool ifconfig (or ipconfig) shows the assigned IP address to be some local address (10.x.x.x or 192.x.x.x) but you know that its public IP address is different from that, the server is most probably behind NAT</p>
+<p>A. In general, if the tool ifconfig (or ipconfig) shows the assigned IPv4 address to be a private / local address (10.x.x.x, or  172.16.x.x - 172.31.x.x, or 192.168.x.x) but you know that its public IPv4 address is different from that, the server is most probably behind NAT.</p>
+<p>If you are hosting your server on a VPS, and you are not sure, ask your VPS provider's support team.</p>
 <p><strong>2. Clients could communicate well in room created at meet.jit.si . The same clients still could connect to my self-hosted instance but can neither hear nor see one another. What's wrong?</strong></p>
-<p>A. Most probably, the server is behind NAT. See this <a href="https://community.jitsi.org/t/cannot-see-video-or-hear-audio-on-self-hosted-instance/">resolved question</a>. You need to follow the steps detailed <a href="devops-guide/devops-guide-quickstart.md#advanced-configuration">here</a>.</p>
-<p><strong>3. It works with two participants, but crashes or does not when a third joins</strong></p>
+<p>A. Most probably, the server is behind NAT, but you haven't added the NAT-specific configuration. See this <a href="https://community.jitsi.org/t/cannot-see-video-or-hear-audio-on-self-hosted-instance/">resolved question</a>. You need to follow the steps detailed <a href="devops-guide/devops-guide-quickstart.md#advanced-configuration">here</a>.</p>
+<p><strong>3. It works with two participants, but crashes or does not work properly when a third joins</strong></p>
 <p>p2p mode is working, but it fails when you are trying to pass traffic via jitsi-videobridge2.</p>
 <p>Check you've got your firewall / NAT set up correctly — especially UDP 10000.</p>
 <p>See <a href="https://github.com/jitsi/jitsi-meet/blob/master/doc/quick-install.md#open-ports-in-your-firewall">here</a></p>

@@ -125,7 +125,6 @@ for details.
 
 If the installation is behind a proxying nginx server, remove /etc/nginx/modules-enabled/60-jitsi-meet.conf . Then go to /etc/nginx/site-available/your-conf and change it to listen on 443 instead of 4444 and restart nginx.
 
-
 Default deployments on systems using systemd will have low default values for maximum processes and open files. If the used bridge will expect higher number of participants the default values need to be adjusted (the default values are good for less than 100 participants).
 To update the values edit `/etc/systemd/system.conf` and make sure you have the following values if values are smaller, if not do not update.
 ```

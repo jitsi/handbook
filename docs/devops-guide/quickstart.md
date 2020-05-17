@@ -8,26 +8,26 @@ This guide helps you  ___host your own Jitsi server___. If you want to have a vi
 
 This document describes the required steps for a quick Jitsi Meet installation on a Debian-based GNU/Linux system. Debian 10 (Buster) or later, and Ubuntu 18.04 (Bionic Beaver) or later are supported out-of-the-box.
 
-_Note_: Many of the installation steps require elevated privileges. If you are logged in using a regular user account, you may need to temporarily increase your permissions (for example, by using `sudo` for individual commands or `sudo -s` before issuing several commands). 
+_Note_: Many of the installation steps require elevated privileges. If you are logged in using a regular user account, you may need to temporarily increase your permissions (for example, by using `sudo` for individual commands or `sudo -s` before issuing several commands).
 
 ## Required packages and repository updates
 
 On minimal Debian server installs (eg. LXC container), you may already be running as root. You will also need to install `gnupg2` and `sudo` packages.
 
-Make sure your system is up-to-date and required packages are installed :
+Make sure your system is up-to-date and required packages are installed:
 
 ```sh
 # Retrieve the latest package versions across all repositories
-apt update
+sudo apt update
 
 # Ensure support is available for apt repositories served via HTTPS
 sudo apt install apt-transport-https
 ```
 
-On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run this command :
+On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run this command:
 
-```sh 
-sudo apt-add-repository universe`
+```sh
+sudo apt-add-repository universe
 
 # Retrieve the latest package versions across all repositories
 sudo apt update
@@ -45,7 +45,7 @@ Set a DNS A record for that domain, using:
 
 ### Set up the Fully Qualified Domain Name (FQDN) (optional)
 
-If the machine used to host the Jitsi Meet instance has a FQDN (for example `meet.example.org`) already set up in DNS, you can set it with the following command :
+If the machine used to host the Jitsi Meet instance has a FQDN (for example `meet.example.org`) already set up in DNS, you can set it with the following command:
 
 `sudo hostnamectl set-hostname meet.example.org`
 
@@ -73,13 +73,13 @@ sudo apt update
 
 The following ports need to be open in your firewall, to allow traffic to the Jitsi Meet server:
 
-* 80 TCP - for SSL certificate verification / renewal
+* 80 TCP - for SSL certificate verification / renewal with Let's Encrypt
 * 443 TCP - for general access to Jitsi Meet
 * 10000 UDP - for general network video/audio communications
 * 22 TCP - if you access you server using SSH (change the port accordingly if it's not 22)
 
 If you are using `ufw`, you can use the following commands:
- 
+
 ```sh
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
@@ -153,7 +153,7 @@ DefaultLimitNOFILE=65000
 DefaultLimitNPROC=65000
 DefaultTasksMax=65000
 ```
-To check values just run :
+To check values just run:
 ```
 systemctl show --property DefaultLimitNPROC
 systemctl show --property DefaultLimitNOFILE

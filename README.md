@@ -4,7 +4,7 @@ This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's pow
 
 ## Building the site
 
-The site is built automatiaclly with every push thanks to a [GH Action](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
+The site is built automatically with every push thanks to a [GH Action](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
 
 If you want to build it locally, follow these simple steps:
 
@@ -17,7 +17,7 @@ npm start
 You can now edit the files in the `docs` folder and the site will reflect the changes immediately thanks to
 live reloading.
 
-## Ccontributing
+## contributing
 
-We appreiate all contributions to this repository. Pleasse make a Pull Request, no matter how small, all contributions
-are vaaluable!
+We appreciate all contributions to this repository. Please make a Pull Request, no matter how small, all contributions
+are valuable!

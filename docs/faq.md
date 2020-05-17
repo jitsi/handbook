@@ -55,7 +55,7 @@ If they give the password to others, those other people can also join.
 
 _4.) Enable "secure domain" if you are using your own instance of jitsi
 
-In addition to the tips above, consider enabling the ["secure domain" configuration] (https://github.com/jitsi/jicofo#secure-domain). This requires you (or someone else) to enter a username and password to open a room.
+In addition to the tips above, consider enabling the ["secure domain" configuration](https://github.com/jitsi/jicofo#secure-domain). This requires you (or someone else) to enter a username and password to open a room.
 
 
 **6. It's working when I connect from a browser, but not from the iOS or Android apps**

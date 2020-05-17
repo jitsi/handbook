@@ -37,14 +37,31 @@ Finally on the same machine test that you can ping the FQDN with: `ping "$(hostn
 echo 'deb https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.list
 wget -qO -  https://download.jitsi.org/jitsi-key.gpg.key | sudo apt-key add -
 ```
-### Open ports in your firewall / forward ports via your router
+### Open ports in your firewall
 
 Open the following ports in your firewall, to allow traffic to the machine running jitsi:
 
  - 443 TCP
  - 10000 UDP
 
+#### With `ufw`
+
+If you are using `ufw` this can be checked with:
+
+```
+sudo ufw status verbose
+```
+
+If these ports are not open, issue:
+
+```
+sudo ufw allow in 443/tcp
+sudo ufw allow in 10000/udp
+```
+
 (If you are setting up Let's Encrypt for the first time, you may also need to permit traffic to port 80 TCP.)
+
+#### Forward ports via your router
 
 If you are running Jitsi Meet on a server behind NAT, forward the ports on your router to your server's IP address.
 
@@ -69,23 +86,6 @@ sudo apt install jitsi-meet
 During the installation, you will be asked to enter the hostname of the Jitsi Meet instance. If you have a [FQDN](https://en.wikipedia.org/wiki/Fully_qualified_domain_name) for the instance already set up in DNS, enter it there. If you don't have a resolvable hostname, you can enter the IP address of the machine (if it is static or doesn't change).
 
 This hostname (or IP address) will be used for virtualhost configuration inside the Jitsi Meet and also, you and your correspondents will be using it to access the web conferences.
-
-### Check your firewall rules
-
-Jitsi needs the ports `443/tcp` and `10000/udp` to be open for
-incoming connexions.
-
-#### With `ufw`
-
-If you are using `ufw` this can be checked with:
-```
-sudo ufw status verbose
-```
-If these ports are not open, issue:
-```
-sudo ufw allow in 443/tcp
-sudo ufw allow in 10000/udp
-```
 
 ### Generate a Let's Encrypt certificate (optional, recommended)
 

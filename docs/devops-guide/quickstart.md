@@ -133,32 +133,43 @@ sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
 Note that this script uses the [HTTP-01 challenge type](https://letsencrypt.org/docs/challenge-types/) and thus your instance needs to be accessible from the public internet on both ports 80 and 443. If you want to use a different challenge type, don't use this script and instead choose ___I want to use my own certificate___ during `jitsi-meet` installation.
 
 #### Advanced configuration
+
 If the installation is on a machine [behind NAT](https://github.com/jitsi/jitsi-meet/blob/master/doc/faq.md) jitsi-videobridge should configure itself automatically on boot. If three way call does not work further configuration of jitsi-videobridge is needed in order for it to be accessible from outside.
+
 Provided that all required ports are routed (forwarded) to the machine that it runs on. By default these ports are (TCP/443 or TCP/4443 and UDP/10000).
+
 The following extra lines need to be added to the file `/etc/jitsi/videobridge/sip-communicator.properties`:
+
 ```
 org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS=<Local.IP.Address>
 org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS=<Public.IP.Address>
 ```
+
 And comment the existing `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`.
+
 See [the documentation of ice4j](https://github.com/jitsi/ice4j/blob/master/doc/configuration.md)
 for details.
 
-If the installation is behind a proxying nginx server, remove /etc/nginx/modules-enabled/60-jitsi-meet.conf . Then go to /etc/nginx/site-available/your-conf and change it to listen on 443 instead of 4444 and restart nginx.
+If the installation is behind a proxying nginx server, remove `/etc/nginx/modules-enabled/60-jitsi-meet.conf`. Then go to `/etc/nginx/site-available/your-conf` and change it to listen on 443 instead of 4444 and restart nginx.
 
 Default deployments on systems using systemd will have low default values for maximum processes and open files. If the used bridge will expect higher number of participants the default values need to be adjusted (the default values are good for less than 100 participants).
+
 To update the values edit `/etc/systemd/system.conf` and make sure you have the following values if values are smaller, if not do not update.
+
 ```
 DefaultLimitNOFILE=65000
 DefaultLimitNPROC=65000
 DefaultTasksMax=65000
 ```
+
 To check values just run:
+
 ```
 systemctl show --property DefaultLimitNPROC
 systemctl show --property DefaultLimitNOFILE
 systemctl show --property DefaultTasksMax
 ```
+
 To load the values and check them look [here](#systemd-details) for details.
 
 _Note_: By default, anyone who has access to your jitsi instance will be able to start a conference: if your server is open to the world, anyone can have a chat with anyone else. If you want to limit the ability to start a conference to registered users, set up a "secure domain". Follow the instructions at https://github.com/jitsi/jicofo#secure-domain.

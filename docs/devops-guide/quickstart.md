@@ -32,21 +32,21 @@ Then add the same FQDN in the `/etc/hosts` file, associating it with the loopbac
 
 Finally on the same machine test that you can ping the FQDN with: `ping "$(hostname)"`-
 
-
-
-
 ### Add the Jitsi package repository
 
-# Ensure gpg is available for adding the apt repositorie key
+#### Ensure GPG is available for adding the apt repository key
+
 ```sh
-apt-get install gnupg
+sudo apt-get install gnupg
 ```
 
-# Downloading and adding the repositorykey
+#### Add the repository key
+
 ```sh
 echo 'deb https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.list
 wget -qO -  https://download.jitsi.org/jitsi-key.gpg.key | sudo apt-key add -
 ```
+
 ### Open ports in your firewall
 
 Open the following ports in your firewall, to allow traffic to the machine running jitsi:

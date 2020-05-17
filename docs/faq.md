@@ -5,13 +5,15 @@ title: FAQ
 
 **1. How to tell if my server instance is behind NAT?**
 
-A. In general, if the tool ifconfig (or ipconfig) shows the assigned IP address to be some local address (10.x.x.x or 192.x.x.x) but you know that its public IP address is different from that, the server is most probably behind NAT
+A. In general, if the tool ifconfig (or ipconfig) shows the assigned IPv4 address to be a private / local address (10.x.x.x, or  172.16.x.x - 172.31.x.x, or 192.168.x.x) but you know that its public IPv4 address is different from that, the server is most probably behind NAT.
+
+If you are hosting your server on a VPS, and you are not sure, ask your VPS provider's support team.
 
 **2. Clients could communicate well in room created at meet.jit.si . The same clients still could connect to my self-hosted instance but can neither hear nor see one another. What's wrong?**
 
-A. Most probably, the server is behind NAT. See this [resolved question](https://community.jitsi.org/t/cannot-see-video-or-hear-audio-on-self-hosted-instance/). You need to follow the steps detailed [here](devops-guide/devops-guide-quickstart.md#advanced-configuration).
+A. Most probably, the server is behind NAT, but you haven't added the NAT-specific configuration. See this [resolved question](https://community.jitsi.org/t/cannot-see-video-or-hear-audio-on-self-hosted-instance/). You need to follow the steps detailed [here](devops-guide/devops-guide-quickstart.md#advanced-configuration).
 
-**3. It works with two participants, but crashes or does not when a third joins**
+**3. It works with two participants, but crashes or does not work properly when a third joins**
 
 p2p mode is working, but it fails when you are trying to pass traffic via jitsi-videobridge2.
 

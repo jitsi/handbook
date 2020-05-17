@@ -1,6 +1,6 @@
-# The Jitsi Handbook
+# The Jitsi Meet Handbook
 
-This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's powered by [Docusaurus](https://docusaurus.io/).
+This is The Jitsi Meet Handbook, your one-stop-shop for Jitsi documentation. It's powered by [Docusaurus](https://docusaurus.io/).
 
 ## Building the site
 
@@ -19,5 +19,5 @@ live reloading.
 
 ## Ccontributing
 
-We appreiate all contributions to this repository. Pleasse make a Pull Request, no matter how small, all contributions
+We appreciate all contributions to this repository. Please make a **Pull Request**, no matter how small, all contributions
 are vaaluable!

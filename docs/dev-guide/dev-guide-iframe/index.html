@@ -105,11 +105,12 @@ example.</li>
 };
 <span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> JitsiMeetExternalAPI(domain, options);
 </code></pre>
-<p>You can overwrite options set in <a href="https://github.com/jitsi/jitsi-meet/blob/master/config.js">config.js</a> and <a href="https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js">interface_config.js</a>.
+<p>You can overwrite options set in <a href="https://github.com/jitsi/jitsi-meet/blob/master/config.js">config.js</a> and <a href="https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js">interface_config.js</a> via <strong>configOverwrite</strong> and <strong>interfaceConfigOverwrite</strong> respectively.
 For example, to enable the filmstrip-only interface mode, you can use:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> options = {
     ...
-    interfaceConfigOverwrite: { <span class="hljs-attr">filmStripOnly</span>: <span class="hljs-literal">true</span> },
+    configOverwrite: { <span class="hljs-attr">startWithAudioMuted</span>: <span class="hljs-literal">true</span> },
+    <span class="hljs-attr">interfaceConfigOverwrite</span>: { <span class="hljs-attr">filmStripOnly</span>: <span class="hljs-literal">true</span> },
     ...
 };
 <span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> JitsiMeetExternalAPI(domain, options);

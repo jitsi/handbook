@@ -96,6 +96,8 @@ const siteConfig = {
   ],
 
   stylesheets: ['/css/docusaurus-admonitions.css'],
+
+  editUrl: 'https://github.com/jitsi/handbook/edit/master/docs/',
 };
 
 module.exports = siteConfig;

@@ -28,7 +28,7 @@ Its constructor gets a number of options:
     * **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
     * **configOverwrite**: (optional) JS object with overrides for options defined in [config.js].
     * **interfaceConfigOverwrite**: (optional) JS object with overrides for options defined in [interface_config.js].
-    * **noSSL**: (optional, defaults to true) Boolean indicating if the server should be contacted using HTTP or HTTPS.
+    * **noSSL**: (optional, defaults to false) Boolean indicating if the server should be contacted using HTTP or HTTPS.
     * **jwt**: (optional) [JWT](https://jwt.io/) token.
     * **onload**: (optional) handler for the iframe onload event.
     * **invitees**: (optional) Array of objects containing information about new participants that will be invited in the call.
@@ -82,7 +82,6 @@ You can also pass a jwt token to Jitsi Meet:
 const options = {
     ...
     jwt: '<jwt_token>',
-    noSsl: false,
     ...
 };
 const api = new JitsiMeetExternalAPI(domain, options);
@@ -276,7 +275,7 @@ api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/367164
 
 * **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
 ```javascript
-api.executeCommand('receiverParticipantId', 'text');
+api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```
 * **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
 ```javascript

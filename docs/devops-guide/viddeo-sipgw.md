@@ -1,6 +1,7 @@
 ---
-id: sipgw
+id: videosipgw
 title: Configuring a video SIP gateway
+sidebar_label: Video SIP gateway
 ---
 
 This document describes how you can configure jitsi-meet to use sipgw jibri and enable rooms in 'Add people dialog'

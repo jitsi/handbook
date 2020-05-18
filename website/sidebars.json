@@ -48,7 +48,10 @@
         "label": "Configuration",
         "ids": [
           "devops-guide/devops-guide-scalable",
-          "devops-guide/devops-guide-extras"
+          "devops-guide/turn",
+          "devops-guide/speakerstats",
+          "devops-guide/videosipgw",
+          "devops-guide/cloud-api"
         ]
       },
       "devops-guide/devops-guide-videotutorials"

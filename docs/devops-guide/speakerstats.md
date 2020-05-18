@@ -1,6 +1,7 @@
 ---
 id: speakerstats
 title: Enabling Speaker Stats
+sidebar_label: Speaker Stats
 ---
 
 To enable the speaker stats we need to enable speakerstats module under the main

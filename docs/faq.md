@@ -55,11 +55,12 @@ If they give the password to others, those other people can also join.
 
 ### _4. Enable "secure domain" if you are using your own instance of Jitsi._
 
-In addition to the tips above, consider enabling the ["secure domain" configuration](https://github.com/jitsi/jicofo#secure-domain). This requires you (or someone else) to enter a username and password to open a room. It also allows you to become a moderator.
+In addition to the tips above, consider enabling the ["secure domain" configuration](https://jitsi.github.io/handbook/docs/devops-guide/secure-domain). This requires you (or someone else) to enter a username and password to open a room. It also allows you to become a moderator.
 
 ## It's working when I connect from a browser, but not from the iOS or Android apps
 
-This probably means that you are not serving the fullchain for your TLS certificate. Check your web server config.
+This probably means that you are not serving the fullchain for your TLS certificate. You can check if your cert chain
+is properly configured [here](https://whatsmychaincert.com/).
 
 In nginx, if you are using Let's Encrypt, you should have a line like this:
 

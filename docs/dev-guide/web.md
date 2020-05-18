@@ -9,7 +9,9 @@ environment to start working on the Jitsi Meet codebase.
 
 ## Building the sources
 
+:::note
 Node.js >= 12 and npm >= 6 are required.
+:::
 
 On Debian/Ubuntu systems, the required packages can be installed with:
 ```
@@ -87,3 +89,13 @@ The app should be running at https://localhost:8080/
 #### Chrome Privacy Error
 
 Newer versions of Chrome may block localhost under https and show `NET::ERR_CERT_INVALID` on the page. To solve this open [chrome://flags/#allow-insecure-localhost](chrome://flags/#allow-insecure-localhost) and select Enable, then press Relaunch or quit and restart Chrome.
+
+#### Building .debs
+
+To make a deb you can easily deploy to a public test server, ensure you have the lib-jitsi-meet sources you wish, then:
+```
+make
+dpkg-buildpackage -A -rfakeroot -us -uc -tc
+```
+
+You'll have a bunch of .deb files in the parent directory, and can push the updated source to your server and install it with the jitsi-meet-web deb file.

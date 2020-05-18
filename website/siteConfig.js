@@ -89,6 +89,13 @@ const siteConfig = {
   // template. For example, if you need your repo's URL...
   repoUrl: 'https://github.com/jitsi/jitsi-meet',
   twitterUsername: 'jitsinews',
+
+  markdownPlugins: [
+    // Highlight admonitions.
+    require('remarkable-admonitions')({ icon: 'svg-inline' }),
+  ],
+
+  stylesheets: ['/css/docusaurus-admonitions.css'],
 };
 
 module.exports = siteConfig;

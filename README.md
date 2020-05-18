@@ -17,7 +17,7 @@ npm start
 You can now edit the files in the `docs` folder and the site will reflect the changes immediately thanks to
 live reloading.
 
-## contributing
+## Contributing
 
 We appreciate all contributions to this repository. Please make a Pull Request, no matter how small, all contributions
 are valuable!

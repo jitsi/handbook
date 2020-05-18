@@ -47,6 +47,7 @@
         "type": "subcategory",
         "label": "Configuration",
         "ids": [
+          "devops-guide/secure-domain",
           "devops-guide/devops-guide-scalable",
           "devops-guide/turn",
           "devops-guide/speakerstats",

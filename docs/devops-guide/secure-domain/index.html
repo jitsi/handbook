@@ -62,7 +62,7 @@ from anonymous domain. Here's what has to be configured:</p>
 <p>(If you have installed jitsi-meet from the Debian package, these changes should be made in /etc/prosody/conf.avail/[your-hostname].cfg.lua)</p>
 <p>a) Enable authentication on your main domain:<br/></p>
 <pre><code class="hljs"><span class="hljs-attribute">VirtualHost</span> <span class="hljs-string">"jitsi-meet.example.com"</span>
-    authentication = <span class="hljs-string">"internal_plain"</span>
+    authentication = <span class="hljs-string">"internal_hashed"</span>
 </code></pre>
 <p>b) Add new virtual host with anonymous login method for guests:<br/></p>
 <pre><code class="hljs">VirtualHost <span class="hljs-string">"guest.jitsi-meet.example.com"</span>

@@ -282,6 +282,10 @@ api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```javascript
 api.executeCommand('setVideoQuality', 720);
 ```
+* **muteEveryone** - Mute all the other participants. It can only be executed by a moderator. No arguments are required.
+```javascript
+api.executeCommand('muteEveryone');
+```
 
 You can also execute multiple commands using the `executeCommands` method:
 ```javascript

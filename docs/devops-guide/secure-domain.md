@@ -16,7 +16,7 @@ from anonymous domain. Here's what has to be configured:
  a) Enable authentication on your main domain:<br/>
  ```
  VirtualHost "jitsi-meet.example.com"
-     authentication = "internal_plain"
+     authentication = "internal_hashed"
  ```
  b) Add new virtual host with anonymous login method for guests:<br/>
  ```

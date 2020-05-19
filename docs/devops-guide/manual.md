@@ -72,7 +72,7 @@ VirtualHost "auth.jitsi.example.com"
         key = "/var/lib/prosody/auth.jitsi.example.com.key";
         certificate = "/var/lib/prosody/auth.jitsi.example.com.crt";
     }
-    authentication = "internal_plain"
+    authentication = "internal_hashed"
 ```
 - add focus user to server admins:
 ```

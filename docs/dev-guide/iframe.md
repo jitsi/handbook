@@ -286,6 +286,26 @@ api.executeCommand('setVideoQuality', 720);
 ```javascript
 api.executeCommand('muteEveryone');
 ```
+* **startRecording** - Starts a file recording or streaming depending on the passed on params.
+- for youtube streams, recording `mode` should be `stream` and `youtubeStreamKey` must be provided. `youtubeBroadcastID` is optional.
+- for dropbox recording, recording `mode` should be `file` and a dropbox oauth2 token must be provided. Also dropbox saving should be enabled on the used jitsi meet deploy config.
+- for file recording, recording `mode` should be `file` and optionally `shouldShare` could be passed on. No other params should be passed.
+```javascript
+api.executeCommand('startRecording', {
+    mode: string //recording mode, either `file` or `stream`.
+    dropboxToken: string, //dropbox oauth2 token.
+    shouldShare: boolean, //whether the recording should be shared with the participants or not. Only applies to certain jitsi meet deploys.
+    youtubeStreamKey: string, //the youtube stream key.
+    youtubeBroadcastID: string //the youtube broacast ID.
+});
+```
+
+* **stopRecording** - Stops an ongoing recording, `stream` or `file`.
+```javascript
+api.executeCommand('stopRecording', 
+    mode: string //recording mode to stop, `stream` or `file`
+);
+```
 
 You can also execute multiple commands using the `executeCommands` method:
 ```javascript

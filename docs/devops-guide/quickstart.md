@@ -75,6 +75,7 @@ The following ports need to be open in your firewall, to allow traffic to the Ji
 
 * 80 TCP - for SSL certificate verification / renewal with Let's Encrypt
 * 443 TCP - for general access to Jitsi Meet
+* 4443 TCP - for fallback network video/audio communications (when UDP is blocked for example)
 * 10000 UDP - for general network video/audio communications
 * 22 TCP - if you access you server using SSH (change the port accordingly if it's not 22)
 

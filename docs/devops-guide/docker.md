@@ -446,6 +446,11 @@ Variable | Description | Default value
 `DISABLE_HTTPS` | Handle TLS connections outside of this setup | 1
 `ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS (necessary for Let's Encrypt) | 1
 `LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
+`SENTRY_DSN_JICOFO` | Enables [Sentry error tracking](#error-tracking) for jicofo | none
+`SENTRY_DSN_JVB` | Enables [Sentry error tracking](#error-tracking) for videobridge | none
+`SENTRY_DSN_JIGASI` | Enables [Sentry error tracking](#error-tracking) for jigasi | none
+`SENTRY_ENVIRONMENT` | Optional environment info to filter events | none
+`SENTRY_RELEASE` | Optional release info to filter events | (version of application)
 
 ### Running behind NAT or on a LAN environment
 

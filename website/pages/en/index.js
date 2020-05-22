@@ -83,7 +83,7 @@ class Index extends React.Component {
         {[
           {
             content:
-              'Jitsi Meet supports all common browsers and also mobile devicces.',
+              'Jitsi Meet supports all common browsers and also mobile devices.',
             image: `${baseUrl}img/undraw_note_list.svg`,
             imageAlign: 'right',
             title: 'All platforms supported',

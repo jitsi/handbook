@@ -222,7 +222,6 @@ Variable | Description | Example
 `JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
 `JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
 `JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
-`JIBRI_RECORDER_PASSWORD` | Internal user for Jibri client connections | passw0rd
 `JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc
 `JIBRI_BREWERY_MUC` | MUC name for the Jibri pool | jibribrewery
 `JIBRI_PENDING_TIMEOUT` | MUC connection timeout | 90

@@ -27,7 +27,7 @@ make
 
 ### Working with the library sources (lib-jitsi-meet)
 
-By default the library is build from its git repository sources. The default dependency path in package.json is:
+By default the library is built from its git repository sources. The default dependency path in package.json is:
 ```json
 "lib-jitsi-meet": "jitsi/lib-jitsi-meet",
 ```

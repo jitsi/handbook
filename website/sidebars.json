@@ -32,7 +32,7 @@
         ]
       }
     ],
-    "DevOps Guide": [
+    "Self-Hosting Guide": [
       "devops-guide/devops-guide-start",
       {
         "type": "subcategory",

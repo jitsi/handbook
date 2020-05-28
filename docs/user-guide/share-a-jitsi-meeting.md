@@ -1,5 +1,5 @@
 ---
-id: user-guide-share-jitsi-meeting
+id: user-guide-share-a-jitsi-meeting
 title: Share a Jitsi Meeting
 sidebar_label: Share a Jitsi Meeting
 ---

@@ -1,7 +1,7 @@
 ---
 id: devops-guide-start
-title: DevOps Guide
+title: Self-Hosting Guide
 sidebar_label: Overview
 ---
 
-Welcome to the DevOps guide!
+Welcome to the Self-Hosting guide!

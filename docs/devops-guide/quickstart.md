@@ -1,7 +1,7 @@
 ---
 id: devops-guide-quickstart
-title: DevOps Guide (dedicated server)
-sidebar_label: Dedicated server
+title: Self-Hosting Guide (Debian/Ubuntu server)
+sidebar_label: Debian/Ubuntu server
 ---
 
 This guide helps you  ___host your own Jitsi server___. If you want to have a video conference without setting up any infrastructure, use https://meet.jit.si instead.

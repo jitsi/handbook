@@ -25,5 +25,5 @@ understand all the available features and how to use them.
 integrate the Jitsi Meet API / SDK in their products or want to improve Jitsi Meet
 itself by developing new features or fixing bugs.
 
-* [DevOps guide](devops-guide/devops-guide.md): Designed for DevOps folks, system administrators
+* [Self-Hosting guide](devops-guide/devops-guide.md): Designed for folks wanting to self-host, system administrators
 or anyone who wishes to deploy and operate their own Jitsi Meet instance.

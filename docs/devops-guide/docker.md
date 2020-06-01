@@ -17,6 +17,7 @@ follow these steps:
   * `./gen-passwords.sh`
 * Create required `CONFIG` directories
   * `mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}`
+  * For Windows: `echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }`
 * Run ``docker-compose up -d``
 * Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
 

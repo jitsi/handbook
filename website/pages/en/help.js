@@ -27,7 +27,7 @@ function Help(props) {
       title: 'Browse Docs',
     },
     {
-      content: 'Ask questions in <a href="https://community.jisti.org">our community forum.</a>',
+      content: 'Ask questions in <a href="https://community.jitsi.org">our community forum.</a>',
       title: 'Join the community',
     },
   ];

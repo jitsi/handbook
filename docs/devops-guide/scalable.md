@@ -120,7 +120,7 @@ Create the `/etc/nginx/sites-available/meet.example.com.conf` as usual
 
 #### Prosody
 
-Follow the steps in the [manual install](https://github.com/jitsi/jitsi-meet/blob/master/doc/manual-install.md) for setup tasks
+Follow the steps in the [manual install](devops-guide-manual.md) for setup tasks
 
 You will need to adapt the following files (see the files in `example-config-files/scalable`)
 

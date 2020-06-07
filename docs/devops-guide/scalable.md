@@ -15,7 +15,7 @@ In a cloud based environment, additionally the bridges can be scaled up or down 
 The instructions assume that you have installed a single node version successfully, and that
 you are comfortable installing, configuring and debugging Linux software.
 This is not a step-by-step guide, but will show you, which packages to install and which
-configurations to change. Use the [manual install](https://github.com/jitsi/jitsi-meet/blob/master/doc/manual-install.md) for
+configurations to change. Use the [manual install](devops-guide-manual) for
 details on how to setup Jitsi on a single host.
 It is highly recommended to use configuration management tools like Ansible or Puppet to manage the
 installation and configuration.
@@ -120,7 +120,7 @@ Create the `/etc/nginx/sites-available/meet.example.com.conf` as usual
 
 #### Prosody
 
-Follow the steps in the [manual install](devops-guide-manual.md) for setup tasks
+Follow the steps in the [manual install](devops-guide-manual) for setup tasks
 
 You will need to adapt the following files (see the files in `example-config-files/scalable`)
 

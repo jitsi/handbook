@@ -4,7 +4,7 @@ title: DevOps Guide (manual install)
 sidebar_label: Manual installation
 ---
 
-**WARNING:** Manual installation is not recommended. We recommend following the [quick-install](https://github.com/jitsi/jitsi-meet/blob/master/doc/quick-install.md) document. The current document describes the steps that are needed to install a working deployment, but steps are easy to mess up, and the debian packages are more up-to-date, where this document is sometimes not updated to reflect latest changes.
+**WARNING:** Manual installation is not recommended. We recommend following the [quick-install](devops-guide-quickstart) document. The current document describes the steps that are needed to install a working deployment, but steps are easy to mess up, and the debian packages are more up-to-date, where this document is sometimes not updated to reflect latest changes.
 
 This describes configuring a server `jitsi.example.com` running Debian or a Debian Derivative. You will need to
 change references to that to match your host, and generate some passwords for
@@ -12,7 +12,7 @@ change references to that to match your host, and generate some passwords for
 
 There are also some complete [example config files](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/) available, mentioned in each section.
 
-There are additional configurations to be done for a [scalable installation](https://github.com/jitsi/jitsi-meet/tree/master/doc/scalable-installation.md)
+There are additional configurations to be done for a [scalable installation](devops-guide-scalable)
 
 ## Network description
 

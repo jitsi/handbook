@@ -135,7 +135,7 @@ Note that this script uses the [HTTP-01 challenge type](https://letsencrypt.org/
 
 #### Advanced configuration
 
-If the installation is on a machine [behind NAT](https://github.com/jitsi/jitsi-meet/blob/master/doc/faq.md) jitsi-videobridge should configure itself automatically on boot. If three way call does not work further configuration of jitsi-videobridge is needed in order for it to be accessible from outside.
+If the installation is on a machine [behind NAT](../faq) jitsi-videobridge should configure itself automatically on boot. If three way call does not work further configuration of jitsi-videobridge is needed in order for it to be accessible from outside.
 
 Provided that all required ports are routed (forwarded) to the machine that it runs on. By default these ports are (TCP/443 or TCP/4443 and UDP/10000).
 
@@ -173,7 +173,7 @@ systemctl show --property DefaultTasksMax
 
 To load the values and check them look [here](#systemd-details) for details.
 
-_Note_: By default, anyone who has access to your jitsi instance will be able to start a conference: if your server is open to the world, anyone can have a chat with anyone else. If you want to limit the ability to start a conference to registered users, set up a "secure domain". Follow the instructions at https://github.com/jitsi/jicofo#secure-domain.
+_Note_: By default, anyone who has access to your jitsi instance will be able to start a conference: if your server is open to the world, anyone can have a chat with anyone else. If you want to limit the ability to start a conference to registered users, follow the instructions to set up a [secure domain](secure-domain).
 
 ### Confirm that your installation is working
 

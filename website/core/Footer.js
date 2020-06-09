@@ -65,7 +65,7 @@ class Footer extends React.Component {
               href="https://github.com/jitsi/jitsi-meet"
               target="_blank"
               rel="noreferrer noopener">
-              Jitsi-Meet on Github
+              Jitsi Meet on GitHub
             </a>
             <a
               className="github-button"

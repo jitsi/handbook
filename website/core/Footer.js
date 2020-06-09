@@ -81,7 +81,7 @@ class Footer extends React.Component {
               href="https://github.com/jitsi/handbook"
               target="_blank"
               rel="noreferrer noopener">
-              Handbook on Github
+              Handbook on GitHub
             </a>
             {this.props.config.twitterUsername && (
               <div className="social">

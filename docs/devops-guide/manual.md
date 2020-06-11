@@ -4,7 +4,12 @@ title: DevOps Guide (manual install)
 sidebar_label: Manual installation
 ---
 
-**WARNING:** Manual installation is not recommended. We recommend following the [quick-install](devops-guide-quickstart) document. The current document describes the steps that are needed to install a working deployment, but steps are easy to mess up, and the debian packages are more up-to-date, where this document is sometimes not updated to reflect latest changes.
+**WARNING:**
+
+**Manual installation is not recommended.** 
+
+
+We recommend following the [quick-install](devops-guide-quickstart) document. The current document describes the steps that are needed to install a working deployment, but steps are easy to mess up, and the debian packages are more up-to-date, where this document is sometimes not updated to reflect latest changes.
 
 This describes configuring a server `jitsi.example.com` running Debian or a Debian Derivative. You will need to
 change references to that to match your host, and generate some passwords for

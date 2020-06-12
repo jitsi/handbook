@@ -4,6 +4,6 @@ title: User Guide
 sidebar_label: Overview
 ---
 
-Welcome to the user guide!
+* [Basic Usage](basic)
+* [Advanced Usage](advanced)
 
-Check back soon!

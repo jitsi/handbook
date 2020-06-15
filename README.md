@@ -4,7 +4,7 @@ This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's pow
 
 ## Building the site
 
-The site is built automatically with every push thanks to a [GH Action](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
+The site is built automatically with every push thanks to a [GH Actions](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
 
 If you want to build it locally, follow these simple steps:
 

@@ -212,7 +212,17 @@ api.executeCommand('displayName', 'New Nickname');
 
 * **password** - Sets the password for the room. This command requires one argument - the password name to be set.
 ```javascript
-api.executeCommand('password', 'The Password');
+// set new password for channel
+api.addEventListener('participantRoleChanged', function(event) {
+    if (event.role === "moderator") {
+        api.executeCommand('password', 'The Password');
+    }
+});
+// join a protected channel
+api.on('passwordRequired', function ()
+{
+    api.executeCommand('password', 'The Password');
+});
 ```
 
 * **sendTones** - Play touch tones.

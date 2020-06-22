@@ -68,7 +68,7 @@ In nginx, if you are using Let's Encrypt, you should have a line like this:
 
 
 ## Can I record and save the video?
-Yes. The easiest way to record is to live stream your conference to YouTube and access the recording there. Self-installed Jitsi Meet deployments will need to setup Jibri to do this. The other way is to connect Dropbox with Jitsi meet and save the video in the Dropbox. 
+Yes. The easiest way to record is to live stream your conference to YouTube and access the recording there. Self-installed Jitsi Meet deployments will need to setup Jibri to do this. The other way is to [connect Dropbox with Jitsi Meet](/handbook/docs/dev-guide/dev-guide-web-integrations#creating-the-dropbox-app-for-dropbox-recording-integration) and save the video in the Dropbox. 
 
 ## I set the password in meeting but it is not working the next time
 Once the meeting ends it's password also gets removed, so you need to set the password again for next meeting.

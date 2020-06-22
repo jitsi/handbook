@@ -9,15 +9,22 @@ You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You a
 
 To embed Jitsi Meet in your application you need to add the Jitsi Meet API library:
 
+Self-hosted:
+```javascript
+<script src='https://<your-domain>/external_api.js'></script>
+```
+
+meet.jit.si:
 ```javascript
 <script src='https://meet.jit.si/external_api.js'></script>
 ```
+
 ## API
 
 ### `api = new JitsiMeetExternalAPI(domain, options)`
 
 The next step for embedding Jitsi Meet is to create the Jitsi Meet API object.
-Its constructor gets a number of options:
+Its constructor takes a number of options:
 
 * **domain**: domain used to build the conference URL, 'meet.jit.si' for
   example.
@@ -64,7 +71,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can overwrite options set in [config.js] and [interface_config.js] via **configOverwrite** and **interfaceConfigOverwrite** respectively.
+You can override options set in [config.js] and [interface_config.js] via **configOverwrite** and **interfaceConfigOverwrite** respectively.
 For example, to enable the filmstrip-only interface mode, you can use:
 
 ```javascript
@@ -77,7 +84,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can also pass a jwt token to Jitsi Meet:
+You can also pass a JWT token to Jitsi Meet:
 
  ```javascript
 const options = {
@@ -88,7 +95,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
  ```
 
-You can set the userInfo(email, display name) for the call:
+You can set the `userInfo` (email, display name) for the call:
 
 ```javascript
 var domain = "meet.jit.si";
@@ -197,13 +204,13 @@ api.setAudioOutputDevice(deviceLabel, deviceId);
 api.setVideoInputDevice(deviceLabel, deviceId);
 ```
 
-You can control the embedded Jitsi Meet conference using the `JitsiMeetExternalAPI` object by using `executeCommand`:
+You can control the embedded Jitsi Meet conference by calling `executeCommand` on the `JitsiMeetExternalAPI` object:
 
 ```javascript
 api.executeCommand(command, ...arguments);
 ```
 
-The `command` parameter is String object with the name of the command. The following commands are currently supported:
+The `command` parameter is a string containing the name of the command. The following commands are currently supported:
 
 * **displayName** - Sets the display name of the local participant. This command requires one argument - the new display name to be set.
 ```javascript
@@ -297,9 +304,9 @@ api.executeCommand('setVideoQuality', 720);
 api.executeCommand('muteEveryone');
 ```
 * **startRecording** - Starts a file recording or streaming depending on the passed on params.
-- for youtube streams, recording `mode` should be `stream` and `youtubeStreamKey` must be provided. `youtubeBroadcastID` is optional.
-- for dropbox recording, recording `mode` should be `file` and a dropbox oauth2 token must be provided. Also dropbox saving should be enabled on the used jitsi meet deploy config.
-- for file recording, recording `mode` should be `file` and optionally `shouldShare` could be passed on. No other params should be passed.
+  - for YouTube streams, recording `mode` should be `stream` and `youtubeStreamKey` must be provided. `youtubeBroadcastID` is optional.
+  - for Dropbox recording, recording `mode` should be `file` and a dropbox oauth2 token must be provided. Also dropbox saving should be enabled on the used jitsi meet deploy config.
+  - for file recording, recording `mode` should be `file` and optionally `shouldShare` could be passed on. No other params should be passed.
 ```javascript
 api.executeCommand('startRecording', {
     mode: string //recording mode, either `file` or `stream`.

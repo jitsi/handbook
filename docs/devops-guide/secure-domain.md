@@ -4,9 +4,9 @@ title: Secure Domain setup
 sidebar_label: Authentication (Secure Domain)
 ---
 
-It is possible to allow only authenticated users for creating new conference
-rooms. Whenever new room is about to be created Jitsi Meet will prompt for
-user name and password. After room is created others will be able to join
+It is possible to allow only authenticated users to create new conference
+rooms. Whenever a new room is about to be created, Jitsi Meet will prompt for
+a user name and password. After the room is created, others will be able to join
 from anonymous domain. Here's what has to be configured:
 
 ## Prosody configuration
@@ -15,7 +15,7 @@ If you have installed Jitsi Meet from the Debian package, these changes should b
 
 ### Enable authentication
 
-Inside `VirtualHost "[your-hostname]"`block, replace anonymous authentication with hashed password authentication:
+Inside the `VirtualHost "[your-hostname]"` block, replace anonymous authentication with hashed password authentication:
 
 ```
 VirtualHost "jitsi-meet.example.com"
@@ -24,9 +24,9 @@ VirtualHost "jitsi-meet.example.com"
 
 Replace `jitsi-meet.example.com` with your hostname.
 
-### Enable anonymous login method for guests
+### Enable anonymous login for guests
 
-Add this block to enable anonymous login method for guests:
+Add this block to enable the anonymous login method for guests:
 
 ```
 VirtualHost "guest.jitsi-meet.example.com"
@@ -37,7 +37,7 @@ VirtualHost "guest.jitsi-meet.example.com"
 _Note that `guest.jitsi-meet.example.com` is internal to Jitsi, and you do not need to (and should not) create a DNS record for it, or generate an SSL/TLS certificate, or do any web server configuration._
 
 :::note
-Make sure you enable desired modules to the guest virtual host like `turncredentials` (if you use STUN/TURN together with secure domain) and/or `conference_duration` etc., by adding the `modules_enabled` option.
+Make sure to enable the desired modules for the guest virtual host like `turncredentials` (if you use STUN/TURN together with secure domain) and/or `conference_duration` etc., by adding the `modules_enabled` option.
 
 ```
 VirtualHost "guest.jitsi-meet.example.com"
@@ -68,8 +68,8 @@ var config = {
 
 ## Jicofo configuration
 
-When running Jicofo specify your main domain in an additional configuration
-property. Jicofo will accept conference allocation requests only from
+When running Jicofo, specify your main domain in an additional configuration
+property. Jicofo will accept conference allocation requests only from the
 authenticated domain.
 
 ```

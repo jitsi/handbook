@@ -1,6 +1,6 @@
 ---
 id: devops-guide-manual
-title: DevOps Guide (manual install)
+title: Self-Hosting Guide - Manual installation
 sidebar_label: Manual installation
 ---
 

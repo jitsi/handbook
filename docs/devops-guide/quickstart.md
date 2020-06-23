@@ -1,6 +1,6 @@
 ---
 id: devops-guide-quickstart
-title: Self-Hosting Guide (Debian/Ubuntu server)
+title: Self-Hosting Guide - Debian/Ubuntu server
 sidebar_label: Debian/Ubuntu server
 ---
 

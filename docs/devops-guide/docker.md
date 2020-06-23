@@ -1,6 +1,6 @@
 ---
 id: devops-guide-docker
-title: DevOps Guide (Docker)
+title: Self-Hosting Guide - Docker
 sidebar_label: Docker
 ---
 

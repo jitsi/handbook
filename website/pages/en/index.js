@@ -68,8 +68,11 @@ class Index extends React.Component {
         {[
           {
             content:
-              'On This site you\'ll find documentation for all your Jitsi needs. ' +
-              'NOTE: Some  of it is work in progress, hang tight!',
+              'On This site you\'ll find documentation for all your Jitsi needs. <br> ' +
+              'NOTE: Some  of it is work in progress, hang tight!' +
+              ' <br> <br> ' +
+              'Take a look at: <a href="https://jitsi.github.io/handbook/docs/intro">Documentation - Overview</a> ',          
+
             image: `${baseUrl}img/undraw_code_review.svg`,
             imageAlign: 'left',
             title: 'Hey there Fellow Jitster!',

@@ -8,13 +8,13 @@ sidebar_label: Manual installation
 We recommend following the [quick-install](devops-guide-quickstart) document. The current document describes the steps that are needed to install a working deployment, but steps are easy to mess up, and the debian packages are more up-to-date, where this document is sometimes not updated to reflect latest changes.
 :::
 
-This describes configuring a server `jitsi.example.com` running Debian or a Debian Derivative. You will need to
-change references to that to match your host, and generate some passwords for
-`YOURSECRET1`, `YOURSECRET2` and `YOURSECRET3`.
+This describes configuring a server `jitsi.example.com` on a Debian-based distribution.   
+**For other distributions** you can adapt the steps (especially changing the dependencies package installations (e.g. for nginx) and paths accordingly) so that it matches your host's distribution.   
+You will also need to generate some passwords for `YOURSECRET1`, `YOURSECRET2` and `YOURSECRET3`.
 
 There are also some complete [example config files](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/) available, mentioned in each section.
 
-There are additional configurations to be done for a [scalable installation](devops-guide-scalable)
+There are additional configurations to be done for a [scalable installation](devops-guide-scalable).
 
 ## Network description
 

@@ -73,7 +73,7 @@ property. Jicofo will accept conference allocation requests only from the
 authenticated domain.
 
 ```
--Dorg.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
+org.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
 ```
 
 If you have installed Jicofo from the Debian package, this should go directly on a new line in

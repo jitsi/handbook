@@ -2,24 +2,19 @@
 
 This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's powered by [Docusaurus](https://docusaurus.io/).
 
-## Building the site
-
-The site is built automatically with every push thanks to a [GH Actions](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
-
-If you want to build it locally, follow these simple steps:
+## Install dependencies
 
 If you use windows, please execute
 
 ```js 
 npm install -g gifsicle
 ```
-perhaps
-
+alternative command
 ```js
 cnpm install gifsicle
 ```
 
-If you use Linux, please execute
+If you use Debian/Ubuntu, please execute
 
 ```shell
 apt-get update
@@ -31,6 +26,12 @@ If you use MacOS, please execute it first
 ```shell
 brew install automake
 ```
+
+## Building the site
+
+The site is built automatically with every push thanks to a [GH Actions](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
+
+If you want to build it locally, follow these simple steps:
 
 ```js
 cd website

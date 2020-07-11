@@ -14,14 +14,14 @@ alternative command
 cnpm install gifsicle
 ```
 
-If you use **Debian/Ubuntu**, you need install ```gifsicle```:
+If you use **Debian/Ubuntu**, you need install ```dh-autoreconf```:
 
 ```shell
 apt-get update
 apt-get install dh-autoreconf
 ```
 
-If you use **MacOS**, you need install ```gifsicle```:
+If you use **MacOS**, you need install ```automake```:
 
 ```shell
 brew install automake

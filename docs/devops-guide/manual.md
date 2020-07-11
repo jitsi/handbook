@@ -164,18 +164,34 @@ ln -s ../sites-available/jitsi.example.com jitsi.example.com
 ```
 
 ## Install Jitsi Videobridge
-Visit https://download.jitsi.org/jitsi-videobridge/linux to determine the current build number, download and unzip it:
+
+You can download binary packages for Debian/Ubuntu:
+* [stable](https://download.jitsi.org/stable/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions/))
+* [testing](https://download.jitsi.org/testing/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions-for-testing/))
+* [nightly](https://download.jitsi.org/unstable/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions-nightly/))
+
+Or you can clone the Git repo and run the JVB from source using maven.
+
+Install JDK and Maven if missing:
+
 ```sh
-wget https://download.jitsi.org/jitsi-videobridge/linux/jitsi-videobridge-linux-{arch-buildnum}.zip
-unzip jitsi-videobridge-linux-{arch-buildnum}.zip
+apt-get install openjdk-8-jdk maven
 ```
 
-Install JRE if missing:
-```
-apt-get install openjdk-8-jre
+Clone source from Github repo:
+
+```sh
+cd /srv
+git clone https://github.com/jitsi/jitsi-videobridge.git
 ```
 
-_NOTE: When installing on older Debian releases keep in mind that you need JRE >= 1.7._
+Build the package:
+
+```sh
+export JVB_HOME="The path to your JVB clone."
+cd jitsi/jitsi-videobridge
+mvn install
+```
 
 Create `~/.sip-communicator/sip-communicator.properties` in the home folder of the user that will be starting Jitsi Videobridge:
 ```sh
@@ -190,11 +206,13 @@ EOF
 
 Start the videobridge with:
 ```sh
+unzip target/jitsi-videobridge-2.1-SNAPSHOT-archive.zip
+cd jitsi-videobridge-2.1-SNAPSHOT/
 ./jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 &
 ```
 Or autostart it by adding the line in `/etc/rc.local`:
 ```sh
-/bin/bash /root/jitsi-videobridge-linux-{arch-buildnum}/jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 </dev/null >> /var/log/jvb.log 2>&1
+/bin/bash /srv/jitsi-videobridge/jitsi-videobridge-2.1-SNAPSHOT/jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 </dev/null >> /var/log/jvb.log 2>&1
 ```
 
 ## Install Jitsi Conference Focus (jicofo)

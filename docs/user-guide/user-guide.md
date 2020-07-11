@@ -6,4 +6,4 @@ sidebar_label: Overview
 
 Welcome to the user guide!
 
-Check back soon!
+This part is constantly extended. Please pick a section from the sidebar.

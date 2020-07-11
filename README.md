@@ -12,11 +12,24 @@ If you use windows, please execute
 
 ```js 
 npm install -g gifsicle
-``
+```
 perhaps
 
 ```js
 cnpm install gifsicle
+```
+
+If you use Linux, please execute
+
+```shell
+apt-get update
+apt-get install dh-autoreconf
+```
+
+If you use MacOS, please execute it first
+
+```shell
+brew install automake
 ```
 
 ```js

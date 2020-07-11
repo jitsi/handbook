@@ -8,6 +8,17 @@ The site is built automatically with every push thanks to a [GH Actions](https:/
 
 If you want to build it locally, follow these simple steps:
 
+If you use windows, please execute
+
+```js 
+npm install -g gifsicle
+``
+perhaps
+
+```js
+cnpm install gifsicle
+```
+
 ```js
 cd website
 npm install

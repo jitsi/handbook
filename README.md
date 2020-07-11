@@ -4,7 +4,7 @@ This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's pow
 
 ## Install dependencies
 
-If you use windows, please execute
+If you use **Windows**, you need install ```gifsicle```:
 
 ```js 
 npm install -g gifsicle
@@ -14,14 +14,14 @@ alternative command
 cnpm install gifsicle
 ```
 
-If you use Debian/Ubuntu, please execute
+If you use **Debian/Ubuntu**, you need install ```gifsicle```:
 
 ```shell
 apt-get update
 apt-get install dh-autoreconf
 ```
 
-If you use MacOS, please execute it first
+If you use **MacOS**, you need install ```gifsicle```:
 
 ```shell
 brew install automake

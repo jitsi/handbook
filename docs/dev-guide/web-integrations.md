@@ -35,11 +35,12 @@ sidebar_label: Integrations
     1. 'Dropbox API - For apps that need to access files in Dropbox.' 
     1. 'App folder– Access to a single folder created specifically for your app.'
     1. Fill in the name of your app
-1. You need only, the newly created App key, goes in config.js in 
+1. You need only, the newly created App key, goes in ```/etc/jitsi/meet/yourdeployment.com-config.js``` in 
     ```
         dropbox: {
-            appKey: '__dropbox_app_key__'
+            appKey: '__dropbox_app_key__',
+            redirectURI: 'https://yourdeployment.com/static/oauth.html'
         }
     ```
-1. Add your Redirect URIs in the form `https://yourdeployment.com//static/oauth.html`
+1. Add your Dropbox Redirect URIs in the Dropbox form `https://yourdeployment.com/static/oauth.html`
 1. Fill in Branding

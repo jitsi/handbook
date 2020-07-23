@@ -256,6 +256,15 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
 });
 </code></pre>
 <ul>
+<li><strong>toggleLobby</strong> - Toggles the lobby mode on or off. This command requires one argument - the desired state of lobby mode.</li>
+</ul>
+<pre><code class="hljs css language-javascript">api.addEventListener(<span class="hljs-string">'participantRoleChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>{
+    <span class="hljs-keyword">if</span>(event.role === <span class="hljs-string">'moderator'</span>) {
+        api.executeCommand(<span class="hljs-string">'toggleLobby'</span>, <span class="hljs-literal">true</span>);
+    }
+});
+</code></pre>
+<ul>
 <li><strong>sendTones</strong> - Play touch tones.</li>
 </ul>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'sendTones'</span>, {

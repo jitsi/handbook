@@ -16,3 +16,5 @@ External Software used by Jitsi:
 * [Prosody](https://prosody.im/) - XMPP server used for signalling
 
 Check back soon for an [architecture diagram](/handbook/docs/devops-guide/devops-guide-manual#network-description)!
+
+[High Level Architectur Diagram](assets/jitsi-high-level-diagram.jpg)

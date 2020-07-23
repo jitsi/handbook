@@ -232,6 +232,15 @@ api.on('passwordRequired', function ()
 });
 ```
 
+* **toggleLobby** - Toggles the lobby mode on or off. This command requires one argument - the desired state of lobby mode.
+```javascript
+api.addEventListener('participantRoleChanged', function (event) {
+    if(event.role === 'moderator') {
+        api.executeCommand('toggleLobby', true);
+    }
+});
+```
+
 * **sendTones** - Play touch tones.
 ```javascript
 api.executeCommand('sendTones', {

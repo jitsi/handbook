@@ -5,7 +5,7 @@ sidebar_label: Advanced options
 ---
 
 There are some options to tweak the invitation link to unlock more features in
-Jitsi. The following parameters apply to the web and mobile version.
+Jitsi. The following parameters apply to the web, iframe and mobile version.
 
 All keys listed here are prefixed with `config.`.
 You pick a key, combine it with its value using `=` and link parameters

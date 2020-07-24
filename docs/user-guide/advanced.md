@@ -6,7 +6,10 @@ sidebar_label: Advanced options
 
 There are some options to tweak the invitation link to unlock more features in
 Jitsi. The following parameters apply to the web and mobile version.
-They can be combined using `&`, e.g. `#config.defaultLanguage=en&config.minParticipants=3`.
+
+All keys listed here are prefixed with `config.`.
+You pick a key, combine it with its value using `=` and link parameters
+with `&`, e.g. `#config.defaultLanguage=en&config.minParticipants=3`.
 
 <!--
   See also for implementation:
@@ -19,33 +22,41 @@ They can be combined using `&`, e.g. `#config.defaultLanguage=en&config.minParti
 
 These parameters affect how you can invite people either before or within a session.
 
-* `#config.disableInviteFunctions=true` will disable invite function of the app
-* `#config.minParticipants=2` will override the minimum number of participants before starting a call
-* `#config.prejoinPageEnabled=true` will show an intermediate page before joining to allow for adjustment of devices
+Key                             | Value  | Effect
+------------------------------- | ------ | -----------------------------------
+`disableInviteFunctions`        | `true` | disable invite function of the app
+`minParticipants`               | `2`    | override the minimum number of participants before starting a call
+`prejoinPageEnabled`            | `true` | show an intermediate page before joining to allow for adjustment of devices
 
 ## UI
 
 These parameters have an effect on the user interface.
 
-* `#config.defaultLanguage=en` will change the UI default language
-* `#config.disableThirdPartyRequests=true` will generate avatars locally and disable callstats integration
-* `#config.enableDisplayNameInStats=true` will send display names of participants to callstats
-* `#config.enableEmailInStats=true` will send email (if available) to callstats and other analytics
-* `#config.enableInsecureRoomNameWarning=true` will show a warning label if the room name is deemed insecure
+Key                             | Value  | Effect
+------------------------------- | ------ | -----------------------------------
+`defaultLanguage`               | `en`   | change the UI default language
+`disableThirdPartyRequests`     | `true` | generate avatars locally and disable callstats integration
+`enableDisplayNameInStats`      | `true` | send display names of participants to callstats
+`enableEmailInStats`            | `true` | send email (if available) to callstats and other analytics
+`enableInsecureRoomNameWarning` | `true` | show a warning label if the room name is deemed insecure
 
 ## Video
 
 Use these parameters to influence the video of a session.
 
-* `#config.desktopSharingFrameRate.min=5` will override the minimum framerate for desktop sharing
-* `#config.desktopSharingFrameRate.max=5` will override the maximum framerate for desktop sharing
-* `#config.startVideoMuted=true` will disable video when joining
+Key                             | Value  | Effect
+------------------------------- | ------ | -----------------------------------
+`desktopSharingFrameRate.min`   | `5`    | override the minimum framerate for desktop sharing
+`desktopSharingFrameRate.max`   | `5`    | override the maximum framerate for desktop sharing
+`startVideoMuted`               | `true` | disable video when joining
 
 ## Audio
 
-Use these paramters to influence the audio of a session.
+Use these parameters to influence the audio of a session.
 
-* `#config.disableAudioLevels=true` will disable audio statistics polling (thereby perhaps improving performance)
-* `#config.disableRemoteMute=true` will disable all muting operations of remote participants
-* `#config.startAudioMuted=true` will turn off audio input when joining
-* `#config.startSilent=true` will mute audio input and output
+Key                             | Value  | Effect
+------------------------------- | ------ | -----------------------------------
+`disableAudioLevels`            | `true` | disable audio statistics polling (thereby perhaps improving performance)
+`disableRemoteMute`             | `true` | disable all muting operations of remote participants
+`startAudioMuted`               | `true` | turn off audio input when joining
+`startSilent`                   | `true` | mute audio input and output

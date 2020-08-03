@@ -17,6 +17,8 @@ _Note_: Many of the installation steps require `root` or `sudo` access.
 You will need the following packages:
 * `gnupg2`
 * `sudo` # only needed if you use sudo
+* `openjdk-8-jdk`
+* `nginx`
 
 Make sure your system is up-to-date and required packages are installed:
 
@@ -143,8 +145,10 @@ If you are already running Nginx on port 443 on the same machine, turnserver con
 
 ```sh
 # jitsi-meet installation
-sudo apt install jitsi-meet
+sudo apt install --no-install-recommends jitsi-meet
 ```
+
+You need the `--no-install-recommends` flags because the current version of jitsi-meet recommends a version of the JDK that does not work; make sure you have `openjdk-8-jdk` installed beforehand.
 
 **SSL/TLS certificate generation:**
 You will be asked about SSL/TLS certificate generation. 

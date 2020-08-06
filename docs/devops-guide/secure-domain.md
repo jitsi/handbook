@@ -47,6 +47,7 @@ VirtualHost "guest.jitsi-meet.example.com"
     }
     c2s_require_encryption = false
 ```
+
 :::
 
 ## Jitsi Meet configuration
@@ -71,10 +72,6 @@ var config = {
 When running Jicofo, specify your main domain in an additional configuration
 property. Jicofo will accept conference allocation requests only from the
 authenticated domain.
-
-```
--Dorg.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
-```
 
 If you have installed Jicofo from the Debian package, this should go directly on a new line in
 the `/etc/jitsi/jicofo/sip-communicator.properties`:
@@ -103,11 +100,11 @@ sudo prosodyctl register <username> jitsi-meet.example.com <password>
 
 If you are using Jigasi, set it to authenticate by editing the following lines in `/etc/jitsi/jigasi/sip-communicator.properties`:
 
-````
+```
 org.jitsi.jigasi.xmpp.acc.USER_ID=SOME_USER@SOME_DOMAIN
 org.jitsi.jigasi.xmpp.acc.PASS=SOME_PASS
 org.jitsi.jigasi.xmpp.acc.ANONYMOUS_AUTH=false
-````
+```
 
 Note that the password is the actual plaintext password, not a base64 encoding.
 
@@ -115,9 +112,9 @@ Note that the password is the actual plaintext password, not a base64 encoding.
 
 If you experience problems with a certificate chain, you may need to uncomment the following line, also in `sip-communicator.properties`:
 
-````
+```
 net.java.sip.communicator.service.gui.ALWAYS_TRUST_MODE_ENABLED=true
-````
+```
 
 :::note
 This should only be used for testing/debugging purposes, or in controlled environments. If you confirm that this is the problem, you should then solve it in another way (e.g. get a signed certificate for Prosody, or add the particular certificate to Jigasi’s trust store).

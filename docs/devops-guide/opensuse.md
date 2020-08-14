@@ -4,7 +4,8 @@ title: Self-Hosting Guide - openSUSE
 sidebar_label: openSUSE
 ---
 
-This document describes the steps for a quick Jitsi-Meet installation on openSUSELeap 15.2.
+This document describes the steps for a quick Jitsi-Meet installation paired with a single Videobridge and a single
+Jicofo on openSUSELeap 15.2.
 
 _Note_: Many of the installation steps require `root` or `sudo` access. 
 
@@ -14,6 +15,18 @@ _Note_: Many of the installation steps require `root` or `sudo` access.
 zypper ar https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
 zypper ref
 zypper in nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicofo
+```
+
+To install the Jibri execute the following:
+
+```shell
+zypper in jitsi-jibri
+```
+
+To install the Jigasi execute the following:
+
+```shell
+zypper in jitsi-jigasi
 ```
 
 ## Configuration
@@ -75,8 +88,8 @@ VirtualHost "<FQDN>"
     modules_enabled = {
         "bosh";
         "pubsub";
-	"speakerstats";
-	"turncredentials";
+	    "speakerstats";
+	    "turncredentials";
         "conference_duration";
     }
     c2s_require_encryption = false
@@ -121,7 +134,92 @@ Component "conferenceduration.<FQDN>" "conference_duration_component"
 
 Component "callcontrol.<FQDN>"
     component_secret = "YOURSECRET3"
+```
 
+* Create a symlink for the configuration:
+
+`ln -s /etc/prosody/conf.avail/<FQDN>.cfg.lua /etc/prosody/conf.d/<FQDN>.cfg.lua`
+
+* Now create the certificates via `prosodyctl cert generate <DOMAIN>`. The value `<DOMAIN>` stands for the following
+  URLs, `<FQDN>` has the same meaning as everywhere else on this page:
+    * `auth.<FQDN>`
+    * `callcontrol.<FQDN>` --> This is only needed if you deploy Jigasi
+    * `conference.<FQDN>`
+    * `conferenceduration.<FQDN>`
+    * `internal.auth.<FQDN>`
+    * `FQDN`
+    * `focus.<FQDN>`
+    * `jitsi-videobridge.<FQDN>`
+    * `recorder.<FQDN>` --> This is only needed if you deploy Jibri
+* `/var/lib/prosody/`: Symlink all generated `*.crt` and `*.key` files to `/etc/prosody/certs/`. Please do not link
+  other certificates!
+* Add the certificates to the system keystore:
+    * `ln -sf /var/lib/prosody/auth.<FQDN>.crt /usr/local/share/ca-certificates/auth.<FQDN>.crt`
+    * `update-ca-certificates -f`
+* `prosodyctl register focus auth.<FQDN> YOURSECRET3`
+
+### Nginx
+
+Edit the file `jitsi-meet.conf` in `/etc/nginx/vhosts.d/` (which was installed along with `jitsi-meet`) and do the following:
+
+* check the `server_name` value
+* check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example)
+
+Beware: If you are using an existing server please make sure to also adjust the websocket and bosh part.
+
+### Jitsi-Meet
+
+* Go to `/srv/jitsi-meet` and open the configfile `config.js`
+
+```js
+var config = {
+    hosts: {
+        domain: '<FQDN>',
+        muc: 'conference.<FQDN>',
+        bridge: 'jitsi-videobridge.<FQDN>',
+        focus: 'focus.<FQDN>'
+    },
+    useNicks: false,
+    bosh: '//<FQDN>/http-bind',
+};
+```
+
+Note: Please be aware that this is the minimal
+
+### Jitsi-Videobridge
+
+Note: We were not able to get the new Videobridge Config up an running an will divide this part into two when we are
+able to do so. In the following the OLD method is explained.
+
+* Go to the folder `/etc/jitsi/videobridge`
+* Edit the file `jitsi-videobridge.conf`
+    * Edit `JVB_HOSTNAME` to your `<FQDN>`.
+    * Edit the `JVB_SECRET` to your own secret.
+    * Save and close the file
+* Edit the file `sip-communicator.prooperties`
+    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.DOMAIN` and set it to `auth.<FQDN>`.
+    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.PASSWORD` and set it to the password of your prosody user focus.
+    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC_JIDS` to `JvbBrewery@internal.auth.<FQDN>`.
+    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC` and set it to the same as above property.
+    * Depending on your cert setup set `org.jitsi.videobridge.xmpp.user.xmppserver1.DISABLE_CERTIFICATE_VERIFICATION` to `true` or `false`.
+
+
+### Jitsi-Jicofo
+
+* Got to the folder `/etc/jitsi/jicofo`
+* Edit the file `jitsi-jicofo.conf`
+    * Set the property `JICOFO_HOSTNAME` to `<FQDN>`.
+    * Set the property `JICOFO_SECRET` to the password the Prosody user got in above setup.
+    * Set the property `JICOFO_AUTH_DOMAIN` to `auth.<FQDN>`.
+    * Set the property `JICOFO_AUTH_USER` to the Prosody user from above setup.
+* Edit the file `sip-cmmunicator.properties`
+    * Set the property `org.jitsi.jicofo.BRIDGE_MUC` to `JvbBrewery@internal.auth.<FQDN>`.
+    * Set the property `org.jitsi.jicofo.jibri.BREWERY` to `JibriBrewery@internal.auth.<FQDN>`.
+    * Depending on your cert setup set `org.jitsi.jicofo.ALWAYS_TRUST_MODE_ENABLED` to `true` or `false`.
+
+## Add-On: Jitsi-Jibri
+
+```lua
 VirtualHost "recorder.<FQDN>"
   modules_enabled = {
     "ping";
@@ -129,24 +227,31 @@ VirtualHost "recorder.<FQDN>"
   authentication = "internal_plain"
 ```
 
-* Create a symlink for the configuration:
+- `prosodyctl register jibri auth.meet2.opensuse.org YOURSECRET3`
+- `prosodyctl register recorder recorder.meet2.opensuse.org YOURSECRET3`
 
-`ln -s /etc/prosody/conf.avail/<FQDN>.cfg.lua /etc/prosody/conf.d/<FQDN>.cfg.lua`
+## Add-On: Jitsi-Jigasi
 
+```shell
+zypper in jitsi-jigasi
+```
 
+## Final steps
 
-### Nginx
+Now everything should be working. That means you are ready to start everything up:
 
-Edit the file `jitsi-meet.conf` in `/etc/nginx/vhosts.d/` and do the following:
+1. `systemctl start prosody`
+1. `systemctl start jitsi-videbridge`
+1. `systemctl start jitsi-jicofo`
+1. `systemctl start jitsi-jibri` (if you configured and installed it)
+1. `systemctl start jitsi-jigasi` (if you configured and installed it)
+1. `systemctl start nginx`
 
-* check the `server_name` value
-* check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example)
+## Final notes
 
-
-### Jitsi-Meet
-
-### Jitsi-Videobridge
-
-### Jitsi-Jicofo
-
-
+* The Jitsi Software has a lot of dependencies and thus we recommend to run this on a dedicated host for Jitsi
+* Updating Jitsi is curcial to get rid of bugs and updated dependencies with possible security fixes
+* Although tempted through Chrome: Don't install a full X11 stack like KDE or Gnome for this.
+* Don't mix the `rpms` or `debs` with a source installation of the same component
+* Backup your configs elsewhere, preferrably in a VCS and not in plain. This saves time and pain when doing rollbacks
+  or dealing with other problems.

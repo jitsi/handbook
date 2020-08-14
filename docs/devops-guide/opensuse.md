@@ -219,6 +219,8 @@ able to do so. In the following the OLD method is explained.
 
 ## Add-On: Jitsi-Jibri
 
+* Add to the file `/etc/prosody/conf.avail/<FQDN>.cfg.lua` the following snippet at the end of the file.
+
 ```lua
 VirtualHost "recorder.<FQDN>"
   modules_enabled = {
@@ -227,14 +229,43 @@ VirtualHost "recorder.<FQDN>"
   authentication = "internal_plain"
 ```
 
-- `prosodyctl register jibri auth.meet2.opensuse.org YOURSECRET3`
-- `prosodyctl register recorder recorder.meet2.opensuse.org YOURSECRET3`
+* Run `prosodyctl register jibri auth.meet2.opensuse.org YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
+* `prosodyctl register recorder recorder.meet2.opensuse.org YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
+* Go to the folder `/etc/jitsi/jibri` and edit the following properties you see listed below. The rest can be left as is normally.
+
+```HUCON
+jibri{
+    api{
+        environments = [
+            {
+                xmpp-domain = "<FQDN>"
+                control-muc {
+                    domain = "internal.<FQDN>"
+                }
+                control-login {
+                    domain = "recorder.<FQDN>"
+                    username = "recorder"
+                    password = "YOURSECRET3"
+                }   
+                call-login {
+                    domain = "recorder.meet2.opensuse.org"
+                    username = "recorder"
+                    password = "YOURSECRET3"
+                }
+            }
+        ]
+    }
+}
+```
 
 ## Add-On: Jitsi-Jigasi
 
 ```shell
 zypper in jitsi-jigasi
 ```
+
+Note from the openSUSE packagers: We packaged it but we don't have the infrastructure to set up this component. So
+sadly we can't provide a guide for this so far.
 
 ## Final steps
 

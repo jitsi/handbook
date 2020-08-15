@@ -61,6 +61,17 @@
         ]
       },
       "devops-guide/devops-guide-videotutorials"
+    ],
+    "Reference": [
+      "reference/overview",
+      {
+        "type": "subcategory",
+        "label": "lib-jitsi-meet",
+        "ids": [
+          "reference/lib-jitsi-meet-intro",
+          "reference/lib-jitsi-meet-reference"
+        ]
+      }
     ]
   }
 }

@@ -12,18 +12,22 @@ _Note_: Many of the installation steps require `root` or `sudo` access.
 ## Installation
 
 ```shell
+# Add the OBS repository. When Jitsi is merged into openSUSE Factory this will be obsolete.
 zypper ar https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
+
+# Refresh the repositories
 zypper ref
+
 zypper in nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicofo
 ```
 
-To install the Jibri execute the following:
+To install the Jibri Add-On execute the following:
 
 ```shell
 zypper in jitsi-jibri
 ```
 
-To install the Jigasi execute the following:
+To install the Jigasi Add-On execute the following:
 
 ```shell
 zypper in jitsi-jigasi
@@ -31,7 +35,8 @@ zypper in jitsi-jigasi
 
 ## Configuration
 
-The following sections describe how to configure the different packages. Replace `<FQDN>` with your domain name.
+The following sections describe how to configure the different packages. Replace `<FQDN>` with your domain name
+and `YOURSECRET3` with a strong password.
 
 ### Prosody
 
@@ -57,7 +62,7 @@ modules_enabled = {
                 "compression";
 }
 ```
-* Create a new config file named `<FQDN>.cfg.lua` in `/etc/prosody/conf.avail/` with the following
+* Create a new configuration file named `<FQDN>.cfg.lua` in `/etc/prosody/conf.avail/` with the following
 content:
 
 ```lua
@@ -156,7 +161,7 @@ Component "callcontrol.<FQDN>"
 * Add the certificates to the system keystore:
     * `ln -sf /var/lib/prosody/auth.<FQDN>.crt /usr/local/share/ca-certificates/auth.<FQDN>.crt`
     * `update-ca-certificates -f`
-* `prosodyctl register focus auth.<FQDN> YOURSECRET3`
+* Create conference focus user: `prosodyctl register focus auth.<FQDN> YOURSECRET3`
 
 ### Nginx
 
@@ -165,11 +170,11 @@ Edit the file `jitsi-meet.conf` in `/etc/nginx/vhosts.d/` (which was installed a
 * check the `server_name` value
 * check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example)
 
-Beware: If you are using an existing server please make sure to also adjust the websocket and bosh part.
+Beware: If you are using an existing server please make sure to adjust the websocket and bosh part, too.
 
 ### Jitsi-Meet
 
-* Go to `/srv/jitsi-meet` and open the configfile `config.js`
+* Go to `/srv/jitsi-meet` and open `config.js`
 
 ```js
 var config = {
@@ -184,19 +189,19 @@ var config = {
 };
 ```
 
-Note: Please be aware that this is the minimal
+Note: Please be aware that this is the minimal configuration!
 
 ### Jitsi-Videobridge
 
-Note: We were not able to get the new Videobridge Config up an running an will divide this part into two when we are
-able to do so. In the following the OLD method is explained.
+Note: We were not able to get the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
+up an running. We will divide this part into two when we are able to do so. In the following the [legacy configuraiton](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#legacy-videobridge-configuration) is covered.
 
 * Go to the folder `/etc/jitsi/videobridge`
 * Edit the file `jitsi-videobridge.conf`
     * Edit `JVB_HOSTNAME` to your `<FQDN>`.
     * Edit the `JVB_SECRET` to your own secret.
     * Save and close the file
-* Edit the file `sip-communicator.prooperties`
+* Edit the file `sip-communicator.properties`
     * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.DOMAIN` and set it to `auth.<FQDN>`.
     * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.PASSWORD` and set it to the password of your prosody user focus.
     * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC_JIDS` to `JvbBrewery@internal.auth.<FQDN>`.
@@ -229,9 +234,9 @@ VirtualHost "recorder.<FQDN>"
   authentication = "internal_plain"
 ```
 
-* Run `prosodyctl register jibri auth.meet2.opensuse.org YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
-* `prosodyctl register recorder recorder.meet2.opensuse.org YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
-* Go to the folder `/etc/jitsi/jibri` and edit the following properties you see listed below. The rest can be left as is normally.
+* Run `prosodyctl register jibri auth.<FQDN> YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
+* `prosodyctl register recorder recorder.<FQDN> YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
+* Go to the folder `/etc/jitsi/jibri` and edit the following properties you see listed below. The rest can be left as is.
 
 ```HUCON
 jibri{
@@ -248,7 +253,7 @@ jibri{
                     password = "YOURSECRET3"
                 }   
                 call-login {
-                    domain = "recorder.meet2.opensuse.org"
+                    domain = "recorder.<FQDN>"
                     username = "recorder"
                     password = "YOURSECRET3"
                 }
@@ -281,8 +286,8 @@ Now everything should be working. That means you are ready to start everything u
 ## Final notes
 
 * The Jitsi Software has a lot of dependencies and thus we recommend to run this on a dedicated host for Jitsi
-* Updating Jitsi is curcial to get rid of bugs and updated dependencies with possible security fixes
+* Updating Jitsi is crucial to get rid of bugs and updated dependencies with possible security fixes
 * Although tempted through Chrome: Don't install a full X11 stack like KDE or Gnome for this.
 * Don't mix the `rpms` or `debs` with a source installation of the same component
-* Backup your configs elsewhere, preferrably in a VCS and not in plain. This saves time and pain when doing rollbacks
+* Backup your configuration elsewhere, preferably in a VCS and not in plain. This saves time and pain when doing rollbacks
   or dealing with other problems.

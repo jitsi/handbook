@@ -96,7 +96,12 @@ Finally, run `prosodyctl` to create a user in Prosody:
 ```
 sudo prosodyctl register <username> jitsi-meet.example.com <password>
 ```
-
+and then restart prosody, jicofo and jitsi-videobridge2
+```
+systemctl restart prosody
+systemctl restart jicofo
+systemctl restart jitsi-videobridge2
+```
 ## Optional: Jigasi configuration
 
 ### Enable Authentication

@@ -261,10 +261,6 @@ jibri{
 
 ## Add-On: Jitsi-Jigasi
 
-```shell
-zypper install jitsi-jigasi
-```
-
 __Note from openSUSE packagers:__ We've packaged it but we don't have the infrastructure to set up this component. Hence we can't provide a guide for this so far.
 
 ## Final steps

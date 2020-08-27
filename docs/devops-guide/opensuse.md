@@ -13,24 +13,24 @@ _Note_: Many of the installation steps require `root` or `sudo` access.
 
 ```shell
 # Add the OBS repository. When Jitsi is merged into openSUSE Factory this will be obsolete.
-zypper ar https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
+zypper addrepo https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
 
 # Refresh the repositories
-zypper ref
+zypper refresh
 
-zypper in nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicofo
+zypper install nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicofo
 ```
 
 To install the Jibri Add-On execute the following:
 
 ```shell
-zypper in jitsi-jibri
+zypper install jitsi-jibri
 ```
 
 To install the Jigasi Add-On execute the following:
 
 ```shell
-zypper in jitsi-jigasi
+zypper install jitsi-jigasi
 ```
 
 ## Configuration
@@ -143,7 +143,7 @@ Component "callcontrol.<FQDN>"
 
 * Create a symlink for the configuration:
 
-`ln -s /etc/prosody/conf.avail/<FQDN>.cfg.lua /etc/prosody/conf.d/<FQDN>.cfg.lua`
+`ln --symbolic /etc/prosody/conf.avail/<FQDN>.cfg.lua /etc/prosody/conf.d/<FQDN>.cfg.lua`
 
 * Now create the certificates via `prosodyctl cert generate <DOMAIN>`. The value `<DOMAIN>` stands for the following
   URLs, `<FQDN>` has the same meaning as everywhere else on this page:
@@ -266,7 +266,7 @@ jibri{
 ## Add-On: Jitsi-Jigasi
 
 ```shell
-zypper in jitsi-jigasi
+zypper install jitsi-jigasi
 ```
 
 Note from the openSUSE packagers: We packaged it but we don't have the infrastructure to set up this component. So

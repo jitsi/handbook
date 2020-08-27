@@ -4,39 +4,36 @@ title: Self-Hosting Guide - openSUSE
 sidebar_label: openSUSE
 ---
 
-This document describes the steps for a quick Jitsi-Meet installation paired with a single Videobridge and a single
-Jicofo on openSUSELeap 15.2.
+This document describes the steps for a quick Jitsi-Meet installation, paired with a single Videobridge and a single
+Jicofo on openSUSE Leap 15.2.
 
-_Note_: Many of the installation steps require `root` or `sudo` access. 
+_Note_: Many of the installation steps require root access. 
 
 ## Installation
 
+1. Add the OBS repository:  
+__Note:__ When Jitsi-Meet is merged into openSUSE Factory, this will be obsolete.  
 ```shell
-# Add the OBS repository. When Jitsi is merged into openSUSE Factory this will be obsolete.
 zypper addrepo https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
-
-# Refresh the repositories
+```
+2. Refresh the repositories:  
+```shell
 zypper refresh
-
+```
+3. Install Jitsi-Meet and its dependencies:
+```shell
 zypper install nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicofo
 ```
-
-To install the Jibri Add-On execute the following:
-
-```shell
-zypper install jitsi-jibri
-```
-
-To install the Jigasi Add-On execute the following:
-
-```shell
-zypper install jitsi-jigasi
-```
+### optional Add-Ons
+* Install the Jibri Add-On  
+`zypper install jitsi-jibri`
+* Install the Jigasi Add-On  
+`zypper install jitsi-jigasi`
 
 ## Configuration
 
-The following sections describe how to configure the different packages. Replace `<FQDN>` with your domain name
-and `YOURSECRET3` with a strong password.
+The following sections describe how to configure the different packages.  
+Replace `<FQDN>` with your domain name and `YOURSECRET3` with a strong password.
 
 ### Prosody
 
@@ -141,40 +138,39 @@ Component "callcontrol.<FQDN>"
     component_secret = "YOURSECRET3"
 ```
 
-* Create a symlink for the configuration:
-
+* Create a symlink for the configuration:  
 `ln --symbolic /etc/prosody/conf.avail/<FQDN>.cfg.lua /etc/prosody/conf.d/<FQDN>.cfg.lua`
 
-* Now create the certificates via `prosodyctl cert generate <DOMAIN>`. The value `<DOMAIN>` stands for the following
-  URLs, `<FQDN>` has the same meaning as everywhere else on this page:
+* Create the certificates via `prosodyctl cert generate <DOMAIN>`.  
+The value `<DOMAIN>` represents the following URLs. `<FQDN>` has the same meaning as everywhere else on this page:
     * `auth.<FQDN>`
-    * `callcontrol.<FQDN>` --> This is only needed if you deploy Jigasi
+    * `callcontrol.<FQDN>` __Note:__ This is only needed if you deploy Jigasi
     * `conference.<FQDN>`
     * `conferenceduration.<FQDN>`
     * `internal.auth.<FQDN>`
     * `FQDN`
     * `focus.<FQDN>`
     * `jitsi-videobridge.<FQDN>`
-    * `recorder.<FQDN>` --> This is only needed if you deploy Jibri
-* `/var/lib/prosody/`: Symlink all generated `*.crt` and `*.key` files to `/etc/prosody/certs/`. Please do not link
-  other certificates!
+    * `recorder.<FQDN>` __Note:__ This is only needed if you deploy Jibri
+* `/var/lib/prosody/`: Symlink all generated `*.crt` and `*.key` files to `/etc/prosody/certs/`.  
+__Note:__ Please do not link other certificates.
 * Add the certificates to the system keystore:
-    * `ln -sf /var/lib/prosody/auth.<FQDN>.crt /usr/local/share/ca-certificates/auth.<FQDN>.crt`
-    * `update-ca-certificates -f`
+    * `ln --symbolic --force /var/lib/prosody/auth.<FQDN>.crt /usr/local/share/ca-certificates/auth.<FQDN>.crt`
+    * `update-ca-certificates --fresh`
 * Create conference focus user: `prosodyctl register focus auth.<FQDN> YOURSECRET3`
 
 ### Nginx
 
 Edit the file `jitsi-meet.conf` in `/etc/nginx/vhosts.d/` (which was installed along with `jitsi-meet`) and do the following:
 
-* check the `server_name` value
-* check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example)
+* Check the `server_name` value.
+* Check the TLS certificates. (Let's Encrypt for production use, Prosody for testing, for example.)
 
-Beware: If you are using an existing server please make sure to adjust the websocket and bosh part, too.
+__Note:__ If you are using an existing server, please make sure to adjust the websocket and bosh part, too.
 
 ### Jitsi-Meet
 
-* Go to `/srv/jitsi-meet` and open `config.js`
+* Go to `/srv/jitsi-meet` and open `config.js`:
 
 ```js
 var config = {
@@ -189,14 +185,14 @@ var config = {
 };
 ```
 
-Note: Please be aware that this is the minimal configuration!
+__Note:__ Please be aware that this is the minimal configuration.
 
 ### Jitsi-Videobridge
 
-Note: We were not able to get the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
-up an running. We will divide this part into two when we are able to do so. In the following the [legacy configuraiton](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#legacy-videobridge-configuration) is covered.
+__Note:__ We were not able to get the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
+up and running. We will divide this part into two, when possible. Below, the [legacy configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#legacy-videobridge-configuration) is covered.
 
-* Go to the folder `/etc/jitsi/videobridge`
+* Go to the directory `/etc/jitsi/videobridge`
 * Edit the file `jitsi-videobridge.conf`
     * Edit `JVB_HOSTNAME` to your `<FQDN>`.
     * Edit the `JVB_SECRET` to your own secret.
@@ -205,13 +201,13 @@ up an running. We will divide this part into two when we are able to do so. In t
     * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.DOMAIN` and set it to `auth.<FQDN>`.
     * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.PASSWORD` and set it to the password of your prosody user focus.
     * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC_JIDS` to `JvbBrewery@internal.auth.<FQDN>`.
-    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC` and set it to the same as above property.
-    * Depending on your cert setup set `org.jitsi.videobridge.xmpp.user.xmppserver1.DISABLE_CERTIFICATE_VERIFICATION` to `true` or `false`.
+    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC` and set it to the same as the property above.
+    * Depending on your cert setup, set `org.jitsi.videobridge.xmpp.user.xmppserver1.DISABLE_CERTIFICATE_VERIFICATION` to `true` or `false`.
 
 
 ### Jitsi-Jicofo
 
-* Got to the folder `/etc/jitsi/jicofo`
+* Got to the directory `/etc/jitsi/jicofo`
 * Edit the file `jitsi-jicofo.conf`
     * Set the property `JICOFO_HOSTNAME` to `<FQDN>`.
     * Set the property `JICOFO_SECRET` to the password the Prosody user got in above setup.
@@ -236,7 +232,7 @@ VirtualHost "recorder.<FQDN>"
 
 * Run `prosodyctl register jibri auth.<FQDN> YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
 * `prosodyctl register recorder recorder.<FQDN> YOURSECRET3` and replace `YOURSECRET3` with an appropiate one.
-* Go to the folder `/etc/jitsi/jibri` and edit the following properties you see listed below. The rest can be left as is.
+* Go to the directory `/etc/jitsi/jibri` and edit the following properties you see listed below. The rest can be left as is.
 
 ```HUCON
 jibri{
@@ -269,8 +265,7 @@ jibri{
 zypper install jitsi-jigasi
 ```
 
-Note from the openSUSE packagers: We packaged it but we don't have the infrastructure to set up this component. So
-sadly we can't provide a guide for this so far.
+__Note from openSUSE packagers:__ We've packaged it but we don't have the infrastructure to set up this component. Hence we can't provide a guide for this so far.
 
 ## Final steps
 
@@ -279,8 +274,8 @@ Now everything should be working. That means you are ready to start everything u
 1. `systemctl start prosody`
 1. `systemctl start jitsi-videbridge`
 1. `systemctl start jitsi-jicofo`
-1. `systemctl start jitsi-jibri` (if you configured and installed it)
-1. `systemctl start jitsi-jigasi` (if you configured and installed it)
+1. `systemctl start jitsi-jibri` (if configured and installed before)
+1. `systemctl start jitsi-jigasi` (if configured and installed before)
 1. `systemctl start nginx`
 
 ## Final notes
@@ -289,5 +284,5 @@ Now everything should be working. That means you are ready to start everything u
 * Updating Jitsi is crucial to get rid of bugs and updated dependencies with possible security fixes
 * Although tempted through Chrome: Don't install a full X11 stack like KDE or Gnome for this.
 * Don't mix the `rpms` or `debs` with a source installation of the same component
-* Backup your configuration elsewhere, preferably in a VCS and not in plain. This saves time and pain when doing rollbacks
+* Securely backup your configuration, preferably in a VCS. This saves time and pain when doing rollbacks
   or dealing with other problems.

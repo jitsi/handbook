@@ -4,15 +4,15 @@ title: Self-Hosting Guide - openSUSE
 sidebar_label: openSUSE
 ---
 
-This document describes the steps for a quick Jitsi-Meet installation, paired with a single Videobridge and a single
-Jicofo on openSUSE Leap 15.2.
+This document describes the steps for a quick Jitsi-Meet installation, paired
+with a single Videobridge and a single Jicofo on openSUSE Leap 15.2.
 
 __Note__: Many of the installation steps require root access.
 
 ## Installation
 
 1. Add the OBS repository:  
-__Note:__ When Jitsi-Meet is merged into openSUSE Factory, this will be obsolete.
+   __Note:__ When Jitsi-Meet is merged into openSUSE Factory, this will be obsolete.
 
 ```shell
 zypper addrepo https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
@@ -37,7 +37,7 @@ zypper install nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicof
 
 ## Configuration
 
-The following sections describe how to configure the different packages.
+The following sections describe how to configure the different packages.  
 Replace `<FQDN>` with your domain name and `YOURSECRET3` with a strong password.
 
 ### Prosody
@@ -145,7 +145,8 @@ Component "conferenceduration.<FQDN>" "conference_duration_component"
 `ln --symbolic /etc/prosody/conf.avail/<FQDN>.cfg.lua /etc/prosody/conf.d/<FQDN>.cfg.lua`
 
 * Create the certificates via `prosodyctl cert generate <DOMAIN>`.  
-The value `<DOMAIN>` represents the following URLs. `<FQDN>` has the same meaning as everywhere else on this page:
+The value `<DOMAIN>` represents the following URLs.
+
     * `auth.<FQDN>`
     * `conference.<FQDN>`
     * `conferenceduration.<FQDN>`
@@ -204,15 +205,10 @@ from `sip-communicator.properties`, the videobridge will not work!
 
 * Go to the directory `/etc/jitsi/videobridge`
 * Edit the file `jitsi-videobridge.conf`
-    * Edit `JVB_HOSTNAME` to your `<FQDN>`.
-    * Edit the `JVB_SECRET` to your own secret.
-    * Save and close the file
-* Edit the file `jitsi-videobridge.conf`
-    * Edit `JVB_HOSTNAME` to your `<FQDN>`.
-    * Edit the `JVB_SECRET` to your own secret.
-    * Save and close the file
+    * Set `JVB_HOSTNAME` to your `<FQDN>`.
+    * Set `JVB_SECRET` to your own secret.
 * Edit the file `application.conf` and adjust the values under `apis`
-  and `websockets`, especially create a unique id as `muc_nickname`
+  and `websockets`, especially set a unique ID as `muc_nickname`
   with `uuidgen` for example.
 
 ```HUCON

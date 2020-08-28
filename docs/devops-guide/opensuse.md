@@ -335,8 +335,8 @@ Now everything should be working. That means you are ready to start everything u
 1. `systemctl start prosody`
 1. `systemctl start jitsi-videbridge`
 1. `systemctl start jitsi-jicofo`
-1. `systemctl start jitsi-jibri` (if configured and installed before)
-1. `systemctl start jitsi-jigasi` (if configured and installed before)
+1. `systemctl start jitsi-jibri` (if configured and installed beforehand)
+1. `systemctl start jitsi-jigasi` (if configured and installed beforehand)
 1. `systemctl start nginx`
 
 ## Final notes

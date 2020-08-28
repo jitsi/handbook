@@ -7,32 +7,37 @@ sidebar_label: openSUSE
 This document describes the steps for a quick Jitsi-Meet installation, paired with a single Videobridge and a single
 Jicofo on openSUSE Leap 15.2.
 
-_Note_: Many of the installation steps require root access. 
+__Note__: Many of the installation steps require root access.
 
 ## Installation
 
 1. Add the OBS repository:  
-__Note:__ When Jitsi-Meet is merged into openSUSE Factory, this will be obsolete.  
+__Note:__ When Jitsi-Meet is merged into openSUSE Factory, this will be obsolete.
+
 ```shell
 zypper addrepo https://download.opensuse.org/repositories/home:/SchoolGuy:/jitsi/openSUSE_Leap_15.2/home:SchoolGuy:jitsi.repo
 ```
-2. Refresh the repositories:  
+
+2. Refresh the repositories:
+
 ```shell
 zypper refresh
 ```
+
 3. Install Jitsi-Meet and its dependencies:
+
 ```shell
 zypper install nginx prosody lua51-zlib jitsi-meet jitsi-videobridge jitsi-jicofo
 ```
+
 ### optional Add-Ons
-* Install the Jibri Add-On  
-`zypper install jitsi-jibri`
-* Install the Jigasi Add-On  
-`zypper install jitsi-jigasi`
+
+* Install the Jibri Add-On: `zypper install jitsi-jibri`
+* Install the Jigasi Add-On: `zypper install jitsi-jigasi`
 
 ## Configuration
 
-The following sections describe how to configure the different packages.  
+The following sections describe how to configure the different packages.
 Replace `<FQDN>` with your domain name and `YOURSECRET3` with a strong password.
 
 ### Prosody
@@ -59,8 +64,9 @@ modules_enabled = {
                 "compression";
 }
 ```
-* Create a new configuration file named `<FQDN>.cfg.lua` in `/etc/prosody/conf.avail/` with the following
-content:
+
+* Create a new configuration file named `<FQDN>.cfg.lua` in `/etc/prosody/conf.avail/`
+  with the following content:
 
 ```lua
 plugin_paths = { "/usr/share/jitsi-meet/prosody-plugins/" }
@@ -133,9 +139,6 @@ Component "speakerstats.<FQDN>" "speakerstats_component"
 
 Component "conferenceduration.<FQDN>" "conference_duration_component"
     muc_component = "conference.<FQDN>"
-
-Component "callcontrol.<FQDN>"
-    component_secret = "YOURSECRET3"
 ```
 
 * Create a symlink for the configuration:  
@@ -144,16 +147,18 @@ Component "callcontrol.<FQDN>"
 * Create the certificates via `prosodyctl cert generate <DOMAIN>`.  
 The value `<DOMAIN>` represents the following URLs. `<FQDN>` has the same meaning as everywhere else on this page:
     * `auth.<FQDN>`
-    * `callcontrol.<FQDN>` __Note:__ This is only needed if you deploy Jigasi
     * `conference.<FQDN>`
     * `conferenceduration.<FQDN>`
     * `internal.auth.<FQDN>`
     * `FQDN`
     * `focus.<FQDN>`
     * `jitsi-videobridge.<FQDN>`
+    * `callcontrol.<FQDN>` __Note:__ This is only needed if you deploy Jigasi
     * `recorder.<FQDN>` __Note:__ This is only needed if you deploy Jibri
 * `/var/lib/prosody/`: Symlink all generated `*.crt` and `*.key` files to `/etc/prosody/certs/`.  
+
 __Note:__ Please do not link other certificates.
+
 * Add the certificates to the system keystore:
     * `ln --symbolic --force /var/lib/prosody/auth.<FQDN>.crt /usr/local/share/ca-certificates/auth.<FQDN>.crt`
     * `update-ca-certificates --fresh`
@@ -161,10 +166,11 @@ __Note:__ Please do not link other certificates.
 
 ### Nginx
 
-Edit the file `jitsi-meet.conf` in `/etc/nginx/vhosts.d/` (which was installed along with `jitsi-meet`) and do the following:
+Edit the file `jitsi-meet.conf` in `/etc/nginx/vhosts.d/` (which was installed
+along with `jitsi-meet`) and do the following:
 
 * Check the `server_name` value.
-* Check the TLS certificates. (Let's Encrypt for production use, Prosody for testing, for example.)
+* Check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example).
 
 __Note:__ If you are using an existing server, please make sure to adjust the websocket and bosh part, too.
 
@@ -189,21 +195,49 @@ __Note:__ Please be aware that this is the minimal configuration.
 
 ### Jitsi-Videobridge
 
-__Note:__ We were not able to get the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
-up and running. We will divide this part into two, when possible. Below, the [legacy configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#legacy-videobridge-configuration) is covered.
+__Note:__ We use a combination of the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
+and the legacy one with the `sip-communicator.properties` file. We have
+to do this because of the `STATISTICS_TRANSPORT` property.
+
+If we remove `org.jitsi.videobridge.STATISTICS_TRANSPORT=muc,colibri`
+from `sip-communicator.properties`, the videobridge will not work!
 
 * Go to the directory `/etc/jitsi/videobridge`
 * Edit the file `jitsi-videobridge.conf`
     * Edit `JVB_HOSTNAME` to your `<FQDN>`.
     * Edit the `JVB_SECRET` to your own secret.
     * Save and close the file
-* Edit the file `sip-communicator.properties`
-    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.DOMAIN` and set it to `auth.<FQDN>`.
-    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.PASSWORD` and set it to the password of your prosody user focus.
-    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC_JIDS` to `JvbBrewery@internal.auth.<FQDN>`.
-    * Edit the property `org.jitsi.videobridge.xmpp.user.xmppserver1.MUC` and set it to the same as the property above.
-    * Depending on your cert setup, set `org.jitsi.videobridge.xmpp.user.xmppserver1.DISABLE_CERTIFICATE_VERIFICATION` to `true` or `false`.
+* Edit the file `jitsi-videobridge.conf`
+    * Edit `JVB_HOSTNAME` to your `<FQDN>`.
+    * Edit the `JVB_SECRET` to your own secret.
+    * Save and close the file
+* Edit the file `application.conf` and adjust the values under `apis`
+  and `websockets`, especially create a unique id as `muc_nickname`
+  with `uuidgen` for example.
 
+```HUCON
+apis {
+    xmpp-client {
+      configs {
+        xmpp-server-1 {
+          hostname="localhost"
+          domain = "auth.${FQDN}"
+          username = "focus"
+          password = "YOURSECRET3"
+          muc_jids = "JvbBrewery@internal.auth.${FQDN}"
+          # The muc_nickname must be unique across all jitsi-videobridge instances
+          muc_nickname = "unique-id"
+          disable_certificate_verification = true
+        }
+      }
+    }
+}
+websockets {
+  enabled=true
+  server-id="default-id"
+  domain="${FQDN}"
+}
+```
 
 ### Jitsi-Jicofo
 
@@ -257,6 +291,37 @@ jibri{
         ]
     }
 }
+```
+
+* Edit the file `/etc/jitsi/jicofo/sip-communicator.properties` and add the
+  following properties:
+
+```HUCON
+org.jitsi.jicofo.jibri.BREWERY=JibriBrewery@internal.auth.<FQDN>
+org.jitsi.jicofo.jibri.PENDING_TIMEOUT=90
+```
+
+* Edit the file `/srv/jitsi-meet/config.js` and set the
+  following properties:
+
+```js
+fileRecordingsEnabled: true, // If you want to enable file recording
+liveStreamingEnabled: true, // If you want to enable live streaming
+hiddenDomain: 'recorder.<FQDN>',
+```
+
+* Edit `/srv/jitsi-meet/interface_config.js` and make sure the
+  `TOOLBAR_BUTTONS` array contains the `recording` and
+  the `livestreaming` value if you want those features.
+
+```js
+TOOLBAR_BUTTONS: [
+        'microphone', 'camera', 'closedcaptions', 'desktop', 'embedmeeting', 'fullscreen',
+        'fodeviceselection', 'hangup', 'profile', 'chat', 'recording',
+        'livestreaming', 'etherpad', 'sharedvideo', 'settings', 'raisehand',
+        'videoquality', 'filmstrip', 'invite', 'feedback', 'stats', 'shortcuts',
+        'tileview', 'videobackgroundblur', 'download', 'help', 'mute-everyone', 'security'
+],
 ```
 
 ## Add-On: Jitsi-Jigasi

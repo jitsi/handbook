@@ -324,7 +324,7 @@ TOOLBAR_BUTTONS: [
 
 __Note from openSUSE packagers:__ We've packaged it but we don't have the infrastructure to set up this component. Hence we can't provide a guide for this so far.
 
-## Final steps
+## Services
 
 Now everything should be working. That means you are ready to start everything up:
 
@@ -337,9 +337,12 @@ Now everything should be working. That means you are ready to start everything u
 
 ## Final notes
 
-* The Jitsi Software has a lot of dependencies and thus we recommend to run this on a dedicated host for Jitsi
-* Updating Jitsi is crucial to get rid of bugs and updated dependencies with possible security fixes
-* Although tempted through Chrome: Don't install a full X11 stack like KDE or Gnome for this.
-* Don't mix the `rpms` or `debs` with a source installation of the same component
-* Securely backup your configuration, preferably in a VCS. This saves time and pain when doing rollbacks
-  or dealing with other problems.
+* The Jitsi Software has a lot of dependencies and thus we recommend to run
+  this on a dedicated host for Jitsi.
+* Updating Jitsi is crucial to get rid of bugs and updated dependencies with
+  possible security fixes.
+* Although tempted through Chrome: Don't install a full X11 stack like KDE or
+  Gnome for this.
+* Don't mix the `rpms` or `debs` with a source installation of the same component.
+* Securely backup your configuration, preferably in a VCS. This saves time and
+  pain when doing rollbacks or dealing with other problems.

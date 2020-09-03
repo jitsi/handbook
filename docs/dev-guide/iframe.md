@@ -166,6 +166,11 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
+* **getVideoQuality** - Returns the current video quality setting.
+
+```javascript
+api.getCurrentDevices();
+```
 * **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
 
 ```javascript
@@ -560,6 +565,13 @@ changes. The listener will receive an object with the following structure:
 ```javascript
 {
     muted: boolean // new muted status - boolean
+}
+```
+
+* **videoQualityChanged** -  event notifications about video quality settings changes. The listener will receive an object with the following structure:
+```javascript
+{
+    videoQuality: number // the height of the resolution related to the new video quality setting.
 }
 ```
 

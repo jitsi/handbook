@@ -109,6 +109,21 @@ var options = {
 var api = new JitsiMeetExternalAPI(domain, options);
 ```
 
+**Configuring the tile view**
+
+You can configure the maximum number of columns in tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from [interface_config.js] via **interfaceConfigOverwrite**:
+
+```javascript
+const options = {
+    ...
+    interfaceConfigOverwrite: { TILE_VIEW_MAX_COLUMNS: 2 },
+    ...
+};
+const api = new JitsiMeetExternalAPI(domain, options);
+```
+Note: ```TILE_VIEW_MAX_COLUMNS``` accepts values from 1 to 5. The default value is 5.
+
+
 ### Controlling the embedded Jitsi Meet Conference
 
 Device management `JitsiMeetExternalAPI` methods:

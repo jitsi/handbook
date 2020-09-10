@@ -18,6 +18,7 @@
     ],
     "Developer Guide": [
       "dev-guide/dev-guide-start",
+      "dev-guide/dev-guide-contributing",
       {
         "type": "subcategory",
         "label": "Web",

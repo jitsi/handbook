@@ -218,6 +218,11 @@ api.setAudioInputDevice(deviceLabel, deviceId);
 ```javascript
 api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
+* **setLargeVideoParticipant** - Displays the participant with the participant id (Jid) that is passed on the large video. If no participant id is passed, a particpant will be picked based on the dominant/pinned speaker settings.
+
+```javascript
+api.setLargeVideoParticipant(participantId);
+```
 * **setVideoInputDevice** - Sets the video input device to the one with the label or id that is passed.
 
 ```javascript
@@ -323,6 +328,11 @@ api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/367164
 * **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
 ```javascript
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
+```
+
+* **setLargeVideoParticipant** - Displays the given participant on the large video. The participant with the particpant id (Jid) if specified will be displayed on the large video. If no argument is passed, the participant to be displayed on the large video will be automatically selected based on the dominant/pinned speaker settings.
+```javascript
+api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 ```
 * **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
 ```javascript

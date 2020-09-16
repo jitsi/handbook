@@ -181,6 +181,11 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
+* **getParticipantsInfo** - Returns an array containing participants information like participant id, display name, avatar URL and email.
+
+```javascript
+api.getParticipantsInfo();
+```
 * **getVideoQuality** - Returns the current video quality setting.
 
 ```javascript

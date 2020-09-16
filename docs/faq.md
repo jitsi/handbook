@@ -72,3 +72,61 @@ Yes. The easiest way to record is to live stream your conference to YouTube and 
 
 ## I set the password in meeting but it is not working the next time
 Once the meeting ends it's password also gets removed, so you need to set the password again for next meeting.
+
+## How to limit the number of participants?
+
+1. Use the command `prosodytl about` to view the version of prosody and plug directory, similar to the output below.
+
+```
+Prosody 0.11.6
+
+# Prosody directories
+
+Data directory: /var/lib/prosody
+
+Config directory: /etc/prosody
+
+Source directory: /usr/lib/prosody
+
+Plugin directories:
+
+/usr/share/jitsi-meet/prosody-plugins/
+
+/usr/lib/prosody/modules/
+```
+
+2. Check if there is a `mod_muc_max_occupants.lua` file in your plugin directory.
+
+If not, please create a new file `mod_muc_max_occupants.lua` in the plugin directory And copy everything from [here](https://github.com/jitsi/jitsi-meet/blob/master/resources/prosody-plugins/mod_muc_max_occupants.lua) to paste.
+
+If it exists, please ignore this step.
+
+3.Edit your `/etc/prosody/conf.avail/meet.example.com.cfg.lua` file and add `muc_max_occupants` as a module_enabled in the conference.meet.example.com "muc" section.
+
+Then, add the options below that. You need both `muc_max_occupants` and `muc_access_whitelist` defined.
+
+Example:
+
+```
+Component "conference.meet.example.com" "muc"
+   storage = "memory"
+   modules_enabled = {
+       "muc_meeting_id";
+       "muc_domain_mapper";
+       "muc_max_occupants"; 
+   }
+   muc_max_occupants = "5"
+   muc_access_whitelist = { "focus@auth.meet.example.com" }
+   admins = { "focus@auth.meet.example.com" }
+   muc_room_locking = false
+   muc_room_default_public_jids = true
+```
+
+Note: the relationship between storage = "" and your prosody version, and you need to modify all storage="" .
+- Prosody nightly747 storage = "null"
+- Prosody 0.10 storage = "none"
+- Prosody 0.11 storage = "memory"
+
+4. You need to use the command `prosodyctl restart` to see the effect.
+
+5. If you want to update to use prosody, you can check [here](https://community.jitsi.org/t/how-to-how-do-i-update-prosody/72205).

@@ -109,6 +109,21 @@ var options = {
 var api = new JitsiMeetExternalAPI(domain, options);
 ```
 
+**Configuring the tile view**
+
+You can configure the maximum number of columns in tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from [interface_config.js] via **interfaceConfigOverwrite**:
+
+```javascript
+const options = {
+    ...
+    interfaceConfigOverwrite: { TILE_VIEW_MAX_COLUMNS: 2 },
+    ...
+};
+const api = new JitsiMeetExternalAPI(domain, options);
+```
+Note: ```TILE_VIEW_MAX_COLUMNS``` accepts values from 1 to 5. The default value is 5.
+
+
 ### Controlling the embedded Jitsi Meet Conference
 
 Device management `JitsiMeetExternalAPI` methods:
@@ -166,6 +181,11 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
+* **getVideoQuality** - Returns the current video quality setting.
+
+```javascript
+api.getCurrentDevices();
+```
 * **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
 
 ```javascript
@@ -197,6 +217,11 @@ api.setAudioInputDevice(deviceLabel, deviceId);
 
 ```javascript
 api.setAudioOutputDevice(deviceLabel, deviceId);
+```
+* **setLargeVideoParticipant** - Displays the participant with the participant id (Jid) that is passed on the large video. If no participant id is passed, a particpant will be picked based on the dominant/pinned speaker settings.
+
+```javascript
+api.setLargeVideoParticipant(participantId);
 ```
 * **setVideoInputDevice** - Sets the video input device to the one with the label or id that is passed.
 
@@ -303,6 +328,11 @@ api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/367164
 * **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
 ```javascript
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
+```
+
+* **setLargeVideoParticipant** - Displays the given participant on the large video. The participant with the particpant id (Jid) if specified will be displayed on the large video. If no argument is passed, the participant to be displayed on the large video will be automatically selected based on the dominant/pinned speaker settings.
+```javascript
+api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 ```
 * **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
 ```javascript
@@ -560,6 +590,13 @@ changes. The listener will receive an object with the following structure:
 ```javascript
 {
     muted: boolean // new muted status - boolean
+}
+```
+
+* **videoQualityChanged** -  event notifications about video quality settings changes. The listener will receive an object with the following structure:
+```javascript
+{
+    videoQuality: number // the height of the resolution related to the new video quality setting.
 }
 ```
 

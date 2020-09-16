@@ -189,7 +189,7 @@ api.getParticipantsInfo();
 * **getVideoQuality** - Returns the current video quality setting.
 
 ```javascript
-api.getCurrentDevices();
+api.getVideoQuality();
 ```
 * **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
 

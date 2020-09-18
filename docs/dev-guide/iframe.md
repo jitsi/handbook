@@ -126,6 +126,12 @@ Note: ```TILE_VIEW_MAX_COLUMNS``` accepts values from 1 to 5. The default value 
 
 ### Controlling the embedded Jitsi Meet Conference
 
+* **captureLargeVideoScreenshot** - Captures the screenshot of the large video.
+```javascript
+api.captureLargeVideoScreenshot().then(dataURL => {
+    // dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+});
+```
 Device management `JitsiMeetExternalAPI` methods:
 * **getAvailableDevices** - Retrieve a list of available devices.
 
@@ -212,6 +218,11 @@ api.isDeviceListAvailable().then(isDeviceListAvailable => {
 api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
     ...
 });
+```
+* **resizeLargeVideo** - Resizes the large video container as per the dimensions provided.
+
+```javascript
+api.resizeLargeVideo(width, height);
 ```
 * **setAudioInputDevice** - Sets the audio input device to the one with the label or id that is passed.
 

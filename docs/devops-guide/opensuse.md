@@ -177,7 +177,7 @@ __Note:__ If you are using an existing server, please make sure to adjust the we
 
 ### Jitsi-Meet
 
-* Go to `/srv/jitsi-meet` and open `config.js`:
+* Go to `/srv/jitsi-meet` and edit `config.js`:
 
 ```js
 var config = {
@@ -237,7 +237,7 @@ websockets {
 
 ### Jitsi-Jicofo
 
-* Got to the directory `/etc/jitsi/jicofo`
+* Go to the directory `/etc/jitsi/jicofo`
 * Edit the file `jitsi-jicofo.conf`
     * Set the property `JICOFO_HOSTNAME` to `<FQDN>`.
     * Set the property `JICOFO_SECRET` to the password the Prosody user got in above setup.

@@ -3,7 +3,7 @@ id: faq
 title: FAQ
 ---
 
-## How to migrate away from multiplexing and enable bridge websockets
+## <a name="migrate-multiplexing"></a>How to migrate away from multiplexing and enable bridge websockets
 
 For a while, we were using nginx multiplexing to serve jitsi-meet content on https(port 443) and use the same port for running a turn server.
 This proved to be problematic(you cannot use websockets with this setup) and we moved away from it.

@@ -3,7 +3,7 @@ id: faq
 title: FAQ
 ---
 
-## <a name="migrate-multiplexing"></a>How to migrate away from multiplexing and enable bridge websockets
+## How to migrate away from multiplexing and enable bridge websockets
 
 For a while, we were using nginx multiplexing to serve jitsi-meet content on https(port 443) and use the same port for running a turn server.
 This proved to be problematic(you cannot use websockets with this setup) and we moved away from it.
@@ -43,4 +43,4 @@ Here is how to remove multiplexing and enable websockets in favor of WebRTC Data
 }
   ```
   Make sure you replace `your-domain` with the DNS of your deployment.
-6. After restarting the bridge (`systemctl restart jitsi-videobridge2`) and nginx (`systemctl restart nginx`) you are good to go
+6. After restarting the bridge (`systemctl restart jitsi-videobridge2`) and nginx (`systemctl restart nginx`) you are good to go!

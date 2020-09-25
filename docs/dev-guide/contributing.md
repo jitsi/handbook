@@ -31,8 +31,9 @@ in the agreement, unfortunately, we cannot accept your contribution.
 - Perform **one** logical change per pull request.
 - Maintain a clean list of commits, squash them if necessary.
 - Rebase your topic branch on top of the master branch before creating the pull
- request.
-
+ request. Use a branch for the changes with suitable name, do not use master of your fork.
+- Commits should have prefix indicating what they do is it feature, a fix or a translation update. This is in regards the 
+ automated release notes. Prefix the commits with `feat: `, `fix: `, `lang: ` etc.
 ## Coding style
 
 ### Comments
@@ -57,14 +58,14 @@ in the agreement, unfortunately, we cannot accept your contribution.
 
 ### Formatting
 
-* Line length is limited to 120 characters.
+* Line length is limited to 120 characters for JavaScript and Java projects.
 
 * Sort by alphabetical order in order to make the addition of new entities as
   easy as looking a word up in a dictionary. Otherwise, one risks duplicate
   entries (with conflicting values in the cases of key-value pairs). For
   example:
 
-  * Within an `import` of multiple names from a module, sort the names in
+  * JavaScript: Within an `import` of multiple names from a module, sort the names in
     alphabetical order. (Of course, the default name stays first as required by
     the `import` syntax.)
 
@@ -83,7 +84,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
     } from './actionTypes';
     ````
 
-  * Within a group of imports (e.g. groups of imports delimited by an empty line
+  * JavaScript: Within a group of imports (e.g. groups of imports delimited by an empty line
     may be: third-party modules, then project modules, and eventually the
     private files of a module), sort the module names in alphabetical order.
 
@@ -91,6 +92,13 @@ in the agreement, unfortunately, we cannot accept your contribution.
     import React, { Component } from 'react';
     import { connect } from 'react-redux';
     ````
+  * Java: Use package imports (package.*) and DO NOT import classes themselves.
+
+* Java: Opening braces MUST be on their own line (especially those beginning a method).
+
+* Use 4 spaces to indent everything. Instruct your IDE not to use tabs under any circumstances and replace them with spaces.
+
+* Do not use double negative when naming properties, variables or methods/functions.
 
 ### Indentation
 

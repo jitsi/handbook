@@ -79,7 +79,9 @@ automatically when committing code.</li>
 <li>Perform <strong>one</strong> logical change per pull request.</li>
 <li>Maintain a clean list of commits, squash them if necessary.</li>
 <li>Rebase your topic branch on top of the master branch before creating the pull
-request.</li>
+request. Use a branch for the changes with suitable name, do not use master of your fork.</li>
+<li>Commits should have prefix indicating what they do is it feature, a fix or a translation update. This is in regards the
+automated release notes. Prefix the commits with <code>feat:</code>, <code>fix:</code>, <code>lang:</code> etc.</li>
 </ul>
 <h2><a class="anchor" aria-hidden="true" id="coding-style"></a><a href="#coding-style" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Coding style</h2>
 <h3><a class="anchor" aria-hidden="true" id="comments"></a><a href="#comments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Comments</h3>
@@ -103,13 +105,13 @@ attention to, for example, capitalization and punctuation.</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="formatting"></a><a href="#formatting" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Formatting</h3>
 <ul>
-<li><p>Line length is limited to 120 characters.</p></li>
+<li><p>Line length is limited to 120 characters for JavaScript and Java projects.</p></li>
 <li><p>Sort by alphabetical order in order to make the addition of new entities as
 easy as looking a word up in a dictionary. Otherwise, one risks duplicate
 entries (with conflicting values in the cases of key-value pairs). For
 example:</p>
 <ul>
-<li><p>Within an <code>import</code> of multiple names from a module, sort the names in
+<li><p>JavaScript: Within an <code>import</code> of multiple names from a module, sort the names in
 alphabetical order. (Of course, the default name stays first as required by
 the <code>import</code> syntax.)</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> {
@@ -125,13 +127,17 @@ the <code>import</code> syntax.)</p>
     RTC_ERROR
 } <span class="hljs-keyword">from</span> <span class="hljs-string">'./actionTypes'</span>;
 </code></pre></li>
-<li><p>Within a group of imports (e.g. groups of imports delimited by an empty line
+<li><p>JavaScript: Within a group of imports (e.g. groups of imports delimited by an empty line
 may be: third-party modules, then project modules, and eventually the
 private files of a module), sort the module names in alphabetical order.</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">import</span> React, { Component } <span class="hljs-keyword">from</span> <span class="hljs-string">'react'</span>;
 <span class="hljs-keyword">import</span> { connect } <span class="hljs-keyword">from</span> <span class="hljs-string">'react-redux'</span>;
 </code></pre></li>
+<li><p>Java: Use package imports (package.*) and DO NOT import classes themselves.</p></li>
 </ul></li>
+<li><p>Java: Opening braces MUST be on their own line (especially those beginning a method).</p></li>
+<li><p>Use 4 spaces to indent everything. Instruct your IDE not to use tabs under any circumstances and replace them with spaces.</p></li>
+<li><p>Do not use double negative when naming properties, variables or methods/functions.</p></li>
 </ul>
 <h3><a class="anchor" aria-hidden="true" id="indentation"></a><a href="#indentation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Indentation</h3>
 <ul>

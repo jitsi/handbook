@@ -61,7 +61,8 @@
           "devops-guide/cloud-api"
         ]
       },
-      "devops-guide/devops-guide-videotutorials"
+      "devops-guide/devops-guide-videotutorials",
+      "devops-guide/faq"
     ]
   }
 }

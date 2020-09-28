@@ -219,6 +219,11 @@ api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
     ...
 });
 ```
+* **pinParticipant** - Elects the participant with the given id to be the pinned participant in order to always receive video for this participant (even when last n is enabled).
+
+```javascript
+api.pinParticipant(participantId);
+```
 * **resizeLargeVideo** - Resizes the large video container as per the dimensions provided.
 
 ```javascript
@@ -444,6 +449,13 @@ The listener will receive an object with the following structure:
         name: string // the name of the datachannel event: `endpoint-text-message`
         text: string // the received text from the sender
     }
+}
+```
+
+* **largeVideoChanged** - receives event notification about the change in the participant displayed on the large video. The listener will receive an object with the following structure.
+```javascript
+{
+    id: string // id of the participant that is now on large video in the stage view.
 }
 ```
 

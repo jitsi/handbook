@@ -15,9 +15,9 @@ Node.js >= 12 and npm >= 6 are required.
 
 On Debian/Ubuntu systems, the required packages can be installed with:
 ```
-sudo apt-get install npm nodejs
-cd jitsi-meet
-npm install
+download linux-binaries(x64) from  https://nodejs.org/en/download/
+install the downlaoded file node*.tar.xz
+follow the document https://community.jitsi.org/t/how-to-how-to-build-jitsi-meet-from-source-a-developers-guide/75422
 ```
 
 To build the Jitsi Meet application, just type

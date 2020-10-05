@@ -459,6 +459,14 @@ The listener will receive an object with the following structure:
 }
 ```
 
+* **log** - event notifications about logs being written with the log level being one of the values specified in [config.js] on the apiLogLevels property (if none specified, this event will not fire). The listener will receive an object with the following structure:
+```javascript
+{
+    logLevel: string, // A constant representing the log type (info, error, debug, warn).
+    args: string // Additional log information.
+}
+```
+
 * **micError** - event notifications about Jitsi-Meet having failed to access the mic. The listener will receive an object with the following structure:
 ```javascript
 {

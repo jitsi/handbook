@@ -132,7 +132,6 @@ api.captureLargeVideoScreenshot().then(dataURL => {
     // dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
 });
 ```
-Device management `JitsiMeetExternalAPI` methods:
 * **getAvailableDevices** - Retrieve a list of available devices.
 
 ```javascript
@@ -249,6 +248,17 @@ api.setLargeVideoParticipant(participantId);
 ```javascript
 api.setVideoInputDevice(deviceLabel, deviceId);
 ```
+* **startRecording** - Starts a file recording or streaming session.
+
+```javascript
+api.startRecording(options);
+```
+
+* **stopRecording** - Stops an ongoing file recording or streaming session.
+
+```javascript
+api.startRecording(mode);
+```
 
 You can control the embedded Jitsi Meet conference by calling `executeCommand` on the `JitsiMeetExternalAPI` object:
 
@@ -363,7 +373,8 @@ api.executeCommand('setVideoQuality', 720);
 ```javascript
 api.executeCommand('muteEveryone');
 ```
-* **startRecording** - Starts a file recording or streaming depending on the passed on params.
+* **startRecording** - Starts a file recording or streaming session depending on the passed on params.
+  - for RTMP streaming, recording `mode` should be `stream` and `rtmpStreamKey` must be provided. `rtmpBroadcastID` is optional.
   - for YouTube streams, recording `mode` should be `stream` and `youtubeStreamKey` must be provided. `youtubeBroadcastID` is optional.
   - for Dropbox recording, recording `mode` should be `file` and a dropbox oauth2 token must be provided. Also dropbox saving should be enabled on the used jitsi meet deploy config.
   - for file recording, recording `mode` should be `file` and optionally `shouldShare` could be passed on. No other params should be passed.
@@ -372,6 +383,8 @@ api.executeCommand('startRecording', {
     mode: string //recording mode, either `file` or `stream`.
     dropboxToken: string, //dropbox oauth2 token.
     shouldShare: boolean, //whether the recording should be shared with the participants or not. Only applies to certain jitsi meet deploys.
+    rtmpStreamKey: string, //the RTMP stream key.
+    rtmpBroadcastID: string, //the RTMP broadcast ID.
     youtubeStreamKey: string, //the youtube stream key.
     youtubeBroadcastID: string //the youtube broacast ID.
 });

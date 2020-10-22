@@ -68,7 +68,7 @@ Finally on the same machine test that you can ping the FQDN with:
 `ping "$(hostname)"`
 
 If all worked as expected, you should see:
-`meet.example.com`
+`meet.example.org`
 
 ### Add the Jitsi package repository
 

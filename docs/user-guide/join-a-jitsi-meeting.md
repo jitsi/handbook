@@ -11,4 +11,4 @@ sidebar_label: Join a Jitsi Meeting
    [Chrome](https://support.google.com/chrome/answer/2693767)).
 1. Enter a name. This will be visible to other participants in the Jitsi Meeting room.
 1. (optional) Adjust the camera and/or microphone settings via the `v` dropdown menu items.
-1. Click `Join meeting`,
+1. Click `Join meeting`.

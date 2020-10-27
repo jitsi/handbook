@@ -398,6 +398,22 @@ Variable | Description | Example
 
 For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol section "Before you begin" paragraph 1 to 5.
 
+### Access and Application logging
+
+For privacy reasons it is important to have the possibility to disable all logs about the users. To achieve this you can configure the log level for each component with these options:
+
+Variable | Description | Default value
+--- | --- | ---
+`PROSODY_LOG_LEVEL` | Controls which logs are output from prosody and associated modules. [Supported levels](https://prosody.im/doc/logging) | info
+`JVB_LOG_LEVEL` | Controls which logs are written to stdout. [Supported java log levels](https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html) | INFO
+`JICOFO_LOG_LEVEL` | Controls which logs are written to stdout. [Supported java log levels](https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html) | INFO
+`JIGASI_LOG_LEVEL` | Controls which logs are written to stdout. [Supported java log levels](https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html) | INFO
+`JIBRI_LOG_LEVEL` | Controls which logs are written to stdout. [Supported java log levels](https://docs.oracle.com/javase/8/docs/api/java/util/logging/Level.html) | INFO
+`ENABLE_WEB_ACCESS_LOGS` | Controls access logs written to stdout for nginx | true
+`ETHERPAD_DISABLE_IP_LOGGING` | Disable IP logging | false
+`ETHERPAD_LOG_LEVEL` | Controls which logs are written to stdout. Supported levels: DEBUG, INFO, WARN, ERROR | INFO
+
+
 ### Advanced configuration
 
 These configuration options are already set and generally don't need to be changed.

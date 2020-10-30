@@ -167,8 +167,9 @@ Use the following API functions to control your embedded Jitsi Meet Conference.
 Captures a screenshot for the participant in the large video view (on stage).
 
 ```javascript
-api.captureLargeVideoScreenshot().then(dataURL => {
-    // dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+api.captureLargeVideoScreenshot().then(data => {
+    // data is an Object with only one param, dataURL
+    // data.dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
 });
 ```
 

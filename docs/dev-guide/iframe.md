@@ -128,8 +128,9 @@ Note: ```TILE_VIEW_MAX_COLUMNS``` accepts values from 1 to 5. The default value 
 
 * **captureLargeVideoScreenshot** - Captures the screenshot of the large video.
 ```javascript
-api.captureLargeVideoScreenshot().then(dataURL => {
-    // dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+api.captureLargeVideoScreenshot().then(data => {
+    // data is an Object with only one param, dataURL
+    // data.dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
 });
 ```
 * **getAvailableDevices** - Retrieve a list of available devices.

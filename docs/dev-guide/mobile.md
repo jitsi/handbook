@@ -17,17 +17,11 @@ Jitsi Meet can be built as a standalone app for Android or iOS. It uses the
 First make sure the [React Native dependencies] are installed.
 
 **NOTE**: Node 12.X and npm 6.X are required.
+**NOTE**: Xcode 12 is required.
 
 ## iOS
 
-1. Install some extra dependencies
-
-  - Install ios-deploy globally (in case you want to use the React Native CLI
-    to deploy the app to the device)
-
-    ```bash
-    npm install -g ios-deploy
-    ```
+1. Install dependencies
 
   - Install main dependencies:
 
@@ -46,7 +40,7 @@ First make sure the [React Native dependencies] are installed.
 
 2. Build the app
 
-    There are 2 ways to build the app: using the CLI or using Xcode.
+    There are 2 ways to build the app: using the CLI or using Xcode. Using Xcode is recommended.
 
     Using the CLI:
 

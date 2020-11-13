@@ -4,10 +4,10 @@ title: Self-Hosting Guide - Debian/Ubuntu server
 sidebar_label: Debian/Ubuntu server
 ---
 
-This document describes the steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
+Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
 The following distributions are supported out-of-the-box:
-- Debian 10 (Buster) or later
-- Ubuntu 18.04 (Bionic Beaver) or later
+- Debian 9 (Stretch) or newer
+- Ubuntu 18.04 (Bionic Beaver) or newer
 
 _Note_: Many of the installation steps require `root` or `sudo` access. 
 
@@ -16,7 +16,12 @@ _Note_: Many of the installation steps require `root` or `sudo` access.
 
 You will need the following packages:
 * `gnupg2`
+* `nginx-full`
 * `sudo` # only needed if you use sudo
+
+:::note Note
+For now it is recommended to install OpenJDK 8, see [below](devops-guide-quickstart#openjdk-8).
+:::
 
 Make sure your system is up-to-date and required packages are installed:
 
@@ -38,6 +43,18 @@ sudo apt-add-repository universe
 # Retrieve the latest package versions across all repositories
 sudo apt update
 ```
+
+### OpenJDK 8
+
+* On Ubuntu:
+  Install `openjdk-8-jdk` 
+
+* On Debian 9 (Stretch):
+  Install `openjdk-8-jdk` 
+  
+* On Debian 10 (Buster) and newer:
+  OpenJDK 8 is not included in the official repos, you can use the .deb packages provided by [Adoptopenjdk.org - DEB installer packages](https://adoptopenjdk.net/installation.html#linux-pkg) instead.
+  **Note:** Install `adoptopenjdk-8-hotspot` instead of `11` of course!
 
 ## Install Jitsi Meet
 
@@ -138,7 +155,7 @@ During installation of Jitsi Meet you can choose between different options:
 
 ### Install Jitsi Meet
 
-_Note_: The installer will check if [Nginx](https://nginx.org/) or [Apache](https://httpd.apache.org/) are present (in that order) and configure a virtual host within the web server it finds to serve Jitsi Meet. If none of the above is found it then defaults to Nginx.
+_Note_: The installer will check if [Nginx](https://nginx.org/) or [Apache](https://httpd.apache.org/) are present (in that order) and configure a virtual host within the web server it finds to serve Jitsi Meet.
 
 If you are already running Nginx on port 443 on the same machine, turnserver configuration will be skipped as it will conflict with your current port 443.
 

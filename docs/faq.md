@@ -68,7 +68,20 @@ In nginx, if you are using Let's Encrypt, you should have a line like this:
 
 
 ## Can I record and save the video?
-Yes. The easiest way to record is to live stream your conference to YouTube and access the recording there. Self-installed Jitsi Meet deployments will need to setup Jibri to do this. The other way is to [connect Dropbox with Jitsi Meet](/handbook/docs/dev-guide/dev-guide-web-integrations#creating-the-dropbox-app-for-dropbox-recording-integration) and save the video in the Dropbox. 
+
+Yes. There are multiple methods (using external software or services):
+
+_Note_: If you want to use a privacy-friendly method, use method 1 or 2.
+
+1. **OBS**: Use [OBS](https://obsproject.com/) to record your Session (e.g. your browser window).
+
+2. **RTMP-Server**: For this you have to setup your own RTMP-Server and then use your RTMP URL + Stream key instead of the Youtube Stream key as described [here](https://jitsi.org/blog/live-streaming-with-jitsi-and-youtube/). Self-installed Jitsi Meet deployments will need to setup Jibri to do this.
+
+3. **Dropbox**: [Connect to Dropbox with Jitsi Meet](/handbook/docs/dev-guide/dev-guide-web-integrations#creating-the-dropbox-app-for-dropbox-recording-integration) and save the video in the Dropbox. 
+
+4. **Video Services/Websites**: Stream your conference to YouTube or other sites (e.g. Twitch) and access the recording there (see [howto](https://jitsi.org/blog/live-streaming-with-jitsi-and-youtube/)). Self-installed Jitsi Meet deployments will need to setup Jibri to do this. 
+
+More methods might be implemented in the future, but are not ready yet (e.g. [Local Recording](https://github.com/jitsi/jitsi-meet/issues/6014).
 
 ## I set the password in meeting but it is not working the next time
 Once the meeting ends it's password also gets removed, so you need to set the password again for next meeting.

@@ -1,4 +1,7 @@
-## User- and/or community-run jit.si instances <a id="jitis"></a>
+---
+id: community-instances
+title: User- and/or community-run jit.si instances
+---
 
 as decentralized additive approach to lessen the load on https://meet.jit.si/
 

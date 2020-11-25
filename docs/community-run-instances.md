@@ -33,25 +33,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 
 ## User- and/or community-run jit.si instances by region
 
-#### [Africa](#africa)
-
-[South Africa](#southafrica) -- [Tunisia](#tunisia)
-
-#### [Asia](#asia)
-
-[India](#india) -- [Thailand](#thailand)
-
-#### [Europe](#europe)
-
-[Austria](#austria) --[Belarus](#belarus) -- [Belgium](#belgium) -- [Czech Republic](#czechrepublic) -- [Finland](#finland) -- [France](#france) -- [Germany](#germany) -- [Italy](#italy) -- [Netherlands](#netherlands) -- [Portugal](#portugal) -- [Romania](#romania) -- [Russian Federation](#russianfederation) --  [Slovenia](#slovenia) -- [Spain](#spain) -- [Sweden](#sweden) -- [Switzerland](#switzerland) -- [UK / GB](#gb)
-
-#### [South & North America](#south_north_america)
-
-[Canada](#canada), [United States](#unitedstates), [Uruguay](#uruguay), [Argentina](#argentina), [Chile](#chile), [El Salvador](#elsalvador)
-
-
----
-
 ✅ = this jitsi setup does not use Google's STUN/TURN servers
 
 ❌ = hosted on Amazon, Google, Cloudflare or Microsoft servers

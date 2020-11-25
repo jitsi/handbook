@@ -1,9 +1,7 @@
 ---
 id: community-instances
-title: User- and/or community-run jit.si instances
+title: Community run instances
 ---
-
-as decentralized additive approach to lessen the load on https://meet.jit.si/
 
 ## Official Servers
 

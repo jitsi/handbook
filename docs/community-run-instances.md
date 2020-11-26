@@ -12,11 +12,11 @@ title: Community run instances
 
 You can use [DNS Lookup](https://www.ultratools.com/tools/dnsLookupResult), [GeoIP Lookup](https://www.ultratools.com/tools/geoIpResult), and [KeyCDN Geo Tool](https://tools.keycdn.com/geo) to find out more about each server's location.
 
-* 📃 Server list, text file: [2020-11-22, 263 servers](https://gitlab.com/flavoursofopenscience/grav/-/raw/master/pages/09.community-run-open-source-tools-for-video-and-text-collaboration/20201122-jitsi-list-263-servers.txt):  
+* 📃 Server list, text file: [2020-11-26, 248 servers](https://gitlab.com/flavoursofopenscience/grav/-/raw/master/pages/09.community-run-open-source-tools-for-video-and-text-collaboration/20201126-jitsi-list-248-servers.txt)  
 * 🖥️ [@FavStarMafia](https://fediverse.blog/~/DonsBlog/videochat-server) (script-based)
 * 🖥️ [@Framasoft](https://framatalk.org/accueil/en/info/) (France)
-* 🖥️ [ChaosComputerClub](https://pads.ccc.de/jitsiliste) (CCC, Germany)
-* 🖥️ [iorestoacasa](https://iorestoacasa.work/server.html) (Italy -- Jitsi Meet & edumeet)  
+* 🖥️ [@ChaosComputerClub](https://pads.ccc.de/jitsiliste) (CCC, Germany)
+* 🖥️ [@iorestoacasa](https://iorestoacasa.work/server.html) (Italy -- Jitsi Meet & edumeet)  
 * 🖥️ [@flavoursofopenscience](https://flavoursofopen.science/community-run-open-source-tools-for-video-and-text-collaboration)'s overview of open-source video conferencing tools
 
 * ➡️ [JitsiMonitor](https://guardianproject.gitlab.io/jitsi-monitor/) -- ([GitLab repo](https://gitlab.com/guardianproject/jitsi-monitor)) ... monitors instances for ping times and TLS quality.
@@ -51,7 +51,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.bitblaze.io |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.bitblaze.io&latest) | Next Layer Telekom- und Beratungs GmbH   |
 | meet.graz.social  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.graz.social&latest) |    |
 | meet.adsimple.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.adsimple.at&latest) | Next Layer Telekom- und Beratungs GmbH   |
-
+| easyconference.uibk.ac.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=easyconference.uibk.ac.at&latest) | University of Innsbruck  |
 
 ### Belarus <a id="belarus"></a>
 
@@ -262,6 +262,22 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | konferenz.buehl.digital |   |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=konferenz.buehl.digital&latest)	   |  	   |
 | meet.stuvus.uni-stuttgart.de |   |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.stuvus.uni-stuttgart.de&latest)	   | Universität Stuttgart 	   |
 | talk.linux-whv.de | 	 ✅	   |   | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=talk.linux-whv.de&latest)	   | Netcup GmbH 	   |
+| jitsi.hs-anhalt.de |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hs-anhalt.de&latest) | Hetzner Online GmbH |
+| meet.studiumdigitale.uni-frankfurt.de |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.studiumdigitale.uni-frankfurt.de&latest) | Johann Wolfgang Goethe-Universitat Frankfurt am Main |
+| onlinetreff.ash-berlin.eu |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hs-anhalt.de&latest) | netcup GmbH |
+| jitsi-meet.online |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi-meet.online&latest) | Hetzner Online GmbH |
+| meet.nerd.re  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.nerd.re&latest) | Hetzner Online GmbH |
+| meet.bjoernhaendler.de |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.bjoernhaendler.de&latest) | netcup GmbH |
+| meet.fuhrberg-digital.de |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.fuhrberg-digital.de&latest) | Strato AG |
+| jitsi.uni-due.de  |  ✅ - 📞 |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.uni-due.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| jitsi.mpi-bremen.de  |  ✅ - 📞  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.mpi-bremen.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| meet.armstrong.zimt.uni-siegen.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.armstrong.zimt.uni-siegen.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| meet.ur.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.ur.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| meet.osna.social  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.osna.social&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| jitsi-01.csn.tu-chemnitz.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi-01.csn.tu-chemnitz.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| jitsi.folkwang-uni.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.folkwang-uni.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| jitsi-meet.hs-nb.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi-meet.hs-nb.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+
 
 #### special cases (limited access, mostly HEI)
 
@@ -440,6 +456,8 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.mayfirst.org |  ✅  |    |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.mayfirst.org&latest) | Hurricane Electric LLC   |
 | team.video |  ✅  | ❌   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=team.video&latest) |     AMAZON-AES  |
 | jitsi.member.fsf.org/ | ✅ | | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.member.fsf.org&latest) | Free Software Foundation |
+| swrtc.talky.io |   |  ❌ | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=swrtc.talky.io&latest) | AMAZON-02 |
+
 
 ### Uruguay <a id="uruguay"></a>
 

@@ -12,7 +12,7 @@ title: Community run instances
 
 You can use [DNS Lookup](https://www.ultratools.com/tools/dnsLookupResult), [GeoIP Lookup](https://www.ultratools.com/tools/geoIpResult), and [KeyCDN Geo Tool](https://tools.keycdn.com/geo) to find out more about each server's location.
 
-* 📃 Server list, text file: [2020-11-26, 253 servers](https://gitlab.com/flavoursofopenscience/grav/-/raw/master/pages/09.community-run-open-source-tools-for-video-and-text-collaboration/20201126-jitsi-list-253-servers.txt)  
+* 📃 Server list, text file: [2020-11-26, 254 servers](https://gitlab.com/flavoursofopenscience/grav/-/raw/master/pages/09.community-run-open-source-tools-for-video-and-text-collaboration/20201126-jitsi-list-254-servers.txt)  
 * 🖥️ [@FavStarMafia](https://fediverse.blog/~/DonsBlog/videochat-server) (script-based)
 * 🖥️ [@Framasoft](https://framatalk.org/accueil/en/info/) (France)
 * 🖥️ [@ChaosComputerClub](https://pads.ccc.de/jitsiliste) (CCC, Germany)

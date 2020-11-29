@@ -138,7 +138,7 @@ Variable | Description | Example
 `LETSENCRYPT_DOMAIN` | Domain for which to generate the certificate | meet.example.com
 `LETSENCRYPT_EMAIL` | E-Mail for receiving important account notifications (mandatory) | alice@atlanta.net
 
-In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443.
+In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443. You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
 
 **Let's Encrypt rate limit warning**: Let's Encrypt has a limit to how many times you can submit a request
 for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate) 

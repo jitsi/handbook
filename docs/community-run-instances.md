@@ -194,7 +194,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	jitsi.jotbe.reunite.earth	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.jotbe.reunite.earth&latest)	   |  		  |
 |  	jitsi.komun.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.komun.org&latest)	   |  	Contabo GmbH	  |
 |  	jitsi.linux.it	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.linux.it&latest)	   |  	Hetzner Online GmbH	  |
-|  	jitsi.mpi-bremen.de	   |  ✅		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.mpi-bremen.de&latest)	   |  	DFN	  |
+|  	jitsi.mpi-bremen.de	   |  	 ✅ -- 📞	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.mpi-bremen.de&latest)	   |  	DFN	  |
 |  	jitsi.netways.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.netways.de&latest)	   |  	NETWAYS GmbH	  |
 |  	jitsi.osna.social	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.osna.social&latest)	   |  	DFN	  |
 |  	jitsi.piratenpartei-duesseldorf.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.piratenpartei-duesseldorf.de&latest)	   |  	Contabo GmbH	  |

@@ -72,13 +72,13 @@ const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
 You can override options set in [config.js] and [interface_config.js] via **configOverwrite** and **interfaceConfigOverwrite** respectively.
-For example, to enable the filmstrip-only interface mode, you can use:
+For example:
 
 ```javascript
 const options = {
     ...
     configOverwrite: { startWithAudioMuted: true },
-    interfaceConfigOverwrite: { filmStripOnly: true },
+    interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true },
     ...
 };
 const api = new JitsiMeetExternalAPI(domain, options);

@@ -25,7 +25,7 @@ meet.jit.si:
 
 **`api = new JitsiMeetExternalAPI(domain, options)`**
 
-After you have installed the Meet API library, you then need to create the Jitsi Meet API object.
+After you have installed the Meet API library, you then must create the Jitsi Meet API object.
 
 The API object constructor uses the following options:
 
@@ -37,11 +37,11 @@ The API object constructor uses the following options:
   
     * **roomName**: The name of the room to join.
     
-    * **width**: The width for the created Iframe. If a number is specified it is treated as pixel units. If a string is specified the format is number followed by **`px`, `em`, `pt`, or `%`**.
+    * **width**: The width for the created Iframe. If a number is specified it is treated as pixel units. If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
     
-    * **height**: The height for the created Iframe. If a number is specified it is treated as pixel units. If a string is specified the format is number followed by **`px`, `em`, `pt`, or `%`**. 
+    * **height**: The height for the created Iframe. If a number is specified it is treated as pixel units. If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
     
-    * **parentNode**: The HTML DOM Element where the iframe will be added as a child.
+    * **parentNode**: The HTML DOM Element where the Iframe is added as a child.
     
     * **configOverwrite**: The JavaScript (JS) object with overrides for options defined in the **`config.js`** file.
     
@@ -53,9 +53,9 @@ The API object constructor uses the following options:
     
     * **onload**: The handler for the IFrame onload event.
     
-    * **invitees**: An array of objects containing information about new participants who will be invited to the call.
+    * **invitees**: An array of objects containing information about new participants who are invited to the call.
     
-    * **devices**: A map containing information about the initial devices that will be used in the call.
+    * **devices**: A map containing information about the initial devices that are used in the call.
     
     * **userInfo**: The JS object containing information about the participant opening the meeting (e.g.,email).
 
@@ -88,7 +88,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can override options set in the **`config.js`** file and the **`interface_config.js`** using **configOverwrite** and **interfaceConfigOverwrite**, respectively.
+You can override options set in the **`config.js`** file and the **`interface_config.js`** using the **configOverwrite** and **interfaceConfigOverwrite** properties, respectively.
 
 For example, to enable the filmstrip-only interface mode, you can use the following:
 

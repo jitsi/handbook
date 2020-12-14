@@ -88,9 +88,9 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can override options set in the **`config.js`** file and the **`interface_config.js`** using the **configOverwrite** and **interfaceConfigOverwrite** properties, respectively.
+You can override options set in the **`config.js`** file and the **`interface_config.js`** using the **configOverwrite** and **interfaceConfigOverwrite** objects, respectively.
 
-For example, to enable the filmstrip-only interface mode, you can use the following:
+For example, to enable the filmstrip-only interface mode, use the following:
 
 ```javascript
 const options = {
@@ -128,7 +128,7 @@ var api = new JitsiMeetExternalAPI(domain, options);
 ```
 **Configuring the tile view**
 
-You can configure the maximum number of columns in the tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from the [interface_config.js] file via the **interfaceConfigOverwrite** property:
+You can configure the maximum number of columns in the tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from the [interface_config.js] file via the **interfaceConfigOverwrite** object:
 
 ```javascript
 const options = {

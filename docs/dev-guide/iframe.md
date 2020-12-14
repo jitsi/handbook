@@ -13,7 +13,7 @@ Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner 
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript Jitsi Meet API library scripts and integrate it into your appication:
 
-Self-hosted:
+For self-hosted on your domain:
 ```javascript
 <script src='https://<your-domain>/external_api.js'></script>
 ```
@@ -31,8 +31,9 @@ For example"
 
 After you have installed the Meet API library, you must then create the Jitsi Meet API object.
 
-**`api = new JitsiMeetExternalAPI(domain, options)`**
+The Meet API object takes the following form:
 
+**`api = new JitsiMeetExternalAPI(domain, options)`**
 
 
 The API object constructor uses the following options:

@@ -3,13 +3,15 @@ id: dev-guide-iframe
 title: IFrame API
 ---
 
-You can use the Jitsi Meet API to embed Jitsi Meet in to your application. ?????
+The IFrame API enables you to embed Jitsi Meet functionality into your meeting application so you can experience the full functionality of the ______.
 
-You are also welcome to use it for embedding the globally distributed and highly available deployment on meet.jit.si itself. The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
+Additional functionality includes embedding the globally distributed and highly available deployment on meet.jit.si itself. 
+
+Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner of the implementation.
 
 ## **Installation** ????
 
-To embed Jitsi Meet in your application you need to add the Jitsi Meet API library:
+To enable the Jitsi Meet API in your application you must use one of the following JavaScript Jitsi Meet API library scripts and integrate it into your appication:
 
 Self-hosted:
 ```javascript
@@ -21,11 +23,17 @@ meet.jit.si:
 <script src='https://meet.jit.si/external_api.js'></script>
 ```
 
+For example"
+
+```javascript
+
 ## Creating the Jitsi Meet API object
+
+After you have installed the Meet API library, you must then create the Jitsi Meet API object.
 
 **`api = new JitsiMeetExternalAPI(domain, options)`**
 
-After you have installed the Meet API library, you then must create the Jitsi Meet API object.
+
 
 The API object constructor uses the following options:
 

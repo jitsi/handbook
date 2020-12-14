@@ -3,9 +3,11 @@ id: dev-guide-iframe
 title: IFrame API
 ---
 
-You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You are also welcome to use it for embedding the globally distributed and highly available deployment on meet.jit.si itself. The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
+You can use the Jitsi Meet API to embed Jitsi Meet in to your application. ?????
 
-## Installation
+You are also welcome to use it for embedding the globally distributed and highly available deployment on meet.jit.si itself. The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
+
+## **Installation** ????
 
 To embed Jitsi Meet in your application you need to add the Jitsi Meet API library:
 
@@ -23,9 +25,9 @@ meet.jit.si:
 
 **`api = new JitsiMeetExternalAPI(domain, options)`**
 
-After you have installed the Meet API library, you need to create the Jitsi Meet API object.
+After you have installed the Meet API library, you then need to create the Jitsi Meet API object.
 
-The API object constructor can use the following options:
+The API object constructor uses the following options:
 
 * **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
 
@@ -100,7 +102,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can also pass a JWT token to Jitsi Meet using the follwoing:
+You can also pass a JWT token to Jitsi Meet using the following:
 
  ```javascript
 const options = {
@@ -126,7 +128,7 @@ var api = new JitsiMeetExternalAPI(domain, options);
 ```
 **Configuring the tile view**
 
-You can configure the maximum number of columns in tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from [interface_config.js] via **interfaceConfigOverwrite**:
+You can configure the maximum number of columns in the tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from the [interface_config.js] file via the **interfaceConfigOverwrite** property:
 
 ```javascript
 const options = {

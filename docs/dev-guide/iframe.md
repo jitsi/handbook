@@ -111,7 +111,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can override options set in the **`config.js`** file and the **`interface_config.js`** using the **configOverwrite** and **interfaceConfigOverwrite** objects, respectively.
+You can override options set in the [config.js] file and the [interface_config.js] file using the **configOverwrite** and **interfaceConfigOverwrite** objects, respectively.
 
 For example, to enable the **`filmstripOnly`** interface mode, use the following:
 
@@ -151,7 +151,7 @@ var api = new JitsiMeetExternalAPI(domain, options);
 ```
 **Configuring the tile view**
 
-You can configure the maximum number of columns in the tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from the [interface_config.js] file via the **interfaceConfigOverwrite** object:
+You can configure the maximum number of columns in the tile view by overriding the **`TILE_VIEW_MAX_COLUMNS`** property from the [interface_config.js] file via the **interfaceConfigOverwrite** object:
 
 ```javascript
 const options = {
@@ -161,18 +161,18 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-Note: ```TILE_VIEW_MAX_COLUMNS``` accepts values from 1 to 5. The default value is 5.
-
+Note: **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
 ### Controlling the embedded Jitsi Meet Conference
 
-* **captureLargeVideoScreenshot** - Captures the screenshot of the large video.
+* **captureLargeVideoScreenshot** - Captures the screenshot for a large video.
+
 ```javascript
 api.captureLargeVideoScreenshot().then(dataURL => {
     // dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
 });
 ```
-* **getAvailableDevices** - Retrieve a list of available devices.
+* **getAvailableDevices** - Retrieves a list of available devices.
 
 ```javascript
 api.getAvailableDevices().then(devices => {
@@ -199,7 +199,7 @@ api.getAvailableDevices().then(devices => {
     ...
 });
 ```
-* **getCurrentDevices** - Retrieve a list with the devices that are currently selected.
+* **getCurrentDevices** - Retrieve a list of currently selected devices.
 
 ```javascript
 api.getCurrentDevices().then(devices => {
@@ -226,7 +226,7 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
-* **getParticipantsInfo** - Returns an array containing participants information like participant id, display name, avatar URL and email.
+* **getParticipantsInfo** - Returns an array containing participant information such as ID, display name, avatar URL. and email.
 
 ```javascript
 api.getParticipantsInfo();

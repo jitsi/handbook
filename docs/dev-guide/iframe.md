@@ -27,7 +27,7 @@ For example"
 
 ```javascript
 
-## Creating the Jitsi Meet API object
+## **Creating the Jitsi Meet API object**
 
 After you have installed the Meet API library, you must then create the Jitsi Meet API object.
 
@@ -46,9 +46,21 @@ The API object constructor uses the following options:
   
     * **roomName**: The name of the room to join.
     
-    * **width**: The width for the created Iframe. If a number is specified it is treated as pixel units. If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
+    * **width**: The created IFrame width.
     
-    * **height**: The height for the created Iframe. If a number is specified it is treated as pixel units. If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
+    The width argument has the following characteristics:
+    
+    -- If a number is specified it is treated as pixel units.
+    
+    -- If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
+    
+    * **height**: The height for the created Iframe. 
+    
+    The height argument has the following characteristics: 
+    
+    -- If a number is specified it is treated as pixel units.
+    
+    -- If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
     
     * **parentNode**: The HTML DOM Element where the Iframe is added as a child.
     
@@ -56,19 +68,19 @@ The API object constructor uses the following options:
     
     * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the **`interface_config.js`** file.
     
-    * **noSSL**: The Boolean data type which indicates if the server should be contacted using HTTP or HTTPS. The default value is **`false`**.
+    * **noSSL**: (Boolean) Indicates if the server should be contacted using HTTP or HTTPS. The default value is **`false`**.
     
     * **jwt**: The [JWT](https://jwt.io/) token.
     
-    * **onload**: The handler for the IFrame onload event.
+    * **onload**: The IFrame onload event handler.
     
-    * **invitees**: An array of objects containing information about new participants who are invited to the call.
+    * **invitees**: Object arrays that contain information about participants invited to a call.
     
-    * **devices**: A map containing information about the initial devices that are used in the call.
+    * **devices**: Information map about the devices used in a call.
     
-    * **userInfo**: The JS object containing information about the participant opening the meeting (e.g.,email).
+    * **userInfo**: The JS object that contains information about the participant opening the meeting (e.g.,email).
 
-Example:
+      Example:
 
 ```javascript
 const domain = 'meet.jit.si';
@@ -99,7 +111,7 @@ const api = new JitsiMeetExternalAPI(domain, options);
 
 You can override options set in the **`config.js`** file and the **`interface_config.js`** using the **configOverwrite** and **interfaceConfigOverwrite** objects, respectively.
 
-For example, to enable the filmstrip-only interface mode, use the following:
+For example, to enable the **`filmstripOnly`** interface mode, use the following:
 
 ```javascript
 const options = {
@@ -784,12 +796,12 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
 ```
 **NOTE: The format of the invitees in the array depends on the invite service used for the deployment.**
 
-You can remove the embedded Jitsi Meet Conference with the following API function:
+You can remove the embedded Jitsi Meet Conference using the following function:
 ```javascript
 api.dispose();
 ```
 
-NOTE: It's a good practice to remove the conference before the page is unloaded.
+NOTE: Jitsi recommends removing the before the page is unloaded.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

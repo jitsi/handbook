@@ -21,11 +21,13 @@ For self-hosted on your domain:
 meet.jit.si:
 ```javascript
 <script src='https://meet.jit.si/external_api.js'></script>
+
 ```
 
-For example"
+For example:
 
 ```javascript
+```
 
 ## **Creating the Jitsi Meet API object**
 

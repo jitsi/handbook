@@ -9,6 +9,10 @@ Additional functionality includes embedding the globally distributed and highly 
 
 Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner of the implementation.
 
+You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
+
+* Installation
+
 ## **Installation** ????
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
@@ -161,7 +165,7 @@ const api = new JitsiMeetExternalAPI(domain, options);
 ```
 Note: **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
-### Controlling the embedded Jitsi Meet Conference
+## **Controlling the embedded Jitsi Meet Conference**
 
 Use the following objects to control your embedded Jitsi Meet Conference.
 

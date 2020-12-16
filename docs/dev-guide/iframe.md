@@ -322,7 +322,7 @@ The following commands are currently supported:
 
 * **displayName** - Sets the display name of the local participant. 
 
-This command requires one argument - the new display name to be set.
+This command requires one argument to set the new display name.
 
 ```javascript
 api.executeCommand('displayName', 'New Nickname');

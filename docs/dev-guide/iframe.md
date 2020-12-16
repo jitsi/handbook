@@ -11,7 +11,7 @@ Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner 
 
 ## **Installation** ????
 
-To enable the Jitsi Meet API in your application you must use one of the following JavaScript Jitsi Meet API library scripts and integrate it into your appication:
+To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
 
 For self-hosted on your domain:
 ```javascript
@@ -37,7 +37,6 @@ The Meet API object takes the following form:
 
 **`api = new JitsiMeetExternalAPI(domain, options)`**
 
-
 The API object constructor uses the following options:
 
 * **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
@@ -52,23 +51,23 @@ The API object constructor uses the following options:
     
     The width argument has the following characteristics:
     
-    -- If a number is specified it is treated as pixel units.
+    -- A numerical value indicates the width in pixel units.
     
     -- If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
     
-    * **height**: The height for the created Iframe. 
+    * **height**: The height for the created IFrame. 
     
     The height argument has the following characteristics: 
     
-    -- If a number is specified it is treated as pixel units.
+    -- A numerical value indicates the height in pixel units.
     
     -- If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
     
-    * **parentNode**: The HTML DOM Element where the Iframe is added as a child.
+    * **parentNode**: The HTML DOM Element where the IFrame is added as a child.
     
-    * **configOverwrite**: The JavaScript (JS) object with overrides for options defined in the **`config.js`** file.
+    * **configOverwrite**: The JS object with overrides for options defined in the [config.js] file.
     
-    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the **`interface_config.js`** file.
+    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the [interface_config.js] file.
     
     * **noSSL**: (Boolean) Indicates if the server should be contacted using HTTP or HTTPS. The default value is **`false`**.
     
@@ -82,7 +81,7 @@ The API object constructor uses the following options:
     
     * **userInfo**: The JS object that contains information about the participant opening the meeting (e.g.,email).
 
-      Example:
+      For example:
 
 ```javascript
 const domain = 'meet.jit.si';
@@ -94,8 +93,7 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-
-You can set the initial media devices for the call:
+You can set the initial media devices for the call using the following:
 
 ```javascript
 const domain = 'meet.jit.si';
@@ -113,7 +111,7 @@ const api = new JitsiMeetExternalAPI(domain, options);
 
 You can override options set in the [config.js] file and the [interface_config.js] file using the **configOverwrite** and **interfaceConfigOverwrite** objects, respectively.
 
-For example, to enable the **`filmstripOnly`** interface mode, use the following:
+For example, to enable the **`filmstripOnly`** interface mode use the following:
 
 ```javascript
 const options = {
@@ -125,7 +123,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can also pass a JWT token to Jitsi Meet using the following:
+To pass a JWT token to Jitsi Meet use the following:
 
  ```javascript
 const options = {
@@ -136,7 +134,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
  ```
 
-You can set the **`userInfo`** (e.g., email, display name) for the call:
+You can set the **`userInfo`** (e.g., email, display name) for the call using the following:
 
 ```javascript
 var domain = "meet.jit.si";
@@ -164,6 +162,8 @@ const api = new JitsiMeetExternalAPI(domain, options);
 Note: **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
 ### Controlling the embedded Jitsi Meet Conference
+
+Use the following objects to control the your embedded Jitsi Meet Conference.
 
 * **captureLargeVideoScreenshot** - Captures the screenshot for a large video.
 

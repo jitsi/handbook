@@ -79,7 +79,7 @@ The API object constructor uses the following options:
     
     * **devices**: Information map about the devices used in a call.
     
-    * **userInfo**: The JS object that contains information about the participant opening the meeting (e.g.,email).
+    * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g.,email).
 
       For example:
 
@@ -163,7 +163,7 @@ Note: **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value 
 
 ### Controlling the embedded Jitsi Meet Conference
 
-Use the following objects to control the your embedded Jitsi Meet Conference.
+Use the following objects to control your embedded Jitsi Meet Conference.
 
 * **captureLargeVideoScreenshot** - Captures the screenshot for a large video.
 
@@ -236,7 +236,7 @@ api.getParticipantsInfo();
 ```javascript
 api.getVideoQuality();
 ```
-* **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
+* **isDeviceChangeAvailable** - Resolves to true if the device change is available and to false if not.
 
 ```javascript
 // The accepted deviceType values are - 'output', 'input' or undefined.
@@ -244,51 +244,52 @@ api.isDeviceChangeAvailable(deviceType).then(isDeviceChangeAvailable => {
     ...
 });
 ```
-* **isDeviceListAvailable** - Resolves with true if the device list is available and with false if not.
+* **isDeviceListAvailable** - Resolves to true if the device list is available and to false if not.
 
 ```javascript
 api.isDeviceListAvailable().then(isDeviceListAvailable => {
     ...
 });
 ```
-* **isMultipleAudioInputSupported** - Resolves with true if multiple audio input is supported and with false if not.
+* **isMultipleAudioInputSupported** - Resolves to true if multiple audio input is supported and to false if not.
 
 ```javascript
 api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
     ...
 });
 ```
-* **pinParticipant** - Elects the participant with the given id to be the pinned participant in order to always receive video for this participant (even when last n is enabled).
+* **pinParticipant** - ???? Elects the participant with the given id to be the pinned participant in order to always receive video for this participant (even when last n is enabled).
 
 ```javascript
 api.pinParticipant(participantId);
 ```
-* **resizeLargeVideo** - Resizes the large video container as per the dimensions provided.
+* **resizeLargeVideo** - Resizes the large video container per the provided dimensions.
 
 ```javascript
 api.resizeLargeVideo(width, height);
 ```
-* **setAudioInputDevice** - Sets the audio input device to the one with the label or id that is passed.
+* **setAudioInputDevice** - Sets the audio input device to the one with the passed label or ID.
 
 ```javascript
 api.setAudioInputDevice(deviceLabel, deviceId);
 ```
-* **setAudioOutputDevice** - Sets the audio output device to the one with the label or id that is passed.
+* **setAudioOutputDevice** - Sets the audio output device to the one with the passed label or ID.
 
 ```javascript
 api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
-* **setLargeVideoParticipant** - Displays the participant with the participant id (Jid) that is passed on the large video. If no participant id is passed, a particpant will be picked based on the dominant/pinned speaker settings.
+* **setLargeVideoParticipant** - Displays the participant with the participant ID (Jid) that is passed on the large video. If no participant ID is passed, a particpant is picked based on the dominant/pinned speaker settings.
 
 ```javascript
 api.setLargeVideoParticipant(participantId);
 ```
-* **setVideoInputDevice** - Sets the video input device to the one with the label or id that is passed.
+* **setVideoInputDevice** - Sets the video input device to the one with the passed label or ID.
 
 ```javascript
 api.setVideoInputDevice(deviceLabel, deviceId);
 ```
 * **startRecording** - Starts a file recording or streaming session.
+
 
 ```javascript
 api.startRecording(options);
@@ -300,20 +301,29 @@ api.startRecording(options);
 api.startRecording(mode);
 ```
 
-You can control the embedded Jitsi Meet conference by calling `executeCommand` on the `JitsiMeetExternalAPI` object:
+You can control the embedded Jitsi Meet conference by calling **`executeCommand`** on the **`JitsiMeetExternalAPI`** object:
 
 ```javascript
 api.executeCommand(command, ...arguments);
 ```
+## **Commands**
 
-The `command` parameter is a string containing the name of the command. The following commands are currently supported:
+The **`command`** parameter is a string containing the command name. 
 
-* **displayName** - Sets the display name of the local participant. This command requires one argument - the new display name to be set.
+The following commands are currently supported:
+
+* **displayName** - Sets the display name of the local participant. 
+
+This command requires one argument - the new display name to be set.
+
 ```javascript
 api.executeCommand('displayName', 'New Nickname');
 ```
 
-* **password** - Sets the password for the room. This command requires one argument - the password name to be set.
+* **password** - Sets the password for the room. 
+
+This command requires one argument - the password name to be set.
+
 ```javascript
 // set new password for channel
 api.addEventListener('participantRoleChanged', function(event) {
@@ -328,7 +338,10 @@ api.on('passwordRequired', function ()
 });
 ```
 
-* **toggleLobby** - Toggles the lobby mode on or off. This command requires one argument - the desired state of lobby mode.
+* **toggleLobby** - Toggles the lobby mode on or off. 
+
+This command requires one argument - the desired state of lobby mode.
+
 ```javascript
 api.addEventListener('participantRoleChanged', function (event) {
     if(event.role === 'moderator') {
@@ -337,7 +350,8 @@ api.addEventListener('participantRoleChanged', function (event) {
 });
 ```
 
-* **sendTones** - Play touch tones.
+* **sendTones** - Enables the playing of touch tones.
+
 ```javascript
 api.executeCommand('sendTones', {
     tones: string, // The dial pad touch tones to play. For example, '12345#'.
@@ -346,12 +360,17 @@ api.executeCommand('sendTones', {
 });
 ```
 
-* **subject** - Sets the subject of the conference. This command requires one argument - the new subject to be set.
+* **subject** - Sets the subject of the conference. 
+
+This command requires one argument - the new subject to be set.
+
 ```javascript
 api.executeCommand('subject', 'New Conference Subject');
 ```
 
-* **toggleAudio** - Mutes / unmutes the audio for the local participant. No arguments are required.
+* **toggleAudio** - Mutes / unmutes the audio for the local participant. 
+
+No arguments are required.
 ```javascript
 api.executeCommand('toggleAudio');
 ```

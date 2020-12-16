@@ -13,9 +13,9 @@ You can find all you need to get started and managing your Jitsi implementation 
 
 * [Installation](#Installation)
 
-* Creating the Jitsi Meet API object
+* [Creating the Jitsi Meet API object](#Creating the Jitsi Meet API object)
 
-* 
+* []
 
 ## **Installation** ????
 
@@ -286,7 +286,9 @@ api.setAudioInputDevice(deviceLabel, deviceId);
 ```javascript
 api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
-* **setLargeVideoParticipant** - Displays the participant with the participant ID (Jid) that is passed on the large video. If no participant ID is passed, a particpant is picked based on the dominant/pinned speaker settings.
+* **setLargeVideoParticipant** - Displays the participant with the participant ID (Jid) that is passed on the large video.
+
+If no participant ID is passed, a particpant is picked based on the dominant/pinned speaker settings.
 
 ```javascript
 api.setLargeVideoParticipant(participantId);
@@ -298,11 +300,9 @@ api.setVideoInputDevice(deviceLabel, deviceId);
 ```
 * **startRecording** - Starts a file recording or streaming session.
 
-
 ```javascript
 api.startRecording(options);
 ```
-
 * **stopRecording** - Stops an ongoing file recording or streaming session.
 
 ```javascript
@@ -316,7 +316,7 @@ api.executeCommand(command, ...arguments);
 ```
 ## **Commands**
 
-The **`command`** parameter is a string containing the command name. 
+The **`command`** parameter is a string which contains the command name. 
 
 The following commands are currently supported:
 
@@ -327,10 +327,9 @@ This command requires one argument - the new display name to be set.
 ```javascript
 api.executeCommand('displayName', 'New Nickname');
 ```
-
 * **password** - Sets the password for the room. 
 
-This command requires one argument - the password name to be set.
+Set the password name as the command's single argument.
 
 ```javascript
 // set new password for channel
@@ -345,7 +344,6 @@ api.on('passwordRequired', function ()
     api.executeCommand('password', 'The Password');
 });
 ```
-
 * **toggleLobby** - Toggles the lobby mode on or off. 
 
 This command requires one argument - the desired state of lobby mode.
@@ -475,7 +473,7 @@ api.executeCommands({
     toggleAudio: []
 });
 ```
-
+---------------------------
 You can add event listeners to the embedded Jitsi Meet using the `addEventListener` method.
 **NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods (`addListener` or `on`).**
 ```javascript

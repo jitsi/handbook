@@ -3,7 +3,7 @@ id: dev-guide-iframe
 title: IFrame API
 ---
 
-Embedding the Jitsi 8x8 Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The API provides a full compliment of comprehensive meeting features in the Jitsi implementation leads to successful meeting engagement and future positive interactions.
+Embedding the Jitsi 8x8 Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The API provides a full compliment of comprehensive meeting features.
 
 Your Jitsi 8x8 meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your colleagues and stakeholders anywhere in the world eliminating the need for any travel or inconvenience.
 
@@ -354,7 +354,7 @@ api.on('passwordRequired', function ()
 ```
 * **toggleLobby** - Toggles the lobby mode on or off. 
 
-This command requires one argument - the desired state of lobby mode.
+This command requires the desired lobby mode state as the argument.
 
 ```javascript
 api.addEventListener('participantRoleChanged', function (event) {
@@ -364,7 +364,7 @@ api.addEventListener('participantRoleChanged', function (event) {
 });
 ```
 
-* **sendTones** - Enables the playing of touch tones.
+* **sendTones** - Enables touch tone playing.
 
 ```javascript
 api.executeCommand('sendTones', {
@@ -376,25 +376,32 @@ api.executeCommand('sendTones', {
 
 * **subject** - Sets the subject of the conference. 
 
-This command requires one argument - the new subject to be set.
+This command requires the new subject to be set as the argument.
 
 ```javascript
 api.executeCommand('subject', 'New Conference Subject');
 ```
 
-* **toggleAudio** - Mutes / unmutes the audio for the local participant. 
+* **toggleAudio** - Mutes and unmutes the audio for the local participant. 
 
 No arguments are required.
+
 ```javascript
 api.executeCommand('toggleAudio');
 ```
 
-* **toggleVideo** - Mutes / unmutes the video for the local participant. No arguments are required.
+* **toggleVideo** - Mutes and unmutes the video for the local participant. 
+
+No arguments are required.
+
 ```javascript
 api.executeCommand('toggleVideo');
 ```
 
-* **toggleFilmStrip** - Hides / shows the filmstrip. No arguments are required.
+* **toggleFilmStrip** - Hide or show the filmstrip. 
+
+No arguments are required.
+
 ```javascript
 api.executeCommand('toggleFilmStrip');
 ```

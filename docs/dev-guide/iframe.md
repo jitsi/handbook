@@ -324,7 +324,7 @@ api.executeCommand(command, ...arguments);
 ```
 ## **Commands**
 
-The **`command`** parameter is a string which contains the command name. 
+The command parameter is a string which contains the command name. 
 
 The following commands are currently supported:
 
@@ -406,49 +406,76 @@ No arguments are required.
 api.executeCommand('toggleFilmStrip');
 ```
 
-* **toggleChat** - Hides / shows the chat. No arguments are required.
+* **toggleChat** - Hide or show chat messaging. 
+
+No arguments are required.
+
 ```javascript
 api.executeCommand('toggleChat');
 ```
 
-* **toggleShareScreen** - Starts / stops screen sharing. No arguments are required.
+* **toggleShareScreen** - Start or stop screen sharing. 
+
+No arguments are required.
+
 ```javascript
 api.executeCommand('toggleShareScreen');
 ```
 
-* **toggleTileView** - Enter / exit tile view layout mode. No arguments are required.
+* **toggleTileView** - Enter or exit the tile view layout mode. 
+
+No arguments are required.
+
 ```javascript
 api.executeCommand('toggleTileView');
 ```
 
-* **hangup** - Hangups the call. No arguments are required.
+* **hangup** - Hangups the call. 
+
+No arguments are required.
+
 ```javascript
 api.executeCommand('hangup');
 ```
 
-* **email** - Changes the local email address. This command requires one argument - the new email address to be set.
+* **email** - Changes the local email address. 
+
+This command requires the new email address as the single argument.
+
 ```javascript
 api.executeCommand('email', 'example@example.com');
 ```
 
-* **avatarUrl** - Changes the local avatar URL. This command requires one argument - the new avatar URL to be set.
+* **avatarUrl** - Changes the local avatar URL. 
+
+This command requires the new avatar URL to be set as the single argument.
+
 ```javascript
 api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
 ```
 
-* **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
+* **sendEndpointTextMessage** - Sends a text message to another participant through the data channels.
+
 ```javascript
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```
 
-* **setLargeVideoParticipant** - Displays the given participant on the large video. The participant with the particpant id (Jid) if specified will be displayed on the large video. If no argument is passed, the participant to be displayed on the large video will be automatically selected based on the dominant/pinned speaker settings.
+* **setLargeVideoParticipant** - Displays the given participant on the large video.
+
+The particpant ID (Jid), if specified, will be displayed on the large video. If no argument is passed, the participant to be displayed on the large video will be automatically selected based on the dominant/pinned speaker settings.
+
 ```javascript
 api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 ```
-* **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
+
+* **setVideoQuality** - Sets the send and receive video resolution. 
+
+The resolution height is the single argument to add.
+
 ```javascript
 api.executeCommand('setVideoQuality', 720);
 ```
+
 * **muteEveryone** - Mute all the other participants. It can only be executed by a moderator. No arguments are required.
 ```javascript
 api.executeCommand('muteEveryone');
@@ -471,6 +498,7 @@ api.executeCommand('startRecording', {
 ```
 
 * **stopRecording** - Stops an ongoing recording, `stream` or `file`.
+
 ```javascript
 api.executeCommand('stopRecording', 
     mode: string //recording mode to stop, `stream` or `file`
@@ -478,10 +506,11 @@ api.executeCommand('stopRecording',
 ```
 
 You can also execute multiple commands using the `executeCommands` method:
+
 ```javascript
 api.executeCommands(commands);
 ```
-The `commands` parameter is an object with the names of the commands as keys and the arguments for the commands as values:
+The **`commands`** parameter is an object with the names of the commands as keys and the arguments for the commands as values:
 ```javascript
 api.executeCommands({
     displayName: [ 'nickname' ],

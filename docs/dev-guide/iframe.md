@@ -460,9 +460,9 @@ api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/367164
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```
 
-* **setLargeVideoParticipant** - Displays the given participant on the large video.
+* **setLargeVideoParticipant** - Displays the a participant on the large video display.
 
-The particpant ID (Jid), if specified, will be displayed on the large video. If no argument is passed, the participant to be displayed on the large video will be automatically selected based on the dominant/pinned speaker settings.
+The particpant ID (Jid), if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large video is automatically selected based on the dominant/pinned speaker settings.
 
 ```javascript
 api.executeCommand('setLargeVideoParticipant', 'abcd1234');
@@ -470,21 +470,30 @@ api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 
 * **setVideoQuality** - Sets the send and receive video resolution. 
 
-The resolution height is the single argument to add.
+The resolution height setting is implemented using a single argument.
 
 ```javascript
 api.executeCommand('setVideoQuality', 720);
 ```
 
-* **muteEveryone** - Mute all the other participants. It can only be executed by a moderator. No arguments are required.
+* **muteEveryone** - Mute all meeting participants. 
+
+This command can only be executed by the meeting moderator. No arguments are required.
+
 ```javascript
 api.executeCommand('muteEveryone');
 ```
-* **startRecording** - Starts a file recording or streaming session depending on the passed on params.
-  - for RTMP streaming, recording `mode` should be `stream` and `rtmpStreamKey` must be provided. `rtmpBroadcastID` is optional.
-  - for YouTube streams, recording `mode` should be `stream` and `youtubeStreamKey` must be provided. `youtubeBroadcastID` is optional.
-  - for Dropbox recording, recording `mode` should be `file` and a dropbox oauth2 token must be provided. Also dropbox saving should be enabled on the used jitsi meet deploy config.
-  - for file recording, recording `mode` should be `file` and optionally `shouldShare` could be passed on. No other params should be passed.
+
+* **startRecording** - Starts a file recording or streaming session using passed parameters:
+
+  - **RTMP streaming** - recording mode set to **`stream`** with an **`rtmpStreamKey`**. The **`rtmpBroadcastID`** value is optional.
+  
+  - **YouTube streams** - recording mode set to **`stream`** with an **`youtubeStreamKey`**. The **`youtubeBroadcastID`** value is optional.
+  
+  - **Dropbox recording** - recording mode set to **`file`** with a Dropbox OAuth2 token. Additionally, Dropbox saving should be enabled on the  jitsi meet deploy config you are using.
+  
+  - **File recording** - recording mode set to **`file`**. Optionally, **`shouldShare`** should be passed on. No other params are required.
+  
 ```javascript
 api.executeCommand('startRecording', {
     mode: string //recording mode, either `file` or `stream`.
@@ -497,7 +506,7 @@ api.executeCommand('startRecording', {
 });
 ```
 
-* **stopRecording** - Stops an ongoing recording, `stream` or `file`.
+* **stopRecording** - Stops an ongoing **`stream`** or **`file`** recording.
 
 ```javascript
 api.executeCommand('stopRecording', 
@@ -505,30 +514,44 @@ api.executeCommand('stopRecording',
 );
 ```
 
-You can also execute multiple commands using the `executeCommands` method:
+## **Multiple command execution**
+
+You can also execute multiple commands using the **`executeCommands`** method:
 
 ```javascript
 api.executeCommands(commands);
 ```
+
 The **`commands`** parameter is an object with the names of the commands as keys and the arguments for the commands as values:
+
 ```javascript
 api.executeCommands({
     displayName: [ 'nickname' ],
     toggleAudio: []
 });
 ```
----------------------------
-You can add event listeners to the embedded Jitsi Meet using the `addEventListener` method.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods (`addListener` or `on`).**
+
+## **Event listeners**
+You can add event listeners to the embedded Jitsi Meet using the **`addEventListener`** method.
+
+**NOTE**: The **`addEventListener`** still exists but it is deprecated.  The JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods (`addListener` or `on`).
+
 ```javascript
 api.addEventListener(event, listener);
 ```
 
-The `event` parameter is a String object with the name of the event.
-The `listener` parameter is a Function object with one argument that will be notified when the event occurs with data related to the event.
+The **`event`** parameter is a string object with the name of the event.
 
-The following events are currently supported:
-* **cameraError** - event notifications about Jitsi-Meet having failed to access the camera. The listener will receive an object with the following structure:
+The **`listener`** parameter is a Function object with one argument that will be notified when the event occurs with data related to the event.
+
+### **Supported listener events**
+
+The following listener events are currently supported:
+
+* **`cameraError`** - provides event notifications about Jitsi-Meet having failed to access the camera. 
+
+The listener will receive an object with the following structure:
+
 ```javascript
 {
     type: string, // A constant representing the overall type of the error.
@@ -536,8 +559,10 @@ The following events are currently supported:
 }
 ```
 
-* **avatarChanged** - event notifications about avatar
-changes. The listener will receive an object with the following structure:
+* **`avatarChanged`** - provides event notifications about changes to a meeting avatar. 
+
+The listener will receive an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his avatar.
@@ -545,22 +570,30 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **audioAvailabilityChanged** - event notifications about audio availability status changes. The listener will receive an object with the following structure:
+* **`audioAvailabilityChanged`** - provides event notifications about changes to audio availability status. 
+
+The listener will receive an object with the following structure:
+
 ```javascript
 {
     available: boolean // new available status - boolean
 }
 ```
 
-* **audioMuteStatusChanged** - event notifications about audio mute status changes. The listener will receive an object with the following structure:
+* **`audioMuteStatusChanged`** - provides event notifications about changes to audio mute status.
+
+The listener will receive an object with the following structure:
+
 ```javascript
 {
     muted: boolean // new muted status - boolean
 }
 ```
 
-* **endpointTextMessageReceived** - event notifications about a text message received through datachannels.
+* **`endpointTextMessageReceived`** - provides event notifications about a text messages received through data channels.
+
 The listener will receive an object with the following structure:
+
 ```javascript
 {
     senderInfo: {
@@ -574,14 +607,20 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **largeVideoChanged** - receives event notification about the change in the participant displayed on the large video. The listener will receive an object with the following structure.
+* **`largeVideoChanged`** - provides event notifications about changes in the large video display. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string // id of the participant that is now on large video in the stage view.
 }
 ```
 
-* **log** - event notifications about logs being written with the log level being one of the values specified in [config.js] on the apiLogLevels property (if none specified, this event will not fire). The listener will receive an object with the following structure:
+* **`log`** - provides log event notifications with the log level being one of the values specified in the [config.js] file in the **`apiLogLevels`** property (if not specified the event does not fire). 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     logLevel: string, // A constant representing the log type (info, error, debug, warn).
@@ -589,7 +628,10 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **micError** - event notifications about Jitsi-Meet having failed to access the mic. The listener will receive an object with the following structure:
+* **`micError`** - provides event notifications about Jitsi-Meet issues with mic access. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     type: string, // A constant representing the overall type of the error.
@@ -597,7 +639,10 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **screenSharingStatusChanged** - receives event notifications about turning on/off the local user screen sharing. The listener will receive object with the following structure:
+* **`screenSharingStatusChanged`** - provides event notifications about either turning on or off local user screen sharing. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     on: boolean, //whether screen sharing is on
@@ -611,22 +656,30 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **dominantSpeakerChanged** - receives event notifications about change in the dominant speaker. The listener will receive object with the following structure:
+* **`dominantSpeakerChanged`** - provides event notifications about dominant speaker changes.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string //participantId of the new dominant speaker
 }
 ```
 
-* **tileViewChanged** - event notifications about tile view layout mode being entered or exited. The listener will receive object with the following structure:
+* **`tileViewChanged`** - provides event notifications about entrance or exit from the tile view layout mode.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     enabled: boolean, // whether tile view is not displayed or not
 }
 ```
 
-* **incomingMessage** - Event notifications about incoming
-messages. The listener will receive an object with the following structure:
+* **`incomingMessage`** - provides event notifications about incoming messages. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     from: string, // The id of the user that sent the message
@@ -635,16 +688,20 @@ messages. The listener will receive an object with the following structure:
 }
 ```
 
-* **outgoingMessage** - Event notifications about outgoing
-messages. The listener will receive an object with the following structure:
+* **`outgoingMessage`** - provides event notifications about outgoing messages. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     message: string // the text of the message
 }
 ```
 
-* **displayNameChange** - event notifications about display name
-changes. The listener will receive an object with the following structure:
+* **displayNameChange** - provides event notifications about display name changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his display name
@@ -652,7 +709,9 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **deviceListChanged** - event notifications about device list changes. The listener will receive an object with the following structure:
+* **deviceListChanged** - provides event notifications about device list changes. 
+
+The listener will receive an object with the following structure:
 ```javascript
 {
     devices: Object // the new list of available devices.

@@ -382,6 +382,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
+| meet.securemeet.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.securemeet.ch&latest) |  |
 | open.meet.switch.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=open.meet.switch.ch&latest) | SWITCH |
 | swiss-meet.hidora.com |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=swiss-meet.hidora.com&latest) | HIDORA |
 | vidconf.tech4good.ch |  ✅  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=vidconf.tech4good.ch&latest) | VTX Services SA  |

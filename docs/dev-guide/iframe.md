@@ -428,7 +428,7 @@ No arguments are required.
 api.executeCommand('toggleTileView');
 ```
 
-* **hangup** - Hangups the call. 
+* **hangup** - Hangups (concludes) the call. 
 
 No arguments are required.
 
@@ -458,7 +458,7 @@ api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/367164
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```
 
-* **setLargeVideoParticipant** - Displays the a participant on the large video display.
+* **setLargeVideoParticipant** - Displays the participant on the large video display.
 
 The particpant ID (Jid), if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large video is automatically selected based on the dominant/pinned speaker settings.
 
@@ -484,13 +484,14 @@ api.executeCommand('muteEveryone');
 
 * **startRecording** - Starts a file recording or streaming session using passed parameters:
 
-  - **RTMP streaming** - recording mode set to **`stream`** with an **`rtmpStreamKey`**. The **`rtmpBroadcastID`** value is optional.
+  - **RTMP streaming** - Recording mode set to **`stream`** with an **`rtmpStreamKey`**. The **`rtmpBroadcastID`** value is optional.
   
-  - **YouTube streams** - recording mode set to **`stream`** with an **`youtubeStreamKey`**. The **`youtubeBroadcastID`** value is optional.
+  - **YouTube streams** - Recording mode set to **`stream`** with an **`youtubeStreamKey`**. The **`youtubeBroadcastID`** value is optional.
   
-  - **Dropbox recording** - recording mode set to **`file`** with a Dropbox OAuth2 token. Additionally, Dropbox saving should be enabled on the  jitsi meet deploy config you are using.
+  - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token. Additionally, Dropbox saving should be enabled on the  jitsi meet deploy config you are using.
   
-  - **File recording** - recording mode set to **`file`**. Optionally, **`shouldShare`** should be passed on. No other params are required.
+  - **File recording** - Recording mode set to **`file`**. Optionally, **`shouldShare`** should be passed on. No other params are required.
+  
   
 ```javascript
 api.executeCommand('startRecording', {

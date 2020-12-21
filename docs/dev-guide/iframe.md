@@ -5,13 +5,11 @@ title: IFrame API
 
 Embedding the Jitsi 8x8 Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The API provides a full compliment of comprehensive meeting features.
 
-Your Jitsi 8x8 meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your colleagues and stakeholders anywhere in the world eliminating the need for any travel or inconvenience.
+Your Jitsi 8x8 meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your meeting participants anywhere in the world eliminating the need for any travel and the associated inconvenience.
 
-You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You are also welcome to use it for embedding the globally distributed and highly available deployment on meet.jit.si itself. The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
+The IFrame API enables you to embed Jitsi Meet functionality into your meeting application so you can experience the full functionality of the globally distributed and highly available deployment available with [meet.jit.si](meet.jit.si).
 
-You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You are also welcome to use it for embedding the globally distributed and highly available deployment on meet.jit.si itself. The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
-
-The IFrame API enables you to embed Jitsi Meet functionality into your meeting application so you can experience the full functionality of the ______.
+You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You are also welcome to use it for embedding the . The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
 
 Additional functionality includes embedding the globally distributed and highly available deployment on meet.jit.si itself. 
 

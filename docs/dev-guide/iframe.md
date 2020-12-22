@@ -123,7 +123,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can override options set in the [config.js] file and the [interface_config.js] file using the **configOverwrite** and **interfaceConfigOverwrite** objects, respectively.
+You can override options set in the [config.js] file and the [interface_config.js] file using the **`configOverwrite`** and **`interfaceConfigOverwrite`** objects, respectively.
 
 For example, to enable the **`filmstripOnly`** interface mode use the following:
 
@@ -759,7 +759,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **participantKickedOut** - provides event notifications about a participants being removed from the room. 
+* **`participantKickedOut`** - provides event notifications about a participants being removed from the room. 
 
 The listener receives an object with the following structure:
 
@@ -775,7 +775,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **participantLeft** - provides event notifications about participants that leave the meeting room. 
+* **`participantLeft`** - provides event notifications about participants that leave the meeting room. 
 
 The listener receives an object with the following structure:
 
@@ -785,7 +785,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **participantRoleChanged** - provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant). 
+* **`participantRoleChanged`** - provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant). 
 
 The listener receives an object with the following structure:
 
@@ -796,9 +796,9 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **passwordRequired** - provides event notifications that fire when participants fail to join a password protected room.
+* **`passwordRequired`** - provides event notifications that fire when participants fail to join a password protected room.
 
-* **videoConferenceJoined** - provides event notifications that fire when the local user has joined the video conference. 
+* **`videoConferenceJoined`** - provides event notifications that fire when the local user has joined the video conference. 
 
 The listener receives an object with the following structure:
 
@@ -811,7 +811,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **videoConferenceLeft** - provides event notifications that fire when the local user has left the video conference.
+* **`videoConferenceLeft`** - provides event notifications that fire when the local user has left the video conference.
 
 The listener receives an object with the following structure:
 
@@ -821,7 +821,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **videoAvailabilityChanged** - provides event notifications about video availability status changes. 
+* **`videoAvailabilityChanged`** - provides event notifications about video availability status changes. 
 
 The listener receives an object with the following structure:
 
@@ -831,7 +831,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **videoMuteStatusChanged** - provides event notifications about video mute status changes. 
+* **`videoMuteStatusChanged`** - provides event notifications about video mute status changes. 
 
 The listener receives an object with the following structure:
 
@@ -841,7 +841,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **videoQualityChanged** -  provides event notifications about changes to video quality settings. 
+* **`videoQualityChanged`** -  provides event notifications about changes to video quality settings. 
 
 The listener receives an object with the following structure:
 
@@ -851,9 +851,9 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **readyToClose** - provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).
+* **`readyToClose`** - provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).
 
-* **subjectChange** - provides event notifications regarding the change of subject for a conference.
+* **`subjectChange`** - provides event notifications regarding the change of subject for a conference.
 
 The listener receives an object with the following structure:
 
@@ -863,13 +863,13 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **suspendDetected** - provides notifications about detecting suspended events in the host computer.
+* **`suspendDetected`** - provides notifications about detecting suspended events in the host computer.
 
 You can also add multiple event listeners by using **`addEventListeners`**.
 
 This method requires an object type as the single argument. The object argument must have the names of the events as keys and the even listeners as values.
 
-**NOTE: This method still exists but it is DEPRECATED. The `JitsiMeetExternalAPI` class extends [EventEmitter]. Use [EventEmitter] methods.**
+**NOTE: This method still exists but it is DEPRECATED. The `JitsiMeetExternalAPI` class extends [EventEmitter] methods. We recommend using [EventEmitter].**
 
 ```javascript
 function incomingMessageListener(object)
@@ -888,13 +888,15 @@ api.addEventListeners({
 });
 ```
 
-If you want to remove a listener you can use `removeEventListener` method with argument the name of the event.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods( `removeListener`).**
+If you want to remove a listener you can use the **`removeEventListener`** method with the name of the event as the argument.
+
+**NOTE: This method still exists but it is deprecated. The JitsiMeetExternalAPI class extends [EventEmitter] methods. We recommend using [EventEmitter] methods.( `removeListener`).**
+
 ```javascript
 api.removeEventListener('incomingMessage');
 ```
 
-If you want to remove more than one event you can use `removeEventListeners` method with an Array with the names of the events as an argument.
+If you want to remove more than one event you can use the **`removeEventListeners`** method with an Array with the names of the events as an argument.
 **NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
 ```javascript
 api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);

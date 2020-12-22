@@ -213,6 +213,7 @@ api.getAvailableDevices().then(devices => {
     ...
 });
 ```
+
 * **getCurrentDevices** - Retrieve a list of currently selected devices.
 
 ```javascript
@@ -541,7 +542,7 @@ api.addEventListener(event, listener);
 
 The **`event`** parameter is a string object with the name of the event.
 
-The **`listener`** parameter is a Function object with one argument that will be notified when the event occurs with data related to the event.
+The **`listener`** parameter is a function object with one argument that will be notified when the event occurs with data related to the event.
 
 ### **Supported listener events**
 
@@ -549,7 +550,7 @@ The following listener events are currently supported:
 
 * **`cameraError`** - provides event notifications about Jitsi-Meet having failed to access the camera. 
 
-The listener will receive an object with the following structure:
+The listener receives an object with the following structure:
 
 ```javascript
 {
@@ -560,7 +561,7 @@ The listener will receive an object with the following structure:
 
 * **`avatarChanged`** - provides event notifications about changes to a meeting avatar. 
 
-The listener will receive an object with the following structure:
+The listener receives an object with the following structure:
 
 ```javascript
 {
@@ -571,7 +572,7 @@ The listener will receive an object with the following structure:
 
 * **`audioAvailabilityChanged`** - provides event notifications about changes to audio availability status. 
 
-The listener will receive an object with the following structure:
+The listener receives an object with the following structure:
 
 ```javascript
 {
@@ -581,7 +582,7 @@ The listener will receive an object with the following structure:
 
 * **`audioMuteStatusChanged`** - provides event notifications about changes to audio mute status.
 
-The listener will receive an object with the following structure:
+The listener receives an object with the following structure:
 
 ```javascript
 {
@@ -591,7 +592,7 @@ The listener will receive an object with the following structure:
 
 * **`endpointTextMessageReceived`** - provides event notifications about a text messages received through data channels.
 
-The listener will receive an object with the following structure:
+The listener receives an object with the following structure:
 
 ```javascript
 {
@@ -710,37 +711,47 @@ The listener receives an object with the following structure:
 
 * **deviceListChanged** - provides event notifications about device list changes. 
 
-The listener will receive an object with the following structure:
+The listener receives an object with the following structure:
+
 ```javascript
 {
     devices: Object // the new list of available devices.
 }
 ```
-NOTE: The devices object has the same format as the getAvailableDevices result format.
 
-* **emailChange** - event notifications about email
-changes. The listener will receive an object with the following structure:
+NOTE: The **`device`** object has the same format as the **`getAvailableDevices`** result format.
+
+* **emailChange** - provides event notifications about email changes.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his email
     email: string // the new email
 }
 ```
-* **feedbackSubmitted** - event notifications about conference feedback submission
+
+* **feedbackSubmitted** - provides event notifications about conference feedback submission.
+
 ```javascript
 {
     error: string // The error which occurred during submission, if any.
 }
 ```
 
-* **filmstripDisplayChanged** - event notifications about the visibility of the filmstrip being updated.
+* **filmstripDisplayChanged** - provides event visibility notifications for the filmstrip that is being updated.
+
 ```javascript
 {
     visible: boolean // Whether or not the filmstrip is displayed or hidden.
 }
 ```
 
-* **participantJoined** - event notifications about new participants who join the room. The listener will receive an object with the following structure:
+* **participantJoined** - provides event notifications about new participants who join the room.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant
@@ -748,7 +759,10 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **participantKickedOut** - event notifications about a participants being removed from the room. The listener will receive an object with the following structure:
+* **participantKickedOut** - provides event notifications about a participants being removed from the room. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     kicked: {
@@ -761,14 +775,20 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **participantLeft** - event notifications about participants that leave the room. The listener will receive an object with the following structure:
+* **participantLeft** - provides event notifications about participants that leave the meeting room. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string // the id of the participant
 }
 ```
 
-* **participantRoleChanged** - event notification fired when the role of the local user has changed (none, moderator, participant). The listener will receive an object with the following structure:
+* **participantRoleChanged** - provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant). 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string // the id of the participant
@@ -776,9 +796,12 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **passwordRequired** - event notifications fired when failing to join a room because it has a password.
+* **passwordRequired** - provides event notifications that fire when participants fail to join a password protected room.
 
-* **videoConferenceJoined** - event notifications fired when the local user has joined the video conference. The listener will receive an object with the following structure:
+* **videoConferenceJoined** - provides event notifications that fire when the local user has joined the video conference. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     roomName: string, // the room name of the conference
@@ -788,28 +811,40 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **videoConferenceLeft** - event notifications fired when the local user has left the video conference. The listener will receive an object with the following structure:
+* **videoConferenceLeft** - provides event notifications that fire when the local user has left the video conference.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     roomName: string // the room name of the conference
 }
 ```
 
-* **videoAvailabilityChanged** - event notifications about video availability status changes. The listener will receive an object with the following structure:
+* **videoAvailabilityChanged** - provides event notifications about video availability status changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     available: boolean // new available status - boolean
 }
 ```
 
-* **videoMuteStatusChanged** - event notifications about video mute status changes. The listener will receive an object with the following structure:
+* **videoMuteStatusChanged** - provides event notifications about video mute status changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     muted: boolean // new muted status - boolean
 }
 ```
 
-* **videoQualityChanged** -  event notifications about video quality settings changes. The listener will receive an object with the following structure:
+* **videoQualityChanged** -  provides event notifications about changes to video quality settings. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     videoQuality: number // the height of the resolution related to the new video quality setting.

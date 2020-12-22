@@ -851,22 +851,25 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **readyToClose** - event notification fired when Jitsi Meet is ready to be closed (hangup operations are completed).
+* **readyToClose** - provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).
 
-* **subjectChange** - event notifications about subject of conference changes.
-The listener will receive an object with the following structure:
+* **subjectChange** - provides event notifications regarding the change of subject for a conference.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     subject: string // the new subject
 }
 ```
 
-* **suspendDetected** - event notifications about detecting suspend event in host computer.
+* **suspendDetected** - provides notifications about detecting suspended events in the host computer.
 
-You can also add multiple event listeners by using `addEventListeners`.
-This method requires one argument of type Object. The object argument must
-have the names of the events as keys and the listeners of the events as values.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
+You can also add multiple event listeners by using **`addEventListeners`**.
+
+This method requires an object type as the single argument. The object argument must have the names of the events as keys and the even listeners as values.
+
+**NOTE: This method still exists but it is DEPRECATED. The `JitsiMeetExternalAPI` class extends [EventEmitter]. Use [EventEmitter] methods.**
 
 ```javascript
 function incomingMessageListener(object)

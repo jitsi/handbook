@@ -2,14 +2,13 @@
 id: dev-guide-iframe
 title: IFrame API
 ---
+# **Introduction**
 
 Embedding the Jitsi 8x8 Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The API provides a full compliment of comprehensive meeting features.
 
 Your Jitsi 8x8 meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your meeting participants anywhere in the world eliminating the need for any travel and the associated inconvenience.
 
 The IFrame API enables you to embed Jitsi Meet functionality into your meeting application so you can experience the full functionality of the globally distributed and highly available deployment available with [meet.jit.si](meet.jit.si).
-
-You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You are also welcome to use it for embedding the . The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
 
 Additional functionality includes embedding the globally distributed and highly available deployment on meet.jit.si itself. 
 
@@ -23,11 +22,18 @@ You can find all you need to get started and managing your Jitsi implementation 
 
 * []
 
+* []
+
+* []
+
+* []
+
 ## **Installation** ????
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
 
-For self-hosted on your domain:
+For self-hosting in your domain:
+
 ```javascript
 <script src='https://<your-domain>/external_api.js'></script>
 ```
@@ -107,6 +113,7 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
+
 You can set the initial media devices for the call using the following:
 
 ```javascript
@@ -126,6 +133,7 @@ const api = new JitsiMeetExternalAPI(domain, options);
 You can override options set in the [config.js] file and the [interface_config.js] file using the **`configOverwrite`** and **`interfaceConfigOverwrite`** objects, respectively.
 
 For example, to enable the **`filmstripOnly`** interface mode use the following:
+
 
 ```javascript
 const options = {
@@ -161,9 +169,10 @@ var options = {
 }
 var api = new JitsiMeetExternalAPI(domain, options);
 ```
+
 **Configuring the tile view**
 
-You can configure the maximum number of columns in the tile view by overriding the **`TILE_VIEW_MAX_COLUMNS`** property from the [interface_config.js] file via the **interfaceConfigOverwrite** object:
+You can configure the maximum number of columns in the tile view by overriding the **`TILE_VIEW_MAX_COLUMNS`** property from the [interface_config.js] file via the **`interfaceConfigOverwrite`** object:
 
 ```javascript
 const options = {

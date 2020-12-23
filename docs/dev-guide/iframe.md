@@ -897,65 +897,77 @@ api.removeEventListener('incomingMessage');
 ```
 
 If you want to remove more than one event you can use the **`removeEventListeners`** method with an Array with the names of the events as an argument.
+
 **NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
+
 ```javascript
 api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);
 ```
 
-You can get the number of participants in the conference with the following API function:
+You can get the number of conference participants using the following API function:
+
 ```javascript
 const numberOfParticipants = api.getNumberOfParticipants();
 ```
 
-You can get the avatar URL of a participant in the conference with the following API function:
+You can get the conference participant's avatar URL using the following API function:
+
 ```javascript
 const avatarURL = api.getAvatarURL(participantId);
 ```
 
-You can get the display name of a participant in the conference with the following API function:
+You can get the conference participant's display name using the following API function:
+
 ```javascript
 const displayName = api.getDisplayName(participantId);
 ```
 
-You can get the email of a participant in the conference with the following API function:
+You can get the email of a conference participant using the following API function:
+
 ```javascript
 const email = api.getEmail(participantId);
 ```
 
-You can get the iframe HTML element where Jitsi Meet is loaded with the following API function:
+You can get the IFrame HTML element from Jitsi Meet using the following API function:
+
 ```javascript
 const iframe = api.getIFrame();
 ```
 
-You can check whether the audio is muted with the following API function:
+You can check whether audio is muted using the following API function:
+
 ```javascript
 api.isAudioMuted().then(muted => {
     ...
 });
 ```
 
-You can check whether the video is muted with the following API function:
+You can check whether video is muted using the following API function:
+
 ```javascript
 api.isVideoMuted().then(muted => {
     ...
 });
 ```
 
-You can check whether the audio is available with the following API function:
+You can check whether audio is available using the following API function:
+
 ```javascript
 api.isAudioAvailable().then(available => {
     ...
 });
 ```
 
-You can check whether the video is available with the following API function:
+You can check whether video is available using the following API function:
+
 ```javascript
 api.isVideoAvailable().then(available => {
     ...
 });
 ```
 
-You can invite new participants to the call with the following API function:
+You can invite new participants to the call using the following API function:
+
 ```javascript
 api.invite([ {...}, {...}, {...} ]).then(() => {
     // success
@@ -963,14 +975,15 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-**NOTE: The format of the invitees in the array depends on the invite service used for the deployment.**
+**NOTE: The invitee format in the array depends on the invite service used for the deployment.**
 
 You can remove the embedded Jitsi Meet Conference using the following function:
+
 ```javascript
 api.dispose();
 ```
 
-NOTE: Jitsi recommends removing the before the page is unloaded.
+**NOTE: Jitsi recommends removing the conference before the page is unloaded.**
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

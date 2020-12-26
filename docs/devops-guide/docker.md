@@ -163,6 +163,18 @@ Variable | Description | Example
 `JIGASI_SIP_PORT` | SIP server port | 5060
 `JIGASI_SIP_TRANSPORT` | SIP transport | UDP
 
+#### Display Dial-In information
+
+Variable | Description | Example
+--- | --- | ---
+`DIALIN_NUMBERS_URL` | URL to the JSON with all Dial-In numbers | https://meet.example.com/dialin.json
+`CONFCODE_URL` | URL to the API for checking/generating Dial-In codes | https://jitsi-api.jitsi.net/conferenceMapper
+
+The JSON with the Dial-In numbers should look like this:
+```
+{"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
+```
+
 ### JItsi BRoadcasting Infrastructure (Jibri) configuration
 
 Before running Jibri, you need to set up an ALSA loopback device on the host. This **will not**

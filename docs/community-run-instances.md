@@ -234,7 +234,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	meet.kobschaetzki.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.kobschaetzki.de&latest)	   |  	myLoc managed IT AG	  |
 |  	meet.leinelab.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.leinelab.org&latest)	   |  	Contabo GmbH	  |
 |  	meet.linus-neumann.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.linus-neumann.de&latest)	   |  	AS250.net Foundation	  |
-|  	meet.lrz.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.lrz.de&latest)	   |  	Leibniz-Rechenzentrum	  |
 |  	meet.lug-stormarn.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.lug-stormarn.de&latest)	   |  		  |
 |  	meet.meerfarbig.net	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.meerfarbig.net&latest)	   |  	meerfarbig GmbH & Co. KG	  |
 |  	meet.neanderfunk.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.neanderfunk.de&latest)	   |  	Hetzner Online GmbH	  |
@@ -285,7 +284,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 *    https://vct.testsrv.gwdg.de -- DFN (valid GWDG account is required for creating new rooms)
 *    https://jitsi.tu-dresden.de -- DFN (valid TU Dresden account is required for creating new rooms)
 *    https://meet.b-tu.de -- DFN (valid BTU Cottbus-Senftenberg account is required for creating new rooms)
-
+*    https://meet.lrz.de/ -- valid Münchner Wissenschaftsnetz account is required for creating new rooms
 
 ### Italy <a id="italy"></a>
 

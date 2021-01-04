@@ -18,7 +18,7 @@ You can find all you need to get started and managing your Jitsi implementation 
 
 * [Installation](#Installation)
 
-* [Creating the Jitsi Meet API object](#Creating the Jitsi Meet API object)
+* [Creating the Jitsi Meet API object](#Creating)
 
 * [Configuring the tile view](#Configuring the tile view)
 

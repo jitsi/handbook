@@ -179,7 +179,7 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-Note: **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
+**Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
 ## **Controlling the embedded Jitsi Meet Conference**
 
@@ -548,7 +548,7 @@ api.executeCommands({
 ## **Event listeners**
 You can add event listeners to the embedded Jitsi Meet using the **`addEventListener`** method.
 
-**NOTE**: The **`addEventListener`** still exists but it is deprecated.  The **`JitsiMeetExternalAPI`** class extends [EventEmitter]. Use [EventEmitter] methods (e.g., **`addListener`** or **`on`**).
+**NOTE:** The **`addEventListener`** still exists but it is deprecated.  The **`JitsiMeetExternalAPI`** class extends [EventEmitter]. Use [EventEmitter] methods (e.g., **`addListener`** or **`on`**).
 
 ```javascript
 api.addEventListener(event, listener);
@@ -733,7 +733,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-NOTE: The **`device`** object has the same format as the **`getAvailableDevices`** result format.
+**NOTE:** The **`device`** object has the same format as the **`getAvailableDevices`** result format.
 
 * **emailChange** - provides event notifications about email changes.
 
@@ -883,7 +883,7 @@ You can also add multiple event listeners by using **`addEventListeners`**.
 
 This method requires an object type as the single argument. The object argument must have the names of the events as keys and the event listeners as values.
 
-**NOTE: This method exists but it is DEPRECATED. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. We recommend using [EventEmitter].**
+**NOTE:** This method exists but it is **DEPRECATED**. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. We recommend using [EventEmitter].
 
 ```javascript
 function incomingMessageListener(object)
@@ -904,7 +904,7 @@ api.addEventListeners({
 
 If you want to remove a listener you can use the **`removeEventListener`** method with the name of the event as the argument.
 
-**NOTE: This method still exists but it is deprecated. The JitsiMeetExternalAPI class extends [EventEmitter] methods. We recommend using [EventEmitter] methods.( `removeListener`).**
+**NOTE:** This method still exists but it is **DEPRECATED**. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. We recommend using [EventEmitter] methods.(e.g., **`removeListener`**).
 
 ```javascript
 api.removeEventListener('incomingMessage');
@@ -912,7 +912,7 @@ api.removeEventListener('incomingMessage');
 
 If you want to remove more than one event you can use the **`removeEventListeners`** method with an Array with the names of the events as an argument.
 
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
+**NOTE:** This method still exists but it is **DEPRECATED**. The **`JitsiMeetExternalAPI`** class extends [EventEmitter]. Use [EventEmitter] methods.**
 
 ```javascript
 api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);
@@ -989,7 +989,7 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-**NOTE: The invitee format in the array depends on the invite service used for the deployment.**
+**NOTE:** The invitee format in the array depends on the invite service used for the deployment.
 
 You can remove the embedded Jitsi Meet Conference using the following function:
 
@@ -997,7 +997,7 @@ You can remove the embedded Jitsi Meet Conference using the following function:
 api.dispose();
 ```
 
-**NOTE: Jitsi recommends removing the conference before the page is unloaded.**
+**NOTE:** Jitsi recommends removing the conference before the page is unloaded.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

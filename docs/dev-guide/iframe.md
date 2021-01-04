@@ -59,7 +59,7 @@ The API object constructor uses the following options:
 * **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
 
 * **options**: The object with properties. 
-
+=
   Optional arguments include:
   
     * **roomName**: The name of the room to join.
@@ -220,7 +220,7 @@ api.getAvailableDevices().then(devices => {
 });
 ```
 
-* **getCurrentDevices** - Retrieve a list of currently selected devices.
+* **getCurrentDevices** - Retrieves a list of currently selected devices.
 
 ```javascript
 api.getCurrentDevices().then(devices => {
@@ -247,7 +247,7 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
-* **getParticipantsInfo** - Returns an array containing participant information such as ID, display name, avatar URL. and email.
+* **getParticipantsInfo** - Returns an array containing participant information such as ID, display name, avatar URL, and email.
 
 ```javascript
 api.getParticipantsInfo();
@@ -279,7 +279,7 @@ api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
     ...
 });
 ```
-* **pinParticipant** - ???? Elects the participant with the given id to be the pinned participant in order to always receive video for this participant (even when last n is enabled).
+* **pinParticipant** - Selects the participant ID to be the pinned participant in order to always receive video for this participant (even when last enabled).
 
 ```javascript
 api.pinParticipant(participantId);
@@ -301,7 +301,7 @@ api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
 * **setLargeVideoParticipant** - Displays the participant with the participant ID (Jid) that is passed on the large video.
 
-If no participant ID is passed, a particpant is picked based on the dominant/pinned speaker settings.
+If no participant ID is passed, a particpant is picked based on the dominant, pinned speaker settings.
 
 ```javascript
 api.setLargeVideoParticipant(participantId);
@@ -327,11 +327,12 @@ You can control the embedded Jitsi Meet conference by calling **`executeCommand`
 ```javascript
 api.executeCommand(command, ...arguments);
 ```
+
 ## **Commands**
 
 The command parameter is a string which contains the command name. 
 
-The following commands are currently supported:
+The following commands are supported:
 
 * **displayName** - Sets the display name of the local participant. 
 
@@ -370,6 +371,8 @@ api.addEventListener('participantRoleChanged', function (event) {
 ```
 
 * **sendTones** - Enables touch tone playing.
+
+No arguments are required.
 
 ```javascript
 api.executeCommand('sendTones', {
@@ -435,7 +438,7 @@ No arguments are required.
 api.executeCommand('toggleTileView');
 ```
 
-* **hangup** - Hangups (concludes) the call. 
+* **hangup** - Concludes or ends the call. 
 
 No arguments are required.
 
@@ -495,10 +498,13 @@ api.executeCommand('muteEveryone');
   
   - **YouTube streams** - Recording mode set to **`stream`** with an **`youtubeStreamKey`**. The **`youtubeBroadcastID`** value is optional.
   
-  - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token. Additionally, Dropbox saving should be enabled on the  jitsi meet deploy config you are using.
+  - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token. 
   
-  - **File recording** - Recording mode set to **`file`**. Optionally, **`shouldShare`** should be passed on. No other params are required.
+  Additionally, Dropbox saving should be enabled on the Jitsi meet deploy config you are using.
   
+  - **File recording** - Recording mode set to **`file`**. 
+  
+  Optionally, **`shouldShare`** should be passed on. No other params are required.
   
 ```javascript
 api.executeCommand('startRecording', {
@@ -513,6 +519,8 @@ api.executeCommand('startRecording', {
 ```
 
 * **stopRecording** - Stops an ongoing **`stream`** or **`file`** recording.
+
+No other params are required.
 
 ```javascript
 api.executeCommand('stopRecording', 
@@ -540,7 +548,7 @@ api.executeCommands({
 ## **Event listeners**
 You can add event listeners to the embedded Jitsi Meet using the **`addEventListener`** method.
 
-**NOTE**: The **`addEventListener`** still exists but it is deprecated.  The JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods (`addListener` or `on`).
+**NOTE**: The **`addEventListener`** still exists but it is deprecated.  The **`JitsiMeetExternalAPI`** class extends [EventEmitter]. Use [EventEmitter] methods (e.g., **`addListener`** or **`on`**).
 
 ```javascript
 api.addEventListener(event, listener);
@@ -548,13 +556,13 @@ api.addEventListener(event, listener);
 
 The **`event`** parameter is a string object with the name of the event.
 
-The **`listener`** parameter is a function object with one argument that will be notified when the event occurs with data related to the event.
+The **`listener`** parameter is a function object with one argument that creates a notification when the event occurs along with related event data.
 
 ### **Supported listener events**
 
 The following listener events are currently supported:
 
-* **`cameraError`** - provides event notifications about Jitsi-Meet having failed to access the camera. 
+* **`cameraError`** - provides event notifications about Jitsi-Meet having failed to access the meeting camera. 
 
 The listener receives an object with the following structure:
 
@@ -710,7 +718,7 @@ The listener receives an object with the following structure:
 
 ```javascript
 {
-    id: string, // the id of the participant that changed his display name
+    id: string, // the id of the participant that changed their display name
     displayname: string // the new display name
 }
 ```
@@ -738,7 +746,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **feedbackSubmitted** - provides event notifications about conference feedback submission.
+* **feedbackSubmitted** - provides event notifications about conference feedback submissions.
 
 ```javascript
 {
@@ -765,7 +773,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **`participantKickedOut`** - provides event notifications about a participants being removed from the room. 
+* **`participantKickedOut`** - provides event notifications about participants being removed from the room. 
 
 The listener receives an object with the following structure:
 
@@ -873,9 +881,9 @@ The listener receives an object with the following structure:
 
 You can also add multiple event listeners by using **`addEventListeners`**.
 
-This method requires an object type as the single argument. The object argument must have the names of the events as keys and the even listeners as values.
+This method requires an object type as the single argument. The object argument must have the names of the events as keys and the event listeners as values.
 
-**NOTE: This method still exists but it is DEPRECATED. The `JitsiMeetExternalAPI` class extends [EventEmitter] methods. We recommend using [EventEmitter].**
+**NOTE: This method exists but it is DEPRECATED. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. We recommend using [EventEmitter].**
 
 ```javascript
 function incomingMessageListener(object)
@@ -910,7 +918,7 @@ If you want to remove more than one event you can use the **`removeEventListener
 api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);
 ```
 
-You can get the number of conference participants using the following API function:
+You can obtain the number of conference participants using the following API function:
 
 ```javascript
 const numberOfParticipants = api.getNumberOfParticipants();

@@ -20,13 +20,15 @@ You can find all you need to get started and managing your Jitsi implementation 
 
 * [Creating the Jitsi Meet API object](#Creating the Jitsi Meet API object)
 
-* []
+* [Configuring the tile view](#Configuring the tile view)
 
-* []
+* [Controlling the embedded Jitsi Meet Conference](#Controlling the embedded Jitsi Meet Conference)
 
-* []
+* [Commands](#Commands)
 
-* []
+* [Multiple command execution](#Multiple command execution)
+
+* [Event listeners](#Event listeners)
 
 ## **Installation** ????
 

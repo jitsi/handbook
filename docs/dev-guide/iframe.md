@@ -16,7 +16,7 @@ Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner 
 
 You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
 
-* [Installation](##Installation)
+* [Installation](#Installation)
 
 * [Creating the Jitsi Meet API object](#Creating the Jitsi Meet API object)
 
@@ -24,13 +24,13 @@ You can find all you need to get started and managing your Jitsi implementation 
 
 * [Controlling the embedded Jitsi Meet Conference](#Controlling the embedded Jitsi Meet Conference)
 
-* [Commands](##Commands)
+* [Commands](#Commands)
 
 * [Multiple command execution](#Multiple command execution)
 
 * [Event listeners](#Event listeners)
 
-## **Installation** ????
+## **Installation**
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
 
@@ -44,11 +44,6 @@ meet.jit.si:
 ```javascript
 <script src='https://meet.jit.si/external_api.js'></script>
 
-```
-
-For example:
-
-```javascript
 ```
 
 ## **Creating the Jitsi Meet API object**

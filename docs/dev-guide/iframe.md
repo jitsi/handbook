@@ -4,15 +4,15 @@ title: IFrame API
 ---
 # **Introduction**
 
-Embedding the Jitsi 8x8 Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The API provides a full compliment of comprehensive meeting features.
+Embedding the Jitsi 8x8 Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The Meet API provides a full compliment of comprehensive meeting features.
 
-Your Jitsi 8x8 meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your meeting participants anywhere in the world eliminating the need for any travel and the associated inconvenience.
+Your Jitsi 8x8 meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your meeting participants anywhere in the world eliminating the need for travel and the associated inconvenience.
 
 The IFrame API enables you to embed Jitsi Meet functionality into your meeting application so you can experience the full functionality of the globally distributed and highly available deployment available with [meet.jit.si](meet.jit.si).
 
-Additional functionality includes embedding the globally distributed and highly available deployment on meet.jit.si itself. 
+You can also embed and integrate the globally distributed and highly available deployment on the meet.jit.si platform itself. 
 
-Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner of the implementation.
+**Note:** As a courtesy, Jitsi respectfully requests that you not remove the **`jitsi.org`** logo from the top left corner of the implementation.
 
 You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
 

@@ -16,19 +16,19 @@ Note: Jitsi ask that you not remove the jitsi.org logo from the top left corner 
 
 You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
 
-* [Installation](#Installation)
+* [Installation](#installation)
 
 * [Creating the Jitsi Meet API object](#creating-the-jitsi-meet-api-object)
 
-* [Configuring the tile view](#Configuring the tile view)
+* [Configuring the tile view](#configuring-the-tile-view)
 
-* [Controlling the embedded Jitsi Meet Conference](#Controlling the embedded Jitsi Meet Conference)
+* [Controlling the embedded Jitsi Meet Conference](#controlling-the-embedded-jitsi-meet-conference)
 
-* [Commands](#Commands)
+* [Commands](#commands)
 
-* [Multiple command execution](#Multiple command execution)
+* [Multiple command execution](#multiple-command-execution)
 
-* [Event listeners](#Event listeners)
+* [Event listeners](#event-listeners)
 
 ## **Installation**
 

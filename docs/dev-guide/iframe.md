@@ -12,8 +12,6 @@ The IFrame API enables you to embed Jitsi Meet functionality into your meeting a
 
 You can also embed and integrate the globally distributed and highly available deployment on the meet.jit.si platform itself. 
 
-**Note:** As a courtesy, Jitsi respectfully requests that you not remove the **`jitsi.org`** logo from the top left corner of the implementation.
-
 You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
 
 * [Installation](#installation)

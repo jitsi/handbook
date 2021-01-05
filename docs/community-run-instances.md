@@ -1,6 +1,6 @@
 ---
 id: community-instances
-title: Community run instances
+title: Community-run Jitsi Meet instances
 ---
 
 ## Official Servers
@@ -12,7 +12,7 @@ title: Community run instances
 
 You can use [DNS Lookup](https://www.ultratools.com/tools/dnsLookupResult), [GeoIP Lookup](https://www.ultratools.com/tools/geoIpResult), and [KeyCDN Geo Tool](https://tools.keycdn.com/geo) to find out more about each server's location.
 
-* 📃 Server list, text file: [2020-11-26, 254 servers](https://gitlab.com/flavoursofopenscience/grav/-/raw/master/pages/09.community-run-open-source-tools-for-video-and-text-collaboration/20201126-jitsi-list-254-servers.txt)  
+* 📃 Server list, text file: [2020-12-06, 260 servers](https://gitlab.com/flavoursofopenscience/grav/-/raw/master/pages/02.community-run-open-source-tools-for-video-and-text-collaboration/20201206-jitsi-list-260-servers.txt)  
 * 🖥️ [@FavStarMafia](https://fediverse.blog/~/DonsBlog/videochat-server) (script-based)
 * 🖥️ [@Framasoft](https://framatalk.org/accueil/en/info/) (France)
 * 🖥️ [@ChaosComputerClub](https://pads.ccc.de/jitsiliste) (CCC, Germany)
@@ -47,11 +47,13 @@ Next to its native webclient interface, Jitsi Meet is also available as
 
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
+| easyconference.uibk.ac.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=easyconference.uibk.ac.at&latest) | University of Innsbruck  |
+| meet.epicenter.works  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.epicenter.works&latest) |  Nessus GmbH  |
 | fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) |  |
+| meet.adsimple.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.adsimple.at&latest) | Next Layer Telekom- und Beratungs GmbH   |
 | meet.bitblaze.io |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.bitblaze.io&latest) | Next Layer Telekom- und Beratungs GmbH   |
 | meet.graz.social  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.graz.social&latest) |    |
-| meet.adsimple.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.adsimple.at&latest) | Next Layer Telekom- und Beratungs GmbH   |
-| easyconference.uibk.ac.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=easyconference.uibk.ac.at&latest) | University of Innsbruck  |
+
 
 ### Belarus <a id="belarus"></a>
 
@@ -131,6 +133,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	talk.ouvaton.coop	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.ouvaton.coop&latest)	   |  	Inulogic Sarl
 |  	avecvous.linagora.com	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=avecvous.linagora.com&latest)	   |  	 |
 |  	jitsi.laas.fr	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.laas.fr&latest)	   |  	 |
+|  	video.omicro.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=video.omicro.org&latest)	   |  	OVH SAS
 |  	video.devloprog.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=video.devloprog.org&latest)	   |  	Bouygues Telecom SA
 |  	videoconf.faimaison.net	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=videoconf.faimaison.net&latest)	   |  	Association FAImaison
 |  	videoconf.wevox.eu	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=videoconf.wevox.eu&latest)	   |  	OVH SAS
@@ -186,7 +189,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	jitsi.5711.org   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.5711.org&latest)	   |  	Hetzner Online GmbH	  |
 |  	jitsi.debian.social	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.debian.social&latest)	   |  	Hetzner Online GmbH	  |
 |  	jitsi.dorf-post.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.dorf-post.de&latest)	   |  		  |
-|  	jitsi.fem.tu-ilmenau.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.fem.tu-ilmenau.de&latest)	   |  	DFN	  |
 |  	jitsi.flyingcircus.io	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.flyingcircus.io&latest)	   |  	KAMP Netzwerkdienste GmbH	  |
 |  	jitsi.freifunk-duesseldorf.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.freifunk-duesseldorf.de&latest)	   |  	Freifunk Duesseldorf e.V.	  |
 |  	jitsi.hamburg.ccc.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hamburg.ccc.de&latest)	   |  	Hetzner Online GmbH	  |
@@ -194,13 +196,10 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	jitsi.jotbe.reunite.earth	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.jotbe.reunite.earth&latest)	   |  		  |
 |  	jitsi.komun.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.komun.org&latest)	   |  	Contabo GmbH	  |
 |  	jitsi.linux.it	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.linux.it&latest)	   |  	Hetzner Online GmbH	  |
-|  	jitsi.mpi-bremen.de	   |  	 ✅ -- 📞	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.mpi-bremen.de&latest)	   |  	DFN	  |
 |  	jitsi.netways.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.netways.de&latest)	   |  	NETWAYS GmbH	  |
-|  	jitsi.osna.social	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.osna.social&latest)	   |  	DFN	  |
 |  	jitsi.piratenpartei-duesseldorf.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.piratenpartei-duesseldorf.de&latest)	   |  	Contabo GmbH	  |
 |  	jitsi.sixtopia.net	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.sixtopia.net&latest)	   |  	Alexej Senderkin	  |
 |  	jitsi.timlukas.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.timlukas.de&latest)	   |  	AS-CHOOPA	  |
-|  	jitsi.uni-due.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.uni-due.de&latest)	   |  	DFN	  |
 |  	jitsi.uni-kl.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.uni-kl.de&latest)	   |  	    Technische Universitaet Kaiserslautern	  |
 |  	jitsi.v3g.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.v3g.de&latest)	   |  	Liberty Global B.V.	  |
 |  	jitsi.zfn.uni-bremen.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.zfn.uni-bremen.de&latest)	   |  	DFN	  |
@@ -249,6 +248,8 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	meet.systemli.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.systemli.org&latest)	   |  	Digitale Partizipation e.V.	  |
 |  	meet.teckids.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.teckids.org&latest)	   |  	SpeedPartner GmbH	  |
 |  	meet.weimarnetz.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.weimarnetz.de&latest)	   |  	Foerderverein Freie Netzwerke e.V.	  |
+| meet.metalab.at |    |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.metalab.at&latest) | Hetzner Online GmbH |
+| jitsi.php-friends.de |    |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.php-friends.de&latest) | PhP-Friends GmbH |
 |  	meet2.adminforge.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet2.adminforge.de&latest)	   |  	Hetzner Online GmbH	  |
 |  	meeting.vm.uni-freiburg.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meeting.vm.uni-freiburg.de&latest)	   |  	Universitaet Freiburg	  |
 |  	talk.snopyta.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.snopyta.org&latest)	   |  	Hetzner Online GmbH	  |
@@ -270,6 +271,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.bjoernhaendler.de |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.bjoernhaendler.de&latest) | netcup GmbH |
 | meet.fuhrberg-digital.de |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.fuhrberg-digital.de&latest) | Strato AG |
 | jitsi.uni-due.de  |  ✅ - 📞 |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.uni-due.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+|  	jitsi.fem.tu-ilmenau.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.fem.tu-ilmenau.de&latest)	   |  	Verein zur Foerderung eines Deutschen Forschungsnetzes e.V. 	  |
 | jitsi.mpi-bremen.de  |  ✅ - 📞  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.mpi-bremen.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
 | meet.armstrong.zimt.uni-siegen.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.armstrong.zimt.uni-siegen.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
 | meet.ur.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.ur.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
@@ -384,6 +386,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |---|---|---|---|---|
 | meet.securemeet.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.securemeet.ch&latest) |  |
 | open.meet.switch.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=open.meet.switch.ch&latest) | SWITCH |
+| epfl.meet.switch.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=epfl.meet.switch.ch&latest) | SWITCH |
 | swiss-meet.hidora.com |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=swiss-meet.hidora.com&latest) | HIDORA |
 | vidconf.tech4good.ch |  ✅  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=vidconf.tech4good.ch&latest) | VTX Services SA  |
 | www.free-solutions.org | ✅ |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=www.free-solutions.org&latest) | VTX Services SA  |
@@ -488,6 +491,13 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
 |  ?  |    |   |   |   |
+
+### Sri Lanka  <a id="srilanka"></a>
+
+| URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
+|---|---|---|---|---|
+| meet.gov.lk |     |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.gov.lk&latest) | Information and Communication Technology Agency of Sri Lanka |
+
 
 ### Thailand <a id="thailand"></a>
 

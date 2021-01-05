@@ -1,6 +1,6 @@
 ---
 id: community-instances
-title: Community-run jits.i instances
+title: Community-run Jitsi Meet instances
 ---
 
 ## Official Servers

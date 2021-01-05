@@ -129,12 +129,11 @@ You can override options set in the [config.js] file and the [interface_config.j
 
 For example, to enable the **`filmstripOnly`** interface mode use the following:
 
-
 ```javascript
 const options = {
     ...
     configOverwrite: { startWithAudioMuted: true },
-    interfaceConfigOverwrite: { filmStripOnly: true },
+    interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true },
     ...
 };
 const api = new JitsiMeetExternalAPI(domain, options);

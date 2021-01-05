@@ -107,6 +107,12 @@ update-ca-certificates -f
 ```
 Note that the `-f` flag is necessary if there are symlinks left from a previous installation.
 
+If you are using a JDK package not provided by Debian, as the ones from adopjdk, you should also make your JDK aware of the new debian certificate keystore replacing or linking the JDK `cacerts`. Example, if you use JDK from adoptjdk:
+```
+cd /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre
+ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
+```
+
 Create conference focus user:
 ```sh
 prosodyctl register focus auth.jitsi.example.com YOURSECRET3

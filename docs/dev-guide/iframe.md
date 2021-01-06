@@ -639,7 +639,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **`micError`** - provides event notifications about Jitsi-Meet issues with mic access. 
+* **`micError`** - provides event notifications about Jitsi Meet issues with mic access. 
 
 The listener receives an object with the following structure:
 

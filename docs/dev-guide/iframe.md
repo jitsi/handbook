@@ -555,7 +555,7 @@ The **`event`** parameter is a string object with the name of the event.
 
 The **`listener`** parameter is a function object with one argument that creates a notification when the event occurs along with related event data.
 
-### **Supported listener events**
+### **Supported events**
 
 The following listener events are currently supported:
 

@@ -527,6 +527,14 @@ The listener will receive an object with the following structure:</li>
 }
 </code></pre>
 <ul>
+<li><strong>raiseHandUpdated</strong> - receives event notifications about the participant raising/lowering the hand. The listener will receive object with the following structure:</li>
+</ul>
+<pre><code class="hljs css language-javascript">{
+    <span class="hljs-attr">id</span>: string,         <span class="hljs-comment">// participantId of the user who raises/lowers the hand</span>
+    <span class="hljs-attr">handRaised</span>: boolean <span class="hljs-comment">// whether hand raised or lowered</span>
+}
+</code></pre>
+<ul>
 <li><strong>tileViewChanged</strong> - event notifications about tile view layout mode being entered or exited. The listener will receive object with the following structure:</li>
 </ul>
 <pre><code class="hljs css language-javascript">{

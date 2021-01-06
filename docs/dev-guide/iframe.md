@@ -559,7 +559,7 @@ The **`listener`** parameter is a function object with one argument that creates
 
 The following listener events are currently supported:
 
-* **`cameraError`** - provides event notifications about Jitsi-Meet having failed to access the meeting camera. 
+* **`cameraError`** - provides event notifications about Jitsi Meet having failed to access the meeting camera. 
 
 The listener receives an object with the following structure:
 

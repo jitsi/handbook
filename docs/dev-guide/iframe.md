@@ -497,7 +497,7 @@ api.executeCommand('muteEveryone');
   
   - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token. 
   
-  Additionally, Dropbox saving should be enabled on the Jitsi meet deploy config you are using.
+  Additionally, Dropbox saving should be enabled on the Jitsi Meet deploy config you are using.
   
   - **File recording** - Recording mode set to **`file`**. 
   

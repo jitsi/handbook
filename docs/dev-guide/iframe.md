@@ -508,6 +508,13 @@ The listener will receive an object with the following structure:
     id: string //participantId of the new dominant speaker
 }
 ```
+* **raiseHandUpdated** - receives event notifications about the participant raising/lowering the hand. The listener will receive object with the following structure:
+```javascript
+{
+    id: string,         // participantId of the user who raises/lowers the hand
+    handRaised: boolean // whether hand raised or lowered
+}
+```
 
 * **tileViewChanged** - event notifications about tile view layout mode being entered or exited. The listener will receive object with the following structure:
 ```javascript

@@ -14,7 +14,7 @@ You can also embed and integrate the globally distributed and highly available d
 
 You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
 
-* [Installation](#installation)
+* [Implementation](#implementation)
 
 * [Creating the Jitsi Meet API object](#creating-the-jitsi-meet-api-object)
 
@@ -28,7 +28,7 @@ You can find all you need to get started and managing your Jitsi implementation 
 
 * [Event listeners](#event-listeners)
 
-## **Installation**
+## **Integration**
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
 
@@ -46,7 +46,7 @@ meet.jit.si:
 
 ## **Creating the Jitsi Meet API object**
 
-After you have installed the Meet API library, you must then create the Jitsi Meet API object.
+After you have integrated the Meet API library, you must then create the Jitsi Meet API object.
 
 The Meet API object takes the following form:
 
@@ -54,7 +54,7 @@ The Meet API object takes the following form:
 
 The API object constructor uses the following options:
 
-* **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
+* **domain**: The domain used to build the conference URL (e.g., **`meet.jitsi`**).
 
 * **options**: The object with properties. 
 =
@@ -66,25 +66,21 @@ The API object constructor uses the following options:
     
     The width argument has the following characteristics:
     
-    -- A numerical value indicates the width in pixel units.
+    - A numerical value indicates the width in pixel units.
     
-    -- If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
+    - If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
     
     * **height**: The height for the created IFrame. 
     
     The height argument has the following characteristics: 
     
-    -- A numerical value indicates the height in pixel units.
+    - A numerical value indicates the height in pixel units.
     
-    -- If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
+    - If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
     
     * **parentNode**: The HTML DOM Element where the IFrame is added as a child.
     
     * **configOverwrite**: The JS object with overrides for options defined in the [config.js] file.
-    
-    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the [interface_config.js] file.
-    
-    * **noSSL**: (Boolean) Indicates if the server should be contacted using HTTP or HTTPS. The default value is **`false`**.
     
     * **jwt**: The [JWT](https://jwt.io/) token.
     
@@ -126,18 +122,6 @@ const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
 You can override options set in the [config.js] file and the [interface_config.js] file using the **`configOverwrite`** and **`interfaceConfigOverwrite`** objects, respectively.
-
-For example, to enable the **`filmstripOnly`** interface mode use the following:
-
-```javascript
-const options = {
-    ...
-    configOverwrite: { startWithAudioMuted: true },
-    interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true },
-    ...
-};
-const api = new JitsiMeetExternalAPI(domain, options);
-```
 
 To pass a JWT token to Jitsi Meet use the following:
 
@@ -340,8 +324,6 @@ api.executeCommand('displayName', 'New Nickname');
 ```
 * **password** - Sets the password for the room. 
 
-Set the password name as the command's single argument.
-
 ```javascript
 // set new password for channel
 api.addEventListener('participantRoleChanged', function(event) {
@@ -369,7 +351,7 @@ api.addEventListener('participantRoleChanged', function (event) {
 
 * **sendTones** - Enables touch tone playing.
 
-No arguments are required.
+This command requires the selected touch tone dial pads to play as well as the length of and time gap between tone play as the arguments. 
 
 ```javascript
 api.executeCommand('sendTones', {
@@ -497,7 +479,7 @@ api.executeCommand('muteEveryone');
   
   - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token. 
   
-  Additionally, Dropbox saving should be enabled on the Jitsi Meet deploy config you are using.
+  Additionally, Dropbox saving should be enabled on the Jitsi meet deploy config you are using.
   
   - **File recording** - Recording mode set to **`file`**. 
   
@@ -555,7 +537,7 @@ The **`event`** parameter is a string object with the name of the event.
 
 The **`listener`** parameter is a function object with one argument that creates a notification when the event occurs along with related event data.
 
-### **Supported events**
+### **Supported listener events**
 
 The following listener events are currently supported:
 

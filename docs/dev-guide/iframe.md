@@ -14,7 +14,7 @@ You can also embed and integrate the globally distributed and highly available d
 
 You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
 
-* [Implementation](#implementation)
+* [Integration](#integration)
 
 * [Creating the Jitsi Meet API object](#creating-the-jitsi-meet-api-object)
 
@@ -62,7 +62,7 @@ The API object constructor uses the following options:
     
     * **width**: The created IFrame width.
     
-    The width argument has the following characteristics:
+      The width argument has the following characteristics:
     
     - A numerical value indicates the width in pixel units.
     

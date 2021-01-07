@@ -2,7 +2,7 @@
 id: dev-guide-iframe
 title: IFrame API
 ---
-# **Introduction**
+# Introduction
 
 Embedding the Jitsi Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The Meet API provides a full compliment of comprehensive meeting features.
 
@@ -12,21 +12,7 @@ The IFrame API enables you to embed Jitsi Meet functionality into your meeting a
 
 You can also embed and integrate the globally distributed and highly available deployment on the [meet.jit.si](https://meet.jit.si/) platform itself. 
 
-You can find all you need to get started and managing your Jitsi implementation on this page. It includes the following topics:
-
-* [Integration](#integration)
-
-* [Creating the Jitsi Meet API object](#creating-the-jitsi-meet-api-object)
-
-* [Configuring the tile view](#configuring-the-tile-view)
-
-* [Controlling the embedded Jitsi Meet Conference](#controlling-the-embedded-jitsi-meet-conference)
-
-* [Commands](#commands)
-
-* [Multiple command execution](#multiple-command-execution)
-
-## **Integration**
+## Integration
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
 
@@ -42,7 +28,7 @@ meet.jit.si:
 
 ```
 
-## **Creating the Jitsi Meet API object**
+## Creating the Jitsi Meet API object
 
 After you have integrated the Meet API library, you must then create the Jitsi Meet API object.
 
@@ -146,7 +132,7 @@ var options = {
 var api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-**Configuring the tile view**
+Configuring the tile view
 
 You can configure the maximum number of columns in the tile view by overriding the **`TILE_VIEW_MAX_COLUMNS`** property from the [interface_config.js] file via the **`interfaceConfigOverwrite`** object:
 
@@ -160,7 +146,7 @@ const api = new JitsiMeetExternalAPI(domain, options);
 ```
 **Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
-## **Controlling the embedded Jitsi Meet Conference**
+## Controlling the embedded Jitsi Meet Conference
 
 Use the following objects to control your embedded Jitsi Meet Conference.
 
@@ -307,7 +293,7 @@ You can control the embedded Jitsi Meet conference by calling **`executeCommand`
 api.executeCommand(command, ...arguments);
 ```
 
-## **Commands**
+## Commands
 
 The command parameter is a string which contains the command name. 
 
@@ -505,7 +491,7 @@ api.executeCommand('stopRecording',
 );
 ```
 
-## **Multiple command execution**
+## Multiple command execution
 
 You can also execute multiple commands using the **`executeCommands`** method:
 
@@ -522,7 +508,7 @@ api.executeCommands({
 });
 ```
 
-## **EventEmitter**
+## EventEmitter
 
 Jitsi Meet incorporates use of [EventEmitter](https://angular.io/api/core/EventEmitter
 ) to receive custom event notifications synchronously or asynchronously. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. (e.g., **`addListener`** or **`on`**).

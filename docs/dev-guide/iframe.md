@@ -109,6 +109,17 @@ const api = new JitsiMeetExternalAPI(domain, options);
 
 You can override options set in the [config.js] file and the [interface_config.js] file using the **`configOverwrite`** and **`interfaceConfigOverwrite`** objects, respectively.
 
+For example:
+
+```javascript
+const options = {
+    ...
+    configOverwrite: { startWithAudioMuted: true },
+    interfaceConfigOverwrite: { DISABLE_DOMINANT_SPEAKER_INDICATOR: true },
+    ...
+};
+const api = new JitsiMeetExternalAPI(domain, options);
+```
 To pass a JWT token to Jitsi Meet use the following:
 
  ```javascript

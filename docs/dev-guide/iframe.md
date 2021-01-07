@@ -66,15 +66,15 @@ The API object constructor uses the following options:
     
       - A numerical value indicates the width in pixel units.
     
-    - If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
+      - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**.
     
     * **height**: The height for the created IFrame. 
     
-    The height argument has the following characteristics: 
+      The height argument has the following characteristics: 
     
-    - A numerical value indicates the height in pixel units.
+      - A numerical value indicates the height in pixel units.
     
-    - If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**. 
+      - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**. 
     
     * **parentNode**: The HTML DOM Element where the IFrame is added as a child.
     
@@ -88,7 +88,7 @@ The API object constructor uses the following options:
     
     * **devices**: Information map about the devices used in a call.
     
-    * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g.,email).
+    * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g., email).
 
       For example:
 
@@ -315,7 +315,7 @@ The following commands are supported:
 
 * **displayName** - Sets the display name of the local participant. 
 
-This command requires one argument to set the new display name.
+  This command requires one argument to set the new display name.
 
 ```javascript
 api.executeCommand('displayName', 'New Nickname');
@@ -337,7 +337,7 @@ api.on('passwordRequired', function ()
 ```
 * **toggleLobby** - Toggles the lobby mode on or off. 
 
-This command requires the desired lobby mode state as the argument.
+  This command requires the desired lobby mode state as the argument.
 
 ```javascript
 api.addEventListener('participantRoleChanged', function (event) {
@@ -349,7 +349,7 @@ api.addEventListener('participantRoleChanged', function (event) {
 
 * **sendTones** - Enables touch tone playing.
 
-This command requires the selected touch tone dial pads to play as well as the length of and time gap between tone play as the arguments. 
+  This command requires the selected touch tone dial pads to play as well as the length of and time gap between tone play as the arguments. 
 
 ```javascript
 api.executeCommand('sendTones', {
@@ -361,7 +361,7 @@ api.executeCommand('sendTones', {
 
 * **subject** - Sets the subject of the conference. 
 
-This command requires the new subject to be set as the argument.
+  This command requires the new subject to be set as the argument.
 
 ```javascript
 api.executeCommand('subject', 'New Conference Subject');
@@ -369,7 +369,7 @@ api.executeCommand('subject', 'New Conference Subject');
 
 * **toggleAudio** - Mutes and unmutes the audio for the local participant. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('toggleAudio');
@@ -377,7 +377,7 @@ api.executeCommand('toggleAudio');
 
 * **toggleVideo** - Mutes and unmutes the video for the local participant. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('toggleVideo');
@@ -385,7 +385,7 @@ api.executeCommand('toggleVideo');
 
 * **toggleFilmStrip** - Hide or show the filmstrip. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('toggleFilmStrip');
@@ -393,7 +393,7 @@ api.executeCommand('toggleFilmStrip');
 
 * **toggleChat** - Hide or show chat messaging. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('toggleChat');
@@ -401,7 +401,7 @@ api.executeCommand('toggleChat');
 
 * **toggleShareScreen** - Start or stop screen sharing. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('toggleShareScreen');
@@ -409,7 +409,7 @@ api.executeCommand('toggleShareScreen');
 
 * **toggleTileView** - Enter or exit the tile view layout mode. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('toggleTileView');
@@ -417,7 +417,7 @@ api.executeCommand('toggleTileView');
 
 * **hangup** - Concludes or ends the call. 
 
-No arguments are required.
+  No arguments are required.
 
 ```javascript
 api.executeCommand('hangup');
@@ -425,7 +425,7 @@ api.executeCommand('hangup');
 
 * **email** - Changes the local email address. 
 
-This command requires the new email address as the single argument.
+  This command requires the new email address as the single argument.
 
 ```javascript
 api.executeCommand('email', 'example@example.com');
@@ -433,7 +433,7 @@ api.executeCommand('email', 'example@example.com');
 
 * **avatarUrl** - Changes the local avatar URL. 
 
-This command requires the new avatar URL to be set as the single argument.
+  This command requires the new avatar URL to be set as the single argument.
 
 ```javascript
 api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
@@ -447,7 +447,7 @@ api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 
 * **setLargeVideoParticipant** - Displays the participant on the large video display.
 
-The particpant ID (Jid), if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large video is automatically selected based on the dominant/pinned speaker settings.
+  The particpant ID (Jid), if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.
 
 ```javascript
 api.executeCommand('setLargeVideoParticipant', 'abcd1234');
@@ -455,7 +455,7 @@ api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 
 * **setVideoQuality** - Sets the send and receive video resolution. 
 
-The resolution height setting is implemented using a single argument.
+  The resolution height setting is implemented using a single argument.
 
 ```javascript
 api.executeCommand('setVideoQuality', 720);
@@ -463,7 +463,7 @@ api.executeCommand('setVideoQuality', 720);
 
 * **muteEveryone** - Mute all meeting participants. 
 
-This command can only be executed by the meeting moderator. No arguments are required.
+  This command can only be executed by the meeting moderator. No arguments are required.
 
 ```javascript
 api.executeCommand('muteEveryone');
@@ -497,7 +497,7 @@ api.executeCommand('startRecording', {
 
 * **stopRecording** - Stops an ongoing **`stream`** or **`file`** recording.
 
-No other params are required.
+  No other params are required.
 
 ```javascript
 api.executeCommand('stopRecording', 

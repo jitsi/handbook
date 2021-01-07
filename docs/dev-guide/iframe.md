@@ -521,10 +521,8 @@ api.executeCommands({
 });
 ```
 
-## **Event listeners**
-You can add event listeners to the embedded Jitsi Meet using the **`addEventListener`** method.
-
-**NOTE:** The **`addEventListener`** still exists but it is deprecated.  The **`JitsiMeetExternalAPI`** class extends [EventEmitter]. Use [EventEmitter] methods (e.g., **`addListener`** or **`on`**).
+## Event listeners
+You can add event listeners to the embedded Jitsi Meet using the **`addEventListener`** method:
 
 ```javascript
 api.addEventListener(event, listener);
@@ -534,7 +532,7 @@ The **`event`** parameter is a string object with the name of the event.
 
 The **`listener`** parameter is a function object with one argument that creates a notification when the event occurs along with related event data.
 
-### **Supported listener events**
+### Supported listener events
 
 The following listener events are currently supported:
 
@@ -722,7 +720,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **feedbackSubmitted** - provides event notifications about conference feedback submissions.
+* **feedbackSubmitted** - provides event notifications about conference feedback submissions:
 
 ```javascript
 {
@@ -730,7 +728,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-* **filmstripDisplayChanged** - provides event visibility notifications for the filmstrip that is being updated.
+* **filmstripDisplayChanged** - provides event visibility notifications for the filmstrip that is being updated:
 
 ```javascript
 {
@@ -857,9 +855,7 @@ The listener receives an object with the following structure:
 
 You can also add multiple event listeners by using **`addEventListeners`**.
 
-This method requires an object type as the single argument. The object argument must have the names of the events as keys and the event listeners as values.
-
-**NOTE:** This method exists but it is **DEPRECATED**. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. We recommend using [EventEmitter].
+This method requires an object type as the single argument. The object argument must have the names of the events as keys and the event listeners as values:
 
 ```javascript
 function incomingMessageListener(object)
@@ -878,17 +874,13 @@ api.addEventListeners({
 });
 ```
 
-If you want to remove a listener you can use the **`removeEventListener`** method with the name of the event as the argument.
-
-**NOTE:** This method still exists but it is **DEPRECATED**. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. We recommend using [EventEmitter] methods.(e.g., **`removeListener`**).
+If you want to remove a listener you can use the **`removeEventListener`** method with the name of the event as the argument:
 
 ```javascript
 api.removeEventListener('incomingMessage');
 ```
 
-If you want to remove more than one event you can use the **`removeEventListeners`** method with an Array with the names of the events as an argument.
-
-**NOTE:** This method still exists but it is **DEPRECATED**. The **`JitsiMeetExternalAPI`** class extends [EventEmitter]. Use [EventEmitter] methods.**
+If you want to remove more than one event you can use the **`removeEventListeners`** method with an Array with the names of the events as an argument:
 
 ```javascript
 api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);
@@ -979,7 +971,3 @@ api.dispose();
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html
 
-## EventEmitter
-
-Jitsi Meet incorporates use of [EventEmitter](https://angular.io/api/core/EventEmitter
-) to receive custom event notifications synchronously or asynchronously. The **`JitsiMeetExternalAPI`** class extends [EventEmitter] methods. (e.g., **`addListener`** or **`on`**).

@@ -66,6 +66,8 @@ The API object constructor uses the following options:
     
     * **configOverwrite**: The JS object with overrides for options defined in the [config.js] file.
     
+    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the [interface_config.js] file.
+    
     * **jwt**: The [JWT](https://jwt.io/) token.
     
     * **onload**: The IFrame onload event handler.

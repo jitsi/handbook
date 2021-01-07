@@ -52,7 +52,7 @@ The Meet API object takes the following form:
 
 The API object constructor uses the following options:
 
-* **domain**: The domain used to build the conference URL (e.g., **`meet.jitsi`**).
+* **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
 
 * **options**: The object with properties. 
 =

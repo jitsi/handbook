@@ -64,7 +64,7 @@ The API object constructor uses the following options:
     
       The width argument has the following characteristics:
     
-    - A numerical value indicates the width in pixel units.
+      - A numerical value indicates the width in pixel units.
     
     - If a string is specified the format is a number followed by **`px`, `em`, `pt`, or `%`**.
     

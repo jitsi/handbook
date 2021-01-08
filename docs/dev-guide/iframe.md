@@ -13,7 +13,7 @@ The IFrame API enables you to embed Jitsi Meet functionality into your meeting a
 
 You can also embed and integrate the globally distributed and highly available deployment on the [meet.jit.si](https://meet.jit.si/) platform itself. 
 
-## Integration
+# Integration
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
 
@@ -29,7 +29,7 @@ meet.jit.si:
 
 ```
 
-## Creating the Jitsi Meet API object
+# Creating the Jitsi Meet API object
 
 After you have integrated the Meet API library, you must then create the Jitsi Meet API object.
 
@@ -160,11 +160,11 @@ const api = new JitsiMeetExternalAPI(domain, options);
 ```
 **Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
-## API
+# API
 
 Use the following API functions to control your embedded Jitsi Meet Conference.
 
-### captureLargeVideoScreenshot
+## captureLargeVideoScreenshot
 
 Captures a screenshot for the participant in the large video view (on stage).
 
@@ -174,7 +174,7 @@ api.captureLargeVideoScreenshot().then(dataURL => {
 });
 ```
 
-### getAvailableDevices
+## getAvailableDevices
 
 Retrieves a list of available devices.
 
@@ -204,7 +204,7 @@ api.getAvailableDevices().then(devices => {
 });
 ```
 
-### getCurrentDevices
+## getCurrentDevices
 
 Retrieves a list of currently selected devices.
 
@@ -234,7 +234,7 @@ api.getCurrentDevices().then(devices => {
 });
 ```
 
-### getParticipantsInfo
+## getParticipantsInfo
 
 Returns an array containing participant information such as ID, display name, avatar URL, and email.
 
@@ -242,7 +242,7 @@ Returns an array containing participant information such as ID, display name, av
 api.getParticipantsInfo();
 ```
 
-### getVideoQuality
+## getVideoQuality
 
 Returns the current video quality setting.
 
@@ -250,7 +250,7 @@ Returns the current video quality setting.
 api.getVideoQuality();
 ```
 
-### isDeviceChangeAvailable
+## isDeviceChangeAvailable
 
 Resolves to true if the device change is available and to false if not.
 
@@ -261,7 +261,7 @@ api.isDeviceChangeAvailable(deviceType).then(isDeviceChangeAvailable => {
 });
 ```
 
-### isDeviceListAvailable
+## isDeviceListAvailable
 
 Resolves to true if the device list is available and to false if not.
 
@@ -271,7 +271,7 @@ api.isDeviceListAvailable().then(isDeviceListAvailable => {
 });
 ```
 
-### isMultipleAudioInputSupported
+## isMultipleAudioInputSupported
 
 Resolves to true if multiple audio input is supported and to false if not.
 
@@ -281,7 +281,7 @@ api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
 });
 ```
 
-### pinParticipant
+## pinParticipant
 
 Selects the participant ID to be the pinned participant in order to always receive video for this participant.
 
@@ -289,7 +289,7 @@ Selects the participant ID to be the pinned participant in order to always recei
 api.pinParticipant(participantId);
 ```
 
-### resizeLargeVideo
+## resizeLargeVideo
 
 Resizes the large video container per the provided dimensions.
 
@@ -297,7 +297,7 @@ Resizes the large video container per the provided dimensions.
 api.resizeLargeVideo(width, height);
 ```
 
-### setAudioInputDevice
+## setAudioInputDevice
 
 Sets the audio input device to the one with the passed label or ID.
 
@@ -305,7 +305,7 @@ Sets the audio input device to the one with the passed label or ID.
 api.setAudioInputDevice(deviceLabel, deviceId);
 ```
 
-### setAudioOutputDevice
+## setAudioOutputDevice
 
 Sets the audio output device to the one with the passed label or ID.
 
@@ -313,7 +313,7 @@ Sets the audio output device to the one with the passed label or ID.
 api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
 
-### setLargeVideoParticipant
+## setLargeVideoParticipant
 
 Displays the participant with the given participant ID on the large video.
 
@@ -323,7 +323,7 @@ If no participant ID is given, a particpant is picked based on the dominant, pin
 api.setLargeVideoParticipant(participantId);
 ```
 
-### setVideoInputDevice
+## setVideoInputDevice
 
 Sets the video input device to the one with the passed label or ID.
 
@@ -331,7 +331,7 @@ Sets the video input device to the one with the passed label or ID.
 api.setVideoInputDevice(deviceLabel, deviceId);
 ```
 
-### startRecording
+## startRecording
 
 Starts a file recording or streaming session. See the `startRecording` command for more details.
 
@@ -339,7 +339,7 @@ Starts a file recording or streaming session. See the `startRecording` command f
 api.startRecording(options);
 ```
 
-### stopRecording
+## stopRecording
 
 Stops an ongoing file recording or streaming session. See the `stopRecording` command for more details.
 
@@ -347,7 +347,7 @@ Stops an ongoing file recording or streaming session. See the `stopRecording` co
 api.startRecording(mode);
 ```
 
-### getNumberOfParticipants
+## getNumberOfParticipants
 
 Returns the number of conference participants:
 
@@ -355,7 +355,7 @@ Returns the number of conference participants:
 const numberOfParticipants = api.getNumberOfParticipants();
 ```
 
-### getAvatarURL
+## getAvatarURL
 
 Returns a participant's avatar URL:
 
@@ -363,7 +363,7 @@ Returns a participant's avatar URL:
 const avatarURL = api.getAvatarURL(participantId);
 ```
 
-### getDisplayName
+## getDisplayName
 
 Returns a participant's display name:
 
@@ -371,7 +371,7 @@ Returns a participant's display name:
 const displayName = api.getDisplayName(participantId);
 ```
 
-### getEmail
+## getEmail
 
 Returns a participant's email:
 
@@ -379,7 +379,7 @@ Returns a participant's email:
 const email = api.getEmail(participantId);
 ```
 
-### getIFrame
+## getIFrame
 
 Returns the IFrame HTML element which is used to laod the Jitsi Meet conference:
 
@@ -387,7 +387,7 @@ Returns the IFrame HTML element which is used to laod the Jitsi Meet conference:
 const iframe = api.getIFrame();
 ```
 
-### isAudioMuted
+## isAudioMuted
 
 Returns a Promise which resolves to the current audio muted state:
 
@@ -397,7 +397,7 @@ api.isAudioMuted().then(muted => {
 });
 ```
 
-### isVideoMuted
+## isVideoMuted
 
 Returns a Promise which resolves to the current video muted state:
 
@@ -407,7 +407,7 @@ api.isVideoMuted().then(muted => {
 });
 ```
 
-### isAudioAvailable
+## isAudioAvailable
 
 Returns a Promise which resolves to the current audio availability state:
 
@@ -417,7 +417,7 @@ api.isAudioAvailable().then(available => {
 });
 ```
 
-### isVideoAvailable
+## isVideoAvailable
 
 Returns a Promise which resolves to the current video availability state:
 
@@ -427,7 +427,7 @@ api.isVideoAvailable().then(available => {
 });
 ```
 
-### invite
+## invite
 
 Invite the given array of participants to the meeting:
 
@@ -440,7 +440,7 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
 ```
 **NOTE:** The invitee format in the array depends on the invite service used in the deployment.
 
-### dispose
+## dispose
 
 Removes the embedded Jitsi Meet conference:
 
@@ -450,7 +450,7 @@ api.dispose();
 
 **NOTE:** Jitsi recommends removing the conference before the page is unloaded.
 
-## Commands
+# Commands
 
 You can control the embedded Jitsi Meet conference by calling **`executeCommand`** on the **`JitsiMeetExternalAPI`** object:
 
@@ -477,7 +477,7 @@ api.executeCommands({
 
 The following commands are supported:
 
-### displayName
+## displayName
 
 Sets the display name of the local participant. 
 
@@ -487,7 +487,7 @@ Sets the display name of the local participant.
 api.executeCommand('displayName', 'New Nickname');
 ```
 
-### password
+## password
 
 Sets the password for the room. 
 
@@ -505,7 +505,7 @@ api.on('passwordRequired', function ()
 });
 ```
 
-### toggleLobby
+## toggleLobby
 
 Toggles the lobby mode on or off. 
 
@@ -519,7 +519,7 @@ api.addEventListener('participantRoleChanged', function (event) {
 });
 ```
 
-### sendTones
+## sendTones
 
 Touch tone playback.
 
@@ -533,7 +533,7 @@ api.executeCommand('sendTones', {
 });
 ```
 
-### subject
+## subject
 
 Sets the subject of the conference. 
 
@@ -543,7 +543,7 @@ This command requires the new subject to be set as the argument.
 api.executeCommand('subject', 'New Conference Subject');
 ```
 
-### toggleAudio
+## toggleAudio
 
 Mutes / unmutes the audio for the local participant. 
 
@@ -553,7 +553,7 @@ No arguments are required.
 api.executeCommand('toggleAudio');
 ```
 
-### toggleVideo
+## toggleVideo
 
 Mutes / unmutes the video for the local participant. 
 
@@ -563,7 +563,7 @@ No arguments are required.
 api.executeCommand('toggleVideo');
 ```
 
-### toggleFilmStrip
+## toggleFilmStrip
 
 Hide or show the filmstrip. 
 
@@ -573,7 +573,7 @@ No arguments are required.
 api.executeCommand('toggleFilmStrip');
 ```
 
-### toggleChat
+## toggleChat
 
 Hide or show chat messaging. 
 
@@ -583,7 +583,7 @@ No arguments are required.
 api.executeCommand('toggleChat');
 ```
 
-### toggleShareScreen
+## toggleShareScreen
 
 Start or stop screen sharing. 
 
@@ -593,7 +593,7 @@ No arguments are required.
 api.executeCommand('toggleShareScreen');
 ```
 
-### toggleTileView
+## toggleTileView
 
 Enter or exit the tile view layout mode. 
 
@@ -603,7 +603,7 @@ No arguments are required.
 api.executeCommand('toggleTileView');
 ```
 
-### hangup
+## hangup
 
 Ends the call. 
 
@@ -613,7 +613,7 @@ No arguments are required.
 api.executeCommand('hangup');
 ```
 
-### email
+## email
 
 Changes the local email address. 
 
@@ -623,7 +623,7 @@ This command requires the new email address as the single argument.
 api.executeCommand('email', 'example@example.com');
 ```
 
-### avatarUrl
+## avatarUrl
 
 Changes the local avatar URL. 
 
@@ -633,7 +633,7 @@ This command requires the new avatar URL to be set as the single argument.
 api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
 ```
 
-### sendEndpointTextMessage
+## sendEndpointTextMessage
 
 Sends a text message to another participant through the data channels.
 
@@ -641,7 +641,7 @@ Sends a text message to another participant through the data channels.
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```
 
-### setLargeVideoParticipant
+## setLargeVideoParticipant
 
 Displays the participant on the large video display.
 
@@ -651,7 +651,7 @@ The particpant ID, if specified, is displayed on the large video. If no argument
 api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 ```
 
-### setVideoQuality
+## setVideoQuality
 
 Sets the send and receive video resolution. 
 
@@ -661,7 +661,7 @@ The resolution height setting is implemented using a single argument.
 api.executeCommand('setVideoQuality', 720);
 ```
 
-### muteEveryone
+## muteEveryone
 
 Mute all meeting participants. 
 
@@ -671,7 +671,7 @@ This command can only be executed by the meeting moderator. No arguments are req
 api.executeCommand('muteEveryone');
 ```
 
-### startRecording
+## startRecording
 
 Starts a file recording or streaming session using passed parameters:
 
@@ -699,7 +699,7 @@ api.executeCommand('startRecording', {
 });
 ```
 
-### stopRecording
+## stopRecording
 
 Stops an ongoing **`stream`** or **`file`** recording.
 
@@ -711,7 +711,7 @@ api.executeCommand('stopRecording',
 );
 ```
 
-## Events
+# Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.
 
@@ -733,7 +733,7 @@ The **`listener`** parameter is a function object with one argument that creates
 
 The following events are currently supported:
 
-### cameraError
+## cameraError
 
 Provides event notifications about Jitsi Meet having failed to access the meeting camera. 
 
@@ -746,7 +746,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### avatarChanged
+## avatarChanged
 
 Provides event notifications about changes to a participant's avatar. 
 
@@ -759,7 +759,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### audioAvailabilityChanged
+## audioAvailabilityChanged
 
 Provides event notifications about changes to audio availability status. 
 
@@ -771,7 +771,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### audioMuteStatusChanged
+## audioMuteStatusChanged
 
 Provides event notifications about changes to audio mute status.
 
@@ -783,7 +783,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### endpointTextMessageReceived
+## endpointTextMessageReceived
 
 Provides event notifications about a text messages received through data channels.
 
@@ -802,7 +802,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### largeVideoChanged
+## largeVideoChanged
 
 Provides event notifications about changes in the large video display. 
 
@@ -814,7 +814,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### log
+## log
 
 Provides log event notifications with the log level being one of the values specified in the [config.js] file in the **`apiLogLevels`** property (if not specified the event does not fire). 
 
@@ -827,7 +827,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### micError
+## micError
 
 Provides event notifications about Jitsi Meet issues with mic access. 
 
@@ -840,7 +840,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### screenSharingStatusChanged
+## screenSharingStatusChanged
 
 Provides event notifications about either turning on or off local user screen sharing. 
 
@@ -859,7 +859,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### dominantSpeakerChanged
+## dominantSpeakerChanged
 
 Provides event notifications about dominant speaker changes.
 
@@ -871,7 +871,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### raiseHandUpdated
+## raiseHandUpdated
 
 Provides event notifications about the participant raising/lowering the hand.
 
@@ -884,7 +884,7 @@ The listener will receive object with the following structure:
 }
 ```
 
-### tileViewChanged
+## tileViewChanged
 
 Provides event notifications about entrance or exit from the tile view layout mode.
 
@@ -896,7 +896,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### incomingMessage
+## incomingMessage
 
 Provides event notifications about incoming chat messages. 
 
@@ -910,7 +910,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### outgoingMessage
+## outgoingMessage
 
 Provides event notifications about outgoing chat messages. 
 
@@ -922,7 +922,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### displayNameChange
+## displayNameChange
 
 Provides event notifications about display name changes. 
 
@@ -935,7 +935,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### deviceListChanged
+## deviceListChanged
 
 Provides event notifications about device list changes. 
 
@@ -949,7 +949,7 @@ The listener receives an object with the following structure:
 
 **NOTE:** The **`device`** object has the same format as the **`getAvailableDevices`** result format.
 
-### emailChange
+## emailChange
 
 Provides event notifications about email changes.
 
@@ -962,7 +962,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### feedbackSubmitted
+## feedbackSubmitted
 
 Provides event notifications about conference feedback submissions:
 
@@ -972,7 +972,7 @@ Provides event notifications about conference feedback submissions:
 }
 ```
 
-### filmstripDisplayChanged
+## filmstripDisplayChanged
 
 Provides event visibility notifications for the filmstrip that is being updated:
 
@@ -982,7 +982,7 @@ Provides event visibility notifications for the filmstrip that is being updated:
 }
 ```
 
-### participantJoined
+## participantJoined
 
 Provides event notifications about new participants who join the room.
 
@@ -995,7 +995,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### participantKickedOut
+## participantKickedOut
 
 Provides event notifications about participants being removed from the room. 
 
@@ -1013,7 +1013,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### participantLeft
+## participantLeft
 
 Provides event notifications about participants that leave the meeting room. 
 
@@ -1025,7 +1025,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### participantRoleChanged
+## participantRoleChanged
 
 Provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant). 
 
@@ -1038,11 +1038,11 @@ The listener receives an object with the following structure:
 }
 ```
 
-### passwordRequired
+## passwordRequired
 
 Provides event notifications that fire when participants fail to join a password protected room.
 
-### videoConferenceJoined
+## videoConferenceJoined
 
 Provides event notifications that fire when the local user has joined the video conference. 
 
@@ -1057,7 +1057,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### videoConferenceLeft
+## videoConferenceLeft
 
 Provides event notifications that fire when the local user has left the video conference.
 
@@ -1069,7 +1069,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### videoAvailabilityChanged
+## videoAvailabilityChanged
 
 Provides event notifications about video availability status changes. 
 
@@ -1081,7 +1081,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### videoMuteStatusChanged
+## videoMuteStatusChanged
 
 Provides event notifications about video mute status changes. 
 
@@ -1093,7 +1093,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### videoQualityChanged
+## videoQualityChanged
 
 Provides event notifications about changes to video quality settings. 
 
@@ -1105,11 +1105,11 @@ The listener receives an object with the following structure:
 }
 ```
 
-### readyToClose
+## readyToClose
 
 Provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).
 
-### subjectChange
+## subjectChange
 
 Provides event notifications regarding the change of subject for a conference.
 
@@ -1121,7 +1121,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### suspendDetected
+## suspendDetected
 
 Provides notifications about detecting suspended events in the host computer.
 

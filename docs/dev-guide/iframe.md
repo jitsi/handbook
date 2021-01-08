@@ -347,39 +347,49 @@ Stops an ongoing file recording or streaming session. See the `stopRecording` co
 api.startRecording(mode);
 ```
 
-### TODO.
+### getNumberOfParticipants
 
-You can obtain the number of conference participants using the following API function:
+Returns the number of conference participants:
 
 ```javascript
 const numberOfParticipants = api.getNumberOfParticipants();
 ```
 
-You can get the conference participant's avatar URL using the following API function:
+### getAvatarURL
+
+Returns a participant's avatar URL:
 
 ```javascript
 const avatarURL = api.getAvatarURL(participantId);
 ```
 
-You can get the conference participant's display name using the following API function:
+### getDisplayName
+
+Returns a participant's display name:
 
 ```javascript
 const displayName = api.getDisplayName(participantId);
 ```
 
-You can get the email of a conference participant using the following API function:
+### getEmail
+
+Returns a participant's email:
 
 ```javascript
 const email = api.getEmail(participantId);
 ```
 
-You can get the IFrame HTML element from Jitsi Meet using the following API function:
+### getIFrame
+
+Returns the IFrame HTML element which is used to laod the Jitsi Meet conference:
 
 ```javascript
 const iframe = api.getIFrame();
 ```
 
-You can check whether audio is muted using the following API function:
+### isAudioMuted
+
+Returns a Promise which resolves to the current audio muted state:
 
 ```javascript
 api.isAudioMuted().then(muted => {
@@ -387,7 +397,9 @@ api.isAudioMuted().then(muted => {
 });
 ```
 
-You can check whether video is muted using the following API function:
+### isVideoMuted
+
+Returns a Promise which resolves to the current video muted state:
 
 ```javascript
 api.isVideoMuted().then(muted => {
@@ -395,7 +407,9 @@ api.isVideoMuted().then(muted => {
 });
 ```
 
-You can check whether audio is available using the following API function:
+### isAudioAvailable
+
+Returns a Promise which resolves to the current audio availability state:
 
 ```javascript
 api.isAudioAvailable().then(available => {
@@ -403,7 +417,9 @@ api.isAudioAvailable().then(available => {
 });
 ```
 
-You can check whether video is available using the following API function:
+### isVideoAvailable
+
+Returns a Promise which resolves to the current video availability state:
 
 ```javascript
 api.isVideoAvailable().then(available => {
@@ -411,7 +427,9 @@ api.isVideoAvailable().then(available => {
 });
 ```
 
-You can invite new participants to the call using the following API function:
+### invite
+
+Invite the given array of participants to the meeting:
 
 ```javascript
 api.invite([ {...}, {...}, {...} ]).then(() => {
@@ -420,9 +438,11 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-**NOTE:** The invitee format in the array depends on the invite service used for the deployment.
+**NOTE:** The invitee format in the array depends on the invite service used in the deployment.
 
-You can remove the embedded Jitsi Meet Conference using the following function:
+### dispose
+
+Removes the embedded Jitsi Meet conference:
 
 ```javascript
 api.dispose();

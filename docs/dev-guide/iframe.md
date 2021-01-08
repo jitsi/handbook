@@ -2,14 +2,22 @@
 id: dev-guide-iframe
 title: IFrame API
 ---
+# Introduction
 
-You can use the Jitsi Meet API to embed Jitsi Meet in to your application. You are also welcome to use it for embedding the globally distributed and highly available deployment on meet.jit.si itself. The only thing we ask for in that case is that you please DO NOT remove the jitsi.org logo from the top left corner.
+Embedding the Jitsi Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The Meet API provides a full compliment of comprehensive meeting features.
 
-## Installation
+Your Jitsi meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your meeting participants anywhere in the world eliminating the need for travel and the associated inconvenience.
 
-To embed Jitsi Meet in your application you need to add the Jitsi Meet API library:
+The IFrame API enables you to embed Jitsi Meet functionality into your meeting application so you can experience the full functionality of the globally distributed and highly available deployment available with [meet.jit.si](https://meet.jit.si/).
 
-Self-hosted:
+You can also embed and integrate the globally distributed and highly available deployment on the [meet.jit.si](https://meet.jit.si/) platform itself. 
+
+## Integration
+
+To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
+
+For self-hosting in your domain:
+
 ```javascript
 <script src='https://<your-domain>/external_api.js'></script>
 ```
@@ -17,32 +25,60 @@ Self-hosted:
 meet.jit.si:
 ```javascript
 <script src='https://meet.jit.si/external_api.js'></script>
+
 ```
 
-## API
+## Creating the Jitsi Meet API object
 
-### `api = new JitsiMeetExternalAPI(domain, options)`
+After you have integrated the Meet API library, you must then create the Jitsi Meet API object.
 
-The next step for embedding Jitsi Meet is to create the Jitsi Meet API object.
-Its constructor takes a number of options:
+The Meet API object takes the following form:
 
-* **domain**: domain used to build the conference URL, 'meet.jit.si' for
-  example.
-* **options**: object with properties - the optional arguments:
-    * **roomName**: (optional) name of the room to join.
-    * **width**: (optional) width for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
-    * **height**: (optional) height for the iframe which will be created. If a number is specified it's treated as pixel units. If a string is specified the format is number followed by 'px', 'em', 'pt' or '%'.
-    * **parentNode**: (optional) HTML DOM Element where the iframe will be added as a child.
-    * **configOverwrite**: (optional) JS object with overrides for options defined in [config.js].
-    * **interfaceConfigOverwrite**: (optional) JS object with overrides for options defined in [interface_config.js].
-    * **noSSL**: (optional, defaults to false) Boolean indicating if the server should be contacted using HTTP or HTTPS.
-    * **jwt**: (optional) [JWT](https://jwt.io/) token.
-    * **onload**: (optional) handler for the iframe onload event.
-    * **invitees**: (optional) Array of objects containing information about new participants that will be invited in the call.
-    * **devices**: (optional) A map containing information about the initial devices that will be used in the call.
-    * **userInfo**: (optional) JS object containing information about the participant opening the meeting, such as `email`.
+**`api = new JitsiMeetExternalAPI(domain, options)`**
 
-Example:
+The API object constructor uses the following options:
+
+* **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
+
+* **options**: The object with properties. 
+
+  Optional arguments include:
+  
+    * **roomName**: The name of the room to join.
+    
+    * **width**: The created IFrame width.
+    
+      The width argument has the following characteristics:
+    
+      - A numerical value indicates the width in pixel units.
+    
+      - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**.
+    
+    * **height**: The height for the created IFrame. 
+    
+      The height argument has the following characteristics: 
+    
+      - A numerical value indicates the height in pixel units.
+    
+      - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**. 
+    
+    * **parentNode**: The HTML DOM Element where the IFrame is added as a child.
+    
+    * **configOverwrite**: The JS object with overrides for options defined in the [config.js] file.
+    
+    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the [interface_config.js] file.
+    
+    * **jwt**: The [JWT](https://jwt.io/) token.
+    
+    * **onload**: The IFrame onload event handler.
+    
+    * **invitees**: Object arrays that contain information about participants invited to a call.
+    
+    * **devices**: Information map about the devices used in a call.
+    
+    * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g., email).
+
+      For example:
 
 ```javascript
 const domain = 'meet.jit.si';
@@ -55,7 +91,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can set the initial media devices for the call:
+You can set the initial media devices for the call using the following:
 
 ```javascript
 const domain = 'meet.jit.si';
@@ -71,7 +107,8 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can override options set in [config.js] and [interface_config.js] via **configOverwrite** and **interfaceConfigOverwrite** respectively.
+You can override options set in the [config.js] file and the [interface_config.js] file using the **`configOverwrite`** and **`interfaceConfigOverwrite`** objects, respectively.
+
 For example:
 
 ```javascript
@@ -83,8 +120,7 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-
-You can also pass a JWT token to Jitsi Meet:
+To pass a JWT token to Jitsi Meet use the following:
 
  ```javascript
 const options = {
@@ -95,7 +131,7 @@ const options = {
 const api = new JitsiMeetExternalAPI(domain, options);
  ```
 
-You can set the `userInfo` (email, display name) for the call:
+You can set the **`userInfo`** (e.g., email, display name) for the call using the following:
 
 ```javascript
 var domain = "meet.jit.si";
@@ -109,9 +145,9 @@ var options = {
 var api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-**Configuring the tile view**
+Configuring the tile view
 
-You can configure the maximum number of columns in tile view by overriding the ```TILE_VIEW_MAX_COLUMNS``` property from [interface_config.js] via **interfaceConfigOverwrite**:
+You can configure the maximum number of columns in the tile view by overriding the **`TILE_VIEW_MAX_COLUMNS`** property from the [interface_config.js] file via the **`interfaceConfigOverwrite`** object:
 
 ```javascript
 const options = {
@@ -121,18 +157,20 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-Note: ```TILE_VIEW_MAX_COLUMNS``` accepts values from 1 to 5. The default value is 5.
+**Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
+## Controlling the embedded Jitsi Meet Conference
 
-### Controlling the embedded Jitsi Meet Conference
+Use the following objects to control your embedded Jitsi Meet Conference.
 
-* **captureLargeVideoScreenshot** - Captures the screenshot of the large video.
+* **captureLargeVideoScreenshot** - Captures the screenshot for a large video.
+
 ```javascript
 api.captureLargeVideoScreenshot().then(dataURL => {
     // dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
 });
 ```
-* **getAvailableDevices** - Retrieve a list of available devices.
+* **getAvailableDevices** - Retrieves a list of available devices.
 
 ```javascript
 api.getAvailableDevices().then(devices => {
@@ -159,7 +197,8 @@ api.getAvailableDevices().then(devices => {
     ...
 });
 ```
-* **getCurrentDevices** - Retrieve a list with the devices that are currently selected.
+
+* **getCurrentDevices** - Retrieves a list of currently selected devices.
 
 ```javascript
 api.getCurrentDevices().then(devices => {
@@ -186,7 +225,7 @@ api.getCurrentDevices().then(devices => {
     ...
 });
 ```
-* **getParticipantsInfo** - Returns an array containing participants information like participant id, display name, avatar URL and email.
+* **getParticipantsInfo** - Returns an array containing participant information such as ID, display name, avatar URL, and email.
 
 ```javascript
 api.getParticipantsInfo();
@@ -196,7 +235,7 @@ api.getParticipantsInfo();
 ```javascript
 api.getVideoQuality();
 ```
-* **isDeviceChangeAvailable** - Resolves with true if the device change is available and with false if not.
+* **isDeviceChangeAvailable** - Resolves to true if the device change is available and to false if not.
 
 ```javascript
 // The accepted deviceType values are - 'output', 'input' or undefined.
@@ -204,46 +243,48 @@ api.isDeviceChangeAvailable(deviceType).then(isDeviceChangeAvailable => {
     ...
 });
 ```
-* **isDeviceListAvailable** - Resolves with true if the device list is available and with false if not.
+* **isDeviceListAvailable** - Resolves to true if the device list is available and to false if not.
 
 ```javascript
 api.isDeviceListAvailable().then(isDeviceListAvailable => {
     ...
 });
 ```
-* **isMultipleAudioInputSupported** - Resolves with true if multiple audio input is supported and with false if not.
+* **isMultipleAudioInputSupported** - Resolves to true if multiple audio input is supported and to false if not.
 
 ```javascript
 api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
     ...
 });
 ```
-* **pinParticipant** - Elects the participant with the given id to be the pinned participant in order to always receive video for this participant (even when last n is enabled).
+* **pinParticipant** - Selects the participant ID to be the pinned participant in order to always receive video for this participant (even when last enabled).
 
 ```javascript
 api.pinParticipant(participantId);
 ```
-* **resizeLargeVideo** - Resizes the large video container as per the dimensions provided.
+* **resizeLargeVideo** - Resizes the large video container per the provided dimensions.
 
 ```javascript
 api.resizeLargeVideo(width, height);
 ```
-* **setAudioInputDevice** - Sets the audio input device to the one with the label or id that is passed.
+* **setAudioInputDevice** - Sets the audio input device to the one with the passed label or ID.
 
 ```javascript
 api.setAudioInputDevice(deviceLabel, deviceId);
 ```
-* **setAudioOutputDevice** - Sets the audio output device to the one with the label or id that is passed.
+* **setAudioOutputDevice** - Sets the audio output device to the one with the passed label or ID.
 
 ```javascript
 api.setAudioOutputDevice(deviceLabel, deviceId);
 ```
-* **setLargeVideoParticipant** - Displays the participant with the participant id (Jid) that is passed on the large video. If no participant id is passed, a particpant will be picked based on the dominant/pinned speaker settings.
+* **setLargeVideoParticipant** - Displays the participant with the participant ID (Jid) that is passed on the large video.
+
+If no participant ID is passed, a particpant is picked based on the dominant, pinned speaker settings.
 
 ```javascript
 api.setLargeVideoParticipant(participantId);
 ```
-* **setVideoInputDevice** - Sets the video input device to the one with the label or id that is passed.
+* **setVideoInputDevice** - Sets the video input device to the one with the passed label or ID.
 
 ```javascript
 api.setVideoInputDevice(deviceLabel, deviceId);
@@ -253,27 +294,33 @@ api.setVideoInputDevice(deviceLabel, deviceId);
 ```javascript
 api.startRecording(options);
 ```
-
 * **stopRecording** - Stops an ongoing file recording or streaming session.
 
 ```javascript
 api.startRecording(mode);
 ```
 
-You can control the embedded Jitsi Meet conference by calling `executeCommand` on the `JitsiMeetExternalAPI` object:
+You can control the embedded Jitsi Meet conference by calling **`executeCommand`** on the **`JitsiMeetExternalAPI`** object:
 
 ```javascript
 api.executeCommand(command, ...arguments);
 ```
 
-The `command` parameter is a string containing the name of the command. The following commands are currently supported:
+## Commands
 
-* **displayName** - Sets the display name of the local participant. This command requires one argument - the new display name to be set.
+The command parameter is a string which contains the command name. 
+
+The following commands are supported:
+
+* **displayName** - Sets the display name of the local participant. 
+
+  This command requires one argument to set the new display name.
+
 ```javascript
 api.executeCommand('displayName', 'New Nickname');
 ```
+* **password** - Sets the password for the room. 
 
-* **password** - Sets the password for the room. This command requires one argument - the password name to be set.
 ```javascript
 // set new password for channel
 api.addEventListener('participantRoleChanged', function(event) {
@@ -287,8 +334,10 @@ api.on('passwordRequired', function ()
     api.executeCommand('password', 'The Password');
 });
 ```
+* **toggleLobby** - Toggles the lobby mode on or off. 
 
-* **toggleLobby** - Toggles the lobby mode on or off. This command requires one argument - the desired state of lobby mode.
+  This command requires the desired lobby mode state as the argument.
+
 ```javascript
 api.addEventListener('participantRoleChanged', function (event) {
     if(event.role === 'moderator') {
@@ -297,7 +346,10 @@ api.addEventListener('participantRoleChanged', function (event) {
 });
 ```
 
-* **sendTones** - Play touch tones.
+* **sendTones** - Enables touch tone playing.
+
+  This command requires the selected touch tone dial pads to play as well as the length of and time gap between tone play as the arguments. 
+
 ```javascript
 api.executeCommand('sendTones', {
     tones: string, // The dial pad touch tones to play. For example, '12345#'.
@@ -306,78 +358,130 @@ api.executeCommand('sendTones', {
 });
 ```
 
-* **subject** - Sets the subject of the conference. This command requires one argument - the new subject to be set.
+* **subject** - Sets the subject of the conference. 
+
+  This command requires the new subject to be set as the argument.
+
 ```javascript
 api.executeCommand('subject', 'New Conference Subject');
 ```
 
-* **toggleAudio** - Mutes / unmutes the audio for the local participant. No arguments are required.
+* **toggleAudio** - Mutes and unmutes the audio for the local participant. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('toggleAudio');
 ```
 
-* **toggleVideo** - Mutes / unmutes the video for the local participant. No arguments are required.
+* **toggleVideo** - Mutes and unmutes the video for the local participant. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('toggleVideo');
 ```
 
-* **toggleFilmStrip** - Hides / shows the filmstrip. No arguments are required.
+* **toggleFilmStrip** - Hide or show the filmstrip. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('toggleFilmStrip');
 ```
 
-* **toggleChat** - Hides / shows the chat. No arguments are required.
+* **toggleChat** - Hide or show chat messaging. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('toggleChat');
 ```
 
-* **toggleShareScreen** - Starts / stops screen sharing. No arguments are required.
+* **toggleShareScreen** - Start or stop screen sharing. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('toggleShareScreen');
 ```
 
-* **toggleTileView** - Enter / exit tile view layout mode. No arguments are required.
+* **toggleTileView** - Enter or exit the tile view layout mode. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('toggleTileView');
 ```
 
-* **hangup** - Hangups the call. No arguments are required.
+* **hangup** - Concludes or ends the call. 
+
+  No arguments are required.
+
 ```javascript
 api.executeCommand('hangup');
 ```
 
-* **email** - Changes the local email address. This command requires one argument - the new email address to be set.
+* **email** - Changes the local email address. 
+
+  This command requires the new email address as the single argument.
+
 ```javascript
 api.executeCommand('email', 'example@example.com');
 ```
 
-* **avatarUrl** - Changes the local avatar URL. This command requires one argument - the new avatar URL to be set.
+* **avatarUrl** - Changes the local avatar URL. 
+
+  This command requires the new avatar URL to be set as the single argument.
+
 ```javascript
 api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
 ```
 
-* **sendEndpointTextMessage** - Sends a text message to another participant through the datachannels.
+* **sendEndpointTextMessage** - Sends a text message to another participant through the data channels.
+
 ```javascript
 api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 ```
 
-* **setLargeVideoParticipant** - Displays the given participant on the large video. The participant with the particpant id (Jid) if specified will be displayed on the large video. If no argument is passed, the participant to be displayed on the large video will be automatically selected based on the dominant/pinned speaker settings.
+* **setLargeVideoParticipant** - Displays the participant on the large video display.
+
+  The particpant ID (Jid), if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.
+
 ```javascript
 api.executeCommand('setLargeVideoParticipant', 'abcd1234');
 ```
-* **setVideoQuality** - Sets the send and receive video resolution. This command requires one argument - the resolution height to be set.
+
+* **setVideoQuality** - Sets the send and receive video resolution. 
+
+  The resolution height setting is implemented using a single argument.
+
 ```javascript
 api.executeCommand('setVideoQuality', 720);
 ```
-* **muteEveryone** - Mute all the other participants. It can only be executed by a moderator. No arguments are required.
+
+* **muteEveryone** - Mute all meeting participants. 
+
+  This command can only be executed by the meeting moderator. No arguments are required.
+
 ```javascript
 api.executeCommand('muteEveryone');
 ```
-* **startRecording** - Starts a file recording or streaming session depending on the passed on params.
-  - for RTMP streaming, recording `mode` should be `stream` and `rtmpStreamKey` must be provided. `rtmpBroadcastID` is optional.
-  - for YouTube streams, recording `mode` should be `stream` and `youtubeStreamKey` must be provided. `youtubeBroadcastID` is optional.
-  - for Dropbox recording, recording `mode` should be `file` and a dropbox oauth2 token must be provided. Also dropbox saving should be enabled on the used jitsi meet deploy config.
-  - for file recording, recording `mode` should be `file` and optionally `shouldShare` could be passed on. No other params should be passed.
+
+* **startRecording** - Starts a file recording or streaming session using passed parameters:
+
+  - **RTMP streaming** - Recording mode set to **`stream`** with an **`rtmpStreamKey`**. The **`rtmpBroadcastID`** value is optional.
+  
+  - **YouTube streams** - Recording mode set to **`stream`** with an **`youtubeStreamKey`**. The **`youtubeBroadcastID`** value is optional.
+  
+  - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token. 
+  
+  Additionally, Dropbox saving should be enabled on the Jitsi meet deploy config you are using.
+  
+  - **File recording** - Recording mode set to **`file`**. 
+  
+  Optionally, **`shouldShare`** should be passed on. No other params are required.
+  
 ```javascript
 api.executeCommand('startRecording', {
     mode: string //recording mode, either `file` or `stream`.
@@ -390,18 +494,26 @@ api.executeCommand('startRecording', {
 });
 ```
 
-* **stopRecording** - Stops an ongoing recording, `stream` or `file`.
+* **stopRecording** - Stops an ongoing **`stream`** or **`file`** recording.
+
+  No other params are required.
+
 ```javascript
 api.executeCommand('stopRecording', 
     mode: string //recording mode to stop, `stream` or `file`
 );
 ```
 
-You can also execute multiple commands using the `executeCommands` method:
+## Multiple command execution
+
+You can also execute multiple commands using the **`executeCommands`** method:
+
 ```javascript
 api.executeCommands(commands);
 ```
-The `commands` parameter is an object with the names of the commands as keys and the arguments for the commands as values:
+
+The **`commands`** parameter is an object with the names of the commands as keys and the arguments for the commands as values:
+
 ```javascript
 api.executeCommands({
     displayName: [ 'nickname' ],
@@ -409,17 +521,25 @@ api.executeCommands({
 });
 ```
 
-You can add event listeners to the embedded Jitsi Meet using the `addEventListener` method.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods (`addListener` or `on`).**
+## Event listeners
+You can add event listeners to the embedded Jitsi Meet using the **`addEventListener`** method:
+
 ```javascript
 api.addEventListener(event, listener);
 ```
 
-The `event` parameter is a String object with the name of the event.
-The `listener` parameter is a Function object with one argument that will be notified when the event occurs with data related to the event.
+The **`event`** parameter is a string object with the name of the event.
 
-The following events are currently supported:
-* **cameraError** - event notifications about Jitsi-Meet having failed to access the camera. The listener will receive an object with the following structure:
+The **`listener`** parameter is a function object with one argument that creates a notification when the event occurs along with related event data.
+
+### Supported listener events
+
+The following listener events are currently supported:
+
+* **`cameraError`** - provides event notifications about Jitsi-Meet having failed to access the meeting camera. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     type: string, // A constant representing the overall type of the error.
@@ -427,8 +547,10 @@ The following events are currently supported:
 }
 ```
 
-* **avatarChanged** - event notifications about avatar
-changes. The listener will receive an object with the following structure:
+* **`avatarChanged`** - provides event notifications about changes to a meeting avatar. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his avatar.
@@ -436,22 +558,30 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **audioAvailabilityChanged** - event notifications about audio availability status changes. The listener will receive an object with the following structure:
+* **`audioAvailabilityChanged`** - provides event notifications about changes to audio availability status. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     available: boolean // new available status - boolean
 }
 ```
 
-* **audioMuteStatusChanged** - event notifications about audio mute status changes. The listener will receive an object with the following structure:
+* **`audioMuteStatusChanged`** - provides event notifications about changes to audio mute status.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     muted: boolean // new muted status - boolean
 }
 ```
 
-* **endpointTextMessageReceived** - event notifications about a text message received through datachannels.
-The listener will receive an object with the following structure:
+* **`endpointTextMessageReceived`** - provides event notifications about a text messages received through data channels.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     senderInfo: {
@@ -465,14 +595,20 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **largeVideoChanged** - receives event notification about the change in the participant displayed on the large video. The listener will receive an object with the following structure.
+* **`largeVideoChanged`** - provides event notifications about changes in the large video display. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string // id of the participant that is now on large video in the stage view.
 }
 ```
 
-* **log** - event notifications about logs being written with the log level being one of the values specified in [config.js] on the apiLogLevels property (if none specified, this event will not fire). The listener will receive an object with the following structure:
+* **`log`** - provides log event notifications with the log level being one of the values specified in the [config.js] file in the **`apiLogLevels`** property (if not specified the event does not fire). 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     logLevel: string, // A constant representing the log type (info, error, debug, warn).
@@ -480,7 +616,10 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **micError** - event notifications about Jitsi-Meet having failed to access the mic. The listener will receive an object with the following structure:
+* **`micError`** - provides event notifications about Jitsi-Meet issues with mic access. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     type: string, // A constant representing the overall type of the error.
@@ -488,7 +627,10 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **screenSharingStatusChanged** - receives event notifications about turning on/off the local user screen sharing. The listener will receive object with the following structure:
+* **`screenSharingStatusChanged`** - provides event notifications about either turning on or off local user screen sharing. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     on: boolean, //whether screen sharing is on
@@ -502,7 +644,10 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **dominantSpeakerChanged** - receives event notifications about change in the dominant speaker. The listener will receive object with the following structure:
+* **`dominantSpeakerChanged`** - provides event notifications about dominant speaker changes.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string //participantId of the new dominant speaker
@@ -516,15 +661,20 @@ The listener will receive an object with the following structure:
 }
 ```
 
-* **tileViewChanged** - event notifications about tile view layout mode being entered or exited. The listener will receive object with the following structure:
+* **`tileViewChanged`** - provides event notifications about entrance or exit from the tile view layout mode.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     enabled: boolean, // whether tile view is not displayed or not
 }
 ```
 
-* **incomingMessage** - Event notifications about incoming
-messages. The listener will receive an object with the following structure:
+* **`incomingMessage`** - provides event notifications about incoming messages. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     from: string, // The id of the user that sent the message
@@ -533,54 +683,70 @@ messages. The listener will receive an object with the following structure:
 }
 ```
 
-* **outgoingMessage** - Event notifications about outgoing
-messages. The listener will receive an object with the following structure:
+* **`outgoingMessage`** - provides event notifications about outgoing messages. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     message: string // the text of the message
 }
 ```
 
-* **displayNameChange** - event notifications about display name
-changes. The listener will receive an object with the following structure:
+* **displayNameChange** - provides event notifications about display name changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
-    id: string, // the id of the participant that changed his display name
+    id: string, // the id of the participant that changed their display name
     displayname: string // the new display name
 }
 ```
 
-* **deviceListChanged** - event notifications about device list changes. The listener will receive an object with the following structure:
+* **deviceListChanged** - provides event notifications about device list changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     devices: Object // the new list of available devices.
 }
 ```
-NOTE: The devices object has the same format as the getAvailableDevices result format.
 
-* **emailChange** - event notifications about email
-changes. The listener will receive an object with the following structure:
+**NOTE:** The **`device`** object has the same format as the **`getAvailableDevices`** result format.
+
+* **emailChange** - provides event notifications about email changes.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant that changed his email
     email: string // the new email
 }
 ```
-* **feedbackSubmitted** - event notifications about conference feedback submission
+
+* **feedbackSubmitted** - provides event notifications about conference feedback submissions:
+
 ```javascript
 {
     error: string // The error which occurred during submission, if any.
 }
 ```
 
-* **filmstripDisplayChanged** - event notifications about the visibility of the filmstrip being updated.
+* **filmstripDisplayChanged** - provides event visibility notifications for the filmstrip that is being updated:
+
 ```javascript
 {
     visible: boolean // Whether or not the filmstrip is displayed or hidden.
 }
 ```
 
-* **participantJoined** - event notifications about new participants who join the room. The listener will receive an object with the following structure:
+* **participantJoined** - provides event notifications about new participants who join the room.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string, // the id of the participant
@@ -588,7 +754,10 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **participantKickedOut** - event notifications about a participants being removed from the room. The listener will receive an object with the following structure:
+* **`participantKickedOut`** - provides event notifications about participants being removed from the room. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     kicked: {
@@ -601,14 +770,20 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **participantLeft** - event notifications about participants that leave the room. The listener will receive an object with the following structure:
+* **`participantLeft`** - provides event notifications about participants that leave the meeting room. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string // the id of the participant
 }
 ```
 
-* **participantRoleChanged** - event notification fired when the role of the local user has changed (none, moderator, participant). The listener will receive an object with the following structure:
+* **`participantRoleChanged`** - provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant). 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     id: string // the id of the participant
@@ -616,9 +791,12 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **passwordRequired** - event notifications fired when failing to join a room because it has a password.
+* **`passwordRequired`** - provides event notifications that fire when participants fail to join a password protected room.
 
-* **videoConferenceJoined** - event notifications fired when the local user has joined the video conference. The listener will receive an object with the following structure:
+* **`videoConferenceJoined`** - provides event notifications that fire when the local user has joined the video conference. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     roomName: string, // the room name of the conference
@@ -628,50 +806,63 @@ changes. The listener will receive an object with the following structure:
 }
 ```
 
-* **videoConferenceLeft** - event notifications fired when the local user has left the video conference. The listener will receive an object with the following structure:
+* **`videoConferenceLeft`** - provides event notifications that fire when the local user has left the video conference.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     roomName: string // the room name of the conference
 }
 ```
 
-* **videoAvailabilityChanged** - event notifications about video availability status changes. The listener will receive an object with the following structure:
+* **`videoAvailabilityChanged`** - provides event notifications about video availability status changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     available: boolean // new available status - boolean
 }
 ```
 
-* **videoMuteStatusChanged** - event notifications about video mute status changes. The listener will receive an object with the following structure:
+* **`videoMuteStatusChanged`** - provides event notifications about video mute status changes. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     muted: boolean // new muted status - boolean
 }
 ```
 
-* **videoQualityChanged** -  event notifications about video quality settings changes. The listener will receive an object with the following structure:
+* **`videoQualityChanged`** -  provides event notifications about changes to video quality settings. 
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     videoQuality: number // the height of the resolution related to the new video quality setting.
 }
 ```
 
-* **readyToClose** - event notification fired when Jitsi Meet is ready to be closed (hangup operations are completed).
+* **`readyToClose`** - provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).
 
-* **subjectChange** - event notifications about subject of conference changes.
-The listener will receive an object with the following structure:
+* **`subjectChange`** - provides event notifications regarding the change of subject for a conference.
+
+The listener receives an object with the following structure:
+
 ```javascript
 {
     subject: string // the new subject
 }
 ```
 
-* **suspendDetected** - event notifications about detecting suspend event in host computer.
+* **`suspendDetected`** - provides notifications about detecting suspended events in the host computer.
 
-You can also add multiple event listeners by using `addEventListeners`.
-This method requires one argument of type Object. The object argument must
-have the names of the events as keys and the listeners of the events as values.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
+You can also add multiple event listeners by using **`addEventListeners`**.
+
+This method requires an object type as the single argument. The object argument must have the names of the events as keys and the event listeners as values:
 
 ```javascript
 function incomingMessageListener(object)
@@ -690,72 +881,82 @@ api.addEventListeners({
 });
 ```
 
-If you want to remove a listener you can use `removeEventListener` method with argument the name of the event.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods( `removeListener`).**
+If you want to remove a listener you can use the **`removeEventListener`** method with the name of the event as the argument:
+
 ```javascript
 api.removeEventListener('incomingMessage');
 ```
 
-If you want to remove more than one event you can use `removeEventListeners` method with an Array with the names of the events as an argument.
-**NOTE: This method still exists but it is deprecated. JitsiMeetExternalAPI class extends [EventEmitter]. Use [EventEmitter] methods.**
+If you want to remove more than one event you can use the **`removeEventListeners`** method with an Array with the names of the events as an argument:
+
 ```javascript
 api.removeEventListeners([ 'incomingMessage', 'outgoingMessageListener' ]);
 ```
 
-You can get the number of participants in the conference with the following API function:
+You can obtain the number of conference participants using the following API function:
+
 ```javascript
 const numberOfParticipants = api.getNumberOfParticipants();
 ```
 
-You can get the avatar URL of a participant in the conference with the following API function:
+You can get the conference participant's avatar URL using the following API function:
+
 ```javascript
 const avatarURL = api.getAvatarURL(participantId);
 ```
 
-You can get the display name of a participant in the conference with the following API function:
+You can get the conference participant's display name using the following API function:
+
 ```javascript
 const displayName = api.getDisplayName(participantId);
 ```
 
-You can get the email of a participant in the conference with the following API function:
+You can get the email of a conference participant using the following API function:
+
 ```javascript
 const email = api.getEmail(participantId);
 ```
 
-You can get the iframe HTML element where Jitsi Meet is loaded with the following API function:
+You can get the IFrame HTML element from Jitsi Meet using the following API function:
+
 ```javascript
 const iframe = api.getIFrame();
 ```
 
-You can check whether the audio is muted with the following API function:
+You can check whether audio is muted using the following API function:
+
 ```javascript
 api.isAudioMuted().then(muted => {
     ...
 });
 ```
 
-You can check whether the video is muted with the following API function:
+You can check whether video is muted using the following API function:
+
 ```javascript
 api.isVideoMuted().then(muted => {
     ...
 });
 ```
 
-You can check whether the audio is available with the following API function:
+You can check whether audio is available using the following API function:
+
 ```javascript
 api.isAudioAvailable().then(available => {
     ...
 });
 ```
 
-You can check whether the video is available with the following API function:
+You can check whether video is available using the following API function:
+
 ```javascript
 api.isVideoAvailable().then(available => {
     ...
 });
 ```
 
-You can invite new participants to the call with the following API function:
+You can invite new participants to the call using the following API function:
+
 ```javascript
 api.invite([ {...}, {...}, {...} ]).then(() => {
     // success
@@ -763,15 +964,17 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-**NOTE: The format of the invitees in the array depends on the invite service used for the deployment.**
+**NOTE:** The invitee format in the array depends on the invite service used for the deployment.
 
-You can remove the embedded Jitsi Meet Conference with the following API function:
+You can remove the embedded Jitsi Meet Conference using the following function:
+
 ```javascript
 api.dispose();
 ```
 
-NOTE: It's a good practice to remove the conference before the page is unloaded.
+**NOTE:** Jitsi recommends removing the conference before the page is unloaded.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html
+

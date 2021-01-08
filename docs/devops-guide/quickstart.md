@@ -74,10 +74,11 @@ If the machine used to host the Jitsi Meet instance has a FQDN (for example `mee
 
 `sudo hostnamectl set-hostname meet`
 
-Then add the same FQDN in the `/etc/hosts` file, associating it with the loopback address:
+Then add the same FQDN in the `/etc/hosts` file:
 
     127.0.0.1 localhost
-    x.x.x.x meet.example.org meet
+    x.x.x.x meet.example.org
+
 Note: `x.x.x.x` is your server's public IP address.
 
 Finally on the same machine test that you can ping the FQDN with:

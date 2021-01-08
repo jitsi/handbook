@@ -153,7 +153,7 @@
 }
 <span class="hljs-keyword">var</span> api = <span class="hljs-keyword">new</span> JitsiMeetExternalAPI(domain, options);
 </code></pre>
-<p>Configuring the tile view</p>
+<p>Configuring the tile view:</p>
 <p>You can configure the maximum number of columns in the tile view by overriding the <strong><code>TILE_VIEW_MAX_COLUMNS</code></strong> property from the <a href="https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js">interface_config.js</a> file via the <strong><code>interfaceConfigOverwrite</code></strong> object:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> options = {
     ...
@@ -163,18 +163,16 @@
 <span class="hljs-keyword">const</span> api = <span class="hljs-keyword">new</span> JitsiMeetExternalAPI(domain, options);
 </code></pre>
 <p><strong>Note:</strong> <strong><code>TILE_VIEW_MAX_COLUMNS</code></strong> accepts values from 1 to 5. The default value is 5.</p>
-<h2><a class="anchor" aria-hidden="true" id="controlling-the-embedded-jitsi-meet-conference"></a><a href="#controlling-the-embedded-jitsi-meet-conference" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Controlling the embedded Jitsi Meet Conference</h2>
-<p>Use the following objects to control your embedded Jitsi Meet Conference.</p>
-<ul>
-<li><strong>captureLargeVideoScreenshot</strong> - Captures the screenshot for a large video.</li>
-</ul>
+<h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
+<p>Use the following API functions to control your embedded Jitsi Meet Conference.</p>
+<h3><a class="anchor" aria-hidden="true" id="capturelargevideoscreenshot"></a><a href="#capturelargevideoscreenshot" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>captureLargeVideoScreenshot</h3>
+<p>Captures a screenshot for the participant in the large video view (on stage).</p>
 <pre><code class="hljs css language-javascript">api.captureLargeVideoScreenshot().then(<span class="hljs-function"><span class="hljs-params">dataURL</span> =&gt;</span> {
     <span class="hljs-comment">// dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."</span>
 });
 </code></pre>
-<ul>
-<li><strong>getAvailableDevices</strong> - Retrieves a list of available devices.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="getavailabledevices"></a><a href="#getavailabledevices" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getAvailableDevices</h3>
+<p>Retrieves a list of available devices.</p>
 <pre><code class="hljs css language-javascript">api.getAvailableDevices().then(<span class="hljs-function"><span class="hljs-params">devices</span> =&gt;</span> {
     <span class="hljs-comment">// devices = {</span>
     <span class="hljs-comment">//     audioInput: [{</span>
@@ -199,9 +197,8 @@
     ...
 });
 </code></pre>
-<ul>
-<li><strong>getCurrentDevices</strong> - Retrieves a list of currently selected devices.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="getcurrentdevices"></a><a href="#getcurrentdevices" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getCurrentDevices</h3>
+<p>Retrieves a list of currently selected devices.</p>
 <pre><code class="hljs css language-javascript">api.getCurrentDevices().then(<span class="hljs-function"><span class="hljs-params">devices</span> =&gt;</span> {
     <span class="hljs-comment">// devices = {</span>
     <span class="hljs-comment">//     audioInput: {</span>
@@ -226,94 +223,79 @@
     ...
 });
 </code></pre>
-<ul>
-<li><strong>getParticipantsInfo</strong> - Returns an array containing participant information such as ID, display name, avatar URL, and email.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="getparticipantsinfo"></a><a href="#getparticipantsinfo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getParticipantsInfo</h3>
+<p>Returns an array containing participant information such as ID, display name, avatar URL, and email.</p>
 <pre><code class="hljs css language-javascript">api.getParticipantsInfo();
 </code></pre>
-<ul>
-<li><strong>getVideoQuality</strong> - Returns the current video quality setting.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="getvideoquality"></a><a href="#getvideoquality" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>getVideoQuality</h3>
+<p>Returns the current video quality setting.</p>
 <pre><code class="hljs css language-javascript">api.getVideoQuality();
 </code></pre>
-<ul>
-<li><strong>isDeviceChangeAvailable</strong> - Resolves to true if the device change is available and to false if not.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="isdevicechangeavailable"></a><a href="#isdevicechangeavailable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>isDeviceChangeAvailable</h3>
+<p>Resolves to true if the device change is available and to false if not.</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// The accepted deviceType values are - 'output', 'input' or undefined.</span>
 api.isDeviceChangeAvailable(deviceType).then(<span class="hljs-function"><span class="hljs-params">isDeviceChangeAvailable</span> =&gt;</span> {
     ...
 });
 </code></pre>
-<ul>
-<li><strong>isDeviceListAvailable</strong> - Resolves to true if the device list is available and to false if not.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="isdevicelistavailable"></a><a href="#isdevicelistavailable" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>isDeviceListAvailable</h3>
+<p>Resolves to true if the device list is available and to false if not.</p>
 <pre><code class="hljs css language-javascript">api.isDeviceListAvailable().then(<span class="hljs-function"><span class="hljs-params">isDeviceListAvailable</span> =&gt;</span> {
     ...
 });
 </code></pre>
-<ul>
-<li><strong>isMultipleAudioInputSupported</strong> - Resolves to true if multiple audio input is supported and to false if not.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="ismultipleaudioinputsupported"></a><a href="#ismultipleaudioinputsupported" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>isMultipleAudioInputSupported</h3>
+<p>Resolves to true if multiple audio input is supported and to false if not.</p>
 <pre><code class="hljs css language-javascript">api.isMultipleAudioInputSupported().then(<span class="hljs-function"><span class="hljs-params">isMultipleAudioInputSupported</span> =&gt;</span> {
     ...
 });
 </code></pre>
-<ul>
-<li><strong>pinParticipant</strong> - Selects the participant ID to be the pinned participant in order to always receive video for this participant (even when last enabled).</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="pinparticipant"></a><a href="#pinparticipant" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>pinParticipant</h3>
+<p>Selects the participant ID to be the pinned participant in order to always receive video for this participant.</p>
 <pre><code class="hljs css language-javascript">api.pinParticipant(participantId);
 </code></pre>
-<ul>
-<li><strong>resizeLargeVideo</strong> - Resizes the large video container per the provided dimensions.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="resizelargevideo"></a><a href="#resizelargevideo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>resizeLargeVideo</h3>
+<p>Resizes the large video container per the provided dimensions.</p>
 <pre><code class="hljs css language-javascript">api.resizeLargeVideo(width, height);
 </code></pre>
-<ul>
-<li><strong>setAudioInputDevice</strong> - Sets the audio input device to the one with the passed label or ID.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="setaudioinputdevice"></a><a href="#setaudioinputdevice" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setAudioInputDevice</h3>
+<p>Sets the audio input device to the one with the passed label or ID.</p>
 <pre><code class="hljs css language-javascript">api.setAudioInputDevice(deviceLabel, deviceId);
 </code></pre>
-<ul>
-<li><strong>setAudioOutputDevice</strong> - Sets the audio output device to the one with the passed label or ID.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="setaudiooutputdevice"></a><a href="#setaudiooutputdevice" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setAudioOutputDevice</h3>
+<p>Sets the audio output device to the one with the passed label or ID.</p>
 <pre><code class="hljs css language-javascript">api.setAudioOutputDevice(deviceLabel, deviceId);
 </code></pre>
-<ul>
-<li><strong>setLargeVideoParticipant</strong> - Displays the participant with the participant ID (Jid) that is passed on the large video.</li>
-</ul>
-<p>If no participant ID is passed, a particpant is picked based on the dominant, pinned speaker settings.</p>
+<h3><a class="anchor" aria-hidden="true" id="setlargevideoparticipant"></a><a href="#setlargevideoparticipant" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setLargeVideoParticipant</h3>
+<p>Displays the participant with the given participant ID on the large video.</p>
+<p>If no participant ID is given, a particpant is picked based on the dominant, pinned speaker settings.</p>
 <pre><code class="hljs css language-javascript">api.setLargeVideoParticipant(participantId);
 </code></pre>
-<ul>
-<li><strong>setVideoInputDevice</strong> - Sets the video input device to the one with the passed label or ID.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="setvideoinputdevice"></a><a href="#setvideoinputdevice" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setVideoInputDevice</h3>
+<p>Sets the video input device to the one with the passed label or ID.</p>
 <pre><code class="hljs css language-javascript">api.setVideoInputDevice(deviceLabel, deviceId);
 </code></pre>
-<ul>
-<li><strong>startRecording</strong> - Starts a file recording or streaming session.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="startrecording"></a><a href="#startrecording" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>startRecording</h3>
+<p>Starts a file recording or streaming session. See the <code>startRecording</code> command for more details.</p>
 <pre><code class="hljs css language-javascript">api.startRecording(options);
 </code></pre>
-<ul>
-<li><strong>stopRecording</strong> - Stops an ongoing file recording or streaming session.</li>
-</ul>
+<h3><a class="anchor" aria-hidden="true" id="stoprecording"></a><a href="#stoprecording" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stopRecording</h3>
+<p>Stops an ongoing file recording or streaming session. See the <code>stopRecording</code> command for more details.</p>
 <pre><code class="hljs css language-javascript">api.startRecording(mode);
 </code></pre>
+<h3><a class="anchor" aria-hidden="true" id="commands"></a><a href="#commands" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Commands</h3>
 <p>You can control the embedded Jitsi Meet conference by calling <strong><code>executeCommand</code></strong> on the <strong><code>JitsiMeetExternalAPI</code></strong> object:</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(command, ...arguments);
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="commands"></a><a href="#commands" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Commands</h2>
 <p>The command parameter is a string which contains the command name.</p>
 <p>The following commands are supported:</p>
-<ul>
-<li><p><strong>displayName</strong> - Sets the display name of the local participant.</p>
-<p>This command requires one argument to set the new display name.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="displayname"></a><a href="#displayname" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>displayName</h4>
+<p>Sets the display name of the local participant.</p>
+<p>This command requires one argument to set the new display name.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'displayName'</span>, <span class="hljs-string">'New Nickname'</span>);
 </code></pre>
-<ul>
-<li><strong>password</strong> - Sets the password for the room.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="password"></a><a href="#password" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>password</h4>
+<p>Sets the password for the room.</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-comment">// set new password for channel</span>
 api.addEventListener(<span class="hljs-string">'participantRoleChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">event</span>) </span>{
     <span class="hljs-keyword">if</span> (event.role === <span class="hljs-string">"moderator"</span>) {
@@ -326,111 +308,95 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     api.executeCommand(<span class="hljs-string">'password'</span>, <span class="hljs-string">'The Password'</span>);
 });
 </code></pre>
-<ul>
-<li><p><strong>toggleLobby</strong> - Toggles the lobby mode on or off.</p>
-<p>This command requires the desired lobby mode state as the argument.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="togglelobby"></a><a href="#togglelobby" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleLobby</h4>
+<p>Toggles the lobby mode on or off.</p>
+<p>This command requires the desired lobby mode state as the argument.</p>
 <pre><code class="hljs css language-javascript">api.addEventListener(<span class="hljs-string">'participantRoleChanged'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params">event</span>) </span>{
     <span class="hljs-keyword">if</span>(event.role === <span class="hljs-string">'moderator'</span>) {
         api.executeCommand(<span class="hljs-string">'toggleLobby'</span>, <span class="hljs-literal">true</span>);
     }
 });
 </code></pre>
-<ul>
-<li><p><strong>sendTones</strong> - Enables touch tone playing.</p>
-<p>This command requires the selected touch tone dial pads to play as well as the length of and time gap between tone play as the arguments.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="sendtones"></a><a href="#sendtones" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>sendTones</h4>
+<p>Touch tone playback.</p>
+<p>This command requires the selected touch tone dial pads to play as well as the length of and time gap between tone play as the arguments.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'sendTones'</span>, {
     <span class="hljs-attr">tones</span>: string, <span class="hljs-comment">// The dial pad touch tones to play. For example, '12345#'.</span>
     <span class="hljs-attr">duration</span>: number, <span class="hljs-comment">// Optional. The number of milliseconds each tone should play. The default is 200.</span>
     <span class="hljs-attr">pause</span>: number <span class="hljs-comment">// Optional. The number of milliseconds between each tone. The default is 200.</span>
 });
 </code></pre>
-<ul>
-<li><p><strong>subject</strong> - Sets the subject of the conference.</p>
-<p>This command requires the new subject to be set as the argument.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="subject"></a><a href="#subject" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>subject</h4>
+<p>Sets the subject of the conference.</p>
+<p>This command requires the new subject to be set as the argument.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'subject'</span>, <span class="hljs-string">'New Conference Subject'</span>);
 </code></pre>
-<ul>
-<li><p><strong>toggleAudio</strong> - Mutes and unmutes the audio for the local participant.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="toggleaudio"></a><a href="#toggleaudio" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleAudio</h4>
+<p>Mutes / unmutes the audio for the local participant.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'toggleAudio'</span>);
 </code></pre>
-<ul>
-<li><p><strong>toggleVideo</strong> - Mutes and unmutes the video for the local participant.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="togglevideo"></a><a href="#togglevideo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleVideo</h4>
+<p>Mutes / unmutes the video for the local participant.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'toggleVideo'</span>);
 </code></pre>
-<ul>
-<li><p><strong>toggleFilmStrip</strong> - Hide or show the filmstrip.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="togglefilmstrip"></a><a href="#togglefilmstrip" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleFilmStrip</h4>
+<p>Hide or show the filmstrip.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'toggleFilmStrip'</span>);
 </code></pre>
-<ul>
-<li><p><strong>toggleChat</strong> - Hide or show chat messaging.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="togglechat"></a><a href="#togglechat" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleChat</h4>
+<p>Hide or show chat messaging.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'toggleChat'</span>);
 </code></pre>
-<ul>
-<li><p><strong>toggleShareScreen</strong> - Start or stop screen sharing.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="togglesharescreen"></a><a href="#togglesharescreen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleShareScreen</h4>
+<p>Start or stop screen sharing.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'toggleShareScreen'</span>);
 </code></pre>
-<ul>
-<li><p><strong>toggleTileView</strong> - Enter or exit the tile view layout mode.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="toggletileview"></a><a href="#toggletileview" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>toggleTileView</h4>
+<p>Enter or exit the tile view layout mode.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'toggleTileView'</span>);
 </code></pre>
-<ul>
-<li><p><strong>hangup</strong> - Concludes or ends the call.</p>
-<p>No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="hangup"></a><a href="#hangup" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>hangup</h4>
+<p>Ends the call.</p>
+<p>No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'hangup'</span>);
 </code></pre>
-<ul>
-<li><p><strong>email</strong> - Changes the local email address.</p>
-<p>This command requires the new email address as the single argument.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="email"></a><a href="#email" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>email</h4>
+<p>Changes the local email address.</p>
+<p>This command requires the new email address as the single argument.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'email'</span>, <span class="hljs-string">'example@example.com'</span>);
 </code></pre>
-<ul>
-<li><p><strong>avatarUrl</strong> - Changes the local avatar URL.</p>
-<p>This command requires the new avatar URL to be set as the single argument.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="avatarurl"></a><a href="#avatarurl" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>avatarUrl</h4>
+<p>Changes the local avatar URL.</p>
+<p>This command requires the new avatar URL to be set as the single argument.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'avatarUrl'</span>, <span class="hljs-string">'https://avatars0.githubusercontent.com/u/3671647'</span>);
 </code></pre>
-<ul>
-<li><strong>sendEndpointTextMessage</strong> - Sends a text message to another participant through the data channels.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="sendendpointtextmessage"></a><a href="#sendendpointtextmessage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>sendEndpointTextMessage</h4>
+<p>Sends a text message to another participant through the data channels.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'sendEndpointTextMessage'</span>, <span class="hljs-string">'receiverParticipantId'</span>, <span class="hljs-string">'text'</span>);
 </code></pre>
-<ul>
-<li><p><strong>setLargeVideoParticipant</strong> - Displays the participant on the large video display.</p>
-<p>The particpant ID (Jid), if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="setlargevideoparticipant-1"></a><a href="#setlargevideoparticipant-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setLargeVideoParticipant</h4>
+<p>Displays the participant on the large video display.</p>
+<p>The particpant ID, if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'setLargeVideoParticipant'</span>, <span class="hljs-string">'abcd1234'</span>);
 </code></pre>
-<ul>
-<li><p><strong>setVideoQuality</strong> - Sets the send and receive video resolution.</p>
-<p>The resolution height setting is implemented using a single argument.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="setvideoquality"></a><a href="#setvideoquality" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>setVideoQuality</h4>
+<p>Sets the send and receive video resolution.</p>
+<p>The resolution height setting is implemented using a single argument.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'setVideoQuality'</span>, <span class="hljs-number">720</span>);
 </code></pre>
-<ul>
-<li><p><strong>muteEveryone</strong> - Mute all meeting participants.</p>
-<p>This command can only be executed by the meeting moderator. No arguments are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="muteeveryone"></a><a href="#muteeveryone" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>muteEveryone</h4>
+<p>Mute all meeting participants.</p>
+<p>This command can only be executed by the meeting moderator. No arguments are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'muteEveryone'</span>);
 </code></pre>
-<ul>
-<li><p><strong>startRecording</strong> - Starts a file recording or streaming session using passed parameters:</p>
+<h4><a class="anchor" aria-hidden="true" id="startrecording-1"></a><a href="#startrecording-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>startRecording</h4>
+<p>Starts a file recording or streaming session using passed parameters:</p>
 <ul>
 <li><p><strong>RTMP streaming</strong> - Recording mode set to <strong><code>stream</code></strong> with an <strong><code>rtmpStreamKey</code></strong>. The <strong><code>rtmpBroadcastID</code></strong> value is optional.</p></li>
 <li><p><strong>YouTube streams</strong> - Recording mode set to <strong><code>stream</code></strong> with an <strong><code>youtubeStreamKey</code></strong>. The <strong><code>youtubeBroadcastID</code></strong> value is optional.</p></li>
@@ -440,8 +406,7 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
 <ul>
 <li><strong>File recording</strong> - Recording mode set to <strong><code>file</code></strong>.</li>
 </ul>
-<p>Optionally, <strong><code>shouldShare</code></strong> should be passed on. No other params are required.</p></li>
-</ul>
+<p>Optionally, <strong><code>shouldShare</code></strong> should be passed on. No other params are required.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'startRecording'</span>, {
     <span class="hljs-attr">mode</span>: string <span class="hljs-comment">//recording mode, either `file` or `stream`.</span>
     <span class="hljs-attr">dropboxToken</span>: string, <span class="hljs-comment">//dropbox oauth2 token.</span>
@@ -452,15 +417,14 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     <span class="hljs-attr">youtubeBroadcastID</span>: string <span class="hljs-comment">//the youtube broacast ID.</span>
 });
 </code></pre>
-<ul>
-<li><p><strong>stopRecording</strong> - Stops an ongoing <strong><code>stream</code></strong> or <strong><code>file</code></strong> recording.</p>
-<p>No other params are required.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="stoprecording-1"></a><a href="#stoprecording-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>stopRecording</h4>
+<p>Stops an ongoing <strong><code>stream</code></strong> or <strong><code>file</code></strong> recording.</p>
+<p>The mode in which the recording was started must be specified.</p>
 <pre><code class="hljs css language-javascript">api.executeCommand(<span class="hljs-string">'stopRecording'</span>, 
     <span class="hljs-attr">mode</span>: string <span class="hljs-comment">//recording mode to stop, `stream` or `file`</span>
 );
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="multiple-command-execution"></a><a href="#multiple-command-execution" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multiple command execution</h2>
+<h3><a class="anchor" aria-hidden="true" id="multiple-command-execution"></a><a href="#multiple-command-execution" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Multiple command execution</h3>
 <p>You can also execute multiple commands using the <strong><code>executeCommands</code></strong> method:</p>
 <pre><code class="hljs css language-javascript">api.executeCommands(commands);
 </code></pre>
@@ -470,51 +434,49 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     <span class="hljs-attr">toggleAudio</span>: []
 });
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" id="event-listeners"></a><a href="#event-listeners" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Event listeners</h2>
-<p>You can add event listeners to the embedded Jitsi Meet using the <strong><code>addEventListener</code></strong> method:</p>
-<pre><code class="hljs css language-javascript">api.addEventListener(event, listener);
+<h3><a class="anchor" aria-hidden="true" id="events"></a><a href="#events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Events</h3>
+<p>The <code>JitsiMeetExternalAPI</code> object implements the <a href="https://nodejs.org/api/events.html">EventEmitter</a> API for emitting and listening for events.</p>
+<p>You can add event listeners to the embedded Jitsi Meet using the <strong><code>addListener</code></strong> method:</p>
+<pre><code class="hljs css language-javascript">api.addListener(event, listener);
+</code></pre>
+<p>If you want to remove a listener you can use the <strong><code>removeListener</code></strong> method:</p>
+<pre><code class="hljs css language-javascript">api.removeListener(event, listener);
 </code></pre>
 <p>The <strong><code>event</code></strong> parameter is a string object with the name of the event.</p>
 <p>The <strong><code>listener</code></strong> parameter is a function object with one argument that creates a notification when the event occurs along with related event data.</p>
-<h3><a class="anchor" aria-hidden="true" id="supported-listener-events"></a><a href="#supported-listener-events" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Supported listener events</h3>
-<p>The following listener events are currently supported:</p>
-<ul>
-<li><strong><code>cameraError</code></strong> - provides event notifications about Jitsi-Meet having failed to access the meeting camera.</li>
-</ul>
+<p>The following events are currently supported:</p>
+<h4><a class="anchor" aria-hidden="true" id="cameraerror"></a><a href="#cameraerror" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>cameraError</h4>
+<p>Provides event notifications about Jitsi Meet having failed to access the meeting camera.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">type</span>: string, <span class="hljs-comment">// A constant representing the overall type of the error.</span>
     <span class="hljs-attr">message</span>: string <span class="hljs-comment">// Additional information about the error.</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>avatarChanged</code></strong> - provides event notifications about changes to a meeting avatar.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="avatarchanged"></a><a href="#avatarchanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>avatarChanged</h4>
+<p>Provides event notifications about changes to a participant's avatar.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string, <span class="hljs-comment">// the id of the participant that changed his avatar.</span>
     <span class="hljs-attr">avatarURL</span>: string <span class="hljs-comment">// the new avatar URL.</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>audioAvailabilityChanged</code></strong> - provides event notifications about changes to audio availability status.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="audioavailabilitychanged"></a><a href="#audioavailabilitychanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>audioAvailabilityChanged</h4>
+<p>Provides event notifications about changes to audio availability status.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">available</span>: boolean <span class="hljs-comment">// new available status - boolean</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>audioMuteStatusChanged</code></strong> - provides event notifications about changes to audio mute status.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="audiomutestatuschanged"></a><a href="#audiomutestatuschanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>audioMuteStatusChanged</h4>
+<p>Provides event notifications about changes to audio mute status.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">muted</span>: boolean <span class="hljs-comment">// new muted status - boolean</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>endpointTextMessageReceived</code></strong> - provides event notifications about a text messages received through data channels.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="endpointtextmessagereceived"></a><a href="#endpointtextmessagereceived" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>endpointTextMessageReceived</h4>
+<p>Provides event notifications about a text messages received through data channels.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">senderInfo</span>: {
@@ -527,35 +489,31 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     }
 }
 </code></pre>
-<ul>
-<li><strong><code>largeVideoChanged</code></strong> - provides event notifications about changes in the large video display.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="largevideochanged"></a><a href="#largevideochanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>largeVideoChanged</h4>
+<p>Provides event notifications about changes in the large video display.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string <span class="hljs-comment">// id of the participant that is now on large video in the stage view.</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>log</code></strong> - provides log event notifications with the log level being one of the values specified in the <a href="https://github.com/jitsi/jitsi-meet/blob/master/config.js">config.js</a> file in the <strong><code>apiLogLevels</code></strong> property (if not specified the event does not fire).</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="log"></a><a href="#log" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>log</h4>
+<p>Provides log event notifications with the log level being one of the values specified in the <a href="https://github.com/jitsi/jitsi-meet/blob/master/config.js">config.js</a> file in the <strong><code>apiLogLevels</code></strong> property (if not specified the event does not fire).</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">logLevel</span>: string, <span class="hljs-comment">// A constant representing the log type (info, error, debug, warn).</span>
     <span class="hljs-attr">args</span>: string <span class="hljs-comment">// Additional log information.</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>micError</code></strong> - provides event notifications about Jitsi-Meet issues with mic access.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="micerror"></a><a href="#micerror" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>micError</h4>
+<p>Provides event notifications about Jitsi Meet issues with mic access.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">type</span>: string, <span class="hljs-comment">// A constant representing the overall type of the error.</span>
     <span class="hljs-attr">message</span>: string <span class="hljs-comment">// Additional information about the error.</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>screenSharingStatusChanged</code></strong> - provides event notifications about either turning on or off local user screen sharing.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="screensharingstatuschanged"></a><a href="#screensharingstatuschanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>screenSharingStatusChanged</h4>
+<p>Provides event notifications about either turning on or off local user screen sharing.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">on</span>: boolean, <span class="hljs-comment">//whether screen sharing is on</span>
@@ -568,33 +526,30 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     }
 }
 </code></pre>
-<ul>
-<li><strong><code>dominantSpeakerChanged</code></strong> - provides event notifications about dominant speaker changes.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="dominantspeakerchanged"></a><a href="#dominantspeakerchanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>dominantSpeakerChanged</h4>
+<p>Provides event notifications about dominant speaker changes.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string <span class="hljs-comment">//participantId of the new dominant speaker</span>
 }
 </code></pre>
-<ul>
-<li><strong>raiseHandUpdated</strong> - receives event notifications about the participant raising/lowering the hand. The listener will receive object with the following structure:</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="raisehandupdated"></a><a href="#raisehandupdated" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>raiseHandUpdated</h4>
+<p>Provides event notifications about the participant raising/lowering the hand.</p>
+<p>The listener will receive object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string,         <span class="hljs-comment">// participantId of the user who raises/lowers the hand</span>
     <span class="hljs-attr">handRaised</span>: boolean <span class="hljs-comment">// whether hand raised or lowered</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>tileViewChanged</code></strong> - provides event notifications about entrance or exit from the tile view layout mode.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="tileviewchanged"></a><a href="#tileviewchanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>tileViewChanged</h4>
+<p>Provides event notifications about entrance or exit from the tile view layout mode.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">enabled</span>: boolean, <span class="hljs-comment">// whether tile view is not displayed or not</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>incomingMessage</code></strong> - provides event notifications about incoming messages.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="incomingmessage"></a><a href="#incomingmessage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>incomingMessage</h4>
+<p>Provides event notifications about incoming chat messages.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">from</span>: string, <span class="hljs-comment">// The id of the user that sent the message</span>
@@ -602,67 +557,59 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     <span class="hljs-attr">message</span>: string <span class="hljs-comment">// the text of the message</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>outgoingMessage</code></strong> - provides event notifications about outgoing messages.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="outgoingmessage"></a><a href="#outgoingmessage" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>outgoingMessage</h4>
+<p>Provides event notifications about outgoing chat messages.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">message</span>: string <span class="hljs-comment">// the text of the message</span>
 }
 </code></pre>
-<ul>
-<li><strong>displayNameChange</strong> - provides event notifications about display name changes.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="displaynamechange"></a><a href="#displaynamechange" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>displayNameChange</h4>
+<p>Provides event notifications about display name changes.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string, <span class="hljs-comment">// the id of the participant that changed their display name</span>
     <span class="hljs-attr">displayname</span>: string <span class="hljs-comment">// the new display name</span>
 }
 </code></pre>
-<ul>
-<li><strong>deviceListChanged</strong> - provides event notifications about device list changes.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="devicelistchanged"></a><a href="#devicelistchanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>deviceListChanged</h4>
+<p>Provides event notifications about device list changes.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">devices</span>: <span class="hljs-built_in">Object</span> <span class="hljs-comment">// the new list of available devices.</span>
 }
 </code></pre>
 <p><strong>NOTE:</strong> The <strong><code>device</code></strong> object has the same format as the <strong><code>getAvailableDevices</code></strong> result format.</p>
-<ul>
-<li><strong>emailChange</strong> - provides event notifications about email changes.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="emailchange"></a><a href="#emailchange" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>emailChange</h4>
+<p>Provides event notifications about email changes.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string, <span class="hljs-comment">// the id of the participant that changed his email</span>
     <span class="hljs-attr">email</span>: string <span class="hljs-comment">// the new email</span>
 }
 </code></pre>
-<ul>
-<li><strong>feedbackSubmitted</strong> - provides event notifications about conference feedback submissions:</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="feedbacksubmitted"></a><a href="#feedbacksubmitted" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>feedbackSubmitted</h4>
+<p>Provides event notifications about conference feedback submissions:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">error</span>: string <span class="hljs-comment">// The error which occurred during submission, if any.</span>
 }
 </code></pre>
-<ul>
-<li><strong>filmstripDisplayChanged</strong> - provides event visibility notifications for the filmstrip that is being updated:</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="filmstripdisplaychanged"></a><a href="#filmstripdisplaychanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>filmstripDisplayChanged</h4>
+<p>Provides event visibility notifications for the filmstrip that is being updated:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">visible</span>: boolean <span class="hljs-comment">// Whether or not the filmstrip is displayed or hidden.</span>
 }
 </code></pre>
-<ul>
-<li><strong>participantJoined</strong> - provides event notifications about new participants who join the room.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="participantjoined"></a><a href="#participantjoined" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>participantJoined</h4>
+<p>Provides event notifications about new participants who join the room.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string, <span class="hljs-comment">// the id of the participant</span>
     <span class="hljs-attr">displayName</span>: string <span class="hljs-comment">// the display name of the participant</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>participantKickedOut</code></strong> - provides event notifications about participants being removed from the room.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="participantkickedout"></a><a href="#participantkickedout" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>participantKickedOut</h4>
+<p>Provides event notifications about participants being removed from the room.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">kicked</span>: {
@@ -674,27 +621,25 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     }
 }
 </code></pre>
-<ul>
-<li><strong><code>participantLeft</code></strong> - provides event notifications about participants that leave the meeting room.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="participantleft"></a><a href="#participantleft" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>participantLeft</h4>
+<p>Provides event notifications about participants that leave the meeting room.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string <span class="hljs-comment">// the id of the participant</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>participantRoleChanged</code></strong> - provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant).</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="participantrolechanged"></a><a href="#participantrolechanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>participantRoleChanged</h4>
+<p>Provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant).</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">id</span>: string <span class="hljs-comment">// the id of the participant</span>
     <span class="hljs-attr">role</span>: string <span class="hljs-comment">// the new role of the participant</span>
 }
 </code></pre>
-<ul>
-<li><p><strong><code>passwordRequired</code></strong> - provides event notifications that fire when participants fail to join a password protected room.</p></li>
-<li><p><strong><code>videoConferenceJoined</code></strong> - provides event notifications that fire when the local user has joined the video conference.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="passwordrequired"></a><a href="#passwordrequired" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>passwordRequired</h4>
+<p>Provides event notifications that fire when participants fail to join a password protected room.</p>
+<h4><a class="anchor" aria-hidden="true" id="videoconferencejoined"></a><a href="#videoconferencejoined" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>videoConferenceJoined</h4>
+<p>Provides event notifications that fire when the local user has joined the video conference.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">roomName</span>: string, <span class="hljs-comment">// the room name of the conference</span>
@@ -703,73 +648,46 @@ api.on(<span class="hljs-string">'passwordRequired'</span>, <span class="hljs-fu
     <span class="hljs-attr">avatarURL</span>: string <span class="hljs-comment">// the avatar URL of the local participant</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>videoConferenceLeft</code></strong> - provides event notifications that fire when the local user has left the video conference.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="videoconferenceleft"></a><a href="#videoconferenceleft" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>videoConferenceLeft</h4>
+<p>Provides event notifications that fire when the local user has left the video conference.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">roomName</span>: string <span class="hljs-comment">// the room name of the conference</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>videoAvailabilityChanged</code></strong> - provides event notifications about video availability status changes.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="videoavailabilitychanged"></a><a href="#videoavailabilitychanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>videoAvailabilityChanged</h4>
+<p>Provides event notifications about video availability status changes.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">available</span>: boolean <span class="hljs-comment">// new available status - boolean</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>videoMuteStatusChanged</code></strong> - provides event notifications about video mute status changes.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="videomutestatuschanged"></a><a href="#videomutestatuschanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>videoMuteStatusChanged</h4>
+<p>Provides event notifications about video mute status changes.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">muted</span>: boolean <span class="hljs-comment">// new muted status - boolean</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>videoQualityChanged</code></strong> -  provides event notifications about changes to video quality settings.</li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="videoqualitychanged"></a><a href="#videoqualitychanged" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>videoQualityChanged</h4>
+<p>Provides event notifications about changes to video quality settings.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">videoQuality</span>: number <span class="hljs-comment">// the height of the resolution related to the new video quality setting.</span>
 }
 </code></pre>
-<ul>
-<li><p><strong><code>readyToClose</code></strong> - provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).</p></li>
-<li><p><strong><code>subjectChange</code></strong> - provides event notifications regarding the change of subject for a conference.</p></li>
-</ul>
+<h4><a class="anchor" aria-hidden="true" id="readytoclose"></a><a href="#readytoclose" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>readyToClose</h4>
+<p>Provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).</p>
+<h4><a class="anchor" aria-hidden="true" id="subjectchange"></a><a href="#subjectchange" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>subjectChange</h4>
+<p>Provides event notifications regarding the change of subject for a conference.</p>
 <p>The listener receives an object with the following structure:</p>
 <pre><code class="hljs css language-javascript">{
     <span class="hljs-attr">subject</span>: string <span class="hljs-comment">// the new subject</span>
 }
 </code></pre>
-<ul>
-<li><strong><code>suspendDetected</code></strong> - provides notifications about detecting suspended events in the host computer.</li>
-</ul>
-<p>You can also add multiple event listeners by using <strong><code>addEventListeners</code></strong>.</p>
-<p>This method requires an object type as the single argument. The object argument must have the names of the events as keys and the event listeners as values:</p>
-<pre><code class="hljs css language-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">incomingMessageListener</span>(<span class="hljs-params">object</span>)
-</span>{
-<span class="hljs-comment">// ...</span>
-}
-
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">outgoingMessageListener</span>(<span class="hljs-params">object</span>)
-</span>{
-<span class="hljs-comment">// ...</span>
-}
-
-api.addEventListeners({
-    <span class="hljs-attr">incomingMessage</span>: incomingMessageListener,
-    <span class="hljs-attr">outgoingMessage</span>: outgoingMessageListener
-});
-</code></pre>
-<p>If you want to remove a listener you can use the <strong><code>removeEventListener</code></strong> method with the name of the event as the argument:</p>
-<pre><code class="hljs css language-javascript">api.removeEventListener(<span class="hljs-string">'incomingMessage'</span>);
-</code></pre>
-<p>If you want to remove more than one event you can use the <strong><code>removeEventListeners</code></strong> method with an Array with the names of the events as an argument:</p>
-<pre><code class="hljs css language-javascript">api.removeEventListeners([ <span class="hljs-string">'incomingMessage'</span>, <span class="hljs-string">'outgoingMessageListener'</span> ]);
-</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="suspenddetected"></a><a href="#suspenddetected" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>suspendDetected</h4>
+<p>Provides notifications about detecting suspended events in the host computer.</p>
+<h3><a class="anchor" aria-hidden="true" id="todo"></a><a href="#todo" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TODO.</h3>
 <p>You can obtain the number of conference participants using the following API function:</p>
 <pre><code class="hljs css language-javascript"><span class="hljs-keyword">const</span> numberOfParticipants = api.getNumberOfParticipants();
 </code></pre>
@@ -817,4 +735,4 @@ api.addEventListeners({
 <pre><code class="hljs css language-javascript">api.dispose();
 </code></pre>
 <p><strong>NOTE:</strong> Jitsi recommends removing the conference before the page is unloaded.</p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/8/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/handbook/docs/dev-guide/dev-guide-web-integrations"><span class="arrow-prev">← </span><span>Integrations</span></a><a class="docs-next button" href="/handbook/docs/dev-guide/dev-guide-mobile"><span>Start</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#integration">Integration</a></li><li><a href="#creating-the-jitsi-meet-api-object">Creating the Jitsi Meet API object</a></li><li><a href="#controlling-the-embedded-jitsi-meet-conference">Controlling the embedded Jitsi Meet Conference</a></li><li><a href="#commands">Commands</a></li><li><a href="#multiple-command-execution">Multiple command execution</a></li><li><a href="#event-listeners">Event listeners</a><ul class="toc-headings"><li><a href="#supported-listener-events">Supported listener events</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/handbook/" class="nav-home"><img src="/handbook/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/handbook/docs/intro.html">Introduction</a><a href="/handbook/docs/user-guide/user-guide-start.html">User Guide</a><a href="/handbook/docs/dev-guide/dev-guide-start.html">Developer Guide</a><a href="/handbook/docs/devops-guide/devops-guide-start.html">Self-Hosting Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a href="https://github.com/jitsi/jitsi-meet" target="_blank" rel="noreferrer noopener">Jitsi Meet on GitHub</a><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="https://github.com/jitsi/handbook" target="_blank" rel="noreferrer noopener">Handbook on GitHub</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div></div></section><section class="copyright">Copyright © 2021</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 1/8/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/handbook/docs/dev-guide/dev-guide-web-integrations"><span class="arrow-prev">← </span><span>Integrations</span></a><a class="docs-next button" href="/handbook/docs/dev-guide/dev-guide-mobile"><span>Start</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#integration">Integration</a></li><li><a href="#creating-the-jitsi-meet-api-object">Creating the Jitsi Meet API object</a></li><li><a href="#api">API</a><ul class="toc-headings"><li><a href="#capturelargevideoscreenshot">captureLargeVideoScreenshot</a></li><li><a href="#getavailabledevices">getAvailableDevices</a></li><li><a href="#getcurrentdevices">getCurrentDevices</a></li><li><a href="#getparticipantsinfo">getParticipantsInfo</a></li><li><a href="#getvideoquality">getVideoQuality</a></li><li><a href="#isdevicechangeavailable">isDeviceChangeAvailable</a></li><li><a href="#isdevicelistavailable">isDeviceListAvailable</a></li><li><a href="#ismultipleaudioinputsupported">isMultipleAudioInputSupported</a></li><li><a href="#pinparticipant">pinParticipant</a></li><li><a href="#resizelargevideo">resizeLargeVideo</a></li><li><a href="#setaudioinputdevice">setAudioInputDevice</a></li><li><a href="#setaudiooutputdevice">setAudioOutputDevice</a></li><li><a href="#setlargevideoparticipant">setLargeVideoParticipant</a></li><li><a href="#setvideoinputdevice">setVideoInputDevice</a></li><li><a href="#startrecording">startRecording</a></li><li><a href="#stoprecording">stopRecording</a></li><li><a href="#commands">Commands</a></li><li><a href="#multiple-command-execution">Multiple command execution</a></li><li><a href="#events">Events</a></li><li><a href="#todo">TODO.</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/handbook/" class="nav-home"><img src="/handbook/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/handbook/docs/intro.html">Introduction</a><a href="/handbook/docs/user-guide/user-guide-start.html">User Guide</a><a href="/handbook/docs/dev-guide/dev-guide-start.html">Developer Guide</a><a href="/handbook/docs/devops-guide/devops-guide-start.html">Self-Hosting Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a href="https://github.com/jitsi/jitsi-meet" target="_blank" rel="noreferrer noopener">Jitsi Meet on GitHub</a><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="https://github.com/jitsi/handbook" target="_blank" rel="noreferrer noopener">Handbook on GitHub</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div></div></section><section class="copyright">Copyright © 2021</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

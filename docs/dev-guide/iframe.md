@@ -709,6 +709,24 @@ api.executeCommand('stopRecording',
 );
 ```
 
+### intiatePrivateChat
+
+Opens the chat window and sets the participant with the given participant ID as the messages recipient.
+
+```javascript
+api.executeCommand('intiatePrivateChat',
+    participantID: string
+);
+```
+
+### cancelPrivateChat
+
+Removes the private chat participant thus it resets the chat window to group chat.
+
+```javascript
+api.executeCommand('cancelPrivateChat');
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

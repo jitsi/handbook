@@ -727,6 +727,16 @@ Removes the private chat participant thus it resets the chat window to group cha
 api.executeCommand('cancelPrivateChat');
 ```
 
+### getContentSharingParticipants
+
+Returns a promise which resolves with an array of currently sharing participants ID's.
+
+```javascript
+api.executeCommand('getContentSharingParticipants').then(res => {
+    //res.sharingParticipantIds = [particId1, particId2, ...]
+});
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.
@@ -796,6 +806,18 @@ The listener receives an object with the following structure:
 ```javascript
 {
     muted: boolean // new muted status - boolean
+}
+```
+
+### contentSharingParticipantsChanged
+
+Provides real-time list of currently screen sharing participant ID's.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    data: ["particId1", "particId2", ...]
 }
 ```
 

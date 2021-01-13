@@ -944,6 +944,7 @@ The listener receives an object with the following structure:
 {
     from: string, // The id of the user that sent the message
     nick: string, // the nickname of the user that sent the message
+    privateMessage: boolean, // whether this is a private or group message
     message: string // the text of the message
 }
 ```
@@ -956,7 +957,8 @@ The listener receives an object with the following structure:
 
 ```javascript
 {
-    message: string // the text of the message
+    message: string, // the text of the message
+    privateMessage: boolean // whether this is a private or group message
 }
 ```
 

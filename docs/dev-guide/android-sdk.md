@@ -348,11 +348,13 @@ Called before a conference is joined.
 The `data` `Map` contains a "url" key with the conference URL.
 
 ### Listening for broadcasted events
-The SDK broadcasts several events that the users can listen for.<br/>
-ex:<br/>
-    IntentFilter intentFilter = new IntentFilter();<br/>
-    intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_JOINED.getAction());<br/>
-    LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter);<br/>
+The SDK broadcasts several events that the users can listen for.
+
+```java
+    IntentFilter intentFilter = new IntentFilter();
+    intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_JOINED.getAction());
+    LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter);
+ ```  
         
 Please see `JitsiMeetActivity`, which registers for all the events and can serve as an example.
 
@@ -381,21 +383,21 @@ The `data` HashMap contains a `muted` key with state of the audioMuted for the l
 Broadcasted when a participant has joined the conference.
 The `data` HashMap contains information of the participant that has joined.
 Depending of whether the participant is the local one or not, some of them are 
-present/missing.<br/>
-    isLocal<br/>
-    email<br/>
-    name<br/>
+present/missing.
+    isLocal
+    email
+    name
     participantId
 
 ##### PARTICIPANT_LEFT
 Broadcasted when a participant has joined the conference.
 The `data` HashMap contains information of the participant that has left.
 Depending of whether the participant is the local one or not, some of them are 
-present/missing.<br/>
-    isLocal<br/>
-    email<br/>
-    name<br/>
-    participantId<br/>
+present/missing.
+    isLocal
+    email
+    name
+    participantId
 
 ##### ENDPOINT_TEXT_MESSAGE_RECEIVED
 Broadcasted when an endpoint text message is received.
@@ -404,10 +406,11 @@ The `data` HashMap contains a `senderId` key with the participantId of the sende
 ### Broadcasting Actions
 The SDK listens for broadcasted actions from the users and reacts accordingly.
 
-ex:<br/>
-    Intent muteBroadcastIntent = new Intent(BroadcastAction.Type.SET_AUDIO_MUTED.getAction());<br/>
-    muteBroadcastIntent.putExtra("muted", muted);<br/>
-    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(muteBroadcastIntent);<br/>
+```java
+    Intent muteBroadcastIntent = new Intent(BroadcastAction.Type.SET_AUDIO_MUTED.getAction());
+    muteBroadcastIntent.putExtra("muted", muted);
+    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(muteBroadcastIntent);
+ ```
 
 The intents can be build manually (as shown above) or through the methods in `BroadcastIntentHelper`.
 

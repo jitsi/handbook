@@ -133,6 +133,22 @@ Joins the conference specified by the given options.
 
 Leaves the currently active conference.
 
+#### hangUp
+
+The localParticipant leaves the current conference.
+
+#### setAudioMuted
+
+Sets the state of the localParticipant audio muted according to the `muted` parameter.
+
+#### sendEndpointTextMessage
+
+Sends a message via the data channel to one particular participant or to all of them.
+If the `to` param is empty, the message will be sent to all the participants in the conference.
+
+In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
+which `data` includes the id and this should be stored somehow.
+
 #### Universal / deep linking
 
 In order to support Universal / deep linking, `JitsiMeet` offers 2 class
@@ -206,6 +222,42 @@ its user interface to a variant appropriate for the small size ordinarily
 associated with Picture-in-Picture.)
 
 The `data` dictionary is empty.
+
+#### participantJoined
+
+Called when a participant has joined the conference.
+
+The `data` dictionary contains information of the participant that has joined.
+Depending of whether the participant is the local one or not, some of them are 
+present/missing.
+    isLocal
+    email
+    name
+    participantId
+
+#### participantLeft
+
+Called when a participant has left the conference.
+
+The `data` dictionary contains information of the participant that has left.
+Depending of whether the participant is the local one or not, some of them are 
+present/missing.
+    isLocal
+    email
+    name
+    participantId
+
+#### audioMutedChanged
+
+Called when audioMuted state changed.
+
+The `data` dictionary contains a `muted` key with state of the audioMuted for the localParticipant.
+
+#### endpointTextMessageReceived
+
+Called when an endpoint text message is received.
+
+The `data` dictionary contains a `senderId` key with the participantId of the sender and a `message` key with the content.
 
 ### Picture-in-Picture
 

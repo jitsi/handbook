@@ -234,6 +234,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	meet.leinelab.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.leinelab.org&latest)	   |  	Contabo GmbH	  |
 |  	meet.linus-neumann.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.linus-neumann.de&latest)	   |  	AS250.net Foundation	  |
 |  	meet.lug-stormarn.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.lug-stormarn.de&latest)	   |  		  |
+|  	meet.mars-services.de	   |  	 ✅  |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.mars-services.de&latest)	   |  	mars solutions GmbH	  |
 |  	meet.meerfarbig.net	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.meerfarbig.net&latest)	   |  	meerfarbig GmbH & Co. KG	  |
 |  	meet.neanderfunk.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.neanderfunk.de&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.netzfraktion.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.netzfraktion.org&latest)	   |  	Hetzner Online GmbH	  |

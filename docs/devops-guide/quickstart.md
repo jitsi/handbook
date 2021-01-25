@@ -289,6 +289,9 @@ You can also visit https://test.webrtc.org to test your browser's [WebRTC](https
 * Firewall:
 If participants cannot see or hear each other, double check your firewall / NAT rules.
 
+* Nginx/Apache:
+As we prefer the usage of Nginx as webserver, the installer checks first for the presence of Nginx and then for Apache. In case you desperately need to enforce the usage of apache, try pre-setting the variable `jitsi-meet/enforce_apache` for package `jitsi-meet-web-config` on debconf.
+
 * Log files:
 Take a look at the various log files:
 

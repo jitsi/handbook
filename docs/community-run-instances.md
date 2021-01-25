@@ -238,7 +238,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	meet.meerfarbig.net	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.meerfarbig.net&latest)	   |  	meerfarbig GmbH & Co. KG	  |
 |  	meet.neanderfunk.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.neanderfunk.de&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.netzfraktion.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.netzfraktion.org&latest)	   |  	Hetzner Online GmbH	  |
-|  	meet.no42.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.no42.org&latest)	   |  	1&1 Ionos Se	  |
+|  	meet.no42.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.no42.org&latest)	   |  	1&1 Ionos Se	  |
 |  	meet.piraten-witten.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.piraten-witten.de&latest)	   |  	netcup GmbH	  |
 |  	meet.piratenpartei-sh.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.piratenpartei-sh.de&latest)	   |  	ISPpro Internet KG	  |
 |  	meet.roflcopter.fr	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.roflcopter.fr&latest)	   |  	Hetzner Online GmbH	  |

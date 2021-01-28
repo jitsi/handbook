@@ -935,6 +935,19 @@ The listener receives an object with the following structure:
 }
 ```
 
+### chatUpdated
+
+Provides event notifications about chat state being updated.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    isOpen: boolean, // Whether the chat panel is open or not
+    unreadCount: number // The unread messages counter
+}
+```
+
 ### incomingMessage
 
 Provides event notifications about incoming chat messages. 

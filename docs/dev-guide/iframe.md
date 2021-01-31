@@ -3,7 +3,7 @@ id: dev-guide-iframe
 title: IFrame API
 ---
 
-Embedding the Jitsi Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The Meet API provides a full compliment of comprehensive meeting features.
+Embedding the Jitsi Meet API into your site or app enables you to host and provide secure video meetings with your colleagues, teams, and stakeholders. The Meet API provides a full complement of comprehensive meeting features.
 
 Your Jitsi meetings can be hosted and attended using any device while keeping your data and privacy protected. You can reach your meeting participants anywhere in the world eliminating the need for travel and the associated inconvenience.
 
@@ -335,7 +335,7 @@ api.setAudioOutputDevice(deviceLabel, deviceId);
 
 Displays the participant with the given participant ID on the large video.
 
-If no participant ID is given, a particpant is picked based on the dominant, pinned speaker settings.
+If no participant ID is given, a participant is picked based on the dominant, pinned speaker settings.
 
 ```javascript
 api.setLargeVideoParticipant(participantId);
@@ -399,7 +399,7 @@ const email = api.getEmail(participantId);
 
 ### getIFrame
 
-Returns the IFrame HTML element which is used to laod the Jitsi Meet conference:
+Returns the IFrame HTML element which is used to load the Jitsi Meet conference:
 
 ```javascript
 const iframe = api.getIFrame();
@@ -663,7 +663,7 @@ api.executeCommand('sendEndpointTextMessage', 'receiverParticipantId', 'text');
 
 Displays the participant on the large video display.
 
-The particpant ID, if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.
+The participant ID, if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.
 
 ```javascript
 api.executeCommand('setLargeVideoParticipant', 'abcd1234');
@@ -729,7 +729,7 @@ api.executeCommand('stopRecording',
 );
 ```
 
-### intiatePrivateChat
+### initiatePrivateChat
 
 Opens the chat window and sets the participant with the given participant ID as the messages recipient.
 
@@ -933,7 +933,7 @@ The listener receives an object with the following structure:
 
 Provides event notifications about the participant raising/lowering the hand.
 
-The listener will receive object with the following structure:
+The listener will receive an object with the following structure:
 
 ```javascript
 {

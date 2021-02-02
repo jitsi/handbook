@@ -46,7 +46,7 @@ end
 
 Replace `JitsiMeetSDKTest` with your project and target names.
 
-Bitcode is not supported, so turn it off for your project.
+Bitcode is not provided in the prebuilt SDK, so turn it off for your project.
 
 The SDK uses Swift code, so make sure you select `Always Embed Swift Standard Libraries`
 in your project.
@@ -66,12 +66,43 @@ you may want to set `UIViewControllerBasedStatusBarAppearance` to `NO` in your
 
 1. Install all required [dependencies](mobile.md).
 
-2. `xcodebuild -workspace ios/jitsi-meet.xcworkspace -scheme JitsiMeet -destination='generic/platform=iOS' -configuration Release archive`
+2. Build it:
 
-After successfully building Jitsi Meet SDK for iOS, copy
-`ios/sdk/JitsiMeet.framework` (if the path points to a symbolic link, follow the
-symbolic link) and
-`node_modules/react-native-webrtc/ios/WebRTC.framework` into your project.
+```bash
+mkdir -p ios/sdk/out
+xcodebuild clean \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK
+xcodebuild archive \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK  \
+    -configuration Release \
+    -sdk iphonesimulator \
+    -destination='generic/platform=iOS Simulator' \
+    -archivePath ios/sdk/out/ios-simulator \
+    VALID_ARCHS=x86_64 \
+    ENABLE_BITCODE=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+xcodebuild archive \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK  \
+    -configuration Release \
+    -sdk iphoneos \
+    -destination='generic/platform=iOS' \
+    -archivePath ios/sdk/out/ios-device \
+    VALID_ARCHS=arm64 \
+    ENABLE_BITCODE=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+xcodebuild -create-xcframework \
+    -framework ios/sdk/out/ios-device.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
+    -framework ios/sdk/out/ios-simulator.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
+    -output ios/sdk/out/JitsiMeetSDK.xcframework
+cp -a node_modules/react-native-webrtc/apple/WebRTC.xcframework ios/sdk/out
+```
+
+After successfully building Jitsi Meet SDK for iOS, the 2 resulting XCFrameworks will be in the ios/sdk/out directory.
 
 ## API
 

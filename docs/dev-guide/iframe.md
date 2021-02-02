@@ -27,6 +27,25 @@ meet.jit.si:
 
 ```
 
+## Mobile support
+
+The iframe API works on mobile browsers the same way as it does on desktop browsers.
+
+::warning
+Currently we are working on better support for Chrome for iOS, expect issues.
+::
+
+### Opening meetings in the Jitsi Meet app
+
+In order to open meetings with the Jitsi Meet app you can use our custom URL scheme as follows:
+
+(let's assume the meeting is https://meet.jit.si/test123)
+
+* Android: `intent://meet.jit.si/test123#Intent;scheme=org.jitsi.meet;package=org.jitsi.meet;end`
+* iOS: `org.jitsi.meet://meet.jit.si/test123`
+
+This works with custom servers too, just replace `meet.jit.si` with your custom server URL.
+
 ## Creating the Jitsi Meet API object
 
 After you have integrated the Meet API library, you must then create the Jitsi Meet API object.

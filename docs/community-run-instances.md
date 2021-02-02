@@ -168,6 +168,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.teamcloud.work | ✅ | | [SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.teamcloud.work&latest) | Hetzner Online GmbH
 |  	befair1.iorestoacasa.work	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=befair1.iorestoacasa.work&latest)	   |  	Hetzner Online GmbH	  |
 |  	befair2.iorestoacasa.work	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=befair2.iorestoacasa.work&latest)	   |  	Hetzner Online GmbH	  |
+| meet.gemeinsam-arbeiten.net | ✅ | | [SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.gemeinsam-arbeiten.net&latest) | Strato GmbH
 |  	besprechung.net	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=besprechung.net&latest)	   |  	Host Europe GmbH	  |
 |  	conference.mafiasi.de   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=conference.mafiasi.de&latest)	   |  	|
 |  	meet.physnet.uni-hamburg.de   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.physnet.uni-hamburg.de&latest)	   |  	|

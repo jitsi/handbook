@@ -31,9 +31,9 @@ meet.jit.si:
 
 The iframe API works on mobile browsers the same way as it does on desktop browsers.
 
-::warning
+:::warning
 Currently we are working on better support for Chrome for iOS, expect issues.
-::
+:::
 
 ### Opening meetings in the Jitsi Meet app
 

@@ -88,7 +88,7 @@ post_install <span class="hljs-keyword">do</span> <span class="hljs-params">|ins
 <span class="hljs-keyword">end</span>
 </code></pre>
 <p>Replace <code>JitsiMeetSDKTest</code> with your project and target names.</p>
-<p>Bitcode is not supported, so turn it off for your project.</p>
+<p>Bitcode is not provided in the prebuilt SDK, so turn it off for your project.</p>
 <p>The SDK uses Swift code, so make sure you select <code>Always Embed Swift Standard Libraries</code>
 in your project.</p>
 <p>Since the SDK requests camera and microphone access, make sure to include the
@@ -102,12 +102,41 @@ you may want to set <code>UIViewControllerBasedStatusBarAppearance</code> to <co
 <h3><a class="anchor" aria-hidden="true" id="building-it-yourself"></a><a href="#building-it-yourself" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Building it yourself</h3>
 <ol>
 <li><p>Install all required <a href="/handbook/docs/dev-guide/dev-guide-mobile">dependencies</a>.</p></li>
-<li><p><code>xcodebuild -workspace ios/jitsi-meet.xcworkspace -scheme JitsiMeet -destination='generic/platform=iOS' -configuration Release archive</code></p></li>
+<li><p>Build it:</p></li>
 </ol>
-<p>After successfully building Jitsi Meet SDK for iOS, copy
-<code>ios/sdk/JitsiMeet.framework</code> (if the path points to a symbolic link, follow the
-symbolic link) and
-<code>node_modules/react-native-webrtc/ios/WebRTC.framework</code> into your project.</p>
+<pre><code class="hljs css language-bash">mkdir -p ios/sdk/out
+xcodebuild clean \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK
+xcodebuild archive \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK  \
+    -configuration Release \
+    -sdk iphonesimulator \
+    -destination=<span class="hljs-string">'generic/platform=iOS Simulator'</span> \
+    -archivePath ios/sdk/out/ios-simulator \
+    VALID_ARCHS=x86_64 \
+    ENABLE_BITCODE=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+xcodebuild archive \
+    -workspace ios/jitsi-meet.xcworkspace \
+    -scheme JitsiMeetSDK  \
+    -configuration Release \
+    -sdk iphoneos \
+    -destination=<span class="hljs-string">'generic/platform=iOS'</span> \
+    -archivePath ios/sdk/out/ios-device \
+    VALID_ARCHS=arm64 \
+    ENABLE_BITCODE=NO \
+    SKIP_INSTALL=NO \
+    BUILD_LIBRARY_FOR_DISTRIBUTION=YES
+xcodebuild -create-xcframework \
+    -framework ios/sdk/out/ios-device.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
+    -framework ios/sdk/out/ios-simulator.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
+    -output ios/sdk/out/JitsiMeetSDK.xcframework
+cp -a node_modules/react-native-webrtc/apple/WebRTC.xcframework ios/sdk/out
+</code></pre>
+<p>After successfully building Jitsi Meet SDK for iOS, the 2 resulting XCFrameworks will be in the ios/sdk/out directory.</p>
 <h2><a class="anchor" aria-hidden="true" id="api"></a><a href="#api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>API</h2>
 <p>JitsiMeet is an iOS framework which embodies the whole Jitsi Meet experience and
 makes it reusable by third-party apps.</p>

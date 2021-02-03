@@ -1,6 +1,6 @@
 ---
 id: community-instances
-title: Community-run Jitsi Meet instances
+title: Community-run instances
 ---
 
 ## Official Servers

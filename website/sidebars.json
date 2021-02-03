@@ -4,8 +4,11 @@
       "intro",
       "architecture",
       "security",
-      "faq",
-      "community-instances"
+      "faq"
+    ],
+    "Community": [
+      "community/community-intro",
+      "community/community-instances"
     ],
     "User Guide": [
       "user-guide/user-guide-start",

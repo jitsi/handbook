@@ -1,5 +1,5 @@
 ---
-id: supported browsers
+id: supported-browsers
 title: Supported browsers
 ---
 

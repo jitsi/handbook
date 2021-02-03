@@ -13,12 +13,13 @@
     ],
     "User Guide": [
       "user-guide/user-guide-start",
-      "user-guide/supported browsers",
+      "user-guide/supported-browsers",
       "user-guide/user-guide-join-jitsi-meeting",
       "user-guide/user-guide-start-a-jitsi-meeting",
       "user-guide/user-guide-share-a-jitsi-meeting",
       "user-guide/user-guide-jitsi-meet-on-mobile",
       "user-guide/user-guide-jitsi-meet-for-google-calendar",
+      "user-guide/keyboard-shortcuts",
       "user-guide/user-guide-basic",
       "user-guide/user-guide-advanced"
     ],

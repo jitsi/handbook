@@ -40,6 +40,7 @@
         "label": "Mobile",
         "ids": [
           "dev-guide/dev-guide-mobile",
+          "dev-guide/mobile-feature-flags",
           "dev-guide/dev-guide-android-sdk",
           "dev-guide/dev-guide-ios-sdk"
         ]

@@ -13,7 +13,7 @@ You can also embed and integrate the globally distributed and highly available d
 
 ## Integration
 
-To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your appication:
+To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your application:
 
 For self-hosting in your domain:
 

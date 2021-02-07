@@ -20,7 +20,7 @@ You will need the following packages:
 * `sudo` # only needed if you use sudo
 
 :::note Note
-For now it is recommended to install OpenJDK 8, see [below](devops-guide-quickstart#openjdk-8).
+OpenJDK 8 or OpenJDK 11 must be used.
 :::
 
 Make sure your system is up-to-date and required packages are installed:
@@ -43,18 +43,6 @@ sudo apt-add-repository universe
 # Retrieve the latest package versions across all repositories
 sudo apt update
 ```
-
-### OpenJDK 8
-
-* On Ubuntu:
-  Install `openjdk-8-jdk` 
-
-* On Debian 9 (Stretch):
-  Install `openjdk-8-jdk` 
-  
-* On Debian 10 (Buster) and newer:
-  OpenJDK 8 is not included in the official repos, you can use the .deb packages provided by [Adoptopenjdk.org - DEB installer packages](https://adoptopenjdk.net/installation.html#linux-pkg) instead.
-  **Note:** Install `adoptopenjdk-8-hotspot` instead of `11` of course!
 
 ## Install Jitsi Meet
 

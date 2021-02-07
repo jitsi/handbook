@@ -20,7 +20,7 @@ You will need the following packages:
 * `sudo` # only needed if you use sudo
 
 :::note Note
-To run the components [OpenJDK 8](devops-guide-quickstart#openjdk-8) or OpenJDK 11 must be used.
+OpenJDK 8 or OpenJDK 11 must be used.
 :::
 
 Make sure your system is up-to-date and required packages are installed:
@@ -43,17 +43,6 @@ sudo apt-add-repository universe
 # Retrieve the latest package versions across all repositories
 sudo apt update
 ```
-
-### OpenJDK 8
-
-* On Ubuntu:
-  Install `openjdk-8-jdk` 
-
-* On Debian 9 (Stretch):
-  Install `openjdk-8-jdk` 
-  
-* On Debian 10 (Buster) and newer:
-  OpenJDK 8 is not included in the official repos, Adoptopenjdk is known to have issues with locally trusted certificates and is causing problems, use openjdk-11.
 
 ## Install Jitsi Meet
 

@@ -14,8 +14,8 @@ If you want to have a video conference without setting up any infrastructure, us
 
 The content is divided in 3 guides:
 
-* [Debian/Ubuntu server guide](devops-guide/quickstart.md): Describes the quick installation on Debian-based distributions.
+* [Debian/Ubuntu server guide](quickstart.md): Describes the quick installation on Debian-based distributions.
 
-* [Docker guide](devops-guide/docker.md): Describes how to use the official Docker image of Jitsi-Meet.
+* [Docker guide](docker.md): Describes how to use the official Docker image of Jitsi-Meet.
 
-* [Manual installation guide](devops-guide/manual.md): Describes the manual installation of all components (adaptable for other distributions).
+* [Manual installation guide](manual.md): Describes the manual installation of all components (adaptable for other distributions).

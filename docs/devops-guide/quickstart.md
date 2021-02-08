@@ -169,7 +169,7 @@ This hostname will be used for virtualhost configuration inside Jitsi Meet and a
 
 **Jitsi Meet server:**
 _Note_: By default, anyone who has access to your Jitsi Meet server will be able to start a conference: if your server is open to the world, anyone can have a chat with anyone else. 
-If you want to limit the ability to start a conference to registered users, follow the instructions to set up a [secure domain](secure-domain).
+If you want to limit the ability to start a conference to registered users, follow the instructions to set up a [secure domain](secure-domain.md).
 
 **Conferences/Rooms:**
 The access control for conferences/rooms is managed in the rooms, you can set a password on the webpage of the specific room after creation.

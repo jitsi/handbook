@@ -57,36 +57,48 @@
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/jitsi/handbook/edit/master/docs/devops-guide/docker.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Self-Hosting Guide - Docker</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="quick-start"></a><a href="#quick-start" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quick start</h2>
 <p>In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:</p>
+<ol>
+<li><p>Download and extract the <a href="https://github.com/jitsi/docker-jitsi-meet/releases/latest">latest release</a></p>
+<p>Alternatively, to test the latest changes clone the repository:</p>
+<pre><code class="hljs css language-bash">git <span class="hljs-built_in">clone</span> https://github.com/jitsi/docker-jitsi-meet &amp;&amp; <span class="hljs-built_in">cd</span> docker-jitsi-meet
+</code></pre></li>
+<li><p>Create a <code>.env</code> file by copying and adjusting <code>env.example</code>:</p>
+<pre><code class="hljs css language-bash">cp env.example .env
+</code></pre></li>
+<li><p>Set strong passwords in the security section options of <code>.env</code> file by running the following bash script</p>
+<pre><code class="hljs css language-bash">./gen-passwords.sh
+</code></pre></li>
+<li><p>Create required <code>CONFIG</code> directories</p>
 <ul>
-<li>Download and extract the <a href="https://github.com/jitsi/docker-jitsi-meet/releases/latest">latest release</a>
-<ul>
-<li>Alternatively, to test the latest changes clone the repository: <code>git clone https://github.com/jitsi/docker-jitsi-meet &amp;&amp; cd docker-jitsi-meet</code></li>
-</ul></li>
-<li>Create a <code>.env</code> file by copying and adjusting <code>env.example</code>
-<ul>
-<li><code>cp env.example .env</code></li>
-</ul></li>
-<li>Set strong passwords in the security section options of <code>.env</code> file by running the following bash script
-<ul>
-<li><code>./gen-passwords.sh</code></li>
-</ul></li>
-<li>Create required <code>CONFIG</code> directories
-<ul>
-<li><code>mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}</code></li>
-<li>For Windows: <code>echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir &quot;~/.jitsi-meet-cfg/$_&quot; }</code></li>
-</ul></li>
-<li>Run <code>docker-compose up -d</code></li>
-<li>Access the web UI at <a href="https://localhost:8443"><code>https://localhost:8443</code></a> (or a different port, in case you edited the compose file).</li>
+<li>For linux:</li>
 </ul>
+<pre><code class="hljs css language-bash">mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+</code></pre>
+<ul>
+<li>For Windows:</li>
+</ul>
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir <span class="hljs-string">"~/.jitsi-meet-cfg/<span class="hljs-variable">$_</span>"</span> }
+</code></pre></li>
+<li><p>Run <code>docker-compose up -d</code></p></li>
+<li><p>Access the web UI at <a href="https://localhost:8443"><code>https://localhost:8443</code></a> (or a different port, in case you edited the compose file).</p></li>
+</ol>
 <p>Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
 direct access via HTTP instead HTTPS leads to WebRTC errors such as <em>Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined</em> or <em>navigator.mediaDevices is undefined</em>.</p>
 <p>If you want to use jigasi too, first configure your env file with SIP credentials
-and then run Docker Compose as follows: <code>docker-compose -f docker-compose.yml -f jigasi.yml up</code></p>
+and then run Docker Compose as follows:</p>
+<pre><code class="hljs css language-bash">docker-compose -f docker-compose.yml -f jigasi.yml up
+</code></pre>
 <p>If you want to enable document sharing via <a href="https://github.com/ether/etherpad-lite">Etherpad</a>, configure it and run Docker Compose as
-follows: <code>docker-compose -f docker-compose.yml -f etherpad.yml up</code></p>
+follows:</p>
+<pre><code class="hljs css language-bash">docker-compose -f docker-compose.yml -f etherpad.yml up
+</code></pre>
 <p>If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
-and then run Docker Compose as follows: <code>docker-compose -f docker-compose.yml -f jibri.yml up -d</code>
-or to use jigasi too: <code>docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d</code></p>
+and then run Docker Compose as follows:</p>
+<pre><code class="hljs css language-bash">docker-compose -f docker-compose.yml -f jibri.yml up -d
+</code></pre>
+<p>or to use jigasi too:</p>
+<pre><code class="hljs css language-bash">docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
+</code></pre>
 <h3><a class="anchor" aria-hidden="true" id="security-note"></a><a href="#security-note" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Security note</h3>
 <p>This setup used to have default passwords for internal accounts used across components. In order to make the default setup
 secure by default these have been removed and the respective containers won't start without having a password set.</p>
@@ -111,18 +123,18 @@ several container images are provided.</p>
 <h3><a class="anchor" aria-hidden="true" id="external-ports"></a><a href="#external-ports" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>External Ports</h3>
 <p>The following external ports must be opened on a firewall:</p>
 <ul>
-<li>80/tcp for Web UI HTTP (really just to redirect, after uncommenting ENABLE_HTTP_REDIRECT=1 in .env)</li>
-<li>443/tcp for Web UI HTTPS</li>
-<li>4443/tcp for RTP media over TCP</li>
-<li>10000/udp for RTP media over UDP</li>
+<li><code>80/tcp</code> for Web UI HTTP (really just to redirect, after uncommenting <code>ENABLE_HTTP_REDIRECT=1</code> in <code>.env</code>)</li>
+<li><code>443/tcp</code> for Web UI HTTPS</li>
+<li><code>4443/tcp</code> for RTP media over TCP</li>
+<li><code>10000/udp</code> for RTP media over UDP</li>
 </ul>
-<p>Also 20000-20050/udp for jigasi, in case you choose to deploy that to facilitate SIP access.</p>
+<p>Also <code>20000-20050/udp</code> for jigasi, in case you choose to deploy that to facilitate SIP access.</p>
 <p>E.g. on a CentOS/Fedora server this would be done like this (without SIP access):</p>
-<pre><code class="hljs css language-shell">    $ sudo firewall-cmd --permanent --add-port=80/tcp
-    $ sudo firewall-cmd --permanent --add-port=443/tcp
-    $ sudo firewall-cmd --permanent --add-port=4443/tcp
-    $ sudo firewall-cmd --permanent --add-port=10000/udp
-    $ sudo firewall-cmd --reload
+<pre><code class="hljs css language-bash">sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --permanent --add-port=4443/tcp
+sudo firewall-cmd --permanent --add-port=10000/udp
+sudo firewall-cmd --reload
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="images"></a><a href="#images" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Images</h3>
 <ul>
@@ -210,41 +222,41 @@ Let's Encrypt once you are done testing.</p>
 </tbody>
 </table>
 <p>The JSON with the Dial-In numbers should look like this:</p>
-<pre><code class="hljs">{<span class="hljs-attr">"message"</span>:<span class="hljs-string">"Dial-In numbers:"</span>,<span class="hljs-attr">"numbers"</span>:{<span class="hljs-attr">"DE"</span>: [<span class="hljs-string">"+49-721-0000-0000"</span>]},<span class="hljs-attr">"numbersEnabled"</span>:<span class="hljs-literal">true</span>}
+<pre><code class="hljs css language-json">{<span class="hljs-attr">"message"</span>:<span class="hljs-string">"Dial-In numbers:"</span>,<span class="hljs-attr">"numbers"</span>:{<span class="hljs-attr">"DE"</span>: [<span class="hljs-string">"+49-721-0000-0000"</span>]},<span class="hljs-attr">"numbersEnabled"</span>:<span class="hljs-literal">true</span>}
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="jitsi-broadcasting-infrastructure-jibri-configuration"></a><a href="#jitsi-broadcasting-infrastructure-jibri-configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>JItsi BRoadcasting Infrastructure (Jibri) configuration</h3>
 <p>Before running Jibri, you need to set up an ALSA loopback device on the host. This <strong>will not</strong>
 work on a non-Linux host.</p>
 <p>For CentOS 7, the module is already compiled with the kernel, so just run:</p>
-<pre><code class="hljs"><span class="hljs-comment"># configure 5 capture/playback interfaces</span>
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4"</span> &gt; <span class="hljs-string">/etc/modprobe.d/alsa-loopback.conf</span>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># configure 5 capture/playback interfaces</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4"</span> &gt; /etc/modprobe.d/alsa-loopback.conf
 <span class="hljs-comment"># setup autoload the module</span>
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"snd_aloop"</span> &gt; <span class="hljs-string">/etc/modules-load.d/snd_aloop.conf</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"snd_aloop"</span> &gt; /etc/modules-load.d/snd_aloop.conf
 <span class="hljs-comment"># load the module</span>
 modprobe snd-aloop
 <span class="hljs-comment"># check that the module is loaded</span>
 lsmod | grep snd_aloop
 </code></pre>
 <p>For Ubuntu:</p>
-<pre><code class="hljs"><span class="hljs-comment"># install the module</span>
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># install the module</span>
 apt update &amp;&amp; apt install linux-image-extra-virtual
 <span class="hljs-comment"># configure 5 capture/playback interfaces</span>
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4"</span> &gt; <span class="hljs-string">/etc/modprobe.d/alsa-loopback.conf</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4"</span> &gt; /etc/modprobe.d/alsa-loopback.conf
 <span class="hljs-comment"># setup autoload the module</span>
-<span class="hljs-keyword">echo</span> <span class="hljs-string">"snd-aloop"</span> &gt;&gt; <span class="hljs-string">/etc/modules</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">"snd-aloop"</span> &gt;&gt; /etc/modules
 <span class="hljs-comment"># check that the module is loaded</span>
 lsmod | grep snd_aloop
 </code></pre>
 <p>NOTE: If you are running on AWS you may need to reboot your machine to use the generic kernel instead
 of the &quot;aws&quot; kernel. If after reboot, your machine is still using the &quot;aws&quot; kernel, you'll need to manually update the grub file. So just run:</p>
-<pre><code class="hljs"># <span class="hljs-keyword">open</span> the grub file <span class="hljs-keyword">in</span> editor
-nano /etc/<span class="hljs-keyword">default</span>/grub
-# Modify the <span class="hljs-keyword">value</span> <span class="hljs-keyword">of</span> GRUB_DEFAULT <span class="hljs-keyword">from</span> "0" <span class="hljs-keyword">to</span> "1&gt;2"
-# Save <span class="hljs-keyword">and</span> <span class="hljs-keyword">exit</span> <span class="hljs-keyword">from</span> file
+<pre><code class="hljs css language-bash"><span class="hljs-comment"># open the grub file in editor</span>
+nano /etc/default/grub
+<span class="hljs-comment"># Modify the value of GRUB_DEFAULT from "0" to "1&gt;2"</span>
+<span class="hljs-comment"># Save and exit from file</span>
 
-# <span class="hljs-keyword">Update</span> grub
-<span class="hljs-keyword">update</span>-grub
-# Reboot the machine
+<span class="hljs-comment"># Update grub</span>
+update-grub
+<span class="hljs-comment"># Reboot the machine</span>
 reboot now
 </code></pre>
 <p>If you want to enable Jibri these options are required:</p>
@@ -332,14 +344,18 @@ To enable it you have to enable authentication with <code>ENABLE_AUTH</code> and
 then configure the settings you can see below.</p>
 <p>Internal users must be created with the <code>prosodyctl</code> utility in the <code>prosody</code> container.
 In order to do that, first, execute a shell in the corresponding container:</p>
-<p><code>docker-compose exec prosody /bin/bash</code></p>
+<pre><code class="hljs css language-bash">docker-compose <span class="hljs-built_in">exec</span> prosody /bin/bash
+</code></pre>
 <p>Once in the container, run the following command to create a user:</p>
-<p><code>prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword</code></p>
+<pre><code class="hljs css language-bash">prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
+</code></pre>
 <p>Note that the command produces no output.</p>
 <p>To delete a user, run the following command in the container:</p>
-<p><code>prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi</code></p>
+<pre><code class="hljs css language-bash">prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
+</code></pre>
 <p>To list all users, run the following command in the container:</p>
-<p><code>find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;</code></p>
+<pre><code class="hljs css language-bash">find /config/data/meet%2ejitsi/accounts -<span class="hljs-built_in">type</span> f -<span class="hljs-built_in">exec</span> basename {} .dat \;
+</code></pre>
 <h4><a class="anchor" aria-hidden="true" id="authentication-using-ldap"></a><a href="#authentication-using-ldap" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Authentication using LDAP</h4>
 <p>You can use LDAP to authenticate users. To enable it you have to enable authentication with <code>ENABLE_AUTH</code> and
 set <code>AUTH_TYPE</code> to <code>ldap</code>, then configure the settings you can see below.</p>
@@ -382,7 +398,7 @@ set <code>AUTH_TYPE</code> to <code>jwt</code>, then configure the settings you 
 </tbody>
 </table>
 <p>This can be tested using the <a href="https://jwt.io/#debugger-io">jwt.io</a> debugger. Use the following sample payload:</p>
-<pre><code class="hljs">{
+<pre><code class="hljs css language-json">{
   <span class="hljs-attr">"context"</span>: {
     <span class="hljs-attr">"user"</span>: {
       <span class="hljs-attr">"avatar"</span>: <span class="hljs-string">"https://robohash.org/john-doe"</span>,

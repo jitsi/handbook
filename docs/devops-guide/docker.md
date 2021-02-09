@@ -9,30 +9,67 @@ sidebar_label: Docker
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:
 
-* Download and extract the [latest release]
-  * Alternatively, to test the latest changes clone the repository: `git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet`
-* Create a ``.env`` file by copying and adjusting ``env.example``
-  * `cp env.example .env`
-* Set strong passwords in the security section options of ``.env`` file by running the following bash script
-  * `./gen-passwords.sh`
-* Create required `CONFIG` directories
-  * `mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}`
-  * For Windows: `echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }`
-* Run ``docker-compose up -d``
-* Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
+1. Download and extract the [latest release]
+    
+    Alternatively, to test the latest changes clone the repository:
+     
+    ```bash
+    git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
+    ```
+    
+2. Create a ``.env`` file by copying and adjusting ``env.example``:
+   
+   ```bash
+   cp env.example .env
+   ```
+   
+3. Set strong passwords in the security section options of ``.env`` file by running the following bash script
+   
+   ```bash
+   ./gen-passwords.sh
+   ```
+   
+4. Create required `CONFIG` directories
+   * For linux: 
+   ```bash
+   mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   ```
+   * For Windows: 
+   ```bash
+   echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
+   ```
+5. Run ``docker-compose up -d``
+6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
 
 Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
 direct access via HTTP instead HTTPS leads to WebRTC errors such as _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_ or _navigator.mediaDevices is undefined_.
 
 If you want to use jigasi too, first configure your env file with SIP credentials
-and then run Docker Compose as follows: ``docker-compose -f docker-compose.yml -f jigasi.yml up``
+and then run Docker Compose as follows: 
+
+```bash
+docker-compose -f docker-compose.yml -f jigasi.yml up
+```
 
 If you want to enable document sharing via [Etherpad], configure it and run Docker Compose as
-follows: ``docker-compose -f docker-compose.yml -f etherpad.yml up``
+follows: 
+
+```bash
+docker-compose -f docker-compose.yml -f etherpad.yml up
+```
 
 If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
-and then run Docker Compose as follows: ``docker-compose -f docker-compose.yml -f jibri.yml up -d``
-or to use jigasi too: ``docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d``
+and then run Docker Compose as follows:
+
+```bash
+docker-compose -f docker-compose.yml -f jibri.yml up -d
+```
+
+or to use jigasi too:
+
+```bash
+docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
+```
 
 ### Security note
 
@@ -66,21 +103,21 @@ several container images are provided.
 
 The following external ports must be opened on a firewall:
 
-* 80/tcp for Web UI HTTP (really just to redirect, after uncommenting ENABLE_HTTP_REDIRECT=1 in .env)
-* 443/tcp for Web UI HTTPS
-* 4443/tcp for RTP media over TCP
-* 10000/udp for RTP media over UDP
+* `80/tcp` for Web UI HTTP (really just to redirect, after uncommenting `ENABLE_HTTP_REDIRECT=1` in `.env`)
+* `443/tcp` for Web UI HTTPS
+* `4443/tcp` for RTP media over TCP
+* `10000/udp` for RTP media over UDP
 
-Also 20000-20050/udp for jigasi, in case you choose to deploy that to facilitate SIP access.
+Also `20000-20050/udp` for jigasi, in case you choose to deploy that to facilitate SIP access.
 
 E.g. on a CentOS/Fedora server this would be done like this (without SIP access):
 
-```shell
-    $ sudo firewall-cmd --permanent --add-port=80/tcp
-    $ sudo firewall-cmd --permanent --add-port=443/tcp
-    $ sudo firewall-cmd --permanent --add-port=4443/tcp
-    $ sudo firewall-cmd --permanent --add-port=10000/udp
-    $ sudo firewall-cmd --reload
+```bash
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --permanent --add-port=4443/tcp
+sudo firewall-cmd --permanent --add-port=10000/udp
+sudo firewall-cmd --reload
 ```
 
 ### Images
@@ -167,7 +204,7 @@ Variable | Description | Example
 `CONFCODE_URL` | URL to the API for checking/generating Dial-In codes | https://jitsi-api.jitsi.net/conferenceMapper
 
 The JSON with the Dial-In numbers should look like this:
-```
+```json
 {"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
 ```
 
@@ -178,7 +215,7 @@ work on a non-Linux host.
 
 For CentOS 7, the module is already compiled with the kernel, so just run:
 
-```
+```bash
 # configure 5 capture/playback interfaces
 echo "options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4" > /etc/modprobe.d/alsa-loopback.conf
 # setup autoload the module
@@ -191,7 +228,7 @@ lsmod | grep snd_aloop
 
 For Ubuntu:
 
-```
+```bash
 # install the module
 apt update && apt install linux-image-extra-virtual
 # configure 5 capture/playback interfaces
@@ -204,7 +241,8 @@ lsmod | grep snd_aloop
 
 NOTE: If you are running on AWS you may need to reboot your machine to use the generic kernel instead
 of the "aws" kernel. If after reboot, your machine is still using the "aws" kernel, you'll need to manually update the grub file. So just run:
-```
+
+```bash
 # open the grub file in editor
 nano /etc/default/grub
 # Modify the value of GRUB_DEFAULT from "0" to "1>2"
@@ -308,21 +346,29 @@ then configure the settings you can see below.
 Internal users must be created with the ``prosodyctl`` utility in the ``prosody`` container.
 In order to do that, first, execute a shell in the corresponding container:
 
-``docker-compose exec prosody /bin/bash``
+```bash
+docker-compose exec prosody /bin/bash
+```
 
 Once in the container, run the following command to create a user:
 
-``prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword``
+```bash
+prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
+```
 
 Note that the command produces no output.
 
 To delete a user, run the following command in the container:
 
-``prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi``
+```bash
+prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
+```
 
 To list all users, run the following command in the container:
 
-``find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;``
+```bash
+find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
+```
 
 #### Authentication using LDAP
 
@@ -363,7 +409,7 @@ Variable | Description | Example
 
 This can be tested using the [jwt.io] debugger. Use the following sample payload:
 
-```
+```json
 {
   "context": {
     "user": {

@@ -16,7 +16,6 @@ Node.js >= 12 and npm >= 6 are required.
 On Debian/Ubuntu systems, the required packages can be installed with:
 - Download "Linux Binaries (x64)" from https://nodejs.org/en/download/
 - Install Node.js following these instructions: https://github.com/nodejs/help/wiki/Installation
-- Follow the document https://community.jitsi.org/t/how-to-how-to-build-jitsi-meet-from-source-a-developers-guide/75422
 
 To build the Jitsi Meet application, just type
 ```
@@ -45,7 +44,7 @@ The app should be running at https://localhost:8080/
 Browsers may show a certificate error since the development certificate is self-signed. It's safe to disregard those
 warning and continue to your site.
 
-#### Building .debs
+### Building .debs
 
 To make a deb you can easily deploy to a public test server, ensure you have the lib-jitsi-meet sources you wish, then:
 ```
@@ -54,3 +53,7 @@ dpkg-buildpackage -A -rfakeroot -us -uc -tc
 ```
 
 You'll have a bunch of .deb files in the parent directory, and can push the updated source to your server and install it with the jitsi-meet-web deb file.
+
+### Running from source on existing deployment
+
+Follow the document https://community.jitsi.org/t/how-to-how-to-build-jitsi-meet-from-source-a-developers-guide/75422

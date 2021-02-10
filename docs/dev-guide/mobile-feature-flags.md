@@ -9,6 +9,7 @@ UI aspects and behavior.
 Here are the currently implemented flags:
 
 * `add-people.enabled`: Flag indicating if add-people functionality should be enabled. Default: enabled (true).
+* `android.audio-focus.disabled`: Flag indicating if the SDK should not require the audio focus. Used by apps that do not use Jitsi audio.  Default: disabled (false).
 * `audio-mute.enabled`: Flag indicating if the audio mute button should be displayed. Default: enabled (true).
 * `calendar.enabled`: Flag indicating if calendar integration should be enabled. Default: enabled (true) on Android, auto-detected on iOS.
 * `call-integration.enabled`: Flag indicating if call integration (CallKit on iOS, ConnectionService on Android) should be enabled. Default: enabled (true).

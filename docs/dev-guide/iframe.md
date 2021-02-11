@@ -757,6 +757,16 @@ api.executeCommand('getContentSharingParticipants').then(res => {
 });
 ```
 
+### kickParticipant
+
+Kicks the participant with the given participant ID from the meeting.
+
+```javascript
+api.executeCommand('kickParticipant',
+    participantID: string
+);
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

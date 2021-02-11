@@ -252,6 +252,19 @@ api.getCurrentDevices().then(devices => {
 });
 ```
 
+### getLivestreamUrl
+
+Retrieves an object containing information about livestreamUrl of the current live stream.
+
+```javascript
+api.getLivestreamUrl().then(livestreamData => {
+    // livestreamData = {
+    //     livestreamUrl: 'livestreamUrl'
+    // }
+    ...
+});
+```
+
 ### getParticipantsInfo
 
 Returns an array containing participant information such as ID, display name, avatar URL, and email.

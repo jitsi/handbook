@@ -114,7 +114,7 @@ The `options` parameter is JS object with the following properties:
 JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
 ```
 
-* `JitsiMeetJS.createLocalTracks(options, firePermissionPromptIsShownEvent)` - Creates the media tracks and returns them trough `Promise` object. If rejected, passes `JitsiTrackError` instance to catch block.
+* `JitsiMeetJS.createLocalTracks(options)` - Creates the media tracks and returns them trough `Promise` object. If rejected, passes `JitsiTrackError` instance to catch block.
     - `options` - JS object with configuration options for the local media tracks. You can change the following properties there:
         1. `devices` - array with the devices - "desktop", "video" and "audio" that will be passed to GUM. If that property is not set GUM will try to get all available devices.
         2. `resolution` - the prefered resolution for the local video.
@@ -128,7 +128,9 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
            - `max` - Maximum fps
         9. `desktopSharingSourceDevice` - The device id or label for a video input source that should be used for screensharing.
         10. `facingMode` - facing mode for a camera (possible values - 'user', 'environment')
-    - firePermissionPromptIsShownEvent - optional boolean parameter. If set to `true`, `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` will be fired when browser shows gUM permission prompt.
+        11. `firePermissionPromptIsShownEvent` - optional boolean parameter. If set to `true`, `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` will be fired when browser shows gUM permission prompt.
+        12. `fireSlowPromiseEvent` - optional boolean parameter. If set to `true`, `JitsiMediaDevicesEvents.USER_MEDIA_SLOW_PROMISE_TIMEOUT` will be fired when browser takes too long to resolve the gUM promise. This event is mutual exclusive with the above `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` event
+    - `firePermissionPromptIsShownEvent` - __DEPRECATED__. Use options.firePermissionPromptIsShownEvent instead
 
 * `JitsiMeetJS.createTrackVADEmitter(localAudioDeviceId, sampleRate, vadProcessor)` - Creates a TrackVADEmitter service that connects an audio track to a VAD (voice activity detection) processor in order to obtain VAD scores for individual PCM audio samples.
     - `localAudioDeviceId` - The target local audio device.

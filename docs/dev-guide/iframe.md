@@ -11,6 +11,10 @@ The IFrame API enables you to embed Jitsi Meet functionality into your meeting a
 
 You can also embed and integrate the globally distributed and highly available deployment on the [meet.jit.si](https://meet.jit.si/) platform itself. 
 
+:::note NOTE
+JaaS customers, please make sure you also read [this](https://developer.8x8.com/jaas/docs/iframe-api-overview)!
+:::
+
 ## Integration
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your application:

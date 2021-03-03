@@ -24,6 +24,7 @@ https://pub.dev/packages/jitsi_meet
 Helper web tool and API for generating Jitsi Meet compatible JWT.
 
 https://jitok.emrah.com/
+
 https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
 ## React Native plugin

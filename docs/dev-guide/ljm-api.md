@@ -82,6 +82,10 @@ Jitsi Meet API has the following components:
 
 ## Usage
 
+:::note NOTE
+JaaS customers, please checkout this example: https://github.com/saghul/sandbox-html/tree/main/jaas-ljm.
+:::
+
 ### JitsiMeetJS
 
 You can access the following methods and objects trough `JitsiMeetJS` object.

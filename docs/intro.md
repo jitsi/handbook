@@ -27,3 +27,7 @@ itself by developing new features or fixing bugs.
 
 * [Self-Hosting guide](devops-guide/devops-guide.md): Designed for folks wanting to self-host, system administrators
 or anyone who wishes to deploy and operate their own Jitsi Meet instance.
+
+## JaaS customers
+
+Are you a JaaS customer? If so, please start [here](https://developer.8x8.com/jaas/docs/jaas-onboarding).

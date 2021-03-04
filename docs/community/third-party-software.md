@@ -12,6 +12,16 @@ Please keep this list in alphabetical order.
 As these packages are not maintained by the Jitsi team, please ask their respective forums / issue trackers for help if you find issues.
 :::
 
+## Breakout rooms
+
+There are several implementations [here](breakout-rooms).
+
+## Cketti's Jitsi Hacks
+
+Some extra features using injected scripts.
+
+https://jitsi-hacks.cketti.eu/
+
 ## Flutter plugin
 
 Plugin for Flutter.

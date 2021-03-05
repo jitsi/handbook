@@ -60,7 +60,7 @@ If your computer/server or router has a dynamic IP address (the IP address chang
 
 If the machine used to host the Jitsi Meet instance has a FQDN (for example `meet.example.org`) already set up in DNS, you can set it with the following command:
 
-`sudo hostnamectl set-hostname meet`
+`sudo hostnamectl set-hostname meet.example.org`
 
 Then add the same FQDN in the `/etc/hosts` file:
 

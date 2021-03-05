@@ -36,6 +36,8 @@ https://jitok.emrah.com/
 
 https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
+https://github.com/emrahcom/emrah-tools/tree/main/jitsi/jitok
+
 ## React Native plugin
 
 Plugin for React Native.

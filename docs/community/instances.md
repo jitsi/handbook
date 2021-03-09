@@ -329,7 +329,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | jitsi.tuxis.net |  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.tuxis.net&latest) |  |
 | meet.greenmini.host |  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.greenmini.host&latest) |  |
 | meetme.bit.nl |  ✅  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meetme.bit.nl&latest) | BIT BV  |
-| videobelpilot.surf.nl |   ✅ |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=videobelpilot.surf.nl&latest) |  SURFnet bv |
 | calls.disroot.org |  ✅  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=calls.disroot.org&latest) | Serverius Holding B.V.  |
 | jitsi.0x5e.eu |  |  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.0x5e.eu&latest) | Netwerkvereniging Coloclue |
 | jitsi.hivos.org |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hivos.org&latest) | WorldStream B.V.  |

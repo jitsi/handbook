@@ -784,6 +784,25 @@ api.executeCommand('kickParticipant',
 );
 ```
 
+### overwriteConfig
+
+Overwrite config.js props with values from the config object passed on to the command.
+
+```javascript
+api.executeCommand('overwriteConfig',
+    config: Object
+);
+```
+For example:
+```javascript
+api.executeCommand('overwriteConfig',
+    config: {
+      toolbarButtons: ['chat']
+    }
+);
+```
+will overwrite the `toolbarButtons` config value with `[chat]`, resulting in UI only showing the `chat` button.
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

@@ -9,7 +9,13 @@ sidebar_label: Docker
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:
 
-1. Download and extract the [latest release]
+1. Install git:
+   
+   ```bash
+   apt install git
+   ```
+
+2. Download and extract the [latest release]
     
     Alternatively, to test the latest changes clone the repository:
      
@@ -17,19 +23,19 @@ follow these steps:
     git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
     ```
     
-2. Create a ``.env`` file by copying and adjusting ``env.example``:
+3. Create a ``.env`` file by copying and adjusting ``env.example``:
    
    ```bash
    cp env.example .env
    ```
    
-3. Set strong passwords in the security section options of ``.env`` file by running the following bash script
+4. Set strong passwords in the security section options of ``.env`` file by running the following bash script
    
    ```bash
    ./gen-passwords.sh
    ```
    
-4. Create required `CONFIG` directories
+5. Create required `CONFIG` directories
    * For linux: 
    ```bash
    mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
@@ -38,8 +44,8 @@ follow these steps:
    ```bash
    echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
-5. Run ``docker-compose up -d``
-6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
+6. Run ``docker-compose up -d``
+7. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
 
 Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
 direct access via HTTP instead HTTPS leads to WebRTC errors such as _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_ or _navigator.mediaDevices is undefined_.

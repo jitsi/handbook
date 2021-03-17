@@ -501,12 +501,23 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
 
 Throws NetworkError or InvalidStateError or Error if the operation fails.
 
-33. `pinParticipant(participantId)` - Elects the participant with the given id to be the pinned participant in order to always receive video for this participant (even when last n is enabled).
-    - `participantId` - the identifier of the participant
-
-34. `replaceTrack` - replaces the track currently being used as the sender's source with a new MediaStreamTrack. The new track must be of the same media kind (audio, video, etc) and switching the track should not require negotiation. `replaceTrack(oldTrack, newTrack)`
+33. `replaceTrack` - replaces the track currently being used as the sender's source with a new MediaStreamTrack. The new track must be of the same media kind (audio, video, etc) and switching the track should not require negotiation. `replaceTrack(oldTrack, newTrack)`
 
 Throws NetworkError or InvalidStateError or Error if the operation fails.
+
+34. `setReceiverConstraints` - set the constraints for the video that is requested from the bridge. This single message should be used in lieu of `setLastN`, `setReceiverVideoConstraint` and `selectParticipants` methods. These constraints are applicable to bridge connection only. More information about the signaling message format and how the Jitsi Videobridge allocates bandwidth can be found [here](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md#new-message-format).
+    - `videoConstraints` - Object that specifies the constraints in the following format.
+    ```javascript
+    {
+       'lastN': 20, // Number of videos requested from the bridge.
+       'selectedEndpoints': ['A', 'B', 'C'], // The endpoints ids of the participants that are prioritized first.
+       'onStageEndpoints': ['A'], // The endpoint ids of the participants that are prioritized up to a higher resolution.
+       'defaultConstraints': { 'maxHeight': 180 }, // Default resolution requested for all endpoints.
+       'constraints': { // Endpoint specific resolution.
+           'A': { 'maxHeight': 720 }
+       }
+    }
+    ```
 
 35. `setReceiverVideoConstraint(resolution)` - set the desired resolution to get from JVB (180, 360, 720, 1080, etc).
     You should use that method if you are using simulcast.

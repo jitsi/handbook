@@ -1254,6 +1254,19 @@ The listener receives an object with the following structure:
 
 Provides notifications about detecting suspended events in the host computer.
 
+### recordingStatusChanged
+
+Provides event notifications about recording status changes.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    on: boolean // new recording status - boolean,
+    mode: string // recording mode, `stream` or `file`,
+    error: string | undefined // error type if recording fails, undefined otherwise
+}
+```
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

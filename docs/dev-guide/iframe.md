@@ -803,6 +803,16 @@ api.executeCommand('overwriteConfig',
 ```
 will overwrite the `toolbarButtons` config value with `[chat]`, resulting in UI only showing the `chat` button.
 
+### setTileView
+
+Enables or disables the tileview mode.
+
+```javascript
+api.executeCommand('setTileView',
+    enabled: boolean
+);
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

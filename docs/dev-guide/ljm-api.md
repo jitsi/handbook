@@ -183,7 +183,8 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
         - `USER_STATUS_CHANGED` - notifies that status of some user changed. (parameters - id(string), status(string))
         - `CONFERENCE_FAILED` - notifies that user failed to join the conference. (parameters - errorCode(JitsiMeetJS.errors.conference))
         - `CONFERENCE_ERROR` - notifies that error occurred. (parameters - errorCode(JitsiMeetJS.errors.conference))
-        - `KICKED` - notifies that user has been kicked from the conference.
+        - `KICKED` - notifies that user has been kicked from the conference. (parameters - actorParticipant(JitsiParticipant), reason(string))
+        - `PARTICIPANT_KICKED` - notifies that participant has been kicked from the conference by another participant. (parameters - actorParticipant(JitsiParticipant), kickedParticipant(JitsiParticipant), reason(string))
         - `START_MUTED_POLICY_CHANGED` - notifies that all new participants will join with muted audio/video stream (parameters - JS object with 2 properties - audio(boolean), video(boolean))
         - `STARTED_MUTED` - notifies that the local user has started muted
         - `CONNECTION_STATS` - __DEPRECATED__. Use `JitsiMeetJS.events.connectionQuality.LOCAL_STATS_UPDATED` instead.
@@ -462,8 +463,9 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
 
     Note: available only for moderator
 
-24. `kickParticipant(id)` - Kick participant from the conference
+24. `kickParticipant(id, reason)` - Kick participant from the conference
     - `id` - string participant id
+    - `reason` - (optional) string, default 'You have been kicked.' - reason of the participant to kick
 
 25. `setStartMutedPolicy(policy)` - make all new participants join with muted audio/video
     - `policy` - JS object with following properties

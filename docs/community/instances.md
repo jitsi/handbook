@@ -197,7 +197,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	jitsi.flyingcircus.io	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.flyingcircus.io&latest)	   |  	KAMP Netzwerkdienste GmbH	  |
 |  	jitsi.freifunk-duesseldorf.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.freifunk-duesseldorf.de&latest)	   |  	Freifunk Duesseldorf e.V.	  |
 |  	jitsi.hamburg.ccc.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hamburg.ccc.de&latest)	   |  	Hetzner Online GmbH	  |
-|  	jitsi.hbs.ac	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hbs.ac&latest)	   |  	RWTH Aachen University	  |
+|  	jitsi.hbs.rwth-aachen.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hbs.rwth-aachen.de&latest)	   |  	RWTH Aachen University	  |
 |  	jitsi.jotbe.reunite.earth	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.jotbe.reunite.earth&latest)	   |  		  |
 |  	jitsi.komun.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.komun.org&latest)	   |  	Contabo GmbH	  |
 |  	jitsi.linux.it	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.linux.it&latest)	   |  	Hetzner Online GmbH	  |

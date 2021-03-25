@@ -821,6 +821,14 @@ Toggles the front/back camera on mobile web.
 api.executeCommand('toggleCamera');
 ```
 
+### toggleCameraMirror
+
+Toggles the mirroring of the local video.
+
+```javascript
+api.executeCommand('toggleCameraMirror');
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

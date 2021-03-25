@@ -813,6 +813,14 @@ api.executeCommand('setTileView',
 );
 ```
 
+### toggleCamera
+
+Toggles the front/back camera on mobile web.
+
+```javascript
+api.executeCommand('toggleCamera');
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

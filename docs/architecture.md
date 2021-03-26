@@ -21,7 +21,7 @@ External Software used by Jitsi:
 ## Architecture Diagram
 The individual connections between the, previously described, components as well as the external integration’s are described in the figure below.
 
-![](https://i.imgur.com/QID2Dfb.png)
+![](https://github.com/jitsi/handbook/tree/master/docs/assets/ArchitectureDiagram.png)
 
 The external connections can be categorised into two main groups. Firstly, the connections between clients that request a video or audio connection performed through remote requests and data streams. The second category of external connections are those to external services that help store recordings, stream recordings, stream videos or help with creating meetings. 
 

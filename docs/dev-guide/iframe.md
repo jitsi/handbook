@@ -796,7 +796,7 @@ api.executeCommand('overwriteConfig',
 For example:
 ```javascript
 api.executeCommand('overwriteConfig',
-    config: {
+    {
       toolbarButtons: ['chat']
     }
 );

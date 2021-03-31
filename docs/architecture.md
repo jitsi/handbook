@@ -19,9 +19,6 @@ External Software used by Jitsi:
 * [Prosody](https://prosody.im/) - XMPP server used for signalling
 
 
-<!--- 
-Expand about interaction between components in architecture diagram
--->
 ## Architecture Diagram
 The individual connections between the previously described components, as well as its external integrations are described in the figure below.
 
@@ -29,12 +26,7 @@ The individual connections between the previously described components, as well 
 
 The external connections can be categorized into two main groups. Firstly, the connections between clients that request a video or audio connection performed through remote requests and data streams. The second category of external connections are those to external services that help store recordings, stream recordings, stream videos or help with creating meetings. 
 
-<!--- 
-Expand code map exactly explain what and how each map and go into submaps
-@Nils
--->
 ## Code Map
-
 In this section we will look at the main parts of the codebase and see what they can be used for.
 
 **./react/features**
@@ -51,7 +43,6 @@ Most features also contain a file called `middleware.js`. This file acts as a br
 **./modules/external-api**
 In this folder, the external API can be found. This API can be used in various events like participants joining/leaving the meeting, changes in avatars or chat, as well as errors in using the microphone or camera.
 
-
 **./android and ./ios**
 Both of these folders contain the basics of the Android and iOS app respectively. However, the code for the application itself and its components can be found in the **react/features** folder, which will be explained later in this section. 
 
@@ -64,17 +55,10 @@ This folder contains all the different translations that are present in Jitsi Me
 **./css**
 This folder contains all the css that is used in the project. The files (mostly .scss files[^scss]) are split up into features like the React features that they are used in.
 
-<!--- 
-Expand testing procedures
-@Kylian
--->
 ## Testing
-
-The main form of testing code changes is done manually, most of the manual testing is performed while doing code reviews. However, there are also testing releases which can be freely downloaded and deployed, or can be used on the [beta test server](https://beta.meet.jit.si/).
+The main form of testing code changes is done through torture tests, next to this the code is tested manually. Manual testing is performed while doing code reviews, however there are also testing releases which can be freely downloaded and deployed, or can be used on the [beta test server](https://beta.meet.jit.si/).
 
 An automatic testing pipeline is not built into the Jitsi Meet repository, thus code coverage is not taken into account. However, unit tests can be performed on the Jitsi Meet code base by using the [Jitsi Meet Torture](https://github.com/jitsi/jitsi-meet-torture) project. The project contains automated Maven tests for several key functions such as peer2peer and invites. The testing can be done for IOS, Android and web, which are all the platforms that Jitsi Meet can be used on. The testing is only used in some cases where it is used in combination with the continuous integration by a Jenkins instance running Maven tests. The test results can be viewed on an automatically generated web page.
-
-
 
 [^class-comp]: [Class components](https://reactjs.org/docs/react-component.html)
 [^func-comp]: [Functional components with hooks](https://reactjs.org/docs/hooks-intro.html)

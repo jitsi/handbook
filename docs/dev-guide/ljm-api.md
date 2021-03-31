@@ -498,16 +498,21 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
 
 Throws NetworkError or InvalidStateError or Error if the operation fails.
 
-32. `broadcastEndpointMessage(payload)` - Sends broadcast message via the datachannels.
+32. `sendEndpointStatsMessage(payload)` - Sends a `EndpointStats` Colibri message on the bridge channel. This should be used instead of `broadcastEndpointMessage` for relaying local stats to all the remote endpoints.
+    - `payload` - JSON object - the payload of the message.
+
+Throws NetworkError, InvalidStateError or Error if the operation fails.
+
+33. `broadcastEndpointMessage(payload)` - Sends broadcast message via the datachannels.
     - `payload` - JSON object - the payload of the message.
 
 Throws NetworkError or InvalidStateError or Error if the operation fails.
 
-33. `replaceTrack` - replaces the track currently being used as the sender's source with a new MediaStreamTrack. The new track must be of the same media kind (audio, video, etc) and switching the track should not require negotiation. `replaceTrack(oldTrack, newTrack)`
+34. `replaceTrack` - replaces the track currently being used as the sender's source with a new MediaStreamTrack. The new track must be of the same media kind (audio, video, etc) and switching the track should not require negotiation. `replaceTrack(oldTrack, newTrack)`
 
 Throws NetworkError or InvalidStateError or Error if the operation fails.
 
-34. `setReceiverConstraints` - set the constraints for the video that is requested from the bridge. This single message should be used in lieu of `setLastN`, `setReceiverVideoConstraint` and `selectParticipants` methods. These constraints are applicable to bridge connection only. More information about the signaling message format and how the Jitsi Videobridge allocates bandwidth can be found [here](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md#new-message-format).
+35. `setReceiverConstraints` - set the constraints for the video that is requested from the bridge. This single message should be used in lieu of `setLastN`, `setReceiverVideoConstraint` and `selectParticipants` methods. These constraints are applicable to bridge connection only. More information about the signaling message format and how the Jitsi Videobridge allocates bandwidth can be found [here](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md#new-message-format).
     - `videoConstraints` - Object that specifies the constraints in the following format.
     ```javascript
     {
@@ -521,20 +526,20 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
     }
     ```
 
-35. `setReceiverVideoConstraint(resolution)` - set the desired resolution to get from JVB (180, 360, 720, 1080, etc).
+36. `setReceiverVideoConstraint(resolution)` - set the desired resolution to get from JVB (180, 360, 720, 1080, etc).
     You should use that method if you are using simulcast.
 
-36. `setSenderVideoConstraint(resolution)` - set the desired resolution to send to JVB or the peer (180, 360, 720).
+37. `setSenderVideoConstraint(resolution)` - set the desired resolution to send to JVB or the peer (180, 360, 720).
 
-37. `isHidden` - checks if local user has joined as a "hidden" user. This is a specialized role used for integrations.
+38. `isHidden` - checks if local user has joined as a "hidden" user. This is a specialized role used for integrations.
 
-38. `setLocalParticipantProperty(propertyKey, propertyValue)` - used to set a custom propery to the local participant("fullName": "Full Name", favoriteColor: "red", "userId": 234). Also this can be used to modify an already set custom property.
+39. `setLocalParticipantProperty(propertyKey, propertyValue)` - used to set a custom propery to the local participant("fullName": "Full Name", favoriteColor: "red", "userId": 234). Also this can be used to modify an already set custom property.
     - `propertyKey` - string - custom property name
     - `propertyValue` - string - custom property value
 
-39. `getParticipants()` - Retrieves an array of all participants in this conference.
+40. `getParticipants()` - Retrieves an array of all participants in this conference.
 
-40. `revokeOwner(participantId)` -  Revokes owner's rights to the participant. The particiapnt that invokes the function should have same or more rights than the targeted participant. This rights check is done at the XMPP server level. 
+41. `revokeOwner(participantId)` -  Revokes owner's rights to the participant. The particiapnt that invokes the function should have same or more rights than the targeted participant. This rights check is done at the XMPP server level.
 
 ### JitsiTrack
 

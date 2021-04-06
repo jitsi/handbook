@@ -58,7 +58,7 @@ This folder contains all the css that is used in the project. The files (mostly 
 ## Testing
 The main form of testing code changes is done through torture tests, next to this the code is tested manually.
 
-The torture tests are located in a separate repository, [Jitsi Meet Torture](https://github.com/jitsi/jitsi-meet-torture). The project contains Maven tests for several key functions such as peer2peer and invites. The testing can be done for IOS, Android and web, which are all the platforms that Jitsi Meet can be used on. The testing is done automatically for pull requests by project members, where it is used in combination with the continuous integration by a Jenkins instance running Maven tests, testing on the [meet.jit.si](meet.jit.si) instance. Other members can run the tests locally. The test results can be viewed on an automatically generated web page.
+The torture tests are located in a separate repository, [Jitsi Meet Torture](https://github.com/jitsi/jitsi-meet-torture). The project contains end to end tests for several key functions such as peer to peer and invites. The testing can be done for iOS, Android and web, which are all the platforms that Jitsi Meet can be used on. The testing is done automatically for pull requests by project members, where it is used in combination with the continuous integration by a Jenkins instance running the tests, testing on the [meet.jit.si](meet.jit.si) instance. Other members can run the tests locally. The test results can be viewed on an automatically generated web page.
 
 Manual testing is performed while doing code reviews, however there are also testing releases that can be freely downloaded and deployed, or can be used on the [beta test server](https://beta.meet.jit.si/).
 

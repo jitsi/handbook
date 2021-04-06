@@ -13,7 +13,7 @@ Jitsi comprises a [collection of projects](https://jitsi.org/projects/):
 * [Jitsi Videobridge (JVB)](https://jitsi.org/jitsi-videobridge) - WebRTC compatible server designed to route video streams amongst participants in a conference.
 * [Jitsi Conference Focus (jicofo)](https://github.com/jitsi/jicofo) - server-side focus component used in Jitsi Meet conferences that manages media sessions and acts as load balancer between each of the participants and the videobridge. 
 * [Jitsi Gateway to SIP (jigasi)](https://github.com/jitsi/jigasi) - server-side application that allows regular SIP clients to join Jitsi Meet conferences
-* [Jitsi Broadcasting Infrastructure (jibri)](https://github.com/jitsi/jibri) - set of tools for recording and/or streaming a Jitsi Meet conference that works by launching a Chrome instance rendered in a virtual framebuffer and capturing and encoding the output with ffmpeg
+* [Jitsi Broadcasting Infrastructure (jibri)](https://github.com/jitsi/jibri) - set of tools for recording and/or streaming a Jitsi Meet conference that works by launching a Chrome instance rendered in a virtual framebuffer and capturing and encoding the output with ffmpeg.
 
 External Software used by Jitsi:
 * [Prosody](https://prosody.im/) - XMPP server used for signalling

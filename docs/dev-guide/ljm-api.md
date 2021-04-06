@@ -83,7 +83,7 @@ Jitsi Meet API has the following components:
 ## Usage
 
 :::note NOTE
-JaaS customers, please checkout this example: https://github.com/saghul/sandbox-html/tree/main/jaas-ljm.
+JaaS customers, please checkout this example: https://github.com/saghul/sandbox-html/tree/main/jaas-ljm. Live: https://bettercallsaghul.com/sandbox-html/jaas-ljm/
 :::
 
 ### JitsiMeetJS

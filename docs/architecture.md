@@ -9,7 +9,7 @@ In this section a global overview of the Jitsi infrastructure is provided. If yo
 ## Components
 Jitsi comprises a [collection of projects](https://jitsi.org/projects/):
 
-* [Jitsi Meet](https://jitsi.org/jitsi-meet) - WebRTC compatible JavaScript application that uses Jitsi Videobridge to provide high quality, scalable video conferences. Build upon React and React Native
+* [Jitsi Meet](https://jitsi.org/jitsi-meet) - WebRTC compatible JavaScript application that uses Jitsi Videobridge to provide high quality, scalable video conferences. Build upon React and React Native.
 * [Jitsi Videobridge (JVB)](https://jitsi.org/jitsi-videobridge) - WebRTC compatible server designed to route video streams amongst participants in a conference
 * [Jitsi Conference Focus (jicofo)](https://github.com/jitsi/jicofo) - server-side focus component used in Jitsi Meet conferences that manages media sessions and acts as load balancer between each of the participants and the videobridge. 
 * [Jitsi Gateway to SIP (jigasi)](https://github.com/jitsi/jigasi) - server-side application that allows regular SIP clients to join Jitsi Meet conferences

@@ -11,12 +11,6 @@ follow these steps:
 
 1. Download and extract the [latest release]
     
-    Alternatively, to test the latest changes clone the repository:
-     
-    ```bash
-    git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
-    ```
-    
 2. Create a ``.env`` file by copying and adjusting ``env.example``:
    
    ```bash
@@ -69,6 +63,24 @@ or to use jigasi too:
 
 ```bash
 docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
+```
+
+### Testing development builds
+
+Download the latest code:
+     
+```bash
+git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
+```
+
+:::note
+The code in `master` is designed to work with the unstable images. Do not run it with release images.
+:::
+
+Build your own images:
+
+```bash
+JITSI_RELEASE=unstable make
 ```
 
 ### Security note

@@ -618,6 +618,16 @@ No arguments are required.
 api.executeCommand('toggleChat');
 ```
 
+### toggleRaiseHand
+
+Hide or show the raised hand.
+
+No arguments are required.
+
+```javascript
+api.executeCommand('toggleRaiseHand')
+```
+
 ### toggleShareScreen
 
 Start or stop screen sharing. 

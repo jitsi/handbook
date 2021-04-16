@@ -480,7 +480,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
-|  ?  |    |   |   |   |
+| noumeet.com |  ✅    | ❌  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=noumeet.com&latest) |  Teraco Johannesburg  |
 
 ### Tunisia <a id="tunisia"></a>
 

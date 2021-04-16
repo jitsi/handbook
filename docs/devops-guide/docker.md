@@ -9,7 +9,7 @@ sidebar_label: Docker
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:
 
-1. Download and extract the [latest release]
+1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images.
     
 2. Create a ``.env`` file by copying and adjusting ``env.example``:
    
@@ -82,6 +82,10 @@ Build your own images:
 ```bash
 JITSI_RELEASE=unstable make
 ```
+
+### Running unstable images
+
+Every day a new "unstable" image build is uploaded. You can test them by getting the YAML files from the repository and changing `latest` to `unstable` or `ustable-YYYY-MM-DD` for the unstable images of a specific day.
 
 ### Security note
 

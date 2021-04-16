@@ -537,6 +537,34 @@ If you are on the unstable branch, build the images with `FORCE_REBUILD=1 JITSI_
 
 You are now able to run `docker-compose up` as usual.
 
+## Running behind a reverse proxy
+
+By default this setup is using WebSocket connections for 2 core components:
+
+* Sinalling (XMPP)
+* Bridge channel (colibri)
+
+Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:
+
+* /xmpp-websocket
+* /colibri-ws
+
+TODO: Add Nginx and Apache examples.
+
+### Disabling WebSocket connections
+
+:::note
+This is not the recommended setup.
+:::
+
+If using WebSockets is not an option, these environment variables can be set to fallback to HTTP polling and WebRTC datachannels:
+
+```bash
+ENABLE_SCTP=1
+ENABLE_COLIBRI_WEBSOCKET=0
+ENABLE_XMPP_WEBSOCKET=0
+```
+
 [Jitsi]: https://jitsi.org/
 [Jitsi Meet]: https://jitsi.org/jitsi-meet/
 [Docker]: https://www.docker.com

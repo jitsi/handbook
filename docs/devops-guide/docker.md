@@ -549,7 +549,26 @@ Due to the hop-by-hop nature of WebSockets the reverse proxy must properly termi
 * /xmpp-websocket
 * /colibri-ws
 
-TODO: Add Nginx and Apache examples.
+With nginx, these routes can be forwarded using the following config snippet:
+
+```
+location /xmpp-websocket {
+    proxy_pass https://localhost:8443/xmpp-websocket;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+location /colibri-ws/ {
+    proxy_pass https://localhost:8443/colibri-ws/;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+```
+
+where `https://localhost:8443/` is the url of the web service's ingress.
+
+TODO: Add Apache example.
 
 ### Disabling WebSocket connections
 

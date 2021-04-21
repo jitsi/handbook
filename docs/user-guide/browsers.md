@@ -11,10 +11,9 @@ Browsers evolve very rapidly, so this table may become inaccurate as new bugs on
 
 | Browser | Support | Notes |
 |---|---|---|
-| Chromium based | ✅ | |
-| Firefox | ✅ | |
+| Chromium based | ✅ | Generally we support the current stable - 10 versions |
+| Firefox | ✅ | Generally we support current ESR - 1 versions |
 | Safari | ✅ | |
-| Safari (iOS) | ✅ | |
 | Internet Explorer | ❌ | Are you serious? |
 
 ## Mobile browsers
@@ -24,5 +23,4 @@ Browsers evolve very rapidly, so this table may become inaccurate as new bugs on
 | Chromium based (Android) | ✅ | |
 | Firefox (Android) | ✅ | |
 | Safari (iOS) | ✅ | |
-| Google Chrome (iOS) | ❌ | To be added soon, now that iOS 14.3 allowed WebRTC support |
-| Firefox (iOS) | ❌ | To be added soon, now that iOS 14.3 allowed WebRTC support |
+| Other iOS browsers using WKWebView | ✅ | Supported on iOS >= 14.3 |

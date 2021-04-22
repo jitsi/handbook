@@ -122,7 +122,7 @@ Create the `/etc/nginx/sites-available/meet.example.com.conf` as usual
 
 Follow the steps in the [manual install](devops-guide-manual) for setup tasks
 
-You will need to adapt the following files (see the files in `example-config-files/scalable`)
+You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
 
 * `/etc/prosody/prosody.cfg.lua`
 * `/etc/prosody/conf.avail/meet.example.com.cfg.lua`
@@ -133,7 +133,7 @@ Adapt `/usr/share/jitsi-meet/config.js` and `/usr/share/jitsi-meet/interface-con
 
 #### Jicofo
 
-You will need to adapt the following files (see the files in `example-config-files/scalable`)
+You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
 
 * `/etc/jitsi/jicofo/config` (hostname, jicofo_secret, jicofo_password)
 * `/etc/jitsi/jicofo/sip-communicator.properties` (hostname)
@@ -151,7 +151,7 @@ Open to world:
 
 #### jitsi-videobridge2
 
-You will need to adapt the following files (see the files in `example-config-files/scalable`)
+You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
 
 Each videobridge will have to have it's own, unique nickname
 

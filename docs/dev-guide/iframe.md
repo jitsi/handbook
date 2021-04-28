@@ -751,7 +751,7 @@ api.executeCommand('stopRecording',
 Opens the chat window and sets the participant with the given participant ID as the messages recipient.
 
 ```javascript
-api.executeCommand('intiatePrivateChat',
+api.executeCommand('initiatePrivateChat',
     participantID: string
 );
 ```

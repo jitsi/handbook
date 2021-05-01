@@ -413,7 +413,7 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
     - `values` - JS object. The object has the following structure:
 
 
-        ```javascript
+```javascript
             {
 
 
@@ -425,7 +425,7 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
 
                 children: [] // array with JS object with the same structure.
             }
-        ```
+```
 
 
     NOTE: When you use that method the passed object will be added in every system message that is sent to the other participants. It might be sent more than once.

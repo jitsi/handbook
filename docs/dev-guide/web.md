@@ -44,7 +44,6 @@ Run
 ```bash
 npm update
 npm install webpack
-npm install lib-jitsi-meet
 
 ```
 

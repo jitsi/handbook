@@ -17,8 +17,12 @@ On Debian/Ubuntu systems, the required packages can be installed with:
 - Download "Linux Binaries (x64)" from https://nodejs.org/en/download/
 - Install Node.js following these instructions: https://github.com/nodejs/help/wiki/Installation
 
-To build the Jitsi Meet application, just type
-```
+Then go ahead:
+```bash
+# Clone the repository
+git clone https://github.com/jitsi/jitsi-meet
+
+# To build the Jitsi Meet application, just type
 make
 ```
 

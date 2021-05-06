@@ -21,6 +21,7 @@ Then go ahead:
 ```bash
 # Clone the repository
 git clone https://github.com/jitsi/jitsi-meet
+cd ./jitsi-meet
 
 # To build the Jitsi Meet application, just type
 make

@@ -173,11 +173,11 @@ When adding a new feature it's possible that it triggers a build failure due to 
 First, make a production build with bundle-analysis enabled:
 
 ```
-npx webpack -p --progress --analyze-bundle
+npx webpack -p --analyze-bundle
 ```
 
 Then open the interactive bundle analyzer tool:
 
 ```
-npx webpack-bundle-analyzer build/stats.json build/
+npx webpack-bundle-analyzer build/app-stats.json
 ```

@@ -10,6 +10,7 @@ You can use Jitsi Meet API to create Jitsi Meet video conferences with a custom 
 To embed Jitsi Meet API in your application you need to add Jitsi Meet API library
 
 ```html
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script>
 ```
 

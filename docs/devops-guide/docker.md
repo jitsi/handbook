@@ -565,10 +565,24 @@ location /colibri-ws/ {
     proxy_set_header Connection "upgrade";
 }
 ```
+With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these routes can be forwarded using the following config snippet:
+
+```
+<IfModule mod_proxy.c>
+    <IfModule mod_proxy_wstunnel.c>
+        ProxyTimeout 900
+        <Location "/xmpp-websocket">
+            ProxyPass "wss://localhost:8443/xmpp-websocket"
+        </Location>
+        <Location "/colibri-ws/">
+            ProxyPass "wss://localhost:8443/colibri-ws/"
+        </Location>
+    </IfModule>
+</IfModule>
+
+```
 
 where `https://localhost:8443/` is the url of the web service's ingress.
-
-TODO: Add Apache example.
 
 ### Disabling WebSocket connections
 

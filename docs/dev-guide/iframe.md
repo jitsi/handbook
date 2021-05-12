@@ -475,6 +475,15 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
 ```
 **NOTE:** The invitee format in the array depends on the invite service used in the deployment.
 
+SIP invite objects have the following structure:
+
+```javascript
+{
+    type: 'sip',
+    address: <string> // the sip address
+}
+```
+
 ### dispose
 
 Removes the embedded Jitsi Meet conference:

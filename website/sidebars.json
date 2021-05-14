@@ -67,6 +67,7 @@
         "ids": [
           "devops-guide/secure-domain",
           "devops-guide/devops-guide-scalable",
+          "devops-guide/reservation",
           "devops-guide/turn",
           "devops-guide/speakerstats",
           "devops-guide/videosipgw",

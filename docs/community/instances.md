@@ -256,7 +256,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.metalab.at |    |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.metalab.at&latest) | Hetzner Online GmbH |
 | jitsi.php-friends.de |    |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.php-friends.de&latest) | PhP-Friends GmbH |
 |  	meet2.adminforge.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet2.adminforge.de&latest)	   |  	Hetzner Online GmbH	  |
-|  	meeting.vm.uni-freiburg.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meeting.vm.uni-freiburg.de&latest)	   |  	Universitaet Freiburg	  |
 |  	talk.snopyta.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.snopyta.org&latest)	   |  	Hetzner Online GmbH	  |
 |  	vc.autistici.org	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=vc.autistici.org&latest)	   |  	Hetzner Online GmbH	  |
 |  	viko.extinctionrebellion.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=viko.extinctionrebellion.de&latest)	   |  	SysEleven GmbH	  |

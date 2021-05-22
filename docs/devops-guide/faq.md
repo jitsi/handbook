@@ -26,8 +26,7 @@ Here is how to remove multiplexing and enable websockets in favor of WebRTC Data
        tcp_nodelay on;
     }
   ```
-4. Enable bridge channel websocket in jitsi-meet config. In `/etc/jitsi/meet/your-conf-config.js` make sure you have: `openBridgeChannel: 'websocket',`
-5. Enable the websockets in Jitsi Videobridge. Make sure in `/etc/jitsi/videobridge/jvb.conf` you have:
+4. Enable the websockets in Jitsi Videobridge. Make sure in `/etc/jitsi/videobridge/jvb.conf` you have:
   ```
   videobridge {
     http-servers {
@@ -43,4 +42,4 @@ Here is how to remove multiplexing and enable websockets in favor of WebRTC Data
 }
   ```
   Make sure you replace `your-domain` with the DNS of your deployment.
-6. After restarting the bridge (`systemctl restart jitsi-videobridge2`) and nginx (`systemctl restart nginx`) you are good to go!
+5. After restarting the bridge (`systemctl restart jitsi-videobridge2`) and nginx (`systemctl restart nginx`) you are good to go!

@@ -303,7 +303,6 @@ This objects represents the server connection. You can create new `JitsiConnecti
 4. `initJitsiConference(name, options)` - creates new `JitsiConference` object.
     - `name` - the name of the conference
     - `options` - JS object with configuration options for the conference. You can change the following properties there:
-        - `openBridgeChannel` - Enables/disables bridge channel. Values can be "datachannel", "websocket", true (treat it as "datachannel"), undefined (treat it as "datachannel") and false (don't open any channel). **NOTE: we recommend to set that option to true**
         - `recordingType` - the type of recording to be used
         - `callStatsID` - callstats credentials
         - `callStatsSecret` - callstats credentials

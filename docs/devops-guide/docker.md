@@ -553,13 +553,13 @@ With nginx, these routes can be forwarded using the following config snippet:
 
 ```
 location /xmpp-websocket {
-    proxy_pass https://localhost:8443/xmpp-websocket;
+    proxy_pass https://localhost:8443;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
 }
-location /colibri-ws/ {
-    proxy_pass https://localhost:8443/colibri-ws/;
+location /colibri-ws {
+    proxy_pass https://localhost:8443;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";

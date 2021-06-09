@@ -577,6 +577,26 @@ api.executeCommand('sendTones', {
 });
 ```
 
+### startShareVideo
+
+Starts sharing a video
+
+This command requires the an url pointing to either a youtube video or a video to be streamed from web (e.g an mp4 file)
+
+```javascript
+api.executeCommand('startShareVideo', url);
+```
+
+### stopShareVideo
+
+Stops sharing a video (if the user is the one who started the video)
+
+No arguments are required.
+
+```javascript
+api.executeCommand('stopShareVideo');
+```
+
 ### subject
 
 Sets the subject of the conference. 

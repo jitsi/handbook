@@ -81,6 +81,8 @@ included:
  contain user's identity. It that case it will not be possible to create new
  conference room without authenticating.
 
+The payload sent to the endpoint will be encoded as `application/x-www-form-urlencoded`.
+
 Then reservation system is expected to respond with one of the following
 responses:
 

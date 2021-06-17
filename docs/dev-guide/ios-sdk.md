@@ -466,7 +466,7 @@ With this, we've concluded sending the video frames and we can move to the last 
 
 Besides the in-meeting UI (screenshot 2), ReplayKit integration with iOS provides support for stopping screen recording outside of the app's control, from the status bar (screenshot 3) or using the Control Center (screenshot 4).
 
-![screenshot 2](../assets/iOS_screensharing_2.png "screenshot 2") ![screenshot 3](../assets/iOS_screensharing_3.png "screenshot 3") ![screenshot 4](../assets/iOS_screensharing_4.png "screenshot 4") 
+![ios-screensharing](../assets/iOS_screensharing_2.png "screenshot 2") ![ios-screensharing](../assets/iOS_screensharing_3.png "screenshot 3") ![ios-screensharing](../assets/iOS_screensharing_4.png "screenshot 4") 
 
 Any of these actions will trigger `broadcastFinished` in our `SampleHandler` implementation. This is our entry point for closing the connection and cleaning up. We will update `broadcastFinished` to post a `DarwinNotification.broadcastStopped` system-wide notification and close the connection:
 ```

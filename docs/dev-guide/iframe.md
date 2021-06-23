@@ -1083,6 +1083,80 @@ The listener receives an object with the following structure:
 }
 ```
 
+### mouseEnter
+
+Provides event notifications when mouse enters the iframe.
+The listener receives an object with the following structure based on [MouseEvent]:
+
+```javascript
+{
+    event: {
+        clientX,
+        clientY,
+        movementX,
+        movementY,
+        offsetX,
+        offsetY,
+        pageX,
+        pageY,
+        x,
+        y,
+        screenX,
+        screenY
+    }
+}
+```
+
+### mouseLeave
+
+Provides event notifications when mouse leaves the iframe.
+The listener receives an object with the following structure based on [MouseEvent]:
+
+```javascript
+{
+    event: {
+        clientX,
+        clientY,
+        movementX,
+        movementY,
+        offsetX,
+        offsetY,
+        pageX,
+        pageY,
+        x,
+        y,
+        screenX,
+        screenY
+    }
+}
+```
+
+### mouseMove
+
+Provides event notifications when mouse moves inside the iframe.
+Tis event is triggered on an interval which can be configured by overriding the config.js mouseMoveCallbackInterval property.
+
+The listener receives an object with the following structure based on [MouseEvent]:
+
+```javascript
+{
+    event: {
+        clientX,
+        clientY,
+        movementX,
+        movementY,
+        offsetX,
+        offsetY,
+        pageX,
+        pageY,
+        x,
+        y,
+        screenX,
+        screenY
+    }
+}
+```
+
 ### outgoingMessage
 
 Provides event notifications about outgoing chat messages. 
@@ -1316,4 +1390,4 @@ The listener receives an object with the following structure:
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html
-
+[MouseEvent]: https://developer.mozilla.org/en-US/docs/Web/API/MouseEvent

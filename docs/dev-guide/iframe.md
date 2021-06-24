@@ -832,6 +832,18 @@ api.executeCommand('overwriteConfig',
 ```
 will overwrite the `toolbarButtons` config value with `[chat]`, resulting in UI only showing the `chat` button.
 
+### sendChatMessage
+
+Sends a chat message either to a specific participant or as a group chat message.
+
+```javascript
+api.executeCommand('sendChatMessage',
+    message: string, //the text message
+    to: string, // the receiving participant ID or empty string/undefined for group chat.
+    ignorePrivacy: boolean // true if the privacy notification should be ignored. Defaulted to false.
+);
+```
+
 ### setTileView
 
 Enables or disables the tileview mode.
@@ -856,6 +868,14 @@ Toggles the mirroring of the local video.
 
 ```javascript
 api.executeCommand('toggleCameraMirror');
+```
+
+### toggleVirtualBackgroundDialog
+
+Toggles the virtual background selection dialog.
+
+```javascript
+api.executeCommand('toggleVirtualBackgroundDialog');
 ```
 
 ## Events

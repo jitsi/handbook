@@ -224,7 +224,7 @@ The JSON with the Dial-In numbers should look like this:
 {"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
 ```
 
-### JItsi BRoadcasting Infrastructure (Jibri) configuration
+### Jitsi Broadcasting Infrastructure (Jibri) configuration
 
 Before running Jibri, you need to set up an ALSA loopback device on the host. This **will not**
 work on a non-Linux host.

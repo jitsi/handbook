@@ -340,6 +340,26 @@ For using multiple Jibri instances, you have to select different loopback interf
 
 </details>
 
+### Jitsi-Meet web configuration
+
+:::tip This section partly contains duplicate settings
+
+There are settings within your ``docker-compose.yml`` like ``START_AUDIO_MUTED``
+that will be overwritten if you follow the below guide.
+
+:::
+
+Jitsi-Meet uses two configuration files for changing default settings within
+the web interface: ``config.js`` and ``interface_config.js``. The files are
+located within the ``CONFIG`` directory configured within your environment file.
+
+These files are re-created on every container restart. 
+If you'd like to provide your own settings, create your own config files:
+``custom-config.js`` and ``custom-interface_config.js``.
+
+It's enough to provide your relevant settings only, the docker scripts will 
+append your custom files to the default ones!
+
 ### Authentication
 
 Authentication can be controlled with the environment variables below. If guest

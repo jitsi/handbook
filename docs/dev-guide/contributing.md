@@ -137,7 +137,8 @@ in the agreement, unfortunately, we cannot accept your contribution.
   or internal. In contrast, the lack of an underscore at the beginning of a name
   signals public API.
 
-### Feature layout
+### JavaScript
+#### Feature layout
 
 When adding a new feature, this would be the usual layout.
 
@@ -166,7 +167,7 @@ this model but new features should follow this new layout.
 When working on an old feature, adding the necessary changes to migrate to the new
 model is encouraged.
 
-## Avoiding bundle bloat
+#### Avoiding bundle bloat
 
 When adding a new feature it's possible that it triggers a build failure due to the increased bundle size. We have safeguards inplace to avoid bundles growing disproportionatelly. While there are legit reasons for increasing the limits, please analyze the bundle first to make sure no unintended dependencies have been included, causing the increase in size.
 

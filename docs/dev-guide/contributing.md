@@ -58,7 +58,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
 
 ### Formatting
 
-* Line length is limited to 120 characters for JavaScript and Java projects.
+* Line length is limited to 120 characters for JavaScript, Java, and Kotlin code.
 
 * Sort by alphabetical order in order to make the addition of new entities as
   easy as looking a word up in a dictionary. Otherwise, one risks duplicate
@@ -182,3 +182,7 @@ Then open the interactive bundle analyzer tool:
 ```
 npx webpack-bundle-analyzer build/app-stats.json
 ```
+
+### Kotlin
+
+For Kotlin code we use the [standard convention](https://kotlinlang.org/docs/coding-conventions.html) and limit line length to 120 characters. We use `ktlint` to enforce formatting.

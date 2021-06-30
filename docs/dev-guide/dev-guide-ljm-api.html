@@ -216,7 +216,7 @@ We support the following events:</p>
 <li><code>TRACK_REMOVED</code> - stream removed. (parameters - JitsiTrack)</li>
 <li><code>TRACK_MUTE_CHANGED</code> - JitsiTrack was muted or unmuted. (parameters - JitsiTrack)</li>
 <li><code>TRACK_AUDIO_LEVEL_CHANGED</code> - audio level of JitsiTrack has changed. (parameters - participantId(string), audioLevel(number))</li>
-<li><code>DOMINANT_SPEAKER_CHANGED</code> - the dominant speaker is changed. (parameters - id(string))</li>
+<li><code>DOMINANT_SPEAKER_CHANGED</code> - the dominant speaker is changed. (parameters - id(string), previousSpeakers(Array<string>))</li>
 <li><code>USER_JOINED</code> - new user joined a conference. (parameters - id(string), user(JitsiParticipant))</li>
 <li><code>USER_LEFT</code> - a participant left conference. (parameters - id(string), user(JitsiParticipant))</li>
 <li><code>MESSAGE_RECEIVED</code> - new text message received. (parameters - id(string), text(string), ts(number))</li>

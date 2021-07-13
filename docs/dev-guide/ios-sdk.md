@@ -172,6 +172,10 @@ The localParticipant leaves the current conference.
 
 Sets the state of the localParticipant audio muted according to the `muted` parameter.
 
+#### setVideoMuted
+
+Sets the state of the localParticipant video muted according to the `muted` parameter.
+
 #### sendEndpointTextMessage
 
 Sends a message via the data channel to one particular participant or to all of them.
@@ -179,6 +183,30 @@ If the `to` param is empty, the message will be sent to all the participants in 
 
 In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
 which `data` includes the id and this should be stored somehow.
+
+#### toggleScreenShare
+
+Sets the state of the localParticipant screen sharing according to the `enabled` parameter.
+
+#### openChat
+
+Opens the chat dialog. If `to` contains a valid participantId, the private chat with that particular participant will be opened.
+
+#### sendChatMessage
+
+Sends a chat message via to one particular participant or to all of them.
+If the `to` param is empty, the message will be sent to all the participants in the conference.
+
+In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
+which `data` includes the id and this should be stored somehow.
+
+#### closeChat
+
+Closes the chat dialog.
+
+#### retrieveParticipantsInfo
+
+Retrieves the participants information in the completionHandler sent as parameter.
 
 #### Universal / deep linking
 
@@ -284,11 +312,35 @@ Called when audioMuted state changed.
 
 The `data` dictionary contains a `muted` key with state of the audioMuted for the localParticipant.
 
+#### videoMutedChanged
+
+Called when videoMuted state changed.
+
+The `data` dictionary contains a `muted` key with state of the videoMuted for the localParticipant.
+
 #### endpointTextMessageReceived
 
 Called when an endpoint text message is received.
 
 The `data` dictionary contains a `senderId` key with the participantId of the sender and a `message` key with the content.
+
+#### screenShareToggled
+
+Called when a chat message is received.
+
+The `data` dictionary contains a `participantId` key with the id of the participant  and a 'sharing' key with boolean value.
+
+#### chatMessageReceived
+
+Called when a chat message is received.
+
+The `data` dictionary contains `message`, `senderId` and  `isPrivate` keys.
+
+#### chatToggled
+
+Called when the chat dialog is displayed/hidden.
+
+The `data` dictionary contains a `isOpen` key.
 
 ### Picture-in-Picture
 

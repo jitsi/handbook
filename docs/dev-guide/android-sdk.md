@@ -379,6 +379,10 @@ The `data` HashMap contains a `url` key with the conference URL.
 Broadcasted when audioMuted state changed.
 The `data` HashMap contains a `muted` key with state of the audioMuted for the localParticipant.
 
+##### VIDEO_MUTED_CHANGED
+Broadcasted when videoMuted state changed.
+The `data` HashMap contains a `muted` key with state of the videoMuted for the localParticipant.
+
 ##### PARTICIPANT_JOINED
 Broadcasted when a participant has joined the conference.
 The `data` HashMap contains information of the participant that has joined.
@@ -403,6 +407,18 @@ present/missing.
 Broadcasted when an endpoint text message is received.
 The `data` HashMap contains a `senderId` key with the participantId of the sender and a `message` key with the content.
 
+##### PARTICIPANTS_INFO_RETRIEVED
+Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called.
+The `data` HashMap contains a `participantsInfo` key with a list of participants information and a `requestId` key with the id that was sent in the RETRIEVE_PARTICIPANTS_INFO action.
+
+##### CHAT_MESSAGE_RECEIVED
+Broadcasted when a chat text message is received.
+The `data` HashMap contains a `senderId` key with the participantId of the sender, a `message` key with the content, a `isPrivate` key with a boolean value and a `timestamp` key.
+
+##### CHAT_TOGGLED
+Broadcasted when the chat dialog is opened or closed.
+The `data` HashMap contains a `isOpen` key with a boolean value.
+
 ### Broadcasting Actions
 The SDK listens for broadcasted actions from the users and reacts accordingly.
 
@@ -422,6 +438,10 @@ Please see `JitsiMeetOngoingConferenceService` for more examples of sending acti
 Sets the state of the localParticipant audio muted according to the `muted` parameter.
 Expects a `muted` key on the intent extra with a boolean value.
 
+##### SET_VIDEO_MUTED
+Sets the state of the localParticipant video muted according to the `muted` parameter.
+Expects a `muted` key on the intent extra with a boolean value.
+
 ##### HANG_UP
 The localParticipant leaves the current conference.
 Does not expect any extra value.
@@ -435,6 +455,25 @@ to all the participants in the conference.
 
 In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
 which `data` includes the id and this should be stored somehow.
+
+##### TOGGLE_SCREEN_SHARE
+Sets the state of the localParticipant screen share according to the `enabled` parameter.
+Expects a `enabled` key on the intent extra with a boolean value.
+
+##### RETRIEVE_PARTICIPANTS_INFO
+Signals the SDK to retrieve a list with the participants information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event.
+Expects a `requestId` key on the intent extra with a string value, this parameter will be present on the PARTICIPANTS_INFO_RETRIEVED event.
+
+##### OPEN_CHAT
+Opens the chat dialog. If a `to` key is present with a valid participantId, the private chat for that particular participant will be opened.
+
+##### CLOSE_CHAT
+Closes the chat dialog.
+Does not expect any extra value.
+
+##### SEND_CHAT_MESSAGE
+Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody otherwise.
+Expects a `message` key with a string value.
 
 ## ProGuard rules
 

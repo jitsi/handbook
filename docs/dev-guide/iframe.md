@@ -844,6 +844,16 @@ api.executeCommand('sendChatMessage',
 );
 ```
 
+### setFollowMe
+
+Allows moderators to toggle the follow me functionality
+
+```javascript
+api.executeCommand('setFollowMe',
+    value: boolean, // set to true if participants should be following you, false otherwise
+);
+```
+
 ### setTileView
 
 Enables or disables the tileview mode.

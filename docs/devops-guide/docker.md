@@ -194,7 +194,7 @@ for a new certificate for your domain name. At the time of writing, the current 
 certificates for the same domain name every seven days. Because of this, it is recommended that you disable the 
 Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder. Otherwise, you 
 might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
-the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disalbed, then re-enable
+the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
 
 For more information on Let's Encrypt's rate limits, visit:

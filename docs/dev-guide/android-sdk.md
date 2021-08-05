@@ -46,7 +46,7 @@ dependencies {
 }
 ```
 
-:::warn
+:::warning
 Make sure you pin your dependency by checking the [releases page](https://github.com/jitsi/jitsi-meet-release-notes/blob/master/CHANGELOG-MOBILE-SDKS.md).
 :::
 

@@ -76,6 +76,15 @@ Finally on the same machine test that you can ping the FQDN with:
 If all worked as expected, you should see:
 `meet.example.org`
 
+### For Ubuntu 18.04, add Prosody package repository
+
+This will add the Prosody repository so that Prosody .11 will be installed, which is necessary for features including the lobby feature.
+
+```sh
+echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list
+wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add -
+```
+
 ### Add the Jitsi package repository
 
 This will add the jitsi repository to your package sources to make the Jitsi Meet packages available.

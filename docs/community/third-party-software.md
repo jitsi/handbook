@@ -28,6 +28,12 @@ Plugin for Flutter.
 
 https://pub.dev/packages/jitsi_meet
 
+## GStreamer pipelinee integration
+
+Integrate Jitsi Meet conferences with GStreamer pipelines.
+
+https://github.com/avstack/gst-meet
+
 ## Jitok: Jitsi Token generator
 
 Helper web tool and API for generating Jitsi Meet compatible JWT.
@@ -43,3 +49,9 @@ https://github.com/emrahcom/emrah-tools/tree/main/jitsi/jitok
 Plugin for React Native.
 
 https://github.com/skrafft/react-native-jitsi-meet
+
+## Unity plugin
+
+Plugin for using lib-jitsi-meet in a Unity environment (WebGL).
+
+https://github.com/avstack/jitsi-meet-unity-demo

@@ -995,9 +995,25 @@ The listener receives an object with the following structure:
         id: string // the participant id of the sender
     },
     eventData: {
-        name: string // the name of the datachannel event: `endpoint-text-message`
+        name: string, // the name of the datachannel event: `endpoint-text-message`
         text: string // the received text from the sender
     }
+}
+```
+
+### error
+
+Provides event notifications about an error which has occured.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    details: Object?, // additional error details
+    message: string?, // the error message
+    name: string, // the coded name of the error
+    type: string, // error type/source, one of : 'CONFIG', 'CONNECTION', 'CONFERENCE'
+    isFatal: boolean // whether this is a fatal error which triggered a reconnect overlay or not
 }
 ```
 

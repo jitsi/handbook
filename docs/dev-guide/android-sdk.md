@@ -269,6 +269,7 @@ JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setVideoMuted(false)
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
+    .setConfigOverride("requireDisplayName", true)
     .build();
 ```
 

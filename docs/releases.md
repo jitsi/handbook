@@ -17,3 +17,9 @@ Debian/Ubuntu packages:
 Source archives:
 
 * [source builds](https://download.jitsi.org/jitsi-meet/src/)
+
+Electron application:
+
+| Windows | macOS | GNU/Linux (AppImage) | GNU/Linux (Deb) |
+| :--: | :--: | :--: | :--: |
+| [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |

@@ -176,6 +176,7 @@ the desired URL:</p></li>
       builder.audioMuted = <span class="hljs-literal">NO</span>;
       builder.videoMuted = <span class="hljs-literal">NO</span>;
       builder.welcomePageEnabled = <span class="hljs-literal">NO</span>;
+      [builder setConfigOverride:<span class="hljs-string">@"requireDisplayName"</span> withBoolean:<span class="hljs-literal">YES</span>];
   }];
 
   [jitsiMeetView join:options];

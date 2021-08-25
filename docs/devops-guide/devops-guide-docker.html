@@ -547,13 +547,13 @@ option.</p>
 </ul>
 <p>With nginx, these routes can be forwarded using the following config snippet:</p>
 <pre><code class="hljs"><span class="hljs-attribute">location</span> /xmpp-websocket {
-    <span class="hljs-attribute">proxy_pass</span> https://localhost:8443/xmpp-websocket;
+    <span class="hljs-attribute">proxy_pass</span> https://localhost:8443;
     <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;
     <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;
     <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">"upgrade"</span>;
 }
-<span class="hljs-attribute">location</span> /colibri-ws/ {
-    <span class="hljs-attribute">proxy_pass</span> https://localhost:8443/colibri-ws/;
+<span class="hljs-attribute">location</span> /colibri-ws {
+    <span class="hljs-attribute">proxy_pass</span> https://localhost:8443;
     <span class="hljs-attribute">proxy_http_version</span> <span class="hljs-number">1</span>.<span class="hljs-number">1</span>;
     <span class="hljs-attribute">proxy_set_header</span> Upgrade <span class="hljs-variable">$http_upgrade</span>;
     <span class="hljs-attribute">proxy_set_header</span> Connection <span class="hljs-string">"upgrade"</span>;

@@ -155,6 +155,7 @@ Joins the conference specified by the given options.
       builder.audioMuted = NO;
       builder.videoMuted = NO;
       builder.welcomePageEnabled = NO;
+      [builder setConfigOverride:@"requireDisplayName" withBoolean:YES];
   }];
 
   [jitsiMeetView join:options];

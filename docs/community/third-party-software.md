@@ -44,6 +44,12 @@ https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
 https://github.com/emrahcom/emrah-tools/tree/main/jitsi/jitok
 
+## KeyCloak integration
+
+Integration of KeyCloak for authentication.
+
+https://github.com/D3473R/jitsi-keycloak
+
 ## React Native plugin
 
 Plugin for React Native.

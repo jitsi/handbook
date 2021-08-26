@@ -18,7 +18,7 @@ This technique doesn't require any special configuration on the XMPP server, but
 
 This [draft](https://tools.ietf.org/html/draft-uberti-behave-turn-rest-00) describes a proposed standard REST API for obtaining access to TURN services via ephemeral (i.e. time-limited) credentials. These credentials are vend by a web service over HTTP, and then supplied to and checked by a TURN server using the standard TURN protocol. The usage of ephemeral credentials ensures that access to the TURN server can be controlled even if the credentials can be discovered by the user.
 
-Jitsi Meet can fetch the TURN credentials from the XMPP server via [XEP-0215](https://xmpp.org/extensions/xep-0215.html). You can enable this functionality by setting `p2p.enabled: true` in config.js. By properly configuring a common shared secret on your TURN server and your XMPP server, the XMPP server can deliver appropriate credentials and TURN urls to Jitsi Meet. coTURN natively supports shared secret authentication (--use-auth-secret-) and in prosody, you can use the [mod_turncredentials](https://modules.prosody.im/mod_turncredentials.html) module.
+Jitsi Meet can fetch the TURN credentials from the XMPP server via [XEP-0215](https://xmpp.org/extensions/xep-0215.html) and this is configured by default using [mod_external_services](https://prosody.im/doc/modules/mod_external_services). The default configured turnserver uses the default ports for the protocol UDP 3478 and TCP(TLS) on 5349.
 
 ## Use TURN server on port 443
 

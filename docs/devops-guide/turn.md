@@ -11,14 +11,14 @@ This document describes how to enable TURN server support in one-to-one calls in
 One way to configure TURN support in meet with a static configuration. You can simply fill out the `p2p.stunServers` option with appropriate values, e.g.:
 
     [
-        { urls: 'turn:turn.example.com1', credential: 'user', password: 'pass' },
+        { urls: 'turn:turn.example.com1', username: 'user', credential: 'pass' },
     ]
 
 This technique doesn't require any special configuration on the XMPP server, but it exposes the credentials to your TURN server and other people can use your bandwidth freely, so while it's simple to implement, it's not recommended.
 
 This [draft](https://tools.ietf.org/html/draft-uberti-behave-turn-rest-00) describes a proposed standard REST API for obtaining access to TURN services via ephemeral (i.e. time-limited) credentials. These credentials are vend by a web service over HTTP, and then supplied to and checked by a TURN server using the standard TURN protocol. The usage of ephemeral credentials ensures that access to the TURN server can be controlled even if the credentials can be discovered by the user.
 
-Jitsi Meet can fetch the TURN credentials from the XMPP server via [XEP-0215](https://xmpp.org/extensions/xep-0215.html). You can enable this functionality by setting `p2p.useStunTurn: true` in config.js. By properly configuring a common shared secret on your TURN server and your XMPP server, the XMPP server can deliver appropriate credentials and TURN urls to Jitsi Meet. coTURN natively supports shared secret authentication (--use-auth-secret-) and in prosody, you can use the [mod_turncredentials](https://modules.prosody.im/mod_turncredentials.html) module.
+Jitsi Meet can fetch the TURN credentials from the XMPP server via [XEP-0215](https://xmpp.org/extensions/xep-0215.html). You can enable this functionality by setting `p2p.enabled: true` in config.js. By properly configuring a common shared secret on your TURN server and your XMPP server, the XMPP server can deliver appropriate credentials and TURN urls to Jitsi Meet. coTURN natively supports shared secret authentication (--use-auth-secret-) and in prosody, you can use the [mod_turncredentials](https://modules.prosody.im/mod_turncredentials.html) module.
 
 ## Use TURN server on port 443
 

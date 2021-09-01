@@ -53,8 +53,8 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |---|---|---|---|---|
 | easyconference.uibk.ac.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=easyconference.uibk.ac.at&latest) | University of Innsbruck  |
 | meet.epicenter.works  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.epicenter.works&latest) |  Nessus GmbH  |
-| fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) |  | fairkom Gesellschaft
-| pro.fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) |  | fairkom Gesellschaft 
+| fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) | fairkom Gesellschaft  |
+| pro.fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) | fairkom Gesellschaft   |
 | meet.adsimple.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.adsimple.at&latest) | Next Layer Telekom- und Beratungs GmbH   |
 | meet.bitblaze.io |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.bitblaze.io&latest) | Next Layer Telekom- und Beratungs GmbH   |
 | meet.graz.social  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.graz.social&latest) |    |
@@ -149,15 +149,15 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	visio.myceliandre.fr	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=visio.myceliandre.fr&latest)	   |  	OVH SAS
 |  	webcall.paulla.asso.fr	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=webcall.paulla.asso.fr&latest)	   |  	Axione S.a.s.
 |  	webconf.viviers-fibre.net	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=webconf.viviers-fibre.net&latest)	   |  	OVH SAS
-|  	jitsi.riot.im	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.riot.im&latest)	   |
-|  	talk.youthforclimate.fr	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.youthforclimate.fr&latest)	   |
-|  	jitsi.thedark.xyz	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.thedark.xyz&latest)	   |
-|  	vidconf.tech4good.ch	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=vidconf.tech4good.ch&latest)	   |
-|  	www.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=www.free-solutions.org&latest)	   |
-|  	swisschat.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=swisschat.free-solutions.org&latest)	   |
-|  	tel.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=tel.free-solutions.org&latest)	   |
-|  	eelo.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=eelo.free-solutions.org&latest)	   |
-|  	noalyss.free-solutions.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=noalyss.free-solutions.org&latest)	   |
+|  	jitsi.riot.im	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.riot.im&latest)	   |  |
+|  	talk.youthforclimate.fr	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.youthforclimate.fr&latest)	   |  |
+|  	jitsi.thedark.xyz	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.thedark.xyz&latest)	   |  |
+|  	vidconf.tech4good.ch	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=vidconf.tech4good.ch&latest)	   |  |
+|  	www.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=www.free-solutions.org&latest)	   |  |
+|  	swisschat.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=swisschat.free-solutions.org&latest)	   |  |
+|  	tel.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=tel.free-solutions.org&latest)	   |  |
+|  	eelo.free-solutions.org	   |  	✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=eelo.free-solutions.org&latest)	   |  |
+|  	noalyss.free-solutions.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=noalyss.free-solutions.org&latest)	   |  |
 
 #### special cases (limited access)
 

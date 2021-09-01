@@ -55,6 +55,7 @@ warning and continue to your site.
 
 To make a deb you can easily deploy to a public test server, ensure you have the lib-jitsi-meet sources you wish, then:
 ```
+npm install
 make
 dpkg-buildpackage -A -rfakeroot -us -uc -tc
 ```

@@ -23,11 +23,7 @@ Then go ahead:
 git clone https://github.com/jitsi/jitsi-meet
 cd ./jitsi-meet
 
-# Build lib-jitsi-meet .min.js files, which are required by the jitsi-meet build process
-cd node_modules/lib-jitsi-meet
 npm install
-npm run postinstall
-cd ../..
 
 # To build the Jitsi Meet application, just type
 make

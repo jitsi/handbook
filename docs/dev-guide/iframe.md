@@ -226,6 +226,16 @@ api.getAvailableDevices().then(devices => {
 });
 ```
 
+### getContentSharingParticipants
+
+Returns a promise which resolves with an array of currently sharing participants ID's.
+
+```javascript
+api.getContentSharingParticipants().then(res => {
+    //res.sharingParticipantIds = [particId1, particId2, ...]
+});
+```
+
 ### getCurrentDevices
 
 Retrieves a list of currently selected devices.
@@ -801,16 +811,6 @@ Removes the private chat participant thus it resets the chat window to group cha
 
 ```javascript
 api.executeCommand('cancelPrivateChat');
-```
-
-### getContentSharingParticipants
-
-Returns a promise which resolves with an array of currently sharing participants ID's.
-
-```javascript
-api.executeCommand('getContentSharingParticipants').then(res => {
-    //res.sharingParticipantIds = [particId1, particId2, ...]
-});
 ```
 
 ### kickParticipant

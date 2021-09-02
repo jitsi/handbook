@@ -1001,9 +1001,9 @@ The listener receives an object with the following structure:
 }
 ```
 
-### error
+### errorOccurred
 
-Provides event notifications about an error which has occured.
+Provides event notifications about an error which has occurred.
 
 The listener receives an object with the following structure:
 

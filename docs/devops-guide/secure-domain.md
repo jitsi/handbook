@@ -63,17 +63,28 @@ authenticated domain.
 org.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
 ```
 
-If you have installed Jicofo from the Debian package, this should go directly on a new line in
-the `/etc/jitsi/jicofo/sip-communicator.properties`:
+If you have installed Jicofo from the Debian package, this should go as a new 'authentication' section in `/etc/jitsi/jicofo/jicofo.conf`:
 
 ```
-org.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
+jicofo {
+  authentication: {
+    enabled: true
+    type: XMPP
+    login-url: jitsi-meet.example.com
+ }
+ ...
 ```
 
-When using token based authentication, the URL must use `EXT_JWT` as the scheme instead:
+When using token based authentication, the type must use `EXT_JWT` as the scheme instead:
 
 ```
-org.jitsi.jicofo.auth.URL=EXT_JWT:jitsi-meet.example.com
+jicofo {
+  authentication: {
+    enabled: true
+    type: EXT_JWT
+    login-url: jitsi-meet.example.com
+ }
+ ...
 ```
 
 ## Create users in Prosody (internal auth)

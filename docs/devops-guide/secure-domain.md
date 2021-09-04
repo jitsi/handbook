@@ -75,13 +75,13 @@ jicofo {
  ...
 ```
 
-When using token based authentication, the type must use `EXT_JWT` as the scheme instead:
+When using token based authentication, the type must use `JWT` as the scheme instead:
 
 ```
 jicofo {
   authentication: {
     enabled: true
-    type: EXT_JWT
+    type: JWT
     login-url: jitsi-meet.example.com
  }
  ...

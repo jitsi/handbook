@@ -6,6 +6,10 @@ title: iOS SDK
 The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,
 in a customizable way which you can embed in your apps.
 
+:::important
+iOS 12 or higher is required.
+:::
+
 ## Sample applications using the SDK
 
 If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the

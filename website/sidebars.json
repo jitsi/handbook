@@ -43,6 +43,7 @@
         "label": "Mobile",
         "ids": [
           "dev-guide/dev-guide-mobile",
+          "dev-guide/dev-guide-mobile-jitsi-meet",
           "dev-guide/mobile-feature-flags",
           "dev-guide/dev-guide-android-sdk",
           "dev-guide/dev-guide-ios-sdk"

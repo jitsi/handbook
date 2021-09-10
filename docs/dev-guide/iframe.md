@@ -898,6 +898,17 @@ Toggles the virtual background selection dialog.
 api.executeCommand('toggleVirtualBackgroundDialog');
 ```
 
+### setParticipantVolume
+
+Change volume of the participant with the given participant ID.
+
+```javascript
+api.executeCommand('setParticipantVolume',
+    participantID: string,
+    volume: number // number between 0 and 1
+);
+```
+
 ## Events
 
 The `JitsiMeetExternalAPI` object implements the [EventEmitter] API for emitting and listening for events.

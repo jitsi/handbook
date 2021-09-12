@@ -367,11 +367,14 @@ access is enabled, unauthenticated users will need to wait until a user authenti
 before they can join a room. If guest access is not enabled, every user will need
 to authenticate before they can join.
 
+If authentication is enabled, once an authenticated user logged in, it is always logged in before the session timeout.You can set `ENABLE_AUTO_LOGIN=0` to disable this default auto login feature.
+
 Variable | Description | Example
 --- | --- | ---
 `ENABLE_AUTH` | Enable authentication | 1
 `ENABLE_GUESTS` | Enable guest access | 1
 `AUTH_TYPE` | Select authentication type (internal, jwt or ldap) | internal
+`ENABLE_AUTO_LOGIN` | Enable auto login  | 1
 
 #### Internal authentication
 

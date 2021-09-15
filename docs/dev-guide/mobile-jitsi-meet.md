@@ -41,24 +41,7 @@ First make sure the [React Native dependencies] are installed.
     cd ..
     ```
 
-2. Build the app
-
-    There are 2 ways to build the app: using the CLI or using Xcode. Using Xcode is recommended.
-
-    Using the CLI:
-
-    ```bash
-    react-native run-ios --device
-    ```
-
-    When the app is launched from the CLI the output can be checked with the
-    following command:
-
-    ```bash
-    react-native log-ios
-    ```
-
-    Using Xcode
+2. Build the app using Xcode
 
     - Open **ios/jitsi-meet.xcworkspace** in Xcode. Make sure it's the workspace
       file!

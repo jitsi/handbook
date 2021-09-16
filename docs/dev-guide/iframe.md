@@ -1224,6 +1224,20 @@ The listener receives an object with the following structure based on [MouseEven
 }
 ```
 
+### toolbarButtonClicked
+
+Provides event notifications about an overriden toolbar button being clicked. Overriden buttons do not run their normal click
+routine but instead they trigger this event. For overriding a button's click, please use the following config overwrite:
+https://github.com/jitsi/jitsi-meet/blob/042a2cb447bd9ff39ab3904e493952787bd30924/config.js#L547
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    key: string // the pressed button's key. The key is as defined in `toolbarButtons` config
+}
+```
+
 ### outgoingMessage
 
 Provides event notifications about outgoing chat messages. 

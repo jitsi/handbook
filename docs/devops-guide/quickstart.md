@@ -199,6 +199,23 @@ sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
 ```
 Note that this script uses the [HTTP-01 challenge type](https://letsencrypt.org/docs/challenge-types/) and thus your instance needs to be accessible from the public internet on both ports 80 and 443. If you want to use a different challenge type, don't use this script and instead choose ___I want to use my own certificate___ during `jitsi-meet` installation.
 
+#### If You're Using Debian 10 and AdoptOpenJDK8...
+
+If you're using Debian 10 with the recommended JDK, Jitsi won't be able to find the necessary certificates and your logs will be full of errors like this:
+
+```
+Sep 16 22:04:53 c2s55fdd8d14490 info    Client disconnected: ssl handshake error: tlsv1 alert internal error
+Sep 16 22:04:54 c2s55fdd8cd6ee0 info    Client connected
+```
+
+Until the upstream fix is available, you'll need to fix it by running this:
+
+```
+sudo apt install ca-certificates-java
+sudo dpkg-divert --divert /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/security/cacerts.dist --rename --local --add /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/security/cacerts
+sudo ln -s /etc/ssl/certs/java/cacerts /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre/lib/security/cacerts
+```
+
 #### Advanced configuration
 
 If the installation is on a machine [behind NAT](https://jitsi.github.io/handbook/docs/faq#how-to-tell-if-my-server-instance-is-behind-nat) jitsi-videobridge should configure itself automatically on boot. If three way calls do not work, further configuration of jitsi-videobridge is needed in order for it to be accessible from outside.

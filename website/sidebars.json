@@ -78,5 +78,10 @@
       "devops-guide/devops-guide-videotutorials",
       "devops-guide/faq"
     ]
+  },
+  "releases-sidebar": {
+    "Releases": [
+      "releases"
+    ]
   }
 }

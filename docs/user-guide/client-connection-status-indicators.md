@@ -11,11 +11,11 @@ This document explains what the different connection quality indicators on the v
 
 ## NON-OPTIMAL
 * With video enabled, when the send bitrate for the video stream is at least 30% of the target bitrate expected for the stream. Please refer to the target bitrates table below.
-* With video disabled or screen sharing is in progress, when the downstream packet loss is less than 8%.
+* With video disabled or screen sharing is in progress, when the downstream packet loss is between 6% and 8%.
 
 ## POOR
 * With video enabled, when the send bitrate for the video stream is at least 10% of the target bitrate expected for the stream. Please refer to the target bitrates table below.
-* With video disabled or screen sharing is in progress, when the downstream packet loss is less than 12%.
+* With video disabled or screen sharing is in progress, when the downstream packet loss is between 8% and 12%.
 
 ## LOST
 * When the user stops receiving video for the remote endpoint even when the endpoint is not video muted and it is in LastN as indicated by the bridge’s LastNEndpointChangeEvent.

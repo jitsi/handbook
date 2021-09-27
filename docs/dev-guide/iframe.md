@@ -981,6 +981,18 @@ The listener receives an object with the following structure:
 }
 ```
 
+### browserSupport
+
+Provides event notifications about the current browser support.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    supported: boolean
+}
+```
+
 ### contentSharingParticipantsChanged
 
 Provides real-time list of currently screen sharing participant ID's.

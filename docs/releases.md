@@ -19,6 +19,11 @@ developed you can also sign up for our open beta testing here:
 * [Android](https://play.google.com/apps/testing/org.jitsi.meet)
 * [iOS](https://testflight.apple.com/join/isy6ja7S)
 
+## Mobile SDKs
+
+* [Android (Maven repository)](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries)
+* [iOS (CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
+
 ## Docker images
 
 See the Docker image releases [here](https://github.com/jitsi/docker-jitsi-meet/releases).

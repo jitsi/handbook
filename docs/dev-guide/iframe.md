@@ -1005,6 +1005,10 @@ The listener receives an object with the following structure:
 }
 ```
 
+### dataChannelOpen
+
+Indicates the data channel is open and thus messages can be sent over it.
+
 ### endpointTextMessageReceived
 
 Provides event notifications about a text messages received through data channels.

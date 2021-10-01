@@ -472,6 +472,32 @@ api.isVideoAvailable().then(available => {
 });
 ```
 
+### isModerationOn
+
+Returns a Promise which resolves to the current moderation state of the given media type.
+
+`mediaType` can be either `audio` (default) or `video`.
+
+```javascript
+api.isModerationOn(mediaType).then(isModerationOn => {
+    ...
+});
+```
+
+### isParticipantForceMuted
+
+Returns a Promise which resolves to the current force mute state of the given participant for the given media type.
+
+`mediaType` can be either `audio` (default) or `video`.
+
+Force muted - moderation is on and participant is not allowed to unmute the given media type.
+
+```javascript
+api.isParticipantForceMuted(participantId, mediaType).then(isForceMuted => {
+    ...
+});
+```
+
 ### invite
 
 Invite the given array of participants to the meeting:
@@ -747,12 +773,14 @@ api.executeCommand('setVideoQuality', 720);
 
 ### muteEveryone
 
-Mute all meeting participants. 
+Mute all meeting participants.
 
-This command can only be executed by the meeting moderator. No arguments are required.
+This command can only be executed by the meeting moderator and can take one argument: `mediaType` - for which media type to mute everyone.
+
+`mediaType` can be either 'audio' (default) or 'video'.
 
 ```javascript
-api.executeCommand('muteEveryone');
+api.executeCommand('muteEveryone', 'video');
 ```
 
 ### startRecording
@@ -906,6 +934,51 @@ Change volume of the participant with the given participant ID.
 api.executeCommand('setParticipantVolume',
     participantID: string,
     volume: number // number between 0 and 1
+);
+```
+
+### toggleModeration
+
+Changes moderation status of the given media type.
+
+This command requires two arguments: `enable` - whether to enable it or not, and `mediaType` - the media type for which to change moderation.
+
+```javascript
+api.executeCommand('toggleModeration',
+    enable: Boolean,
+    mediaType: String // can be 'audio' (default) or 'video'
+);
+```
+
+### askToUnmute
+
+Asks the participant with the given ID to unmute.
+If audio moderation is on it also approves the participant for audio.
+
+```javascript
+api.executeCommand('askToUnmute',
+    participantId: String
+);
+```
+
+### approveVideo
+
+If video moderation is on it approves the participant with the given ID for video.
+
+```javascript
+api.executeCommand('approveVideo',
+    participantId: String
+);
+```
+
+### rejectParticipant
+
+Rejects the participant with the given ID from moderation of the given media type.
+
+```javascript
+api.executeCommand('rejectParticipant',
+    participantId: String,
+    mediaType: String // can be 'audio' (default) or 'video'
 );
 ```
 
@@ -1324,6 +1397,39 @@ Provides event visibility notifications for the filmstrip that is being updated:
 ```javascript
 {
     visible: boolean // Whether or not the filmstrip is displayed or hidden.
+}
+```
+
+### moderationStatusChanged
+
+Provides event notifications about changes to moderation status.
+
+```javascript
+{
+    mediaType: string, // The media type for which moderation changed.
+    enabled: boolean // Whether or not moderation changed to enabled.
+}
+```
+
+### moderationParticipantApproved
+
+Provides event notifications about participants approvals for moderation.
+
+```javascript
+{
+    id: string, // The ID of the participant that got approved.
+    mediaType: string // The media type for which the participant was approved.
+}
+```
+
+### moderationParticipantRejected
+
+Provides event notifications about participants rejections for moderation.
+
+```javascript
+{
+    id: string, // The ID of the participant that got rejected.
+    mediaType: string // The media type for which the participant was rejected.
 }
 ```
 

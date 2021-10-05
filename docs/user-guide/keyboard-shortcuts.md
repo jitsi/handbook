@@ -9,6 +9,7 @@ title: Keyboard shortcuts
 * A - Manage video quality
 * C - Open or close the chat
 * D - Switch between camera and screen sharing
+* P - Show or hide the participants pane
 * R - Raise or lower your hand
 * S - View or exit full screen
 * W - Toggle tile view

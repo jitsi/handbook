@@ -6,9 +6,10 @@ title: Keyboard shortcuts
 * F - Show or hide video thumbnails
 * M - Mute or unmute your microphone
 * V - Start or stop your camera
-* A - Manage call quality
+* A - Manage video quality
 * C - Open or close the chat
 * D - Switch between camera and screen sharing
+* P - Show or hide the participants pane
 * R - Raise or lower your hand
 * S - View or exit full screen
 * W - Toggle tile view

@@ -40,6 +40,8 @@ See the Docker image releases [here](https://github.com/jitsi/docker-jitsi-meet/
 | :--: | :--: | :--: | :--: |
 | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |
 
+The Electron application for macOS is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
+
 ## Web frontend
 
 Latest stable release | [![release](https://img.shields.io/badge/release-latest-green.svg)](https://github.com/jitsi/jitsi-meet/releases/latest) |

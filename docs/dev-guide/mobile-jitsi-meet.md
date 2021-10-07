@@ -6,13 +6,15 @@ sidebar_label: Jitsi Meet development
 
 This guide will help you setup a development environment to start working on the Jitsi Meet applications.
 
-**IMPORTANT:** Building the applications is not supported on Windows.
+:::caution
+Building the apps / SDKs is not supported on Windows.
+:::
+
+## Overview
 
 :::note
 This guide is about building the Jitsi Meet apps themselves. If you want to integrate the Jitsi Meet SDK into your own application check the dedicated page on the sidebar.
 :::
-
-## Overview
 
 Jitsi Meet can be built as a standalone app for Android or iOS. It uses the
 [React Native] framework.

@@ -5,7 +5,11 @@ sidebar_label: Start
 ---
 
 Welcome to the developers guide for web! This guide will help you setup a development
-environment to start working on the Jitsi Meet codebase.
+environment to start working on the Jitsi Meet applications.
+
+:::caution
+Building the apps / SDKs is not supported on Windows.
+:::
 
 ## Building the sources
 

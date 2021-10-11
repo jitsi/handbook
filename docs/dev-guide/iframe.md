@@ -266,6 +266,21 @@ api.getCurrentDevices().then(devices => {
 });
 ```
 
+### getDeploymentInfo
+
+Retrieves an object containing information about the deployment.
+
+```javascript
+api.getDeploymentInfo().then(deploymentInfo => {
+    // deploymentInfo = {
+    //     region: 'deployment-region',
+    //     shard: 'deployment-shard',
+    //     ...
+    // }
+    ...
+});
+```
+
 ### getLivestreamUrl
 
 Retrieves an object containing information about livestreamUrl of the current live stream.

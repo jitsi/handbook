@@ -12,7 +12,7 @@ against an OpenLDAP directory.
 
 If you want to authenticate your users against an LDAP directory instead 
 of the local Prosody user database, you can use the Cyrus SASL package. 
-Using this package you might be able ot validate user-supplied credentials 
+Using this package you might be able to validate user-supplied credentials 
 against other sources, such as PAM, SQL and more - but this is beyond 
 this article.
 

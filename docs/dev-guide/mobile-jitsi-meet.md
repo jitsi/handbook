@@ -22,7 +22,7 @@ Jitsi Meet can be built as a standalone app for Android or iOS. It uses the
 First make sure the [React Native dependencies] (React Native CLI Quickstart) are installed.
 
 :::warning Node version
-Node 12.X and npm 6.X are required. Any other version may result in runtime errors.
+Node 14.x and npm 7.x are required. Any other version may result in runtime errors.
 :::
 
 :::note macOS

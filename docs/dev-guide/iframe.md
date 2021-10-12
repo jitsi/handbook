@@ -1093,7 +1093,7 @@ The listener receives an object with the following structure:
 }
 ```
 
-### dataChannelOpen
+### dataChannelOpened
 
 Indicates the data channel is open and thus messages can be sent over it.
 

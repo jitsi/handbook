@@ -151,7 +151,9 @@ by changing the `authentication` setting in
 `/etc/prosody/conf.avail/$(hostname -f).cfg.lua`:
 
 You might also have to add the `allow_unencrypted_plain_auth` option to allow 
-plain-text passwords to be sent over the network. 
+plain-text passwords to be sent over the network. This is not recommended as it 
+makes the setup less secure. So please try without this line first and only add
+it if you have problems authenticating.
 
 ```
         authentication = "cyrus"

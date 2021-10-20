@@ -917,6 +917,17 @@ api.executeCommand('setTileView',
 );
 ```
 
+### answerKnockingParticipant
+
+Approves or rejects the knocking participant in the lobby.
+
+```javascript
+api.executeCommand('answerKnockingParticipant',
+    id: string, // the participant id
+    approved: boolean
+);
+```
+
 ### toggleCamera
 
 Toggles the front/back camera on mobile web.
@@ -1129,6 +1140,22 @@ The listener receives an object with the following structure:
     name: string, // the coded name of the error
     type: string, // error type/source, one of : 'CONFIG', 'CONNECTION', 'CONFERENCE'
     isFatal: boolean // whether this is a fatal error which triggered a reconnect overlay or not
+}
+```
+
+### knockingParticipant
+
+Provides event notifications about a knocking participant in the lobby.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    participant: {
+        // the id and name of the participant that is currently knocking in the lobby
+        id: string,
+        name: string
+    }
 }
 ```
 

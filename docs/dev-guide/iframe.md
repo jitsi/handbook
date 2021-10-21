@@ -1237,7 +1237,7 @@ The listener will receive an object with the following structure:
 ```javascript
 {
     id: string,         // participantId of the user who raises/lowers the hand
-    handRaised: boolean // whether hand raised or lowered
+    handRaised: number  // 0 when hand is lowered and the hand raised timestamp when raised.
 }
 ```
 

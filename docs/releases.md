@@ -13,6 +13,8 @@ Release notes for Jitsi Meet are kept [here](https://github.com/jitsi/jitsi-meet
 |:-:|:-:|:-:|
 | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/google-play-badge.png" height="50">](https://play.google.com/store/apps/details?id=org.jitsi.meet) | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/f-droid-badge.png" height="50">](https://f-droid.org/en/packages/org.jitsi.meet/) | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/appstore-badge.png" height="50">](https://itunes.apple.com/us/app/jitsi-meet/id1165103905) |
 
+### Beta versions
+
 If you are feeling adventurous and want to get an early scoop of the features as they are being
 developed you can also sign up for our open beta testing here:
 

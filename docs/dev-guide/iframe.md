@@ -1618,6 +1618,18 @@ The listener receives an object with the following structure:
 
 Provides notifications about detecting suspended events in the host computer.
 
+### recordingLinkAvailable
+
+Provides event notifications about recording link becoming available.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    link: string // the recording link
+}
+```
+
 ### recordingStatusChanged
 
 Provides event notifications about recording status changes.

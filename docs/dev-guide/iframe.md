@@ -1602,22 +1602,6 @@ The listener receives an object with the following structure:
 
 Provides event notifications that fire when Jitsi Meet is ready to be closed (i.e., hangup operations are completed).
 
-### subjectChange
-
-Provides event notifications regarding the change of subject for a conference.
-
-The listener receives an object with the following structure:
-
-```javascript
-{
-    subject: string // the new subject
-}
-```
-
-### suspendDetected
-
-Provides notifications about detecting suspended events in the host computer.
-
 ### recordingLinkAvailable
 
 Provides event notifications about recording link becoming available.
@@ -1643,6 +1627,22 @@ The listener receives an object with the following structure:
     error: string | undefined // error type if recording fails, undefined otherwise
 }
 ```
+
+### subjectChange
+
+Provides event notifications regarding the change of subject for a conference.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    subject: string // the new subject
+}
+```
+
+### suspendDetected
+
+Provides notifications about detecting suspended events in the host computer.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

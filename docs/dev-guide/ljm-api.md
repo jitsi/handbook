@@ -14,7 +14,7 @@ To embed Jitsi Meet API in your application you need to add Jitsi Meet API libra
 <script src="https://meet.jit.si/libs/lib-jitsi-meet.min.js"></script>
 ```
 
-Now you can access Jitsi Meet API trough the `JitsiMeetJS` global object.
+Now you can access Jitsi Meet API through the `JitsiMeetJS` global object.
 
 ## Getting Started
 
@@ -89,7 +89,7 @@ JaaS customers, please checkout this example: https://github.com/saghul/sandbox-
 
 ### JitsiMeetJS
 
-You can access the following methods and objects trough `JitsiMeetJS` object.
+You can access the following methods and objects through `JitsiMeetJS` object.
 
 *  `JitsiMeetJS.init(options)` - this method initialized Jitsi Meet API.
 The `options` parameter is JS object with the following properties:
@@ -115,7 +115,7 @@ The `options` parameter is JS object with the following properties:
 JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
 ```
 
-* `JitsiMeetJS.createLocalTracks(options)` - Creates the media tracks and returns them trough `Promise` object. If rejected, passes `JitsiTrackError` instance to catch block.
+* `JitsiMeetJS.createLocalTracks(options)` - Creates the media tracks and returns them through `Promise` object. If rejected, passes `JitsiTrackError` instance to catch block.
     - `options` - JS object with configuration options for the local media tracks. You can change the following properties there:
         1. `devices` - array with the devices - "desktop", "video" and "audio" that will be passed to GUM. If that property is not set GUM will try to get all available devices.
         2. `resolution` - the prefered resolution for the local video.

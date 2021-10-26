@@ -26,11 +26,11 @@ follow these steps:
 4. Create required `CONFIG` directories
    * For linux: 
    ```bash
-   mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   mkdir -p ~/.jitsi-meet-cfg/{web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
    ```
    * For Windows: 
    ```bash
-   echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
+   echo web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
 5. Run ``docker-compose up -d``
 6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).

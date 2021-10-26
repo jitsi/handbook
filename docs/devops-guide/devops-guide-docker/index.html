@@ -69,12 +69,12 @@ follow these steps:</p>
 <ul>
 <li>For linux:</li>
 </ul>
-<pre><code class="hljs css language-bash">mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+<pre><code class="hljs css language-bash">mkdir -p ~/.jitsi-meet-cfg/{web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
 </code></pre>
 <ul>
 <li>For Windows:</li>
 </ul>
-<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir <span class="hljs-string">"~/.jitsi-meet-cfg/<span class="hljs-variable">$_</span>"</span> }
+<pre><code class="hljs css language-bash"><span class="hljs-built_in">echo</span> web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir <span class="hljs-string">"~/.jitsi-meet-cfg/<span class="hljs-variable">$_</span>"</span> }
 </code></pre></li>
 <li><p>Run <code>docker-compose up -d</code></p></li>
 <li><p>Access the web UI at <a href="https://localhost:8443"><code>https://localhost:8443</code></a> (or a different port, in case you edited the compose file).</p></li>

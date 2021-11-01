@@ -18,6 +18,7 @@ You will need the following packages:
 * `gnupg2`
 * `nginx-full`
 * `sudo` # only needed if you use sudo
+* `curl` # or `wget` to "Add the Jitsi package repository" below
 
 :::note Note
 OpenJDK 8 or OpenJDK 11 must be used.

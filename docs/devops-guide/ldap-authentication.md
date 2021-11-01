@@ -5,8 +5,7 @@ sidebar_label: LDAP Authentication
 ---
 
 :::note
-This is a first draft and might not work on your system. It has been 
-tested on a Debian 11 installation with prosody 0.11 and authenticates against an OpenLDAP directory.
+This is a first draft and might not work on your system. It has been tested on a Debian 11 installation with prosody 0.11 and authenticates against an OpenLDAP directory.
 :::
 
 If you want to authenticate your users against an LDAP directory instead 

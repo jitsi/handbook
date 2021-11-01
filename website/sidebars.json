@@ -67,6 +67,7 @@
         "label": "Configuration",
         "ids": [
           "devops-guide/secure-domain",
+          "devops-guide/ldap-authentication",
           "devops-guide/devops-guide-scalable",
           "devops-guide/reservation",
           "devops-guide/turn",

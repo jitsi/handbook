@@ -6,8 +6,7 @@ sidebar_label: LDAP Authentication
 
 :::note
 This is a first draft and might not work on your system. It has been 
-tested on a Debian 11 installation with prosody 0.11  and authenticates 
-against an OpenLDAP directory.
+tested on a Debian 11 installation with prosody 0.11 and authenticates against an OpenLDAP directory.
 :::
 
 If you want to authenticate your users against an LDAP directory instead 
@@ -57,8 +56,7 @@ want to only allow specific users or even use a different LDAP attribute
 as username, you can do so by adding this option. Also check the available 
 placeholders for the filter in the above linked `LDAP_SASLAUTHD`.
 
-Please note that Prosody might not work with usernames containing the 
-"@"-symbol. So authenticating with a full email address will not work.
+Please note that Prosody might not work with usernames containing the "@"-symbol. So authenticating with a full email address will not work.
 :::
 
 ### Test LDAP authentication
@@ -136,8 +134,8 @@ EOF
 
 :::note
 The filename `prosody.conf`  corresponds to a value for `cyrus_application_name` 
-in the Prosody config. Since we have not changed the default this has a value 
-of `prosody`.
+in the Prosody config. Since we have not changed the default this has a value of `prosody`.
+
 :::
 
 The Prosody documentation has more details on a 

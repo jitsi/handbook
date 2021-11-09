@@ -11,9 +11,9 @@ Browsers evolve very rapidly, so this table may become inaccurate as new bugs on
 
 | Browser | Support | Notes |
 |---|---|---|
-| Chromium based | ✅ | Generally we support the current stable - 10 versions |
-| Firefox | ✅ | Generally we support current ESR - 1 versions |
-| Safari | ✅ | |
+| Chromium based | ✅ | We support the current stable - 10 versions |
+| Firefox | ✅ | We support current ESR - 1 versions |
+| Safari | ✅ | We support current - 1 versions |
 | Internet Explorer | ❌ | Are you serious? |
 
 ## Mobile browsers

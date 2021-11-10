@@ -284,6 +284,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | jitsi-01.csn.tu-chemnitz.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi-01.csn.tu-chemnitz.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
 | jitsi.folkwang-uni.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.folkwang-uni.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
 | jitsi-meet.hs-nb.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi-meet.hs-nb.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| jitsi-meet from BigKids Content  |  ✅ |  | [run SSL check!](https://jitsi.bigkidscontent.com/) | Contabo  |
 
 
 #### special cases (limited access, mostly HEI)

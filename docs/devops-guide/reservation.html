@@ -55,15 +55,15 @@
               }
             });
         </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><a class="edit-page-link button" href="https://github.com/jitsi/handbook/edit/master/docs/devops-guide/reservation.md" target="_blank" rel="noreferrer noopener">Edit</a><h1 id="__docusaurus" class="postHeaderTitle">Reservation System setup</h1></header><article><div><span><h3><a class="anchor" aria-hidden="true" id="support-for-a-reservation-system-over-rest-api"></a><a href="#support-for-a-reservation-system-over-rest-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Support for a reservation system over REST API</h3>
-<p>It is possible to connect to external conference reservation system using
-REST API. Before new Jitsi-meet conference is created reservation system will be
-queried for room availability. The system is supposed to return positive or
-negative response which also contains conference duration. Prosody will enforce
+<p>It is possible to connect to an external conference reservation system using a
+REST API. Before a new Jitsi-meet conference is created, the reservation system will be
+queried for room availability. The system is supposed to return a positive or
+negative response code, which also contains conference duration. Prosody will enforce
 conference duration and if the time limit is exceeded the conference will be
 terminated.</p>
 <h4><a class="anchor" aria-hidden="true" id="enable-reservation-system"></a><a href="#enable-reservation-system" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Enable reservation system</h4>
-<p>In order to enable reservation system URL base for REST API endpoint must be
-configured. Under the main virtual host in prosody enable module &quot;reservations&quot; and
+<p>In order to enable the reservation system, the URL base for the REST API endpoint must be
+configured. Under the main virtual host in prosody, enable module &quot;reservations&quot; and
 add the config <code>reservations_api_prefix</code>:</p>
 <pre><code class="hljs">VirtualHost <span class="hljs-string">"jitmeet.example.com"</span>
     -- <span class="hljs-built_in">..</span><span class="hljs-built_in">..</span>
@@ -73,19 +73,19 @@ add the config <code>reservations_api_prefix</code>:</p>
     }
     reservations_api_prefix = <span class="hljs-string">"http://reservation.example.com"</span>
 </code></pre>
-<p>URL base is used to construct request URL. Currently, only <code>'/conference'</code>
+<p>The URL base is used to construct the request URL. Currently, only <code>'/conference'</code>
 endpoint is supported, so all request will go to:</p>
 <pre><code class="hljs"><span class="hljs-symbol">http:</span><span class="hljs-comment">//reservation.example.com/conference</span>
 </code></pre>
-<p>Additional configurations are available:</p>
+<p>Additional configuration options are available:</p>
 <ul>
 <li>&quot;reservations_api_timeout&quot; to change API call timeouts (defaults to 20 seconds)</li>
 <li>&quot;reservations_api_headers&quot; to specify custom HTTP headers included in
 all API calls e.g. to provide auth tokens.</li>
-<li>&quot;reservations_api_retry_count&quot; to the number of times API call failures are retried (defaults to 3)</li>
+<li>&quot;reservations_api_retry_count&quot; to specify the number of times API call failures are retried (defaults to 3)</li>
 <li>&quot;reservations_api_retry_delay&quot; seconds to wait between retries (defaults to 3s)</li>
-<li>&quot;reservations_api_should_retry_for_code&quot; to a function that takes an HTTP response code and
-returns true if API call should be retried. By default, retries are done for 5XX
+<li>&quot;reservations_api_should_retry_for_code&quot; as a function that takes an HTTP response code and
+returns true if the API call should be retried. By default, retries are done for 5XX
 responses. Timeouts are never retried, and HTTP call failures are always retried.</li>
 </ul>
 <pre><code class="hljs">    <span class="hljs-comment">--- The following are all optional</span>
@@ -101,25 +101,25 @@ responses. Timeouts are never retried, and HTTP call failures are always retried
 </code></pre>
 <h4><a class="anchor" aria-hidden="true" id="call-flow"></a><a href="#call-flow" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Call flow</h4>
 <h5><a class="anchor" aria-hidden="true" id="notes"></a><a href="#notes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Notes</h5>
-<p>All API calls use following date and time format:</p>
+<p>All API calls use the following datetime format:</p>
 <p><code>yyyy-MM-dd'T'HH:mm:ss.SSSX</code> - more info can be found in
 <code>SimpleDateFormat</code> <a href="https://docs.oracle.com/javase/6/docs/api/java/text/SimpleDateFormat.html">JavaDoc</a></p>
 <h5><a class="anchor" aria-hidden="true" id="conference-allocation"></a><a href="#conference-allocation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Conference allocation</h5>
-<p>When the first user joins MUC room(Jitsi-meet URL is opened) <code>HTTP POST</code>
+<p>When the first user joins a MUC room (i.e. Jitsi-meet URL is opened), an <code>HTTP POST</code>
 request is sent to <code>'/conference'</code> endpoint with the following parameters
 included:</p>
 <ul>
-<li><code>name (string)</code> - short name of the conference room(not full MUC address). If tenant is used the name will be <code>[tenant]roomname</code>.</li>
+<li><code>name (string)</code> - short name of the conference room (not full MUC address). If tenant is used, the name will be <code>[tenant]roomname</code>.</li>
 <li><code>start_time (string)</code> - conference start date and time</li>
 <li><code>mail_owner (string)</code> - if authentication system is enabled this field will
-contain user's identity. It that case it will not be possible to create new
+contain user's identity. It that case it will not be possible to create a new
 conference room without authenticating.</li>
 </ul>
 <p>The payload sent to the endpoint will be encoded as <code>application/x-www-form-urlencoded</code>.</p>
-<p>Then reservation system is expected to respond with one of the following
+<p>The reservation system is expected to respond with one of the following
 responses:</p>
 <h6><a class="anchor" aria-hidden="true" id="http-200-or-201-conference-created-successfully"></a><a href="#http-200-or-201-conference-created-successfully" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP 200 or 201 Conference created successfully</h6>
-<p>In HTTP response JSON object is expected. It should contain conference <code>id</code>
+<p>In the HTTP response, a JSON object is expected. It should contain conference <code>id</code>
 assigned by the system and <code>duration</code> measured in seconds. Sample response body:</p>
 <pre><code class="hljs">{
   'id': <span class="hljs-number">364758328</span>,
@@ -130,22 +130,22 @@ assigned by the system and <code>duration</code> measured in seconds. Sample res
 }
 </code></pre>
 <h6><a class="anchor" aria-hidden="true" id="http-409---conference-already-exists"></a><a href="#http-409---conference-already-exists" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP 409 - Conference already exists</h6>
-<p>This is to recover from previous failures. If for some reason it was
-restarted and will try to create the room again this response informs Prosody
-that the conference room exists already. It is expected to contain
-<code>conflict_id</code> in JSON response body:</p>
+<p>This is to recover from previous failures. If for some reason the conference was
+restarted and the user tries to create the room again, this response informs Prosody
+that the conference room already exists. It is expected to contain
+<code>conflict_id</code> in the JSON response body:</p>
 <pre><code class="hljs"><span class="hljs-string">{</span>
   <span class="hljs-attr">'conflict_id':</span> <span class="hljs-number">364758328</span>
 <span class="hljs-string">}</span>
 </code></pre>
-<p>Prosody will use <code>HTTP GET</code> to fetch info about conflicting conference for
-given <code>conflict_id</code>. More info about this request in &quot;Reading conference info&quot;
+<p>Prosody will use <code>HTTP GET</code> to fetch information about the conflicting conference for the
+given <code>conflict_id</code>. More info about this request can be found in the &quot;Reading conference info&quot;
 section.</p>
 <h6><a class="anchor" aria-hidden="true" id="http-4xx"></a><a href="#http-4xx" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>HTTP 4xx</h6>
-<p>Other response codes will cause conference creation failure. JSON response
-can contain <code>message</code> object which will be sent back to the client.</p>
-<p>For example <code>user1</code> tries to start new conference by sending
-<code>conference</code> IQ to Jicofo. System will reject the request.</p>
+<p>Other response codes will cause conference creation failure. The JSON response
+can contain a <code>message</code> object which will be sent back to the client.</p>
+<p>For example <code>user1</code> tries to start a new conference by sending
+<code>conference</code> IQ to Jicofo. The system will reject the request.</p>
 <p>Client -&gt; Jicofo:</p>
 <pre><code class="hljs"><span class="hljs-tag">&lt;<span class="hljs-name">iq</span> <span class="hljs-attr">from</span>=<span class="hljs-string">'client1@xmpp.com'</span> <span class="hljs-attr">to</span>=<span class="hljs-string">'jicofo.meet.com'</span> <span class="hljs-attr">type</span>=<span class="hljs-string">'set'</span>&gt;</span>
   <span class="hljs-tag">&lt;<span class="hljs-name">conference</span> <span class="hljs-attr">xmlns</span>=<span class="hljs-string">'http://jitsi.org/protocol/focus'</span> <span class="hljs-attr">room</span>=<span class="hljs-string">'testroom1'</span> /&gt;</span>
@@ -179,12 +179,12 @@ name=testroom1&amp;start_time=<span class="hljs-number">2048</span><span class="
   &lt;/<span class="hljs-literal">error</span>&gt;
 &lt;/iq&gt;
 </code></pre>
-<p>Application can use <code>text</code> and <code>reservation-error</code> elements to
+<p>The application can use <code>text</code> and <code>reservation-error</code> elements to
 provide meaningful information to the user.</p>
 <h5><a class="anchor" aria-hidden="true" id="reading-conference-info"></a><a href="#reading-conference-info" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Reading conference info</h5>
-<p>In case of <code>409</code> response to <code>HTTP POST</code> request Prosody will try
-to read information about conflicting conference using <code>HTTP GET</code>
-request to '/conference/{conflict_id}' endpoint. The response should provide all
+<p>In case of a <code>409</code> response to the <code>HTTP POST</code> request, Prosody will try
+to read information about the conflicting conference using an <code>HTTP GET</code>
+'/conference/{conflict_id}' endpoint. The response should provide all
 information about the conference stored in the reservation system:</p>
 <ul>
 <li><code>'id'</code>: conference identifier assigned by the reservation system</li>
@@ -193,7 +193,7 @@ information about the conference stored in the reservation system:</p>
 <li><code>'start_time'</code>: conference start date and time</li>
 <li><code>'duration'</code>: scheduled conference duration in seconds</li>
 </ul>
-<p>Sample response JSON body(contains the same info as <code>200 OK</code> to
+<p>Sample response JSON body (contains the same info as <code>200 OK</code> to
 <code>HTTP POST</code>):</p>
 <pre><code class="hljs">{
   'id': <span class="hljs-number">364758328</span>,
@@ -205,9 +205,9 @@ information about the conference stored in the reservation system:</p>
 </code></pre>
 <h5><a class="anchor" aria-hidden="true" id="deleting-conference"></a><a href="#deleting-conference" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Deleting conference</h5>
 <p>Prosody deletes conferences in the reservation system in two cases. First when
-all users leave XMPP Multi User Chat room. Second when conference duration limit
-is exceeded. In the latter case Prosody will destroy XMPP MUC room.
-After MUC room is destroyed Prosody sends <code>HTTP DELETE</code> request to
+all users leave XMPP Multi User Chat room. Secondly when the conference duration limit
+is exceeded. In the latter case Prosody will destroy the XMPP MUC room.
+After the MUC room is destroyed, Prosody sends an <code>HTTP DELETE</code> request to
 <code>'/conference/{id}'</code> endpoint where <code>{id}</code> is replaced with
 conference identifier assigned by the reservation system.</p>
 <pre><code class="hljs">DELETE <span class="hljs-regexp">/conference/</span><span class="hljs-number">364758328</span> HTTP/<span class="hljs-number">1.1</span>
@@ -215,4 +215,4 @@ conference identifier assigned by the reservation system.</p>
 ...
 </code></pre>
 <p><img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/reservation-api.png" alt=""></p>
-</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/9/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/handbook/docs/devops-guide/devops-guide-scalable"><span class="arrow-prev">← </span><span>Scalable setup</span></a><a class="docs-next button" href="/handbook/docs/devops-guide/turn"><span>TURN setup</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/handbook/" class="nav-home"><img src="/handbook/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/handbook/docs/intro.html">Introduction</a><a href="/handbook/docs/user-guide/user-guide-start.html">User Guide</a><a href="/handbook/docs/dev-guide/dev-guide-start.html">Developer Guide</a><a href="/handbook/docs/devops-guide/devops-guide-start.html">Self-Hosting Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a href="https://github.com/jitsi/jitsi-meet" target="_blank" rel="noreferrer noopener">Jitsi Meet on GitHub</a><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="https://github.com/jitsi/handbook" target="_blank" rel="noreferrer noopener">Handbook on GitHub</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div><a href="https://jaas.8x8.vc" target="_blank" rel="noreferrer noopener">JaaS: Jitsi as a Service</a></div></section><section class="copyright">Copyright © 2021</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>
+</span></div></article></div><div class="docLastUpdate"><em>Last updated on 11/11/2021</em></div><div class="docs-prevnext"><a class="docs-prev button" href="/handbook/docs/devops-guide/devops-guide-scalable"><span class="arrow-prev">← </span><span>Scalable setup</span></a><a class="docs-next button" href="/handbook/docs/devops-guide/turn"><span>TURN setup</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/handbook/" class="nav-home"><img src="/handbook/img/logo-white.png" alt="Jitsi Meet Handbook" width="66" height="58"/></a><div><h5>Docs</h5><a href="/handbook/docs/intro.html">Introduction</a><a href="/handbook/docs/user-guide/user-guide-start.html">User Guide</a><a href="/handbook/docs/dev-guide/dev-guide-start.html">Developer Guide</a><a href="/handbook/docs/devops-guide/devops-guide-start.html">Self-Hosting Guide</a></div><div><h5>Community</h5><a href="https://community.jitsi.org" target="_blank" rel="noreferrer noopener">Project Forum</a></div><div><h5>More</h5><a href="https://github.com/jitsi/jitsi-meet" target="_blank" rel="noreferrer noopener">Jitsi Meet on GitHub</a><a class="github-button" href="https://github.com/jitsi/jitsi-meet" data-icon="octicon-star" data-count-href="/jitsi/jitsi-meet/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="https://github.com/jitsi/handbook" target="_blank" rel="noreferrer noopener">Handbook on GitHub</a><div class="social"><a href="https://twitter.com/jitsinews" class="twitter-follow-button">Follow @jitsinews</a></div><a href="https://jaas.8x8.vc" target="_blank" rel="noreferrer noopener">JaaS: Jitsi as a Service</a></div></section><section class="copyright">Copyright © 2021</section></footer></div><script>window.twttr=(function(d,s, id){var js,fjs=d.getElementsByTagName(s)[0],t=window.twttr||{};if(d.getElementById(id))return t;js=d.createElement(s);js.id=id;js.src='https://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js, fjs);t._e = [];t.ready = function(f) {t._e.push(f);};return t;}(document, 'script', 'twitter-wjs'));</script></body></html>

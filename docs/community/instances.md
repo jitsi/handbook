@@ -464,7 +464,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.mayfirst.org |  ✅  |    |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.mayfirst.org&latest) | Hurricane Electric LLC   |
 | team.video |  ✅  | ❌   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=team.video&latest) |     AMAZON-AES  |
 | jitsi.member.fsf.org/ | ✅ | | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.member.fsf.org&latest) | Free Software Foundation |
-| dininghall.freak.university | ✅ | | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=dininghall.freak.university&latest) | FranTech Solutions |
 
 
 ### Uruguay <a id="uruguay"></a>

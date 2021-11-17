@@ -16,17 +16,6 @@ npm install @jitsi/web-sdk
 
 ## Modules
 
-### fetchExternalApi
-To import the Jitsi Meet External API in your application, regardless of any frameworks or libraries that the application might depend on:
-```javascript
-window.onload = () => {
-    fetchExternalApi().then(JitsiMeetExternalApi => {
-        const api = new JitsiMeetExternalApi("YOUR_DOMAIN", options);
-    });
-}
-```
-More on the options parameter can be read [here](dev-guide/iframe.md#creating-the-jitsi-meet-api-object).
-
 ### JitsiMeeting
 :::important
 React 16 or higher is required.
@@ -35,6 +24,24 @@ To be used with custom domains as-it-is in React projects:
 ```jsx
 <JitsiMeeting
     domain="YOUR_DOMAIN"
+    roomName="PleaseUseAGoodRoomName"
+    configOverwrite={{
+        startWithAudioMuted: true,
+        disableModeratorIndicator: true,
+        startScreenSharing: true,
+        enableEmailInStats: false
+    }}
+    interfaceConfigOverwrite={{
+        DISABLE_JOIN_LEAVE_NOTIFICATIONS: true
+    }}
+    userInfo={{
+        displayName: 'YOUR_USERNAME'
+    }}
+    onApiReady={(externalApi) => {
+        // here you can attach custom event listeners to the Jitsi Meet External API
+        // you can also store it locally to execute commands
+    }}
+    getIFrameRef={(iframe) => { iframeRef.style.height = 400; }}
 />
 ```
 
@@ -46,9 +53,34 @@ To be used with `8x8.vc` domain as-it-is in React projects:
 ```jsx
 <JaaSMeeting
     appId="YOUR_APP_ID"
+    roomName="PleaseUseAGoodRoomName"
+    jwt="YOUR_VALID_JWT"
+    configOverwrite={{
+        disableThirdPartyRequests: true,
+        disableLocalVideoFlip: true,
+        backgroundAlpha: 0.5
+    }}
+    interfaceConfigOverwrite={{
+        VIDEO_LAYOUT_FIT: 'nocrop',
+        MOBILE_APP_PROMO: false,
+        TILE_VIEW_MAX_COLUMNS: 4
+    }}
+    spinner={SpinnerView}
+    onApiReady={(externalApi) => { ... }}
 />
 ```
 This component provides support for custom appIds.
+
+### fetchExternalApi
+To import the Jitsi Meet External API in your application, regardless of any frameworks or libraries that the application might depend on:
+```javascript
+window.onload = () => {
+    fetchExternalApi().then(JitsiMeetExternalApi => {
+        const api = new JitsiMeetExternalApi("YOUR_DOMAIN", options);
+    });
+}
+```
+More on the options parameter can be read [here](dev-guide/iframe.md#creating-the-jitsi-meet-api-object).
 
 ## Options
 The component modules support a similar kind of customization to the Jitsi Meet IFrame. The following additional props can be passed down to your instances of `JitsiMeeting` or `JaaSMeeting`.

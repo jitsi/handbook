@@ -104,3 +104,6 @@ The component modules support a similar kind of customization to the Jitsi Meet 
 * **onApiReady**: The external API reference for events and commands.
 
 * **getIFrameRef**: The parent node used by the IFrame.
+
+[config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
+[interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

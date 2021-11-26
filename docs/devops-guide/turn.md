@@ -6,9 +6,9 @@ sidebar_label: TURN setup
 
 One-to-one calls should avoid going through the JVB for optimal performance and for optimal resource usage. This is why we've added the peer-to-peer mode where the two participants connect directly to each other. Unfortunately, a direct connection is not always possible between the participants. In those cases you can use a TURN server to relay the traffic (n.b. the JVB does much more than just relay the traffic, so this is not the same as using the JVB to "relay" the traffic).
 
-This document describes how to enable TURN server support in one-to-one calls in Jitsi Meet, even though it gives some hints how to configure [prosody](https://prosody.im) and [coTURN](https://github.com/coturn/coturn), it assumes a properly configured TURN server, and a properly configured XMPP server.
+This document describes how to enable TURN server support in one-to-one calls in Jitsi Meet. Even though it gives some hints how to configure [prosody](https://prosody.im) and [coTURN](https://github.com/coturn/coturn), it assumes a properly configured TURN server, and a properly configured XMPP server.
 
-One way to configure TURN support in meet with a static configuration. You can simply fill out the `p2p.stunServers` option with appropriate values, e.g.:
+One way to configure TURN support in meet is with a static configuration. You can simply fill out the `p2p.stunServers` option with appropriate values, e.g.:
 
     [
         { urls: 'turn:turn.example.com1', username: 'user', credential: 'pass' },
@@ -22,13 +22,13 @@ Jitsi Meet can fetch the TURN credentials from the XMPP server via [XEP-0215](ht
 
 ## Use TURN server on port 443
 
-By default, TURN server listens on standard ports udp 3478 and tcp 5349(for tls connections). 
-There are certain corporate networks which allow only tcp connections using port 443(https) and to cover 
-this kind of scenarios it is useful to have TURN server listening on port 443 for tls connections.
-Here is how to run nginx and TURN server on the same machine sharing port, for this you will need a second
-dns for your turn domain pointing to the same machine (as a reference below we will use `turn-jitsi-meet.example.com`).
+By default, TURN server listens on standard ports UDP 3478 and TCP 5349 (for TLS connections). 
+There are certain corporate networks which allow only TCP connections using port 443(https) and to cover 
+this kind of scenarios it is useful to have TURN server listening on port 443 for TLS connections.
+Here is how to run nginx and TURN server on the same machine sharing port.
+For this you will need a second DNS record for your turn domain pointing to the same machine (as a reference below we will use `turn-jitsi-meet.example.com`).
 
-- You need to enable the multiplexing based on that new dns. You need to create a file in `/etc/nginx/modules` or `/etc/nginx/modules-available`. If you are placing the file in `/etc/nginx/modules-available` you need to add a symlink in `/etc/nginx/modules-enabled`.
+- You need to enable the multiplexing based on that new DNS record. You need to create a file in `/etc/nginx/modules` or `/etc/nginx/modules-available`. If you are placing the file in `/etc/nginx/modules-available` you need to add a symlink in `/etc/nginx/modules-enabled`.
 The file content should be:
 ```
 stream {
@@ -59,10 +59,10 @@ stream {
     }
 }
 ```
-Make sure you edit the file and replace `jitsi-meet.example.com` it your domain of deployment, `turn-jitsi-meet.example.com` with the DNS you will use for the TURN server and `__your_public_ip__` with your public ip of the deployment.
-If you have more virtualhost make sure you add them here and do the port change and for them(the next step).
+Make sure you edit the file and replace `jitsi-meet.example.com` with your domain of deployment, `turn-jitsi-meet.example.com` with the DNS name you will use for the TURN server and `__your_public_ip__` with your public IP of the deployment.
+If you have more virtual hosts make sure you add them here and do the port change for them (the next step).
 
-- Then go to /etc/nginx/site-available/your-conf and change your virtual host to listen on 4444 instead of 443.
+- Then go to `/etc/nginx/site-available/your-conf` and change your virtual host to listen on port 4444 instead of 443.
 ```
 server {
     listen 4444 ssl;
@@ -70,12 +70,12 @@ server {
     server_name jitsi-meet.example.com;
 ```
 
-- Next you need to make sure Prosody is advertising the correct DNS and port for the TURN server. You should edit the line using port `5349` and make it look like (change port and address):
+- Next you need to make sure Prosody is advertising the correct DNS name and port for the TURN server. You should edit the line using port `5349` and make it look like (change port and address):
 ```
 { type = "turns", host = "turn-jitsi-meet.example.com", port = "443", transport = "tcp" }
 ```
-- Now you need to make sure the TURN server (coturn) uses trusted certificates here is how to request those from 
-Let's Encrypt, make sure you set correct values for the domain and email:
+- Now you need to make sure the TURN server (coturn) uses trusted certificates.
+Here is how to request those from Let's Encrypt (make sure you set correct values for the domain and email):
 ```
 systemctl stop nginx
 DOMAIN="turn-jitsi-meet.example.com"
@@ -93,4 +93,4 @@ sed -i "s/jitsi-meet.example.com/$DOMAIN/g" $TURN_HOOK
 
 systemctl start nginx
 ``` 
-- After restarting prosody (systemctl restart prosody) you are good to go!
+- After restarting prosody (`systemctl restart prosody`) you are good to go!

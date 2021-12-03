@@ -3,7 +3,11 @@ id: breakout-rooms
 title: Breakout rooms
 ---
 
-Jitsi does not natively support breakout rooms (e.g. see [#4787](https://github.com/jitsi/jitsi-meet/issues/4787) and [#5550](https://github.com/jitsi/jitsi-meet/issues/5550)); however there are various solutions for this functionality built on top of Jitsi:
+:::note
+Jitsi Meet now has native support for breakout rooms. You can see it in action [here](https://www.youtube.com/watch?v=ubYYZ0daw10). This page is kept here for historical purposes and will receive no further updates.
+:::
+
+~~Jitsi does not natively support breakout rooms (e.g. see [#4787](https://github.com/jitsi/jitsi-meet/issues/4787) and [#5550](https://github.com/jitsi/jitsi-meet/issues/5550));~~ however there are various solutions for this functionality built on top of Jitsi:
 
 | Name | License | Cost model | Admin can move participants | Comments |
 | --- | --- | --- | --- | --- |

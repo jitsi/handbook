@@ -21,6 +21,14 @@ developed you can also sign up for our open beta testing here:
 * [Android](https://play.google.com/apps/testing/org.jitsi.meet)
 * [iOS](https://testflight.apple.com/join/isy6ja7S)
 
+## Desktop apps
+
+| Windows | macOS | GNU/Linux (AppImage) | GNU/Linux (Deb) |
+| :--: | :--: | :--: | :--: |
+| [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |
+
+The desktop applications are based on Electron. For macOS it is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
+
 ## Mobile SDKs
 
 * [Android (Maven repository)](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries)
@@ -35,14 +43,6 @@ See the Docker image releases [here](https://github.com/jitsi/docker-jitsi-meet/
 * [stable](https://download.jitsi.org/stable/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions/))
 * [testing](https://download.jitsi.org/testing/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions-for-testing/))
 * [nightly](https://download.jitsi.org/unstable/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions-nightly/))
-
-## Electron application
-
-| Windows | macOS | GNU/Linux (AppImage) | GNU/Linux (Deb) |
-| :--: | :--: | :--: | :--: |
-| [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |
-
-The Electron application for macOS is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
 
 ## Web frontend
 

@@ -1610,7 +1610,8 @@ The listener receives an object with the following structure:
 
 ```javascript
 {
-    link: string // the recording link
+    link: string, // the recording link
+    ttl: number // the time to live of the recording link
 }
 ```
 

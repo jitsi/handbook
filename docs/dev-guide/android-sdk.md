@@ -456,8 +456,8 @@ The localParticipant leaves the current conference.
 Does not expect any extra value.
 
 ##### SEND_ENDPOINT_TEXT_MESSAGE
-Sends a messaage via the data channel to one particular participant or to all of them.
-Expects a `to` key on the intent extra with the id of the participant to which the messaage 
+Sends a message via the data channel to one particular participant or to all of them.
+Expects a `to` key on the intent extra with the id of the participant to which the message 
 is meant and a `message` key with a string value, the actual content of the message. 
 If the `to` key is not present or it's value is empty, the message will be sent 
 to all the participants in the conference.

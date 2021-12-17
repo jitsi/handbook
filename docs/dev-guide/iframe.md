@@ -650,12 +650,22 @@ api.executeCommand('stopShareVideo');
 
 ### subject
 
-Sets the subject of the conference. 
+Sets the subject of the conference.
 
-This command requires the new subject to be set as the argument.
+This command requires the new subject to be set as the argument and it will be applied only if the participant has the moderator role or after they receive that role later on.
 
 ```javascript
 api.executeCommand('subject', 'New Conference Subject');
+```
+
+### localSubject
+
+Sets the local subject of the conference.
+
+This command requires the new local subject to be set as the argument and it can be applied by all participants regardless of their role.
+
+```javascript
+api.executeCommand('localSubject', 'New Conference Local Subject');
 ```
 
 ### toggleAudio

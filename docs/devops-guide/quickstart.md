@@ -7,7 +7,7 @@ sidebar_label: Debian/Ubuntu server
 Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
 The following distributions are supported out-of-the-box:
 - Debian 10 (Buster) or newer
-- Ubuntu 18.04 (Bionic Beaver) or newer
+- Ubuntu 20.04 (Focal Fossa) or newer (Ubuntu 18.04 can be used, but Prosody version must be updated to 0.11+ before installation)
 
 _Note_: Many of the installation steps require `root` or `sudo` access. 
 

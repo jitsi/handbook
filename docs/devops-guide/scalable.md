@@ -159,7 +159,7 @@ Each videobridge will have to have it's own, unique nickname
 * `/etc/jitsi/jicofo/sip-communicator.properties` (hostname of jitsi-meet, nickname of videobridge, vb_password)
 
 With the latest stable (April 2020) videobridge, it is no longer necessary to set public and private IP
-adresses in the `sip-communicator.properties` as the bridge will figure out the correct configuration by itself.
+addresses in the `sip-communicator.properties` as the bridge will figure out the correct configuration by itself.
 
 ## Testing
 

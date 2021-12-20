@@ -49,7 +49,7 @@ ldap_search_base: ou=people,dc=example,dc=com
 ```
 
 :::note
-One ommited option you might want to look into is `ldap_filter` which 
+One omitted option you might want to look into is `ldap_filter` which 
 defaults to `uid=%u` and should work for a lot of systems. But if you 
 want to only allow specific users or even use a different LDAP attribute 
 as username, you can do so by adding this option. Also check the available 

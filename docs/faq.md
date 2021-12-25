@@ -88,7 +88,7 @@ Once the meeting ends it's password also gets removed, so you need to set the pa
 
 ## How to limit the number of participants?
 
-1. Use the command `prosodytl about` to view the version of prosody and plug directory, similar to the output below.
+1. Use the command `prosodyctl about` to view the version of prosody and plug directory, similar to the output below.
 
 ```
 Prosody 0.11.6

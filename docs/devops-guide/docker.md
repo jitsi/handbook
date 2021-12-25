@@ -9,30 +9,83 @@ sidebar_label: Docker
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:
 
-* Download and extract the [latest release]
-  * Alternatively, to test the latest changes clone the repository: `git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet`
-* Create a ``.env`` file by copying and adjusting ``env.example``
-  * `cp env.example .env`
-* Set strong passwords in the security section options of ``.env`` file by running the following bash script
-  * `./gen-passwords.sh`
-* Create required `CONFIG` directories
-  * `mkdir -p ~/.jitsi-meet-cfg/{web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}`
-  * For Windows: `echo web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }`
-* Run ``docker-compose up -d``
-* Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
+1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images.
+    
+2. Create a ``.env`` file by copying and adjusting ``env.example``:
+   
+   ```bash
+   cp env.example .env
+   ```
+   
+3. Set strong passwords in the security section options of ``.env`` file by running the following bash script
+   
+   ```bash
+   ./gen-passwords.sh
+   ```
+   
+4. Create required `CONFIG` directories
+   * For linux: 
+   ```bash
+   mkdir -p ~/.jitsi-meet-cfg/{web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   ```
+   * For Windows: 
+   ```bash
+   echo web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
+   ```
+5. Run ``docker-compose up -d``
+6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
 
 Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
 direct access via HTTP instead HTTPS leads to WebRTC errors such as _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_ or _navigator.mediaDevices is undefined_.
 
 If you want to use jigasi too, first configure your env file with SIP credentials
-and then run Docker Compose as follows: ``docker-compose -f docker-compose.yml -f jigasi.yml up``
+and then run Docker Compose as follows: 
+
+```bash
+docker-compose -f docker-compose.yml -f jigasi.yml up
+```
 
 If you want to enable document sharing via [Etherpad], configure it and run Docker Compose as
-follows: ``docker-compose -f docker-compose.yml -f etherpad.yml up``
+follows: 
+
+```bash
+docker-compose -f docker-compose.yml -f etherpad.yml up
+```
 
 If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
-and then run Docker Compose as follows: ``docker-compose -f docker-compose.yml -f jibri.yml up -d``
-or to use jigasi too: ``docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d``
+and then run Docker Compose as follows:
+
+```bash
+docker-compose -f docker-compose.yml -f jibri.yml up -d
+```
+
+or to use jigasi too:
+
+```bash
+docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
+```
+
+### Testing development builds
+
+Download the latest code:
+     
+```bash
+git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
+```
+
+:::note
+The code in `master` is designed to work with the unstable images. Do not run it with release images.
+:::
+
+Build your own images:
+
+```bash
+JITSI_RELEASE=unstable make
+```
+
+### Running unstable images
+
+Every day a new "unstable" image build is uploaded. You can test them by getting the YAML files from the repository and changing `latest` to `unstable` or `ustable-YYYY-MM-DD` for the unstable images of a specific day.
 
 ### Security note
 
@@ -66,21 +119,21 @@ several container images are provided.
 
 The following external ports must be opened on a firewall:
 
-* 80/tcp for Web UI HTTP (really just to redirect, after uncommenting ENABLE_HTTP_REDIRECT=1 in .env)
-* 443/tcp for Web UI HTTPS
-* 4443/tcp for RTP media over TCP
-* 10000/udp for RTP media over UDP
+* `80/tcp` for Web UI HTTP (really just to redirect, after uncommenting `ENABLE_HTTP_REDIRECT=1` in `.env`)
+* `443/tcp` for Web UI HTTPS
+* `4443/tcp` for RTP media over TCP
+* `10000/udp` for RTP media over UDP
 
-Also 20000-20050/udp for jigasi, in case you choose to deploy that to facilitate SIP access.
+Also `20000-20050/udp` for jigasi, in case you choose to deploy that to facilitate SIP access.
 
 E.g. on a CentOS/Fedora server this would be done like this (without SIP access):
 
-```shell
-    $ sudo firewall-cmd --permanent --add-port=80/tcp
-    $ sudo firewall-cmd --permanent --add-port=443/tcp
-    $ sudo firewall-cmd --permanent --add-port=4443/tcp
-    $ sudo firewall-cmd --permanent --add-port=10000/udp
-    $ sudo firewall-cmd --reload
+```bash
+sudo firewall-cmd --permanent --add-port=80/tcp
+sudo firewall-cmd --permanent --add-port=443/tcp
+sudo firewall-cmd --permanent --add-port=4443/tcp
+sudo firewall-cmd --permanent --add-port=10000/udp
+sudo firewall-cmd --reload
 ```
 
 ### Images
@@ -110,10 +163,6 @@ project.
 The configuration is performed via environment variables contained in a ``.env`` file. You
 can copy the provided ``env.example`` file as a reference.
 
-**IMPORTANT**: At the moment, the configuration is not regenerated on every container boot, so
-if you make any changes to your ``.env`` file, make sure you remove the configuration directory
-before starting your containers again.
-
 Variable | Description | Example
 --- | --- | ---
 `CONFIG` | Directory where all configuration will be stored | /opt/jitsi-meet-cfg
@@ -138,14 +187,14 @@ Variable | Description | Example
 `LETSENCRYPT_DOMAIN` | Domain for which to generate the certificate | meet.example.com
 `LETSENCRYPT_EMAIL` | E-Mail for receiving important account notifications (mandatory) | alice@atlanta.net
 
-In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443.
+In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443. You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
 
 **Let's Encrypt rate limit warning**: Let's Encrypt has a limit to how many times you can submit a request
 for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate) 
 certificates for the same domain name every seven days. Because of this, it is recommended that you disable the 
 Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder. Otherwise, you 
 might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
-the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disalbed, then re-enable
+the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
 
 For more information on Let's Encrypt's rate limits, visit:
@@ -163,14 +212,26 @@ Variable | Description | Example
 `JIGASI_SIP_PORT` | SIP server port | 5060
 `JIGASI_SIP_TRANSPORT` | SIP transport | UDP
 
-### JItsi BRoadcasting Infrastructure (Jibri) configuration
+#### Display Dial-In information
+
+Variable | Description | Example
+--- | --- | ---
+`DIALIN_NUMBERS_URL` | URL to the JSON with all Dial-In numbers | https://meet.example.com/dialin.json
+`CONFCODE_URL` | URL to the API for checking/generating Dial-In codes | https://jitsi-api.jitsi.net/conferenceMapper
+
+The JSON with the Dial-In numbers should look like this:
+```json
+{"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
+```
+
+### Jitsi Broadcasting Infrastructure (Jibri) configuration
 
 Before running Jibri, you need to set up an ALSA loopback device on the host. This **will not**
 work on a non-Linux host.
 
 For CentOS 7, the module is already compiled with the kernel, so just run:
 
-```
+```bash
 # configure 5 capture/playback interfaces
 echo "options snd-aloop enable=1,1,1,1,1 index=0,1,2,3,4" > /etc/modprobe.d/alsa-loopback.conf
 # setup autoload the module
@@ -183,7 +244,7 @@ lsmod | grep snd_aloop
 
 For Ubuntu:
 
-```
+```bash
 # install the module
 apt update && apt install linux-image-extra-virtual
 # configure 5 capture/playback interfaces
@@ -196,7 +257,8 @@ lsmod | grep snd_aloop
 
 NOTE: If you are running on AWS you may need to reboot your machine to use the generic kernel instead
 of the "aws" kernel. If after reboot, your machine is still using the "aws" kernel, you'll need to manually update the grub file. So just run:
-```
+
+```bash
 # open the grub file in editor
 nano /etc/default/grub
 # Modify the value of GRUB_DEFAULT from "0" to "1>2"
@@ -278,6 +340,26 @@ For using multiple Jibri instances, you have to select different loopback interf
 
 </details>
 
+### Jitsi-Meet web configuration
+
+:::tip This section partly contains duplicate settings
+
+There are settings within your ``docker-compose.yml`` like ``START_AUDIO_MUTED``
+that will be overwritten if you follow the below guide.
+
+:::
+
+Jitsi-Meet uses two configuration files for changing default settings within
+the web interface: ``config.js`` and ``interface_config.js``. The files are
+located within the ``CONFIG`` directory configured within your environment file.
+
+These files are re-created on every container restart. 
+If you'd like to provide your own settings, create your own config files:
+``custom-config.js`` and ``custom-interface_config.js``.
+
+It's enough to provide your relevant settings only, the docker scripts will 
+append your custom files to the default ones!
+
 ### Authentication
 
 Authentication can be controlled with the environment variables below. If guest
@@ -285,11 +367,14 @@ access is enabled, unauthenticated users will need to wait until a user authenti
 before they can join a room. If guest access is not enabled, every user will need
 to authenticate before they can join.
 
+If authentication is enabled, once an authenticated user logged in, it is always logged in before the session timeout.You can set `ENABLE_AUTO_LOGIN=0` to disable this default auto login feature.
+
 Variable | Description | Example
 --- | --- | ---
 `ENABLE_AUTH` | Enable authentication | 1
 `ENABLE_GUESTS` | Enable guest access | 1
 `AUTH_TYPE` | Select authentication type (internal, jwt or ldap) | internal
+`ENABLE_AUTO_LOGIN` | Enable auto login  | 1
 
 #### Internal authentication
 
@@ -300,21 +385,29 @@ then configure the settings you can see below.
 Internal users must be created with the ``prosodyctl`` utility in the ``prosody`` container.
 In order to do that, first, execute a shell in the corresponding container:
 
-``docker-compose exec prosody /bin/bash``
+```bash
+docker-compose exec prosody /bin/bash
+```
 
 Once in the container, run the following command to create a user:
 
-``prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword``
+```bash
+prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
+```
 
 Note that the command produces no output.
 
 To delete a user, run the following command in the container:
 
-``prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi``
+```bash
+prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
+```
 
 To list all users, run the following command in the container:
 
-``find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;``
+```bash
+find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
+```
 
 #### Authentication using LDAP
 
@@ -355,7 +448,7 @@ Variable | Description | Example
 
 This can be tested using the [jwt.io] debugger. Use the following sample payload:
 
-```
+```json
 {
   "context": {
     "user": {
@@ -466,6 +559,67 @@ The docker images can be built by running the `make` command in the main reposit
 If you are on the unstable branch, build the images with `FORCE_REBUILD=1 JITSI_RELEASE=unstable make`.
 
 You are now able to run `docker-compose up` as usual.
+
+## Running behind a reverse proxy
+
+By default this setup is using WebSocket connections for 2 core components:
+
+* Sinalling (XMPP)
+* Bridge channel (colibri)
+
+Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:
+
+* /xmpp-websocket
+* /colibri-ws
+
+With nginx, these routes can be forwarded using the following config snippet:
+
+```
+location /xmpp-websocket {
+    proxy_pass https://localhost:8443;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+location /colibri-ws {
+    proxy_pass https://localhost:8443;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+```
+With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these routes can be forwarded using the following config snippet:
+
+```
+<IfModule mod_proxy.c>
+    <IfModule mod_proxy_wstunnel.c>
+        ProxyTimeout 900
+        <Location "/xmpp-websocket">
+            ProxyPass "wss://localhost:8443/xmpp-websocket"
+        </Location>
+        <Location "/colibri-ws/">
+            ProxyPass "wss://localhost:8443/colibri-ws/"
+        </Location>
+    </IfModule>
+</IfModule>
+
+```
+
+where `https://localhost:8443/` is the url of the web service's ingress.
+
+### Disabling WebSocket connections
+
+:::note
+This is not the recommended setup.
+:::
+
+If using WebSockets is not an option, these environment variables can be set to fallback to HTTP polling and WebRTC datachannels:
+
+```bash
+ENABLE_SCTP=1
+ENABLE_COLIBRI_WEBSOCKET=0
+ENABLE_XMPP_WEBSOCKET=0
+```
 
 [Jitsi]: https://jitsi.org/
 [Jitsi Meet]: https://jitsi.org/jitsi-meet/

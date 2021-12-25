@@ -4,10 +4,10 @@ title: Self-Hosting Guide - Debian/Ubuntu server
 sidebar_label: Debian/Ubuntu server
 ---
 
-This document describes the steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
+Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
 The following distributions are supported out-of-the-box:
-- Debian 10 (Buster) or later
-- Ubuntu 18.04 (Bionic Beaver) or later
+- Debian 10 (Buster) or newer
+- Ubuntu 20.04 (Focal Fossa) or newer (Ubuntu 18.04 can be used, but Prosody version must be updated to 0.11+ before installation)
 
 _Note_: Many of the installation steps require `root` or `sudo` access. 
 
@@ -16,7 +16,13 @@ _Note_: Many of the installation steps require `root` or `sudo` access.
 
 You will need the following packages:
 * `gnupg2`
+* `nginx-full`
 * `sudo` # only needed if you use sudo
+* `curl` # or `wget` to "Add the Jitsi package repository" below
+
+:::note Note
+OpenJDK 8 or OpenJDK 11 must be used.
+:::
 
 Make sure your system is up-to-date and required packages are installed:
 
@@ -55,12 +61,13 @@ If your computer/server or router has a dynamic IP address (the IP address chang
 
 If the machine used to host the Jitsi Meet instance has a FQDN (for example `meet.example.org`) already set up in DNS, you can set it with the following command:
 
-`sudo hostnamectl set-hostname meet`
+`sudo hostnamectl set-hostname meet.example.org`
 
-Then add the same FQDN in the `/etc/hosts` file, associating it with the loopback address:
+Then add the same FQDN in the `/etc/hosts` file:
 
     127.0.0.1 localhost
-    x.x.x.x meet.example.org meet
+    x.x.x.x meet.example.org
+
 Note: `x.x.x.x` is your server's public IP address.
 
 Finally on the same machine test that you can ping the FQDN with:
@@ -68,7 +75,16 @@ Finally on the same machine test that you can ping the FQDN with:
 `ping "$(hostname)"`
 
 If all worked as expected, you should see:
-`meet.example.com`
+`meet.example.org`
+
+### For Ubuntu 18.04, add Prosody package repository
+
+This will add the Prosody repository so that Prosody .11 will be installed, which is necessary for features including the lobby feature.
+
+```sh
+echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list
+wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add -
+```
 
 ### Add the Jitsi package repository
 
@@ -138,7 +154,7 @@ During installation of Jitsi Meet you can choose between different options:
 
 ### Install Jitsi Meet
 
-_Note_: The installer will check if [Nginx](https://nginx.org/) or [Apache](https://httpd.apache.org/) are present (in that order) and configure a virtual host within the web server it finds to serve Jitsi Meet. If none of the above is found it then defaults to Nginx.
+_Note_: The installer will check if [Nginx](https://nginx.org/) or [Apache](https://httpd.apache.org/) are present (in that order) and configure a virtual host within the web server it finds to serve Jitsi Meet.
 
 If you are already running Nginx on port 443 on the same machine, turnserver configuration will be skipped as it will conflict with your current port 443.
 
@@ -270,6 +286,9 @@ You can also visit https://test.webrtc.org to test your browser's [WebRTC](https
 
 * Firewall:
 If participants cannot see or hear each other, double check your firewall / NAT rules.
+
+* Nginx/Apache:
+As we prefer the usage of Nginx as webserver, the installer checks first for the presence of Nginx and then for Apache. In case you desperately need to enforce the usage of apache, try pre-setting the variable `jitsi-meet/enforce_apache` for package `jitsi-meet-web-config` on debconf.
 
 * Log files:
 Take a look at the various log files:

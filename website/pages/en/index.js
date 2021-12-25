@@ -68,11 +68,14 @@ class Index extends React.Component {
         {[
           {
             content:
-              'On This site you\'ll find documentation for all your Jitsi needs. <br> ' +
-              'NOTE: Some  of it is work in progress, hang tight!' +
-              ' <br> <br> ' +
-              'Take a look at: <a href="https://jitsi.github.io/handbook/docs/intro">Documentation - Overview</a> ',          
-
+              'Jitsi Meet is a set of Open Source projects which empower users to deploy ' +
+              'secure, scalable and easy to use video conferencing platforms with ' +
+              'state-of-the-art video quality and features.' +
+              '<br/><br/>' +
+              'On This site you\'ll find documentation for all your Jitsi needs.' +
+              '<br /><br/>' +
+              'Get started <a href="https://jitsi.github.io/handbook/docs/intro">here</a>.'
+              ,
             image: `${baseUrl}img/undraw_code_review.svg`,
             imageAlign: 'left',
             title: 'Hey there Fellow Jitster!',
@@ -81,15 +84,46 @@ class Index extends React.Component {
       </Block>
     );
 
-    const Devices = () => (
+    const Middle = () => (
       <Block>
         {[
           {
             content:
-              'Jitsi Meet supports all common browsers and also mobile devices.',
-            image: `${baseUrl}img/undraw_note_list.svg`,
+              'Jitsi Meet supports all common browsers and also mobile devices.' +
+              '<br /><br />' +
+              'Our APIs allow developers to easily integrate Jitsi Meet into existing ' +
+              'applications, whether those are web based or native mobile apps.' +
+              '<br /><br />' +
+              'You can use our freely available instance at <a href="https://meet.jit.si" target="_blank">meet.jit.si</a> ' +
+              'or self-host it yourself using our readily available Debian packages or comprehensive Docker setup.'
+              ,
+            image: `${baseUrl}img/undraw_real_time_sync.svg`,
             imageAlign: 'right',
-            title: 'All platforms supported',
+            title: 'Batteries included',
+          },
+        ]}
+      </Block>
+    );
+
+    const JaaS = () => (
+      <Block>
+        {[
+          {
+            content:
+              'Looking for configuration flexibility without the complexity of self-hosting '+
+              ' and scalability management?' +
+              '<br /><br />' +
+              'Look no further than JaaS. 8x8 Jitsi as a Service (JaaS) is an enterprise-ready ' +
+              'video meeting platform that allows developers, organizations and businesses to ' +
+              'easily build and deploy video solutions. With Jitsi as a Service we now give you ' +
+              'all the power of Jitsi running on our global platform so you can focus on building ' +
+              'secure and branded video experiences.' +
+              '<br /><br />' +
+              'Check JaaS out <a href="https://jaas.8x8.vc" target="_blank">here</a>.'
+              ,
+            image: `${baseUrl}img/undraw_going_up.svg`,
+            imageAlign: 'left',
+            title: 'JaaS: Jitsi as a Service',
           },
         ]}
       </Block>
@@ -100,7 +134,8 @@ class Index extends React.Component {
         <HomeSplash siteConfig={siteConfig} language={language} />
         <div className="mainContainer">
           <Intro />
-          <Devices />
+          <Middle />
+          <JaaS />
         </div>
       </div>
     );

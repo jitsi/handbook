@@ -36,7 +36,7 @@ This is how the network looks:
 | jitsi-meet +<---+ +--->+ prosody/xmpp |      |
 |            |files 5280 |              |      |
 +------------+           +--------------+      v
-                     5222,5347^    ^5347   4443,10000
+                     5222,5347^    ^5347     10000
                 +--------+    |    |    +-------------+
                 |        |    |    |    |             |
                 | jicofo +----^    ^----+ videobridge |
@@ -106,6 +106,12 @@ ln -sf /var/lib/prosody/auth.jitsi.example.com.crt /usr/local/share/ca-certifica
 update-ca-certificates -f
 ```
 Note that the `-f` flag is necessary if there are symlinks left from a previous installation.
+
+If you are using a JDK package not provided by Debian, as the ones from adoptjdk, you should also make your JDK aware of the new debian certificate keystore replacing or linking the JDK `cacerts`. Example, if you use JDK from adoptjdk:
+```
+cd /usr/lib/jvm/adoptopenjdk-8-hotspot-amd64/jre
+ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
+```
 
 Create conference focus user:
 ```sh

@@ -26,7 +26,7 @@ Replace `jitsi-meet.example.com` with your hostname.
 
 ### Enable anonymous login for guests
 
-Add this block to enable the anonymous login method for guests:
+Add this block **after the previous VirtualHost** to enable the anonymous login method for guests:
 
 ```
 VirtualHost "guest.jitsi-meet.example.com"
@@ -34,20 +34,7 @@ VirtualHost "guest.jitsi-meet.example.com"
     c2s_require_encryption = false
 ```
 
-_Note that `guest.jitsi-meet.example.com` is internal to Jitsi, and you do not need to (and should not) create a DNS record for it, or generate an SSL/TLS certificate, or do any web server configuration._
-
-:::note
-Make sure to enable the desired modules for the guest virtual host like `turncredentials` (if you use STUN/TURN together with secure domain) and/or `conference_duration` etc., by adding the `modules_enabled` option.
-
-```
-VirtualHost "guest.jitsi-meet.example.com"
-    authentication = "anonymous"
-    modules_enabled = {
-     "turncredentials";
-    }
-    c2s_require_encryption = false
-```
-:::
+_Note that `guest.jitsi-meet.example.com` is internal to Jitsi, and you do not need to (and should not) create a DNS record for it, or generate an SSL/TLS certificate, or do any web server configuration. While it is internal, you should still replace `jitsi-meet.example.com` with your hostname._
 
 ## Jitsi Meet configuration
 
@@ -70,23 +57,34 @@ var config = {
 
 When running Jicofo, specify your main domain in an additional configuration
 property. Jicofo will accept conference allocation requests only from the
-authenticated domain.
+authenticated domain. This should go in `/etc/jitsi/jicofo/sip-communicator.properties`.
 
 ```
 org.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
 ```
 
-If you have installed Jicofo from the Debian package, this should go directly on a new line in
-the `/etc/jitsi/jicofo/sip-communicator.properties`:
+If you have installed Jicofo from the Debian package, this should go as a new 'authentication' section in `/etc/jitsi/jicofo/jicofo.conf`:
 
 ```
-org.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
+jicofo {
+  authentication: {
+    enabled: true
+    type: XMPP
+    login-url: jitsi-meet.example.com
+ }
+ ...
 ```
 
-When using token based authentication, the URL must use `EXT_JWT` as the scheme instead:
+When using token based authentication, the type must use `JWT` as the scheme instead:
 
 ```
-org.jitsi.jicofo.auth.URL=EXT_JWT:jitsi-meet.example.com
+jicofo {
+  authentication: {
+    enabled: true
+    type: JWT
+    login-url: jitsi-meet.example.com
+ }
+ ...
 ```
 
 ## Create users in Prosody (internal auth)

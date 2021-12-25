@@ -92,6 +92,12 @@ class Footer extends React.Component {
                 </a>
               </div>
             )}
+            <a
+              href="https://jaas.8x8.vc"
+              target="_blank"
+              rel="noreferrer noopener">
+              JaaS: Jitsi as a Service
+            </a>
           </div>
         </section>
         <section className="copyright">{this.props.config.copyright}</section>

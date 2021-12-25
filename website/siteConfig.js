@@ -10,7 +10,7 @@
 
 const siteConfig = {
   title: 'Jitsi Meet Handbook', // Title for your website.
-  tagline: 'The best Open Source video-conferencing service. Now with docs.',
+  tagline: 'State-of-the-art video conferencing you can self-host.',
   url: 'https://jitsi.github.io', // Your website URL
   baseUrl: '/handbook/', // Base URL for your project */
   // For github.io type URLs, you would set the url and baseUrl like:
@@ -26,6 +26,7 @@ const siteConfig = {
 
   // For no header links in the top nav bar -> headerLinks: [],
   headerLinks: [
+    {doc: 'releases', label: 'Releases' },
     {doc: 'intro', label: 'Docs'},
     {page: 'help', label: 'Help'},
   ],

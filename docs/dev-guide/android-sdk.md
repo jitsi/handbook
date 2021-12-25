@@ -6,6 +6,10 @@ title: Android SDK
 The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet app,
 in a customizable way which you can embed in your apps.
 
+:::important
+Android 6.0 or higher is required.
+:::
+
 ## Sample applications using the SDK
 
 If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the
@@ -42,9 +46,13 @@ Dependency definitions belong in the individual module `build.gradle` files:
 ```gradle
 dependencies {
     // (other dependencies)
-    implementation ('org.jitsi.react:jitsi-meet-sdk:2.+') { transitive = true }
+    implementation ('org.jitsi.react:jitsi-meet-sdk:3.+') { transitive = true }
 }
 ```
+
+:::warning
+Make sure you pin your dependency by checking the [releases page](https://github.com/jitsi/jitsi-meet-release-notes/blob/master/CHANGELOG-MOBILE-SDKS.md).
+:::
 
 ### Build and use your own SDK artifacts/binaries
 
@@ -265,6 +273,7 @@ JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setVideoMuted(false)
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
+    .setConfigOverride("requireDisplayName", true)
     .build();
 ```
 
@@ -321,7 +330,7 @@ from the activity's `onUserLeaveHint` method.
 
 This is a static method.
 
-#### JitsiMeetViewListener
+#### JitsiMeetViewListener (deprecated - use Listening for broadcasted events instead)
 
 `JitsiMeetViewListener` provides an interface apps can implement to listen to
 the state of the Jitsi Meet conference displayed in a `JitsiMeetView`.
@@ -346,6 +355,134 @@ key will be present.
 Called before a conference is joined.
 
 The `data` `Map` contains a "url" key with the conference URL.
+
+### Listening for broadcasted events
+The SDK broadcasts several events that the users can listen for.
+
+```java
+    IntentFilter intentFilter = new IntentFilter();
+    intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_JOINED.getAction());
+    LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter);
+ ```  
+        
+Please see `JitsiMeetActivity`, which registers for all the events and can serve as an example.
+
+#### Supported events
+
+##### CONFERENCE_JOINED
+Broadcasted when a conference was joined.
+The `data` HashMap contains a `url` key with the conference URL.
+
+##### CONFERENCE_TERMINATED
+Broadcasted when the active conference ends, be it because of user choice or
+because of a failure.
+The `data` HashMap contains an `error` key with the error and a `url` key
+with the conference URL. If the conference finished gracefully no `error`
+key will be present.
+
+##### CONFERENCE_WILL_JOIN
+Broadcasted before a conference is joined.
+The `data` HashMap contains a `url` key with the conference URL.
+
+##### AUDIO_MUTED_CHANGED
+Broadcasted when audioMuted state changed.
+The `data` HashMap contains a `muted` key with state of the audioMuted for the localParticipant.
+
+##### VIDEO_MUTED_CHANGED
+Broadcasted when videoMuted state changed.
+The `data` HashMap contains a `muted` key with state of the videoMuted for the localParticipant.
+
+##### PARTICIPANT_JOINED
+Broadcasted when a participant has joined the conference.
+The `data` HashMap contains information of the participant that has joined.
+Depending of whether the participant is the local one or not, some of them are 
+present/missing.
+    isLocal
+    email
+    name
+    participantId
+
+##### PARTICIPANT_LEFT
+Broadcasted when a participant has joined the conference.
+The `data` HashMap contains information of the participant that has left.
+Depending of whether the participant is the local one or not, some of them are 
+present/missing.
+    isLocal
+    email
+    name
+    participantId
+
+##### ENDPOINT_TEXT_MESSAGE_RECEIVED
+Broadcasted when an endpoint text message is received.
+The `data` HashMap contains a `senderId` key with the participantId of the sender and a `message` key with the content.
+
+##### PARTICIPANTS_INFO_RETRIEVED
+Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called.
+The `data` HashMap contains a `participantsInfo` key with a list of participants information and a `requestId` key with the id that was sent in the RETRIEVE_PARTICIPANTS_INFO action.
+
+##### CHAT_MESSAGE_RECEIVED
+Broadcasted when a chat text message is received.
+The `data` HashMap contains a `senderId` key with the participantId of the sender, a `message` key with the content, a `isPrivate` key with a boolean value and a `timestamp` key.
+
+##### CHAT_TOGGLED
+Broadcasted when the chat dialog is opened or closed.
+The `data` HashMap contains a `isOpen` key with a boolean value.
+
+### Broadcasting Actions
+The SDK listens for broadcasted actions from the users and reacts accordingly.
+
+```java
+    Intent muteBroadcastIntent = new Intent(BroadcastAction.Type.SET_AUDIO_MUTED.getAction());
+    muteBroadcastIntent.putExtra("muted", muted);
+    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(muteBroadcastIntent);
+ ```
+
+The intents can be build manually (as shown above) or through the methods in `BroadcastIntentHelper`.
+
+Please see `JitsiMeetOngoingConferenceService` for more examples of sending actions.
+
+#### Supported actions
+
+##### SET_AUDIO_MUTED
+Sets the state of the localParticipant audio muted according to the `muted` parameter.
+Expects a `muted` key on the intent extra with a boolean value.
+
+##### SET_VIDEO_MUTED
+Sets the state of the localParticipant video muted according to the `muted` parameter.
+Expects a `muted` key on the intent extra with a boolean value.
+
+##### HANG_UP
+The localParticipant leaves the current conference.
+Does not expect any extra value.
+
+##### SEND_ENDPOINT_TEXT_MESSAGE
+Sends a message via the data channel to one particular participant or to all of them.
+Expects a `to` key on the intent extra with the id of the participant to which the message 
+is meant and a `message` key with a string value, the actual content of the message. 
+If the `to` key is not present or it's value is empty, the message will be sent 
+to all the participants in the conference.
+
+In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
+which `data` includes the id and this should be stored somehow.
+
+##### TOGGLE_SCREEN_SHARE
+Sets the state of the localParticipant screen share according to the `enabled` parameter.
+Expects a `enabled` key on the intent extra with a boolean value.
+
+##### RETRIEVE_PARTICIPANTS_INFO
+Signals the SDK to retrieve a list with the participants information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event.
+Expects a `requestId` key on the intent extra with a string value, this parameter will be present on the PARTICIPANTS_INFO_RETRIEVED event.
+
+##### OPEN_CHAT
+Opens the chat dialog. If a `to` key is present with a valid participantId, the private chat for that particular participant will be opened.
+
+##### CLOSE_CHAT
+Closes the chat dialog.
+Does not expect any extra value.
+
+##### SEND_CHAT_MESSAGE
+Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody otherwise.
+Expects a `message` key with a string value.
 
 ## ProGuard rules
 

@@ -48,7 +48,7 @@ Key                             | Value  | Effect
 ------------------------------- | ------ | -----------------------------------
 `desktopSharingFrameRate.min`   | `5`    | override the minimum framerate for desktop sharing
 `desktopSharingFrameRate.max`   | `5`    | override the maximum framerate for desktop sharing
-`startVideoMuted`               | `true` | disable video when joining
+`startWithVideoMuted`           | `true` | disable video when joining
 
 ## Audio
 
@@ -58,5 +58,5 @@ Key                             | Value  | Effect
 ------------------------------- | ------ | -----------------------------------
 `disableAudioLevels`            | `true` | disable audio statistics polling (thereby perhaps improving performance)
 `disableRemoteMute`             | `true` | disable all muting operations of remote participants
-`startAudioMuted`               | `true` | turn off audio input when joining
+`startWithAudioMuted`           | `true` | turn off audio input when joining
 `startSilent`                   | `true` | mute audio input and output

@@ -76,7 +76,7 @@ in a customizable way which you can embed in your apps.</p>
 <p>The recommended way for using the SDK is by using CocoaPods. In order to
 do so, add the <code>JitsiMeetSDK</code> dependency to your existing <code>Podfile</code> or create
 a new one following this example:</p>
-<pre><code class="hljs">platform <span class="hljs-symbol">:ios</span>, <span class="hljs-string">'11.0'</span>
+<pre><code class="hljs">platform <span class="hljs-symbol">:ios</span>, <span class="hljs-string">'12.0'</span>
 
 workspace <span class="hljs-string">'JitsiMeetSDKTest.xcworkspace'</span>
 
@@ -300,6 +300,8 @@ participantId</p>
 <h4><a class="anchor" aria-hidden="true" id="chattoggled"></a><a href="#chattoggled" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>chatToggled</h4>
 <p>Called when the chat dialog is displayed/hidden.</p>
 <p>The <code>data</code> dictionary contains a <code>isOpen</code> key.</p>
+<h4><a class="anchor" aria-hidden="true" id="readytoclose"></a><a href="#readytoclose" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>readyToClose</h4>
+<p>Called when the SDK is ready to be closed. No meeting is happening at this point.</p>
 <h3><a class="anchor" aria-hidden="true" id="picture-in-picture"></a><a href="#picture-in-picture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Picture-in-Picture</h3>
 <p><code>JitsiMeetView</code> will automatically adjust its UI when presented in a
 Picture-in-Picture style scenario, in a rectangle too small to accommodate its

@@ -428,6 +428,9 @@ The `data` HashMap contains a `senderId` key with the participantId of the sende
 Broadcasted when the chat dialog is opened or closed.
 The `data` HashMap contains a `isOpen` key with a boolean value.
 
+##### READY_TO_CLOSE
+The SDK is ready to be closed / dismised.
+
 ### Broadcasting Actions
 The SDK listens for broadcasted actions from the users and reacts accordingly.
 

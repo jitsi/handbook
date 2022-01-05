@@ -29,7 +29,7 @@ do so, add the `JitsiMeetSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
 ```
-platform :ios, '11.0'
+platform :ios, '12.0'
 
 workspace 'JitsiMeetSDKTest.xcworkspace'
 
@@ -346,6 +346,10 @@ The `data` dictionary contains `message`, `senderId` and  `isPrivate` keys.
 Called when the chat dialog is displayed/hidden.
 
 The `data` dictionary contains a `isOpen` key.
+
+#### readyToClose
+
+Called when the SDK is ready to be closed. No meeting is happening at this point.
 
 ### Picture-in-Picture
 

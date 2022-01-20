@@ -73,15 +73,10 @@ The [React Native dependencies] page has very detailed information on how to
 setup [Android Studio] and the required components for getting the necessary
 build environment.  Make sure you follow it closely.
 
-1. Building the app
+Set the JDK in Android Studio to at least Java 11: https://developer.android.com/studio/intro/studio-config#jdk
 
-    The app can be built using the CLI utility as follows:
+1. Building the app with Android Studio
 
-    ```bash
-    react-native run-android
-    ```
-
-    It will be launched on the connected Android device.
 
 ## Debugging
 

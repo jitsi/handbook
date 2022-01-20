@@ -7,7 +7,7 @@ The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet a
 in a customizable way which you can embed in your apps.
 
 :::important
-Android 6.0 or higher is required.
+Android 6.0 (API level 23) or higher is required.
 :::
 
 ## Sample applications using the SDK

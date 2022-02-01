@@ -214,6 +214,7 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
         - `LOCAL_TRACK_STOPPED` - indicates that a local track was stopped. This
         event can be fired when `dispose()` method is called or for other reasons.
         - `TRACK_AUDIO_OUTPUT_CHANGED` - indicates that audio output device for track was changed (parameters - deviceId (string) - new audio output device ID).
+        - `TRACK_VIDEOTYPE_CHANGED` -  indicates that the video type("camera" or "desktop") of the track was changed
 
     5. `mediaDevices`
         - `DEVICE_LIST_CHANGED` - indicates that list of currently connected devices has changed (parameters - devices(MediaDeviceInfo[])).

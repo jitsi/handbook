@@ -513,6 +513,26 @@ api.isParticipantForceMuted(participantId, mediaType).then(isForceMuted => {
 });
 ```
 
+### isParticipantsPaneOpen
+
+Returns a Promise which resolves with the current participants pane state.
+
+```javascript
+api.isParticipantsPaneOpen().then(state => {
+    ...
+});
+```
+
+### listBreakoutRooms
+
+Returns a Promise which resolves with the map of breakout rooms.
+
+```javascript
+api.listBreakoutRooms().then(breakoutRooms => {
+    ...
+});
+```
+
 ### invite
 
 Invite the given array of participants to the meeting:
@@ -973,6 +993,16 @@ api.executeCommand('setParticipantVolume',
 );
 ```
 
+### toggleParticipantsPane
+
+Changes the visibility status of the participants pane.
+
+```javascript
+api.executeCommand('toggleParticipantsPane',
+    enabled: boolean // The visibility status of the participants pane.
+);
+```
+
 ### toggleModeration
 
 Changes moderation status of the given media type.
@@ -1015,6 +1045,75 @@ Rejects the participant with the given ID from moderation of the given media typ
 api.executeCommand('rejectParticipant',
     participantId: String,
     mediaType: String // can be 'audio' (default) or 'video'
+);
+```
+
+### addBreakoutRoom
+
+Creates a breakout room.
+
+This command can only be executed by the meeting moderator.
+
+```javascript
+api.executeCommand('addBreakoutRoom',
+    name: String // Optional. The name or subject of the new room.
+);
+```
+
+### autoAssignToBreakoutRooms
+
+Auto-assigns the participants to breakout rooms.
+
+This command can only be executed by the meeting moderator.
+
+```javascript
+api.executeCommand('autoAssignToBreakoutRooms');
+```
+
+### closeBreakoutRoom
+
+Closes the breakout room and sends participants to the main room.
+
+This command can only be executed by the meeting moderator.
+
+```javascript
+api.executeCommand('closeBreakoutRoom',
+    roomId: String // The id of the room to close.
+);
+```
+
+### joinBreakoutRoom
+
+Joins a breakout room. If the argument is omitted, joins the main room.
+
+```javascript
+api.executeCommand('joinBreakoutRoom',
+    roomId: String // Optional. The id of the room to join.
+);
+```
+
+### removeBreakoutRoom
+
+Removes the breakout room.
+
+This command can only be executed by the meeting moderator.
+
+```javascript
+api.executeCommand('removeBreakoutRoom',
+    breakoutRoomJid: String // The jid of the breakout room to remove.
+);
+```
+
+### sendParticipantToRoom
+
+Sends a participant to a room.
+
+This command can only be executed by the meeting moderator.
+
+```javascript
+api.executeCommand('sendParticipantToRoom',
+    participantId: String, // The id of the participant.
+    roomId: String // The id of the room.
 );
 ```
 
@@ -1557,7 +1656,8 @@ The listener receives an object with the following structure:
     roomName: string, // the room name of the conference
     id: string, // the id of the local participant
     displayName: string, // the display name of the local participant
-    avatarURL: string // the avatar URL of the local participant
+    avatarURL: string, // the avatar URL of the local participant
+    breakoutRoom: boolean // whether the current room is a breakout room
 }
 ```
 

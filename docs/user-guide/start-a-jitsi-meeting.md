@@ -6,8 +6,8 @@ sidebar_label: Start a Jitsi Meeting
 
 ## Desktop Browser
 
-1. You need a browser (please note our separate information)
-2. Open the browser and in the address bar type, for example "https://meet.jit.si" (without "") and press <kbd>Enter<kbd>.
+1. You need a browser (please note our separate information).
+2. Open the browser and in the address bar type, for example "https://meet.jit.si" (without "") and press <kbd>Enter</kbd>.
 3. The page opens as shown in the figure:
 
 ![screenshot 1](../assets/user_guide_start_meeting.png "screenshot 1")
@@ -26,7 +26,7 @@ Note: Jitsi offers a functionality that automatically suggests names for the con
 10. Have fun in your first conference.
 
 ## Mobile Browser
- 
- # tbd
+
+ Check back soon!
 
 

@@ -25,8 +25,22 @@ Note: Jitsi offers a functionality that automatically suggests names for the con
 9. Click the blue `Join meeting` button.
 10. Have fun in your first conference.
 
-## Mobile Browser
+:::note
+If you do not see a video image of yourself, check the following points:
+The camera on your device is:
+- present (small lens at the top of the screen / an external webcam on the monitor),
+- activated (on some laptops you can actively switch the webcam on/off),
+- plugged in (only necessary for external webcams),
+- installed (some devices require the camera to be installed first).
+:::
 
- Check back soon!
+:::note
+If you cannot transmit sound, check the following points:
+The microphone on your device is:
+- available (especially with desktop devices, a microphone is never actually integrated. Here you need an external microphone or headset, which you connect to the appropriate ports on your PC),
+- activated (on some laptops with an integrated microphone or headsets there is a switch to activate / deactivate the microphone),
+- plugged in (only necessary for external microphones),
+- installed (on some old computers the microphone must be installed).
+:::
 
 

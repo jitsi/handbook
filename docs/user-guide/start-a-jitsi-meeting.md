@@ -42,3 +42,5 @@ The microphone on your device is:
 - plugged in (only necessary for external microphones),
 - installed (on some old computers the microphone must be installed).
 :::
+
+:::note test :::

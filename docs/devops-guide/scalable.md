@@ -35,8 +35,8 @@ videobridges that are load balanced looks as follows. Each box is a server/VM.
                v                                       v
           80, 443 TCP                          443 TCP, 10000 UDP
        +--------------+                     +---------------------+
-       |  nginx       |  5222, 5347 TCP     |                     |
-       |  jitsi-meet  |<-------------------+|  jitsi-videobridge  |
+       |  nginx       |  5222 TCP           |                     |
+       |  Jitsi Meet  |<-------------------+|  jitsi-videobridge  |
        |  prosody     |         |           |                     |
        |  jicofo      |         |           +---------------------+
        +--------------+         |
@@ -111,7 +111,6 @@ Open to world:
 Open to the videobridges only
 
 * 5222 TCP (for Prosody)
-* 5347 TCP (for Jicofo)
 
 
 #### NGINX

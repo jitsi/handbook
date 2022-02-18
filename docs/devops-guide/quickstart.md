@@ -282,7 +282,7 @@ The reason for the failure is that sometimes the uninstall script is faster than
 You can try to use a different web browser. Some versions of some browsers are known to have issues with Jitsi Meet. 
 
 * WebRTC, Webcam and Microphone:
-You can also visit https://test.webrtc.org to test your browser's [WebRTC](https://en.wikipedia.org/wiki/WebRTC) support.
+You can also visit https://webrtc.github.io/samples/src/content/getusermedia/gum to test your browser's [WebRTC](https://en.wikipedia.org/wiki/WebRTC) support.
 
 * Firewall:
 If participants cannot see or hear each other, double check your firewall / NAT rules.

@@ -56,6 +56,7 @@
         "type": "category",
         "label": "Deployment",
         "items": [
+          "devops-guide/devops-guide-requirements",
           "devops-guide/devops-guide-quickstart",
           "devops-guide/devops-guide-opensuse",
           "devops-guide/devops-guide-docker",

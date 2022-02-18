@@ -33,10 +33,10 @@ This is how the network looks:
                   | |                          |
 +------------+    | |    +--------------+      |
 |            |    | |    |              |      |
-| jitsi-meet +<---+ +--->+ prosody/xmpp |      |
+| Jitsi Meet +<---+ +--->+ prosody/xmpp |      |
 |            |files 5280 |              |      |
 +------------+           +--------------+      v
-                     5222,5347^    ^5347     10000
+                         5222 ^    ^ 5222    10000
                 +--------+    |    |    +-------------+
                 |        |    |    |    |             |
                 | jicofo +----^    ^----+ videobridge |
@@ -196,11 +196,11 @@ EOF
 
 Start the videobridge with:
 ```sh
-./jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 &
+./jvb.sh --host=localhost --domain=jitsi.example.com --secret=YOURSECRET1 &
 ```
 Or autostart it by adding the line in `/etc/rc.local`:
 ```sh
-/bin/bash /root/jitsi-videobridge-linux-{arch-buildnum}/jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 </dev/null >> /var/log/jvb.log 2>&1
+/bin/bash /root/jitsi-videobridge-linux-{arch-buildnum}/jvb.sh --host=localhost --domain=jitsi.example.com --secret=YOURSECRET1 </dev/null >> /var/log/jvb.log 2>&1
 ```
 
 ## Install Jitsi Conference Focus (jicofo)

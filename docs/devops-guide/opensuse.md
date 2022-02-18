@@ -48,7 +48,6 @@ Replace `<FQDN>` with your domain name and `YOURSECRET3` with a strong password.
 ---------- Server-wide settings ----------
 admins = { "focus@auth.<FQDN>" }
 cross_domain_bosh = true;
-component_ports = { 5347 }
 modules_enabled = {
         -- HTTP modules
                 "bosh"; -- Enable BOSH clients, aka "Jabber over HTTP"

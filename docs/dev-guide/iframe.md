@@ -100,6 +100,8 @@ The API object constructor uses the following options:
     
     * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g., email).
 
+    * **lang**: The default meeting language.
+
       For example:
 
 ```javascript
@@ -108,7 +110,8 @@ const options = {
     roomName: 'JitsiMeetAPIExample',
     width: 700,
     height: 700,
-    parentNode: document.querySelector('#meet')
+    parentNode: document.querySelector('#meet'),
+    lang: 'de'
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```

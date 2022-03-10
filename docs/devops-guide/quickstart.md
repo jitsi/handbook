@@ -1,7 +1,7 @@
 ---
 id: devops-guide-quickstart
-title: Self-Hosting Guide - Debian/Ubuntu server
-sidebar_label: Debian/Ubuntu server
+title: "Self-Hosting Guide - Debian/Ubuntu server"
+sidebar_label: "Debian/Ubuntu server"
 ---
 
 Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.

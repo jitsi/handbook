@@ -109,7 +109,7 @@ A Jitsi Meet installation can be broken down into the following components:
 * A SIP gateway for audio calls
 * A Broadcasting Infrastructure for recording or streaming a conference.
 
-![](assets/docker-jitsi-meet.png)
+![](../assets/docker-jitsi-meet.png)
 
 The diagram shows a typical deployment in a host running Docker. This project
 separates each of the components above into interlinked containers. To this end,

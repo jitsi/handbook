@@ -9,6 +9,7 @@
     "Community": [
       "community/community-intro",
       "community/community-instances",
+      "community/breakout-rooms",
       "community/third-party-software"
     ],
     "User Guide": [
@@ -27,21 +28,20 @@
       "dev-guide/dev-guide-start",
       "dev-guide/dev-guide-contributing",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Web",
-        "ids": [
+        "items": [
           "dev-guide/dev-guide-web",
           "dev-guide/dev-guide-ljm",
           "dev-guide/dev-guide-web-integrations",
-          "dev-guide/dev-guide-react-sdk",
           "dev-guide/dev-guide-iframe",
           "dev-guide/dev-guide-ljm-api"
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Mobile",
-        "ids": [
+        "items": [
           "dev-guide/dev-guide-mobile",
           "dev-guide/dev-guide-mobile-jitsi-meet",
           "dev-guide/mobile-feature-flags",
@@ -53,9 +53,9 @@
     "Self-Hosting Guide": [
       "devops-guide/devops-guide-start",
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Deployment",
-        "ids": [
+        "items": [
           "devops-guide/devops-guide-quickstart",
           "devops-guide/devops-guide-opensuse",
           "devops-guide/devops-guide-docker",
@@ -63,9 +63,9 @@
         ]
       },
       {
-        "type": "subcategory",
+        "type": "category",
         "label": "Configuration",
-        "ids": [
+        "items": [
           "devops-guide/secure-domain",
           "devops-guide/ldap-authentication",
           "devops-guide/devops-guide-scalable",

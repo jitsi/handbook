@@ -23,7 +23,7 @@ module.exports = {
           sidebarPath: require.resolve("./sidebars.json"),
         },
         theme: {
-          customCss: "../src/css/customTheme.css",
+          customCss: "../src/css/custom.css",
         },
       },
     ],

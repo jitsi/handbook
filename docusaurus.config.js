@@ -19,11 +19,11 @@ module.exports = {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
           editUrl: "https://github.com/jitsi/handbook/edit/master/website/",
-          path: "../docs",
+          path: "docs",
           sidebarPath: require.resolve("./sidebars.json"),
         },
         theme: {
-          customCss: "../src/css/custom.css",
+          customCss: [require.resolve("./src/css/custom.css")],
         },
       },
     ],

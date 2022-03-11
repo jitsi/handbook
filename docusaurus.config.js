@@ -52,6 +52,11 @@ module.exports = {
           position: "left",
         },
         {
+          href: "https://jaas.8x8.vc",
+          label: "JaaS",
+          position: "left",
+        },
+        {
           href: 'https://github.com/jitsi',
           position: 'right',
           className: 'header-github-link',

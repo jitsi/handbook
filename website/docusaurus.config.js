@@ -37,14 +37,25 @@ module.exports = {
       },
       items: [
         {
+          to: "docs/intro",
+          label: "Docs",
+          position: "left",
+        },
+        {
           to: "docs/releases",
           label: "Releases",
           position: "left",
         },
         {
-          to: "docs/intro",
-          label: "Docs",
+          href: "https://community.jitsi.org",
+          label: "Community",
           position: "left",
+        },
+        {
+          href: 'https://github.com/jitsi',
+          position: 'right',
+          className: 'header-github-link',
+          'aria-label': 'GitHub repository',
         },
       ],
     },

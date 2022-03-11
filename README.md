@@ -2,30 +2,7 @@
 
 This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's powered by [Docusaurus](https://docusaurus.io/).
 
-## Install dependencies
-
-If you use **Windows**, you need to install ```gifsicle```:
-
-```js 
-npm install -g gifsicle
-```
-alternative command:
-```js
-cnpm install gifsicle
-```
-
-If you use **Debian/Ubuntu**, you need to install ```dh-autoreconf```:
-
-```shell
-apt-get update
-apt-get install dh-autoreconf
-```
-
-If you use **MacOS**, you need to install ```automake```:
-
-```shell
-brew install automake
-```
+NOTE: Nodejs >= 14 is necessary.
 
 ## Building the site
 
@@ -34,7 +11,6 @@ The site is built automatically with every push thanks to a [GH Actions](https:/
 If you want to build it locally, follow these simple steps:
 
 ```js
-cd website
 npm install
 npm start
 ```

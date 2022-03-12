@@ -127,6 +127,18 @@ Check the firewall status with:
 sudo ufw status verbose
 ```
 
+If you are using `nftables`, you can add the following line to `/etc/nftables.conf` in the "input" chain, which is in the "inet filter" table:
+
+```
+tcp dport { 80, 443, 10000, 22, 3478, 5349 } ct state new accept
+```
+
+Update the nftables firewall with:
+
+```
+sudo /etc/nftables.conf
+```
+
 #### Using SSH
 For more details on using and hardening SSH access, see the corresponding [Debian](https://wiki.debian.org/SSH) or [Ubuntu](https://help.ubuntu.com/community/SSH/OpenSSH/Configuring) documentation.
 

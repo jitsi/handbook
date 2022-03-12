@@ -42,6 +42,8 @@ Next to its native webclient interface, Jitsi Meet is also available as
 
 📞 = Dial-in
 
+⏺️ = Recording 
+
 ---
 
 ## Europe <a id="europe"></a>
@@ -52,8 +54,8 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |---|---|---|---|---|
 | easyconference.uibk.ac.at  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=easyconference.uibk.ac.at&latest) | University of Innsbruck  |
 | meet.epicenter.works  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.epicenter.works&latest) |  Nessus GmbH  |
-| fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) |  |
-| pro.fairmeeting.net | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=pro.fairmeeting.net&latest) |  |
+| fairmeeting.net | ✅ 📞 |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) | fairkom Gesellschaft |
+| pro.fairmeeting.net | ✅ 📞 ⏺️ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=pro.fairmeeting.net&latest) | fairkom Gesellschaft |
 | meet.graz.social  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.graz.social&latest) |    |
 
 

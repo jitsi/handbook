@@ -30,6 +30,11 @@ module.exports = {
   ],
   plugins: [],
   themeConfig: {
+    algolia: {
+      appId: 'K2ODL876OV',
+      apiKey: 'fc233b31ee025aa87cf553bd9e7ce9e9',
+      indexName: 'jitsi',
+    },
     navbar: {
       title: "Jitsi Meet Handbook",
       logo: {

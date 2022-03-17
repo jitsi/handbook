@@ -18,7 +18,7 @@ module.exports = {
         docs: {
           showLastUpdateAuthor: true,
           showLastUpdateTime: true,
-          editUrl: "https://github.com/jitsi/handbook/edit/master/website/",
+          editUrl: "https://github.com/jitsi/handbook/edit/master/",
           path: "docs",
           sidebarPath: require.resolve("./sidebars.json"),
         },

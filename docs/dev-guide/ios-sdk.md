@@ -68,7 +68,7 @@ you may want to set `UIViewControllerBasedStatusBarAppearance` to `NO` in your
 
 ### Building it yourself
 
-1. Install all required [dependencies](mobile.md).
+1. Install all required [dependencies](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-mobile-jitsi-meet).
 
 2. Build it:
 

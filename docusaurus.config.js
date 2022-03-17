@@ -16,7 +16,7 @@ module.exports = {
       "@docusaurus/preset-classic",
       {
         docs: {
-          showLastUpdateAuthor: true,
+          showLastUpdateAuthor: false,
           showLastUpdateTime: true,
           editUrl: "https://github.com/jitsi/handbook/edit/master/",
           path: "docs",

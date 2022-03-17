@@ -36,7 +36,7 @@ module.exports = {
       indexName: 'jitsi',
     },
     navbar: {
-      title: "Jitsi Meet Handbook",
+      title: "Jitsi Meet handbook",
       logo: {
         src: "img/logo.svg",
       },

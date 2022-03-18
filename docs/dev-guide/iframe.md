@@ -15,6 +15,10 @@ You can also embed and integrate the globally distributed and highly available d
 JaaS customers, please make sure you also read [this](https://developer.8x8.com/jaas/docs/iframe-api-overview)!
 :::
 
+:::tip
+If you use React in your web application you might want to use our [React SDK](dev-guide-react-sdk) instead.
+:::
+
 ## Integration
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your application:

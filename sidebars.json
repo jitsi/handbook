@@ -35,6 +35,7 @@
           "dev-guide/dev-guide-ljm",
           "dev-guide/dev-guide-web-integrations",
           "dev-guide/dev-guide-iframe",
+          "dev-guide/dev-guide-react-sdk",
           "dev-guide/dev-guide-ljm-api"
         ]
       },

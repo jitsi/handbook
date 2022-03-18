@@ -11,6 +11,9 @@ The following distributions are supported out-of-the-box:
 
 _Note_: Many of the installation steps require `root` or `sudo` access. 
 
+:::danger
+Jitsi Meet is not compatible with Prosody 0.12 at the moment (18-03-2022) please downgrade to Prosody 0.11.
+:::
 
 ## Required packages and repository updates
 
@@ -77,9 +80,9 @@ Finally on the same machine test that you can ping the FQDN with:
 If all worked as expected, you should see:
 `meet.example.org`
 
-### For Ubuntu 18.04, add Prosody package repository
+### Add the Prosody package repository
 
-This will add the Prosody repository so that Prosody .11 will be installed, which is necessary for features including the lobby feature.
+This will add the Prosody repository so that an up to date Prosody is installed, which is necessary for features including the lobby feature.
 
 ```sh
 echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list

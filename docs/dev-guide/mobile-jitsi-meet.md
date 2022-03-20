@@ -58,11 +58,10 @@ Xcode >= 12 is required.
     When the app is launched from Xcode the Debug console will show the output
     logs the application creates.
 
-
 3. Other remarks
 
     It's likely you'll need to change the bundle ID for deploying to a device.
-    This can be changed in the "General" tab.  Under "Identity" set
+    This can be changed in the "General" tab. Under "Identity" set
     "Bundle Identifier" to a different value, and adjust the "Team" in the
     "Signing" section to match your own.
 
@@ -71,12 +70,11 @@ Xcode >= 12 is required.
 
 The [React Native dependencies] page has very detailed information on how to
 setup [Android Studio] and the required components for getting the necessary
-build environment.  Make sure you follow it closely.
+build environment. Make sure you follow it closely.
 
 Set the JDK in Android Studio to at least Java 11: https://developer.android.com/studio/intro/studio-config#jdk
 
 1. Building the app with Android Studio
-
 
 ## Debugging
 
@@ -94,6 +92,6 @@ supported JavaScript features.
 * [Google sign-in integration (for YouTube live streaming)](mobile-google-auth.md)
 
 [Android Studio]: https://developer.android.com/studio/index.html
-[debugging]: https://facebook.github.io/react-native/docs/debugging.html
+[debugging]: https://facebook.github.io/react-native/docs/debugging/
 [React Native]: https://facebook.github.io/react-native/
 [React Native dependencies]: https://reactnative.dev/docs/environment-setup

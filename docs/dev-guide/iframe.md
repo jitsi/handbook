@@ -903,6 +903,16 @@ api.executeCommand('kickParticipant',
 );
 ```
 
+### grantModerator
+
+Grants moderator rights to the participant with the given ID.
+
+```javascript
+api.executeCommand('grantModerator',
+    participantID: string
+);
+```
+
 ### overwriteConfig
 
 Overwrite config.js props with values from the config object passed on to the command.

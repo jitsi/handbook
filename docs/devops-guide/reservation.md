@@ -44,6 +44,9 @@ Additional configuration options are available:
 * "reservations_api_should_retry_for_code" as a function that takes an HTTP response code and
   returns true if the API call should be retried. By default, retries are done for 5XX
   responses. Timeouts are never retried, and HTTP call failures are always retried.
+* "reservations_enable_max_occupants" to enable integration with mod_muc_max_occupants. If this is set to `true`, and if
+  the API response payload includes a "max_occupants" value, then that value will be set as the max occupancy limit
+  for that specific room.
 
 ```
     --- The following are all optional
@@ -100,6 +103,11 @@ assigned by the system and `duration` measured in seconds. Sample response body:
   'duration': 900000
 }
 ```
+
+The object can optionally include a `max_occupants` key with an integer value. When provided, and if
+`reservations_enable_max_occupants` is enabled, then the value will be passed to muc_mod_max_occupants to enforce
+per-room occupancy limits.
+
 
 ###### HTTP 409 - Conference already exists
 
@@ -187,6 +195,8 @@ information about the conference stored in the reservation system:
 * `'start_time'`: conference start date and time
 * `'duration'`: scheduled conference duration in seconds
 
+The optional `max_occupants` value should also be provided if applicable.
+
 Sample response JSON body (contains the same info as `200 OK` to
 `HTTP POST`):
 
@@ -214,5 +224,7 @@ DELETE /conference/364758328 HTTP/1.1
 host: http://reservation.example.com
 ...
 ```
+
+#### Implementation diagram
 
 ![](https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/reservation-api.png)

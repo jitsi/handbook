@@ -28,7 +28,27 @@ module.exports = {
       },
     ],
   ],
-  plugins: [],
+  plugins: [
+    [
+      '@docusaurus/plugin-client-redirects',
+      {
+        redirects: [
+          {
+            to: '/docs/user-guide/',
+            from: '/docs/user-guide/user-guide-start',
+          },
+          {
+            to: '/docs/dev-guide/',
+            from: '/docs/dev-guide/dev-guide-start',
+          },
+          {
+            to: '/docs/devops-guide/',
+            from: '/docs/devops-guide/devops-guide-start',
+          },
+        ]
+      }
+    ]
+  ],
   themeConfig: {
     algolia: {
       appId: 'K2ODL876OV',

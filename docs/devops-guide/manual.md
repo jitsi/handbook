@@ -12,7 +12,7 @@ This describes configuring a server `jitsi.example.com` on a Debian-based distri
 **For other distributions** you can adapt the steps (especially changing the dependencies package installations (e.g. for nginx) and paths accordingly) so that it matches your host's distribution.   
 You will also need to generate some passwords for `YOURSECRET1`, `YOURSECRET2` and `YOURSECRET3`.
 
-There are also some complete [example config files](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/) available, mentioned in each section.
+There are also some complete [example config files](https://github.com/jitsi/jitsi-meet/tree/master/doc/debian/) available, mentioned in each section.
 
 There are additional configurations to be done for a [scalable installation](devops-guide-scalable).
 
@@ -170,6 +170,12 @@ ln -s ../sites-available/jitsi.example.com jitsi.example.com
 ```
 
 ## Install Jitsi Videobridge
+
+:::warning
+This method is no longer supported.
+You can either install the JVB from https://download.jitsi.org/stable/ and follow these [Instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions/) or [clone the repo](https://github.com/jitsi/jitsi-videobridge) and build it manually.
+:::
+
 Visit https://download.jitsi.org/jitsi-videobridge/linux to determine the current build number, download and unzip it:
 ```sh
 wget https://download.jitsi.org/jitsi-videobridge/linux/jitsi-videobridge-linux-{arch-buildnum}.zip

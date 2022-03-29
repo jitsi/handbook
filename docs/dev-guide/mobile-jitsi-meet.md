@@ -22,7 +22,7 @@ Jitsi Meet can be built as a standalone app for Android or iOS. It uses the
 First make sure the [React Native dependencies] (React Native CLI Quickstart) are installed.
 
 :::warning Node version
-Node 14.x and npm 7.x are required. Any other version may result in runtime errors.
+Node 16.x and npm 8.x are required. Any other version may result in runtime errors.
 :::
 
 :::note macOS
@@ -74,7 +74,32 @@ build environment. Make sure you follow it closely.
 
 Set the JDK in Android Studio to at least Java 11: https://developer.android.com/studio/intro/studio-config#jdk
 
-1. Building the app with Android Studio
+The recommended way for building Jitsi Meet is building the app with Android Studio.
+
+### Adding extra dependencies
+
+Due to how our project is structured, React Native's automatic linking won't work so Android dependencies need to be manually linked.
+
+First, add your project to `android/settings.gradle` like so:
+
+```
+include ':react-native-mydependency'
+project(':eact-native-mydependency').projectDir = new File(rootProject.projectDir, '../node_modules/@somenamespace/eact-native-mydependency/android')
+```
+
+Then add a dependency on `android/sdk/build.gradle` like so:
+
+```
+implementation project(':react-native-mydependency')
+```
+
+Last, link it in the `getReactNativePackages` method in `android/sdk/src/main/java/org/jitsi/meet/sdk/ReactInstanceManagerHolder.java` like so:
+
+```
+new com.companyname.library.AwesomeLibraryPackage(),
+```
+
+Make sure you adjust the fully qualified package name.
 
 ## Debugging
 

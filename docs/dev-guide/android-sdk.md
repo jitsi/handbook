@@ -400,7 +400,7 @@ Broadcasted when the local participant's audio is muted or unmuted. `data` conta
 
 Broadcasted when a participant has joined the conference. `data` contains the following information:
 
-- `email`: the email of the participant.
+- `email`: the email of the participant. It may not be set if the remote participant didn't set one.
 - `name`: the name of the participant.
 - `role`: the role of the participant.
 - `participantId`: the id of the participant.
@@ -436,6 +436,7 @@ Broadcasted when a chat text message is received. `data` contains the following 
 - `senderId`: the id of the participant that sent the message.
 - `message`: the content of the message.
 - `isPrivate`: true if the message is private, false otherwise.
+- `timestamp`: the (optional) timestamp of the message.
 
 ##### CHAT_TOGGLED
 

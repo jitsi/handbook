@@ -1,11 +1,13 @@
 ---
-id: dev-guide-android-sdk title: Android SDK
+id: dev-guide-android-sdk
+title: Android SDK
 ---
 
-The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet app, in a customizable way which you can
-embed in your apps.
+The Jitsi Meet Android SDK provides the same user experience as the Jitsi Meet app,
+in a customizable way which you can embed in your apps.
 
-:::important Android 6.0 (API level 23) or higher is required.
+:::important
+Android 6.0 (API level 23) or higher is required.
 :::
 
 ## Sample applications using the SDK
@@ -48,8 +50,8 @@ dependencies {
 }
 ```
 
-:::warning Make sure you pin your dependency by checking
-the [releases page](https://github.com/jitsi/jitsi-meet-release-notes/blob/master/CHANGELOG-MOBILE-SDKS.md).
+:::warning
+Make sure you pin your dependency by checking the [releases page](https://github.com/jitsi/jitsi-meet-release-notes/blob/master/CHANGELOG-MOBILE-SDKS.md).
 :::
 
 ### Build and use your own SDK artifacts/binaries
@@ -59,35 +61,26 @@ the [releases page](https://github.com/jitsi/jitsi-meet-release-notes/blob/maste
 
 Start by making sure that your development environment [is set up correctly](mobile.md).
 
-A note on dependencies: Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK
-dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a
-SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_)
-than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that
-your project will need, might also be different from those that are published in the Jitsi Maven repository. This might
-lead to build problems, caused by dependencies that are unavailable.
+A note on dependencies: Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.
 
-If you want to use a SDK that is built from source, you will likely benefit from composing a local Maven repository that
-contains these dependencies. The text below describes how you create a repository that includes both the SDK as well as
-these dependencies. For illustration purposes, we'll define the location of this local Maven repository as `/tmp/repo`
+If you want to use a SDK that is built from source, you will likely benefit from composing a local Maven repository that contains these dependencies. The text below describes how you create a repository that includes both the SDK as well as these dependencies. For illustration purposes, we'll define the location of this local Maven repository as `/tmp/repo`
 
-In source code form, the Android SDK dependencies are locked/pinned by package.json and package-lock.json of the Jitsi
-Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
+In source code form, the Android SDK dependencies are locked/pinned by package.json and package-lock.json of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
 
     npm install
 
 This will pull in the dependencies in either binary format, or in source code format, somewhere under /node_modules/
 
-Third-party React Native _modules_, which Jitsi Meet SDK for Android depends on, are download by NPM in source code or
-binary form. These need to be assembled into Maven artifacts, and then published to your local Maven repository. A
-script is provided to facilitate this. From the root of the jitsi-meet project repository, run:
+Third-party React Native _modules_, which Jitsi Meet SDK for Android depends on, are download by NPM in source code 
+or binary form. These need to be assembled into Maven artifacts, and then published to your local Maven repository.
+A script is provided to facilitate this. From the root of the jitsi-meet project repository, run:
 
     ./android/scripts/release-sdk.sh /tmp/repo
 
-This will build and publish the SDK, and all of its dependencies to the specified Maven repository (`/tmp/repo`) in this
-example.
+This will build and publish the SDK, and all of its dependencies to the specified Maven repository (`/tmp/repo`) in
+this example.
 
-You're now ready to use the artifacts. In _your_ project, add the Maven repository that you used above (`/tmp/repo`)
-into your top-level `build.gradle` file:
+You're now ready to use the artifacts. In _your_ project, add the Maven repository that you used above (`/tmp/repo`) into your top-level `build.gradle` file:
 
     allprojects {
         repositories {
@@ -97,10 +90,7 @@ into your top-level `build.gradle` file:
         }
     }
 
-You can use your local repository to replace the Jitsi
-repository (`maven { url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases" }`) when you published _
-all_ subprojects. If you didn't do that, you'll have to add both repositories. Make sure your local repository is listed
-first!
+You can use your local repository to replace the Jitsi repository (`maven { url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases" }`) when you published _all_ subprojects. If you didn't do that, you'll have to add both repositories. Make sure your local repository is listed first!
 
 Then, define the dependency `org.jitsi.react:jitsi-meet-sdk` into the `build.gradle` file of your module:
 
@@ -113,10 +103,11 @@ dependencies of `jitsi-meet-sdk`.
 
 ## Using the API
 
-Jitsi Meet SDK is an Android library which embodies the whole Jitsi Meet experience and makes it reusable by third-party
-apps.
+Jitsi Meet SDK is an Android library which embodies the whole Jitsi Meet
+experience and makes it reusable by third-party apps.
 
-First, add Java 1.8 compatibility support to your project by adding the following lines into your `build.gradle` file:
+First, add Java 1.8 compatibility support to your project by adding the
+following lines into your `build.gradle` file:
 
 ```
 compileOptions {
@@ -137,10 +128,12 @@ public class MainActivity extends JitsiMeetActivity {
 }
 ```
 
-Alternatively, you can use the `org.jitsi.meet.sdk.JitsiMeetView` class which extends `android.view.View`.
+Alternatively, you can use the `org.jitsi.meet.sdk.JitsiMeetView` class which
+extends `android.view.View`.
 
-Note that this should only be needed when `JitsiMeetActivity` cannot be used for some reason. Extending `JitsiMeetView`
-requires manual wiring of the view to the activity, using a lot of boilerplate code. Using the Activity instead of the
+Note that this should only be needed when `JitsiMeetActivity` cannot be used for
+some reason. Extending `JitsiMeetView` requires manual wiring of the view to
+the activity, using a lot of boilerplate code. Using the Activity instead of the
 View is strongly recommended.
 
 <details>
@@ -180,8 +173,8 @@ public class MainActivity extends FragmentActivity implements JitsiMeetActivityI
 
         view = new JitsiMeetView(this);
         JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
-                .setRoom("https://meet.jit.si/test123")
-                .build();
+            .setRoom("https://meet.jit.si/test123")
+            .build();
         view.join(options);
 
         setContentView(view);
@@ -232,13 +225,14 @@ public class MainActivity extends FragmentActivity implements JitsiMeetActivityI
 
 This class encapsulates a high level API in the form of an Android `FragmentActivity`
 which displays a single `JitsiMeetView`. You can pass a URL as a `ACTION_VIEW`
-on the Intent when starting it and it will join the conference, and will be automatically terminated (finish() will be
-called on the activity) when the conference ends or fails.
+on the Intent when starting it and it will join the conference, and will be
+automatically terminated (finish() will be called on the activity) when the
+conference ends or fails.
 
 ### JitsiMeetView
 
-The `JitsiMeetView` class is the core of Jitsi Meet SDK. It's designed to display a Jitsi Meet conference (or a welcome
-page).
+The `JitsiMeetView` class is the core of Jitsi Meet SDK. It's designed to
+display a Jitsi Meet conference (or a welcome page).
 
 #### join(options)
 
@@ -246,13 +240,13 @@ Joins the conference specified by the given `JitsiMeetConferenceOptions`.
 
 #### leave()
 
-Leaves the currently active conference. If the welcome page is enabled it will go back to it, otherwise a black window
-will be shown.
+Leaves the currently active conference. If the welcome page is enabled it will
+go back to it, otherwise a black window will be shown.
 
 #### dispose()
 
-Releases all resources associated with this view. This method MUST be called when the Activity holding this view is
-going to be destroyed, usually in the
+Releases all resources associated with this view. This method MUST be called
+when the Activity holding this view is going to be destroyed, usually in the
 `onDestroy()` method.
 
 #### getListener()
@@ -266,20 +260,21 @@ interface) on the view.
 
 ### JitsiMeetConferenceOptions
 
-This object encapsulates all the options that can be tweaked when joining a conference.
+This object encapsulates all the options that can be tweaked when joining
+a conference.
 
 Example:
 
 ```java
-JitsiMeetConferenceOptions options=new JitsiMeetConferenceOptions.Builder()
-        .setServerURL(new URL("https://meet.jit.si"))
-        .setRoom("test123")
-        .setAudioMuted(false)
-        .setVideoMuted(false)
-        .setAudioOnly(false)
-        .setWelcomePageEnabled(false)
-        .setConfigOverride("requireDisplayName",true)
-        .build();
+JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
+    .setServerURL(new URL("https://meet.jit.si"))
+    .setRoom("test123")
+    .setAudioMuted(false)
+    .setVideoMuted(false)
+    .setAudioOnly(false)
+    .setWelcomePageEnabled(false)
+    .setConfigOverride("requireDisplayName", true)
+    .build();
 ```
 
 See the `JitsiMeetConferenceOptions` implementation for all available options.
@@ -287,20 +282,21 @@ See the `JitsiMeetConferenceOptions` implementation for all available options.
 ### JitsiMeetActivityDelegate
 
 This class handles the interaction between `JitsiMeetView` and its enclosing
-`Activity`. Generally this shouldn't be consumed by users, because they'd be using `JitsiMeetActivity` instead, which is
-already completely integrated.
+`Activity`. Generally this shouldn't be consumed by users, because they'd be
+using `JitsiMeetActivity` instead, which is already completely integrated.
 
 All its methods are static.
 
 #### onActivityResult(...)
 
-Helper method to handle results of auxiliary activities launched by the SDK. Should be called from the activity method
-of the same name.
+Helper method to handle results of auxiliary activities launched by the SDK.
+Should be called from the activity method of the same name.
 
 #### onBackPressed()
 
-Helper method which should be called from the activity's `onBackPressed` method. If this function returns `true`, it
-means the action was handled and thus no extra processing is required; otherwise the app should call the parent's
+Helper method which should be called from the activity's `onBackPressed` method.
+If this function returns `true`, it means the action was handled and thus no
+extra processing is required; otherwise the app should call the parent's
 `onBackPressed` method.
 
 #### onHostDestroy(...)
@@ -318,25 +314,26 @@ Helper method which should be called from the activity's `onSstop` method.
 
 #### onNewIntent(...)
 
-Helper method for integrating the *deep linking* functionality. If your app's activity is launched in "singleTask" mode
-this method should be called from the activity's `onNewIntent` method.
+Helper method for integrating the *deep linking* functionality. If your app's
+activity is launched in "singleTask" mode this method should be called from the
+activity's `onNewIntent` method.
 
 #### onRequestPermissionsResult(...)
 
-Helper method to handle permission requests inside the SDK. It should be called from the activity method of the same
-name.
+Helper method to handle permission requests inside the SDK. It should be called
+from the activity method of the same name.
 
 #### onUserLeaveHint()
 
-Helper method for integrating automatic Picture-in-Picture. It should be called from the activity's `onUserLeaveHint`
-method.
+Helper method for integrating automatic Picture-in-Picture. It should be called
+from the activity's `onUserLeaveHint` method.
 
 This is a static method.
 
 #### JitsiMeetViewListener (deprecated - use Listening for broadcasted events instead)
 
-`JitsiMeetViewListener` provides an interface apps can implement to listen to the state of the Jitsi Meet conference
-displayed in a `JitsiMeetView`.
+`JitsiMeetViewListener` provides an interface apps can implement to listen to
+the state of the Jitsi Meet conference displayed in a `JitsiMeetView`.
 
 #### onConferenceJoined
 
@@ -363,11 +360,11 @@ The `data` `Map` contains a "url" key with the conference URL.
 The SDK broadcasts several events that the users can listen for.
 
 ```java
-    IntentFilter intentFilter=new IntentFilter();
-        intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_JOINED.getAction());
-        LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver,intentFilter);
+    IntentFilter intentFilter = new IntentFilter();
+    intentFilter.addAction(BroadcastEvent.Type.CONFERENCE_JOINED.getAction());
+    LocalBroadcastManager.getInstance(this).registerReceiver(broadcastReceiver, intentFilter);
  ```  
-
+        
 Please see `JitsiMeetActivity`, which registers for all the events and can serve as an example.
 
 #### Supported events
@@ -460,9 +457,9 @@ The SDK is ready to be closed / dismised.
 The SDK listens for broadcasted actions from the users and reacts accordingly.
 
 ```java
-    Intent muteBroadcastIntent=new Intent(BroadcastAction.Type.SET_AUDIO_MUTED.getAction());
-        muteBroadcastIntent.putExtra("muted",muted);
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(muteBroadcastIntent);
+    Intent muteBroadcastIntent = new Intent(BroadcastAction.Type.SET_AUDIO_MUTED.getAction());
+    muteBroadcastIntent.putExtra("muted", muted);
+    LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(muteBroadcastIntent);
  ```
 
 The intents can be build manually (as shown above) or through the methods in `BroadcastIntentHelper`.
@@ -472,72 +469,64 @@ Please see `JitsiMeetOngoingConferenceService` for more examples of sending acti
 #### Supported actions
 
 ##### SET_AUDIO_MUTED
-
-Sets the state of the localParticipant audio muted according to the `muted` parameter. Expects a `muted` key on the
-intent extra with a boolean value.
+Sets the state of the localParticipant audio muted according to the `muted` parameter.
+Expects a `muted` key on the intent extra with a boolean value.
 
 ##### SET_VIDEO_MUTED
-
-Sets the state of the localParticipant video muted according to the `muted` parameter. Expects a `muted` key on the
-intent extra with a boolean value.
+Sets the state of the localParticipant video muted according to the `muted` parameter.
+Expects a `muted` key on the intent extra with a boolean value.
 
 ##### HANG_UP
-
-The localParticipant leaves the current conference. Does not expect any extra value.
+The localParticipant leaves the current conference.
+Does not expect any extra value.
 
 ##### SEND_ENDPOINT_TEXT_MESSAGE
+Sends a message via the data channel to one particular participant or to all of them.
+Expects a `to` key on the intent extra with the id of the participant to which the message 
+is meant and a `message` key with a string value, the actual content of the message. 
+If the `to` key is not present or it's value is empty, the message will be sent 
+to all the participants in the conference.
 
-Sends a message via the data channel to one particular participant or to all of them. Expects a `to` key on the intent
-extra with the id of the participant to which the message is meant and a `message` key with a string value, the actual
-content of the message. If the `to` key is not present or it's value is empty, the message will be sent to all the
-participants in the conference.
-
-In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for, which `data` includes the id
-and this should be stored somehow.
+In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
+which `data` includes the id and this should be stored somehow.
 
 ##### TOGGLE_SCREEN_SHARE
-
-Sets the state of the localParticipant screen share according to the `enabled` parameter. Expects a `enabled` key on the
-intent extra with a boolean value.
+Sets the state of the localParticipant screen share according to the `enabled` parameter.
+Expects a `enabled` key on the intent extra with a boolean value.
 
 ##### RETRIEVE_PARTICIPANTS_INFO
-
-Signals the SDK to retrieve a list with the participants information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED
-event. Expects a `requestId` key on the intent extra with a string value, this parameter will be present on the
-PARTICIPANTS_INFO_RETRIEVED event.
+Signals the SDK to retrieve a list with the participants information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event.
+Expects a `requestId` key on the intent extra with a string value, this parameter will be present on the PARTICIPANTS_INFO_RETRIEVED event.
 
 ##### OPEN_CHAT
-
-Opens the chat dialog. If a `to` key is present with a valid participantId, the private chat for that particular
-participant will be opened.
+Opens the chat dialog. If a `to` key is present with a valid participantId, the private chat for that particular participant will be opened.
 
 ##### CLOSE_CHAT
-
-Closes the chat dialog. Does not expect any extra value.
+Closes the chat dialog.
+Does not expect any extra value.
 
 ##### SEND_CHAT_MESSAGE
-
-Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody
-otherwise. Expects a `message` key with a string value.
+Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody otherwise.
+Expects a `message` key with a string value.
 
 ## ProGuard rules
 
-When using the SDK on a project some proguard rules have to be added in order to avoid necessary code being stripped.
-Add the following to your project's rules
-file: https://github.com/jitsi/jitsi-meet/blob/master/android/app/proguard-rules.pro
+When using the SDK on a project some proguard rules have to be added in order
+to avoid necessary code being stripped. Add the following to your project's
+rules file: https://github.com/jitsi/jitsi-meet/blob/master/android/app/proguard-rules.pro
 
 ## Picture-in-Picture
 
-`JitsiMeetView` will automatically adjust its UI when presented in a Picture-in-Picture style scenario, in a rectangle
-too small to accommodate its
+`JitsiMeetView` will automatically adjust its UI when presented in a
+Picture-in-Picture style scenario, in a rectangle too small to accommodate its
 "full" UI.
 
 ## Dropbox integration
 
 To setup the Dropbox integration, follow these steps:
 
-1. Add the following to the app's AndroidManifest.xml and change `<APP_KEY>` to your Dropbox app key:
-
+1. Add the following to the app's AndroidManifest.xml and change `<APP_KEY>` to
+your Dropbox app key:
 ```
 <activity
     android:configChanges="keyboard|orientation"
@@ -552,8 +541,8 @@ To setup the Dropbox integration, follow these steps:
 </activity>
 ```
 
-2. Add the following to the app's strings.xml and change `<APP_KEY>` to your Dropbox app key:
-
+2. Add the following to the app's strings.xml and change `<APP_KEY>` to your
+Dropbox app key:
 ```
 <string name="dropbox_app_key"><APP_KEY></string>
 ```

@@ -374,39 +374,44 @@ Please see `JitsiMeetActivity`, which registers for all the events and can serve
 
 ##### CONFERENCE_JOINED
 
-Broadcasted when a conference was joined. The `data` HashMap contains a `url` key with the conference URL.
+Broadcasted when a conference was joined. `data` contains the following information:
+
+- `url`: the conference URL
 
 ##### CONFERENCE_TERMINATED
 
-Broadcasted when the active conference ends, be it because of user choice or because of a failure. The `data` HashMap
-contains an `error` key with the error and a `url` key with the conference URL. If the conference finished gracefully
-no `error`
-key will be present.
+Broadcasted when the active conference ends, be it because of user choice or because of a failure. `data` contains the
+following information:
+
+- `url`: the conference URL
+- `error`: missing if the conference finished gracefully, otherwise contains the error message
 
 ##### CONFERENCE_WILL_JOIN
 
-Broadcasted before a conference is joined. The `data` HashMap contains a `url` key with the conference URL.
+Broadcasted before a conference is joined. `data` contains the following information:
+
+- `url`: the conference URL
 
 ##### AUDIO_MUTED_CHANGED
 
-Broadcasted when audioMuted state changed. The `data` HashMap contains a `muted` key with state of the audioMuted for
-the localParticipant.
+Broadcasted when the local participant's audio is muted or unmuted. `data` contains the following information:
+
+- `muted`: a boolean indicating whether the audio is muted or not.
 
 ##### PARTICIPANT_JOINED
 
-Broadcasted when a participant has joined the conference. Depending on whether the participant is the local one or not,
-some properties are present or missing. `data` contains the following information:
+Broadcasted when a participant has joined the conference. `data` contains the following information:
 
-- `email`: The email of the participant.
-- `name`: The name of the participant.
-- `role`: The role of the participant.
-- `participantId`: The id of the participant.
+- `email`: the email of the participant.
+- `name`: the name of the participant.
+- `role`: the role of the participant.
+- `participantId`: the id of the participant.
 
 ##### PARTICIPANT_LEFT
 
-Broadcasted when a participant has left the conference. `data` contains the following information:
+Called when a participant has left the conference. `data` contains the following information:
 
-- `participantId`: Id of the participant that left.
+- `participantId`: the id of the participant that left.
 
 ##### ENDPOINT_TEXT_MESSAGE_RECEIVED
 
@@ -420,11 +425,6 @@ Broadcasted when a participant starts or stops sharing his screen. `data` contai
 - `participantId`: Id of the participant that started or stopped sharing his screen.
 - `sharing`: True if the participant is sharing his screen, false otherwise.
 
-Called when a chat message is received.
-
-The `data` dictionary contains a `participantId` key with the id of the participant and a 'sharing' key with boolean
-value.
-
 ##### PARTICIPANTS_INFO_RETRIEVED
 
 Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called. The `data` HashMap contains a `participantsInfo` key
@@ -435,20 +435,21 @@ RETRIEVE_PARTICIPANTS_INFO action.
 
 Broadcasted when a chat text message is received. `data` contains the following information:
 
-- `senderId`: Id of the participant that sent the message.
-- `message`: The content of the message.
-- `isPrivate`: True if the message is private, false otherwise.
+- `senderId`: the id of the participant that sent the message.
+- `message`: the content of the message.
+- `isPrivate`: true if the message is private, false otherwise.
 
 ##### CHAT_TOGGLED
 
 Broadcasted when the chat dialog is opened or closed. `data` contains the following information:
 
-- `isOpen`: True if the chat dialog is open, false otherwise.
+- `isOpen`: true if the chat dialog is open, false otherwise.
 
 ##### VIDEO_MUTED_CHANGED
 
-Broadcasted when videoMuted state changed. The `data` HashMap contains a `muted` key with state of the videoMuted for
-the localParticipant.
+Broadcasted when the local participant's video is muted or unmuted. `data` contains the following information:
+
+- `muted`: an integer indicating whether the video is muted or not. 0 means unmuted, 4 means muted.
 
 ##### READY_TO_CLOSE
 

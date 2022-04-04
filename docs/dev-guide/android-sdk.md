@@ -357,6 +357,7 @@ Called before a conference is joined.
 The `data` `Map` contains a "url" key with the conference URL.
 
 ### Listening for broadcasted events
+
 The SDK broadcasts several events that the users can listen for.
 
 ```java
@@ -370,68 +371,91 @@ Please see `JitsiMeetActivity`, which registers for all the events and can serve
 #### Supported events
 
 ##### CONFERENCE_JOINED
-Broadcasted when a conference was joined.
-The `data` HashMap contains a `url` key with the conference URL.
+
+Broadcasted when a conference was joined. `data` contains the following information:
+
+- `url`: the conference URL
 
 ##### CONFERENCE_TERMINATED
-Broadcasted when the active conference ends, be it because of user choice or
-because of a failure.
-The `data` HashMap contains an `error` key with the error and a `url` key
-with the conference URL. If the conference finished gracefully no `error`
-key will be present.
+
+Broadcasted when the active conference ends, be it because of user choice or because of a failure. `data` contains the
+following information:
+
+- `url`: the conference URL
+- `error`: missing if the conference finished gracefully, otherwise contains the error message
 
 ##### CONFERENCE_WILL_JOIN
-Broadcasted before a conference is joined.
-The `data` HashMap contains a `url` key with the conference URL.
+
+Broadcasted before a conference is joined. `data` contains the following information:
+
+- `url`: the conference URL
 
 ##### AUDIO_MUTED_CHANGED
-Broadcasted when audioMuted state changed.
-The `data` HashMap contains a `muted` key with state of the audioMuted for the localParticipant.
 
-##### VIDEO_MUTED_CHANGED
-Broadcasted when videoMuted state changed.
-The `data` HashMap contains a `muted` key with state of the videoMuted for the localParticipant.
+Broadcasted when the local participant's audio is muted or unmuted. `data` contains the following information:
+
+- `muted`: a boolean indicating whether the audio is muted or not.
 
 ##### PARTICIPANT_JOINED
-Broadcasted when a participant has joined the conference.
-The `data` HashMap contains information of the participant that has joined.
-Depending of whether the participant is the local one or not, some of them are 
-present/missing.
-    isLocal
-    email
-    name
-    participantId
+
+Broadcasted when a participant has joined the conference. `data` contains the following information:
+
+- `email`: the email of the participant. It may not be set if the remote participant didn't set one.
+- `name`: the name of the participant.
+- `role`: the role of the participant.
+- `participantId`: the id of the participant.
 
 ##### PARTICIPANT_LEFT
-Broadcasted when a participant has joined the conference.
-The `data` HashMap contains information of the participant that has left.
-Depending of whether the participant is the local one or not, some of them are 
-present/missing.
-    isLocal
-    email
-    name
-    participantId
+
+Called when a participant has left the conference. `data` contains the following information:
+
+- `participantId`: the id of the participant that left.
 
 ##### ENDPOINT_TEXT_MESSAGE_RECEIVED
-Broadcasted when an endpoint text message is received.
-The `data` HashMap contains a `senderId` key with the participantId of the sender and a `message` key with the content.
+
+Broadcasted when an endpoint text message is received. The `data` HashMap contains a `senderId` key with the
+participantId of the sender and a `message` key with the content.
+
+#### SCREEN_SHARE_TOGGLED
+
+Broadcasted when a participant starts or stops sharing his screen. `data` contains the following information:
+
+- `participantId`: Id of the participant that started or stopped sharing his screen.
+- `sharing`: True if the participant is sharing his screen, false otherwise.
 
 ##### PARTICIPANTS_INFO_RETRIEVED
-Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called.
-The `data` HashMap contains a `participantsInfo` key with a list of participants information and a `requestId` key with the id that was sent in the RETRIEVE_PARTICIPANTS_INFO action.
+
+Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called. The `data` HashMap contains a `participantsInfo` key
+with a list of participants information and a `requestId` key with the id that was sent in the
+RETRIEVE_PARTICIPANTS_INFO action.
 
 ##### CHAT_MESSAGE_RECEIVED
-Broadcasted when a chat text message is received.
-The `data` HashMap contains a `senderId` key with the participantId of the sender, a `message` key with the content, a `isPrivate` key with a boolean value and a `timestamp` key.
+
+Broadcasted when a chat text message is received. `data` contains the following information:
+
+- `senderId`: the id of the participant that sent the message.
+- `message`: the content of the message.
+- `isPrivate`: true if the message is private, false otherwise.
+- `timestamp`: the (optional) timestamp of the message.
 
 ##### CHAT_TOGGLED
-Broadcasted when the chat dialog is opened or closed.
-The `data` HashMap contains a `isOpen` key with a boolean value.
+
+Broadcasted when the chat dialog is opened or closed. `data` contains the following information:
+
+- `isOpen`: true if the chat dialog is open, false otherwise.
+
+##### VIDEO_MUTED_CHANGED
+
+Broadcasted when the local participant's video is muted or unmuted. `data` contains the following information:
+
+- `muted`: an integer indicating whether the video is muted or not. 0 means unmuted, 4 means muted.
 
 ##### READY_TO_CLOSE
+
 The SDK is ready to be closed / dismised.
 
 ### Broadcasting Actions
+
 The SDK listens for broadcasted actions from the users and reacts accordingly.
 
 ```java

@@ -392,27 +392,38 @@ Broadcasted before a conference is joined. The `data` HashMap contains a `url` k
 Broadcasted when audioMuted state changed. The `data` HashMap contains a `muted` key with state of the audioMuted for
 the localParticipant.
 
-##### VIDEO_MUTED_CHANGED
-
-Broadcasted when videoMuted state changed. The `data` HashMap contains a `muted` key with state of the videoMuted for
-the localParticipant.
-
 ##### PARTICIPANT_JOINED
 
-Broadcasted when a participant has joined the conference. The `data` HashMap contains information of the participant
-that has joined. Depending of whether the participant is the local one or not, some of them are present/missing. isLocal
-email name participantId
+Broadcasted when a participant has joined the conference. Depending on whether the participant is the local one or not,
+some properties are present or missing. `data` contains the following information:
+
+- `email`: The email of the participant.
+- `name`: The name of the participant.
+- `role`: The role of the participant.
+- `participantId`: The id of the participant.
 
 ##### PARTICIPANT_LEFT
 
-Broadcasted when a participant has joined the conference. The `data` HashMap contains information of the participant
-that has left. Depending of whether the participant is the local one or not, some of them are present/missing. isLocal
-email name participantId
+Broadcasted when a participant has left the conference. `data` contains the following information:
+
+- `participantId`: Id of the participant that left.
 
 ##### ENDPOINT_TEXT_MESSAGE_RECEIVED
 
 Broadcasted when an endpoint text message is received. The `data` HashMap contains a `senderId` key with the
 participantId of the sender and a `message` key with the content.
+
+#### SCREEN_SHARE_TOGGLED
+
+Broadcasted when a participant starts or stops sharing his screen. `data` contains the following information:
+
+- `participantId`: Id of the participant that started or stopped sharing his screen.
+- `sharing`: True if the participant is sharing his screen, false otherwise.
+
+Called when a chat message is received.
+
+The `data` dictionary contains a `participantId` key with the id of the participant and a 'sharing' key with boolean
+value.
 
 ##### PARTICIPANTS_INFO_RETRIEVED
 
@@ -422,12 +433,22 @@ RETRIEVE_PARTICIPANTS_INFO action.
 
 ##### CHAT_MESSAGE_RECEIVED
 
-Broadcasted when a chat text message is received. The `data` HashMap contains a `senderId` key with the participantId of
-the sender, a `message` key with the content, a `isPrivate` key with a boolean value and a `timestamp` key.
+Broadcasted when a chat text message is received. `data` contains the following information:
+
+- `senderId`: Id of the participant that sent the message.
+- `message`: The content of the message.
+- `isPrivate`: True if the message is private, false otherwise.
 
 ##### CHAT_TOGGLED
 
-Broadcasted when the chat dialog is opened or closed. The `data` HashMap contains a `isOpen` key with a boolean value.
+Broadcasted when the chat dialog is opened or closed. `data` contains the following information:
+
+- `isOpen`: True if the chat dialog is open, false otherwise.
+
+##### VIDEO_MUTED_CHANGED
+
+Broadcasted when videoMuted state changed. The `data` HashMap contains a `muted` key with state of the videoMuted for
+the localParticipant.
 
 ##### READY_TO_CLOSE
 

@@ -343,10 +343,11 @@ The `data` `Map` contains a "url" key with the conference URL.
 
 #### onConferenceTerminated
 
-Called when a conference was terminated either by user choice or due to a failure.
+Called when a conference was terminated either by user choice or due to a
+failure.
 
-The `data` `Map` contains an "error" key with the error and a "url" key with the conference URL. If the conference
-finished gracefully no `error`
+The `data` `Map` contains an "error" key with the error and a "url" key
+with the conference URL. If the conference finished gracefully no `error`
 key will be present.
 
 #### onConferenceWillJoin

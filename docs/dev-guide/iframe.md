@@ -188,6 +188,11 @@ const api = new JitsiMeetExternalAPI(domain, options);
 ```
 **Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
 
+
+:::warning
+The following sections have moved to new pages. Please check the new pages as these sections will not be updated.
+:::
+
 ## Functions
 
 Use the following API functions to control your embedded Jitsi Meet Conference.

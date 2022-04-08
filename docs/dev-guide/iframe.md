@@ -1253,6 +1253,23 @@ The listener receives an object with the following structure:
 }
 ```
 
+### faceLandmarkDetected
+
+Provides event notifications when a face landmark is detected
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    faceBox: {
+        left: number, // face bounding box distance as percentage from the left video edge
+        right: number // face bounding box distance as percentage from the right video edge
+        width: number // face bounding box width as percentage of the total video width
+    }, // this might be undefined if config.faceLandmarks.faceCenteringThreshold is not passed 
+    faceExpression: string // check https://github.com/jitsi/jitsi-meet/blob/master/react/features/face-landmarks/constants.js#L3 for available values
+}
+```
+
 ### errorOccurred
 
 Provides event notifications about an error which has occurred.

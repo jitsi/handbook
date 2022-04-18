@@ -46,6 +46,8 @@ To be used with custom domains as-it-is in React projects:
     getIFrameRef = { (iframe) => { iframeRef.style.height = 400; } }
 />
 ```
+#### Properties specific to the `JitsiMeeting` component
+* **domain**: Optional. Field used to retrieve the external_api.js file that initializes the IFrame. If omitted, defaults to `meet.jit.si`.
 
 ### JaaSMeeting
 To be used with the `8x8.vc` domain as-it-is in React projects:
@@ -68,9 +70,20 @@ To be used with the `8x8.vc` domain as-it-is in React projects:
     onApiReady = { (externalApi) => { ... } }
 />
 ```
-This component requires the `appId` prop.
+...or with the `stage.8x8.vc` domain:
+```js
+<JaaSMeeting
+    appId = { YOUR_APP_ID }
+    roomName = "PleaseUseAGoodRoomName"
+    ...
+    useStaging = { true }
+/>
+```
+#### Properties specific to the `JaaSMeeting` component
+* **appId**: Required. Provides an isolated context and prefixes the room name.
+* **useStaging**: Optional. Tells whether to use the staging environment or not.
 
-## Properties
+## Common properties
 The component modules support a similar kind of customization to the Jitsi Meet IFrame. The following properties can be passed down to your instances of `JitsiMeeting` or `JaaSMeeting`.
 
 * **roomName**: Required. The name of the room to join.

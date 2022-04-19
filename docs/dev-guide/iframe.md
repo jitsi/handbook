@@ -530,6 +530,16 @@ api.isParticipantsPaneOpen().then(state => {
 });
 ```
 
+### isStartSilent
+
+Returns a Promise which resolves with whether meeting was started in view only.
+
+```javascript
+api.isStartSilent().then(startSilent => {
+    ...
+});
+```
+
 ### listBreakoutRooms
 
 Returns a Promise which resolves with the map of breakout rooms.

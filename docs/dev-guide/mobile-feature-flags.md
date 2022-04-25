@@ -23,7 +23,7 @@ Here are the currently implemented flags:
 * `kick-out.enabled`: Flag indicating if kickout is enabled. Default: enabled (true).
 * `live-streaming.enabled`: Flag indicating if live-streaming should be enabled. Default: auto-detected.
 * `meeting-name.enabled`: Flag indicating if displaying the meeting name should be enabled. Default: enabled (true).
-* `meeting-password.enabled`: Flag indicating if the meeting password button should be enabled. Note that this flag just decides on the buttton, if a meeting has a password set, the password ddialog will still show up. Default: enabled (true).
+* `meeting-password.enabled`: Flag indicating if the meeting password button should be enabled. Note that this flag just decides on the buttton, if a meeting has a password set, the password dialog will still show up. Default: enabled (true).
 * `notifications.enabled`: Flag indicating if the notifications should be enabled. Default: enabled (true).
 * `overflow-menu.enabled`: Flag indicating if the audio overflow menu button should be displayed. Default: enabled (true).
 * `pip.enabled`: Flag indicating if Picture-in-Picture should be enabled. Default: auto-detected.

@@ -454,6 +454,16 @@ Returns the IFrame HTML element which is used to load the Jitsi Meet conference:
 const iframe = api.getIFrame();
 ```
 
+### isAudioDisabled
+
+Returns a Promise which resolves to the current audio disabled state:
+
+```javascript
+api.isAudioDisabled().then(disabled => {
+    ...
+});
+```
+
 ### isAudioMuted
 
 Returns a Promise which resolves to the current audio muted state:

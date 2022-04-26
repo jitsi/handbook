@@ -765,6 +765,16 @@ No arguments are required.
 api.executeCommand('toggleShareScreen');
 ```
 
+### toggleSubtitles
+
+Start or stop subtitles.
+
+No arguments are required.
+
+```javascript
+api.executeCommand('toggleSubtitles');
+```
+
 ### toggleTileView
 
 Enter or exit the tile view layout mode. 
@@ -961,6 +971,16 @@ Allows moderators to toggle the follow me functionality
 ```javascript
 api.executeCommand('setFollowMe',
     value: boolean, // set to true if participants should be following you, false otherwise
+);
+```
+
+### setSubtitles
+
+Enables or disables the subtitles.
+
+```javascript
+api.executeCommand('setSubtitles',
+    enabled: boolean
 );
 ```
 

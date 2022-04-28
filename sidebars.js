@@ -61,7 +61,20 @@ module.exports = {
           items: [
             "dev-guide/dev-guide-ljm",
             "dev-guide/dev-guide-web-integrations",
-            "dev-guide/dev-guide-iframe",
+            {
+              type: "category",
+              label: "IFrame API",
+              link: {
+                type: "doc",
+                id: "dev-guide/dev-guide-iframe",
+              },
+              items: [
+                "dev-guide/dev-guide-iframe-functions",
+                "dev-guide/dev-guide-iframe-commands",
+                "dev-guide/dev-guide-iframe-events"
+              ]
+            },
+            "dev-guide/dev-guide-configuration",
             "dev-guide/dev-guide-react-sdk",
             "dev-guide/dev-guide-ljm-api",
           ],

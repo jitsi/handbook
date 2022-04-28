@@ -3,8 +3,8 @@ id: dev-guide-configuration
 title: Configuration
 ---
 
-:::note NOTE
-Options marked with ***** are not overwritable through `configOverwrite`
+:::note
+Options marked with 🚫 are not overwritable through `configOverwrite`
 :::
 
 :::warning
@@ -365,7 +365,7 @@ Default: `false`
 autoCaptionOnRecord: false
 ```
 
-### preferredTranscribingLanguage*
+### preferredTranscribingLanguage 🚫
 
 type: `Boolean`
 
@@ -378,7 +378,7 @@ Default: `'en-US'`
 preferredTranscribeLanguage: 'en-CA'
 ```
 
-### transcribeWithAppLanguage*
+### transcribeWithAppLanguage 🚫
 
 type: `Boolean`
 
@@ -493,7 +493,7 @@ E2EE to work in Safari if the corresponding flag is enabled in the browser.
 enableEncodedTransformSupport: false
 ```
 
-### enableForcedReload*
+### enableForcedReload 🚫
 
 type: `Boolean`
 
@@ -610,7 +610,7 @@ Default: `10000`
 pcStatsInterval: 50000
 ```
 
-### useNewBandwidthAllocationStrategy*
+### useNewBandwidthAllocationStrategy 🚫
 
 type: `Boolean`
 
@@ -654,7 +654,7 @@ Disables ICE/UDP by filtering out local and remote UDP candidates in signalling.
 webrtcIceUdpDisable: false
 ```
 
-### websocket*
+### websocket 🚫
 
 type: `String`
 
@@ -703,7 +703,7 @@ Default value for the channel "last N" attribute. -1 for unlimited.
 channelLastN: -1
 ```
 
-### lastNLimits*
+### lastNLimits 🚫
 
 type: `Object`
 

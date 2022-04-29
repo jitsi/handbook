@@ -270,6 +270,51 @@ Default: **unset**
 startWithAudioMuted: false
 ```
 
+## Breakout rooms
+
+### breakoutRooms
+
+type: `Object`
+
+Options related to the breakout rooms feature.
+
+Default: **unset**
+
+Properties:
+* `hideAddRoomButton` - Hides the add breakout room button. This replaces `hideAddRoomButton`.
+* `hideAutoAssignButton` - Hides the auto assign participants button.
+* `hideFooterMenu` - Hides the participants pane footer menu.
+* `hideJoinRoomButton` - Hides the join breakout room button.
+* `hideModeratorSettingsTab` - Hides the moderator settings tab.
+* `hideMoreActionsButton` - Hides the more actions button.
+* `hideMuteAllButton` - Hides the mute all button.
+
+```javascript
+breakoutRooms: {
+    hideAddRoomButton: false,
+    hideAutoAssignButton: false,
+    hideFooterMenu: false,
+    hideJoinRoomButton: false,
+    hideModeratorSettingsTab: false,
+    hideMoreActionsButton: false,
+    hideMuteAllButton: false
+}
+```
+
+### ~~hideAddRoomButton~~
+
+type: `Boolean`
+
+__DEPRECATED__ Use `breakoutRooms.hideAddRoomButton` instead.
+
+Hides add breakout room button.
+
+Default: `false`
+
+```javascript
+hideAddRoomButton: false
+```
+
 ## Callstats
 
 ### callStatsConfigParams

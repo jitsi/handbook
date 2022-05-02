@@ -26,17 +26,19 @@ follow these steps:
 4. Create required `CONFIG` directories
    * For linux: 
    ```bash
-   mkdir -p ~/.jitsi-meet-cfg/{web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
    ```
    * For Windows: 
    ```bash
-   echo web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
+   echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
 5. Run ``docker-compose up -d``
-6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
+6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
 
 Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
-direct access via HTTP instead HTTPS leads to WebRTC errors such as _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_ or _navigator.mediaDevices is undefined_.
+direct access via HTTP instead HTTPS leads to WebRTC errors such as
+_Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_
+or _navigator.mediaDevices is undefined_.
 
 If you want to use jigasi too, first configure your env file with SIP credentials
 and then run Docker Compose as follows: 
@@ -45,8 +47,8 @@ and then run Docker Compose as follows:
 docker-compose -f docker-compose.yml -f jigasi.yml up
 ```
 
-If you want to enable document sharing via [Etherpad], configure it and run Docker Compose as
-follows: 
+If you want to enable document sharing via [Etherpad],
+configure it and run Docker Compose as follows: 
 
 ```bash
 docker-compose -f docker-compose.yml -f etherpad.yml up
@@ -85,12 +87,13 @@ JITSI_RELEASE=unstable make
 
 ### Running unstable images
 
-Every day a new "unstable" image build is uploaded. You can test them by getting the YAML files from the repository and changing `latest` to `unstable` or `ustable-YYYY-MM-DD` for the unstable images of a specific day.
+Every day a new "unstable" image build is uploaded.
+You can test them by getting the YAML files from the repository and changing `latest` to `unstable` or `ustable-YYYY-MM-DD` for the unstable images of a specific day.
 
 ### Security note
 
-This setup used to have default passwords for internal accounts used across components. In order to make the default setup
-secure by default these have been removed and the respective containers won't start without having a password set.
+This setup used to have default passwords for internal accounts used across components.
+In order to make the default setup secure by default these have been removed and the respective containers won't start without having a password set.
 
 Strong passwords may be generated as follows: `./gen-passwords.sh`
 This will modify your `.env` file (a backup is saved in `.env.bak`) and set strong passwords for each of the
@@ -136,6 +139,8 @@ sudo firewall-cmd --permanent --add-port=10000/udp
 sudo firewall-cmd --reload
 ```
 
+See [the corresponding section in the manual setup guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart#setup-and-configure-your-firewall).
+
 ### Images
 
 * **base**: Debian stable base image with the [S6 Overlay] for process control and the
@@ -151,17 +156,17 @@ sudo firewall-cmd --reload
 
 ### Design considerations
 
-Jitsi Meet uses XMPP for signaling, thus the need for the XMPP server. The setup provided
-by these containers does not expose the XMPP server to the outside world. Instead, it's kept
-completely sealed, and routing of XMPP traffic only happens on a user-defined network.
+Jitsi Meet uses XMPP for signaling, thus the need for the XMPP server.
+The setup provided by these containers does not expose the XMPP server to the outside world.
+Instead, it's kept completely sealed, and routing of XMPP traffic only happens on a user-defined network.
 
-The XMPP server can be exposed to the outside world, but that's out of the scope of this
-project.
+The XMPP server can be exposed to the outside world,
+but that's out of the scope of this project.
 
 ## Configuration
 
-The configuration is performed via environment variables contained in a ``.env`` file. You
-can copy the provided ``env.example`` file as a reference.
+The configuration is performed via environment variables contained in a ``.env`` file.
+You can copy the provided ``env.example`` file as a reference.
 
 Variable | Description | Example
 --- | --- | ---
@@ -187,15 +192,19 @@ Variable | Description | Example
 `LETSENCRYPT_DOMAIN` | Domain for which to generate the certificate | meet.example.com
 `LETSENCRYPT_EMAIL` | E-Mail for receiving important account notifications (mandatory) | alice@atlanta.net
 
-In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443 and PUBLIC_URL to your domain. You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
+In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443 and PUBLIC_URL to your domain.
+You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
 
 **Let's Encrypt rate limit warning**: Let's Encrypt has a limit to how many times you can submit a request
 for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate) 
 certificates for the same domain name every seven days. Because of this, it is recommended that you disable the 
-Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder. Otherwise, you 
-might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
+Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder.
+Otherwise, you might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
 the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
+
+Note that, when you move away from `LETSENCRYPT_USE_STAGING`,
+you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
 
 For more information on Let's Encrypt's rate limits, visit:
 https://letsencrypt.org/docs/rate-limits/
@@ -547,8 +556,8 @@ the ``DOCKER_HOST_ADDRESS`` should be set. This way, the Videobridge will advert
 of the host running Docker instead of the internal IP address that Docker assigned it, thus making [ICE]
 succeed. If your users are coming in over the Internet (and not over LAN), this will likely be your public IP address. If this is not set up correctly, calls will crash when more than two users join a meeting.
 
-The public IP address is discovered via [STUN]. STUN servers can be specified with the ``JVB_STUN_SERVERS``
-option.
+The public IP address is discovered via [STUN].
+STUN servers can be specified with the ``JVB_STUN_SERVERS`` option.
 
 ## Build Instructions
 
@@ -564,7 +573,7 @@ You are now able to run `docker-compose up` as usual.
 
 By default this setup is using WebSocket connections for 2 core components:
 
-* Sinalling (XMPP)
+* Signalling (XMPP)
 * Bridge channel (colibri)
 
 Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:

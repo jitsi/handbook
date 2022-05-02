@@ -25,7 +25,7 @@ If you are the moderator of a conference (everyone is a moderator if you are usi
 
 You may want to set some "ground rules" for who can talk and when, just as with any physical meeting or classroom.
 
-If you would like to limit who can become a moderator, you need to set up your own instance of Jitsi and enable "secure domain". Please see [here](#_4-enable-secure-domain-if-you-are-using-your-own-instance-of-jitsi_) for more information.
+If you would like to limit who can become a moderator, you need to set up your own instance of Jitsi and enable "secure domain". Please see [here](#4-enable-secure-domain-if-you-are-using-your-own-instance-of-jitsi) for more information.
 
 ## How can I protect my meetings with Jitsi?
 

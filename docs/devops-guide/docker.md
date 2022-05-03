@@ -35,10 +35,12 @@ follow these steps:
 5. Run ``docker-compose up -d``
 6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
 
-Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
+:::note
+HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
 direct access via HTTP instead HTTPS leads to WebRTC errors such as
 _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_
 or _navigator.mediaDevices is undefined_.
+:::
 
 If you want to use jigasi too, first configure your env file with SIP credentials
 and then run Docker Compose as follows: 
@@ -177,8 +179,10 @@ Variable | Description | Example
 `DOCKER_HOST_ADDRESS` | IP address of the Docker host, needed for LAN environments | 192.168.1.1
 `PUBLIC_URL` | Public URL for the web service | https://meet.example.com
 
-**NOTE**: The mobile apps won't work with self-signed certificates (the default).
+:::note
+The mobile apps won't work with self-signed certificates (the default).
 See below for instructions on how to obtain a proper certificate with Let's Encrypt.
+:::
 
 ### Let's Encrypt configuration
 
@@ -203,8 +207,10 @@ Otherwise, you might want to consider moving the `.jitsi-meet-cfg` folder to a d
 the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
 
-Note that, when you move away from `LETSENCRYPT_USE_STAGING`,
+:::note
+When you move away from `LETSENCRYPT_USE_STAGING`,
 you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
+:::
 
 For more information on Let's Encrypt's rate limits, visit:
 https://letsencrypt.org/docs/rate-limits/
@@ -264,8 +270,10 @@ echo "snd-aloop" >> /etc/modules
 lsmod | grep snd_aloop
 ```
 
-NOTE: If you are running on AWS you may need to reboot your machine to use the generic kernel instead
+:::note
+If you are running on AWS you may need to reboot your machine to use the generic kernel instead
 of the "aws" kernel. If after reboot, your machine is still using the "aws" kernel, you'll need to manually update the grub file. So just run:
+:::
 
 ```bash
 # open the grub file in editor
@@ -558,6 +566,10 @@ succeed. If your users are coming in over the Internet (and not over LAN), this 
 
 The public IP address is discovered via [STUN].
 STUN servers can be specified with the ``JVB_STUN_SERVERS`` option.
+
+:::note
+Due to a bug in the docker version currently in the Debian repos (20.10.5), [Docker does not listen on IPv6 ports](https://forums.docker.com/t/docker-doesnt-open-ipv6-ports/106201/2), so for that combination you will have to [manually obtain the latest version](https://docs.docker.com/engine/install/debian/).
+:::
 
 ## Build Instructions
 

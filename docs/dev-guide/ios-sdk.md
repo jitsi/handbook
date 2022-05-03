@@ -577,4 +577,4 @@ Finally, we are ready to test the implementation. Before doing so, make sure voi
 - Add a new key `RTCScreenSharingExtension` to the app's `Info.plist` with the extension's `Bundle Identifier` as the value.
 - Update `SampleHandler.swift` with the code from the sample project. Update `appGroupIdentifier` constant with the App Group name your app and extension are both registered to.
 - Update `JitsiMeetConferenceOptions` to enable screen sharing using the `ios.screensharing.enabled` feature flag.
-- Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.playlist`, in order to work when the app is in the background.
+- Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.plist`, in order to work when the app is in the background.

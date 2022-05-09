@@ -736,6 +736,39 @@ choose to open the pad on their own in that case.
 openSharedDocumentOnJoin: false
 ```
 
+## Gravatar
+
+### gravatar
+
+type: `Object`
+
+Setup for Gravatar-compatible services.
+
+Properties:
+* `baseUrl` 🚫 - Base URL for a Gravatar-compatible service. Defaults to Gravatar.
+* `disabled` - True if Gravatar should be disabled.
+
+```javascript
+gravatar: {
+    baseUrl: 'https://www.gravatar.com/avatar/',
+    disabled: false
+}
+```
+
+### ~~gravatarBaseURL~~ 🚫
+
+type: `String`
+
+__DEPRECATED__ Use `gravatar.baseUrl` instead.
+
+Base URL for a Gravatar-compatible service.
+
+Default: 'https://www.gravatar.com/avatar/'
+
+```javascript
+gravatarBaseURL: 'https://www.gravatar.com/avatar/'
+```
+
 ## LastN
 
 ### channelLastN

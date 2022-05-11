@@ -11,10 +11,6 @@ The following distributions are supported out-of-the-box:
 
 _Note_: Many of the installation steps require `root` or `sudo` access. 
 
-:::danger
-Jitsi Meet is not compatible with Prosody 0.12 at the moment (18-03-2022) please downgrade to Prosody 0.11.
-:::
-
 ## Required packages and repository updates
 
 You will need the following packages:

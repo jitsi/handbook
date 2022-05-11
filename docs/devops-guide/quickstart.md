@@ -24,7 +24,7 @@ You will need the following packages:
 * `curl` # or `wget` to "Add the Jitsi package repository" below
 
 :::note Note
-OpenJDK 8 or OpenJDK 11 must be used.
+OpenJDK 11 must be used.
 :::
 
 Make sure your system is up-to-date and required packages are installed:

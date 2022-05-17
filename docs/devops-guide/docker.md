@@ -507,6 +507,12 @@ Variable | Description | Example
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
 
+#### External authentication
+
+Variable | Description | Example
+--- | --- | ---
+`TOKEN_AUTH_URL` | Authenticate using external service or just focus external auth window if there is one already. | https://auth.meet.example.com/{room}
+
 ### Shared document editing using Etherpad
 
 You can collaboratively edit a document via [Etherpad]. In order to enable it, set the config options below and run

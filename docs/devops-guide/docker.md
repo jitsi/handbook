@@ -481,6 +481,17 @@ This can be tested using the [jwt.io] debugger. Use the following sample payload
 }
 ```
 
+#### Authentication using Matrix
+
+For more information see the documentation of the "Prosody Auth Matrix User Verification" [here](https://github.com/matrix-org/prosody-mod-auth-matrix-user-verification).
+
+Variable | Description | Example
+--- | --- | ---
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000
+`MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. | issuer (default) 
+`MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
+`MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
+
 ### Shared document editing using Etherpad
 
 You can collaboratively edit a document via [Etherpad]. In order to enable it, set the config options below and run

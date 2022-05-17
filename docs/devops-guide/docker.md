@@ -534,6 +534,16 @@ Variable | Description | Example
 
 For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol section "Before you begin" paragraph 1 to 5.
 
+### Sentry logging configuration
+
+Variable | Description | Default value
+--- | --- | ---
+`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`SENTRY_ENVIRONMENT` | Optional environment info to filter events | production
+`SENTRY_RELEASE` | Optional release info to filter events | 1.0.0
+
 ### Advanced configuration
 
 These configuration options are already set and generally don't need to be changed.

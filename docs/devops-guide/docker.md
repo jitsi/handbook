@@ -215,7 +215,22 @@ you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
 For more information on Let's Encrypt's rate limits, visit:
 https://letsencrypt.org/docs/rate-limits/
 
-### SIP gateway configuration
+### Features configuration (config.js)
+
+Variable | Description | Example
+--- | --- | ---
+`TOOLBAR_BUTTONS` | Configure toolbar buttons. Add the buttons name separated with comma(no spaces between comma) | |
+`HIDE_PREMEETING_BUTTONS` | Hide the buttons at pre-join screen. Add the buttons name separated with comma | |
+`ENABLE_LOBBY` | Control whether the lobby feature should be enabled or not | 1
+`ENABLE_AV_MODERATION` | Control whether the A/V moderation should be enabled or not | 1
+`ENABLE_PREJOIN_PAGE` | Show a prejoin page before entering a conference | 1
+`ENABLE_WELCOME_PAGE` | Enable the welcome page | 1
+`ENABLE_CLOSE_PAGE` | Enable the close page | 0
+`DISABLE_AUDIO_LEVELS` | Disable measuring of audio levels | 0
+`ENABLE_NOISY_MIC_DETECTION` | Enable noisy mic detection | 1
+`ENABLE_BREAKOUT_ROOMS` | Enable breakout rooms | 1
+
+### Jigasi SIP gateway (audio only) configuration
 
 If you want to enable the SIP gateway, these options are required:
 
@@ -239,7 +254,7 @@ The JSON with the Dial-In numbers should look like this:
 {"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
 ```
 
-### Jitsi Broadcasting Infrastructure (Jibri) configuration
+### Recording / live streaming configuration
 
 Before running Jibri, you need to set up an ALSA loopback device on the host. This **will not**
 work on a non-Linux host.
@@ -357,7 +372,7 @@ For using multiple Jibri instances, you have to select different loopback interf
 
 </details>
 
-### Jitsi-Meet web configuration
+### Jitsi Meet configuration
 
 :::tip This section partly contains duplicate settings
 

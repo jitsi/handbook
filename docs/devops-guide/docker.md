@@ -578,9 +578,6 @@ Variable | Description | Default value
 `JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | passw0rd
 `JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
 `JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
-`JVB_TCP_HARVESTER_DISABLED` | Disable the additional harvester which allows video over TCP (rather than just UDP) | true
-`JVB_TCP_PORT` | TCP port for media used by Jitsi Videobridge when the TCP Harvester is enabled | 4443
-`JVB_TCP_MAPPED_PORT` | TCP port advertised by Jitsi Videobridge | 4443
 `JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
 `JVB_ENABLE_APIS` | Comma separated list of JVB APIs to enable | none
 `JIGASI_XMPP_USER` | XMPP user for Jigasi MUC client connections | jigasi
@@ -598,6 +595,13 @@ Variable | Description | Default value
 `DISABLE_HTTPS` | Handle TLS connections outside of this setup | 1
 `ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS (necessary for Let's Encrypt) | 1
 `LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
+
+#### Advanced JVB options
+
+Variable | Description | Default value
+--- | --- | ---
+`COLIBRI_REST_ENABLED` | Enable the COLIBRI REST API | true
+`SHUTDOWN_REST_ENABLED` | Enable the shutdown REST API | true
 
 ### Running behind NAT or on a LAN environment
 

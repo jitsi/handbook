@@ -107,8 +107,8 @@ mouseMoveCallbackInterval: 1000
 
 type: `Boolean`
 
-This property is related to the use case when jitsi-meet is used via the IFrame API. When the property is true
-jitsi-meet will use the local storage of the host page instead of its own. This option is useful if the browser
+This property is related to the use case when Jitsi Meet is used via the IFrame API. When the property is true
+Jitsi Meet will use the local storage of the host page instead of its own. This option is useful if the browser
 is not persisting the local storage inside the iframe.
 
 Default: **unset**
@@ -570,7 +570,7 @@ type: `Boolean`
 
 Whether to enable stats collection or not in the `TraceablePeerConnection`.
 This can be useful for debugging purposes (post-processing/analysis of
-the webrtc stats) as it is done in the jitsi-meet-torture bandwidth
+the WebRTC stats) as it is done in the jitsi-meet-torture bandwidth
 estimation tests.
 
 ```javascript

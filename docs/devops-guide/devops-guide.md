@@ -22,7 +22,7 @@ The content is divided in 3 guides:
 
 
 :::note First, a bit of general advice
-Jitsi-meet being based on [WebRTC](https://en.wikipedia.org/wiki/WebRTC), an encrypted communication link (https) is ___necessary___ to get working multimedia, and the setup is not always trivial.
+Jitsi Meet being based on [WebRTC](https://en.wikipedia.org/wiki/WebRTC), an encrypted communication link (https) is ___necessary___ to get working multimedia, and the setup is not always trivial.
 
 The best option is an Internet server with a certificate for a domain registered in the [DNS](https://en.wikipedia.org/wiki/Domain_Name_System#Domain_name_registration).
 

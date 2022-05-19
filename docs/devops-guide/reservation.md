@@ -7,7 +7,7 @@ sidebar_label: Reservation System
 ### Support for a reservation system over REST API
 
 It is possible to connect to an external conference reservation system using a
-REST API. Before a new Jitsi-meet conference is created, the reservation system will be
+REST API. Before a new Jitsi Meet conference is created, the reservation system will be
 queried for room availability. The system is supposed to return a positive or
 negative response code, which also contains conference duration. Prosody will enforce
 conference duration and if the time limit is exceeded the conference will be
@@ -74,7 +74,7 @@ All API calls use the following datetime format:
 
 ##### Conference allocation
 
-When the first user joins a MUC room (i.e. Jitsi-meet URL is opened), an `HTTP POST`
+When the first user joins a MUC room (i.e. Jitsi Meet URL is opened), an `HTTP POST`
 request is sent to `'/conference'` endpoint with the following parameters
 included:
 

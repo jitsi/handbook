@@ -19,7 +19,6 @@ module.exports = {
       },
       items: [
         "community/community-instances",
-        "community/breakout-rooms",
         "community/third-party-software",
       ],
     },

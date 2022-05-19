@@ -237,7 +237,7 @@ If you want to enable the SIP gateway, these options are required:
 Variable | Description | Example
 --- | --- | ---
 `JIGASI_SIP_URI` | SIP URI for incoming / outgoing calls | test@sip2sip.info
-`JIGASI_SIP_PASSWORD` | Password for the specified SIP account | passw0rd
+`JIGASI_SIP_PASSWORD` | Password for the specified SIP account | `<unset>`
 `JIGASI_SIP_SERVER` | SIP server (use the SIP account domain if in doubt) | sip2sip.info
 `JIGASI_SIP_PORT` | SIP server port | 5060
 `JIGASI_SIP_TRANSPORT` | SIP transport | UDP
@@ -306,14 +306,14 @@ If you want to enable Jibri these options are required:
 
 Variable | Description | Example
 --- | --- | ---
-`ENABLE_RECORDING` | Enable recording conference to local disk | 1
+`ENABLE_RECORDING` | Enable recording / live streaming | 1
 
 Extended Jibri configuration:
 
 Variable | Description | Example
 --- | --- | ---
 `JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
-`JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | passw0rd
+`JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
 `JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
 `JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
 `JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
@@ -537,6 +537,9 @@ Variable | Description | Example
 `GC_CLIENT_EMAIL` | `client_email` from Google Cloud Credentials
 `GC_CLIENT_ID` | `client_id` from Google Cloud Credentials
 `GC_CLIENT_CERT_URL` | `client_x509_cert_url` from Google Cloud Credentials
+`JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
+`JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send transcribed text to the chat when transcriber is on | true
+`JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an url to the chat with transcription file | true
 
 For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol section "Before you begin" paragraph 1 to 5.
 
@@ -572,16 +575,16 @@ Variable | Description | Default value
 `RESTART_POLICY` | Container restart policy | defaults to `unless-stopped`
 `JICOFO_COMPONENT_SECRET` | XMPP component password for Jicofo | s3cr37
 `JICOFO_AUTH_USER` | XMPP user for Jicofo client connections | focus
-`JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | passw0rd
+`JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
 `JVB_AUTH_USER` | XMPP user for JVB MUC client connections | jvb
-`JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | passw0rd
+`JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
 `JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
 `JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
 `JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
 `JVB_ENABLE_APIS` | Comma separated list of JVB APIs to enable | none
 `JIGASI_XMPP_USER` | XMPP user for Jigasi MUC client connections | jigasi
-`JIGASI_XMPP_PASSWORD` | XMPP password for Jigasi MUC client connections | passw0rd
+`JIGASI_XMPP_PASSWORD` | XMPP password for Jigasi MUC client connections | `<unset>`
 `JIGASI_BREWERY_MUC` | MUC name for the Jigasi pool | jigasibrewery
 `JIGASI_PORT_MIN` | Minimum port for media used by Jigasi | 20000
 `JIGASI_PORT_MAX` | Maximum port for media used by Jigasi | 20050
@@ -592,8 +595,8 @@ Variable | Description | Default value
 `JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
 `JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send a transcribed text to the chat when transcriber is on | true
 `JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an URL to the chat with transcription file | true
-`DISABLE_HTTPS` | Handle TLS connections outside of this setup | 1
-`ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS (necessary for Let's Encrypt) | 1
+`DISABLE_HTTPS` | Handle TLS connections outside of this setup | 0
+`ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS | 0
 `LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
 
 #### Advanced JVB options

@@ -582,3 +582,15 @@ api.executeCommand('sendParticipantToRoom',
     roomId: String // The id of the room.
 );
 ```
+
+### overwriteNames
+
+Overwrites the names of the given participants to the given names. (locally for the participant that send the command)
+
+```javascript
+api.executeCommand('overwriteNames', [{
+        id: String, // The id of the participant.
+        name: String // The new name.
+    }]
+);
+```

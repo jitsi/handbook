@@ -609,6 +609,7 @@ Variable | Description | Default value
 `JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
 `JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
 `JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
+`JVB_COLIBRI_PORT` | COLIBRI REST API port of JVB exposed to localhost | 8080
 `JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
 `COLIBRI_REST_ENABLED` | Enable the COLIBRI REST API | true
 `SHUTDOWN_REST_ENABLED` | Enable the shutdown REST API | true

@@ -553,6 +553,18 @@ Variable | Description | Default value
 `SENTRY_ENVIRONMENT` | Optional environment info to filter events | production
 `SENTRY_RELEASE` | Optional release info to filter events | 1.0.0
 
+### TURN server configuration
+
+Configure external TURN servers.
+
+Variable | Description | Default value
+--- | --- | ---
+`TURN_CREDENTIALS` | Credentials for TURN servers
+`TURN_HOST` | TURN server hostname (TCP transport)
+`TURN_PORT` | TURN server port (TCP transport)
+`TURNS_HOST` | TURN server hostname (TLS transport)
+`TURNS_PORT` | TURN server port (TLS transport)
+
 ### Advanced configuration
 
 These configuration options are already set and generally don't need to be changed.
@@ -573,38 +585,47 @@ Variable | Description | Default value
 `GLOBAL_MODULES` | Custom prosody modules to load in global configuration (comma separated) | statistics,alert
 `GLOBAL_CONFIG` | Custom configuration string with escaped newlines | foo = bar;\nkey = val;
 `RESTART_POLICY` | Container restart policy | defaults to `unless-stopped`
+`DISABLE_HTTPS` | Handle TLS connections outside of this setup | 0
+`ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS | 0
+`LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
+`ENABLE_HSTS` | Send a `strict-transport-security` header to force browsers to use a secure and trusted connection. Recommended for production use. | 1
+`ENABLE_IPV6` | Provides means to disable IPv6 in environments that don't support it | 1
+
+#### Advanced Jicofo options
+
+Variable | Description | Default value
+--- | --- | ---
 `JICOFO_COMPONENT_SECRET` | XMPP component password for Jicofo | s3cr37
 `JICOFO_AUTH_USER` | XMPP user for Jicofo client connections | focus
 `JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
-`JVB_AUTH_USER` | XMPP user for JVB MUC client connections | jvb
-`JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
-`JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
-`JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
-`JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
-`JVB_ENABLE_APIS` | Comma separated list of JVB APIs to enable | none
-`JIGASI_XMPP_USER` | XMPP user for Jigasi MUC client connections | jigasi
-`JIGASI_XMPP_PASSWORD` | XMPP password for Jigasi MUC client connections | `<unset>`
-`JIGASI_BREWERY_MUC` | MUC name for the Jigasi pool | jigasibrewery
-`JIGASI_PORT_MIN` | Minimum port for media used by Jigasi | 20000
-`JIGASI_PORT_MAX` | Maximum port for media used by Jigasi | 20050
-`JIGASI_ENABLE_SDES_SRTP` | Enable SDES srtp | 1
-`JIGASI_SIP_KEEP_ALIVE_METHOD` | Keepalive method | OPTIONS
-`JIGASI_HEALTH_CHECK_SIP_URI` | Health-check extension. Jigasi will call it for health check | keepalive
-`JIGASI_HEALTH_CHECK_INTERVAL` | Interval of health check in milliseconds | 300000
-`JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
-`JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send a transcribed text to the chat when transcriber is on | true
-`JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an URL to the chat with transcription file | true
-`DISABLE_HTTPS` | Handle TLS connections outside of this setup | 0
-`ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS | 0
-`LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
+`JICOFO_RESERVATION_REST_BASE_URL` | Base URL of Jicofo's reservation REST API |
 
 #### Advanced JVB options
 
 Variable | Description | Default value
 --- | --- | ---
+`JVB_AUTH_USER` | XMPP user for JVB MUC client connections | jvb
+`JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
+`JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
+`JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
+`JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
 `COLIBRI_REST_ENABLED` | Enable the COLIBRI REST API | true
 `SHUTDOWN_REST_ENABLED` | Enable the shutdown REST API | true
+
+#### Advanced Jigasi options
+
+Variable | Description | Default value
+--- | --- | ---
+`JIGASI_ENABLE_SDES_SRTP` | Enable SDES srtp | 0
+`JIGASI_SIP_KEEP_ALIVE_METHOD` | Keepalive method | OPTIONS
+`JIGASI_HEALTH_CHECK_SIP_URI` | Health-check extension |
+`JIGASI_HEALTH_CHECK_INTERVAL` | Health-check interval | 300000
+`JIGASI_XMPP_USER` | XMPP user for Jigasi MUC client connections | jigasi
+`JIGASI_XMPP_PASSWORD` | XMPP password for Jigasi MUC client connections | `<unset>`
+`JIGASI_BREWERY_MUC` | MUC name for the Jigasi pool | jigasibrewery
+`JIGASI_PORT_MIN` | Minimum port for media used by Jigasi | 20000
+`JIGASI_PORT_MAX` | Maximum port for media used by Jigasi | 20050
 
 ### Running behind NAT or on a LAN environment
 

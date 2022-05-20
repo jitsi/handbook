@@ -283,9 +283,8 @@ Default: **unset**
 Properties:
 * `hideAddRoomButton` - Hides the add breakout room button. This replaces `hideAddRoomButton`.
 * `hideAutoAssignButton` - Hides the auto assign participants button.
-* `hideFooterMenu` - Hides the participants pane footer menu.
 * `hideJoinRoomButton` - Hides the join breakout room button.
-* `hideModeratorSettingsTab` - Hides the moderator settings tab.
+* `hideModeratorSettingsTab` - Hides the button to open the moderator settings tab.
 * `hideMoreActionsButton` - Hides the more actions button.
 * `hideMuteAllButton` - Hides the mute all button.
 
@@ -293,11 +292,7 @@ Properties:
 breakoutRooms: {
     hideAddRoomButton: false,
     hideAutoAssignButton: false,
-    hideFooterMenu: false,
-    hideJoinRoomButton: false,
-    hideModeratorSettingsTab: false,
-    hideMoreActionsButton: false,
-    hideMuteAllButton: false
+    hideJoinRoomButton: false
 }
 ```
 
@@ -848,4 +843,55 @@ Hide the lobby button.
 hideLobbyButton: false
 ```
 
+## Notifications
 
+### notifications
+
+type: `Array`
+
+Use this array to configure which notifications will be shown to the user.
+The items correspond to the title or description key of that notification.
+Some of these notifications also depend on some other internal logic to be displayed or not,
+so adding them here will not ensure they will always be displayed.
+
+A falsy value for this prop will result in having all notifications enabled (e.g null, undefined, false).
+
+```javascript
+notifications: []
+```
+
+### disabledNotifications
+
+type: `Array`
+
+List of notifications to be disabled. Works in tandem with the above setting.
+
+```javascript
+disabledNotifications: [
+    'notify.chatMessages', // shown when receiving chat messages while the chat window is closed
+    'notify.grantedTo', // shown when moderator rights were granted to a participant
+]
+```
+
+## Participants Pane
+
+### participantsPane
+
+type: `Object`
+
+Options related to the participants pane.
+
+Default: **unset**
+
+Properties:
+* `hideModeratorSettingsTab` - Hides the button to open the moderator settings tab.
+* `hideMoreActionsButton` - Hides the more actions button.
+* `hideMuteAllButton` - Hides the mute all button.
+
+```javascript
+participantsPane: {
+    hideModeratorSettingsTab: false,
+    hideMoreActionsButton: false,
+    hideMuteAllButton: false
+}
+```

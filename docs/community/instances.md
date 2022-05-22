@@ -241,7 +241,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
-| video.beic.it |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=video.beic.it&latest) |  Consortium GARR |
 | jitsi.area.fi.cnr.it	 |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.area.fi.cnr.it&latest)  | Consortium GARR  |
 | jitsi.cedrc.cnr.it |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.cedrc.cnr.it&latest)  | Consortium GARR  |
 | iorestoacasa01.cineca.it	 |  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=iorestoacasa01.cineca.it&latest)  | Consortium GARR  |

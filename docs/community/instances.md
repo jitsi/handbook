@@ -364,7 +364,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
 | conference.facil.services |  ✅   |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=conference.facil.services&latest) | OVH SAS  |
-| appels.dev.facil.services |  ✅   |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=appels.dev.facil.services&latest) | OVH SAS  |
 | meet-6.immerda.ch |  ✅   |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet-6.immerda.ch&latest) | KOUMBIT  |
 
 ### Chile <a id="chile"></a>

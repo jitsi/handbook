@@ -591,6 +591,13 @@ Variable | Description | Default value
 `ENABLE_HSTS` | Send a `strict-transport-security` header to force browsers to use a secure and trusted connection. Recommended for production use. | 1
 `ENABLE_IPV6` | Provides means to disable IPv6 in environments that don't support it | 1
 
+#### Advanced Prosody options
+
+Variable | Description | Default value
+--- | --- | ---
+`PROSODY_RESERVATION_ENABLED` | Enable Prosody's reservation REST API | false
+`PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API | 
+
 #### Advanced Jicofo options
 
 Variable | Description | Default value
@@ -599,7 +606,6 @@ Variable | Description | Default value
 `JICOFO_AUTH_USER` | XMPP user for Jicofo client connections | focus
 `JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
-`JICOFO_RESERVATION_REST_BASE_URL` | Base URL of Jicofo's reservation REST API |
 
 #### Advanced JVB options
 

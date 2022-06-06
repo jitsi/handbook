@@ -5,3 +5,4 @@ translated_docs
 build
 yarn.lock
 .docusaurus
+.vscode

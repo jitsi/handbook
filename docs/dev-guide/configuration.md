@@ -731,6 +731,41 @@ choose to open the pad on their own in that case.
 openSharedDocumentOnJoin: false
 ```
 
+## Filmstrip
+
+### disableFilmstripAutohiding
+
+type: `Boolean`
+
+Prevents the filmstrip from autohiding when screen width is under a certain threshold
+
+Default: `false`
+
+```javascript
+disableFilmstripAutohiding: true
+```
+
+### filmstrip
+
+type: `Object`
+
+Options related to the filmstrip.
+
+Default: **unset**
+
+Properties:
+* `disableResizable` - Disables user resizable filmstrip. This also allows configuration of the filmstrip
+    (width, tiles aspect ratios) through the interfaceConfig options.
+* `disableStageFilmstrip` - Disables the stage filmstrip (displaying multiple
+    participants on stage besides the vertical filmstrip)
+
+```javascript
+filmstrip: {
+    disableResizable: true,
+    disableStageFilmstrip: false
+}
+```
+
 ## Gravatar
 
 ### gravatar
@@ -843,6 +878,44 @@ Hide the lobby button.
 hideLobbyButton: false
 ```
 
+## Moderator
+
+### disableModeratorIndicator
+
+type: `Boolean`
+
+Hides the moderator indicators.
+
+Default: `false`
+
+```javascript
+disableModeratorIndicator: true
+```
+
+### disableReactionsModeration
+
+type: `Boolean`
+
+Disables the moderation of reactions feature.
+
+Default: `false`
+
+```javascript
+disableReactionsModeration: true
+```
+
+### disableRemoteMute
+
+type: `Boolean`
+
+Disables muting operations of remote participants.
+
+Default: `false`
+
+```javascript
+disableRemoteMute: true
+```
+
 ## Notifications
 
 ### notifications
@@ -893,5 +966,362 @@ participantsPane: {
     hideModeratorSettingsTab: false,
     hideMoreActionsButton: false,
     hideMuteAllButton: false
+}
+```
+
+## Recording
+
+### dropbox
+
+type: `Object`
+
+Enable the dropbox integration.
+
+Properties:
+* `appKey` - Your APP Key.
+* `redirectURI` - A URL to redirect the user to, after authenticating by default uses
+
+```javascript
+dropbox: {
+    appKey: 'DROPBOX_APP_KEY',
+    redirectURI: 'https://jitsi-meet.example.com/subfolder/static/oauth.html'
+}
+```
+
+### enableLocalRecording
+
+type: `Boolean`
+
+Whether to enable local recording or not.
+
+```javascript
+enableLocalRecording: true
+```
+
+### fileRecordingsEnabled
+
+type: `Boolean`
+
+Whether to enable file recording or not.
+
+```javascript
+fileRecordingsEnabled: false
+```
+
+### fileRecordingsServiceEnabled 🚫
+
+type: `Boolean`
+
+When integrations like dropbox are enabled only that will be shown,
+by enabling fileRecordingsServiceEnabled, we show both the integrations
+and the generic recording service (its configuration and storage type
+depends on jibri configuration)
+
+```javascript
+fileRecordingsServiceEnabled: true
+```
+
+### fileRecordingsServiceSharingEnabled 🚫
+
+type: `Boolean`
+
+Whether to show the possibility to share file recording with other people
+(e.g. meeting participants), based on the actual implementation
+on the backend.
+
+```javascript
+fileRecordingsServiceSharingEnabled: false
+```
+
+### hideRecordingLabel
+
+type: `Boolean`
+
+Set recording label to auto hide instead of staying always on screen.
+
+Default: `false`
+
+```javascript
+hideRecordingLabel: true
+```
+
+### recordingLimit 🚫
+
+type: `Object`
+
+Options for the recording limit notification.
+
+Properties:
+* `limit` - The recording limit in minutes. Note: This number appears in the notification text
+    but doesn't enforce the actual recording time limit. This should be configured in jibri!
+* `appName` = The name of the app with unlimited recordings.
+* `appURL` - The URL of the app with unlimited recordings.
+
+```javascript
+recordingLimit: {
+    limit: 60,
+    appName: 'Unlimited recordings APP',
+    appURL: 'https://unlimited.recordings.app.com/'
+}
+```
+
+## Screen Sharing
+
+### desktopSharingFrameRate
+
+type: `Object`
+
+Optional desktop sharing frame rate options
+
+Default: `{
+    min: 5,
+    max: 5
+}`
+
+```javascript
+desktopSharingFrameRate: {
+    min: 3,
+    max: 10
+}
+```
+
+### disableScreensharingVirtualBackground
+
+type: `Boolean`
+
+Disables using screensharing as virtual background.
+
+```javascript
+disableScreensharingVirtualBackground: false
+```
+
+### enableLayerSuspension
+
+type: `Boolean`
+
+Enable layer suspension.  If enabled, endpoints whose HD layers are not in use will be suspended
+(no longer sent) until they are requested again. This must be enabled for screen
+sharing to work as expected on Chrome. Disabling this might result in low resolution screenshare being sent
+by the client.
+
+Default: `true`
+
+```javascript
+enableLayerSuspension: false
+```
+
+### screenshotCapture
+
+type: `Object`
+
+Options for the screenshot capture feature.
+
+Properties:
+* `enabled` - Enables the feature
+* `mode` - The mode for the screenshot capture feature. Can be either 'recording' - screensharing screenshots
+    are taken only when the recording is also on, or 'always' - screensharing screenshots are always taken.
+
+```javascript
+screenshotCapture: {
+    enabled: true,
+    mode: 'recording'
+}
+```
+
+## Video
+
+### constraints
+
+type: `Object`
+
+W3C spec-compliant video constraints to use for video capture. Currently
+used by browsers that return true from lib-jitsi-meet's
+`util#browser#usesNewGumFlow`. The constraints are independent from
+this config's resolution value. Defaults to requesting an ideal
+resolution of 720p.
+
+```javascript
+constraints: {
+    video: {
+        height: {
+            ideal: 720,
+            max: 720,
+            min: 240
+        }
+    }
+}
+```
+
+### disableAddingBackgroundImages
+
+type: `Boolean`
+
+When true the user cannot add more images to be used as virtual background.
+Only the default ones from will be available.
+
+```javascript
+disableAddingBackgroundImages: true
+```
+
+### disableH264
+
+type: `Boolean`
+
+If set to true, disable H.264 video codec by stripping it out of the SDP.
+
+```javascript
+disableH264: true
+```
+
+### disableLocalVideoFlip
+
+type: `Boolean`
+
+Disable the Flip video option from the context menu for local video.
+
+```javascript
+disableLocalVideoFlip: true
+```
+
+### disableSelfView
+
+type: `Boolean`
+
+Disables self-view tile. (hides it from tile view and from filmstrip)
+
+```javascript
+disableSelfView: true
+```
+
+### doNotFlipLocalVideo
+
+type: `Boolean`
+
+A property used to unset the default flip state of the local video.
+When it is set to `true`, the local(self) video will not be mirrored anymore.
+
+```javascript
+doNotFlipLocalVideo: true
+```
+
+### maxFullResolutionParticipants
+
+type: `Boolean`
+
+How many participants while in the tile view mode, before the receiving video quality is reduced from HD to SD.
+Use `-1` to disable.
+
+```javascript
+maxFullResolutionParticipants: 5
+```
+
+### ~~preferH264~~
+
+type: `Boolean`
+
+__DEPRECATED__ Use `preferredCodec` under `videoQuality` section instead.
+
+Prefer to use the H.264 video codec (if supported).
+Note that it's not recommended to do this because simulcast is not
+supported when  using H.264. For 1-to-1 calls this setting is enabled by
+default and can be toggled in the p2p section.
+
+### resolution
+
+type: `Number`
+
+Sets the preferred resolution (height) for local video
+
+Default: `720`
+
+```javascript
+resolution: 1080
+```
+
+### startVideoMuted
+
+type: `Number`
+
+Every participant after the Nth will start video muted.
+
+```javascript
+startVideoMuted: 5
+```
+
+### startWithVideoMuted
+
+type: `Boolean`
+
+Start calls with video muted. Only applied locally.
+
+```javascript
+startWithVideoMuted: true
+```
+
+### videoQuality
+
+type: `Object`
+
+Specify the settings for video quality optimizations on the client.
+
+Properties:
+* `disabledCodec` - Provides a way to prevent a video codec from being negotiated on the JVB connection. The codec specified
+    here will be removed from the list of codecs present in the SDP answer generated by the client. If the
+    same codec is specified for both the disabled and preferred option, the disable settings will prevail.
+    Note that `VP8` cannot be disabled since it's a mandatory codec, the setting will be ignored in this case.
+* `preferredCodec` - Provides a way to set a preferred video codec for the JVB connection. If `H264` is specified here,
+    simulcast will be automatically disabled since JVB doesn't support H264 simulcast yet. This will only
+    rearrange the the preference order of the codecs in the SDP answer generated by the browser only if the
+    preferred codec specified here is present. Please ensure that the JVB offers the specified codec for this
+    to take effect.
+* `enforcePreferredCodec` - Provides a way to enforce the preferred codec for the conference even when the conference has
+    endpoints that do not support the preferred codec. For example, older versions of Safari do not support `VP9` yet.
+    This will result in Safari not being able to decode video from endpoints sending `VP9` video.
+    When set to `false`, the conference falls back to `VP8` whenever there is an endpoint that doesn't support the
+    preferred codec and goes back to the preferred codec when that endpoint leaves.
+* `maxBitratesVideo` - Provides a way to configure the maximum bitrates that will be enforced on the simulcast streams for
+    video tracks. The keys in the object represent the type of the stream (LD, SD or HD) and the values
+    are the max.bitrates to be set on that particular type of stream. The actual send may vary based on
+    the available bandwidth calculated by the browser, but it will be capped by the values specified here.
+    This is currently not implemented on app based clients on mobile.
+* `minHeightForQualityLvl` - The options can be used to override default thresholds of video thumbnail heights corresponding to
+    the video quality levels used in the application. At the time of this writing the allowed levels are:
+    *    `low` - for the low quality level (180p at the time of this writing)
+    *    `standard` - for the medium quality level (360p)
+    *    `high` - for the high quality level (720p)
+
+    The keys should be positive numbers which represent the minimal thumbnail height for the quality level.
+    With the default config value below the application will use 'low' quality until the thumbnails are
+    at least 360 pixels tall. If the thumbnail height reaches 720 pixels then the application will switch to
+    the high quality.
+* `resizeDesktopForPresenter` - Provides a way to resize the desktop track to 720p (if it is greater than 720p)
+    before creating a canvas for the presenter mode (camera picture-in-picture mode with screenshare).
+
+```javascript
+videoQuality: {
+    disabledCodec: 'H264',
+    preferredCodec: 'VP8',
+    maxBitratesVideo: {
+        H264: {
+            low: 200000,
+            standard: 500000,
+            high: 1500000
+        },
+        VP8 : {
+            low: 200000,
+            standard: 500000,
+            high: 1500000
+        },
+        VP9: {
+            low: 100000,
+            standard: 300000,
+            high: 1200000
+        }
+    },
+    minHeightForQualityLvl: {
+        360: 'standard',
+        720: 'high'
+    },
+    resizeDesktopForPresenter: false
 }
 ```

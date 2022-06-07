@@ -73,6 +73,32 @@ The listener receives an object with the following structure:
 }
 ```
 
+### breakoutRoomsUpdated
+
+Provides notifications about breakout rooms changes.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    [roomId]: {
+        id: string,
+        jid: string,
+        name: string,
+        isMainRoom: true | undefined,
+        participants: {
+            [participantJid]: {
+                displayName: string,
+                jid: string,
+                role: string
+            }
+        }
+    },
+    ...
+}
+```
+
+
 ### browserSupport
 
 Provides event notifications about the current browser support.

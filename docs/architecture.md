@@ -44,7 +44,7 @@ Most features also contain a file called `middleware.js`. This file acts as a br
 In this folder, the external API can be found. This API can be used in various events like participants joining/leaving the meeting, changes in avatars or chat, as well as errors in using the microphone or camera.
 
 **./android and ./ios**
-Both of these folders contain the basics of the Android and iOS app respectively. However, the code for the application itself and its components can be found in the **react/features** folder, which will be explained later in this section.
+Both of these folders contain the basics of the Android and iOS app respectively. However, the code for the application itself and its components can be found in the **react/features** folder, which is explained earlier in this section.
 
 **./conference.js**
 This file can be found at the root of the project, and contains the foundation of any interaction between a user and a conference room. This consists of setting up a connection to it, joining the meeting room, muting and unmuting, but also functions to gather information about the participants that are in the room.

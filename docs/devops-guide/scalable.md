@@ -9,9 +9,12 @@ The first limiting factor is the videobridge component, that handles the actual 
 It is easy to scale the video bridges horizontally by adding as many as needed.
 In a cloud based environment, additionally the bridges can be scaled up or down as needed.
 
-*NB*: The [Youtube Tutorial on Scaling](https://www.youtube.com/watch?v=LyGV4uW8km8) is outdated and describes an old configuration method.
+:::warning
+The [Youtube Tutorial on Scaling](https://www.youtube.com/watch?v=LyGV4uW8km8) is outdated and describes an old configuration method.
+:::
 
-*NB*: Building a scalable infrastructure is not a task for beginning Jitsi Administrators.
+:::note
+Building a scalable infrastructure is not a task for beginning Jitsi Administrators.
 The instructions assume that you have installed a single node version successfully, and that
 you are comfortable installing, configuring and debugging Linux software.
 This is not a step-by-step guide, but will show you, which packages to install and which
@@ -19,6 +22,7 @@ configurations to change. Use the [manual install](devops-guide-manual) for
 details on how to setup Jitsi on a single host.
 It is highly recommended to use configuration management tools like Ansible or Puppet to manage the
 installation and configuration.
+:::
 
 ## Architecture (Single Jitsi-Meet, multiple videobridges)
 

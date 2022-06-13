@@ -153,7 +153,6 @@ See [the corresponding section in the manual setup guide](https://jitsi.github.i
 * **jicofo**: [Jicofo], the XMPP focus component.
 * **jvb**: [Jitsi Videobridge], the video router.
 * **jigasi**: [Jigasi], the SIP (audio only) gateway.
-* **etherpad**: [Etherpad], shared document editing addon.
 * **jibri**: [Jibri], the broadcasting infrastructure.
 
 ### Design considerations

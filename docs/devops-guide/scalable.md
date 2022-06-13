@@ -11,6 +11,7 @@ In a cloud based environment, additionally the bridges can be scaled up or down 
 
 :::warning
 The [Youtube Tutorial on Scaling](https://www.youtube.com/watch?v=LyGV4uW8km8) is outdated and describes an old configuration method.
+The current default Jitsi Meet install is already configured for horizontal scalability.
 :::
 
 :::note
@@ -125,21 +126,13 @@ Create the `/etc/nginx/sites-available/meet.example.com.conf` as usual
 
 Follow the steps in the [manual install](devops-guide-manual) for setup tasks
 
-You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
-
-* `/etc/prosody/prosody.cfg.lua`
-* `/etc/prosody/conf.avail/meet.example.com.cfg.lua`
-
 #### Jitsi-Meet
 
 Adapt `/usr/share/jitsi-meet/config.js` and `/usr/share/jitsi-meet/interface-config.js` to your specific needs
 
 #### Jicofo
 
-You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
-
-* `/etc/jitsi/jicofo/config` (hostname, jicofo_secret, jicofo_password)
-* `/etc/jitsi/jicofo/sip-communicator.properties` (hostname)
+No changes necessary from the default install.
 
 ### Configuration of the Videobridge
 
@@ -149,20 +142,11 @@ Open the following ports:
 
 Open to world:
 
-* 443 TCP
-* 10000 UDP
+* 10000 UDP (for media)
 
 #### jitsi-videobridge2
 
-You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
-
-Each videobridge will have to have it's own, unique nickname
-
-* `/etc/jitsi/videobridge/config` (hostname, password)
-* `/etc/jitsi/jicofo/sip-communicator.properties` (hostname of jitsi-meet, nickname of videobridge, vb_password)
-
-With the latest stable (April 2020) videobridge, it is no longer necessary to set public and private IP
-addresses in the `sip-communicator.properties` as the bridge will figure out the correct configuration by itself.
+No changes necessary from the default setup.
 
 ## Testing
 

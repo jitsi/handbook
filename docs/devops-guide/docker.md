@@ -69,7 +69,7 @@ or to use jigasi too:
 docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
-### Testing development builds
+### Testing development / unstable builds
 
 Download the latest code:
      
@@ -81,16 +81,33 @@ git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
 The code in `master` is designed to work with the unstable images. Do not run it with release images.
 :::
 
-Build your own images:
-
-```bash
-JITSI_RELEASE=unstable make
-```
-
-### Running unstable images
+Run `docker-compose up` as usual.
 
 Every day a new "unstable" image build is uploaded.
-You can test them by getting the YAML files from the repository and changing `latest` to `unstable` or `ustable-YYYY-MM-DD` for the unstable images of a specific day.
+
+### Building your own images
+
+Download the latest code:
+     
+```bash
+git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
+```
+
+The provided `Makefile` provides a comprehensive way of building the whole stack or individual images.
+
+To build all images:
+
+```bash
+make
+```
+
+To build a specific image (the web image for example):
+
+```bash
+make build_web
+```
+
+Once your local build is ready make sure to add `JITSI_IMAGE_VERSION=latest` to your `.env` file.
 
 ### Security note
 

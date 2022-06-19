@@ -72,7 +72,7 @@ An opensource platform to organize your meetings. Includes all function we know 
 * Plan your Meeting
 * Secure your Meeting with user login credentials
 * Create a Report of each user visiting your conference
-* Creating an Apponitmant poll and transfer it into a conference with one click
+* Creating an appointment poll and transfer it into a conference with one click
 * Dockerised for easy installation
 
 Github: https://github.com/H2-invent/jitsi-admin

@@ -76,5 +76,7 @@ An opensource platform to organize your meetings. Includes all function we know 
 * Dockerised for easy installation
 
 Github: https://github.com/H2-invent/jitsi-admin
+
 Demo: https://jitsi-admin.de
+
 Docker: https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker

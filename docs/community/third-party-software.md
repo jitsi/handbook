@@ -65,3 +65,16 @@ https://github.com/skrafft/react-native-jitsi-meet
 Plugin for using lib-jitsi-meet in a Unity environment (WebGL).
 
 https://github.com/avstack/jitsi-meet-unity-demo
+
+## Jitsi-Admin
+
+An opensource platform to organize your meetings. Includes all function we know from the big conference-tools
+* Plan your Meeting
+* Secure your Meeting with user login credentials
+* Create a Report of each user visiting your conference
+* Creating an Apponitmant poll and transfer it into a conference with one click
+* Dockerised for easy installation
+
+Github: https://github.com/H2-invent/jitsi-admin
+Demo: https://jitsi-admin.de
+Docker: https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker

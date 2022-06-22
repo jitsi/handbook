@@ -143,3 +143,9 @@ Note: the relationship between storage = "" and your prosody version, and you ne
 4. You need to use the command `prosodyctl restart` to see the effect.
 
 5. If you want to update to use prosody, you can check [here](https://community.jitsi.org/t/how-to-how-do-i-update-prosody/72205).
+
+## These are good resources to learn more about WebRTC.
+- WebRTC For The Curious: https://webrtcforthecurious.com/
+- WebRTC For Dummies®, 2nd Sonus Special Edition
+- WebRTC Crash Course by Hussein Nasser:  https://www.youtube.com/watch?v=FExZvpVvYxA
+

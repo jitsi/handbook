@@ -568,6 +568,18 @@ The listener receives an object with the following structure:
 }
 ```
 
+### participantsPaneToggled
+
+Provides event notifications that fire when the participants pane status changes.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    open: boolean // whether the pane is open or not
+}
+```
+
 ### passwordRequired
 
 Provides event notifications that fire when participants fail to join a password protected room.

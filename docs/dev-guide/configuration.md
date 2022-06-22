@@ -988,16 +988,6 @@ dropbox: {
 }
 ```
 
-### enableLocalRecording
-
-type: `Boolean`
-
-Whether to enable local recording or not.
-
-```javascript
-enableLocalRecording: true
-```
-
 ### fileRecordingsEnabled
 
 type: `Boolean`
@@ -1043,6 +1033,23 @@ Default: `false`
 
 ```javascript
 hideRecordingLabel: true
+```
+
+### localRecording
+
+type: `Object`
+
+Set local recording configuration.
+
+Properties:
+* `enable` - Whether to enable the feature or not.
+* `notifyAllParticipants` - Whether to notify all the participants when a local recording is started.
+
+```javascript
+localRecording: {
+    enable: true,
+    notifyAllParticipants: true
+}
 ```
 
 ### recordingLimit 🚫

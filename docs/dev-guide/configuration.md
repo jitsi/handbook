@@ -1042,12 +1042,12 @@ type: `Object`
 Set local recording configuration.
 
 Properties:
-* `enable` - Whether to enable the feature or not.
+* `disable` - Whether to disable the feature or not.
 * `notifyAllParticipants` - Whether to notify all the participants when a local recording is started.
 
 ```javascript
 localRecording: {
-    enable: true,
+    disable: false,
     notifyAllParticipants: true
 }
 ```

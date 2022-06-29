@@ -25,11 +25,14 @@ On Debian systems you need to install some required packages:
 
 ```
 sudo apt-get install sasl2-bin libsasl2-modules-ldap lua-cyrussasl
+sudo prosodyctl install --server=https://modules.prosody.im/rocks/ mod_auth_cyrus
 ```
 
 The first two packages are necessary for Cyrus' `saslauthd` and allow it 
 to connect to an LDAP directory. The `lua-cyrussasl`-package allows 
 Prosody to access Cyrus SASL.
+
+Installing the [mod_auth_cyrus](https://modules.prosody.im/mod_auth_cyrus) module is neccessary because support for Cyrus SASL has been [removed](https://prosody.im/doc/cyrus_sasl) from mainline Prosody and placed in the community module repository.
 
 ## Install and set up Cyrus SASL
 
@@ -42,20 +45,16 @@ to define your LDAP environment:
 
 ```
 ldap_servers: ldaps://ldap.example.com
-ldap_bind_dn: cn=admin,dc=example,dc=com
+ldap_bind_dn: admin@example.com
 ldap_bind_pw: topsecret
 ldap_auth_method: bind
 ldap_search_base: ou=people,dc=example,dc=com
 ```
 
 :::note
-One omitted option you might want to look into is `ldap_filter` which 
-defaults to `uid=%u` and should work for a lot of systems. But if you 
-want to only allow specific users or even use a different LDAP attribute 
-as username, you can do so by adding this option. Also check the available 
-placeholders for the filter in the above linked `LDAP_SASLAUTHD`.
+One omitted option you might want to look into is `ldap_filter` which defaults to `uid=%u` and should work for a lot of systems.  If you are using a Samba or Microsoft AD instance as your LDAP server you may need to change this to `ldap_filter: (sAMAccountName=%U)` as `uid` is NULL by default many configurations. You can also use the `ldap_filter` to allow only specific users access. For more details on this and other options see the `LDAP_SASLAUTHD` document linked above.
 
-Please note that Prosody might not work with usernames containing the "@"-symbol. So authenticating with a full email address will not work.
+Please note that Prosody may experience issues with usernames containing the "@"-symbol. You can work around this issue by changing `uid=%u` to `uid=%U`, which is [defined](https://github.com/winlibs/cyrus-sasl/blob/d933c030ce12ec0668469d79ab8378e347a1b3ba/saslauthd/LDAP_SASLAUTHD#L126) as the "user portion of %u (%U = test when %u = test@domain.tld)"
 :::
 
 ### Test LDAP authentication
@@ -83,10 +82,12 @@ After testing, you can stop `saslauthd` using `ctrl-c`.
 
 ### Enable the `saslauthd` service
 
-To be able to run the `saslauthd` service with LDAP authentication and have 
-it start automatically at system boot, edit `/etc/default/saslauthd` and 
-change the following values:
+You will need to edit the `/etc/default/saslauthd` to enable the `saslauthd` service to run at boot and have it use LDAP for authentication.  You can use sed to do this quickly.
+```
+sudo sed -i -e "s/START=.*/START=yes/" -e "s/MECHANISMS=.*/MECHANISMS=\"ldap\"/" /etc/default/saslauthd
+```
 
+This will make the following changes to `/etc/default/saslauthd`.
 ```
 [...]
 # Should saslauthd run automatically on startup? (default: no)
@@ -96,6 +97,7 @@ START=yes
 MECHANISMS="ldap"
 [...]
 ```
+
 
 It is not necessary to point `MECH_OPTIONS` to the LDAP configuration file 
 since this is the default for this mechanism.
@@ -142,13 +144,13 @@ The Prosody documentation has more details on a
 
 ## Set up Prosody
 
-If you have tested the LDAP authentication successfully and enabled the 
-`saslauthd` service, you can change Prosody's authentication to the Cyrus backend 
-by changing the `authentication` setting in 
-`/etc/prosody/conf.avail/$(hostname -f).cfg.lua`:
+If you have tested the LDAP authentication successfully and enabled the `saslauthd` service, you can change Prosody's authentication to the Cyrus backend by changing the `authentication` setting in `/etc/prosody/conf.avail/$(hostname -f).cfg.lua` via the command:
+```
+sed -i -E -e "/^ *VirtualHost \"$(hostname -f)\"/,/^ *VirtualHost/ {s/authentication ?=.*$/authentication = \"cyrus\"/}" /etc/prosody/conf.avail/$(hostname -f).cfg.lua
+```
 
 You might also have to add the `allow_unencrypted_plain_auth` option to allow 
-plain-text passwords to be sent over the network. This is not recommended as it 
+plain-text passwords to be sent over the network. *This is not recommended* as it 
 makes the setup less secure. So please try without this line first and only add
 it if you have problems authenticating.
 
@@ -156,18 +158,6 @@ it if you have problems authenticating.
         authentication = "cyrus"
         allow_unencrypted_plain_auth = true
 ```
-
-Finally add the `auth_cyrus` module to the list of `modules_enabled`:
-
-```
-        modules_enabled = {
-            "bosh";
-            "pubsub";
-            "ping"; -- Enable mod_ping
-            "auth_cyrus";
-        }
-```
-
 
 ### Set Permissions
 

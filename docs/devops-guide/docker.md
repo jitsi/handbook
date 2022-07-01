@@ -204,11 +204,12 @@ The mobile apps won't work with self-signed certificates (the default).
 See below for instructions on how to obtain a proper certificate with Let's Encrypt.
 :::
 
-### Let's Encrypt configuration
+### TLS Configuration
 
-If you plan on exposing this container setup to the outside traffic directly and
-want a proper TLS certificate, you are in luck because Let's Encrypt support is
-built right in. Here are the required options:
+#### Let's Encrypt configuration
+
+If you want to expose your Jitsi Meet instance to the outside traffic directly, but don't own a proper TLS certificate, you are in luck 
+because Let's Encrypt support is built right in. Here are the required options:
 
 Variable | Description | Example
 --- | --- | ---
@@ -234,6 +235,30 @@ you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
 
 For more information on Let's Encrypt's rate limits, visit:
 https://letsencrypt.org/docs/rate-limits/
+
+#### Using existing TLS certificate and key
+
+If you own a proper TLS certificate and don't need a Let's Encrypt certificate, you can configure Jitsi Meet container 
+to use it. 
+
+Unlike Let's Encrypt certificates, this is not configured through the `.env`file, but by telling Jitsi Meet's `web` service 
+to mount the following two volumes: 
+
+- mount `/path/to/your/cert.key` file to `/config/keys/cert.crt` mount point
+- mount `/path/to/your/cert.fullchain` file to the `/config/keys/cert.key` mount point.
+
+Doing it in `docker-compose.yml` file should look like this:
+
+
+```
+services:
+    web:
+        ...
+        volumes:
+            ...
+            - /path/to/your/cert.fullchain:/config/keys/cert.crt
+            - /path/to/your/cert.key:/config/keys/cert.key
+```
 
 ### Features configuration (config.js)
 

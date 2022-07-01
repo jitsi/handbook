@@ -244,8 +244,8 @@ to use it.
 Unlike Let's Encrypt certificates, this is not configured through the `.env`file, but by telling Jitsi Meet's `web` service 
 to mount the following two volumes: 
 
-- mount `/path/to/your/cert.key` file to `/config/keys/cert.crt` mount point
-- mount `/path/to/your/cert.fullchain` file to the `/config/keys/cert.key` mount point.
+- mount `/path/to/your/cert.key` file to `/config/keys/cert.key` mount point
+- mount `/path/to/your/cert.fullchain` file to the `/config/keys/cert.crt` mount point.
 
 Doing it in `docker-compose.yml` file should look like this:
 

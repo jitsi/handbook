@@ -84,6 +84,6 @@ Docker: https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-doc
 
 ## Outlook Plugin 
 
-Plugin for Adding a "Schedule Jitsi Meeting" Button to a Meeting
+Plugin for Adding a "Schedule Jitsi Meeting" Button to Microsoft Outlook.
 
 GitHub: https://github.com/timetheoretical/jitsi-meet-outlook

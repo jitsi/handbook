@@ -668,33 +668,37 @@ STUN servers can be specified with the ``JVB_STUN_SERVERS`` option.
 Due to a bug in the docker version currently in the Debian repos (20.10.5), [Docker does not listen on IPv6 ports](https://forums.docker.com/t/docker-doesnt-open-ipv6-ports/106201/2), so for that combination you will have to [manually obtain the latest version](https://docs.docker.com/engine/install/debian/).
 :::
 
-## Logging
+## Accessing server logs
 
-The default bahavior of `docker-jitsi-meet` is to log to `stdout`. The only exception to this is Jibri. 
+The default bahavior of `docker-jitsi-meet` is to log to `stdout`.
 
 While the logs are sent to `stdout`, they are not lost: unless configured to drop all logs, Docker keeps them available for future retrieval and processing.
 
-If you need to access the container's logs you have multiple options. The main ones are the following ones:
+If you need to access the container's logs you have multiple options. Here are the main ones:
 
 * run `docker-compose logs -t -f <service_name>` from command line, where `<service_name>` is one of `web`, `prosody`,`jvb`, `jicofo`. This command will output the logs for the selected service to stdout with timestamps.
 * use a standard [docker logging driver](https://docs.docker.com/config/containers/logging/configure/) to redirect the logs to the desired target (for instance `syslog` or `splunk`).
-* use an existing docker logging driver plugin or [write your own](https://docs.docker.com/engine/extend/plugins_logging/).
+* serach [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/) 
+* or [write your own driver plugin](https://docs.docker.com/engine/extend/plugins_logging/) if you have a very specific need.
 
 For instance, if you want to have all logs related to a `<service_name>` written to `/var/log/jitsi/<service_name>` as `json` output, you could use [docker-file-log-driver](https://github.com/deep-compute/docker-file-log-driver) and configure it by adding the following block in your `docker-compose.yml` file, at the same level as the `image` block of the selected `<service_name>`:
 
 ```
+services:
+    <service_name>:
+        image: ...
+        ...
         logging:
             driver: file-log-driver
             options:
                 fpath: "/jitsi/<service_name>.log"
-
 ```
 
-If you want to only display the `message` part of the log in `json` format, simply execute the following command (for instance if `fpath` was set to `/jitsi/jvb.log`):
+If you want to only display the `message` part of the log in `json` format, simply execute the following command (for instance if `fpath` was set to `/jitsi/jvb.log`) which uses `jq` to extract the relevant part of the logs:
 
 
 ```
-sudo cat /var/log/jitsi/jvb.log |jq -r '.msg'| jq -r '.message'
+sudo cat /var/log/jitsi/jvb.log | jq -r '.msg' | jq -r '.message'
 ```
 
 ## Build Instructions

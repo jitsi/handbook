@@ -80,3 +80,10 @@ Github: https://github.com/H2-invent/jitsi-admin
 Demo: https://jitsi-admin.de
 
 Docker: https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
+
+
+## Outlook Plugin 
+
+Plugin for Adding a "Schedule Jitsi Meeting" Button to a Meeting
+
+GitHub: https://github.com/timetheoretical/jitsi-meet-outlook

@@ -208,7 +208,7 @@ See below for instructions on how to obtain a proper certificate with Let's Encr
 
 #### Let's Encrypt configuration
 
-If you want to expose your Jitsi Meet instance to the outside traffic directl<, but don't own a proper TLS certificate, you are in luck 
+If you want to expose your Jitsi Meet instance to the outside traffic directly, but don't own a proper TLS certificate, you are in luck 
 because Let's Encrypt support is built right in. Here are the required options:
 
 Variable | Description | Example

@@ -3,6 +3,8 @@ id: dev-guide-ljm-api
 title: lib-jitsi-meet API (low level)
 ---
 
+# `lib-jitsi-meet` API (Low Level)
+
 You can use Jitsi Meet API to create Jitsi Meet video conferences with a custom GUI.
 
 ## Installation

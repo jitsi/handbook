@@ -64,15 +64,15 @@ The Meet API object takes the following form:
 
 The API object constructor uses the following options:
 
-* **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
+* `domain`: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
 
-* **options**: The object with properties. 
+* `options`: The object with properties. 
 
   Optional arguments include:
   
-    * **roomName**: The name of the room to join.
+    * `roomName`: The name of the room to join.
     
-    * **width**: The created IFrame width.
+    * `width`: The created IFrame width.
     
       The width argument has the following characteristics:
     
@@ -80,7 +80,7 @@ The API object constructor uses the following options:
     
       - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**.
     
-    * **height**: The height for the created IFrame. 
+    * `height`: The height for the created IFrame. 
     
       The height argument has the following characteristics: 
     
@@ -88,23 +88,23 @@ The API object constructor uses the following options:
     
       - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**. 
     
-    * **parentNode**: The HTML DOM Element where the IFrame is added as a child.
+    * `parentNode`: The HTML DOM Element where the IFrame is added as a child.
     
-    * **configOverwrite**: The JS object with overrides for options defined in the [config.js] file.
+    * `configOverwrite`: The JS object with overrides for options defined in the [config.js] file.
     
-    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the [interface_config.js] file.
+    * `interfaceConfigOverwrite`: The JS object with overrides for options defined in the [interface_config.js] file.
     
-    * **jwt**: The [JWT](https://jwt.io/) token.
+    * `jwt`: The [JWT](https://jwt.io/) token.
     
-    * **onload**: The IFrame onload event handler.
+    * `onload`: The IFrame onload event handler.
     
-    * **invitees**: Object arrays that contain information about participants invited to a call.
+    * `invitees`: Object arrays that contain information about participants invited to a call.
     
-    * **devices**: Information map about the devices used in a call.
+    * `devices`: Information map about the devices used in a call.
     
-    * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g., email).
+    * `userInfo`: The JS object that contains information about the participant starting the meeting (e.g., email).
 
-    * **lang**: The default meeting language.
+    * `lang`: The default meeting language.
 
       For example:
 
@@ -186,7 +186,9 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-**Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
+:::note
+**`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
+:::
 
 
 :::warning
@@ -576,7 +578,9 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-**NOTE:** The invitee format in the array depends on the invite service used in the deployment.
+:::note
+The invitee format in the array depends on the invite service used in the deployment.
+:::
 
 SIP invite objects have the following structure:
 
@@ -595,7 +599,9 @@ Removes the embedded Jitsi Meet conference:
 api.dispose();
 ```
 
-**NOTE:** Jitsi recommends removing the conference before the page is unloaded.
+:::note
+Jitsi recommends removing the conference before the page is unloaded.
+:::not
 
 ## Commands
 

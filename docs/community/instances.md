@@ -32,7 +32,7 @@ You can use [DNS Lookup](https://www.ultratools.com/tools/dnsLookupResult), [Geo
 Next to its native webclient interface, Jitsi Meet is also available as
 
 * 📲 an open-source **Jitsi desktop app**, see [Jitsi Meet Electron for Desktop](https://github.com/jitsi/jitsi-meet-electron/) (Windows, Mac, and Linux clients available)
-* 📲 **mobile apps** for [Google Play](https://play.google.com/store/apps/details?id=org.jitsi.meet), [Apple Store](https://itunes.apple.com/us/app/jitsi-meet/id1165103905?mt=8), and [F-Droid](https://f-droid.org/en/packages/org.jitsi.meet/).
+* 📲 **mobile apps** for <i class="fa-brands fa-google-play"></i> [Google Play](https://play.google.com/store/apps/details?id=org.jitsi.meet), <i class="fa-brands fa-app-store-ios"></i> [Apple App Store](https://itunes.apple.com/us/app/jitsi-meet/id1165103905?mt=8), and <i class="fa-brands fa-android"></i> [F-Droid](https://f-droid.org/en/packages/org.jitsi.meet/).
 
 ## User- and/or community-run jit.si instances by region
 

@@ -4,6 +4,10 @@ title: Share a Jitsi Meeting
 sidebar_label: Share a Jitsi Meeting
 ---
 
-Welcome to the user guide!
+First, you need to [Join](https://jitsi.github.io/handbook/docs/user-guide/user-guide-join-jitsi-meeting) / [Start](https://jitsi.github.io/handbook/docs/user-guide/user-guide-start-a-jitsi-meeting) a Jitsi Meeting.
 
-Check back soon!
+Next:
+
+- Click on the **More actions** <i class="fa-solid fa-ellipsis"></i> Button.
+- Click on **Invite people**.
+- Select the desired option using which you want to share the meeting.

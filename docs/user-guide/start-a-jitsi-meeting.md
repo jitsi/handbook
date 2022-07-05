@@ -4,6 +4,4 @@ title: Start a Jitsi Meeting
 sidebar_label: Start a Jitsi Meeting
 ---
 
-Welcome to the user guide!
-
-Check back soon!
+Start a Jitsi Meeting by going to meet.jit.si or your self-hosted instance. Then Enter your Meeting Name as per your wish and click on `Start meeting` Button Besides it.

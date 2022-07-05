@@ -1,6 +1,6 @@
 ---
 id: third-party-software
-title: Third-party Software
+title: Third-Party Software
 ---
 
 This page contains links to projects around Jitsi Meet, which are not maintained

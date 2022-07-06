@@ -12,8 +12,7 @@ module.exports = {
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   scripts: [
-    // Please Update this with your FontAwesome Kit URL!
-    "https://kit.fontawesome.com/307bcbc229.js",
+    "https://kit.fontawesome.com/2f8664b4cd.js",
   ],
   presets: [
     [
@@ -154,10 +153,10 @@ module.exports = {
       ],
       logo: {
         alt: "8x8 Footer Logo",
-        src: "https://web-cdn.jitsi.net/meet8x8com_6214.2958/images/8x8-copyright-icon.svg",
-        href: "/",
+        src: "/static/img/8x8-copyright-icon.svg",
+        href: "https://8x8.vc",
       },
-      copyright: `Copyright © ${new Date().getFullYear()} 8x8, Inc.`,
+      copyright: `Copyright © 8x8, Inc.`,
     },
     prism: {
       theme: lightCodeTheme,

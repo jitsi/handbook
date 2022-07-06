@@ -3,6 +3,8 @@ id: dev-guide-ljm
 title: Modifying lib-jitsi-meet
 ---
 
+# Modifying `lib-jitsi-meet`
+
 By default the library is built from its git repository sources. The default dependency path in package.json is:
 
 ```json

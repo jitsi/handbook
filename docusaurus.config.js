@@ -11,6 +11,9 @@ module.exports = {
   favicon: "img/favicon.png",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
+  scripts: [
+    "https://kit.fontawesome.com/2f8664b4cd.js",
+  ],
   presets: [
     [
       "@docusaurus/preset-classic",
@@ -50,13 +53,16 @@ module.exports = {
     ]
   ],
   themeConfig: {
+    prism: {
+      additionalLanguages: ["java", "markdown", "shell", "bash", "gradle", "lua"],
+    },
     algolia: {
       appId: 'K2ODL876OV',
       apiKey: 'fc233b31ee025aa87cf553bd9e7ce9e9',
       indexName: 'jitsi',
     },
     navbar: {
-      title: "Jitsi Meet handbook",
+      title: "Jitsi Meet Handbook",
       logo: {
         src: "img/logo.svg",
       },
@@ -101,15 +107,15 @@ module.exports = {
               to: "docs/intro",
             },
             {
-              label: "User guide",
+              label: "User Guide",
               to: "docs/user-guide",
             },
             {
-              label: "Developer guide",
+              label: "Developer Guide",
               to: "docs/dev-guide",
             },
             {
-              label: "Self-hosting guide",
+              label: "Self-Hosting Guide",
               to: "docs/devops-guide",
             },
           ],
@@ -145,7 +151,12 @@ module.exports = {
           ],
         },
       ],
-      copyright: "Copyright © 8x8, Inc.",
+      logo: {
+        alt: "8x8 Footer Logo",
+        src: "img/8x8-copyright-icon.svg",
+        href: "https://8x8.vc",
+      },
+      copyright: `Copyright © 8x8, Inc.`,
     },
     prism: {
       theme: lightCodeTheme,

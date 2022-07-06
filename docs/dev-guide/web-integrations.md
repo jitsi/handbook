@@ -30,17 +30,17 @@ sidebar_label: Integrations
 ## Creating the Dropbox app for Dropbox recording integration
 
 1. You need a Dropbox account (If you don't already have one, you can sign up for a free account [here](https://www.dropbox.com/register).)
-1. Create new App as described in [Getting Started Guide](https://www.dropbox.com/developers/reference/getting-started?_tk=guides_lp&_ad=guides2&_camp=get_started#app%20console) in App Console section.
-1. Choose
+2. Create new App as described in [Getting Started Guide](https://www.dropbox.com/developers/reference/getting-started?_tk=guides_lp&_ad=guides2&_camp=get_started#app%20console) in App Console section.
+3. Choose
     1. 'Dropbox API - For apps that need to access files in Dropbox.' 
     1. 'App folder– Access to a single folder created specifically for your app.'
     1. Fill in the name of your app
-1. You need only, the newly created App key, goes in ```/etc/jitsi/meet/yourdeployment.com-config.js``` in 
-    ```
+4. You need only, the newly created App key, goes in `/etc/jitsi/meet/yourdeployment.com-config.js` in 
+    ``` title="/etc/jitsi/meet/yourdeployment.com-config.js"
         dropbox: {
             appKey: '__dropbox_app_key__',
             redirectURI: 'https://yourdeployment.com/static/oauth.html'
         }
     ```
-1. Add your Dropbox Redirect URIs in the Dropbox form `https://yourdeployment.com/static/oauth.html`
-1. Fill in Branding
+5. Add your Dropbox Redirect URIs in the Dropbox form `https://yourdeployment.com/static/oauth.html`
+6. Fill in Branding

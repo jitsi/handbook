@@ -29,7 +29,7 @@ dependency `org.jitsi.react:jitsi-meet-sdk` into your `build.gradle` files.
 
 The repository typically goes into the `build.gradle` file in the root of your project:
 
-```gradle
+```gradle title="build.gradle"
 allprojects {
     repositories {
         maven {
@@ -62,11 +62,13 @@ Make sure you pin your dependency by checking the [releases page](https://github
 
 Start by making sure that your development environment [is set up correctly](mobile.md).
 
-A note on dependencies: Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.
+:::note A Note on Dependencies
+Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.
+:::
 
 If you want to use a SDK that is built from source, you will likely benefit from composing a local Maven repository that contains these dependencies. The text below describes how you create a repository that includes both the SDK as well as these dependencies. For illustration purposes, we'll define the location of this local Maven repository as `/tmp/repo`
 
-In source code form, the Android SDK dependencies are locked/pinned by package.json and package-lock.json of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
+In source code form, the Android SDK dependencies are locked/pinned by `package.json` and `package-lock.json` of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
 
     npm install
 

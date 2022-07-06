@@ -47,7 +47,7 @@ To be used with custom domains as-it-is in React projects:
 />
 ```
 #### Properties specific to the `JitsiMeeting` component
-* **domain**: Optional. Field used to retrieve the external_api.js file that initializes the IFrame. If omitted, defaults to `meet.jit.si`.
+* `domain`: Optional. Field used to retrieve the external_api.js file that initializes the IFrame. If omitted, defaults to `meet.jit.si`.
 
 ### JaaSMeeting
 To be used with the `8x8.vc` domain as-it-is in React projects:
@@ -80,33 +80,33 @@ To be used with the `8x8.vc` domain as-it-is in React projects:
 />
 ```
 #### Properties specific to the `JaaSMeeting` component
-* **appId**: Required. Provides an isolated context and prefixes the room name.
-* **useStaging**: Optional. Tells whether to use the staging environment or not.
+* `appId`: Required. Provides an isolated context and prefixes the room name.
+* `useStaging`: Optional. Tells whether to use the staging environment or not.
 
 ## Common properties
 The component modules support a similar kind of customization to the Jitsi Meet IFrame. The following properties can be passed down to your instances of `JitsiMeeting` or `JaaSMeeting`.
 
-* **roomName**: Required. The name of the room to join.
+* `roomName`: Required. The name of the room to join.
 
-* **configOverwrite**: Optional. The JS object with overrides for options defined in the [config.js] file.
+* `configOverwrite`: Optional. The JS object with overrides for options defined in the [config.js] file.
 
-* **interfaceConfigOverwrite**: Optional. The JS object with overrides for options defined in the [interface_config.js] file.
+* `interfaceConfigOverwrite`: Optional. The JS object with overrides for options defined in the [interface_config.js] file.
 
-* **jwt**: Optional. The [JWT](https://jwt.io/) token.
+* `jwt`: Optional. The [JWT](https://jwt.io/) token.
 
-* **invitees**: Optional. Object arrays that contain information about participants invited to a call.
+* `invitees`: Optional. Object arrays that contain information about participants invited to a call.
 
-* **devices**: Optional. Information map about the devices used in a call.
+* `devices`: Optional. Information map about the devices used in a call.
 
-* **userInfo**: Optional. The JS object that contains information about the participant starting the meeting (e.g., email).
+* `userInfo`: Optional. The JS object that contains information about the participant starting the meeting (e.g., email).
 
-* **spinner**: Optional. The custom spinner to be displayed while the IFrame is loading.
+* `spinner`: Optional. The custom spinner to be displayed while the IFrame is loading.
 
-* **onApiReady**: Optional. The external API reference for events and commands.
+* `onApiReady`: Optional. The external API reference for events and commands.
 
-* **onReadyToClose**: Optional. The callback for when the meeting is ready to be closed.
+* `onReadyToClose`: Optional. The callback for when the meeting is ready to be closed.
 
-* **getIFrameRef**: Optional. The parent node used by the IFrame.
+* `getIFrameRef`: Optional. The parent node used by the IFrame.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

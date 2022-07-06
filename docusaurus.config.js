@@ -154,7 +154,7 @@ module.exports = {
       logo: {
         alt: "8x8 Footer Logo",
         src: "img/8x8-copyright-icon.svg",
-        href: "https://8x8.vc",
+        href: "https://8x8.com",
       },
       copyright: `Copyright © 8x8, Inc.`,
     },

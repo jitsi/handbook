@@ -33,6 +33,10 @@ npm install
 make
 ```
 
+:::warn
+**DO NOT** run `npm update` or use `yarn` or delete `package-lock.json`. Dependencies are pinned for a reason.
+:::
+
 ### Running with webpack-dev-server for development
 
 Use the following command in your terminal:

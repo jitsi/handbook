@@ -14,7 +14,7 @@ Browsers evolve very rapidly, so this table may become inaccurate as new bugs on
 | Chromium-Based (<i class="fa-brands fa-chrome"></i> Chrome, <i class="fa-brands fa-edge"></i> Edge, etc. ) | ✅ | We Support the Current Stable and Previous **10** Versions |
 | <i class="fa-brands fa-firefox-browser"></i> Firefox | ✅ | We Support the Current Extended Support Release and Previous 1 Version(s) |
 | <i class="fa-brands fa-safari"></i> Safari | ✅ | We Support Current and Previous 1 Version(s) |
-| <i class="fa-brands fa-internet-explorer"></i> Internet Explorer | ❌ | Are you serious? [Internet Explorer Support Ended - See this](https://docs.microsoft.com/en-us/lifecycle/announcements/internet-explorer-11-end-of-support) |
+| <i class="fa-brands fa-internet-explorer"></i> Internet Explorer | ❌ | Are you serious? |
 
 ## Mobile browsers
 

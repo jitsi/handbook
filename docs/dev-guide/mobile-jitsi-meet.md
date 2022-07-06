@@ -115,7 +115,7 @@ supported JavaScript features.
 
 ## Enabling extra features
 
-- [DropBox Integration](mobile-dropbox.md)
+- [Dropbox Integration](mobile-dropbox.md)
 - [Google Sign-In Integration (For YouTube Live Streaming)](mobile-google-auth.md)
 
 [Android Studio]: https://developer.android.com/studio/index.html

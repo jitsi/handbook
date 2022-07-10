@@ -378,6 +378,12 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |---|---|---|---|---|
 | jmeet.uca.edu.sv  |    |  ❌  |   [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jmeet.uca.edu.sv&latest)    |  GOOGLE  |
 
+### México <a id="mexico"></a>
+
+| URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
+|---|---|---|---|---|
+| llamada.comun.al |  ✅  |  ❌  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=llamada.comun.al) | ComunAl  |
+
 ### United States <a id="unitedstates"></a>
 
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |

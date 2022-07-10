@@ -227,6 +227,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | jitsi-01.csn.tu-chemnitz.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi-01.csn.tu-chemnitz.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
 | jitsi.folkwang-uni.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.folkwang-uni.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
 | jitsi.hs-nb.de  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hs-nb.de&latest) | Verein zur Foerderung eines Deutschen Forschungsnetzes e.V.  |
+| llamada.comun.al |  ✅  |    |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=llamada.comun.al) | 1&1 IONOS SE  |
 
 
 #### special cases (limited access, mostly HEI)
@@ -377,12 +378,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
 | jmeet.uca.edu.sv  |    |  ❌  |   [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jmeet.uca.edu.sv&latest)    |  GOOGLE  |
-
-### México <a id="mexico"></a>
-
-| URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
-|---|---|---|---|---|
-| llamada.comun.al |  ✅  |  ❌  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=llamada.comun.al) | ComunAl  |
 
 ### United States <a id="unitedstates"></a>
 

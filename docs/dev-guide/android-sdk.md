@@ -120,16 +120,34 @@ compileOptions {
 }
 ```
 
-To get started, extends your `android.app.Activity` from
-`org.jitsi.meet.sdk.JitsiMeetActivity`:
+To get started, just launch `JitsiMeetActivity` pointing to the room you want:
 
 ```java
-package org.jitsi.example;
-
-import org.jitsi.meet.sdk.JitsiMeetActivity;
-
-public class MainActivity extends JitsiMeetActivity {
-}
+// Somewhere early in your app.
+JitsiMeetConferenceOptions defaultOptions
+        = new JitsiMeetConferenceOptions.Builder()
+    .setServerURL(serverURL)
+    // When using JaaS, set the obtained JWT here
+    //.setToken("MyJWT")
+    // Different features flags can be set
+    // .setFeatureFlag("toolbox.enabled", false)
+    // .setFeatureFlag("filmstrip.enabled", false)
+    .setFeatureFlag("welcomepage.enabled", false)
+    .build();
+JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+// ...
+// Build options object for joining the conference. The SDK will merge the default
+// one we set earlier and this one when joining.
+JitsiMeetConferenceOptions options
+        = new JitsiMeetConferenceOptions.Builder()
+    .setRoom(roomName)
+    // Settings for audio and video
+    //.setAudioMuted(true)
+    //.setVideoMuted(true)
+    .build();
+// Launch the new activity with the given options. The launch() method takes care
+// of creating the required Intent and passing the options.
+JitsiMeetActivity.launch(this, options);
 ```
 
 Alternatively, you can use the `org.jitsi.meet.sdk.JitsiMeetView` class which
@@ -242,25 +260,11 @@ display a Jitsi Meet conference (or a welcome page).
 
 Joins the conference specified by the given `JitsiMeetConferenceOptions`.
 
-#### leave()
-
-Leaves the currently active conference. If the welcome page is enabled it will
-go back to it, otherwise a black window will be shown.
-
 #### dispose()
 
 Releases all resources associated with this view. This method MUST be called
 when the Activity holding this view is going to be destroyed, usually in the
 `onDestroy()` method.
-
-#### getListener()
-
-Returns the `JitsiMeetViewListener` instance attached to the view.
-
-#### setListener(listener)
-
-Sets the given listener (class implementing the `JitsiMeetViewListener`
-interface) on the view.
 
 ### JitsiMeetConferenceOptions
 
@@ -333,32 +337,6 @@ Helper method for integrating automatic Picture-in-Picture. It should be called
 from the activity's `onUserLeaveHint` method.
 
 This is a static method.
-
-#### JitsiMeetViewListener (deprecated - use Listening for broadcasted events instead)
-
-`JitsiMeetViewListener` provides an interface apps can implement to listen to
-the state of the Jitsi Meet conference displayed in a `JitsiMeetView`.
-
-#### onConferenceJoined
-
-Called when a conference was joined.
-
-The `data` `Map` contains a "url" key with the conference URL.
-
-#### onConferenceTerminated
-
-Called when a conference was terminated either by user choice or due to a
-failure.
-
-The `data` `Map` contains an "error" key with the error and a "url" key
-with the conference URL. If the conference finished gracefully no `error`
-key will be present.
-
-#### onConferenceWillJoin
-
-Called before a conference is joined.
-
-The `data` `Map` contains a "url" key with the conference URL.
 
 ### Listening for broadcasted events
 

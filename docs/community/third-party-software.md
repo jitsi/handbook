@@ -12,14 +12,6 @@ Please keep this list in alphabetical order.
 As these packages are not maintained by the Jitsi team, please ask their respective forums / issue trackers for help if you find issues.
 :::
 
-## Breakout rooms
-
-Jitsi Meet supports breakout rooms natively. See it in action [here](https://www.youtube.com/watch?v=ubYYZ0daw10).
-
-:::note
-Before Jitsi Meet gained native support for breakout rooms several third-party implementations were available [here](breakout-rooms).
-:::
-
 ## Cketti's Jitsi Hacks
 
 Some extra features using injected scripts.

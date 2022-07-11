@@ -87,3 +87,9 @@ Docker: https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-doc
 Plugin for Adding a "Schedule Jitsi Meeting" Button to Microsoft Outlook.
 
 GitHub: https://github.com/timetheoretical/jitsi-meet-outlook
+
+## SAML to Jitsi JWT Authentification
+
+Intergration of SAML authentification with Shibboleth for a Jitsi Meet JWT generator.
+
+Github: https://github.com/Renater/Jitsi-SAML2JWT

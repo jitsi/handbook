@@ -386,6 +386,15 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
 ```
 **NOTE:** The invitee format in the array depends on the invite service used in the deployment.
 
+PSTN invite objects have the following structure:
+
+```javascript
+{
+    type: 'phone',
+    number: <string> // the phone number in E.164 format  (ex. +31201234567)
+}
+```
+
 SIP invite objects have the following structure:
 
 ```javascript

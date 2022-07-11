@@ -14,7 +14,9 @@ One way to configure TURN support in meet is with a static configuration. You ca
         { urls: 'turn:turn.example.com1', username: 'user', credential: 'pass' },
     ]
 
+:::caution
 This technique doesn't require any special configuration on the XMPP server, but it exposes the credentials to your TURN server and other people can use your bandwidth freely, so while it's simple to implement, it's not recommended.
+:::
 
 This [draft](https://tools.ietf.org/html/draft-uberti-behave-turn-rest-00) describes a proposed standard REST API for obtaining access to TURN services via ephemeral (i.e. time-limited) credentials. These credentials are vend by a web service over HTTP, and then supplied to and checked by a TURN server using the standard TURN protocol. The usage of ephemeral credentials ensures that access to the TURN server can be controlled even if the credentials can be discovered by the user.
 

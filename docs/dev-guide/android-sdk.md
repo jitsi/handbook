@@ -29,14 +29,15 @@ dependency `org.jitsi.react:jitsi-meet-sdk` into your `build.gradle` files.
 
 The repository typically goes into the `build.gradle` file in the root of your project:
 
-```gradle
+```gradle title="build.gradle"
 allprojects {
     repositories {
-        google()
-        jcenter()
         maven {
             url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
         }
+        google()
+        mavenCentral()
+        maven { url 'https://www.jitpack.io' }
     }
 }
 ```
@@ -46,7 +47,7 @@ Dependency definitions belong in the individual module `build.gradle` files:
 ```gradle
 dependencies {
     // (other dependencies)
-    implementation ('org.jitsi.react:jitsi-meet-sdk:3.+') { transitive = true }
+    implementation ('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
 }
 ```
 
@@ -61,11 +62,13 @@ Make sure you pin your dependency by checking the [releases page](https://github
 
 Start by making sure that your development environment [is set up correctly](mobile.md).
 
-A note on dependencies: Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.
+:::note A Note on Dependencies
+Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.
+:::
 
 If you want to use a SDK that is built from source, you will likely benefit from composing a local Maven repository that contains these dependencies. The text below describes how you create a repository that includes both the SDK as well as these dependencies. For illustration purposes, we'll define the location of this local Maven repository as `/tmp/repo`
 
-In source code form, the Android SDK dependencies are locked/pinned by package.json and package-lock.json of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
+In source code form, the Android SDK dependencies are locked/pinned by `package.json` and `package-lock.json` of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
 
     npm install
 
@@ -86,7 +89,8 @@ You're now ready to use the artifacts. In _your_ project, add the Maven reposito
         repositories {
             maven { url "file:/tmp/repo" }
             google()
-            jcenter()
+            mavenCentral()
+            maven { url 'https://www.jitpack.io' }
         }
     }
 
@@ -116,16 +120,34 @@ compileOptions {
 }
 ```
 
-To get started, extends your `android.app.Activity` from
-`org.jitsi.meet.sdk.JitsiMeetActivity`:
+To get started, just launch `JitsiMeetActivity` pointing to the room you want:
 
 ```java
-package org.jitsi.example;
-
-import org.jitsi.meet.sdk.JitsiMeetActivity;
-
-public class MainActivity extends JitsiMeetActivity {
-}
+// Somewhere early in your app.
+JitsiMeetConferenceOptions defaultOptions
+        = new JitsiMeetConferenceOptions.Builder()
+    .setServerURL(serverURL)
+    // When using JaaS, set the obtained JWT here
+    //.setToken("MyJWT")
+    // Different features flags can be set
+    // .setFeatureFlag("toolbox.enabled", false)
+    // .setFeatureFlag("filmstrip.enabled", false)
+    .setFeatureFlag("welcomepage.enabled", false)
+    .build();
+JitsiMeet.setDefaultConferenceOptions(defaultOptions);
+// ...
+// Build options object for joining the conference. The SDK will merge the default
+// one we set earlier and this one when joining.
+JitsiMeetConferenceOptions options
+        = new JitsiMeetConferenceOptions.Builder()
+    .setRoom(roomName)
+    // Settings for audio and video
+    //.setAudioMuted(true)
+    //.setVideoMuted(true)
+    .build();
+// Launch the new activity with the given options. The launch() method takes care
+// of creating the required Intent and passing the options.
+JitsiMeetActivity.launch(this, options);
 ```
 
 Alternatively, you can use the `org.jitsi.meet.sdk.JitsiMeetView` class which
@@ -238,25 +260,11 @@ display a Jitsi Meet conference (or a welcome page).
 
 Joins the conference specified by the given `JitsiMeetConferenceOptions`.
 
-#### leave()
-
-Leaves the currently active conference. If the welcome page is enabled it will
-go back to it, otherwise a black window will be shown.
-
 #### dispose()
 
 Releases all resources associated with this view. This method MUST be called
 when the Activity holding this view is going to be destroyed, usually in the
 `onDestroy()` method.
-
-#### getListener()
-
-Returns the `JitsiMeetViewListener` instance attached to the view.
-
-#### setListener(listener)
-
-Sets the given listener (class implementing the `JitsiMeetViewListener`
-interface) on the view.
 
 ### JitsiMeetConferenceOptions
 
@@ -330,33 +338,8 @@ from the activity's `onUserLeaveHint` method.
 
 This is a static method.
 
-#### JitsiMeetViewListener (deprecated - use Listening for broadcasted events instead)
-
-`JitsiMeetViewListener` provides an interface apps can implement to listen to
-the state of the Jitsi Meet conference displayed in a `JitsiMeetView`.
-
-#### onConferenceJoined
-
-Called when a conference was joined.
-
-The `data` `Map` contains a "url" key with the conference URL.
-
-#### onConferenceTerminated
-
-Called when a conference was terminated either by user choice or due to a
-failure.
-
-The `data` `Map` contains an "error" key with the error and a "url" key
-with the conference URL. If the conference finished gracefully no `error`
-key will be present.
-
-#### onConferenceWillJoin
-
-Called before a conference is joined.
-
-The `data` `Map` contains a "url" key with the conference URL.
-
 ### Listening for broadcasted events
+
 The SDK broadcasts several events that the users can listen for.
 
 ```java
@@ -370,68 +353,91 @@ Please see `JitsiMeetActivity`, which registers for all the events and can serve
 #### Supported events
 
 ##### CONFERENCE_JOINED
-Broadcasted when a conference was joined.
-The `data` HashMap contains a `url` key with the conference URL.
+
+Broadcasted when a conference was joined. `data` contains the following information:
+
+- `url`: the conference URL
 
 ##### CONFERENCE_TERMINATED
-Broadcasted when the active conference ends, be it because of user choice or
-because of a failure.
-The `data` HashMap contains an `error` key with the error and a `url` key
-with the conference URL. If the conference finished gracefully no `error`
-key will be present.
+
+Broadcasted when the active conference ends, be it because of user choice or because of a failure. `data` contains the
+following information:
+
+- `url`: the conference URL
+- `error`: missing if the conference finished gracefully, otherwise contains the error message
 
 ##### CONFERENCE_WILL_JOIN
-Broadcasted before a conference is joined.
-The `data` HashMap contains a `url` key with the conference URL.
+
+Broadcasted before a conference is joined. `data` contains the following information:
+
+- `url`: the conference URL
 
 ##### AUDIO_MUTED_CHANGED
-Broadcasted when audioMuted state changed.
-The `data` HashMap contains a `muted` key with state of the audioMuted for the localParticipant.
 
-##### VIDEO_MUTED_CHANGED
-Broadcasted when videoMuted state changed.
-The `data` HashMap contains a `muted` key with state of the videoMuted for the localParticipant.
+Broadcasted when the local participant's audio is muted or unmuted. `data` contains the following information:
+
+- `muted`: a boolean indicating whether the audio is muted or not.
 
 ##### PARTICIPANT_JOINED
-Broadcasted when a participant has joined the conference.
-The `data` HashMap contains information of the participant that has joined.
-Depending of whether the participant is the local one or not, some of them are 
-present/missing.
-    isLocal
-    email
-    name
-    participantId
+
+Broadcasted when a participant has joined the conference. `data` contains the following information:
+
+- `email`: the email of the participant. It may not be set if the remote participant didn't set one.
+- `name`: the name of the participant.
+- `role`: the role of the participant.
+- `participantId`: the id of the participant.
 
 ##### PARTICIPANT_LEFT
-Broadcasted when a participant has joined the conference.
-The `data` HashMap contains information of the participant that has left.
-Depending of whether the participant is the local one or not, some of them are 
-present/missing.
-    isLocal
-    email
-    name
-    participantId
+
+Called when a participant has left the conference. `data` contains the following information:
+
+- `participantId`: the id of the participant that left.
 
 ##### ENDPOINT_TEXT_MESSAGE_RECEIVED
-Broadcasted when an endpoint text message is received.
-The `data` HashMap contains a `senderId` key with the participantId of the sender and a `message` key with the content.
+
+Broadcasted when an endpoint text message is received. The `data` HashMap contains a `senderId` key with the
+participantId of the sender and a `message` key with the content.
+
+#### SCREEN_SHARE_TOGGLED
+
+Broadcasted when a participant starts or stops sharing his screen. `data` contains the following information:
+
+- `participantId`: Id of the participant that started or stopped sharing his screen.
+- `sharing`: True if the participant is sharing his screen, false otherwise.
 
 ##### PARTICIPANTS_INFO_RETRIEVED
-Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called.
-The `data` HashMap contains a `participantsInfo` key with a list of participants information and a `requestId` key with the id that was sent in the RETRIEVE_PARTICIPANTS_INFO action.
+
+Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called. The `data` HashMap contains a `participantsInfo` key
+with a list of participants information and a `requestId` key with the id that was sent in the
+RETRIEVE_PARTICIPANTS_INFO action.
 
 ##### CHAT_MESSAGE_RECEIVED
-Broadcasted when a chat text message is received.
-The `data` HashMap contains a `senderId` key with the participantId of the sender, a `message` key with the content, a `isPrivate` key with a boolean value and a `timestamp` key.
+
+Broadcasted when a chat text message is received. `data` contains the following information:
+
+- `senderId`: the id of the participant that sent the message.
+- `message`: the content of the message.
+- `isPrivate`: true if the message is private, false otherwise.
+- `timestamp`: the (optional) timestamp of the message.
 
 ##### CHAT_TOGGLED
-Broadcasted when the chat dialog is opened or closed.
-The `data` HashMap contains a `isOpen` key with a boolean value.
+
+Broadcasted when the chat dialog is opened or closed. `data` contains the following information:
+
+- `isOpen`: true if the chat dialog is open, false otherwise.
+
+##### VIDEO_MUTED_CHANGED
+
+Broadcasted when the local participant's video is muted or unmuted. `data` contains the following information:
+
+- `muted`: an integer indicating whether the video is muted or not. 0 means unmuted, 4 means muted.
 
 ##### READY_TO_CLOSE
+
 The SDK is ready to be closed / dismised.
 
 ### Broadcasting Actions
+
 The SDK listens for broadcasted actions from the users and reacts accordingly.
 
 ```java

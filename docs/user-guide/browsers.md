@@ -1,6 +1,6 @@
 ---
 id: supported-browsers
-title: Supported browsers
+title: Supported Browsers
 ---
 
 :::note
@@ -11,16 +11,16 @@ Browsers evolve very rapidly, so this table may become inaccurate as new bugs on
 
 | Browser | Support | Notes |
 |---|---|---|
-| Chromium based | ✅ | We support the current stable - 10 versions |
-| Firefox | ✅ | We support current ESR - 1 versions |
-| Safari | ✅ | We support current - 1 versions |
-| Internet Explorer | ❌ | Are you serious? |
+| Chromium-Based (<i class="fa-brands fa-chrome"></i> Chrome, <i class="fa-brands fa-edge"></i> Edge, etc. ) | ✅ | We Support the Current Stable and Previous **10** Versions |
+| <i class="fa-brands fa-firefox-browser"></i> Firefox | ✅ | We Support the Current Extended Support Release and Previous 1 Version(s) |
+| <i class="fa-brands fa-safari"></i> Safari | ✅ | We Support Current and Previous 1 Version(s) |
+| <i class="fa-brands fa-internet-explorer"></i> Internet Explorer | ❌ | Are you serious? |
 
 ## Mobile browsers
 
 | Browser | Support | Notes |
 |---|---|---|
-| Chromium based (Android) | ✅ | |
-| Firefox (Android) | ✅ | |
-| Safari (iOS) | ✅ | |
-| Other iOS browsers using WKWebView | ✅ | Supported on iOS >= 14.3 |
+| <i class="fa-brands fa-chrome"></i> Chromium based (Android) | ✅ Supported | |
+| <i class="fa-brands fa-firefox-browser"></i> Firefox (Android) | ✅ Supported | |
+| <i class="fa-brands fa-safari"></i> Safari (iOS) | ✅ Supported | |
+| <i class="fa-brands fa-apple"></i> Other iOS Browsers using WKWebView | ✅ Supported | Supported on Greater Than / Equal To iOS v14.3 |

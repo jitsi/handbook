@@ -171,7 +171,7 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
         - `TRACK_REMOVED` - stream removed. (parameters - JitsiTrack)
         - `TRACK_MUTE_CHANGED` - JitsiTrack was muted or unmuted. (parameters - JitsiTrack)
         - `TRACK_AUDIO_LEVEL_CHANGED` - audio level of JitsiTrack has changed. (parameters - participantId(string), audioLevel(number))
-        - `DOMINANT_SPEAKER_CHANGED` - the dominant speaker is changed. (parameters - id(string), previousSpeakers(Array<string>))
+        - `DOMINANT_SPEAKER_CHANGED` - the dominant speaker is changed. (parameters - id(string), previousSpeakers(`Array<string>`))
         - `USER_JOINED` - new user joined a conference. (parameters - id(string), user(JitsiParticipant))
         - `USER_LEFT` - a participant left conference. (parameters - id(string), user(JitsiParticipant))
         - `MESSAGE_RECEIVED` - new text message received. (parameters - id(string), text(string), ts(number))
@@ -214,6 +214,7 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
         - `LOCAL_TRACK_STOPPED` - indicates that a local track was stopped. This
         event can be fired when `dispose()` method is called or for other reasons.
         - `TRACK_AUDIO_OUTPUT_CHANGED` - indicates that audio output device for track was changed (parameters - deviceId (string) - new audio output device ID).
+        - `TRACK_VIDEOTYPE_CHANGED` -  indicates that the video type("camera" or "desktop") of the track was changed
 
     5. `mediaDevices`
         - `DEVICE_LIST_CHANGED` - indicates that list of currently connected devices has changed (parameters - devices(MediaDeviceInfo[])).

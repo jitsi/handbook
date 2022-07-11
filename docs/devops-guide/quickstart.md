@@ -1,7 +1,7 @@
 ---
 id: devops-guide-quickstart
-title: Self-Hosting Guide - Debian/Ubuntu server
-sidebar_label: Debian/Ubuntu server
+title: "Self-Hosting Guide - Debian/Ubuntu server"
+sidebar_label: "Debian/Ubuntu server"
 ---
 
 Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
@@ -9,39 +9,42 @@ The following distributions are supported out-of-the-box:
 - Debian 10 (Buster) or newer
 - Ubuntu 20.04 (Focal Fossa) or newer (Ubuntu 18.04 can be used, but Prosody version must be updated to 0.11+ before installation)
 
-_Note_: Many of the installation steps require `root` or `sudo` access. 
-
+:::note
+Many of the installation steps require `root` or `sudo` access. So it's recommended to have `sudo`/`root` access to your system.
+:::
 
 ## Required packages and repository updates
 
 You will need the following packages:
 * `gnupg2`
 * `nginx-full`
-* `sudo` # only needed if you use sudo
-* `curl` # or `wget` to "Add the Jitsi package repository" below
+* `sudo` => **Only needed if you use `sudo`**
+* `curl` => **Or** `wget` **to [Add the Jitsi package repository](#add-the-jitsi-package-repository)**
 
 :::note Note
-OpenJDK 8 or OpenJDK 11 must be used.
+OpenJDK 11 must be used.
 :::
 
 Make sure your system is up-to-date and required packages are installed:
 
-```sh
-# Run as root or with sudo
+Run as `root` or with `sudo`:
 
+```bash
 # Retrieve the latest package versions across all repositories
-apt update
+sudo apt update
 
 # Ensure support for apt repositories served via HTTPS
-apt install apt-transport-https
+sudo apt install apt-transport-https
 ```
 
 On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run this command:
 
-```sh
+```bash
 sudo apt-add-repository universe
+```
 
-# Retrieve the latest package versions across all repositories
+Retrieve the latest package versions across all repositories:
+```bash
 sudo apt update
 ```
 
@@ -55,20 +58,30 @@ Set a DNS A record for that domain, using:
 - your server's public IP address, if it has its own public IP; or
 - the public IP address of your router, if your server has a private (RFC1918) IP address (e.g. 192.168.1.2) and connects through your router via Network Address Translation (NAT).
 
-If your computer/server or router has a dynamic IP address (the IP address changes constantly), you can use a dynamic dns-service instead.
+If your computer/server or router has a dynamic IP address (the IP address changes constantly), you can use a dynamic dns-service instead. Example [DuckDNS](https://www.duckdns.org/).
+
+DNS Record Example:
+
+| **Record Type** | **Hostname** | **Public IP** | **TTL (Seconds)** |
+|:---:|:---:|:---:|:---:|
+| `A` | `meet.example.org` | Your Meeting Server Public IP (`x.x.x.x`) | `1800` |
 
 ### Set up the Fully Qualified Domain Name (FQDN) (optional)
 
 If the machine used to host the Jitsi Meet instance has a FQDN (for example `meet.example.org`) already set up in DNS, you can set it with the following command:
 
-`sudo hostnamectl set-hostname meet.example.org`
+```bash
+sudo hostnamectl set-hostname meet.example.org
+```
 
 Then add the same FQDN in the `/etc/hosts` file:
 
     127.0.0.1 localhost
     x.x.x.x meet.example.org
 
-Note: `x.x.x.x` is your server's public IP address.
+:::note
+`x.x.x.x` is your server's public IP address.
+:::
 
 Finally on the same machine test that you can ping the FQDN with:
 
@@ -77,11 +90,11 @@ Finally on the same machine test that you can ping the FQDN with:
 If all worked as expected, you should see:
 `meet.example.org`
 
-### For Ubuntu 18.04, add Prosody package repository
+### Add the Prosody package repository
 
-This will add the Prosody repository so that Prosody .11 will be installed, which is necessary for features including the lobby feature.
+This will add the Prosody repository so that an up to date Prosody is installed, which is necessary for features including the lobby feature.
 
-```sh
+```bash
 echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list
 wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add -
 ```
@@ -90,11 +103,14 @@ wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add
 
 This will add the jitsi repository to your package sources to make the Jitsi Meet packages available.
 
-```sh
+```bash
 curl https://download.jitsi.org/jitsi-key.gpg.key | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg'
-echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.list > /dev/null
+echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.
+list > /dev/null
 
-# update all package sources
+Update all package sources:
+
+```bash
 sudo apt update
 ```
 
@@ -102,16 +118,16 @@ sudo apt update
 
 The following ports need to be open in your firewall, to allow traffic to the Jitsi Meet server:
 
-* 80 TCP - for SSL certificate verification / renewal with Let's Encrypt
-* 443 TCP - for general access to Jitsi Meet
-* 10000 UDP - for general network video/audio communications
-* 22 TCP - if you access you server using SSH (change the port accordingly if it's not 22)
-* 3478 UDP - for quering the stun server (coturn, optional, needs config.js change to enable it)
-* 5349 TCP - for fallback network video/audio communications over TCP (when UDP is blocked for example), served by coturn
+* `80 TCP` => For SSL certificate verification / renewal with Let's Encrypt. **Required**
+* `443 TCP` => For general access to Jitsi Meet. **Required**
+* `10000 UDP` => For General Network Audio/Video Meetings. **Required**
+* `22 TCP` => For Accessing your Server using SSH (change the port accordingly if it's not 22). **Required**
+* `3478 UDP` => For querying the stun server (coturn, optional, needs `config.js` change to enable it).
+* `5349 TCP` => For fallback network video/audio communications over TCP (when UDP is blocked for example), served by coturn. **Required**
 
 If you are using `ufw`, you can use the following commands:
 
-```sh
+```bash
 sudo ufw allow 80/tcp
 sudo ufw allow 443/tcp
 sudo ufw allow 10000/udp
@@ -159,7 +175,7 @@ _Note_: The installer will check if [Nginx](https://nginx.org/) or [Apache](http
 If you are already running Nginx on port 443 on the same machine, turnserver configuration will be skipped as it will conflict with your current port 443.
 
 
-```sh
+```bash
 # jitsi-meet installation
 sudo apt install jitsi-meet
 ```
@@ -195,7 +211,7 @@ The easiest way is to use [Let's Encrypt](https://letsencrypt.org/).
 
 Simply run the following in your shell:
 
-```sh
+```bash
 sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
 ```
 Note that this script uses the [HTTP-01 challenge type](https://letsencrypt.org/docs/challenge-types/) and thus your instance needs to be accessible from the public internet on both ports 80 and 443. If you want to use a different challenge type, don't use this script and instead choose ___I want to use my own certificate___ during `jitsi-meet` installation.
@@ -262,7 +278,7 @@ If this all worked, then congratulations!  You have an operational Jitsi confere
 
 ## Uninstall
 
-```sh
+```bash
 sudo apt purge jigasi jitsi-meet jitsi-meet-web-config jitsi-meet-prosody jitsi-meet-turnserver jitsi-meet-web jicofo jitsi-videobridge2
 ```
 
@@ -282,7 +298,7 @@ The reason for the failure is that sometimes the uninstall script is faster than
 You can try to use a different web browser. Some versions of some browsers are known to have issues with Jitsi Meet. 
 
 * WebRTC, Webcam and Microphone:
-You can also visit https://test.webrtc.org to test your browser's [WebRTC](https://en.wikipedia.org/wiki/WebRTC) support.
+You can also visit https://webrtc.github.io/samples/src/content/getusermedia/gum to test your browser's [WebRTC](https://en.wikipedia.org/wiki/WebRTC) support.
 
 * Firewall:
 If participants cannot see or hear each other, double check your firewall / NAT rules.
@@ -307,7 +323,7 @@ Take a look at the various log files:
 
 Jigasi is a server-side application acting as a gateway to Jitsi Meet conferences. It allows regular [SIP](https://en.wikipedia.org/wiki/Session_Initiation_Protocol) clients to join meetings and provides transcription capabilities.
 
-```sh
+```bash
 sudo apt install jigasi
 ```
 

@@ -4,6 +4,10 @@ title: Self-Hosting Guide - Docker
 sidebar_label: Docker
 ---
 
+:::note
+Starting with release `stable-7289-1` our images are provided with `amd64` and `arm64` architecture.
+:::
+
 ## Quick start
 
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
@@ -26,17 +30,21 @@ follow these steps:
 4. Create required `CONFIG` directories
    * For linux: 
    ```bash
-   mkdir -p ~/.jitsi-meet-cfg/{web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
    ```
    * For Windows: 
    ```bash
-   echo web/crontabs,web/letsencrypt,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
+   echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
 5. Run ``docker-compose up -d``
-6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the compose file).
+6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
 
-Note that HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
-direct access via HTTP instead HTTPS leads to WebRTC errors such as _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_ or _navigator.mediaDevices is undefined_.
+:::note
+HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
+direct access via HTTP instead HTTPS leads to WebRTC errors such as
+_Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_
+or _navigator.mediaDevices is undefined_.
+:::
 
 If you want to use jigasi too, first configure your env file with SIP credentials
 and then run Docker Compose as follows: 
@@ -45,8 +53,8 @@ and then run Docker Compose as follows:
 docker-compose -f docker-compose.yml -f jigasi.yml up
 ```
 
-If you want to enable document sharing via [Etherpad], configure it and run Docker Compose as
-follows: 
+If you want to enable document sharing via [Etherpad],
+configure it and run Docker Compose as follows: 
 
 ```bash
 docker-compose -f docker-compose.yml -f etherpad.yml up
@@ -65,7 +73,7 @@ or to use jigasi too:
 docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
-### Testing development builds
+### Testing development / unstable builds
 
 Download the latest code:
      
@@ -77,20 +85,38 @@ git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
 The code in `master` is designed to work with the unstable images. Do not run it with release images.
 :::
 
-Build your own images:
+Run `docker-compose up` as usual.
 
+Every day a new "unstable" image build is uploaded.
+
+### Building your own images
+
+Download the latest code:
+     
 ```bash
-JITSI_RELEASE=unstable make
+git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
 ```
 
-### Running unstable images
+The provided `Makefile` provides a comprehensive way of building the whole stack or individual images.
 
-Every day a new "unstable" image build is uploaded. You can test them by getting the YAML files from the repository and changing `latest` to `unstable` or `ustable-YYYY-MM-DD` for the unstable images of a specific day.
+To build all images:
+
+```bash
+make
+```
+
+To build a specific image (the web image for example):
+
+```bash
+make build_web
+```
+
+Once your local build is ready make sure to add `JITSI_IMAGE_VERSION=latest` to your `.env` file.
 
 ### Security note
 
-This setup used to have default passwords for internal accounts used across components. In order to make the default setup
-secure by default these have been removed and the respective containers won't start without having a password set.
+This setup used to have default passwords for internal accounts used across components.
+In order to make the default setup secure by default these have been removed and the respective containers won't start without having a password set.
 
 Strong passwords may be generated as follows: `./gen-passwords.sh`
 This will modify your `.env` file (a backup is saved in `.env.bak`) and set strong passwords for each of the
@@ -109,7 +135,7 @@ A Jitsi Meet installation can be broken down into the following components:
 * A SIP gateway for audio calls
 * A Broadcasting Infrastructure for recording or streaming a conference.
 
-![](assets/docker-jitsi-meet.png)
+![](../assets/docker-jitsi-meet.png)
 
 The diagram shows a typical deployment in a host running Docker. This project
 separates each of the components above into interlinked containers. To this end,
@@ -136,6 +162,8 @@ sudo firewall-cmd --permanent --add-port=10000/udp
 sudo firewall-cmd --reload
 ```
 
+See [the corresponding section in the manual setup guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart#setup-and-configure-your-firewall).
+
 ### Images
 
 * **base**: Debian stable base image with the [S6 Overlay] for process control and the
@@ -146,22 +174,21 @@ sudo firewall-cmd --reload
 * **jicofo**: [Jicofo], the XMPP focus component.
 * **jvb**: [Jitsi Videobridge], the video router.
 * **jigasi**: [Jigasi], the SIP (audio only) gateway.
-* **etherpad**: [Etherpad], shared document editing addon.
 * **jibri**: [Jibri], the broadcasting infrastructure.
 
 ### Design considerations
 
-Jitsi Meet uses XMPP for signaling, thus the need for the XMPP server. The setup provided
-by these containers does not expose the XMPP server to the outside world. Instead, it's kept
-completely sealed, and routing of XMPP traffic only happens on a user-defined network.
+Jitsi Meet uses XMPP for signaling, thus the need for the XMPP server.
+The setup provided by these containers does not expose the XMPP server to the outside world.
+Instead, it's kept completely sealed, and routing of XMPP traffic only happens on a user-defined network.
 
-The XMPP server can be exposed to the outside world, but that's out of the scope of this
-project.
+The XMPP server can be exposed to the outside world,
+but that's out of the scope of this project.
 
 ## Configuration
 
-The configuration is performed via environment variables contained in a ``.env`` file. You
-can copy the provided ``env.example`` file as a reference.
+The configuration is performed via environment variables contained in a ``.env`` file.
+You can copy the provided ``env.example`` file as a reference.
 
 Variable | Description | Example
 --- | --- | ---
@@ -172,14 +199,17 @@ Variable | Description | Example
 `DOCKER_HOST_ADDRESS` | IP address of the Docker host, needed for LAN environments | 192.168.1.1
 `PUBLIC_URL` | Public URL for the web service | https://meet.example.com
 
-**NOTE**: The mobile apps won't work with self-signed certificates (the default).
+:::note
+The mobile apps won't work with self-signed certificates (the default).
 See below for instructions on how to obtain a proper certificate with Let's Encrypt.
+:::
 
-### Let's Encrypt configuration
+### TLS Configuration
 
-If you plan on exposing this container setup to the outside traffic directly and
-want a proper TLS certificate, you are in luck because Let's Encrypt support is
-built right in. Here are the required options:
+#### Let's Encrypt configuration
+
+If you want to expose your Jitsi Meet instance to the outside traffic directly, but don't own a proper TLS certificate, you are in luck 
+because Let's Encrypt support is built right in. Here are the required options:
 
 Variable | Description | Example
 --- | --- | ---
@@ -187,27 +217,72 @@ Variable | Description | Example
 `LETSENCRYPT_DOMAIN` | Domain for which to generate the certificate | meet.example.com
 `LETSENCRYPT_EMAIL` | E-Mail for receiving important account notifications (mandatory) | alice@atlanta.net
 
-In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443. You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
+In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443 and PUBLIC_URL to your domain.
+You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
 
 **Let's Encrypt rate limit warning**: Let's Encrypt has a limit to how many times you can submit a request
 for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate) 
 certificates for the same domain name every seven days. Because of this, it is recommended that you disable the 
-Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder. Otherwise, you 
-might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
+Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder.
+Otherwise, you might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
 the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
+
+:::note
+When you move away from `LETSENCRYPT_USE_STAGING`,
+you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
+:::
 
 For more information on Let's Encrypt's rate limits, visit:
 https://letsencrypt.org/docs/rate-limits/
 
-### SIP gateway configuration
+#### Using existing TLS certificate and key
+
+If you own a proper TLS certificate and don't need a Let's Encrypt certificate, you can configure Jitsi Meet container 
+to use it. 
+
+Unlike Let's Encrypt certificates, this is not configured through the `.env`file, but by telling Jitsi Meet's `web` service 
+to mount the following two volumes: 
+
+- mount `/path/to/your/cert.key` file to `/config/keys/cert.key` mount point
+- mount `/path/to/your/cert.fullchain` file to the `/config/keys/cert.crt` mount point.
+
+Doing it in `docker-compose.yml` file should look like this:
+
+
+```
+services:
+    web:
+        ...
+        volumes:
+            ...
+            - /path/to/your/cert.fullchain:/config/keys/cert.crt
+            - /path/to/your/cert.key:/config/keys/cert.key
+```
+
+### Features configuration (config.js)
+
+Variable | Description | Example
+--- | --- | ---
+`TOOLBAR_BUTTONS` | Configure toolbar buttons. Add the buttons name separated with comma(no spaces between comma) | |
+`HIDE_PREMEETING_BUTTONS` | Hide the buttons at pre-join screen. Add the buttons name separated with comma | |
+`ENABLE_LOBBY` | Control whether the lobby feature should be enabled or not | 1
+`ENABLE_AV_MODERATION` | Control whether the A/V moderation should be enabled or not | 1
+`ENABLE_PREJOIN_PAGE` | Show a prejoin page before entering a conference | 1
+`ENABLE_WELCOME_PAGE` | Enable the welcome page | 1
+`ENABLE_CLOSE_PAGE` | Enable the close page | 0
+`DISABLE_AUDIO_LEVELS` | Disable measuring of audio levels | 0
+`ENABLE_NOISY_MIC_DETECTION` | Enable noisy mic detection | 1
+`ENABLE_BREAKOUT_ROOMS` | Enable breakout rooms | 1
+
+### Jigasi SIP gateway (audio only) configuration
 
 If you want to enable the SIP gateway, these options are required:
 
 Variable | Description | Example
 --- | --- | ---
 `JIGASI_SIP_URI` | SIP URI for incoming / outgoing calls | test@sip2sip.info
-`JIGASI_SIP_PASSWORD` | Password for the specified SIP account | passw0rd
+`JIGASI_SIP_PASSWORD` | Password for the specified SIP account | `<unset>`
 `JIGASI_SIP_SERVER` | SIP server (use the SIP account domain if in doubt) | sip2sip.info
 `JIGASI_SIP_PORT` | SIP server port | 5060
 `JIGASI_SIP_TRANSPORT` | SIP transport | UDP
@@ -224,7 +299,7 @@ The JSON with the Dial-In numbers should look like this:
 {"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
 ```
 
-### Jitsi Broadcasting Infrastructure (Jibri) configuration
+### Recording / live streaming configuration
 
 Before running Jibri, you need to set up an ALSA loopback device on the host. This **will not**
 work on a non-Linux host.
@@ -255,8 +330,10 @@ echo "snd-aloop" >> /etc/modules
 lsmod | grep snd_aloop
 ```
 
-NOTE: If you are running on AWS you may need to reboot your machine to use the generic kernel instead
+:::note
+If you are running on AWS you may need to reboot your machine to use the generic kernel instead
 of the "aws" kernel. If after reboot, your machine is still using the "aws" kernel, you'll need to manually update the grub file. So just run:
+:::
 
 ```bash
 # open the grub file in editor
@@ -274,14 +351,14 @@ If you want to enable Jibri these options are required:
 
 Variable | Description | Example
 --- | --- | ---
-`ENABLE_RECORDING` | Enable recording conference to local disk | 1
+`ENABLE_RECORDING` | Enable recording / live streaming | 1
 
 Extended Jibri configuration:
 
 Variable | Description | Example
 --- | --- | ---
 `JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
-`JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | passw0rd
+`JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
 `JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
 `JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
 `JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
@@ -340,7 +417,7 @@ For using multiple Jibri instances, you have to select different loopback interf
 
 </details>
 
-### Jitsi-Meet web configuration
+### Jitsi Meet configuration
 
 :::tip This section partly contains duplicate settings
 
@@ -464,6 +541,23 @@ This can be tested using the [jwt.io] debugger. Use the following sample payload
 }
 ```
 
+#### Authentication using Matrix
+
+For more information see the documentation of the "Prosody Auth Matrix User Verification" [here](https://github.com/matrix-org/prosody-mod-auth-matrix-user-verification).
+
+Variable | Description | Example
+--- | --- | ---
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000
+`MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. | issuer (default) 
+`MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
+`MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
+
+#### External authentication
+
+Variable | Description | Example
+--- | --- | ---
+`TOKEN_AUTH_URL` | Authenticate using external service or just focus external auth window if there is one already. | https://auth.meet.example.com/{room}
+
 ### Shared document editing using Etherpad
 
 You can collaboratively edit a document via [Etherpad]. In order to enable it, set the config options below and run
@@ -488,8 +582,33 @@ Variable | Description | Example
 `GC_CLIENT_EMAIL` | `client_email` from Google Cloud Credentials
 `GC_CLIENT_ID` | `client_id` from Google Cloud Credentials
 `GC_CLIENT_CERT_URL` | `client_x509_cert_url` from Google Cloud Credentials
+`JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
+`JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send transcribed text to the chat when transcriber is on | true
+`JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an url to the chat with transcription file | true
 
 For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol section "Before you begin" paragraph 1 to 5.
+
+### Sentry logging configuration
+
+Variable | Description | Default value
+--- | --- | ---
+`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`SENTRY_ENVIRONMENT` | Optional environment info to filter events | production
+`SENTRY_RELEASE` | Optional release info to filter events | 1.0.0
+
+### TURN server configuration
+
+Configure external TURN servers.
+
+Variable | Description | Default value
+--- | --- | ---
+`TURN_CREDENTIALS` | Credentials for TURN servers
+`TURN_HOST` | TURN server hostname (TCP transport)
+`TURN_PORT` | TURN server port (TCP transport)
+`TURNS_HOST` | TURN server hostname (TLS transport)
+`TURNS_PORT` | TURN server port (TLS transport)
 
 ### Advanced configuration
 
@@ -511,34 +630,54 @@ Variable | Description | Default value
 `GLOBAL_MODULES` | Custom prosody modules to load in global configuration (comma separated) | statistics,alert
 `GLOBAL_CONFIG` | Custom configuration string with escaped newlines | foo = bar;\nkey = val;
 `RESTART_POLICY` | Container restart policy | defaults to `unless-stopped`
+`DISABLE_HTTPS` | Handle TLS connections outside of this setup | 0
+`ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS | 0
+`LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
+`ENABLE_HSTS` | Send a `strict-transport-security` header to force browsers to use a secure and trusted connection. Recommended for production use. | 1
+`ENABLE_IPV6` | Provides means to disable IPv6 in environments that don't support it | 1
+
+#### Advanced Prosody options
+
+Variable | Description | Default value
+--- | --- | ---
+`PROSODY_RESERVATION_ENABLED` | Enable Prosody's reservation REST API | false
+`PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API | 
+
+#### Advanced Jicofo options
+
+Variable | Description | Default value
+--- | --- | ---
 `JICOFO_COMPONENT_SECRET` | XMPP component password for Jicofo | s3cr37
 `JICOFO_AUTH_USER` | XMPP user for Jicofo client connections | focus
-`JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | passw0rd
+`JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
+
+#### Advanced JVB options
+
+Variable | Description | Default value
+--- | --- | ---
 `JVB_AUTH_USER` | XMPP user for JVB MUC client connections | jvb
-`JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | passw0rd
+`JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
 `JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
 `JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
-`JVB_TCP_HARVESTER_DISABLED` | Disable the additional harvester which allows video over TCP (rather than just UDP) | true
-`JVB_TCP_PORT` | TCP port for media used by Jitsi Videobridge when the TCP Harvester is enabled | 4443
-`JVB_TCP_MAPPED_PORT` | TCP port advertised by Jitsi Videobridge | 4443
+`JVB_COLIBRI_PORT` | COLIBRI REST API port of JVB exposed to localhost | 8080
 `JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
-`JVB_ENABLE_APIS` | Comma separated list of JVB APIs to enable | none
+`COLIBRI_REST_ENABLED` | Enable the COLIBRI REST API | true
+`SHUTDOWN_REST_ENABLED` | Enable the shutdown REST API | true
+
+#### Advanced Jigasi options
+
+Variable | Description | Default value
+--- | --- | ---
+`JIGASI_ENABLE_SDES_SRTP` | Enable SDES srtp | 0
+`JIGASI_SIP_KEEP_ALIVE_METHOD` | Keepalive method | OPTIONS
+`JIGASI_HEALTH_CHECK_SIP_URI` | Health-check extension |
+`JIGASI_HEALTH_CHECK_INTERVAL` | Health-check interval | 300000
 `JIGASI_XMPP_USER` | XMPP user for Jigasi MUC client connections | jigasi
-`JIGASI_XMPP_PASSWORD` | XMPP password for Jigasi MUC client connections | passw0rd
+`JIGASI_XMPP_PASSWORD` | XMPP password for Jigasi MUC client connections | `<unset>`
 `JIGASI_BREWERY_MUC` | MUC name for the Jigasi pool | jigasibrewery
 `JIGASI_PORT_MIN` | Minimum port for media used by Jigasi | 20000
 `JIGASI_PORT_MAX` | Maximum port for media used by Jigasi | 20050
-`JIGASI_ENABLE_SDES_SRTP` | Enable SDES srtp | 1
-`JIGASI_SIP_KEEP_ALIVE_METHOD` | Keepalive method | OPTIONS
-`JIGASI_HEALTH_CHECK_SIP_URI` | Health-check extension. Jigasi will call it for health check | keepalive
-`JIGASI_HEALTH_CHECK_INTERVAL` | Interval of health check in milliseconds | 300000
-`JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
-`JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send a transcribed text to the chat when transcriber is on | true
-`JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an URL to the chat with transcription file | true
-`DISABLE_HTTPS` | Handle TLS connections outside of this setup | 1
-`ENABLE_HTTP_REDIRECT` | Redirect HTTP traffic to HTTPS (necessary for Let's Encrypt) | 1
-`LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
 
 ### Running behind NAT or on a LAN environment
 
@@ -547,8 +686,45 @@ the ``DOCKER_HOST_ADDRESS`` should be set. This way, the Videobridge will advert
 of the host running Docker instead of the internal IP address that Docker assigned it, thus making [ICE]
 succeed. If your users are coming in over the Internet (and not over LAN), this will likely be your public IP address. If this is not set up correctly, calls will crash when more than two users join a meeting.
 
-The public IP address is discovered via [STUN]. STUN servers can be specified with the ``JVB_STUN_SERVERS``
-option.
+The public IP address is discovered via [STUN].
+STUN servers can be specified with the ``JVB_STUN_SERVERS`` option.
+
+:::note
+Due to a bug in the docker version currently in the Debian repos (20.10.5), [Docker does not listen on IPv6 ports](https://forums.docker.com/t/docker-doesnt-open-ipv6-ports/106201/2), so for that combination you will have to [manually obtain the latest version](https://docs.docker.com/engine/install/debian/).
+:::
+
+## Accessing server logs
+
+The default bahavior of `docker-jitsi-meet` is to log to `stdout`.
+
+While the logs are sent to `stdout`, they are not lost: unless configured to drop all logs, Docker keeps them available for future retrieval and processing.
+
+If you need to access the container's logs you have multiple options. Here are the main ones:
+
+* run `docker-compose logs -t -f <service_name>` from command line, where `<service_name>` is one of `web`, `prosody`,`jvb`, `jicofo`. This command will output the logs for the selected service to stdout with timestamps.
+* use a standard [docker logging driver](https://docs.docker.com/config/containers/logging/configure/) to redirect the logs to the desired target (for instance `syslog` or `splunk`).
+* serach [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/) 
+* or [write your own driver plugin](https://docs.docker.com/engine/extend/plugins_logging/) if you have a very specific need.
+
+For instance, if you want to have all logs related to a `<service_name>` written to `/var/log/jitsi/<service_name>` as `json` output, you could use [docker-file-log-driver](https://github.com/deep-compute/docker-file-log-driver) and configure it by adding the following block in your `docker-compose.yml` file, at the same level as the `image` block of the selected `<service_name>`:
+
+```
+services:
+    <service_name>:
+        image: ...
+        ...
+        logging:
+            driver: file-log-driver
+            options:
+                fpath: "/jitsi/<service_name>.log"
+```
+
+If you want to only display the `message` part of the log in `json` format, simply execute the following command (for instance if `fpath` was set to `/jitsi/jvb.log`) which uses `jq` to extract the relevant part of the logs:
+
+
+```
+sudo cat /var/log/jitsi/jvb.log | jq -r '.msg' | jq -r '.message'
+```
 
 ## Build Instructions
 
@@ -564,7 +740,7 @@ You are now able to run `docker-compose up` as usual.
 
 By default this setup is using WebSocket connections for 2 core components:
 
-* Sinalling (XMPP)
+* Signalling (XMPP)
 * Bridge channel (colibri)
 
 Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:

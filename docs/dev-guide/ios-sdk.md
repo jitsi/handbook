@@ -68,7 +68,7 @@ you may want to set `UIViewControllerBasedStatusBarAppearance` to `NO` in your
 
 ### Building it yourself
 
-1. Install all required [dependencies](mobile.md).
+1. Install all required [dependencies](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-mobile-jitsi-meet).
 
 2. Build it:
 
@@ -258,24 +258,23 @@ All methods in this delegate are optional.
 
 #### conferenceJoined
 
-Called when a conference was joined.
+Called when a conference was joined. `data` contains the following information:
 
-The `data` dictionary contains a "url" key with the conference URL.
+- `url`: the conference URL
 
 #### conferenceTerminated
 
-Called when a conference was terminated either by user choice or due to a
-failure.
+Called when the active conference ends, be it because of user choice or because of a failure. `data` contains the
+following information:
 
-The `data` dictionary contains an "error" key with the error and a "url" key
-with the conference URL. If the conference finished gracefully no `error`
-key will be present.
+- `url`: the conference URL
+- `error`: missing if the conference finished gracefully, otherwise contains the error message
 
 #### conferenceWillJoin
 
-Called before a conference is joined.
+Called before a conference is joined. `data` contains the following information:
 
-The `data` dictionary contains a "url" key with the conference URL.
+- `url`: the conference URL
 
 #### enterPictureInPicture
 
@@ -289,63 +288,59 @@ The `data` dictionary is empty.
 
 #### participantJoined
 
-Called when a participant has joined the conference.
+Called when a participant has joined the conference. `data` contains the following information:
 
-The `data` dictionary contains information of the participant that has joined.
-Depending of whether the participant is the local one or not, some of them are 
-present/missing.
-    isLocal
-    email
-    name
-    participantId
+- `email`: the email of the participant. It may not be set if the remote participant didn't set one.
+- `name`: the name of the participant.
+- `role`: the role of the participant.
+- `participantId`: the id of the participant.
 
 #### participantLeft
 
-Called when a participant has left the conference.
+Called when a participant has left the conference. `data` contains the following information:
 
-The `data` dictionary contains information of the participant that has left.
-Depending of whether the participant is the local one or not, some of them are 
-present/missing.
-    isLocal
-    email
-    name
-    participantId
+- `participantId`: the id of the participant that left.
 
 #### audioMutedChanged
 
-Called when audioMuted state changed.
+Called when the local participant's audio is muted or unmuted. `data` contains the following information:
 
-The `data` dictionary contains a `muted` key with state of the audioMuted for the localParticipant.
+- `muted`: a boolean indicating whether the audio is muted or not.
 
 #### videoMutedChanged
 
-Called when videoMuted state changed.
+Called when the local participant's video is muted or unmuted. `data` contains the following information:
 
-The `data` dictionary contains a `muted` key with state of the videoMuted for the localParticipant.
+- `muted`: an integer indicating whether the video is muted or not. 0 means unmuted, 4 means muted.
 
 #### endpointTextMessageReceived
 
 Called when an endpoint text message is received.
 
-The `data` dictionary contains a `senderId` key with the participantId of the sender and a `message` key with the content.
+The `data` dictionary contains a `senderId` key with the participantId of the sender and a `message` key with the
+content.
 
 #### screenShareToggled
 
 Called when a chat message is received.
 
-The `data` dictionary contains a `participantId` key with the id of the participant  and a 'sharing' key with boolean value.
+The `data` dictionary contains a `participantId` key with the id of the participant and a 'sharing' key with boolean
+value.
 
 #### chatMessageReceived
 
-Called when a chat message is received.
+Called when a chat text message is received. `data` contains the following information:
 
-The `data` dictionary contains `message`, `senderId` and  `isPrivate` keys.
+- `senderId`: the id of the participant that sent the message.
+- `message`: the content of the message.
+- `isPrivate`: true if the message is private, false otherwise.
+- `timestamp`: the (optional) timestamp of the message.
 
 #### chatToggled
 
-Called when the chat dialog is displayed/hidden.
+Called when the chat dialog is opened or closed. `data` contains the following information:
 
-The `data` dictionary contains a `isOpen` key.
+- `isOpen`: true if the chat dialog is open, false otherwise.
 
 #### readyToClose
 
@@ -582,4 +577,4 @@ Finally, we are ready to test the implementation. Before doing so, make sure voi
 - Add a new key `RTCScreenSharingExtension` to the app's `Info.plist` with the extension's `Bundle Identifier` as the value.
 - Update `SampleHandler.swift` with the code from the sample project. Update `appGroupIdentifier` constant with the App Group name your app and extension are both registered to.
 - Update `JitsiMeetConferenceOptions` to enable screen sharing using the `ios.screensharing.enabled` feature flag.
-- Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.playlist`, in order to work when the app is in the background.
+- Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.plist`, in order to work when the app is in the background.

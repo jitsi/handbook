@@ -14,7 +14,7 @@ Building the apps / SDKs is not supported on Windows.
 ## Building the sources
 
 :::note
-Node.js >= 14 and npm >= 7 are required.
+Node.js >= 16 and npm >= 8 are required.
 :::
 
 On Debian/Ubuntu systems, the required packages can be installed with:
@@ -32,6 +32,10 @@ npm install
 # To build the Jitsi Meet application, just type
 make
 ```
+
+:::warn
+**DO NOT** run `npm update` or use `yarn` or delete `package-lock.json`. Dependencies are pinned for a reason.
+:::
 
 ### Running with webpack-dev-server for development
 

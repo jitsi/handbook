@@ -44,7 +44,7 @@ Most features also contain a file called `middleware.js`. This file acts as a br
 In this folder, the external API can be found. This API can be used in various events like participants joining/leaving the meeting, changes in avatars or chat, as well as errors in using the microphone or camera.
 
 **./android and ./ios**
-Both of these folders contain the basics of the Android and iOS app respectively. However, the code for the application itself and its components can be found in the **react/features** folder, which will be explained later in this section.
+Both of these folders contain the basics of the Android and iOS app respectively. However, the code for the application itself and its components can be found in the **react/features** folder, which is explained earlier in this section.
 
 **./conference.js**
 This file can be found at the root of the project, and contains the foundation of any interaction between a user and a conference room. This consists of setting up a connection to it, joining the meeting room, muting and unmuting, but also functions to gather information about the participants that are in the room.
@@ -58,7 +58,7 @@ This folder contains all the css that is used in the project. The files (mostly 
 ## Testing
 The main form of testing code changes is done through torture tests, next to this the code is tested manually.
 
-The torture tests are located in a separate repository, [Jitsi Meet Torture](https://github.com/jitsi/jitsi-meet-torture). The project contains end to end tests for several key functions such as peer to peer and invites. The testing can be done for iOS, Android and web, which are all the platforms that Jitsi Meet can be used on. The testing is done automatically for pull requests by project members, where it is used in combination with the continuous integration by a Jenkins instance running the tests, testing on the [meet.jit.si](meet.jit.si) instance. Other members can run the tests locally. The test results can be viewed on an automatically generated web page.
+The torture tests are located in a separate repository, [Jitsi Meet Torture](https://github.com/jitsi/jitsi-meet-torture). The project contains end to end tests for several key functions such as peer to peer and invites. The testing can be done for iOS, Android and web, which are all the platforms that Jitsi Meet can be used on. The testing is done automatically for pull requests by project members, where it is used in combination with the continuous integration by a Jenkins instance running the tests, testing on the [meet.jit.si](https://meet.jit.si) instance. Other members can run the tests locally. The test results can be viewed on an automatically generated web page.
 
 Manual testing is performed while doing code reviews, however there are also testing releases that can be freely downloaded and deployed, or can be used on the [beta test server](https://beta.meet.jit.si/).
 

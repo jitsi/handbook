@@ -48,7 +48,6 @@ Replace `<FQDN>` with your domain name and `YOURSECRET3` with a strong password.
 ---------- Server-wide settings ----------
 admins = { "focus@auth.<FQDN>" }
 cross_domain_bosh = true;
-component_ports = { 5347 }
 modules_enabled = {
         -- HTTP modules
                 "bosh"; -- Enable BOSH clients, aka "Jabber over HTTP"
@@ -68,7 +67,7 @@ modules_enabled = {
 * Create a new configuration file named `<FQDN>.cfg.lua` in `/etc/prosody/conf.avail/`
   with the following content:
 
-```lua
+```lua title="/etc/prosody/conf.avail/meet.example.org.cfg.lua"
 plugin_paths = { "/usr/share/jitsi-meet/prosody-plugins/" }
 
 -- As per https://prosody.im/doc/setting_up_bosh#proxying_requests
@@ -158,7 +157,9 @@ The value `<DOMAIN>` represents the following URLs.
     * `recorder.<FQDN>` __Note:__ This is only needed if you deploy Jibri
 * `/var/lib/prosody/`: Symlink all generated `*.crt` and `*.key` files to `/etc/prosody/certs/`.  
 
-__Note:__ Please do not link other certificates.
+:::note
+Please do not link other certificates.
+:::
 
 * Add the certificates to the system keystore:
     * `ln --symbolic --force /var/lib/prosody/auth.<FQDN>.crt /usr/local/share/ca-certificates/auth.<FQDN>.crt`
@@ -179,7 +180,7 @@ __Note:__ If you are using an existing server, please make sure to adjust the we
 
 * Go to `/srv/jitsi-meet` and edit `config.js`:
 
-```js
+```js title="/srv/jitsi-meet/config.js"
 var config = {
     hosts: {
         domain: '<FQDN>',

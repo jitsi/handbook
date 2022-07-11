@@ -15,6 +15,10 @@ You can also embed and integrate the globally distributed and highly available d
 JaaS customers, please make sure you also read [this](https://developer.8x8.com/jaas/docs/iframe-api-overview)!
 :::
 
+:::tip
+If you use React in your web application you might want to use our [React SDK](dev-guide-react-sdk) instead.
+:::
+
 ## Integration
 
 To enable the Jitsi Meet API in your application you must use one of the following JavaScript (JS) Jitsi Meet API library scripts and integrate it into your application:
@@ -60,15 +64,15 @@ The Meet API object takes the following form:
 
 The API object constructor uses the following options:
 
-* **domain**: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
+* `domain`: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
 
-* **options**: The object with properties. 
+* `options`: The object with properties. 
 
   Optional arguments include:
   
-    * **roomName**: The name of the room to join.
+    * `roomName`: The name of the room to join.
     
-    * **width**: The created IFrame width.
+    * `width`: The created IFrame width.
     
       The width argument has the following characteristics:
     
@@ -76,7 +80,7 @@ The API object constructor uses the following options:
     
       - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**.
     
-    * **height**: The height for the created IFrame. 
+    * `height`: The height for the created IFrame. 
     
       The height argument has the following characteristics: 
     
@@ -84,21 +88,23 @@ The API object constructor uses the following options:
     
       - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**. 
     
-    * **parentNode**: The HTML DOM Element where the IFrame is added as a child.
+    * `parentNode`: The HTML DOM Element where the IFrame is added as a child.
     
-    * **configOverwrite**: The JS object with overrides for options defined in the [config.js] file.
+    * `configOverwrite`: The JS object with overrides for options defined in the [config.js] file.
     
-    * **interfaceConfigOverwrite**: The JS object with overrides for options defined in the [interface_config.js] file.
+    * `interfaceConfigOverwrite`: The JS object with overrides for options defined in the [interface_config.js] file.
     
-    * **jwt**: The [JWT](https://jwt.io/) token.
+    * `jwt`: The [JWT](https://jwt.io/) token.
     
-    * **onload**: The IFrame onload event handler.
+    * `onload`: The IFrame onload event handler.
     
-    * **invitees**: Object arrays that contain information about participants invited to a call.
+    * `invitees`: Object arrays that contain information about participants invited to a call.
     
-    * **devices**: Information map about the devices used in a call.
+    * `devices`: Information map about the devices used in a call.
     
-    * **userInfo**: The JS object that contains information about the participant starting the meeting (e.g., email).
+    * `userInfo`: The JS object that contains information about the participant starting the meeting (e.g., email).
+
+    * `lang`: The default meeting language.
 
       For example:
 
@@ -108,7 +114,8 @@ const options = {
     roomName: 'JitsiMeetAPIExample',
     width: 700,
     height: 700,
-    parentNode: document.querySelector('#meet')
+    parentNode: document.querySelector('#meet'),
+    lang: 'de'
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
@@ -179,7 +186,14 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
-**Note:** **`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
+:::note
+**`TILE_VIEW_MAX_COLUMNS`** accepts values from 1 to 5. The default value is 5.
+:::
+
+
+:::warning
+The following sections have moved to new pages. Please check the new pages as these sections will not be updated.
+:::
 
 ## Functions
 
@@ -447,6 +461,16 @@ Returns the IFrame HTML element which is used to load the Jitsi Meet conference:
 const iframe = api.getIFrame();
 ```
 
+### isAudioDisabled
+
+Returns a Promise which resolves to the current audio disabled state:
+
+```javascript
+api.isAudioDisabled().then(disabled => {
+    ...
+});
+```
+
 ### isAudioMuted
 
 Returns a Promise which resolves to the current audio muted state:
@@ -523,6 +547,16 @@ api.isParticipantsPaneOpen().then(state => {
 });
 ```
 
+### isStartSilent
+
+Returns a Promise which resolves with whether meeting was started in view only.
+
+```javascript
+api.isStartSilent().then(startSilent => {
+    ...
+});
+```
+
 ### listBreakoutRooms
 
 Returns a Promise which resolves with the map of breakout rooms.
@@ -544,7 +578,9 @@ api.invite([ {...}, {...}, {...} ]).then(() => {
     // failure
 });
 ```
-**NOTE:** The invitee format in the array depends on the invite service used in the deployment.
+:::note
+The invitee format in the array depends on the invite service used in the deployment.
+:::
 
 SIP invite objects have the following structure:
 
@@ -563,7 +599,9 @@ Removes the embedded Jitsi Meet conference:
 api.dispose();
 ```
 
-**NOTE:** Jitsi recommends removing the conference before the page is unloaded.
+:::note
+Jitsi recommends removing the conference before the page is unloaded.
+:::not
 
 ## Commands
 
@@ -748,6 +786,16 @@ No arguments are required.
 api.executeCommand('toggleShareScreen');
 ```
 
+### toggleSubtitles
+
+Start or stop subtitles.
+
+No arguments are required.
+
+```javascript
+api.executeCommand('toggleSubtitles');
+```
+
 ### toggleTileView
 
 Enter or exit the tile view layout mode. 
@@ -896,6 +944,16 @@ api.executeCommand('kickParticipant',
 );
 ```
 
+### grantModerator
+
+Grants moderator rights to the participant with the given ID.
+
+```javascript
+api.executeCommand('grantModerator',
+    participantID: string
+);
+```
+
 ### overwriteConfig
 
 Overwrite config.js props with values from the config object passed on to the command.
@@ -934,6 +992,16 @@ Allows moderators to toggle the follow me functionality
 ```javascript
 api.executeCommand('setFollowMe',
     value: boolean, // set to true if participants should be following you, false otherwise
+);
+```
+
+### setSubtitles
+
+Enables or disables the subtitles.
+
+```javascript
+api.executeCommand('setSubtitles',
+    enabled: boolean
 );
 ```
 
@@ -1233,6 +1301,23 @@ The listener receives an object with the following structure:
         name: string, // the name of the datachannel event: `endpoint-text-message`
         text: string // the received text from the sender
     }
+}
+```
+
+### faceLandmarkDetected
+
+Provides event notifications when a face landmark is detected
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    faceBox: {
+        left: number, // face bounding box distance as percentage from the left video edge
+        right: number // face bounding box distance as percentage from the right video edge
+        width: number // face bounding box width as percentage of the total video width
+    }, // this might be undefined if config.faceLandmarks.faceCenteringThreshold is not passed 
+    faceExpression: string // check https://github.com/jitsi/jitsi-meet/blob/master/react/features/face-landmarks/constants.js#L3 for available values
 }
 ```
 

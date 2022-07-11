@@ -4,7 +4,7 @@ title: Start a Jitsi Meeting
 sidebar_label: Start a Jitsi Meeting
 ---
 
-## Desktop Browser
+## Desktop or Mobile Browser
 
 1. You need a browser (please note our separate information).
 2. Open the browser and in the address bar type, for example "https://meet.jit.si" (without "") and press <kbd>Enter</kbd>.

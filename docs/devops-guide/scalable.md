@@ -9,9 +9,13 @@ The first limiting factor is the videobridge component, that handles the actual 
 It is easy to scale the video bridges horizontally by adding as many as needed.
 In a cloud based environment, additionally the bridges can be scaled up or down as needed.
 
-*NB*: The [Youtube Tutorial on Scaling](https://www.youtube.com/watch?v=LyGV4uW8km8) is outdated and describes an old configuration method.
+:::warning
+The [Youtube Tutorial on Scaling](https://www.youtube.com/watch?v=LyGV4uW8km8) is outdated and describes an old configuration method.
+The current default Jitsi Meet install is already configured for horizontal scalability.
+:::
 
-*NB*: Building a scalable infrastructure is not a task for beginning Jitsi Administrators.
+:::note
+Building a scalable infrastructure is not a task for beginning Jitsi Administrators.
 The instructions assume that you have installed a single node version successfully, and that
 you are comfortable installing, configuring and debugging Linux software.
 This is not a step-by-step guide, but will show you, which packages to install and which
@@ -19,6 +23,7 @@ configurations to change. Use the [manual install](devops-guide-manual) for
 details on how to setup Jitsi on a single host.
 It is highly recommended to use configuration management tools like Ansible or Puppet to manage the
 installation and configuration.
+:::
 
 ## Architecture (Single Jitsi-Meet, multiple videobridges)
 
@@ -35,8 +40,8 @@ videobridges that are load balanced looks as follows. Each box is a server/VM.
                v                                       v
           80, 443 TCP                          443 TCP, 10000 UDP
        +--------------+                     +---------------------+
-       |  nginx       |  5222, 5347 TCP     |                     |
-       |  jitsi-meet  |<-------------------+|  jitsi-videobridge  |
+       |  nginx       |  5222 TCP           |                     |
+       |  Jitsi Meet  |<-------------------+|  jitsi-videobridge  |
        |  prosody     |         |           |                     |
        |  jicofo      |         |           +---------------------+
        +--------------+         |
@@ -111,7 +116,6 @@ Open to world:
 Open to the videobridges only
 
 * 5222 TCP (for Prosody)
-* 5347 TCP (for Jicofo)
 
 
 #### NGINX
@@ -122,21 +126,13 @@ Create the `/etc/nginx/sites-available/meet.example.com.conf` as usual
 
 Follow the steps in the [manual install](devops-guide-manual) for setup tasks
 
-You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
-
-* `/etc/prosody/prosody.cfg.lua`
-* `/etc/prosody/conf.avail/meet.example.com.cfg.lua`
-
 #### Jitsi-Meet
 
 Adapt `/usr/share/jitsi-meet/config.js` and `/usr/share/jitsi-meet/interface-config.js` to your specific needs
 
 #### Jicofo
 
-You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
-
-* `/etc/jitsi/jicofo/config` (hostname, jicofo_secret, jicofo_password)
-* `/etc/jitsi/jicofo/sip-communicator.properties` (hostname)
+No changes necessary from the default install.
 
 ### Configuration of the Videobridge
 
@@ -146,20 +142,11 @@ Open the following ports:
 
 Open to world:
 
-* 443 TCP
-* 10000 UDP
+* 10000 UDP (for media)
 
 #### jitsi-videobridge2
 
-You will need to adapt the following files (see the files in [example-config-files/scalable](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/scalable))
-
-Each videobridge will have to have it's own, unique nickname
-
-* `/etc/jitsi/videobridge/config` (hostname, password)
-* `/etc/jitsi/jicofo/sip-communicator.properties` (hostname of jitsi-meet, nickname of videobridge, vb_password)
-
-With the latest stable (April 2020) videobridge, it is no longer necessary to set public and private IP
-addresses in the `sip-communicator.properties` as the bridge will figure out the correct configuration by itself.
+No changes necessary from the default setup.
 
 ## Testing
 

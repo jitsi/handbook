@@ -57,13 +57,7 @@ var config = {
 
 When running Jicofo, specify your main domain in an additional configuration
 property. Jicofo will accept conference allocation requests only from the
-authenticated domain. This should go in `/etc/jitsi/jicofo/sip-communicator.properties`.
-
-```
-org.jitsi.jicofo.auth.URL=XMPP:jitsi-meet.example.com
-```
-
-If you have installed Jicofo from the Debian package, this should go as a new 'authentication' section in `/etc/jitsi/jicofo/jicofo.conf`:
+authenticated domain. This should go as a new 'authentication' section in `/etc/jitsi/jicofo/jicofo.conf`:
 
 ```
 jicofo {

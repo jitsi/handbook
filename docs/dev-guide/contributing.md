@@ -7,13 +7,19 @@ title: Contributing Guidelines
 We would love to have your help. Before you start working however, please read
 and follow this short guide.
 
-# Reporting Issues
-Provide as much information as possible. Mention the version of Jitsi Meet, 
-Jicofo and JVB you are using, and explain (as detailed as you can) how the 
-problem can be reproduced.
+# Reporting Issues and Asking Questions
+
+We prefer issues to be discussed first in the [community forum](https://community.jitsi.org/) and when confirmed, then an issue can be opened in the [issue tracker](https://github.com/jitsi/jitsi-meet/issues).
+
+When opening an issue, please provide as much information as possible. Mention the version of Jitsi Meet, Jicofo and JVB you are using, and explain (as detailed as you can) how the problem can be reproduced.
+
+Please ask any general and implementation specific questions on the [community forum](https://community.jitsi.org/) for support.
 
 # Code contributions
-Found a bug and know how to fix it? Great! Please read on.
+
+Visit the [issue tracker](https://github.com/jitsi/jitsi-meet/issues) to find a list of open issues that need attention.
+
+The [Developer Guide](dev-guide.md) will help you to setup a development environment to start working on the Jitsi Meet applications.
 
 ## Contributor License Agreement
 While the Jitsi projects are released under the
@@ -26,12 +32,14 @@ license agreement as either a [corporation](https://jitsi.org/ccla) or an
 in the agreement, unfortunately, we cannot accept your contribution.
 
 ## Creating Pull Requests
+- Fork the repo.
+- Create a new topic branch for your changes based off the master branch with a suitable name.
 - Make sure your code passes the linter rules beforehand. The linter is executed
   automatically when committing code.
 - Perform **one** logical change per pull request.
 - Maintain a clean list of commits, squash them if necessary.
 - Rebase your topic branch on top of the master branch before creating the pull
- request. Use a branch for the changes with suitable name, do not use master of your fork.
+ request.
 - Commits should have prefix indicating what they do is it feature, a fix or a translation update. This is in regards the 
  automated release notes. Prefix the commits with `feat: `, `fix: `, `lang: ` etc.
 ## Coding style

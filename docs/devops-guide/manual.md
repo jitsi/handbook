@@ -12,11 +12,13 @@ This describes configuring a server `jitsi.example.com` on a Debian-based distri
 **For other distributions** you can adapt the steps (especially changing the dependencies package installations (e.g. for nginx) and paths accordingly) so that it matches your host's distribution.   
 You will also need to generate some passwords for `YOURSECRET1`, `YOURSECRET2` and `YOURSECRET3`.
 
-There are also some complete [example config files](https://github.com/jitsi/jitsi-meet/tree/master/doc/example-config-files/) available, mentioned in each section.
+There are also some complete [example config files](https://github.com/jitsi/jitsi-meet/tree/master/doc/debian/) available, mentioned in each section.
 
 There are additional configurations to be done for a [scalable installation](devops-guide-scalable).
 
 ## Network description
+
+<!-- Replace below diagram with [Mermaid](http://mermaid-js.github.io/mermaid/) diagram in future... -->
 
 This is how the network looks:
 ```
@@ -33,10 +35,10 @@ This is how the network looks:
                   | |                          |
 +------------+    | |    +--------------+      |
 |            |    | |    |              |      |
-| jitsi-meet +<---+ +--->+ prosody/xmpp |      |
+| Jitsi Meet +<---+ +--->+ prosody/xmpp |      |
 |            |files 5280 |              |      |
 +------------+           +--------------+      v
-                     5222,5347^    ^5347     10000
+                         5222 ^    ^ 5222    10000
                 +--------+    |    |    +-------------+
                 |        |    |    |    |             |
                 | jicofo +----^    ^----+ videobridge |
@@ -45,7 +47,7 @@ This is how the network looks:
 ```
 
 ## Install prosody
-```sh
+```bash
 apt-get install prosody
 ```
 
@@ -90,18 +92,18 @@ Component "focus.jitsi.example.com"
 ```
 
 Add link for the added configuration
-```sh
+```bash
 ln -s /etc/prosody/conf.avail/jitsi.example.com.cfg.lua /etc/prosody/conf.d/jitsi.example.com.cfg.lua
 ```
 
 Generate certs for the domain:
-```sh
+```bash
 prosodyctl cert generate jitsi.example.com
 prosodyctl cert generate auth.jitsi.example.com
 ```
 
 Add auth.jitsi.example.com to the trusted certificates on the local machine:
-```sh
+```bash
 ln -sf /var/lib/prosody/auth.jitsi.example.com.crt /usr/local/share/ca-certificates/auth.jitsi.example.com.crt
 update-ca-certificates -f
 ```
@@ -114,17 +116,17 @@ ln -sf /etc/ssl/certs/java/cacerts lib/security/cacerts
 ```
 
 Create conference focus user:
-```sh
+```bash
 prosodyctl register focus auth.jitsi.example.com YOURSECRET3
 ```
 
 Restart prosody XMPP server with the new config
-```sh
+```bash
 prosodyctl restart
 ```
 
 ## Install Nginx
-```sh
+```bash
 apt-get install nginx
 ```
 
@@ -164,14 +166,20 @@ server {
 ```
 
 Add link for the added configuration
-```sh
+```bash
 cd /etc/nginx/sites-enabled
 ln -s ../sites-available/jitsi.example.com jitsi.example.com
 ```
 
 ## Install Jitsi Videobridge
+
+:::warning
+This method is no longer supported.
+You can either install the JVB from https://download.jitsi.org/stable/ and follow these [Instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions/) or [clone the repo](https://github.com/jitsi/jitsi-videobridge) and build it manually.
+:::
+
 Visit https://download.jitsi.org/jitsi-videobridge/linux to determine the current build number, download and unzip it:
-```sh
+```bash
 wget https://download.jitsi.org/jitsi-videobridge/linux/jitsi-videobridge-linux-{arch-buildnum}.zip
 unzip jitsi-videobridge-linux-{arch-buildnum}.zip
 ```
@@ -184,7 +192,7 @@ apt-get install openjdk-8-jre
 _NOTE: When installing on older Debian releases keep in mind that you need JRE >= 1.7._
 
 Create `~/.sip-communicator/sip-communicator.properties` in the home folder of the user that will be starting Jitsi Videobridge:
-```sh
+```bash
 mkdir -p ~/.sip-communicator
 cat > ~/.sip-communicator/sip-communicator.properties << EOF
 org.jitsi.impl.neomedia.transform.srtp.SRTPCryptoContext.checkReplay=false
@@ -195,12 +203,12 @@ EOF
 ```
 
 Start the videobridge with:
-```sh
-./jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 &
+```bash
+./jvb.sh --host=localhost --domain=jitsi.example.com --secret=YOURSECRET1 &
 ```
 Or autostart it by adding the line in `/etc/rc.local`:
-```sh
-/bin/bash /root/jitsi-videobridge-linux-{arch-buildnum}/jvb.sh --host=localhost --domain=jitsi.example.com --port=5347 --secret=YOURSECRET1 </dev/null >> /var/log/jvb.log 2>&1
+```bash
+/bin/bash /root/jitsi-videobridge-linux-{arch-buildnum}/jvb.sh --host=localhost --domain=jitsi.example.com --secret=YOURSECRET1 </dev/null >> /var/log/jvb.log 2>&1
 ```
 
 ## Install Jitsi Conference Focus (jicofo)
@@ -213,16 +221,16 @@ apt-get install openjdk-8-jdk maven
 _NOTE: When installing on older Debian releases keep in mind that you need JDK >= 1.7._
 
 Clone source from Github repo:
-```sh
+```bash
 git clone https://github.com/jitsi/jicofo.git
 ```
 Build the package.
-```sh
+```bash
 cd jicofo
 mvn package -DskipTests -Dassembly.skipAssembly=false
 ```
 Run jicofo:
-```sh
+```bash
 =======
 unzip target/jicofo-1.1-SNAPSHOT-archive.zip
 cd jicofo-1.1-SNAPSHOT-archive'
@@ -231,7 +239,7 @@ cd jicofo-1.1-SNAPSHOT-archive'
 
 ## Deploy Jitsi Meet
 Checkout and configure Jitsi Meet:
-```sh
+```bash
 cd /srv
 git clone https://github.com/jitsi/jitsi-meet.git
 cd jitsi-meet
@@ -258,7 +266,7 @@ var config = {
 ```
 
 Verify that nginx config is valid and reload nginx:
-```sh
+```bash
 nginx -t && nginx -s reload
 ```
 

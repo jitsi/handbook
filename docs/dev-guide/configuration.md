@@ -766,6 +766,33 @@ filmstrip: {
 }
 ```
 
+## Face Landmarks
+
+### faceLandmarks
+
+type: `Object`
+
+Options related to the face landmarks features.
+
+Properties:
+* `enableFaceCentering` - Enables centering faces within a video by sharing face coordinates.
+* `enableFaceExpressionsDetection` - Enables detecting face expressions from video.
+* `enableDisplayFaceExpressions` - Enables displaying face expressions in speaker stats.
+* `enableRTCStats` - Enables anonymized stats collection for face landmarks.
+* `faceCenteringThreshold` - Minimum required face movement percentage threshold for sending new face centering coordinates data.
+* `captureInterval` - Milliseconds for processing a new image capture in order to detect face landmarks.
+
+```javascript
+faceLandmarks: {
+        enableFaceCentering: false,
+        enableFaceExpressionsDetection: false,
+        enableDisplayFaceExpressions: false,
+        enableRTCStats: false,
+        faceCenteringThreshold: 20,
+        captureInterval: 1000
+},
+```
+
 ## Gravatar
 
 ### gravatar

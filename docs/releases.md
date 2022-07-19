@@ -32,8 +32,9 @@ The desktop applications are based on Electron. For macOS it is also available a
 
 ## Mobile SDKs
 
-* <i class="fa-brands fa-android"></i> [Android](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries)
-* <i class="fa-brands fa-apple"></i> [iOS](https://cocoapods.org/pods/JitsiMeetSDK)
+| <i class="fa-brands fa-android"></i> Android | <i class="fa-brands fa-apple"></i> iOS |
+| :--: | :--: |
+| [Maven repository](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
 
 ## Docker images
 

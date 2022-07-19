@@ -299,10 +299,12 @@ The JSON with the Dial-In numbers should look like this:
 {"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
 ```
 
-### Recording / live streaming configuration
+### Recording / live streaming configuration with Jibri
 
-Before running Jibri, you need to set up an ALSA loopback device on the host. This **will not**
-work on a non-Linux host.
+<details>
+  <summary>If you are using a release older than 7439 some extra setup is necessary.</summary>
+Before running Jibri **on releases older than 7439**, you need to set up an ALSA loopback device on the host.
+This **will not** work on a non-Linux host.
 
 For CentOS 7, the module is already compiled with the kernel, so just run:
 
@@ -347,30 +349,7 @@ update-grub
 reboot now
 ```
 
-If you want to enable Jibri these options are required:
-
-Variable | Description | Example
---- | --- | ---
-`ENABLE_RECORDING` | Enable recording / live streaming | 1
-
-Extended Jibri configuration:
-
-Variable | Description | Example
---- | --- | ---
-`JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
-`JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
-`JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
-`JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
-`JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
-`JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc
-`JIBRI_BREWERY_MUC` | MUC name for the Jibri pool | jibribrewery
-`JIBRI_PENDING_TIMEOUT` | MUC connection timeout | 90
-`JIBRI_LOGS_DIR` | Directory for logs inside Jibri container | /config/logs
-
 For using multiple Jibri instances, you have to select different loopback interfaces for each instance manually.
-
-<details>
-  <summary>Set interface in file `/home/jibri/.asoundrc` inside a docker container.</summary>
 
   Default the first instance has:
 
@@ -414,8 +393,26 @@ For using multiple Jibri instances, you have to select different loopback interf
   ...
 
   ```
-
 </details>
+
+If you want to enable Jibri these options are required:
+
+Variable | Description | Example
+--- | --- | ---
+`ENABLE_RECORDING` | Enable recording / live streaming | 1
+
+Extended Jibri configuration:
+
+Variable | Description | Example
+--- | --- | ---
+`JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
+`JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
+`JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
+`JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
+`JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
+`JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc
+`JIBRI_BREWERY_MUC` | MUC name for the Jibri pool | jibribrewery
+`JIBRI_PENDING_TIMEOUT` | MUC connection timeout | 90
 
 ### Jitsi Meet configuration
 

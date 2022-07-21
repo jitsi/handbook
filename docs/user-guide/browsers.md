@@ -28,7 +28,7 @@ title: Supported Browsers
 
 :::note
 For a better mobile experience (background support, Bluetooth support, etc.) we recommend using a
-native app instead. We provide a [native Android SDK](dev-guide-android-sdk).
+native app instead. We provide a [native Android SDK](/handbook/docs/dev-guide/dev-guide-android-sdk).
 :::
 
 ### iOS
@@ -45,5 +45,5 @@ On iOS all browsers share the same engine, Safari. As such all features and limi
 browsers are those of Safari.
 
 For a better mobile experience (background support, CallKit integration, etc.) we recommend using a
-native app instead. We provide a [native iOS SDK](dev-guide-ios-sdk).
+native app instead. We provide a [native iOS SDK](/handbook/docs/dev-guide/dev-guide-ios-sdk).
 :::

@@ -594,3 +594,16 @@ api.executeCommand('overwriteNames', [{
     }]
 );
 ```
+
+### showNotification
+
+Shows a custom notification. This affects only the local user.
+
+```javascript
+api.executeCommand('showNotification', {
+  title: String, // title of the notification
+  description: String, // content of the notification
+  type: String, // Optional. Can be 'info', 'normal', 'success', 'warning' or 'error'. Defaults to 'normal'
+  timeout: String // optional. Can be 'short', 'medium', 'long', or 'sticky'. Defaults to 'short'
+});
+```

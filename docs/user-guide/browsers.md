@@ -7,13 +7,11 @@ title: Supported Browsers
 
 | Browser | Support | Versions | Notes |
 |---|:---:|:---:|---|
-| <i class="fa-brands fa-chrome"></i> Chrome * | ✅ | >= 72 | Best results with >= 96 |
+| <i class="fa-brands fa-chrome"></i> Chrome [^1] | ✅ | >= 72 | Best results with >= 96 |
 | <i class="fa-brands fa-firefox-browser"></i> Firefox | ✅ | >= 68 | Best results with >= 101 |
 | <i class="fa-brands fa-safari"></i> Safari | ✅ | >= 14 | Best results with >= 15, output device selection unsupported |
 | <i class="fa-brands fa-edge"></i> Edge | ✅ | >= 79 | Edge Legacy is unsupported |
 | <i class="fa-brands fa-internet-explorer"></i> Internet Explorer | ❌ | | |
-
-*: The same applies to all Chromium based browsers.
 
 ## Mobile browsers
 
@@ -21,10 +19,8 @@ title: Supported Browsers
 
 | Browser | Support | Versions | Notes |
 |---|:---:|:---:|---|
-| <i class="fa-brands fa-chrome"></i> Chrome * | ✅ | | Same support as the desktop version |
+| <i class="fa-brands fa-chrome"></i> Chrome [^1] | ✅ | | Same support as the desktop version |
 | <i class="fa-brands fa-firefox-browser"></i> Firefox | ✅ | | Same support as the desktop version |
-
-*: The same applies to all Chromium based browsers.
 
 :::note
 For a better mobile experience (background support, Bluetooth support, etc.) we recommend using a
@@ -47,3 +43,5 @@ browsers are those of Safari.
 For a better mobile experience (background support, CallKit integration, etc.) we recommend using a
 native app instead. We provide a [native iOS SDK](/handbook/docs/dev-guide/dev-guide-ios-sdk).
 :::
+
+[^1]: This also applies to all Chromium based browsers such as Brave, (current) Edge, Opera, Vivaldi and others.

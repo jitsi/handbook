@@ -33,7 +33,7 @@ npm install
 make
 ```
 
-:::warn
+:::warning
 **DO NOT** run `npm update` or use `yarn` or delete `package-lock.json`. Dependencies are pinned for a reason.
 :::
 

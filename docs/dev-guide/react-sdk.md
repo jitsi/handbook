@@ -43,7 +43,7 @@ To be used with custom domains as-it-is in React projects:
         // here you can attach custom event listeners to the Jitsi Meet External API
         // you can also store it locally to execute commands
     } }
-    getIFrameRef = { (iframe) => { iframeRef.style.height = 400; } }
+    getIFrameRef = { (iframeRef) => { iframeRef.style.height = '400px'; } }
 />
 ```
 #### Properties specific to the `JitsiMeeting` component

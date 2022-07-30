@@ -10,7 +10,7 @@ This proved to be problematic(you cannot use websockets with this setup) and we 
 Here is how to remove multiplexing and enable websockets in favor of WebRTC Data Channels.
 1. Dropping multiplexing in nginx
   - delete `/etc/nginx/modules-enabled/60-jitsi-meet.conf`
-  - Then go to `/etc/nginx/site-available/your-conf` and change your virtual host to listen on 443 instead of 4444.
+  - Then go to `/etc/nginx/sites-available/your-conf` and change your virtual host to listen on 443 instead of 4444.
 2. Edit turnserver config
   - make sure your turnserver is listening on standard port tls port `5349`. Make sure in `/etc/turnserver.conf` you have the following: `tls-listening-port=5349`
   - In `/etc/prosody/conf.avail/your-conf.cfg.lua` prosody is instructed to announce `turns` turn server on port `5349` by having this line:

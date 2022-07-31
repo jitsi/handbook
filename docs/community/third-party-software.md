@@ -23,6 +23,13 @@ Plugin for Flutter.
 
 https://pub.dev/packages/jitsi_meet
 
+## Galaxy
+
+Galaxy is a web application for Jitsi admins and users to organize their Jitsi
+meetings, meeting schedules and attendees.
+
+https://github.com/emrahcom/galaxy
+
 ## GStreamer pipelinee integration
 
 Integrate Jitsi Meet conferences with GStreamer pipelines.

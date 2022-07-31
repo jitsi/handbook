@@ -8,9 +8,8 @@ by the Jitsi team.
 
 Please keep this list in alphabetical order.
 
-:::warning
-As these packages are not maintained by the Jitsi team, please ask their respective forums / issue trackers for help if you find issues.
-:::
+:::warning As these packages are not maintained by the Jitsi team, please ask
+their respective forums / issue trackers for help if you find issues. :::
 
 ## Cketti's Jitsi Hacks
 
@@ -60,21 +59,23 @@ https://github.com/avstack/jitsi-meet-unity-demo
 
 ## Jitsi-Admin
 
-An opensource platform to organize your meetings. Includes all function we know from the big conference-tools
-* Plan your Meeting
-* Secure your Meeting with user login credentials
-* Create a Report of each user visiting your conference
-* Creating an appointment poll and transfer it into a conference with one click
-* Dockerised for easy installation
+An opensource platform to organize your meetings. Includes all function we know
+from the big conference-tools
+
+- Plan your Meeting
+- Secure your Meeting with user login credentials
+- Create a Report of each user visiting your conference
+- Creating an appointment poll and transfer it into a conference with one click
+- Dockerised for easy installation
 
 Github: https://github.com/H2-invent/jitsi-admin
 
 Demo: https://jitsi-admin.de
 
-Docker: https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
+Docker:
+https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
 
-
-## Outlook Plugin 
+## Outlook Plugin
 
 Plugin for Adding a "Schedule Jitsi Meeting" Button to Microsoft Outlook.
 
@@ -82,6 +83,7 @@ GitHub: https://github.com/timetheoretical/jitsi-meet-outlook
 
 ## SAML to Jitsi JWT Authentification
 
-Intergration of SAML authentification with Shibboleth for a Jitsi Meet JWT generator.
+Intergration of SAML authentification with Shibboleth for a Jitsi Meet JWT
+generator.
 
 Github: https://github.com/Renater/Jitsi-SAML2JWT

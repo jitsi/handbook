@@ -188,15 +188,15 @@ const api = new JitsiMeetExternalAPI(domain, options);
 
 ## Functions
 
-All functions are documented [here](dev-guide-iframe-functions) now.
+All functions are documented [here](/handbook/docs/dev-guide/dev-guide-iframe-functions) now.
 
 ## Commands
 
-All commands are documented [here](dev-guide-iframe-commands) now.
+All commands are documented [here](/handbook/docs/dev-guide/dev-guide-iframe-commands) now.
 
 ## Events
 
-All events are documented [here](dev-guide-iframe-events) now.
+All events are documented [here](/handbook/docs/dev-guide/dev-guide-iframe-events) now.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

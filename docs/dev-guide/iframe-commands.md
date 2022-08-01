@@ -599,11 +599,25 @@ api.executeCommand('overwriteNames', [{
 
 Shows a custom notification. This affects only the local user.
 
+If `uid` is provided, the notification will replace existing notification with the same `uid`. The `uid` can also be
+passed to the `hideNotification` command to programmatically hide the notification.
+
 ```javascript
 api.executeCommand('showNotification', {
-  title: String, // title of the notification
-  description: String, // content of the notification
-  type: String, // Optional. Can be 'info', 'normal', 'success', 'warning' or 'error'. Defaults to 'normal'
-  timeout: String // optional. Can be 'short', 'medium', 'long', or 'sticky'. Defaults to 'short'
+  title: String, // Title of the notification.
+  description: String, // Content of the notification.
+  uid: String, // Optional. Unique identifier for the notification.
+  type: String, // Optional. Can be 'info', 'normal', 'success', 'warning' or 'error'. Defaults to 'normal'.
+  timeout: String // optional. Can be 'short', 'medium', 'long', or 'sticky'. Defaults to 'short'.
 });
+```
+
+### hideNotification
+
+Hides the notification which has the given `uid`.
+
+```javascript
+api.executeCommand('hideNotification',
+    uid: String // Unique identifier for the notification to be removed.
+);
 ```

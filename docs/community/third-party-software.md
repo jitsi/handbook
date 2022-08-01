@@ -8,8 +8,10 @@ by the Jitsi team.
 
 Please keep this list in alphabetical order.
 
-:::warning As these packages are not maintained by the Jitsi team, please ask
-their respective forums / issue trackers for help if you find issues. :::
+:::warning
+As these packages are not maintained by the Jitsi team, please ask
+their respective forums / issue trackers for help if you find issues.
+:::
 
 ## Cketti's Jitsi Hacks
 

@@ -184,6 +184,16 @@ No arguments are required.
 api.executeCommand('toggleShareScreen');
 ```
 
+### setNoiseSuppressionEnabled
+
+Enable or disable noise suppression on the current audio track.
+
+```javascript
+api.executeCommand('setNoiseSuppressionEnabled', {
+    enabled: boolean // Enable or disable noise suppression.
+});
+```
+
 ### toggleSubtitles
 
 Start or stop subtitles.

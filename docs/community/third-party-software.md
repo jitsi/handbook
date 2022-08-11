@@ -54,6 +54,22 @@ Integration of KeyCloak for authentication.
 
 https://github.com/D3473R/jitsi-keycloak
 
+## Prosody Plugins
+
+Collection of community-contributed prosody plugins that can be added to self-hosted Jitsi deployments.
+
+https://github.com/jitsi-contrib/prosody-plugins
+
+
+- **event_sync**: Sends HTTP POST to external API when occupant or room events are triggered.
+- **frozen_nick**: Prevents users from changing their display name if JWT auth is used and name is provided in token context.
+- **jibri_autostart**: Automatically starts recording when the moderator enters the room.
+- **lobby_autostart**: Automatically enables lobby for all rooms.
+- **time_restricted**: Sets a time limit on rooms and terminates the conference when the time is up.
+- **token_affiliation**: Promotes users to moderator based on affiliation property in token (JWT).
+- **token_lobby_bypass**: Enables some users to bypass lobby based a flag in token (JWT).
+- **token_owner_party**: Prevents unauthorized users from create a room and terminates the conference when the owner leaves.
+
 ## React Native plugin
 
 Plugin for React Native.

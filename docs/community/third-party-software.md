@@ -66,8 +66,8 @@ https://github.com/jitsi-contrib/prosody-plugins
 - **jibri_autostart**: Automatically starts recording when the moderator enters the room.
 - **lobby_autostart**: Automatically enables lobby for all rooms.
 - **time_restricted**: Sets a time limit on rooms and terminates the conference when the time is up.
-- **token_affiliation**: Promotes users to moderator based on affiliation property in token (JWT).
-- **token_lobby_bypass**: Enables some users to bypass lobby based a flag in token (JWT).
+- **token_affiliation**: Promotes users to moderators based on affiliation property in token (JWT).
+- **token_lobby_bypass**: Enables some users to bypass lobby based on a flag in token (JWT).
 - **token_owner_party**: Prevents unauthorized users from create a room and terminates the conference when the owner leaves.
 
 ## React Native plugin
@@ -99,6 +99,16 @@ Demo: https://jitsi-admin.de
 
 Docker:
 https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
+
+## Jitsi URL Generator
+
+A simple tool to illustrate how URL params can be composed to customise Jitsi. It only exposes a small fraction of what
+is possible, but should hopefully help build familiarity which users can then apply to other config values
+in the whitelist.
+
+https://shawnchin.github.io/jitsi-url-generator/
+
+Github:  https://github.com/shawnchin/jitsi-url-generator
 
 ## Outlook Plugin
 

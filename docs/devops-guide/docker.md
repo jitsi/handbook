@@ -399,12 +399,8 @@ If you want to enable Jibri these options are required:
 
 Variable | Description | Example
 --- | --- | ---
-`ENABLE_RECORDING` | Enable recording / live streaming | 1
-
-Extended Jibri configuration:
-
-Variable | Description | Example
---- | --- | ---
+`ENABLE_RECORDING` | Enable recording with the "recording service" (registered in the finalizing script) | 1
+`ENABLE_LIVESTREAMING` | Enable live streaming | 1
 `JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
 `JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
 `JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
@@ -413,6 +409,18 @@ Variable | Description | Example
 `JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc
 `JIBRI_BREWERY_MUC` | MUC name for the Jibri pool | jibribrewery
 `JIBRI_PENDING_TIMEOUT` | MUC connection timeout | 90
+`JIBRI_REQUEST_RETRIES` | (optional) How many times to retry a given Jibri request before giving up. Set to -1 to allow infinite retries. | 1
+`DROPBOX_APPKEY` | (optional) The Dropbox application key. Setting this parameter will enable saving in Dropbox | 
+`DROPBOX_REDIRECT_URI` | (optional) A URL to redirect the user to, after authenticating | https://jitsi-meet.example.com/static/oauth.html
+`ENABLE_FILE_RECORDING_SHARING` | (optional) Whether to show the possibility to share file recording with other people (e.g. meeting participants), based on the actual implementation on the backend. | 0
+`DISABLE_LOCAL_RECORDING` | (optional) Disables the local recording feature | 0
+`ENABLE_LOCAL_RECORDING_NOTIFY_ALL_PARTICIPANT` | (optional) Notifies all participants when local recording starts | 0
+`ENABLE_LOCAL_RECORDING_SELF_START` | (optional) Enable the ability to record only self | 0
+
+:::note
+If you want to enable recording on Dropbox and to disable recording with the "recording service" registered with 
+finalizing script, you need to set `ENABLE_RECORDING=false` and `DROPBOX_APPKEY=[your key]`.
+:::
 
 ### Jitsi Meet configuration
 

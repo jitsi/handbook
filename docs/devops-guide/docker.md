@@ -399,7 +399,13 @@ If you want to enable Jibri these options are required:
 
 Variable | Description | Example
 --- | --- | ---
-`ENABLE_RECORDING` | Enable recording with the "recording service" (registered in the finalizing script) | 1
+`ENABLE_RECORDING` | Enable recording / live streaming | 1
+
+Extended Jibri configuration:
+
+Variable | Description | Example
+--- | --- | ---
+`ENABLE_SERVICE_RECORDING` | Enable recording with the "recording service" (registered in the finalizing script) | 1
 `ENABLE_LIVESTREAMING` | Enable live streaming | 1
 `JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
 `JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
@@ -417,10 +423,6 @@ Variable | Description | Example
 `ENABLE_LOCAL_RECORDING_NOTIFY_ALL_PARTICIPANT` | (optional) Notifies all participants when local recording starts | 0
 `ENABLE_LOCAL_RECORDING_SELF_START` | (optional) Enable the ability to record only self | 0
 
-:::note
-If you want to enable recording on Dropbox and to disable recording with the "recording service" registered with 
-finalizing script, you need to set `ENABLE_RECORDING=false` and `DROPBOX_APPKEY=[your key]`.
-:::
 
 ### Jitsi Meet configuration
 

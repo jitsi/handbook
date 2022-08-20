@@ -326,7 +326,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | team.video |  ✅  |    |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=team.video&latest) | HURRICANE  |
 | swrtc.talky.io |   |  ❌ | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=swrtc.talky.io&latest) | AMAZON-02 |
 | jitsi.member.fsf.org | ✅ | | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.member.fsf.org&latest) | Free Software Foundation |
-
+| jitsi.vern.cc | ✅ | |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.vern.cc&latest) | ~vern |
 
 ## Africa <a id="africa"></a>
 

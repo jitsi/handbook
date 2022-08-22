@@ -42,11 +42,11 @@ https://github.com/avstack/gst-meet
 
 Helper web tool and API for generating Jitsi Meet compatible JWT.
 
-https://jitok.emrah.com/
+GitHub: https://github.com/jitsi-contrib/jitok
 
-https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
+Demo: https://jitok.emrah.com/
 
-https://github.com/emrahcom/emrah-tools/tree/main/jitsi/jitok
+Discussion: https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
 ## Jitsi-Admin
 

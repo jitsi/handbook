@@ -34,14 +34,12 @@ in the agreement, unfortunately, we cannot accept your contribution.
 ## Creating Pull Requests
 - Fork the repo.
 - Create a new topic branch for your changes based off the master branch with a suitable name.
-- Make sure your code passes the linter rules beforehand. The linter is executed
-  automatically when committing code.
 - Perform **one** logical change per pull request.
 - Maintain a clean list of commits, squash them if necessary.
 - Rebase your topic branch on top of the master branch before creating the pull
- request.
-- Commits should have prefix indicating what they do is it feature, a fix or a translation update. This is in regards the 
- automated release notes. Prefix the commits with `feat: `, `fix: `, `lang: ` etc.
+ request. **Never** merge master, always rebase.
+- Commits should have prefix indicating what they do is it feature, a fix or a translation update. This helps with automatted release notes generation. Prefix the commits with `feat(feature name) `, `fix(feature name)`, etc.
+
 ## Coding style
 
 ### Comments
@@ -62,7 +60,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
 
 ### Duplication
 
-* Don't copy-paste source code. Reuse it.
+* Don't copy-paste source code. Reuse it. Be careful not to create bad abstractions just to resuse a small chunk of code, however.
 
 ### Formatting
 
@@ -104,24 +102,9 @@ in the agreement, unfortunately, we cannot accept your contribution.
 
 * Java: Opening braces MUST be on their own line (especially those beginning a method).
 
-* Use 4 spaces to indent everything. Instruct your IDE not to use tabs under any circumstances and replace them with spaces.
+* Use 4 spaces to indent everything. Instruct your IDE **not to use tabs under any circumstance** and replace them with spaces.
 
 * Do not use double negative when naming properties, variables or methods/functions.
-
-### Indentation
-
-* Align `switch` and `case`/`default`. Don't indent the `case`/`default` more
-  than its `switch`.
-
-  ````javascript
-  switch (i) {
-  case 0:
-      ...
-      break;
-  default:
-      ...
-  }
-  ````
 
 ### Naming
 
@@ -146,6 +129,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
   signals public API.
 
 ### JavaScript
+
 #### Feature layout
 
 When adding a new feature, this would be the usual layout.
@@ -165,9 +149,6 @@ react/features/sample/
 The middleware must be imported in `react/features/app/` specifically
 in `middlewares.any`, `middlewares.native.js` or `middlewares.web.js` where appropriate.
 Likewise for the reducer.
-
-An `index.js` file must not be provided for exporting actions, action types and
-component. Features / files requiring those must import them explicitly.
 
 This has not always been the case and the entire codebase hasn't been migrated to
 this model but new features should follow this new layout.

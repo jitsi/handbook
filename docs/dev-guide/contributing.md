@@ -40,6 +40,9 @@ in the agreement, unfortunately, we cannot accept your contribution.
  request. **Never** merge master, always rebase.
 - Commits should have prefix indicating what they do is it feature, a fix or a translation update. This helps with automatted release notes generation. Prefix the commits with `feat(feature name) `, `fix(feature name)`, etc.
 
+## For 8x8 employees
+- Don't link any internal resources such as Jira issues, this is an Open Source project
+
 ## Coding style
 
 ### Comments

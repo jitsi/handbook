@@ -97,6 +97,7 @@ This will add the Prosody repository so that an up to date Prosody is installed,
 ```bash
 echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list
 wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add -
+apt install lua5.2
 ```
 
 ### Add the Jitsi package repository

@@ -126,46 +126,60 @@ api.getParticipantsInfo();
 
 ### getRoomsInfo
 
-Returns an array containing all rooms and participants information.
+Returns an array of available rooms and details of it:
+- `isMainRoom` (true,false), `id`, `jid`
+- participants: `Participant[]`
+    - `id`
+    - `jid`
+    - `role`
+    - `displayName`
+
+
 
 ```javascript
 api.getRoomsInfo().then(rooms => {
-//     {
-    // "rooms": [
-    //     {
-    //     "isMainRoom": true,
-    //     "id": "room_name@conference.jitsi",
-    //     "jid": "room_name@conference.jitsi/aaaaaa",
-    //     "participants": [
-    //         {
-    //         "jid": "room_name@conference.jitsi/bbbbbb",
-    //         "role": "participant",
-    //         "displayName": "p1",
-    //         "id": "bbbbbb"
-    //         },
-    //         {
-    //         "jid": "room_name@conference.jitsi/cccccc",
-    //         "role": "participant",
-    //         "displayName": "p2",
-    //         "id": "cccccc"
-    //         }
-    //     ]
-    //     },
-    //     {
-    //     "isMainRoom": false,
-    //     "id": "aaaaaa-bbb-cccc-dddd-qwertyuiopas",
-    //     "jid": "aaaaaa-bbb-cccc-dddd-qwertyuiopas@breakout.jitsi",
-    //     "participants": [
-    //     {
-    //         "jid": "aaaaaa-cccc-dddd-eeee-qwertyuiopas@jitsi/abcd1234",
-    //         "role": "moderator",
-    //         "displayName": "Participant name",
-    //         "avatarUrl": "",
-    //         "id": "abcd1234"
-    //     }
-    //     ]
-// },
+    ... // see response example structure
 })
+```
+
+Response example structure:
+
+```json
+{
+  "rooms": [
+    {
+      "isMainRoom": true,
+      "id": "room_name@conference.jitsi",
+      "jid": "room_name@conference.jitsi/aaaaaa",
+      "participants": [
+        {
+          "jid": "room_name@conference.jitsi/bbbbbb",
+          "role": "participant",
+          "displayName": "p1",
+          "id": "bbbbbb"
+        },
+        {
+          "jid": "room_name@conference.jitsi/cccccc",
+          "role": "participant",
+          "displayName": "p2",
+          "id": "cccccc"
+        }
+      ]
+    },
+    {
+    "isMainRoom": false,
+    "id": "aaaaaa-bbb-cccc-dddd-qwertyuiopas",
+    "jid": "aaaaaa-bbb-cccc-dddd-qwertyuiopas@breakout.jitsi",
+    "participants": [{
+        "jid": "aaaaaa-cccc-dddd-eeee-qwertyuiopas@jitsi/abcd1234",
+        "role": "moderator",
+        "displayName": "Participant name",
+        "avatarUrl": "",
+        "id": "abcd1234"
+    }]
+    },
+  ]
+}
 ```
 
 ### getVideoQuality

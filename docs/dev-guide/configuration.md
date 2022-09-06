@@ -793,6 +793,32 @@ faceLandmarks: {
 },
 ```
 
+## Giphy
+
+### giphy
+
+type: `Object`
+
+Setup for the Giphy integration.
+
+Properties:
+* `enabled` - Whether the feature is enabled or not.
+* `sdkKey` - SDK API Key from Giphy.
+* `displayMode` - Display mode can be one of:
+    - `tile` - show the GIF on the tile of the participant that sent it.
+    - `chat` - show the GIF as a message in chat.
+    - `all` - all of the above. This is the default option.
+* `tileTime` - How long the GIF should be displayed on the tile (in milliseconds).
+
+```javascript
+gravatar: {
+    enabled: true,
+    sdkKey: 'example-key',
+    displayMode: 'tile',
+    tileTime: 7000
+}
+```
+
 ## Gravatar
 
 ### gravatar

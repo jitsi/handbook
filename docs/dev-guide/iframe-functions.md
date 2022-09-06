@@ -116,10 +116,70 @@ api.getLivestreamUrl().then(livestreamData => {
 
 ### getParticipantsInfo
 
+__DEPRECATED__ Use `getRoomsInfo` instead.
+
 Returns an array containing participant information such as ID, display name, avatar URL, and email.
 
 ```javascript
 api.getParticipantsInfo();
+```
+
+### getRoomsInfo
+
+Returns an array of available rooms and details of it:
+- `isMainRoom` (true,false), `id`, `jid`
+- participants: `Participant[]`
+    - `id`
+    - `jid`
+    - `role`
+    - `displayName`
+
+
+
+```javascript
+api.getRoomsInfo().then(rooms => {
+    ... // see response example structure
+})
+```
+
+Response example structure:
+
+```json
+{
+  "rooms": [
+    {
+      "isMainRoom": true,
+      "id": "room_name@conference.jitsi",
+      "jid": "room_name@conference.jitsi/aaaaaa",
+      "participants": [
+        {
+          "jid": "room_name@conference.jitsi/bbbbbb",
+          "role": "participant",
+          "displayName": "p1",
+          "id": "bbbbbb"
+        },
+        {
+          "jid": "room_name@conference.jitsi/cccccc",
+          "role": "participant",
+          "displayName": "p2",
+          "id": "cccccc"
+        }
+      ]
+    },
+    {
+    "isMainRoom": false,
+    "id": "aaaaaa-bbb-cccc-dddd-qwertyuiopas",
+    "jid": "aaaaaa-bbb-cccc-dddd-qwertyuiopas@breakout.jitsi",
+    "participants": [{
+        "jid": "aaaaaa-cccc-dddd-eeee-qwertyuiopas@jitsi/abcd1234",
+        "role": "moderator",
+        "displayName": "Participant name",
+        "avatarUrl": "",
+        "id": "abcd1234"
+    }]
+    },
+  ]
+}
 ```
 
 ### getVideoQuality
@@ -236,6 +296,8 @@ const numberOfParticipants = api.getNumberOfParticipants();
 ```
 
 ### getAvatarURL
+
+__DEPRECATED__ Use `getRoomsInfo` instead.
 
 Returns a participant's avatar URL:
 

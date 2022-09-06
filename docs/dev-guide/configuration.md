@@ -811,7 +811,7 @@ Properties:
 * `tileTime` - How long the GIF should be displayed on the tile (in milliseconds).
 
 ```javascript
-gravatar: {
+giphy: {
     enabled: true,
     sdkKey: 'example-key',
     displayMode: 'tile',

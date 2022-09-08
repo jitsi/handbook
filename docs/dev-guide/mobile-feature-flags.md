@@ -20,6 +20,7 @@ Here are the currently implemented flags:
 * `invite.enabled`: Flag indicating if invite functionality should be enabled. Default: enabled (true).
 * `ios.recording.enabled`: Flag indicating if recording should be enabled in iOS. Default: disabled (false).
 * `ios.screensharing.enabled`: Flag indicating if screen sharing should be enabled in iOS. Default: disabled (false).
+* `android.screensharing.enabled`: Flag indicating if screen sharing should be enabled in android. Default: disabled (true).
 * `kick-out.enabled`: Flag indicating if kickout is enabled. Default: enabled (true).
 * `live-streaming.enabled`: Flag indicating if live-streaming should be enabled. Default: auto-detected.
 * `meeting-name.enabled`: Flag indicating if displaying the meeting name should be enabled. Default: enabled (true).

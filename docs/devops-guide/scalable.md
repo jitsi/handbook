@@ -84,8 +84,12 @@ jitsi-meet-prosody	jitsi-videobridge/jvb-hostname	string	meet.example.com
 jitsi-meet-web-config	jitsi-meet/cert-choice	select	I want to use my own certificate
 jitsi-meet-web-config	jitsi-meet/cert-path-crt	string	/etc/ssl/meet.example.com.crt
 jitsi-meet-web-config	jitsi-meet/cert-path-key	string	/etc/ssl/meet.example.com.key
+jitsi-meet-web-config	jitsi-meet/jaas-choice	boolean	false
 EOF
 ```
+
+To enable integration with [Jitsi Meet Components](https://jaas.8x8.vc/#/components) for telephony support, set
+the `jitsi-meet/jaas-choice` option above to `true`.
 
 On the jitsi-meet server, install the following packages:
 

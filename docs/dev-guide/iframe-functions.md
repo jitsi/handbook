@@ -284,7 +284,7 @@ api.startRecording(options);
 Stops an ongoing file recording or streaming session. See the `stopRecording` command for more details.
 
 ```javascript
-api.startRecording(mode);
+api.stopRecording(mode);
 ```
 
 ### getNumberOfParticipants

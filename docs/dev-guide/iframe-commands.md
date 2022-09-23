@@ -286,11 +286,13 @@ api.executeCommand('muteEveryone', 'video');
 
 ### startRecording
 
-Starts a file recording or streaming session using passed parameters:
+Starts a local recording, file recording or streaming session using passed parameters:
 
   - **RTMP streaming** - Recording mode set to **`stream`** with an **`rtmpStreamKey`**. The **`rtmpBroadcastID`** value is optional.
 
   - **YouTube streams** - Recording mode set to **`stream`** with an **`youtubeStreamKey`**. The **`youtubeBroadcastID`** value is optional.
+
+  - **Local Recording** - Recording mode set to **`local`**. The **`onlySelf`** value is optional.
 
   - **Dropbox recording** - Recording mode set to **`file`** with a Dropbox OAuth2 token.
 
@@ -302,8 +304,9 @@ Starts a file recording or streaming session using passed parameters:
 
 ```javascript
 api.executeCommand('startRecording', {
-    mode: string //recording mode, either `file` or `stream`.
+    mode: string, //recording mode, either `local`, `file` or `stream`.
     dropboxToken: string, //dropbox oauth2 token.
+    onlySelf: boolean,  //Whether to only record the local streams. Only applies to `local` recording mode.
     shouldShare: boolean, //whether the recording should be shared with the participants or not. Only applies to certain jitsi meet deploys.
     rtmpStreamKey: string, //the RTMP stream key.
     rtmpBroadcastID: string, //the RTMP broadcast ID.
@@ -314,13 +317,13 @@ api.executeCommand('startRecording', {
 
 ### stopRecording
 
-Stops an ongoing **`stream`** or **`file`** recording.
+Stops an ongoing  **`local`**, **`stream`** or **`file`** recording.
 
 The mode in which the recording was started must be specified.
 
 ```javascript
 api.executeCommand('stopRecording',
-    mode: string //recording mode to stop, `stream` or `file`
+    mode: string //recording mode to stop, `local`, `stream` or `file`
 );
 ```
 

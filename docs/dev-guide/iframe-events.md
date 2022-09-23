@@ -674,7 +674,7 @@ The listener receives an object with the following structure:
 ```javascript
 {
     on: boolean // new recording status - boolean,
-    mode: string // recording mode, `stream` or `file`,
+    mode: string // recording mode, `local`, `stream` or `file`,
     error: string | undefined // error type if recording fails, undefined otherwise
 }
 ```

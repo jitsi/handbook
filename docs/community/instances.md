@@ -169,7 +169,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	meet.freifunk-rhein-sieg.net	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.freifunk-rhein-sieg.net&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.golem.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.golem.de&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.hackerspace-bremen.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.hackerspace-bremen.de&latest)	   |  	  |
-|  	meet.hasi.it	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.hasi.it&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.isf.es   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.isf.es&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.jugendrecht.org	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.jugendrecht.org&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.lrz.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.lrz.de&latest)	   |  	Leibniz-Rechenzentrum	  |

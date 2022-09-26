@@ -678,17 +678,30 @@ Variable | Description | Default value
 
 ### Running behind NAT or on a LAN environment
 
-If running in a LAN environment (as well as on the public Internet, via NAT) is a requirement,
-the ``DOCKER_HOST_ADDRESS`` should be set. This way, the Videobridge will advertise the IP address
-of the host running Docker instead of the internal IP address that Docker assigned it, thus making [ICE]
-succeed. If your users are coming in over the Internet (and not over LAN), this will likely be your public IP address. If this is not set up correctly, calls will crash when more than two users join a meeting.
+When running running in a LAN environment, or on the public Internet via NAT, the ``JVB_ADVERSITED_IPS`` env variable should be set.
+This variable allows to control which IP addresses the JVB will advertise for WebRTC media traffic.
 
-The public IP address is discovered via [STUN].
+:::note
+This variable used to be called ``DOCKER_HOST_ADDRESS`` but it got renamed for clarity and to support a list of IPs.
+:::
+
+If your users are coming in over the Internet (and not over LAN), this will likely be your public IP address. If this is not set up correctly, calls will crash when more than two users join a meeting.
+
+The public IP address is attempted to be discovered via [STUN].
 STUN servers can be specified with the ``JVB_STUN_SERVERS`` option.
 
 :::note
 Due to a bug in the docker version currently in the Debian repos (20.10.5), [Docker does not listen on IPv6 ports](https://forums.docker.com/t/docker-doesnt-open-ipv6-ports/106201/2), so for that combination you will have to [manually obtain the latest version](https://docs.docker.com/engine/install/debian/).
 :::
+
+#### Split horizon
+
+If you are running in a split horizon environemt (LAN internal clients connect to a local IP and other clients connect to a public IP) you can specify
+multiple advertised IPs by deprating them with commas:
+
+```
+JVB_ADVERTISE_IPS=192.168.1.1,1.2.3.4
+```
 
 ## Accessing server logs
 

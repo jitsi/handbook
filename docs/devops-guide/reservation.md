@@ -44,9 +44,17 @@ Additional configuration options are available:
 * "reservations_api_should_retry_for_code" as a function that takes an HTTP response code and
   returns true if the API call should be retried. By default, retries are done for 5XX
   responses. Timeouts are never retried, and HTTP call failures are always retried.
-* "reservations_enable_max_occupants" to enable integration with mod_muc_max_occupants. If this is set to `true`, and if
+* "reservations_enable_max_occupants" to enable support for setting max occupants. If this is set to `true`, and if
   the API response payload includes a "max_occupants" value, then that value will be set as the max occupancy limit
   for that specific room.
+  * "muc_max_occupants" module must also be enabled for this to work.
+* "reservations_enable_lobby_support" to enable support for lobby. If this is set to `true`, and if
+  the API response payload includes a "lobby" field set to `true` , then the lobby will be enabled for the room.
+  * "muc_lobby_rooms" and "persistent_lobby" modules must also be enabled for this to work.
+* "reservations_enable_password_support" to enable support for room password. If this is set to `true`, and if
+  the API response payload includes a "password" value, then that value will be set as room password. Users will then
+  be required to know that password to be able to join the room, or in the case where lobby is enabled, can use the
+  password to bypass the lobby.
 
 ```
     --- The following are all optional
@@ -59,6 +67,9 @@ Additional configuration options are available:
     reservations_api_should_retry_for_code = function (code)
         return code >= 500 or code == 408
     end
+    reservations_enable_max_occupants = true -- enable integration with muc_max_occupants
+    reservations_enable_lobby_support = true -- enable integration with muc_lobby_rooms
+    reservations_enable_password_support = true -- enable support for setting room passwords
 ```
 
 #### Call flow

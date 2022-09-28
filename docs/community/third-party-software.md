@@ -109,6 +109,8 @@ https://github.com/jitsi-contrib/prosody-plugins
   property in token (JWT).
 - **token_lobby_bypass**: Enables some users to bypass lobby based on a flag in
   token (JWT).
+- **token_lobby_ondemand**: Activates lobby based on a flag in
+  token (JWT).
 - **token_owner_party**: Prevents unauthorized users from create a room and
   terminates the conference when the owner leaves.
 

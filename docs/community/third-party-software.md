@@ -66,6 +66,15 @@ Demo: https://jitsi-admin.de
 Docker:
 https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
 
+## Jitsi Config Differ
+
+Web app to compare reference configs between different Jitsi releases. This aims to help users identify 
+potential changes in config keys and default values when upgrading their deployment.
+
+https://shawnchin.github.io/jitsi-config-differ/
+
+Github: https://github.com/shawnchin/jitsi-config-differ
+
 ## Jitsi URL Generator
 
 A simple tool to illustrate how URL params can be composed to customise Jitsi.

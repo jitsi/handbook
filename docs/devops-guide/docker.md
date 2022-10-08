@@ -678,7 +678,7 @@ Variable | Description | Default value
 
 ### Running behind NAT or on a LAN environment
 
-When running running in a LAN environment, or on the public Internet via NAT, the ``JVB_ADVERSITED_IPS`` env variable should be set.
+When running running in a LAN environment, or on the public Internet via NAT, the ``JVB_ADVERTISE_IPS`` env variable should be set.
 This variable allows to control which IP addresses the JVB will advertise for WebRTC media traffic.
 
 :::note

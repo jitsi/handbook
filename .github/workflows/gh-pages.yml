@@ -1,21 +1,26 @@
-name: Deploy GH pages
+name: Build GH pages and deploy if on master
 
 on:
   push:
     branches:
     - master
+  pull_request:
 
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@master
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: '16'
 
     - name: Build
-      run: npm install && npm run build
+      run: npm ci && npm run build
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2.5.0
+      if: ${{ github.ref == 'refs/heads/master' }}
       env:
         ACTIONS_DEPLOY_KEY: ${{ secrets.ACTIONS_DEPLOY_KEY }}
         PUBLISH_BRANCH: gh-pages

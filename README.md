@@ -7,7 +7,7 @@ The documentation website can be found [here](https://jitsi.github.io/handbook/)
 
 The site is built automatically with every push thanks to a [GH Actions](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
 
-**NOTE:** You need to have Node.Js(>=14) installed in your system in order to build this site. NodeJs can be downloaded from [here](https://nodejs.org/en/download/)
+**NOTE:** You need to have Node.Js(>=16) installed in your system in order to build this site. NodeJs can be downloaded from [here](https://nodejs.org/en/download/)
 
 If you want to build it locally, follow these simple steps:
 

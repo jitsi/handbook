@@ -34,7 +34,7 @@ is advisable. Several (or many...) bridges having each a 10 Gbits/s link are use
 
 - **CPU:** very low processor performance can seriously harm a real time system, especially when using a shared server (where your CPU performance can be stolen by other customers of your hoster, check on 'dedicated CPU' if you are getting a VPS, rather than a physical server). However, a consideration is that a Jitsi Meet component, Prosody, can only use ONE (1) core. So getting a lot of cores, let's say more than 32, is not always useful. For a basic server, 4 dedicated cores can be enough.
 
-- **Disk:** unless you are doing heavy logging or have very specific needs, you can get away with 250 Gbytes of standard hard disk.
+- **Disk:** unless you are doing heavy logging or have very specific needs, you can get away with 20 Gbytes of standard hard disk.
 SSD are more a nice to have than a necessity.
 
 

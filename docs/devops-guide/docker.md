@@ -697,7 +697,7 @@ Due to a bug in the docker version currently in the Debian repos (20.10.5), [Doc
 #### Split horizon
 
 If you are running in a split horizon environemt (LAN internal clients connect to a local IP and other clients connect to a public IP) you can specify
-multiple advertised IPs by departing them with commas:
+multiple advertised IPs by separating them with commas:
 
 ```
 JVB_ADVERTISE_IPS=192.168.1.1,1.2.3.4

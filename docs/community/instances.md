@@ -279,7 +279,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | hosttech.chat |   |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=hosttech.chat&latest) |  |
 | meet.cyon.tools |   |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.cyon.tools&latest) |  |
 | meet.init7.net |   |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.init7.net&latest) | Init 7 AG |
-| meet.hostpoint.ch |   |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.hostpoint.ch&latest) | Hostpoint AG |
+| meet.hostpoint.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.hostpoint.ch&latest) | Hostpoint AG |
 | meet.coredump.ch |  ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.coredump.ch&latest) | Nine Internet Solutions AG  |
 
 

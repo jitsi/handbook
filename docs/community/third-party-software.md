@@ -112,6 +112,8 @@ https://github.com/jitsi-contrib/prosody-plugins
 - **jibri_autostart**: Automatically starts recording when the moderator enters
   the room.
 - **lobby_autostart**: Automatically enables lobby for all rooms.
+- **per_room_max_occupants**: Set different max occupants based on room name and subdomain.
+- **secure_domain_lobby_bypass**: Allows secure domain authenticated users to bypass lobby.
 - **time_restricted**: Sets a time limit on rooms and terminates the conference
   when the time is up.
 - **token_affiliation**: Promotes users to moderators based on affiliation

@@ -221,7 +221,7 @@ Note that this script uses the [HTTP-01 challenge type](https://letsencrypt.org/
 
 If the installation is on a machine [behind NAT](https://jitsi.github.io/handbook/docs/faq#how-to-tell-if-my-server-instance-is-behind-nat) jitsi-videobridge should configure itself automatically on boot. If three way calls do not work, further configuration of jitsi-videobridge is needed in order for it to be accessible from outside.
 
-Provided that all required ports are routed (forwarded) to the machine that it runs on. By default these ports are (TCP/443 or TCP/4443 and UDP/10000).
+Provided that all required ports are routed (forwarded) to the machine that it runs on. By default these ports are (TCP/443 and UDP/10000).
 
 The following extra lines need to be added to the file `/etc/jitsi/videobridge/sip-communicator.properties`:
 

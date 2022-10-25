@@ -159,6 +159,20 @@ Default: `false`
 disableAudioLevels: false
 ```
 
+### ~~disableSpeakerStatsSearch~~
+
+type: `Boolean`
+
+Specifies whether there will be a search field in speaker stats or not.
+
+__DEPRECATED__ Use `speakerStats.disableSearch` instead.
+
+Default: false
+
+```javascript
+disableSpeakerStatsSearch: false
+```
+
 ### disabledSounds
 
 type: `Array`
@@ -219,6 +233,49 @@ Default: `true`
 
 ```javascript
 enableNoisyMicDetection: true
+```
+
+### speakerStats
+
+type: `Object`
+
+Options related to the speaker stats feature.
+
+Properties: 
+
+* `disabled` - Specifies whether the speaker stats is enable or not.
+* `disableSearch` - Specifies whether there will be a search field in speaker stats or not.
+* `order` - Specifies whether participants in speaker stats should be ordered or not, and with what priority.
+
+Default:
+
+```javascript
+speakerStats: {
+    disabled: false,
+    disableSearch: false,
+    order: [
+        'role', // Moderators on top.
+        'name', // Alphabetically by name.
+        'hasLeft', // The ones that have left in the bottom.
+    ], // the order of the array elements determines priority.
+}
+```
+
+### ~~speakerStatsOrder~~
+
+type: `Array`
+
+Specifies whether participants in speaker stats should be ordered or not, and with what priority.
+
+__DEPRECATED__ Use `speakerStats.order` instead.
+
+Default:
+ ```javascript
+    speakerStatsOrder: [
+        'role', // Moderators on top.
+        'name', // Alphabetically by name.
+        'hasLeft', // The ones that have left in the bottom.
+    ], // the order of the array elements determines priority.
 ```
 
 ### startAudioMuted

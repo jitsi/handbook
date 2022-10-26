@@ -809,13 +809,19 @@ Properties:
     - `chat` - show the GIF as a message in chat.
     - `all` - all of the above. This is the default option.
 * `tileTime` - How long the GIF should be displayed on the tile (in milliseconds).
+* `rating` - Limit results by audience rating: 
+    - `g` - broadly accepted as appropriate in a public environment. This is the default option.
+    - `pg` - commonly witnessed in a public environment, but not as broadly accepted as appropriate.
+    - `pg-13` - typically not seen unless sought out, but still commonly witnessed.
+    - `r` - typically not seen unless sought out, and could be considered alarming if witnessed.
 
 ```javascript
 giphy: {
     enabled: true,
     sdkKey: 'example-key',
     displayMode: 'tile',
-    tileTime: 7000
+    tileTime: 7000,
+    rating: 'pg'
 }
 ```
 

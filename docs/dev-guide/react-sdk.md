@@ -10,7 +10,7 @@ React 16 or higher is required.
 :::
 
 ## Sample application using the SDK
-If you want to see how easy integrating the Jitsi Meet React SDK into a React application is, take a look at our [example](https://github.com/jitsi/jitsi-meet-react-sdk/tree/main/example/jitsiMeeting).
+If you want to see how easy integrating the Jitsi Meet React SDK into a React application is, take a look at our [example](https://github.com/jitsi/jitsi-meet-react-sdk/tree/main/example).
 
 ## Installation
 To access the React SDK modules in your application you need to install it as a dependency:
@@ -99,6 +99,8 @@ The component modules support a similar kind of customization to the Jitsi Meet 
 * `devices`: Optional. Information map about the devices used in a call.
 
 * `userInfo`: Optional. The JS object that contains information about the participant starting the meeting (e.g., email).
+
+* `release`: Optional. Information regarding the `stage.8x8.vc` or `8x8.vc` release version. Expects the following format: `release-1234`.
 
 * `spinner`: Optional. The custom spinner to be displayed while the IFrame is loading.
 

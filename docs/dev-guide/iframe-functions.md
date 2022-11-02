@@ -225,8 +225,10 @@ api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
 
 Selects the participant ID to be the pinned participant in order to always receive video for this participant.
 
+The second parameter is optional and can be used to specify a `videoType`. When multistream support is enabled by passing this parameter you can specify whether the desktop or the camera video for the specified participant should be pinned. The accepted values are `'camera'` and `'desktop'`. The default is `'camera'`. Any invalid values will be ignored and default will be used.
+
 ```javascript
-api.pinParticipant(participantId);
+api.pinParticipant(participantId, videoType);
 ```
 
 ### resizeLargeVideo

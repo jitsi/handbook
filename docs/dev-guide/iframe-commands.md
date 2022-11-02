@@ -258,8 +258,10 @@ Displays the participant on the large video display.
 
 The participant ID, if specified, is displayed on the large video. If no argument is passed, the participant to be displayed on the large  video is automatically selected based on the dominant/pinned speaker settings.
 
+The second parameter is optional and can be used to specify a `videoType`. When multistream support is enabled by passing this parameter you can specify whether the desktop or the camera video for the specified participant should be selected. The accepted values are `'camera'` and `'desktop'`. The default is `'camera'`. Any invalid values will be ignored and default will be used.
+
 ```javascript
-api.executeCommand('setLargeVideoParticipant', 'abcd1234');
+api.executeCommand('setLargeVideoParticipant', 'abcd1234', 'desktop');
 ```
 
 ### setVideoQuality

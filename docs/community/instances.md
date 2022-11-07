@@ -159,7 +159,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	jitsi.uni-kl.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.uni-kl.de&latest)	   |  	    Technische Universitaet Kaiserslautern	  |
 |  	jitsi.zfn.uni-bremen.de	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.zfn.uni-bremen.de&latest)	   |  	DFN	  |
 |  	konferenz.netzbegruenung.de	   |  	 ✅ -- 📞	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=konferenz.netzbegruenung.de&latest)	   |  	Hetzner Online GmbH	  |
-|  	www.kuketz-meet.de	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=kuketz-meet.de&latest)	   |  	netcup GmbH	  |
 |  	meet.alpha.berlin	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.alpha.berlin&latest)	   |  	manitu GmbH	  |
 |  	meet.alps.one	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.alps.one&latest)	   |  	Hetzner Online GmbH	  |
 |  	meet.darmstadt.social	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.darmstadt.social&latest)	   |  	netcup GmbH	  |

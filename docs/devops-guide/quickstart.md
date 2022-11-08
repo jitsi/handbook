@@ -159,11 +159,11 @@ In order to have encrypted communications, you need a [TLS certificate](https://
 
 During installation of Jitsi Meet you can choose between different options:
 
-1. The recommended option is to choose ___Generate a new self-signed certificate___ and create a Lets-Encrypt Certificate later (see [below](#generate-a-lets-encrypt-certificate-optional-recommended)) (this will replace the self-signed certificate).
+1. The recommended option is to choose Let's Encrypt Certificate option
 
-2. But if you want to use a different certificate or you want to choose a different challenge type of Let's Encrypt (see [below](#generate-a-lets-encrypt-certificate-optional-recommended) for details), you should create that certificate first and then install jitsi-meet and choose ___I want to use my own certificate___.
+2. But if you want to use a different certificate you should get that certificate first and then install jitsi-meet and choose ___I want to use my own certificate___.
 
-3. You could also use the self-signed certificate but this is not recommended for the following reasons:
+3. You could also use the self-signed certificate(___Generate a new self-signed certificate___) but this is not recommended for the following reasons:
 
     * Using a self-signed certificate will result in warnings being shown in your users browsers, because they cannot verify your server's identity.
 
@@ -201,21 +201,6 @@ If you want to limit the ability to start a conference to registered users, foll
 **Conferences/Rooms:**
 The access control for conferences/rooms is managed in the rooms, you can set a password on the webpage of the specific room after creation.
 See the User Guide for details: https://jitsi.github.io/handbook/docs/user-guide/user-guide-start-a-jitsi-meeting
-
-### Generate a Let's Encrypt certificate (optional, recommended)
-
-In order to have encrypted communications, you need a [TLS certificate](https://en.wikipedia.org/wiki/Transport_Layer_Security).
-
-The best method is to create a certificate that is signed by a [Certificate Authority](https://en.wikipedia.org/wiki/Certificate_authority).
-This way you can avoid problems with a self-signed certificate (see [above](#tls-certificate) for details).
-The easiest way is to use [Let's Encrypt](https://letsencrypt.org/).
-
-Simply run the following in your shell:
-
-```bash
-sudo /usr/share/jitsi-meet/scripts/install-letsencrypt-cert.sh
-```
-Note that this script uses the [HTTP-01 challenge type](https://letsencrypt.org/docs/challenge-types/) and thus your instance needs to be accessible from the public internet on both ports 80 and 443. If you want to use a different challenge type, don't use this script and instead choose ___I want to use my own certificate___ during `jitsi-meet` installation.
 
 #### Advanced configuration
 

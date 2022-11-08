@@ -81,18 +81,13 @@ Here is how to request those from Let's Encrypt (make sure you set correct value
 ```
 systemctl stop nginx
 DOMAIN="turn-jitsi-meet.example.com"
-EMAIL="myemail@example.com"
-TURN_HOOK=/etc/letsencrypt/renewal-hooks/deploy/0000-coturn-certbot-deploy.sh
-cp /usr/share/jitsi-meet-turnserver/coturn-certbot-deploy.sh $TURN_HOOK
-chmod u+x $TURN_HOOK
-sed -i "s/jitsi-meet.example.com/$DOMAIN/g" $TURN_HOOK
-
-/usr/bin/certbot certonly --noninteractive \
-    --standalone \
-    -d $DOMAIN \
-    --agree-tos --email $EMAIL \
-    --deploy-hook $TURN_HOOK
-
+apt install socat
+/opt/acmesh/.acme.sh/acme.sh -f --issue -d ${DOMAIN} --standalone --server letsencrypt
+/opt/acmesh/.acme.sh/acme.sh -f --install-cert \
+    -d ${DOMAIN} \
+    --key-file /etc/jitsi/meet/${DOMAIN}.key \
+    --fullchain-file /etc/jitsi/meet/${DOMAIN}.crt \
+    --reloadcmd "/usr/share/jitsi-meet/scripts/coturn-le-update.sh ${DOMAIN}"
 systemctl start nginx
 ``` 
 - After restarting prosody (`systemctl restart prosody`) you are good to go!

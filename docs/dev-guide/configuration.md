@@ -1448,3 +1448,23 @@ videoQuality: {
     resizeDesktopForPresenter: false
 }
 ```
+
+## Whiteboard
+
+### whiteboard
+
+type: `Object`
+
+Options related to the Excalidraw whiteboard integration.
+
+Default: **unset**
+
+Properties:
+* `enabled` - Whether the feature is enabled or not.
+* `collabServerBaseUrl` - The [server](https://github.com/jitsi/excalidraw-backend) used to support whiteboard collaboration.
+
+```javascript
+whiteboard: {
+    enabled: true,
+    collabServerBaseUrl: 'https://excalidraw-backend.example.com'
+}

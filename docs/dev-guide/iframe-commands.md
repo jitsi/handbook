@@ -224,6 +224,17 @@ No arguments are required.
 api.executeCommand('hangup');
 ```
 
+### endConference
+
+Ends the current conference for everyone.
+
+This command can only be executed by a meeting moderator, and requires End Conference support to be enabled
+for the deployment.
+
+```javascript
+api.executeCommand('endConference');
+```
+
 ### email
 
 Changes the local email address.
@@ -463,6 +474,16 @@ Toggles the virtual background selection dialog.
 api.executeCommand('toggleVirtualBackgroundDialog');
 ```
 
+### pinParticipant
+
+Pins a conference participant.
+
+```javascript
+api.executeCommand('pinParticipant',
+    id?: string // The ID of the conference participant to pin or null to unpin all
+);
+```
+
 ### setParticipantVolume
 
 Change volume of the participant with the given participant ID.
@@ -582,6 +603,27 @@ This command can only be executed by the meeting moderator.
 ```javascript
 api.executeCommand('removeBreakoutRoom',
     breakoutRoomJid: String // The jid of the breakout room to remove.
+);
+```
+
+### resizeFilmStrip
+
+Resizes the filmstrip.
+
+```javascript
+api.executeCommand('resizeFilmStrip', {
+    width: number // The desired filmstrip width
+});
+```
+
+### resizeLargeVideo
+
+Resizes the large video container based on the dimensions provided.
+
+```javascript
+api.executeCommand('resizeLargeVideo',
+    width: number, // The desired width
+    height: number // The desired height
 );
 ```
 

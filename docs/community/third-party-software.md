@@ -143,3 +143,7 @@ Github: https://github.com/Renater/Jitsi-SAML2JWT
 Plugin for using lib-jitsi-meet in a Unity environment (WebGL).
 
 https://github.com/avstack/jitsi-meet-unity-demo
+
+Plugin for using lib-jitsi-meet in a Unity environment (Android and iOS).
+
+https://github.com/SariskaIO/Sariska-Media-Unity-Demo

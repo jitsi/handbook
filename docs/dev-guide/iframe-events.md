@@ -695,6 +695,25 @@ The listener receives an object with the following structure:
 
 Provides notifications about detecting suspended events in the host computer.
 
+### peerConnectionFailure
+    
+Notify the external application that a PeerConnection lost connectivity. This event is fired only if
+a PC `failed` but connectivity to the rtcstats server is still maintained signaling that there is a
+problem establishing a link between the app and the JVB server or the remote peer in case of P2P.
+Will only fire if rtcstats is enabled.
+
+```javascript
+{
+    // Type of PC, Peer2Peer or JVB connection.
+    isP2P: boolean, 
+
+    // Was this connection previously connected. If it was it could mean
+    // that connectivity was disrupted, if not it most likely means that the app could not reach
+    // the JVB server, or the other peer in case of P2P.
+    wasConnected: boolean 
+}
+```
+
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html

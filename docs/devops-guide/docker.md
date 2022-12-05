@@ -31,6 +31,7 @@ follow these steps:
    * For linux: 
    ```bash
    mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   chown -R 101:102 ~/.jitsi-meet-cfg/{prosody}
    ```
    * For Windows: 
    ```bash

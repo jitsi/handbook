@@ -103,10 +103,11 @@ xcodebuild -create-xcframework \
     -framework ios/sdk/out/ios-device.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
     -framework ios/sdk/out/ios-simulator.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
     -output ios/sdk/out/JitsiMeetSDK.xcframework
-cp -a node_modules/react-native-webrtc/apple/WebRTC.xcframework ios/sdk/out
 ```
 
-After successfully building Jitsi Meet SDK for iOS, the 2 resulting XCFrameworks will be in the ios/sdk/out directory.
+After successfully building Jitsi Meet SDK for iOS, the resulting XCFramework will be in the ios/sdk/out directory.
+
+NOTE: Your app will need to depend on the JitsiWebRTC CocoaPod.
 
 ## API
 

@@ -42,6 +42,24 @@ allprojects {
 }
 ```
 
+In recent versions of Android Studios, `allprojects{}` might not be found in `build.gradle`. In that case, the repository goes into the `settings.gradle` file in the root of your project:
+
+```gradle title="settings.gradle"
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        maven {
+            url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases"
+        }
+        maven {
+            url "https://maven.google.com"
+        }
+    }
+}
+```
+
 Dependency definitions belong in the individual module `build.gradle` files:
 
 ```gradle

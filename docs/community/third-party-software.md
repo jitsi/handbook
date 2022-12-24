@@ -86,6 +86,12 @@ https://shawnchin.github.io/jitsi-url-generator/
 
 Github: https://github.com/shawnchin/jitsi-url-generator
 
+## KeyCloak adapter
+
+Allow Jitsi to use Keycloak as an identity and OIDC provider.
+
+https://github.com/nordeck/jitsi-keycloak-adapter
+
 ## KeyCloak integration
 
 Integration of KeyCloak for authentication.

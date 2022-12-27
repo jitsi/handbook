@@ -12,53 +12,60 @@
  * and scoped locally.
  */
 
- .heroBanner {
-    padding: 4rem 0;
-    text-align: center;
-    position: relative;
-    overflow: hidden;
+.heroBanner {
+  padding: 4rem 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+@media screen and (max-width: 966px) {
+  .heroBanner {
+    padding: 2rem;
   }
-  
-  @media screen and (max-width: 966px) {
-    .heroBanner {
-      padding: 2rem;
-    }
-  }
-  
-  .buttons {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .features {
-    display: flex;
-    align-items: center;
-    padding: 2rem 0;
-    width: 100%;
-  }
-  
-  .featureImage {
-    height: 180px;
-    width: 180px;
-  }
-  
-  .banner {
-    font-weight: bold;
-    font-size: 20px;
-    padding: 20px;
-    max-width: 768px;
-    margin: 0 auto;
-    text-align: center;
-    color: white;
-  }
-  
-  .banner a {
-    color: #f2f2f2;
-    text-decoration: underline;
-  }
-  
-  .bannerWrapper {
-    padding: 0 0;
-    background-color: black;
-  }
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.features {
+  display: flex;
+  align-items: center;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.featureImage {
+  height: 180px;
+  width: 180px;
+}
+
+.banner {
+  font-weight: bold;
+  font-size: 20px;
+  padding: 20px;
+  max-width: 768px;
+  margin: 0 auto;
+  text-align: center;
+  color: white;
+}
+
+.banner a {
+  color: #f2f2f2;
+  text-decoration: underline;
+}
+
+.bannerWrapper {
+  padding: 0 0;
+  background-color: black;
+}
+
+/* The iframe is the element that is containing the YT video in the index.js file  */
+iframe {
+  max-width: 900px;
+  width: calc(100% - 32px);
+  height: calc(50vh - 50px);
+}

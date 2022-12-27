@@ -84,8 +84,7 @@ function VideoContainer() {
         <div className="col">
           <h2>What is Jitsi?</h2>
           <iframe
-            width="560"
-            height="315"
+            
             src="https://www.youtube.com/embed/TB7LlM4erx8"
             title="What is Jitsi?"
             frameBorder="0"

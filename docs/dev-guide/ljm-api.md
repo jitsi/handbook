@@ -558,13 +558,15 @@ We have the following methods for controling the tracks:
 
    Note: This method is implemented only for the remote tracks.
 
-10. `setAudioOutput(audioOutputDeviceId)` - sets new audio output device for track's DOM elements. Video tracks are ignored.
+10. `getSourceName()` - returns the source name of the track.
 
-11. `getDeviceId()` - returns device ID associated with track (for local tracks only)
+11. `setAudioOutput(audioOutputDeviceId)` - sets new audio output device for track's DOM elements. Video tracks are ignored.
 
-12. `isEnded()` - returns true if track is ended
+12. `getDeviceId()` - returns device ID associated with track (for local tracks only)
 
-13. `setEffect(effect)` - Applies the effect by swapping out the existing MediaStream on the JitsiTrack with the new
+13. `isEnded()` - returns true if track is ended
+
+14. `setEffect(effect)` - Applies the effect by swapping out the existing MediaStream on the JitsiTrack with the new
 
     MediaStream which has the desired effect. "undefined" is passed to this function for removing the effect and for
 

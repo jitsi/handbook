@@ -707,18 +707,6 @@ Default: `10000`
 pcStatsInterval: 50000
 ```
 
-### useNewBandwidthAllocationStrategy 🚫
-
-type: `Boolean`
-
-Provides a way to translate the legacy bridge signaling messages, `LastNChangedEvent`,
-`SelectedEndpointsChangedEvent` and `ReceiverVideoConstraint` into the new `ReceiverVideoConstraints` message
-that invokes the new bandwidth allocation algorithm in the bridge which is described [here](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md).
-
-```javascript
-useNewBandwidthAllocationStrategy: false
-```
-
 ### useTurnUdp
 
 type: `Boolean`

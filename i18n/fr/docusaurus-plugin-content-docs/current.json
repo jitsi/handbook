@@ -1,0 +1,50 @@
+{
+  "version.label": {
+    "message": "Next",
+    "description": "The label for version current"
+  },
+  "sidebar.docs.category.Getting Started": {
+    "message": "Getting Started",
+    "description": "The label for category Getting Started in sidebar docs"
+  },
+  "sidebar.docs.category.Community": {
+    "message": "Community",
+    "description": "The label for category Community in sidebar docs"
+  },
+  "sidebar.docs.category.User Guide": {
+    "message": "User Guide",
+    "description": "The label for category User Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Developer Guide": {
+    "message": "Developer Guide",
+    "description": "The label for category Developer Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Web": {
+    "message": "Web",
+    "description": "The label for category Web in sidebar docs"
+  },
+  "sidebar.docs.category.IFrame API": {
+    "message": "IFrame API",
+    "description": "The label for category IFrame API in sidebar docs"
+  },
+  "sidebar.docs.category.Mobile": {
+    "message": "Mobile",
+    "description": "The label for category Mobile in sidebar docs"
+  },
+  "sidebar.docs.category.Self-Hosting Guide": {
+    "message": "Self-Hosting Guide",
+    "description": "The label for category Self-Hosting Guide in sidebar docs"
+  },
+  "sidebar.docs.category.Deployment": {
+    "message": "Deployment",
+    "description": "The label for category Deployment in sidebar docs"
+  },
+  "sidebar.docs.category.Configuration": {
+    "message": "Configuration",
+    "description": "The label for category Configuration in sidebar docs"
+  },
+  "sidebar.releases-sidebar.doc.Releases": {
+    "message": "Releases",
+    "description": "The label for the doc item Releases in sidebar releases-sidebar, linking to the doc releases"
+  }
+}

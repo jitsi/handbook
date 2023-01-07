@@ -1,0 +1,54 @@
+{
+  "link.title.Docs": {
+    "message": "Docs",
+    "description": "The title of the footer links column with title=Docs in the footer"
+  },
+  "link.title.Community": {
+    "message": "Community",
+    "description": "The title of the footer links column with title=Community in the footer"
+  },
+  "link.title.More": {
+    "message": "More",
+    "description": "The title of the footer links column with title=More in the footer"
+  },
+  "link.item.label.Introduction": {
+    "message": "Introduction",
+    "description": "The label of footer link with label=Introduction linking to docs/intro"
+  },
+  "link.item.label.User Guide": {
+    "message": "User Guide",
+    "description": "The label of footer link with label=User Guide linking to docs/user-guide"
+  },
+  "link.item.label.Developer Guide": {
+    "message": "Developer Guide",
+    "description": "The label of footer link with label=Developer Guide linking to docs/dev-guide"
+  },
+  "link.item.label.Self-Hosting Guide": {
+    "message": "Self-Hosting Guide",
+    "description": "The label of footer link with label=Self-Hosting Guide linking to docs/devops-guide"
+  },
+  "link.item.label.Forum": {
+    "message": "Forum",
+    "description": "The label of footer link with label=Forum linking to https://community.jitsi.org"
+  },
+  "link.item.label.Twitter": {
+    "message": "Twitter",
+    "description": "The label of footer link with label=Twitter linking to https://twitter.com/jitsinews"
+  },
+  "link.item.label.Blog": {
+    "message": "Blog",
+    "description": "The label of footer link with label=Blog linking to https://jitsi.org"
+  },
+  "link.item.label.GitHub": {
+    "message": "GitHub",
+    "description": "The label of footer link with label=GitHub linking to https://github.com/jitsi"
+  },
+  "link.item.label.JaaS: Jitsi as a Service": {
+    "message": "JaaS: Jitsi as a Service",
+    "description": "The label of footer link with label=JaaS: Jitsi as a Service linking to https://jaas.8x8.vc"
+  },
+  "copyright": {
+    "message": "Copyright © 8x8, Inc.",
+    "description": "The footer copyright"
+  }
+}

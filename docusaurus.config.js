@@ -1,32 +1,30 @@
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 module.exports = {
-  title: "Jitsi Meet",
-  tagline: "State-of-the-art video conferencing you can self-host.",
-  url: "https://jitsi.github.io",
-  baseUrl: "/handbook/",
-  organizationName: "jitsi",
-  projectName: "handbook",
-  favicon: "img/favicon.png",
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  scripts: [
-    "https://kit.fontawesome.com/2f8664b4cd.js",
-  ],
+  title: 'Jitsi Meet',
+  tagline: 'State-of-the-art video conferencing you can self-host.',
+  url: 'https://jitsi.github.io',
+  baseUrl: '/handbook/',
+  organizationName: 'jitsi',
+  projectName: 'handbook',
+  favicon: 'img/favicon.png',
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  scripts: ['https://kit.fontawesome.com/2f8664b4cd.js'],
   presets: [
     [
-      "@docusaurus/preset-classic",
+      '@docusaurus/preset-classic',
       {
         docs: {
           showLastUpdateAuthor: false,
           showLastUpdateTime: true,
-          editUrl: "https://github.com/jitsi/handbook/edit/master/",
-          path: "docs",
-          sidebarPath: require.resolve("./sidebars.js"),
+          editUrl: 'https://github.com/jitsi/handbook/edit/master/',
+          path: 'docs',
+          sidebarPath: require.resolve('./sidebars.js'),
         },
         theme: {
-          customCss: [require.resolve("./src/css/custom.css")],
+          customCss: [require.resolve('./src/css/custom.css')],
         },
       },
     ],
@@ -48,13 +46,20 @@ module.exports = {
             to: '/docs/devops-guide/',
             from: '/docs/devops-guide/devops-guide-start',
           },
-        ]
-      }
-    ]
+        ],
+      },
+    ],
   ],
   themeConfig: {
     prism: {
-      additionalLanguages: ["java", "markdown", "shell", "bash", "gradle", "lua"],
+      additionalLanguages: [
+        'java',
+        'markdown',
+        'shell',
+        'bash',
+        'gradle',
+        'lua',
+      ],
     },
     algolia: {
       appId: 'K2ODL876OV',
@@ -62,105 +67,121 @@ module.exports = {
       indexName: 'jitsi',
     },
     navbar: {
-      title: "Jitsi Meet Handbook",
+      title: 'Jitsi Meet Handbook',
       logo: {
-        src: "img/logo.svg",
+        src: 'img/logo.svg',
       },
       items: [
         {
-          to: "docs/intro",
-          label: "Docs",
-          position: "left",
+          to: 'docs/intro',
+          label: 'Docs',
+          position: 'left',
         },
         {
-          to: "docs/releases",
-          label: "Releases",
-          position: "left",
+          to: 'docs/releases',
+          label: 'Releases',
+          position: 'left',
         },
         {
-          href: "https://community.jitsi.org",
-          label: "Community",
-          position: "left",
+          href: 'https://community.jitsi.org',
+          label: 'Community',
+          position: 'left',
         },
         {
-          href: "https://jaas.8x8.vc",
-          label: "JaaS",
-          position: "left",
+          href: 'https://jaas.8x8.vc',
+          label: 'JaaS',
+          position: 'left',
+        },
+        {
+          type:"localeDropdown",
+          position:"left"
         },
         {
           href: 'https://github.com/jitsi',
-          position: 'right',
+          position: 'left',
           className: 'header-github-link',
           'aria-label': 'GitHub repository',
         },
       ],
     },
-    image: "img/undraw_online.svg",
+    image: 'img/undraw_online.svg',
     footer: {
-      style: "dark",
+      style: 'dark',
       links: [
         {
-          title: "Docs",
+          title: 'Docs',
           items: [
             {
-              label: "Introduction",
-              to: "docs/intro",
+              label: 'Introduction',
+              to: 'docs/intro',
             },
             {
-              label: "User Guide",
-              to: "docs/user-guide",
+              label: 'User Guide',
+              to: 'docs/user-guide',
             },
             {
-              label: "Developer Guide",
-              to: "docs/dev-guide",
+              label: 'Developer Guide',
+              to: 'docs/dev-guide',
             },
             {
-              label: "Self-Hosting Guide",
-              to: "docs/devops-guide",
+              label: 'Self-Hosting Guide',
+              to: 'docs/devops-guide',
             },
           ],
         },
         {
-          title: "Community",
+          title: 'Community',
           items: [
             {
-              label: "Forum",
-              href: "https://community.jitsi.org",
+              label: 'Forum',
+              href: 'https://community.jitsi.org',
             },
             {
-              label: "Twitter",
-              href: "https://twitter.com/jitsinews",
+              label: 'Twitter',
+              href: 'https://twitter.com/jitsinews',
             },
           ],
         },
         {
-          title: "More",
+          title: 'More',
           items: [
             {
-              label: "Blog",
-              href: "https://jitsi.org",
+              label: 'Blog',
+              href: 'https://jitsi.org',
             },
             {
-              label: "GitHub",
-              href: "https://github.com/jitsi",
+              label: 'GitHub',
+              href: 'https://github.com/jitsi',
             },
             {
-              label: "JaaS: Jitsi as a Service",
-              href: "https://jaas.8x8.vc"
+              label: 'JaaS: Jitsi as a Service',
+              href: 'https://jaas.8x8.vc',
             },
           ],
         },
       ],
       logo: {
-        alt: "8x8 Footer Logo",
-        src: "img/8x8-copyright-icon.svg",
-        href: "https://8x8.com",
+        alt: '8x8 Footer Logo',
+        src: 'img/8x8-copyright-icon.svg',
+        href: 'https://8x8.com',
       },
       copyright: `Copyright © 8x8, Inc.`,
     },
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
+    },
+  },
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'fr'],
+    localeConfigs: {
+      en: {
+        label: 'English',
+      },
+      fr: {
+        label: 'French',
+      },
     },
   },
 };

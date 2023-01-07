@@ -527,6 +527,7 @@ Throws NetworkError or InvalidStateError or Error if the operation fails.
 
 39. `revokeOwner(participantId)` -  Revokes owner's rights to the participant. The particiapnt that invokes the function should have same or more rights than the targeted participant. This rights check is done at the XMPP server level.
 
+
 ### JitsiTrack
 
 The object represents single track - video or audio. They can be remote tracks ( from the other participants in the call) or local tracks (from the devices of the local participant).

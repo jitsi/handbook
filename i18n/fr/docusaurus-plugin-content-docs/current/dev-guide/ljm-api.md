@@ -105,8 +105,6 @@ Le paramètre `options` est un objet JS avec les propriétés suivantes :
     - `disabledCodec` - le type MIME du code qui ne doit pas être négocié sur la connexion homologue.
     - `preferredCodec` - le type mime du codec qui doit devenir le codec préféré pour la connexion.
     - `useTurnUdp` - propriété booléenne (false par défaut). Active l'utilisation de turn over udp pour jvb. Il est désactivé car pas très utile (si le client peut utiliser udp, il peut probablement se connecter à jvb directement via udp aussi; mais il peut être utile de toujours activer le virage udp lorsqu'un virage udp est connu pour être en liste blanche sur un réseau)
-    - `disableH264` - __DEPRECATED__.Utilisez `disabledCodec` à la place.
-    - `preferH264` - __DEPRECATED__. Utilisez `prefferedCodec` à la place.
 
 * `JitsiMeetJS.JitsiConnection` - le constructeur `JitsiConnection`. Vous pouvez l'utiliser pour créer une nouvelle connexion au serveur.
 
@@ -124,13 +122,10 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
         5. `micDeviceId` - le deviceID du périphérique audio qui va être utilisé
         6. `minFps` - la fréquence d'images minimale pour le flux vidéo (transmise à GUM)
         7. `maxFps` - la fréquence d'images maximale pour le flux vidéo (transmise à GUM)
-        8. `desktopSharingFrameRate`
-           - `min` - Minimum fps
-           - `max` - Maximum fps
-        9. `desktopSharingSourceDevice` - L'identifiant ou l'étiquette de l'appareil pour une source d'entrée vidéo qui doit être utilisée pour le partage d'écran.
-        10. `facingMode` - mode face pour une caméra (valeurs possibles - 'utilisateur', 'environnement')
-        11. `firePermissionPromptIsShownEvent` - paramètre booléen facultatif. S'il est défini sur `true`, `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` sera déclenché lorsque le navigateur affichera l'invite d'autorisation gUM.
-        12. `fireSlowPromiseEvent` - paramètre booléen facultatif. Si défini sur `true`, `JitsiMediaDevicesEvents.USER_MEDIA_SLOW_PROMISE_TIMEOUT` sera déclenché lorsque le navigateur met trop de temps à résoudre la promesse gUM. Cet événement est mutuellement exclusif avec l'événement `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` ci-dessus
+        8. `desktopSharingSourceDevice` - L'identifiant ou l'étiquette de l'appareil pour une source d'entrée vidéo qui doit être utilisée pour le partage d'écran.
+        9. `facingMode` - mode face pour une caméra (valeurs possibles - 'utilisateur', 'environnement')
+        10. `firePermissionPromptIsShownEvent` - paramètre booléen facultatif. S'il est défini sur `true`, `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` sera déclenché lorsque le navigateur affichera l'invite d'autorisation gUM.
+        11. `fireSlowPromiseEvent` - paramètre booléen facultatif. Si défini sur `true`, `JitsiMediaDevicesEvents.USER_MEDIA_SLOW_PROMISE_TIMEOUT` sera déclenché lorsque le navigateur met trop de temps à résoudre la promesse gUM. Cet événement est mutuellement exclusif avec l'événement `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` ci-dessus
     - `firePermissionPromptIsShownEvent` - __DEPRECATED__. Utilisez plutôt options.firePermissionPromptIsShownEvent
 
 * `JitsiMeetJS.createTrackVADEmitter(localAudioDeviceId, sampleRate, vadProcessor)` - Crée un service TrackVADEmitter qui connecte une piste audio à un processeur VAD (détection d'activité vocale) afin d'obtenir des scores VAD pour des échantillons audio PCM individuels.
@@ -335,8 +330,6 @@ Cet objet représente la connexion au serveur. Vous pouvez créer un nouvel obje
             - `backToP2PDelay` - un délai exprimé en secondes, avant que la conférence ne repasse en P2P, après que le 3ème participant ait quitté la salle.
             - `disabledCodec` - le type mime du code qui ne doit pas être négocié sur la connexion homologue.
             - `preferredCodec` - le type mime du codec qui doit être défini comme codec préféré pour la connexion.
-            - `disableH264` - __DEPRECATED__. Utilisez `disabledCodec` à la place.
-            - `preferH264` - __DEPRECATED__. Utilisez `preferredCodec` à la place.
         - `rttMonitor`
             - `enabled`
             - `initialDelay`
@@ -398,15 +391,9 @@ L'objet représente une conférence. Nous avons les méthodes suivantes pour con
 9. `sendTextMessage(text)` - envoie la chaîne donnée aux autres participants à la conférence.
 
 10. `setDisplayName(name)` - modifie le nom d'affichage du participant local.
-    - `name` - le nouveau nom d'affichage
+    - `name` - le nouveau nom d'affichage.
 
-11. `selectParticipant(participantId)` - Élit le participant avec l'identifiant donné comme participant sélectionné afin de recevoir une meilleure qualité vidéo (si la diffusion simultanée est activée).
-    - `participantId` - l'identifiant du participant
-
-Lève NetworkError ou InvalidStateError ou Error si l'opération échoue.
-
-
-12. `sendCommand(name, values)` - envoie une commande système définie par l'utilisateur aux autres participants
+11. `sendCommand(name, values)` - envoie une commande système définie par l'utilisateur aux autres participants
     - `name` - le nom de la commande.
     - `values` - Objet JS. L'objet a la structure suivante :
 
@@ -429,117 +416,114 @@ Lève NetworkError ou InvalidStateError ou Error si l'opération échoue.
     REMARQUE: Lorsque vous utilisez cette méthode, l'objet transmis sera ajouté dans chaque message système envoyé aux autres participants. Il peut être envoyé plus d'une fois.
 
 
-13. `sendCommandOnce(name, values)` - Envoie une seule fois une commande système définie par l'utilisateur aux autres participants
+12. `sendCommandOnce(name, values)` - Envoie une seule fois une commande système définie par l'utilisateur aux autres participants
 
 
-14. `removeCommand(name)` - supprime une commande de la liste des commandes envoyées aux autres participants
+13. `removeCommand(name)` - supprime une commande de la liste des commandes envoyées aux autres participants
     - `name` - le nom de la commande
 
-15. `addCommandListener(command, handler)` - ajoute un auditeur
+14. `addCommandListener(command, handler)` - ajoute un auditeur
     - `command` - chaîne pour le nom de la commande
     - `handler(values)` - l'écouteur qui sera appelé lorsqu'une commande est reçue d'un autre participant.
 
-16. `removeCommandListener(command)` - supprime les écouteurs pour la commande spécifiée
+15. `removeCommandListener(command)` - supprime les écouteurs pour la commande spécifiée
     - `command` -  le nom de la commande
 
-17. `addTrack(track)` - Ajoute l'objet `JitsiLocalTrack` à la conférence. Génère une erreur si vous ajoutez un deuxième flux vidéo. Promesse de retour.
+16. `addTrack(track)` - Ajoute l'objet `JitsiLocalTrack` à la conférence. Génère une erreur si vous ajoutez un deuxième flux vidéo du même type de vidéo. `caméra` et `bureau` sont considérés comme deux sources vidéo distinctes. Par conséquent, lors de l'ajout d'une source vidéo (caméra ou bureau) pour la première fois à la conférence, `addTack` doit être appelé et après cela, seul `replaceTrack` doit être utilisé pour remplacer la piste existante par une autre piste de la même vidéo tapez ou pour le supprimer de la conférence. Renvoie une promesse.
     - `track` - le `JitsiLocalTrack`
 
-18. `removeTrack(track)` - Supprime l'objet `JitsiLocalTrack` de la conférence. Promesse de retour.
+17. `removeTrack(track)` - Supprime l'objet `JitsiLocalTrack` de la conférence. Promesse de retour. Cela ne déclenche plus l'événement `TRACK_REMOVED` sur l'extrémité distante. Le même SSRC sera réutilisé lorsqu'une autre piste du même type est ajoutée à la conférence pour réduire au minimum les messages de signalisation.
     - `track` - le `JitsiLocalTrack`
 
-19. `isDTMFSupported()` - Vérifiez si au moins un utilisateur prend en charge DTMF.
+18. `isDTMFSupported()` - Vérifiez si au moins un utilisateur prend en charge DTMF.
 
-20. `getRole()` - renvoie une chaîne avec le rôle d'utilisateur local ("modérateur" ou "aucun")
+19. `getRole()` - renvoie une chaîne avec le rôle d'utilisateur local ("modérateur" ou "aucun")
 
-21. `isModerator()` - vérifie si l'utilisateur local a le rôle "modérateur"
+20. `isModerator()` - vérifie si l'utilisateur local a le rôle "modérateur"
 
-22. `lock(password)` - définir le mot de passe pour la conférence ; renvoie la promesse
+21. `lock(password)` - définir le mot de passe pour la conférence ; renvoie la promesse
     - `password` - mot de passe de chaîne
 
     REMARQUE: disponible uniquement pour le modérateur
 
-23. `unlock()` - mot de passe de conférence non défini ; renvoie la promesse
+22. `unlock()` - mot de passe de conférence non défini ; renvoie la promesse
 
     REMARQUE: disponible uniquement pour le modérateur
 
-24. `kickParticipant(id, reason)` - Expulser un participant de la conférence
+23. `kickParticipant(id, reason)` - Expulser un participant de la conférence
     - `id` - ID de participant de chaîne
     - `reason` - (facultatif) chaîne, par défaut 'Vous avez été expulsé.'- raison pour laquelle le participant donne un coup de pied
 
-25. `setStartMutedPolicy(policy)` - faire en sorte que tous les nouveaux participants se joignent à l'audio/vidéo en sourdine
+24. `setStartMutedPolicy(policy)` - faire en sorte que tous les nouveaux participants se joignent à l'audio/vidéo en sourdine
     - `policy` - Objet JS avec les propriétés suivantes
         - `audio` - booléen si le flux audio doit être coupé
         - `video` - booléen si le flux vidéo doit être coupé
 
     REMARQUE: disponible uniquement pour le modérateur
 
-26. `getStartMutedPolicy()` - renvoie la stratégie actuelle avec l'objet JS :
+25. `getStartMutedPolicy()` - renvoie la stratégie actuelle avec l'objet JS :
     - `policy` - Objet JS avec les propriétés suivantes
         - `audio` - booléen si le flux audio doit être coupé
         - `video` - booléen si le flux vidéo doit être coupé
 
-27. `isStartAudioMuted()` - vérifier si le son est coupé lors de la jointure
+26. `isStartAudioMuted()` - vérifier si le son est coupé lors de la jointure
 
-28. `isStartVideoMuted()` - vérifier si la vidéo est en sourdine lors de la jointure
+27. `isStartVideoMuted()` - vérifier si la vidéo est en sourdine lors de la jointure
 
-29. `sendFeedback(overallFeedback, detailedFeedback)` - Envoie les commentaires donnés via CallStats si activé.
+28. `sendFeedback(overallFeedback, detailedFeedback)` - Envoie les commentaires donnés via CallStats si activé.
     - `overallFeedback` - un entier entre 1 et 5 indiquant le retour de l'utilisateur
     - `detailedFeedback` - commentaires détaillés de l'utilisateur. Pas encore utilisé
 
-30. `setSubject(subject)` - changer le sujet de la conférence
+29. `setSubject(subject)` - changer le sujet de la conférence
     - `subject` - chaîne nouveau sujet
 
     REMARQUE: disponible uniquement pour le modérateur
 
-31. `sendEndpointMessage(to, payload)` - Envoie un message via les canaux de données.
+30. `sendEndpointMessage(to, payload)` - Envoie un message via les canaux de données.
     - `to` - l'ID du point de terminaison qui doit recevoir le message. Si "" le message sera envoyé à tous les participants.
     - `payload` - Objet JSON - la charge utile du message.
 
 Lève NetworkError ou InvalidStateError ou Error si l'opération échoue.
 
-32. `sendEndpointStatsMessage(payload)` - Envoie un message Colibri "EndpointStats" sur le canal pont. Cela devrait être utilisé à la place de `broadcastEndpointMessage` pour relayer les statistiques locales à tous les points de terminaison distants.
+31. `sendEndpointStatsMessage(payload)` - Envoie un message Colibri "EndpointStats" sur le canal pont. Cela devrait être utilisé à la place de `broadcastEndpointMessage` pour relayer les statistiques locales à tous les points de terminaison distants.
     - `payload` - Objet JSON - la charge utile du message.
 
 Lève NetworkError, InvalidStateError ou Error si l'opération échoue.
 
-33. `broadcastEndpointMessage(payload)` - Envoie un message de diffusion via les canaux de données.
+32. `broadcastEndpointMessage(payload)` - Envoie un message de diffusion via les canaux de données.
     - `payload` - Objet JSON - la charge utile du message.
 
 Lève NetworkError ou InvalidStateError ou Error si l'opération échoue.
 
-34. `replaceTrack` - remplace la piste actuellement utilisée comme source de l'expéditeur par une nouvelle MediaStreamTrack. La nouvelle piste doit être du même type de média (audio, vidéo, etc.) et le changement de piste ne doit pas nécessiter de négociation. `replaceTrack(oldTrack, newTrack)`
+33. `replaceTrack` - remplace la piste actuellement utilisée comme source de l'expéditeur par une nouvelle MediaStreamTrack. La nouvelle piste doit être du même type de média (audio, vidéo, etc.) et le changement de piste ne doit pas nécessiter de négociation. `replaceTrack(oldTrack, newTrack)`
 
 Lève NetworkError ou InvalidStateError ou Error si l'opération échoue.
 
-35. `setReceiverConstraints` - définir les contraintes pour la vidéo qui est demandée à partir du pont. Ce message unique doit être utilisé à la place des méthodes `setLastN`, `setReceiverVideoConstraint` et `selectParticipants`. Ces contraintes s'appliquent uniquement à la connexion de pont. Vous trouverez plus d'informations sur le format des messages de signalisation et sur la façon dont le Jitsi Videobridge alloue la bande passante [ici](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md#new-message-format).
+34. `setReceiverConstraints` - définir les contraintes pour la vidéo qui est demandée à partir du pont. Ce message unique doit être utilisé à la place des méthodes `setLastN`, `setReceiverVideoConstraint` et `selectParticipants`. Ces contraintes s'appliquent uniquement à la connexion de pont. Vous trouverez plus d'informations sur le format des messages de signalisation et sur la façon dont le Jitsi Videobridge alloue la bande passante [ici](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/allocation.md#new-message-format).
     - `videoConstraints` - Objet qui spécifie les contraintes au format suivant.
     ```javascript
     {
        'lastN': 20, // Number of videos requested from the bridge.
-       'selectedEndpoints': ['A', 'B', 'C'], // The endpoints ids of the participants that are prioritized first.
-       'onStageEndpoints': ['A'], // The endpoint ids of the participants that are prioritized up to a higher resolution.
+       'selectedSources': ['A', 'B', 'C'], // Les noms de source des pistes vidéo prioritaires.
+       'onStageSources': ['A'], // Les noms de source des pistes vidéo qui sont prioritaires jusqu'à une résolution plus élevée.
        'defaultConstraints': { 'maxHeight': 180 }, // Default resolution requested for all endpoints.
-       'constraints': { // Endpoint specific resolution.
+       'constraints': { // Résolution spécifique à la source.
            'A': { 'maxHeight': 720 }
        }
     }
     ```
 
-36. `setReceiverVideoConstraint(resolution)` - définissez la résolution souhaitée pour obtenir de JVB (180, 360, 720, 1080, etc.).
-    Vous devez utiliser cette méthode si vous utilisez la diffusion simultanée.
+35. `setSenderVideoConstraint(resolution)` - définissez la résolution souhaitée à envoyer à JVB ou au pair (180, 360, 720).
 
-37. `setSenderVideoConstraint(resolution)` - définissez la résolution souhaitée à envoyer à JVB ou au pair (180, 360, 720).
+36. `isHidden` - vérifie si l'utilisateur local a rejoint en tant qu'utilisateur "caché". Il s'agit d'un rôle spécialisé utilisé pour les intégrations.
 
-38. `isHidden` - vérifie si l'utilisateur local a rejoint en tant qu'utilisateur "caché". Il s'agit d'un rôle spécialisé utilisé pour les intégrations.
-
-39. `setLocalParticipantProperty(propertyKey, propertyValue)` - utilisé pour définir une propriété personnalisée pour le participant local ("fullName": "Full Name", favoriteColor: "red", "userId": 234). Cela peut également être utilisé pour modifier une propriété personnalisée déjà définie.
+37. `setLocalParticipantProperty(propertyKey, propertyValue)` - utilisé pour définir une propriété personnalisée pour le participant local("fullName": "Full Name", favoriteColor: "red", "userId": 234). Cela peut également être utilisé pour modifier une propriété personnalisée déjà définie.
     - `propertyKey` - chaîne - nom de la propriété personnalisée
     - `propertyValue` - chaîne - valeur de propriété personnalisée
 
-40. `getParticipants()` - Récupère un tableau de tous les participants à cette conférence.
+38. `getParticipants()` - Récupère un tableau de tous les participants à cette conférence.
 
-41. `revokeOwner(participantId)` -  Révoque les droits de propriété du participant. Le participant qui appelle la fonction doit avoir les mêmes droits ou plus que le participant ciblé. Cette vérification des droits est effectuée au niveau du serveur XMPP.
+39. `revokeOwner(participantId)` - Révoque les droits du propriétaire sur le participant. Le participant qui appelle la fonction doit avoir les mêmes droits ou plus que le participant ciblé. Cette vérification des droits est effectuée au niveau du serveur XMPP.
 
 ### JitsiTrack
 

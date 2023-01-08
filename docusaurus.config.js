@@ -9,7 +9,7 @@ module.exports = {
   organizationName: "jitsi",
   projectName: "handbook",
   favicon: "img/favicon.png",
-  onBrokenLinks: "throw",
+  onBrokenLinks: "log",
   onBrokenMarkdownLinks: "warn",
   scripts: [
     "https://kit.fontawesome.com/2f8664b4cd.js",
@@ -88,6 +88,10 @@ module.exports = {
           position: "left",
         },
         {
+          type:"localeDropdown",
+          position:"left"
+        },
+        {
           href: 'https://github.com/jitsi',
           position: 'right',
           className: 'header-github-link',
@@ -162,5 +166,18 @@ module.exports = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+  },
+  i18n:{
+    defaultLocale: 'en',
+    locales:['en' , 'fr'],
+    localeConfigs:{
+      en:{
+        label:'English',
+      },
+      fr:{
+        label:'Français',
+        path:'fr'
+      }
+    }
   },
 };

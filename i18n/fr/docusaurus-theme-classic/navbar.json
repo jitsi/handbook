@@ -1,0 +1,22 @@
+{
+  "title": {
+    "message": "Jitsi Meet Handbook",
+    "description": "The title in the navbar"
+  },
+  "item.label.Docs": {
+    "message": "Docs",
+    "description": "Navbar item with label Docs"
+  },
+  "item.label.Releases": {
+    "message": "Releases",
+    "description": "Navbar item with label Releases"
+  },
+  "item.label.Community": {
+    "message": "Community",
+    "description": "Navbar item with label Community"
+  },
+  "item.label.JaaS": {
+    "message": "JaaS",
+    "description": "Navbar item with label JaaS"
+  }
+}

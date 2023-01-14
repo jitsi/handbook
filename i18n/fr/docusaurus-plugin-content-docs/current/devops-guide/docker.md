@@ -156,7 +156,7 @@ sudo firewall-cmd --permanent --add-port=10000/udp
 sudo firewall-cmd --reload
 ```
 
-See [the corresponding section in the manual setup guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart#setup-and-configure-your-firewall).
+Voir [la section correspondante dans le guide de configuration manuelle](https://jitsi.github.io/handbook/fr/docs/devops-guide/devops-guide-quickstart#setup-and-configure-your-firewall).
 
 ### Images
 

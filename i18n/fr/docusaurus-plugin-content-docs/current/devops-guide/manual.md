@@ -5,7 +5,7 @@ sidebar_label: Manual installation
 ---
 
 :::warning L'installation manuelle n'est pas recommandée
-Nous vous recommandons de suivre le document [installation rapide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart/). Le document actuel décrit les étapes nécessaires pour installer un déploiement fonctionnel, mais les étapes sont faciles à gâcher et les paquets debian sont plus à jour, où ce document n'est parfois pas mis à jour pour refléter les dernières modifications.
+Nous vous recommandons de suivre le document [installation rapide](https://jitsi.github.io/handbook/fr/docs/devops-guide/devops-guide-quickstart/). Le document actuel décrit les étapes nécessaires pour installer un déploiement fonctionnel, mais les étapes sont faciles à gâcher et les paquets debian sont plus à jour, où ce document n'est parfois pas mis à jour pour refléter les dernières modifications.
 :::
 
 Ceci décrit la configuration d'un serveur `jitsi.example.com` sur une distribution basée sur Debian.

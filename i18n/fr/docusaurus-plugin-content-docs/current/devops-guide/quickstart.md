@@ -1,11 +1,12 @@
 ---
 id: devops-guide-quickstart
 title: "Guide d'auto-hébergement - Serveur Debian/Ubuntu"
-sidebar_label: "Serveur Debian/Ubuntu"
+sidebar_label: 'Serveur Debian/Ubuntu'
 ---
 
 Suivez ces étapes pour une installation rapide de Jitsi-Meet sur un système GNU/Linux basé sur Debian.
 Les distributions suivantes sont prises en charge prêtes à l'emploi :
+
 - Debian 10 (Buster) ou plus récent
 - Ubuntu 20.04 (Focal Fossa) ou plus récent (Ubuntu 18.04 peut être utilisé, mais la version Prosody doit être mise à jour vers 0.11+ avant l'installation)
 
@@ -16,10 +17,11 @@ De nombreuses étapes d'installation nécessitent un accès `root` ou `sudo`. Il
 ## Required packages and repository updates
 
 You will need the following packages:
-* `gnupg2`
-* `nginx-full`
-* `sudo` => **Nécessaire uniquement si vous utilisez `sudo`**
-* `curl` => **Ou** `wget` **pour [Ajouter le référentiel de packages Jitsi](#add-the-jitsi-package-repository)**
+
+- `gnupg2`
+- `nginx-full`
+- `sudo` => **Nécessaire uniquement si vous utilisez `sudo`**
+- `curl` => **Ou** `wget` **pour [Ajouter le référentiel de packages Jitsi](#add-the-jitsi-package-repository)**
 
 :::note REMARQUE
 OpenJDK 11 doit être utilisé.
@@ -44,6 +46,7 @@ sudo apt-add-repository universe
 ```
 
 Retrieve the latest package versions across all repositories:
+
 ```bash
 sudo apt update
 ```
@@ -55,6 +58,7 @@ sudo apt update
 Décidez quel domaine votre serveur utilisera. Par exemple, `meet.example.org`.
 
 Définissez un enregistrement DNS A pour ce domaine, en utilisant :
+
 - l'adresse IP publique de votre serveur, s'il possède sa propre IP publique ; ou alors
 - l'adresse IP publique de votre routeur, si votre serveur a une adresse IP privée (RFC1918) (par exemple 192.168.1.2) et se connecte via votre routeur via Network Address Translation (NAT).
 
@@ -62,9 +66,9 @@ Si votre ordinateur/serveur ou routeur a une adresse IP dynamique (l'adresse IP 
 
 Exemple d'enregistrement DNS :
 
-| **Record Type** | **Hostname** | **Public IP** | **TTL (Seconds)** |
-|:---:|:---:|:---:|:---:|
-| `A` | `meet.example.org` | IP publique de votre serveur de réunion (`x.x.x.x`) | `1800` |
+| **Record Type** |    **Hostname**    |                    **Public IP**                    | **TTL (Seconds)** |
+| :-------------: | :----------------: | :-------------------------------------------------: | :---------------: |
+|       `A`       | `meet.example.org` | IP publique de votre serveur de réunion (`x.x.x.x`) |      `1800`       |
 
 ### Configurer le nom de domaine complet (FQDN) (facultatif)
 
@@ -115,16 +119,16 @@ Mettez à jour toutes les sources de packages :
 sudo apt update
 ```
 
-### Setup and configure your firewall
+### Installez et configurez votre pare-feu
 
 Les ports suivants doivent être ouverts dans votre pare-feu pour autoriser le trafic vers le serveur Jitsi Meet :
 
-* `80 TCP` => Pour vérification/renouvellement de certificat SSL avec Let's Encrypt. **Obligatoire**
-* `443 TCP` => Pour un accès général à Jitsi Meet. **Obligatoire**
-* `10000 UDP` => Pour les réunions audio/vidéo générales du réseau. **Obligatoire**
-* `22 TCP` => Pour accéder à votre serveur en utilisant SSH (modifiez le port en conséquence si ce n'est pas 22). **Obligatoire**
-* `3478 UDP` => Pour interroger le serveur stun (coturn, facultatif, nécessite une modification de `config.js` pour l'activer).
-* `5349 TCP` => Pour les communications vidéo/audio réseau de secours sur TCP (lorsque UDP est bloqué par exemple), desservies par coturn. **Obligatoire**
+- `80 TCP` => Pour vérification/renouvellement de certificat SSL avec Let's Encrypt. **Obligatoire**
+- `443 TCP` => Pour un accès général à Jitsi Meet. **Obligatoire**
+- `10000 UDP` => Pour les réunions audio/vidéo générales du réseau. **Obligatoire**
+- `22 TCP` => Pour accéder à votre serveur en utilisant SSH (modifiez le port en conséquence si ce n'est pas 22). **Obligatoire**
+- `3478 UDP` => Pour interroger le serveur stun (coturn, facultatif, nécessite une modification de `config.js` pour l'activer).
+- `5349 TCP` => Pour les communications vidéo/audio réseau de secours sur TCP (lorsque UDP est bloqué par exemple), desservies par coturn. **Obligatoire**
 
 Si vous utilisez `ufw`, vous pouvez utiliser les commandes suivantes :
 
@@ -147,36 +151,34 @@ sudo ufw status verbose
 #### Utiliser SSH
 
 Pour plus de détails sur l'utilisation et le renforcement de l'accès SSH, consultez la documentation [Debian](https://wiki.debian.org/SSH) ou [Ubuntu](https://help.ubuntu.com/community/SSH/OpenSSH/Configuring) correspondante.
- 
 
 #### Rediriger les ports via votre routeur
 
-Si vous exécutez Jitsi Meet sur un serveur [derrière NAT](https://jitsi.github.io/handbook/docs/faq#how-to-tell-if-my-server-instance-is-behind-nat) , redirigez les ports de votre routeur vers l'adresse IP de votre serveur.
+Si vous exécutez Jitsi Meet sur un serveur [derrière NAT](https://jitsi.github.io/handbook/fr/docs/faq#comment-savoir-si-mon-instance-de-serveur-est-derrière-nat-) , redirigez les ports de votre routeur vers l'adresse IP de votre serveur.
 
 _Remarque_: si les participants ne peuvent pas se voir ou s'entendre, revérifiez vos règles de pare-feu/NAT.
 
 ### Certificat TLS
 
-Pour avoir des communications cryptées, vous avez besoin d'un [certificat TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security). 
+Pour avoir des communications cryptées, vous avez besoin d'un [certificat TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security).
 
 Lors de l'installation de Jitsi Meet vous pouvez choisir entre différentes options :
 
 1. L'option recommandée est de choisir l'option Let's Encrypt Certificate
 
-2. Mais si vous souhaitez utiliser un certificat différent, vous devez d'abord obtenir ce certificat, puis installer jitsi-meet et choisir ___Je veux utiliser mon propre certificat___.
+2. Mais si vous souhaitez utiliser un certificat différent, vous devez d'abord obtenir ce certificat, puis installer jitsi-meet et choisir **_Je veux utiliser mon propre certificat_**.
 
-3. Vous pouvez également utiliser le certificat auto-signé (___Générer un nouveau certificat auto-signé___) mais cela n'est pas recommandé pour les raisons suivantes :
+3. Vous pouvez également utiliser le certificat auto-signé (**_Générer un nouveau certificat auto-signé_**) mais cela n'est pas recommandé pour les raisons suivantes :
 
-    * L'utilisation d'un certificat auto-signé entraînera l'affichage d'avertissements dans les navigateurs de vos utilisateurs, car ils ne peuvent pas vérifier l'identité de votre serveur.
+   - L'utilisation d'un certificat auto-signé entraînera l'affichage d'avertissements dans les navigateurs de vos utilisateurs, car ils ne peuvent pas vérifier l'identité de votre serveur.
 
-* Les applications mobiles Jitsi Meet *nécessitent* un certificat valide signé par une [autorité de certification] de confiance (https://en.wikipedia.org/wiki/Certificate_authority) et ne pourront pas se connecter à votre serveur si vous choisissez une auto- certificat signé.
+- Les applications mobiles Jitsi Meet _nécessitent_ un certificat valide signé par une [autorité de certification] de confiance (https://en.wikipedia.org/wiki/Certificate_authority) et ne pourront pas se connecter à votre serveur si vous choisissez une auto- certificat signé.
 
 ### Installer Jitsi Meet
 
 _Remarque_: Le programme d'installation vérifiera si [Nginx](https://nginx.org/) ou [Apache](https://httpd.apache.org/) sont présents (dans cet ordre) et configurera un hôte virtuel dans le serveur Web il trouve pour servir Jitsi Meet.
 
 Si vous exécutez déjà Nginx sur le port 443 sur la même machine, la configuration de turnserver sera ignorée car elle entrera en conflit avec votre port 443 actuel.
-
 
 ```bash
 # jitsi-meet installation
@@ -202,11 +204,11 @@ Si vous souhaitez limiter la possibilité de démarrer une conférence aux utili
 
 **Conférences/Salles :**
 Le contrôle d'accès aux conférences/salles est géré dans les salles, vous pouvez définir un mot de passe sur la page Web de la salle spécifique après sa création.
-Consultez le Guide de l'utilisateur pour plus de détails : https://jitsi.github.io/handbook/docs/user-guide/user-guide-start-a-jitsi-meeting
+Consultez le Guide de l'utilisateur pour plus de détails : https://jitsi.github.io/handbook/fr/docs/user-guide/user-guide-start-a-jitsi-meeting
 
 #### Configuration avancée
 
-Si l'installation est sur une machine [derrière NAT](https://jitsi.github.io/handbook/docs/faq#how-to-tell-if-my-server-instance-is-behind-nat) jitsi- videobridge devrait se configurer automatiquement au démarrage. Si les appels à trois ne fonctionnent pas, une configuration supplémentaire de jitsi-videobridge est nécessaire pour qu'il soit accessible de l'extérieur.
+Si l'installation est sur une machine [derrière NAT](https://jitsi.github.io/handbook/fr/docs/faq#comment-savoir-si-mon-instance-de-serveur-est-derrière-nat-) jitsi- videobridge devrait se configurer automatiquement au démarrage. Si les appels à trois ne fonctionnent pas, une configuration supplémentaire de jitsi-videobridge est nécessaire pour qu'il soit accessible de l'extérieur.
 
 À condition que tous les ports requis soient acheminés (transférés) vers la machine sur laquelle il s'exécute. Par défaut, ces ports sont TCP/443 et UDP/10000.
 
@@ -244,9 +246,11 @@ systemctl show --property DefaultTasksMax
 Pour charger les valeurs et les vérifier, voir [ci-dessous] (#systemd-details) pour plus de détails.
 
 ##### Détails du système
+
 Pour recharger les modifications systemd sur un système en cours d'exécution, exécutez `sudo systemctl daemon-reload` et `sudo systemctl restart jitsi-videobridge2`.
 Pour vérifier la partie tâches, exécutez `sudo systemctl status jitsi-videobridge2` et vous devriez voir `Tasks: XX (limit: 65000)`.
-Pour vérifier les fichiers et traiter la partie, exécutez ```cat /proc/`cat /var/run/jitsi-videobridge/jitsi-videobridge.pid`/limits``` et vous devriez voir :
+Pour vérifier les fichiers et traiter la partie, exécutez `` cat /proc/`cat /var/run/jitsi-videobridge/jitsi-videobridge.pid`/limits `` et vous devriez voir :
+
 ```
 Max processes             65000                65000                processes
 Max open files            65000                65000                files
@@ -263,7 +267,6 @@ Assurez-vous que vous pouvez créer une réunion avec succès et que d'autres pa
 
 Si tout cela a fonctionné, alors félicitations ! Vous disposez d'un service de conférence Jitsi opérationnel.
 
-
 ## Désinstaller
 
 ```bash
@@ -279,23 +282,22 @@ Lorsque cela se produit, exécutez simplement la commande de désinstallation un
 
 La raison de l'échec est que parfois le script de désinstallation est plus rapide que le processus qui arrête les démons. La deuxième exécution de la commande de désinstallation corrige ce problème, car à ce moment-là, les démons jigasi ou jitsi-videobridge sont déjà arrêtés.
 
-
 ## Problèmes de débogage
 
-* Navigateur Web :
-Vous pouvez essayer d'utiliser un autre navigateur Web. Certaines versions de certains navigateurs sont connues pour avoir des problèmes avec Jitsi Meet.
+- Navigateur Web :
+  Vous pouvez essayer d'utiliser un autre navigateur Web. Certaines versions de certains navigateurs sont connues pour avoir des problèmes avec Jitsi Meet.
 
-* WebRTC, Webcam et Micro :
-Vous pouvez également visiter https://webrtc.github.io/samples/src/content/getusermedia/gum pour tester la compatibilité [WebRTC](https://en.wikipedia.org/wiki/WebRTC) de votre navigateur.
+- WebRTC, Webcam et Micro :
+  Vous pouvez également visiter https://webrtc.github.io/samples/src/content/getusermedia/gum pour tester la compatibilité [WebRTC](https://en.wikipedia.org/wiki/WebRTC) de votre navigateur.
 
-* Pare-feu:
-Si les participants ne peuvent pas se voir ou s'entendre, revérifiez vos règles de pare-feu/NAT.
+- Pare-feu:
+  Si les participants ne peuvent pas se voir ou s'entendre, revérifiez vos règles de pare-feu/NAT.
 
-*Nginx/Apache :
+\*Nginx/Apache :
 Comme nous préférons l'utilisation de Nginx comme serveur Web, le programme d'installation vérifie d'abord la présence de Nginx, puis d'Apache. Au cas où vous auriez désespérément besoin d'imposer l'utilisation d'Apache, essayez de prérégler la variable `jitsi-meet/enforce_apache` pour le paquet `jitsi-meet-web-config` sur debconf.
 
-* Fichiers journaux :
-Jetez un œil aux différents fichiers journaux :
+- Fichiers journaux :
+  Jetez un œil aux différents fichiers journaux :
 
 ```
 /var/log/jitsi/jvb.log

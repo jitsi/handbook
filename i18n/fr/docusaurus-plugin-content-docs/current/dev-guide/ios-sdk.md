@@ -61,7 +61,7 @@ Fichier `Info.plist`.
 
 ### Building it yourself
 
-1. Installez toutes les [dépendances] requises(https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-mobile-jitsi-meet).
+1. Installez toutes les [dépendances](https://jitsi.github.io/handbook/fr/docs/dev-guide/dev-guide-mobile-jitsi-meet) requises.
 
 2. Build it:
 

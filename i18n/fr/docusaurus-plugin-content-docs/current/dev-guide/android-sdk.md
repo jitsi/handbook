@@ -20,7 +20,7 @@ Jitsi fournit commodément des artefacts/binaires SDK pré-construits dans son r
 modification du SDK lui-même ou de l'une de ses dépendances, il est suggéré d'utiliser le SDK de pré-construction. Cela évite le
 complexité de la construction et de l'installation de vos propres artefacts/binaires SDK.
 
-### Use pre-build SDK artifacts/binaries
+### Utiliser des artefacts/binaires SDK pré-build
 
 Dans votre projet, ajoutez le référentiel Maven
 `https://github.com/jitsi/jitsi-maven-repository/raw/master/releases` et la dépendance `org.jitsi.react:jitsi-meet-sdk` dans vos fichiers `build.gradle`.

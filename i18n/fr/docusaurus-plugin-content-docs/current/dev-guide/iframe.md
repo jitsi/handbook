@@ -9,7 +9,7 @@ Vos réunions Jitsi peuvent être hébergées et suivies à l'aide de n'importe 
 
 L'API IFrame vous permet d'intégrer la fonctionnalité Jitsi Meet dans votre application de réunion afin que vous puissiez profiter de toutes les fonctionnalités du déploiement mondialement distribué et hautement disponible disponible avec [meet.jit.si](https://meet.jit.si/).
 
-Vous pouvez également intégrer et intégrer le déploiement mondialement distribué et hautement disponible sur la plate-forme [meet.jit.si](https://meet.jit.si/) elle-même platform. 
+Vous pouvez également intégrer et intégrer le déploiement mondialement distribué et hautement disponible sur la plate-forme [meet.jit.si](https://meet.jit.si/) elle-même platform.
 
 :::note REMARQUE
 Clients JaaS, assurez-vous de lire également [ceci](https://developer.8x8.com/jaas/docs/iframe-api-overview)!
@@ -26,13 +26,13 @@ Pour activer l'API Jitsi Meet dans votre application, vous devez utiliser l'un d
 Pour l'auto-hébergement dans votre domaine :
 
 ```javascript
-<script src='https://<your-domain>/external_api.js'></script>
+<script src="https://<your-domain>/external_api.js"></script>
 ```
 
 meet.jit.si:
-```javascript
-<script src='https://meet.jit.si/external_api.js'></script>
 
+```javascript
+<script src="https://meet.jit.si/external_api.js"></script>
 ```
 
 ## Assistance mobile
@@ -45,8 +45,8 @@ Afin d'ouvrir des réunions avec l'application Jitsi Meet, vous pouvez utiliser 
 
 (supposons que la réunion est https://meet.jit.si/test123)
 
-* Android: `intent://meet.jit.si/test123#Intent;scheme=org.jitsi.meet;package=org.jitsi.meet;end`
-* iOS: `org.jitsi.meet://meet.jit.si/test123`
+- Android: `intent://meet.jit.si/test123#Intent;scheme=org.jitsi.meet;package=org.jitsi.meet;end`
+- iOS: `org.jitsi.meet://meet.jit.si/test123`
 
 Cela fonctionne également avec les serveurs personnalisés, remplacez simplement "meet.jit.si" par l'URL de votre serveur personnalisé.
 
@@ -60,57 +60,57 @@ L'objet de l'API Meet prend la forme suivante :
 
 Le constructeur d'objet API utilise les options suivantes :
 
-* `domain`: Le domaine utilisé pour créer l'URL de la conférence (e.g., **`meet.jit.si`**).
-* `options`: L'objet avec des propriétés.
+- `domain`: Le domaine utilisé pour créer l'URL de la conférence (e.g., **`meet.jit.si`**).
+- `options`: L'objet avec des propriétés.
 
-    Les arguments facultatifs incluent :
-  
-    * `roomName`: Le nom de la salle à rejoindre.
+  Les arguments facultatifs incluent :
 
-    * `width`: La largeur de l'IFrame créée.
-    
-      L'argument largeur a les caractéristiques suivantes :
-    
-      - Une valeur numérique indique la largeur en pixels.
-    
-      - Si une chaîne est spécifiée, le format est un nombre suivi de **`px`**, **`em`**, **`pt`** ou **`%`**.
-    
-    * `height` : la hauteur de l'IFrame créé. 
-    
-      L'argument hauteur a les caractéristiques suivantes :
-    
-      - Une valeur numérique indique la hauteur en pixels.
-    
-      - Si une chaîne est spécifiée, le format est un nombre suivi de **`px`**, **`em`**, **`pt`** ou **`%`**.
-    
-    * `parentNode`: L'élément HTML DOM où l'IFrame est ajouté en tant qu'enfant.
-    
-    * `configOverwrite`: L'objet JS avec des remplacements pour les options définies dans le fichier [config.js].
-    
-    * `interfaceConfigOverwrite`: L'objet JS avec des remplacements pour les options définies dans le fichier [interface_config.js].
-    
-    * `jwt`: Le jeton [JWT](https://jwt.io/).
-    
-    * `onload`: Le gestionnaire d'événements IFrame onload.
-    
-    * `invitees`: Tableaux d'objets contenant des informations sur les participants invités à un appel.
-    
-    * `devices`: Carte d'informations sur les appareils utilisés lors d'un appel.
-    
-    * `userInfo`: L'objet JS qui contient des informations sur le participant qui démarre la réunion (par exemple, e-mail).
+  - `roomName`: Le nom de la salle à rejoindre.
 
-    * `lang`: La langue de réunion par défaut.
+  - `width`: La largeur de l'IFrame créée.
 
-      Par exemple:
+    L'argument largeur a les caractéristiques suivantes :
+
+    - Une valeur numérique indique la largeur en pixels.
+
+    - Si une chaîne est spécifiée, le format est un nombre suivi de **`px`**, **`em`**, **`pt`** ou **`%`**.
+
+  - `height` : la hauteur de l'IFrame créé.
+
+    L'argument hauteur a les caractéristiques suivantes :
+
+    - Une valeur numérique indique la hauteur en pixels.
+
+    - Si une chaîne est spécifiée, le format est un nombre suivi de **`px`**, **`em`**, **`pt`** ou **`%`**.
+
+  - `parentNode`: L'élément HTML DOM où l'IFrame est ajouté en tant qu'enfant.
+
+  - `configOverwrite`: L'objet JS avec des remplacements pour les options définies dans le fichier [config.js].
+
+  - `interfaceConfigOverwrite`: L'objet JS avec des remplacements pour les options définies dans le fichier [interface_config.js].
+
+  - `jwt`: Le jeton [JWT](https://jwt.io/).
+
+  - `onload`: Le gestionnaire d'événements IFrame onload.
+
+  - `invitees`: Tableaux d'objets contenant des informations sur les participants invités à un appel.
+
+  - `devices`: Carte d'informations sur les appareils utilisés lors d'un appel.
+
+  - `userInfo`: L'objet JS qui contient des informations sur le participant qui démarre la réunion (par exemple, e-mail).
+
+  - `lang`: La langue de réunion par défaut.
+
+    Par exemple:
 
 ```javascript
 const domain = 'meet.jit.si';
 const options = {
-    roomName: 'JitsiMeetAPIExample',
-    width: 700,
-    height: 700,
-    parentNode: document.querySelector('#meet'),
-    lang: 'de'
+  roomName: 'JitsiMeetAPIExample',
+  width: 700,
+  height: 700,
+  parentNode: document.querySelector('#meet'),
+  lang: 'de',
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
@@ -144,16 +144,17 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
+
 Pour transmettre un jeton JWT à Jitsi Meet, utilisez ce qui suit :
 
- ```javascript
+```javascript
 const options = {
-    ...
-    jwt: '<jwt_token>',
-    ...
+   ...
+   jwt: '<jwt_token>',
+   ...
 };
 const api = new JitsiMeetExternalAPI(domain, options);
- ```
+```
 
 Vous pouvez définir **`userInfo`** (par exemple, e-mail, nom d'affichage) pour l'appel en utilisant ce qui suit :
 
@@ -181,22 +182,22 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
+
 :::note
 **`TILE_VIEW_MAX_COLUMNS`** accepte les valeurs de 1 à 5. La valeur par défaut est 5.
 :::
 
-
 ## Functions
 
-Toutes les fonctions sont documentées [ici](/handbook/docs/dev-guide/dev-guide-iframe-functions) now.
+Toutes les fonctions sont documentées [ici](/handbook/fr/docs/dev-guide/dev-guide-iframe-functions) now.
 
 ## Commands
 
-Toutes les commandes sont documentées [ici](/handbook/docs/dev-guide/dev-guide-iframe-commands) now.
+Toutes les commandes sont documentées [ici](/handbook/fr/docs/dev-guide/dev-guide-iframe-commands) now.
 
 ## Events
 
-Tous les événements sont documentés [ici](/handbook/docs/dev-guide/dev-guide-iframe-events) now.
+Tous les événements sont documentés [ici](/handbook/fr/docs/dev-guide/dev-guide-iframe-events) now.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

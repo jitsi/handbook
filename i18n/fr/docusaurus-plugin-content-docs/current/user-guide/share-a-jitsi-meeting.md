@@ -4,7 +4,7 @@ title: Partager une réunion Jitsi
 sidebar_label: Partager une réunion Jitsi
 ---
 
-Tout d'abord, vous devez [rejoindre](https://jitsi.github.io/handbook/docs/user-guide/user-guide-join-jitsi-meeting) / [démarrer](https://jitsi.github.io/handbook/docs/user-guide/user-guide-start-a-jitsi-meeting) une réunion Jitsi.
+Tout d'abord, vous devez [rejoindre](https://jitsi.github.io/handbook/fr/docs/user-guide/user-guide-join-jitsi-meeting) / [démarrer](https://jitsi.github.io/handbook/fr/docs/user-guide/user-guide-start-a-jitsi-meeting) une réunion Jitsi.
 
 Suivant:
 

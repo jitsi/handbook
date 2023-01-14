@@ -9,7 +9,7 @@ module.exports = {
   organizationName: "jitsi",
   projectName: "handbook",
   favicon: "img/favicon.png",
-  onBrokenLinks: "log",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   scripts: [
     "https://kit.fontawesome.com/2f8664b4cd.js",
@@ -173,6 +173,7 @@ module.exports = {
     localeConfigs:{
       en:{
         label:'English',
+        path:'en'
       },
       fr:{
         label:'Français',

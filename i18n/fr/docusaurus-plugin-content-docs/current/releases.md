@@ -34,7 +34,7 @@ Les applications de bureau sont basées sur Electron. Pour macOS, il est égalem
 
 | <i class="fa-brands fa-android"></i> Android | <i class="fa-brands fa-apple"></i> iOS |
 | :--: | :--: |
-| [Maven repository](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
+| [Maven repository](https://jitsi.github.io/handbook/fr/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
 
 ## Images Docker
 

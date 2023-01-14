@@ -55,7 +55,7 @@ S'ils donnent le mot de passe à d'autres, ces autres personnes peuvent égaleme
 
 ### _4. Activez "domaine sécurisé" si vous utilisez votre propre instance de Jitsi._
 
-En plus des conseils ci-dessus, envisagez d'activer la [configuration "domaine sécurisé"](https://jitsi.github.io/handbook/docs/devops-guide/secure-domain). Cela nécessite que vous (ou quelqu'un d'autre) saisissiez un nom d'utilisateur et un mot de passe pour ouvrir une salle. Il vous permet également de devenir modérateur.
+En plus des conseils ci-dessus, envisagez d'activer la [configuration "domaine sécurisé"](https://jitsi.github.io/handbook/fr/docs/faq#4-activez-domaine-sécurisé-si-vous-utilisez-votre-propre-instance-de-jitsi). Cela nécessite que vous (ou quelqu'un d'autre) saisissiez un nom d'utilisateur et un mot de passe pour ouvrir une salle. Il vous permet également de devenir modérateur.
 
 ## Cela fonctionne lorsque je me connecte depuis un navigateur, mais pas depuis les applications iOS ou Android
 
@@ -65,7 +65,6 @@ est correctement configuré [ici](https://whatsmychaincert.com/).
 Dans nginx, si vous utilisez Let's Encrypt, vous devriez avoir une ligne comme celle-ci :
 
 `ssl_certificate /etc/letsencrypt/live/jitsi.example.com/fullchain.pem;`
-
 
 ## Puis-je enregistrer et sauvegarder la vidéo ?
 
@@ -77,13 +76,14 @@ _Note_: Si vous souhaitez utiliser une méthode respectueuse de la vie privée, 
 
 2. **RTMP-Server**: Pour cela, vous devez configurer votre propre serveur RTMP, puis utiliser votre URL RTMP + clé de flux au lieu de la clé de flux Youtube comme décrit [ici](https://jitsi.org/blog/live-streaming-with-jitsi-and-youtube/). Les déploiements Jitsi Meet auto-installés devront configurer Jibri pour ce faire.
 
-3. **Dropbox**: [Connectez-vous à Dropbox avec Jitsi Meet](/handbook/docs/dev-guide/dev-guide-web-integrations#creating-the-dropbox-app-for-dropbox-recording-integration) et enregistrez la vidéo dans la Dropbox
+3. **Dropbox**: [Connectez-vous à Dropbox avec Jitsi Meet](/handbook/fr/docs/dev-guide/dev-guide-web-integrations) et enregistrez la vidéo dans la Dropbox
 
 4. **Video Services/Websites**: Diffusez votre conférence sur YouTube ou d'autres sites (par exemple Twitch) et accédez à l'enregistrement (voir [comment](https://jitsi.org/blog/live-streaming-with-jitsi-and-youtube/)). Les déploiements Jitsi Meet auto-installés devront configurer Jibri pour ce faire.
 
 D'autres méthodes pourraient être mises en œuvre à l'avenir, mais ne sont pas encore prêtes (par exemple, [enregistrement local](https://github.com/jitsi/jitsi-meet/issues/6014).
 
 ## J'ai défini le mot de passe en réunion mais il ne fonctionne pas la prochaine fois
+
 Une fois la réunion terminée, son mot de passe est également supprimé, vous devez donc redéfinir le mot de passe pour la prochaine réunion.
 
 ## How to limit the number of participants?
@@ -126,7 +126,7 @@ Component "conference.meet.example.com" "muc"
    modules_enabled = {
        "muc_meeting_id";
        "muc_domain_mapper";
-       "muc_max_occupants"; 
+       "muc_max_occupants";
    }
    muc_max_occupants = "5"
    muc_access_whitelist = { "focus@auth.meet.example.com" }
@@ -136,6 +136,7 @@ Component "conference.meet.example.com" "muc"
 ```
 
 La relation entre storage="" et votre version de prosodie, et vous devez modifier tous les storage="" .
+
 - Prosody nightly747 storage = "null"
 - Prosody 0.10 storage = "none"
 - Prosody 0.11 storage = "memory"

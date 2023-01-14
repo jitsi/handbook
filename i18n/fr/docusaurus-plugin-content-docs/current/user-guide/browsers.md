@@ -23,7 +23,7 @@ title: Navigateurs pris en charge
 | <i class="fa-brands fa-firefox-browser"></i> Firefox | ✅ | | Même prise en charge que la version de bureau |
 
 :::note
-Pour une meilleure expérience mobile (prise en charge en arrière-plan, prise en charge Bluetooth, etc.), nous vous recommandons d'utiliser un application native à la place. Nous fournissons un [SDK Android natif](/handbook/docs/dev-guide/dev-guide-android-sdk).
+Pour une meilleure expérience mobile (prise en charge en arrière-plan, prise en charge Bluetooth, etc.), nous vous recommandons d'utiliser un application native à la place. Nous fournissons un [SDK Android natif](/handbook/fr/docs/dev-guide/dev-guide-android-sdk).
 :::
 
 ### iOS
@@ -39,7 +39,7 @@ Pour une meilleure expérience mobile (prise en charge en arrière-plan, prise e
 Sur iOS, tous les navigateurs partagent le même moteur, Safari. En tant que telles, toutes les fonctionnalités et limitations de tous les navigateurs iOS sont celles de Safari.
 
 Pour une meilleure expérience mobile (support en arrière-plan, intégration CallKit, etc.), nous vous recommandons d'utiliser un
-application native à la place. Nous fournissons un [SDK iOS natif](/handbook/docs/dev-guide/dev-guide-ios-sdk).
+application native à la place. Nous fournissons un [SDK iOS natif](/handbook/fr/docs/dev-guide/dev-guide-ios-sdk).
 :::
 
 [^1]: Cela s'applique également à tous les navigateurs basés sur Chromium tels que Brave, Edge (actuel), Opera, Vivaldi et autres.

@@ -26,7 +26,7 @@ Key                             | Value  | Effect
 ------------------------------- | ------ | -----------------------------------
 `disableInviteFunctions`        | `true` | disable invite function of the app
 `minParticipants`               | `2`    | override the minimum number of participants before starting a call
-`prejoinPageEnabled`            | `true` | show an intermediate page before joining to allow for adjustment of devices
+`prejoinConfig.enabled`         | `true` | show an intermediate page before joining to allow for adjustment of devices
 
 ## UI
 

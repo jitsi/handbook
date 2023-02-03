@@ -61,8 +61,3 @@ The main form of testing code changes is done through torture tests, next to thi
 The torture tests are located in a separate repository, [Jitsi Meet Torture](https://github.com/jitsi/jitsi-meet-torture). The project contains end to end tests for several key functions such as peer to peer and invites. The testing can be done for iOS, Android and web, which are all the platforms that Jitsi Meet can be used on. The testing is done automatically for pull requests by project members, where it is used in combination with the continuous integration by a Jenkins instance running the tests, testing on the [meet.jit.si](https://meet.jit.si) instance. Other members can run the tests locally. The test results can be viewed on an automatically generated web page.
 
 Manual testing is performed while doing code reviews, however there are also testing releases that can be freely downloaded and deployed, or can be used on the [beta test server](https://beta.meet.jit.si/).
-
-[^class-comp]: [Class components](https://reactjs.org/docs/react-component.html)
-[^func-comp]: [Functional components with hooks](https://reactjs.org/docs/hooks-intro.html)
-[^react-redux]: [React Redux](https://react-redux.js.org/)
-[^scss]: [SCSS](https://sass-lang.com/documentation/syntax)

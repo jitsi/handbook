@@ -391,6 +391,19 @@ The listener receives an object with the following structure based on [MouseEven
 }
 ```
 
+### participantMenuButtonClicked
+
+Provides event notifications about a participant context menu button being clicked.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    key: string, // the pressed button's key. The key is as defined in `toolbarButtons` config,
+    participantId: string // the id of the participant for which the button was clicked
+}
+```
+
 ### toolbarButtonClicked
 
 Provides event notifications about a toolbar button being clicked and whether the click routine was executed or not.

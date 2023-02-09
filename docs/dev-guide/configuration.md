@@ -952,9 +952,11 @@ startLastN: 1
 
 ## Lobby
 
-### autoKnockLobby
+### ~~autoKnockLobby~~
 
 type: `Boolean`
+
+__DEPRECATED__ Use `lobby.autoKnock` instead.
 
 If Lobby is enabled starts knocking automatically.
 
@@ -962,9 +964,11 @@ If Lobby is enabled starts knocking automatically.
 autoKnockLobby: false
 ```
 
-### enableLobbyChat
+### ~~enableLobbyChat~~
 
 type: `Boolean`
+
+__DEPRECATED__ Use `lobby.enableChat` instead.
 
 Enable lobby chat.
 
@@ -972,14 +976,35 @@ Enable lobby chat.
 enableLobbyChat: false
 ```
 
-### hideLobbyButton
+### ~~hideLobbyButton~~
 
 type: `Boolean`
+
+__DEPRECATED__ Use `securityUi.hideLobbyButton` instead.
 
 Hide the lobby button.
 
 ```javascript
 hideLobbyButton: false
+```
+
+### lobby
+
+type: `Object`
+
+Options related to the lobby screen.
+
+Default: **unset**
+
+Properties:
+* `autoKnock` - If the lobby is enabled, it starts knocking automatically. Replaces `autoKnockLobby`.
+* `enableChat` - Enables the lobby chat. Replaces `enableLobbyChat`.
+
+```javascript
+lobby: {
+    autoKnock: true,
+    enableChat: false
+}
 ```
 
 ## Moderator
@@ -1236,6 +1261,26 @@ Properties:
 screenshotCapture: {
     enabled: true,
     mode: 'recording'
+}
+```
+
+## Security UI
+### securityUi
+
+type: `Object`
+
+Options regarding the security related UI elements.
+
+Default: **unset**
+
+Properties:
+* `hideLobbyButton` - Hides the lobby button. Replaces `hideLobbyButton`.
+* `disableLobbyPassword` - Hides the possibility to set and enter a lobby password.
+
+```javascript
+securityUi: {
+    hideLobbyButton: true,
+    disableLobbyPassword: false
 }
 ```
 

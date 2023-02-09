@@ -94,9 +94,16 @@ If all worked as expected, you should see:
 
 This will add the Prosody repository so that an up to date Prosody is installed, which is necessary for features including the lobby feature.
 
+**Ubuntu 18.04 and 20.04**
 ```bash
 echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list
 wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add -
+apt install lua5.2
+```
+**Ubuntu 22.04**
+```bash
+curl -sL https://prosody.im/files/prosody-debian-packages.key | tee -a /etc/apt/keyrings/prosody-debian-packages.key
+echo "deb [signed-by=/etc/apt/keyrings/prosody-debian-packages.key] (lsb_release -sc) main" > /etc/apt/sources.list.d/prosody-debian-packages.list
 apt install lua5.2
 ```
 
@@ -104,9 +111,15 @@ apt install lua5.2
 
 This will add the jitsi repository to your package sources to make the Jitsi Meet packages available.
 
+**Ubuntu 18.04 and 20.04**
 ```bash
 curl https://download.jitsi.org/jitsi-key.gpg.key | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg'
 echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.list > /dev/null
+```
+**Ubuntu 22.04**
+```bash
+curl -sL https://download.jitsi.org/jitsi-key.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/jitsi-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/" > /etc/apt/sources.list.d/jitsi-stable.list
 ```
 
 Update all package sources:

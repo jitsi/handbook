@@ -38,4 +38,4 @@ Here are the currently implemented flags:
 * `video-share.enabled`:  Flag indicating if the video share button should be enabled. Default: enabled (true).
 * `welcomepage.enabled`: Flag indicating if the welcome page should be enabled. Default: disabled (false).
 
-All flags are defined [here](https://github.com/jitsi/jitsi-meet/blob/master/react/features/base/flags/constants.js).
+All flags are defined [here](https://github.com/jitsi/jitsi-meet/blob/master/react/features/base/flags/constants.ts).

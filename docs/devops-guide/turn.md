@@ -72,7 +72,7 @@ server {
     server_name jitsi-meet.example.com;
 ```
 
-- Next you need to make sure Prosody is advertising the correct DNS name and port for the TURN server. You should edit the line using port `5349` and make it look like (change port and address):
+- Next you need to make sure Prosody is advertising the correct DNS name and port for the TURN server. You should edit the line using port `5349` in the file `/etc/prosody/conf.d/jitsi-meet.example.com.cfg.lua` and make it look like (change port and address):
 ```
 { type = "turns", host = "turn-jitsi-meet.example.com", port = "443", transport = "tcp" }
 ```

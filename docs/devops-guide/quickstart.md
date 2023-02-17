@@ -102,8 +102,8 @@ apt install lua5.2
 ```
 **Ubuntu 22.04**
 ```bash
-curl -sL https://prosody.im/files/prosody-debian-packages.key | tee -a /etc/apt/keyrings/prosody-debian-packages.key
-echo "deb [signed-by=/etc/apt/keyrings/prosody-debian-packages.key] (lsb_release -sc) main" > /etc/apt/sources.list.d/prosody-debian-packages.list
+curl -sL https://prosody.im/files/prosody-debian-packages.key | sudo tee /etc/apt/keyrings/prosody-debian-packages.key
+echo "deb [signed-by=/etc/apt/keyrings/prosody-debian-packages.key] http://packages.prosody.im/debian $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/prosody-debian-packages.list
 apt install lua5.2
 ```
 
@@ -119,7 +119,7 @@ echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jit
 **Ubuntu 22.04**
 ```bash
 curl -sL https://download.jitsi.org/jitsi-key.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/jitsi-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/" > /etc/apt/sources.list.d/jitsi-stable.list
+echo "deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/" | sudo tee /etc/apt/sources.list.d/jitsi-stable.list
 ```
 
 Update all package sources:

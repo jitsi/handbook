@@ -525,6 +525,17 @@ Provides event notifications about participants rejections for moderation.
 }
 ```
 
+### notificationTriggered
+
+Provides event notifications when an application notification occurs.
+
+```javascript
+{
+    title: string, // The notification title.
+    description: string // The notification description.
+}
+```
+
 ### participantJoined
 
 Provides event notifications about new participants who join the room.

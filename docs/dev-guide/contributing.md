@@ -131,7 +131,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
   or internal. In contrast, the lack of an underscore at the beginning of a name
   signals public API.
 
-### JavaScript
+### TypeScript
 
 #### Feature layout
 
@@ -139,19 +139,27 @@ When adding a new feature, this would be the usual layout.
 
 ```
 react/features/sample/
-├── actionTypes.js
-├── actions.js
+├── actionTypes.ts
+├── actions.ts
 ├── components
-│   ├── AnotherComponent.js
-│   ├── OneComponent.js
-│   └── index.js
-├── middleware.js
-└── reducer.js
+│   ├── AnotherComponent.tsx
+│   └── OneComponent.tsx
+├── middleware.ts
+└── reducer.ts
 ```
+
+All new features must be written in TypeScript. When working on an old feature,
+converting the JavaScript files to TypeScript is encouraged.
 
 The middleware must be imported in `react/features/app/` specifically
 in `middlewares.any`, `middlewares.native.js` or `middlewares.web.js` where appropriate.
 Likewise for the reducer.
+
+In general we want to avoid `index` files. We prefer using the full path for imports.
+However there are cases where a common file (used by both web and native, eg. `actions.ts`)
+needs to import from components (from `/native` or from `/web`, depending on the platform the build is for).
+In this case we create two `index` files in `components/`: `index.native.ts` and `index.web.ts` and export
+just the component we need. The common file should then import from `components/index`.
 
 This has not always been the case and the entire codebase hasn't been migrated to
 this model but new features should follow this new layout.

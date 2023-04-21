@@ -104,6 +104,13 @@ Plugin for Adding a "Schedule Jitsi Meeting" Button to Microsoft Outlook.
 
 GitHub: https://github.com/timetheoretical/jitsi-meet-outlook
 
+## Outlook Pluigin
+
+Plugin for Adding a "Schedule Jitsi Meeting" Button to Microsoft Outlook.
+Written according to Microsoft's modern architecture.
+
+GitHub: https://github.com/diggsweden/jitsi-outlook
+
 ## Prosody Plugins
 
 Collection of community-contributed prosody plugins that can be added to

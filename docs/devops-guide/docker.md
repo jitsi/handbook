@@ -147,7 +147,6 @@ The following external ports must be opened on a firewall:
 
 * `80/tcp` for Web UI HTTP (really just to redirect, after uncommenting `ENABLE_HTTP_REDIRECT=1` in `.env`)
 * `443/tcp` for Web UI HTTPS
-* `4443/tcp` for RTP media over TCP
 * `10000/udp` for RTP media over UDP
 
 Also `20000-20050/udp` for jigasi, in case you choose to deploy that to facilitate SIP access.
@@ -157,7 +156,6 @@ E.g. on a CentOS/Fedora server this would be done like this (without SIP access)
 ```bash
 sudo firewall-cmd --permanent --add-port=80/tcp
 sudo firewall-cmd --permanent --add-port=443/tcp
-sudo firewall-cmd --permanent --add-port=4443/tcp
 sudo firewall-cmd --permanent --add-port=10000/udp
 sudo firewall-cmd --reload
 ```

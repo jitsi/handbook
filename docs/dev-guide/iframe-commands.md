@@ -678,3 +678,11 @@ api.executeCommand('hideNotification',
     uid: String // Unique identifier for the notification to be removed.
 );
 ```
+
+### toggleWhiteboard
+
+Toggles the whiteboard to open, repeated toggling hidden the whiteboard
+
+```javascript
+api.executeCommand('toggleWhiteboard');
+```

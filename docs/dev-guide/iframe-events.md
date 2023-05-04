@@ -738,6 +738,18 @@ Will only fire if rtcstats is enabled.
 }
 ```
 
+### whiteboardStatusChanged
+
+Provides event notifications about changes to the whiteboard.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    status: string // new whiteboard status
+}
+```
+
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html

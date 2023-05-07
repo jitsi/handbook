@@ -118,7 +118,7 @@ echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jit
 ```
 **Ubuntu 22.04**
 ```bash
-curl -sL https://download.jitsi.org/jitsi-key.gpg.key | gpg --dearmor | sudo tee /usr/share/keyrings/jitsi-keyring.gpg
+curl -sL https://download.jitsi.org/jitsi-key.gpg.key | gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/" | sudo tee /etc/apt/sources.list.d/jitsi-stable.list
 ```
 

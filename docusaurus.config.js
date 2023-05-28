@@ -88,6 +88,10 @@ module.exports = {
           position: "left",
         },
         {
+          type:"localeDropdown",
+          position:"left"
+        },
+        {
           href: 'https://github.com/jitsi',
           position: 'right',
           className: 'header-github-link',
@@ -162,5 +166,19 @@ module.exports = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
     },
+  },
+  i18n:{
+    defaultLocale: 'en',
+    locales:['en' , 'fr'],
+    localeConfigs:{
+      en:{
+        label:'English',
+        path:'en'
+      },
+      fr:{
+        label:'Français',
+        path:'fr'
+      }
+    }
   },
 };

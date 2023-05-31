@@ -393,6 +393,16 @@ api.isModerationOn(mediaType).then(isModerationOn => {
 });
 ```
 
+### isP2pActive
+
+Returns a Promise which resolves to a Boolean or null, when there is no conference.
+
+```javascript
+api.isP2pActive().then(isP2p => {
+    ...
+});
+```
+
 ### isParticipantForceMuted
 
 Returns a Promise which resolves to the current force mute state of the given participant for the given media type.

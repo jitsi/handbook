@@ -750,6 +750,18 @@ The listener receives an object with the following structure:
 }
 ```
 
+### p2pStatusChanged
+
+Provides event notifications about changes to the connection type.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    isP2p: boolean|null // whether the new connection type is P2P
+}
+```
+
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html

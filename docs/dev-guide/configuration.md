@@ -97,7 +97,7 @@ type: `Array<{ icon: string; id: string; text: string; }>`
 
 Default: **unset**
 
-A list of custom buttons that can be added to the Participant Context Menu. Each will have an icon, that can be either a base64 encoded image or the path to an image, a unique id, and a text that will be displayed alongside the icon in the menu. This custom button will trigger the `participantMenuButtonClick` event that will the id set to the button as the `key` and the `participantId`, representing the id of the participant for which the button was clicked.
+A list of custom buttons that can be added to the Participant Context Menu. Each will have an icon, that can be either a base64 encoded image or the path to an image, a unique id, and a text that will be displayed alongside the icon in the menu. This custom button will trigger the `participantMenuButtonClick` event that will have the id set to the button as the `key` and the `participantId`, representing the id of the participant for which the button was clicked.
 
 ```javascript
 customParticipantMenuButtons: [

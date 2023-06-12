@@ -404,7 +404,7 @@ The listener receives an object with the following structure based on [MouseEven
 }
 ```
 
-### participantMenuButtonClicked
+### participantMenuButtonClick
 
 Provides event notifications about a participant context menu button being clicked.
 

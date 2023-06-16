@@ -645,6 +645,7 @@ Variable | Description | Default value
 `JICOFO_COMPONENT_SECRET` | XMPP component password for Jicofo | s3cr37
 `JICOFO_AUTH_USER` | XMPP user for Jicofo client connections | focus
 `JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
+`JICOFO_ENABLE_AUTH` | Enable authentication in Jicofo | `ENABLE_AUTH`
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
 
 #### Advanced JVB options

@@ -702,6 +702,14 @@ multiple advertised IPs by separating them with commas:
 JVB_ADVERTISE_IPS=192.168.1.1,1.2.3.4
 ```
 
+#### Offline / airgapped installation
+
+If your setup does not have access to the Internet you'll need to disable STUN on the JVB since discovering its own IP address will fail, but that is not necessary on that type of environment.
+
+```
+JVB_DISABLE_STUN=true
+```
+
 ## Accessing server logs
 
 The default bahavior of `docker-jitsi-meet` is to log to `stdout`.

@@ -5,16 +5,16 @@ title: Modifying lib-jitsi-meet
 
 # Modifying `lib-jitsi-meet`
 
-By default the library is built from its git repository sources. The default dependency path in package.json is:
+By default the library is referenced as a prebuilt artifact in a HitHub release. Packages are NOT published to npm. The default dependency path in package.json is:
 
 ```json
-"lib-jitsi-meet": "jitsi/lib-jitsi-meet#commit-hash",
+"lib-jitsi-meet": "https://github.com/jitsi/lib-jitsi-meet/releases/download/v<version>+<commit-hash>/lib-jitsi-meet.tgz)",
 ```
 
 To work with local copy you may change the path to:
 
 ```json
-"lib-jitsi-meet": "file:///Users/name/local-lib-jitsi-meet-copy",
+"lib-jitsi-meet": "file:///Users/name/local-lib-jitsi-meet-packed-copy.tgz",
 ```
 
 To make the project you must force it to take the sources as 'npm update':
@@ -48,7 +48,12 @@ npm link lib-jitsi-meet
 Linking will not work when building the mobile applications.
 :::
 
-After changes in your local `lib-jitsi-meet` repository, you can rebuild it with `npm run install` and your `jitsi-meet` repository will use that modified library.
+After changes in your local `lib-jitsi-meet` repository, you can rebuild it with `npm run build` and your `jitsi-meet` repository will use that modified library:
+
+```bash
+cd node_modules/lib-jitsi-meet
+npm run build
+```
 
 If you do not want to use local repository anymore you should run:
 

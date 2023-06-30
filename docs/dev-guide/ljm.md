@@ -17,6 +17,8 @@ To work with local copy you may change the path to:
 "lib-jitsi-meet": "file:///Users/name/local-lib-jitsi-meet-packed-copy.tgz",
 ```
 
+In order to create the packed file run `npm pack` in the lib-jitsi-meet project directory.
+
 To make the project you must force it to take the sources as 'npm update':
 
 ```

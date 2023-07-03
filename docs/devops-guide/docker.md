@@ -637,6 +637,7 @@ Variable | Description | Default value
 --- | --- | ---
 `PROSODY_RESERVATION_ENABLED` | Enable Prosody's reservation REST API | false
 `PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API | 
+`PROSODY_AUTH_TYPE` | Select authentication type for Prosody (internal, jwt or ldap) | `AUTH_TYPE`
 
 #### Advanced Jicofo options
 
@@ -646,6 +647,7 @@ Variable | Description | Default value
 `JICOFO_AUTH_USER` | XMPP user for Jicofo client connections | focus
 `JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
 `JICOFO_ENABLE_AUTH` | Enable authentication in Jicofo | `ENABLE_AUTH`
+`JICOFO_AUTH_TYPE` | Select authentication type for Jicofo (internal, jwt or ldap) | `AUTH_TYPE`
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
 
 #### Advanced JVB options

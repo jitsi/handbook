@@ -599,11 +599,12 @@ Configure external TURN servers.
 
 Variable | Description | Default value
 --- | --- | ---
-`TURN_CREDENTIALS` | Credentials for TURN servers
-`TURN_HOST` | TURN server hostname (TCP transport)
-`TURN_PORT` | TURN server port (TCP transport)
-`TURNS_HOST` | TURN server hostname (TLS transport)
-`TURNS_PORT` | TURN server port (TLS transport)
+`TURN_CREDENTIALS` | Credentials for TURN servers |
+`TURN_HOST` | TURN server hostnames as a comma separated list (UDP or TCP transport) |
+`TURN_PORT` | TURN server port (UDP or TCP transport) | 443
+`TURN_TRANSPORT` | TURN server protocols as a comma separated list (UDP or TCP or both) | tcp
+`TURNS_HOST` | TURN server hostnames as a comma separated list (TLS transport) |
+`TURNS_PORT` | TURN server port (TLS transport) | 443
 
 ### Advanced configuration
 

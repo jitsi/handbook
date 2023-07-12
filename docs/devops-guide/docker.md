@@ -194,7 +194,7 @@ Variable | Description | Example
 `TZ` | System Time Zone | Europe/Amsterdam
 `HTTP_PORT` | Exposed port for HTTP traffic | 8000
 `HTTPS_PORT` | Exposed port for HTTPS traffic | 8443
-`DOCKER_HOST_ADDRESS` | IP address of the Docker host, needed for LAN environments | 192.168.1.1
+`JVB_ADVERTISE_IPS` | IP addresses of the Docker host (comma separated), needed for LAN environments | 192.168.1.1
 `PUBLIC_URL` | Public URL for the web service | https://meet.example.com
 
 :::note

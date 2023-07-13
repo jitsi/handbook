@@ -439,7 +439,10 @@ access is enabled, unauthenticated users will need to wait until a user authenti
 before they can join a room. If guest access is not enabled, every user will need
 to authenticate before they can join.
 
-If authentication is enabled, once an authenticated user logged in, it is always logged in before the session timeout.You can set `ENABLE_AUTO_LOGIN=0` to disable this default auto login feature.
+If authentication is enabled, once an authenticated user logged in, it is always
+logged in before the session timeout. You can set `ENABLE_AUTO_LOGIN=0` to disable
+this default auto login feature or you can set `JICOFO_AUTH_LIFETIME` to limit
+the session lifetime.
 
 Variable | Description | Example
 --- | --- | ---
@@ -447,6 +450,7 @@ Variable | Description | Example
 `ENABLE_GUESTS` | Enable guest access | 1
 `AUTH_TYPE` | Select authentication type (internal, jwt or ldap) | internal
 `ENABLE_AUTO_LOGIN` | Enable auto login  | 1
+`JICOFO_AUTH_LIFETIME` | Select session timeout value for an authenticated user | 3 hours
 
 #### Internal authentication
 
@@ -649,6 +653,7 @@ Variable | Description | Default value
 `JICOFO_AUTH_PASSWORD` | XMPP password for Jicofo client connections | `<unset>`
 `JICOFO_ENABLE_AUTH` | Enable authentication in Jicofo | `ENABLE_AUTH`
 `JICOFO_AUTH_TYPE` | Select authentication type for Jicofo (internal, jwt or ldap) | `AUTH_TYPE`
+`JICOFO_AUTH_LIFETIME` | Select session timeout value for an authenticated user | 24 hours
 `JICOFO_ENABLE_HEALTH_CHECKS` | Enable health checks inside Jicofo, allowing the use of the REST api to check Jicofo's status | false
 
 #### Advanced JVB options

@@ -63,7 +63,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
 
 ### Duplication
 
-* Don't copy-paste source code. Reuse it. Be careful not to create bad abstractions just to resuse a small chunk of code, however.
+* Don't copy-paste source code. Reuse it. Be careful not to create bad abstractions just to reuse a small chunk of code, however.
 
 ### Formatting
 

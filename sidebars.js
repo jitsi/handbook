@@ -90,6 +90,7 @@ module.exports = {
             "dev-guide/mobile-feature-flags",
             "dev-guide/dev-guide-android-sdk",
             "dev-guide/dev-guide-ios-sdk",
+            "dev-guide/dev-guide-react-native-sdk",
           ],
         },
       ],

@@ -6,6 +6,7 @@ build
 yarn.lock
 .docusaurus
 .vscode
+.idea
 
 *~
 *.sw?

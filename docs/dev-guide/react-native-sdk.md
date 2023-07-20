@@ -49,7 +49,7 @@ module.exports = (async () => {
 ```
 
 
-### Android
+### Android permissions
 
 - In `android/app/src/debug/AndroidManifest.xml` and `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, include
   ```xml
@@ -64,6 +64,15 @@ module.exports = (async () => {
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
   ```
+
+### iOS permissions
+
+- React Native SDK requests camera and microphone access, make sure to include the required entries for `NSCameraUsageDescription` and `NSMicrophoneUsageDescription`in your `Info.plist` file.
+- React Native SDK shows and hides the status bar based on the conference state,
+  you may want to set `UIViewControllerBasedStatusBarAppearance` to `NO` in your
+  `Info.plist` file.
+- For starting screen sharing React Native SDK provides the UI to present the `RPSystemBroadcastPickerView` to the user. By default, the picker will display a list of all the available broadcast providers. In order to limit the picker to our particular broadcast provider, we have to set `preferredExtension` to the bundle identifier of the broadcast extension. We are doing this by adding a new key named `RTCScreenSharingExtension` to the app's Info.plist and setting the broadcast extension bundle identifier as the value.
+- Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.plist`, in order to work when the app is in the background.
 
 ## JitsiMeeting props
 

@@ -26,8 +26,7 @@ module.exports = {
       type: "category",
       label: "User Guide",
       link: {
-        type: "doc",
-        id: "user-guide/user-guide-start",
+        type: "generated-index",
       },
       items: [
         "user-guide/supported-browsers",
@@ -45,8 +44,7 @@ module.exports = {
       type: "category",
       label: "Developer Guide",
       link: {
-        type: "doc",
-        id: "dev-guide/dev-guide-start",
+        type: "generated-index",
       },
       items: [
         "dev-guide/dev-guide-contributing",
@@ -106,6 +104,9 @@ module.exports = {
         {
           type: "category",
           label: "Deployment",
+          link: {
+            type: "generated-index",
+          },
           items: [
             "devops-guide/devops-guide-requirements",
             "devops-guide/devops-guide-quickstart",
@@ -117,6 +118,9 @@ module.exports = {
         {
           type: "category",
           label: "Configuration",
+          link: {
+            type: "generated-index",
+          },
           items: [
             "devops-guide/secure-domain",
             "devops-guide/ldap-authentication",

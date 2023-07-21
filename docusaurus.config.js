@@ -73,6 +73,11 @@ module.exports = {
           position: "left",
         },
         {
+            to: "docs/category/sdks",
+            label: "SDKs",
+            position: "left",
+        },
+        {
           to: "docs/releases",
           label: "Releases",
           position: "left",

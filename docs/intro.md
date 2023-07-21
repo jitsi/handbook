@@ -18,10 +18,10 @@ If you want to help out please create a **Pull Request** in our [GitHub reposito
 
 The content is divided in 3 main areas:
 
-* [User guide](user-guide/user-guide.md): Designed to help users of the service, to better
+* [User guide](/docs/category/user-guide): Designed to help users of the service, to better
 understand all the available features and how to use them.
 
-* [Developer guide](dev-guide/dev-guide.md): Designed to help developers who want to either
+* [Developer guide](/docs/category/developer-guide): Designed to help developers who want to either
 integrate the Jitsi Meet API / SDK in their products or want to improve Jitsi Meet
 itself by developing new features or fixing bugs.
 

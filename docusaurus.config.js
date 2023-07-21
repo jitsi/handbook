@@ -37,12 +37,12 @@ module.exports = {
       {
         redirects: [
           {
-            to: '/docs/user-guide/',
-            from: '/docs/user-guide/user-guide-start',
+            to: '/docs/category/user-guide',
+            from: [ '/docs/user-guide', '/docs/user-guide/user-guide-start' ],
           },
           {
-            to: '/docs/dev-guide/',
-            from: '/docs/dev-guide/dev-guide-start',
+            to: '/docs/category/developer-guide',
+            from: [ '/docs/dev-guide', '/docs/dev-guide/dev-guide-start' ],
           },
           {
             to: '/docs/devops-guide/',

@@ -78,7 +78,7 @@ Make sure you pin your dependency by checking the [releases page](https://github
 <details>
 <summary>Show building instructions</summary>
 
-Start by making sure that your development environment [is set up correctly](mobile.md).
+Start by making sure that your development environment [is set up correctly](/docs/category/mobile).
 
 :::note A Note on Dependencies
 Apart from the SDK, Jitsi also publishes a binary Maven artifact for some of the SDK dependencies (that are not otherwise publicly available) to the Jitsi Maven repository. When you're planning to use a SDK that is built from source, you'll likely use a version of the source code that is newer (or at least _different_) than the version of the source that was used to create the binary SDK artifact. As a consequence, the dependencies that your project will need, might also be different from those that are published in the Jitsi Maven repository. This might lead to build problems, caused by dependencies that are unavailable.

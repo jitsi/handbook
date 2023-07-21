@@ -19,7 +19,7 @@ Please ask any general and implementation specific questions on the [community f
 
 Visit the [issue tracker](https://github.com/jitsi/jitsi-meet/issues) to find a list of open issues that need attention.
 
-The [Developer Guide](dev-guide.md) will help you to setup a development environment to start working on the Jitsi Meet applications.
+The [Developer Guide](/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
 
 ## Contributor License Agreement
 While the Jitsi projects are released under the

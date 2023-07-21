@@ -3,6 +3,9 @@ id: dev-guide-configuration
 title: Configuration
 ---
 
+This page describes available configuration options for Jitsi Meet. These are either set in `config.js` on the server
+side or overridden in the app.
+
 :::note
 Options marked with 🚫 are not overwritable through `configOverwrite`
 :::

@@ -71,7 +71,6 @@ module.exports = {
                 "dev-guide/dev-guide-iframe-events"
               ]
             },
-            "dev-guide/dev-guide-configuration",
             "dev-guide/dev-guide-react-sdk",
             "dev-guide/dev-guide-ljm-api",
           ],
@@ -90,6 +89,7 @@ module.exports = {
             "dev-guide/dev-guide-react-native-sdk",
           ],
         },
+        "dev-guide/dev-guide-configuration",
       ],
     },
     {

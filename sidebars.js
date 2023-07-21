@@ -52,10 +52,10 @@ module.exports = {
           type: "category",
           label: "Web",
           link: {
-            type: "doc",
-            id: "dev-guide/dev-guide-web",
+            type: "generated-index",
           },
           items: [
+            "dev-guide/dev-guide-web-jitsi-meet",
             "dev-guide/dev-guide-ljm",
             "dev-guide/dev-guide-web-integrations",
             {
@@ -80,8 +80,7 @@ module.exports = {
           type: "category",
           label: "Mobile",
           link: {
-            type: "doc",
-            id: "dev-guide/dev-guide-mobile",
+            type: "generated-index",
           },
           items: [
             "dev-guide/dev-guide-mobile-jitsi-meet",

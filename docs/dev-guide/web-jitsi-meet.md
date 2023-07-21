@@ -1,20 +1,19 @@
 ---
-id: dev-guide-web
-title: Developer Guide (Web)
-sidebar_label: Start
+id: dev-guide-web-jitsi-meet
+title: Developer Guide for Jitsi Meet
+sidebar_label: Jitsi Meet development
 ---
 
-Welcome to the developers guide for web! This guide will help you setup a development
-environment to start working on the Jitsi Meet applications.
-
-:::caution
-Building the apps / SDKs is not supported on Windows.
-:::
+This guide will help you setup a development environment to start working on the Jitsi Meet web app itself.
 
 ## Building the sources
 
 :::note
 Node.js >= 16 and npm >= 8 are required.
+:::
+
+:::caution
+Windows is not supported.
 :::
 
 On Debian/Ubuntu systems, the required packages can be installed with:

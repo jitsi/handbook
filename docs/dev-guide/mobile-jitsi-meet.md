@@ -4,7 +4,7 @@ title: Developer Guide for Jitsi Meet
 sidebar_label: Jitsi Meet development
 ---
 
-This guide will help you setup a development environment to start working on the Jitsi Meet applications.
+This guide will help you setup a development environment to start working on the Jitsi Meet mobile app itself.
 
 :::caution
 Building the apps / SDKs is not supported on Windows.

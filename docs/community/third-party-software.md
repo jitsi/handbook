@@ -138,12 +138,6 @@ https://github.com/jitsi-contrib/prosody-plugins
 - **token_owner_party**: Prevents unauthorized users from create a room and
   terminates the conference when the owner leaves.
 
-## React Native plugin
-
-Plugin for React Native.
-
-https://github.com/skrafft/react-native-jitsi-meet
-
 ## SAML to Jitsi JWT Authentification
 
 Intergration of SAML authentification with Shibboleth for a Jitsi Meet JWT

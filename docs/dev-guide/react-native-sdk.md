@@ -78,6 +78,11 @@ module.exports = (async () => {
 
 Our JitsiMeeting component renders the full meeting experience. This has some customizable properties:
 
+
+### config
+`Object` - Updates [configuration](https://github.com/jitsi/jitsi-meet/blob/master/config.js).
+
+
 ### flags
 `Object` - Add different feature [flags](https://github.com/jitsi/jitsi-meet/blob/master/react/features/base/flags/constants.ts)
 that your meeting experience would like to have. 
@@ -89,36 +94,45 @@ that your meeting experience would like to have.
     'invite.enabled': true }} />
 ```
 
-### meetingOptions
+
+### eventListeners
 `Object` - Options that personalize your meeting experience:
-
- - domain
-`string` - Address where you would like to have your meeting experiences.
-
- - roomName
-`string` - Name of the room where the conference takes place.
-
- - onReadyToClose
-`Function` - Takes a function that gets triggered when ```READY_TO_CLOSE``` action is dispatched, more exactly when one exits a conference.
 
  - onConferenceJoined
 `Function` - Takes a function that gets triggered when ```CONFERENCE_JOINED``` action is dispatched, more exactly when a conference was joined.
 
+ - onConferenceLeft
+   `Function` - Takes a function that gets triggered when ```CONFERENCE_LEFT``` action is dispatched, more exactly when a conference was left.
+
  - onConferenceWillJoin
 `Function` - Takes a function that gets triggered when ```CONFERENCE_WILL_JOIN``` action is dispatched, more exactly when a conference will be joined.
-
- - onConferenceLeft
-`Function` - Takes a function that gets triggered when ```CONFERENCE_LEFT``` action is dispatched, more exactly when a conference was left.
 
  - onParticipantJoined
 `Function` - Takes a function that gets triggered when ```PARTICIPANT_JOINED``` action is dispatched, more exactly when a specific participant joined a conference.
 
- - settings
-`Object` - Accepts different ways to start a conference:
+ - onReadyToClose
+   `Function` - Takes a function that gets triggered when ```READY_TO_CLOSE``` action is dispatched, more exactly when one exits a conference.
 
-   - `boolean` - startWithAudioMuted - Enables or disables starting a conference with audio muted. 
-   - `boolean` - startAudioOnly - Enables or disables starting a conference with audio only. 
-   - `boolean` - startWithVideoMuted - Enables or disables starting a conference with video muted. 
 
- - style
+### room
+`string` - Name of the room where the conference takes place.
+
+### serverURL
+`string` - Server where the conference should take place.
+
+### style
 `Object` - CSS your meeting experience.
+
+### token
+`string` - JWT token used for authentication.
+
+### userInfo
+
+- avatarUrl
+`string` - Path to participant's avatar.
+
+- displayName
+`string` - Default participant name to be displayed.
+
+- email
+`string` - Default email for participant.

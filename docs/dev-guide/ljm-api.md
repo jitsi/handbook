@@ -94,14 +94,12 @@ You can access the following methods and objects through `JitsiMeetJS` object.
 *  `JitsiMeetJS.init(options)` - this method initialized Jitsi Meet API.
 The `options` parameter is JS object with the following properties:
     - `useIPv6` - boolean property
-    - `disableAudioLevels` - boolean property. Enables/disables audio levels.
     - `disableSimulcast` - boolean property. Enables/disables simulcast.
     - `enableWindowOnErrorHandler` - boolean property (default false). Enables/disables attaching global onerror handler (window.onerror).
     - `disableThirdPartyRequests` - if true - callstats will be disabled and the callstats API won't be included.
     - `enableAnalyticsLogging` - boolean property (default false). Enables/disables analytics logging.
     - `externalStorage` - Object that implements the Storage interface. If specified this object will be used for storing data instead of `localStorage`.
     - `callStatsCustomScriptUrl` - (optional) custom url to access callstats client script
-    - `disableRtx` - (optional) boolean property (default to false).  Enables/disable the use of RTX.
     - `useTurnUdp` - boolean property (default false). Enables use of turn over udp for jvb. It is disabled because not very useful (if the client can use udp, it likely can connect to jvb directly over udp too; but it can be useful to still enable udp turn when an udp turn is known to be whitelisted on a network)
 
 * `JitsiMeetJS.JitsiConnection` - the `JitsiConnection` constructor. You can use that to create new server connection.
@@ -297,51 +295,59 @@ This objects represents the server connection. You can create new `JitsiConnecti
 4. `initJitsiConference(name, options)` - creates new `JitsiConference` object.
     - `name` - the name of the conference
     - `options` - JS object with configuration options for the conference. You can change the following properties there:
-        - `recordingType` - the type of recording to be used
+        - `audioQuality` - Audio quality related settings.
+            - `stereo`
+            - `opusMaxAverageBitrate`
+            - `enableOpusDtx`
+        - `bridgeChannel` - Settings related to the bridge channel.
+            - `ignoreDomain` - If the backend advertises multiple colibri websockets, this options allows to filter some of them out based on the domain name.
+            - `preferSctp` - Enables the use of the SCTP data channel for bridge channel.
         - `callStatsID` - callstats credentials
         - `callStatsSecret` - callstats credentials
-        - `enableTalkWhileMuted` - boolean property. Enables/disables talk while muted detection, by default the value is false/disabled.
-        - `ignoreStartMuted` - ignores start muted events coming from jicofo.
-        - `startSilent` - enables silent mode, will mark audio as inactive will not send/receive audio
-        - `confID` - Used for statistics to identify conference, if tenants are supported will contain tenant and the non lower case variant for the room name.
-        - `siteID` - (optional) Used for statistics to identify the site where the user is coming from, if tenants are supported it will contain a unique identifier for that tenant. If not provided, the value will be infered from confID
-        - `statisticsId` - The id to be used as stats instead of default callStatsUsername.
-        - `statisticsDisplayName` - The display name to be used for stats, used for callstats.
-        - `focusUserJid` - The real JID of focus participant - can be overridden here
-        - `enableNoAudioDetection`
-        - `enableNoisyMicDetection`
-        - `enableRemb`
-        - `enableTcc`
-        - `useRoomAsSharedDocumentName`
         - `channelLastN`
-        - `startBitrate`
-        - `stereo`
-        - `forceJVB121Ratio` - "Math.random() < forceJVB121Ratio" will determine whether a 2 people conference should be moved to the JVB instead of P2P. The decision is made on the responder side, after ICE succeeds on the P2P connection.
-        - `hiddenDomain`
-        - `startAudioMuted`
-        - `startVideoMuted`
-        - `enableLayerSuspension` - if set to 'true', we will cap the video send bitrate when we are told we have not been selected by any endpoints (and therefore the non-thumbnail streams are not in use).
         - `deploymentInfo`
             - `shard`
             - `userRegion`
+        - `disableAudioLevels` - boolean property. Enables/disables audio levels.
+        - `disableInitialGUM`
+        - `disableRtx` - boolean property (default to false).  Enables/disable the use of RTX.
+        - `disableSimulcast` - Enable / disable simulcast support.
+        - `e2eping`
+            - `pingInterval`
+        - `enableForcedReload`
+        - `enableIceRestart`
+        - `enableNoAudioDetection` - boolean property.
+        - `enableOpusRed`
+        - `enableTalkWhileMuted` - boolean property.
+        - `enableNoisyMicDetection` - boolean property.
+        - `enableRemb` - boolean property. Enables/disables REMB support, enabled by default.
+        - `enableTcc` - enables/disabled TCC for bandwidth estimation, enabled by default.
+        - `focusUserJid` - The real JID of focus participant - can be overridden here
+        - `ignoreStartMuted` - ignores start muted events coming from jicofo.
         - `p2p` - Peer to peer related options
             - `enabled` - enables or disable peer-to-peer connection, if disabled all media will be routed through the Jitsi Videobridge.
+            - `codecPreferenceOrder` - Provides a way to set the codec preference on desktop based endpoints.
+            - `mobileCodecPreferenceOrder` - Provides a way to set the codec preference on mobile devices, both on RN and mobile browser based endpoints.
             - `stunServers` - list of STUN servers e.g. `{ urls: 'stun:meet-jit-si-turnrelay.jitsi.net:443' }`
             - `backToP2PDelay` - a delay given in seconds, before the conference switches back to P2P, after the 3rd participant has left the room.
+        - `recordingType` - the type of recording to be used
         - `rttMonitor`
             - `enabled`
             - `initialDelay`
             - `getStatsInterval`
             - `analyticsInterval`
             - `stunServers`
-        - `e2eping`
-            - `pingInterval`
-        - `abTesting` - A/B testing related options
-            - `enableSuspendVideoTest`
+        - `startAudioOnly`
+        - `startAudioMuted`
+        - `startWithAudioMuted`
+        - `startVideoMuted`
+        - `startWithVideoMuted`
+        - `startSilent` - enables silent mode, will mark audio as inactive will not send/receive audio
+        - `videoQuality` Video quality settings related to the bridge connection.
+            - `codecPreferenceOrder` - Provides a way to set the codec preference on desktop based endpoints.
+            - `mobileCodecPreferenceOrder` - Provides a way to set the codec preference on mobile devices, both on RN and mobile browser based endpoints.
+            - `maxBitratesVideo` - Provides a way to specify the bitrates for different codecs.
         - `testing`
-            - `p2pTestMode`
-            - `octo`
-            - `probability`
 
         **NOTE: if 4 and 5 are set the library is going to send events to callstats. Otherwise the callstats integration will be disabled.**
 

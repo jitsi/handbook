@@ -107,6 +107,9 @@ that your meeting experience would like to have.
  - onConferenceWillJoin
 `Function` - Takes a function that gets triggered when ```CONFERENCE_WILL_JOIN``` action is dispatched, more exactly when a conference will be joined.
 
+- onEnterPictureInPicture
+  `Function` - Takes a function that gets triggered when ```ENTER_PICTURE_IN_PICTURE``` action is dispatched, more exactly when entering picture-in-picture is initiated.
+
  - onParticipantJoined
 `Function` - Takes a function that gets triggered when ```PARTICIPANT_JOINED``` action is dispatched, more exactly when a specific participant joined a conference.
 

@@ -98,6 +98,12 @@ that your meeting experience would like to have.
 ### eventListeners
 `Object` - Options that personalize your meeting experience:
 
+ - onConferenceBlurred
+`Function` - Takes a function that gets triggered when ```CONFERENCE_BLURRED``` action is dispatched, more exactly when a conference screen is out of focus, more exactly when navigation to another screen is initiated. 
+
+ - onConferenceFocused
+`Function` - Takes a function that gets triggered when ```CONFERENCE_FOCUSED``` action is dispatched, more exactly when a conference screen is focused.
+
  - onConferenceJoined
 `Function` - Takes a function that gets triggered when ```CONFERENCE_JOINED``` action is dispatched, more exactly when a conference was joined.
 
@@ -107,8 +113,8 @@ that your meeting experience would like to have.
  - onConferenceWillJoin
 `Function` - Takes a function that gets triggered when ```CONFERENCE_WILL_JOIN``` action is dispatched, more exactly when a conference will be joined.
 
-- onEnterPictureInPicture
-  `Function` - Takes a function that gets triggered when ```ENTER_PICTURE_IN_PICTURE``` action is dispatched, more exactly when entering picture-in-picture is initiated.
+ - onEnterPictureInPicture
+   `Function` - Takes a function that gets triggered when ```ENTER_PICTURE_IN_PICTURE``` action is dispatched, more exactly when entering picture-in-picture is initiated.
 
  - onParticipantJoined
 `Function` - Takes a function that gets triggered when ```PARTICIPANT_JOINED``` action is dispatched, more exactly when a specific participant joined a conference.

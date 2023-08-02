@@ -15,11 +15,15 @@ If you want to see how easy integrating the Jitsi Meet Flutter SDK into a Flutte
 
 ### Add dependency
 
-Add this to the `pubspec.yaml` file in your project:
+Add the dependency from command-line
+```bash
+$ flutter pub add jitsi_meet_flutter_sdk
+```
 
+The command above will add this to the `pubspec.yaml` file in your project (you can do this manually):
 ```yaml
 dependencies:
-    jitsi_meet_flutter_sdk: '^0.1.2'
+    jitsi_meet_flutter_sdk: ^0.1.2
 ```
 
 ### Install 

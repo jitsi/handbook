@@ -311,7 +311,7 @@ content.
 
 #### screenShareToggled
 
-Called when a chat message is received.
+Called when a participant starts or stops sharing his screen.
 
 The `data` dictionary contains a `participantId` key with the id of the participant and a 'sharing' key with boolean
 value.

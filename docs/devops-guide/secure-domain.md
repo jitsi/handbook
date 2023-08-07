@@ -94,6 +94,17 @@ systemctl restart prosody
 systemctl restart jicofo
 systemctl restart jitsi-videobridge2
 ```
+
+:::note
+Docker users may require an alternate config path.
+
+```
+prosodyctl --config /config/prosody.cfg.lua register <username> meet.jitsi <password>
+```
+
+Full documentation for `prosodyctl` can be found on [the official site](https://prosody.im/doc/prosodyctl).
+:::
+
 ## Optional: Jigasi configuration
 
 ### Enable Authentication

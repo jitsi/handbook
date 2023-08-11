@@ -551,6 +551,25 @@ Variable | Description | Example
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
 
+#### Authentication using Hybrid Matrix Token
+
+You can use `Hybrid Matrix Token` to authenticate users. It supports `Matrix` and `JWT Token` authentications
+on the same setup. To enable it you have to enable authentication with `ENABLE_AUTH` and set `AUTH_TYPE` to
+`hybrid_matrix_token`, then configure the settings you can see below.
+
+For more information see the documentation of the "Hybrid Matrix Token"
+[here](https://github.com/jitsi-contrib/prosody-plugins/tree/main/auth_hybrid_matrix_token).
+
+Variable | Description | Example
+--- | --- | ---
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000
+`MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. It allows all issuers (`*`) by default. | my_issuer
+`MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | my_matrix_secret
+`MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
+`JWT_APP_ID` | Application identifier | my_jitsi_app_id
+`JWT_APP_SECRET` | Application secret known only to your token | my_jitsi_app_secret
+`JWT_ALLOW_EMPTY` | (Optional) Allow anonymous users with no JWT while validating JWTs when provided | 0
+
 #### External authentication
 
 Variable | Description | Example

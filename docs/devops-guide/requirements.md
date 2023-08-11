@@ -48,9 +48,10 @@ One Jibri instance = one meeting. For 5 meetings recorded simultaneously, you ne
 There is no workaround to that.
 If you are knowledgeable, you can setup Jibris in containers and use a big server to save a bit on resources but that's about it.
 
-Jibri RAM and CPU needs are far higher than Jitsi Meet itself, as it does video encoding.
+Jibri RAM, CPU and hard disk needs are far higher than Jitsi Meet itself, as it does video encoding.
 For `1080x720` you currently need at least 8 GB RAM, for `1280x1024` 12 GB (this is for recording a __single__  meeting).
-If memory is not sufficient or CPU can't encode fast enough, recordings will fail.
+For cloud storage you will need at least SSD drives.
+If memory is not sufficient, CPU can't encode fast enough or hard disk is not fast enough, recordings will fail.
 
 While Jibri and Jitsi Meet can technically be hosted in a single server, it's not recommended because Jibri is a resource drain and it can harm Jitsi Meet performance, and can exhaust disk space and stop Jitsi Meet function altogether.
 

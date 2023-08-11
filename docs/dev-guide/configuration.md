@@ -32,11 +32,7 @@ apiLogLevels: ['warn', 'log', 'error', 'info', 'debug']
 
 type: `Array`
 
-Toolbar buttons which have their click/tap event exposed through the API on
-`toolbarButtonClicked`. Passing a string for the button key will
-prevent execution of the click/tap routine; passing an object with `key` and
-`preventExecution` flag on false will not prevent execution of the click/tap
-routine. Below array with mixed mode for passing the buttons.
+Toolbar buttons which have their click/tap event exposed through the API on `toolbarButtonClicked`. Passing a string for the button key will prevent execution of the click/tap routine; passing an object with `key` and `preventExecution` flag on false will not prevent execution of the click/tap routine. Below array with mixed mode for passing the buttons.
 
 Default: **unset**
 
@@ -140,6 +136,47 @@ Default: `1000`
 
 ```javascript
 mouseMoveCallbackInterval: 1000
+```
+
+### participantMenuButtonsWithNotifyClick
+
+type: `Array`
+
+Participant context menu buttons which have their click/tap event exposed through the API on `participantMenuButtonClick`. Passing a string for the button key will prevent execution of the click/tap routine; passing an object with `key` and `preventExecution` flag on false will not prevent execution of the click/tap routine. Below array with mixed mode for passing the buttons.
+
+Default: **unset**
+
+```javascript
+participantMenuButtonsWithNotifyClick: [
+    'allow-video',
+    {
+        key: 'ask-unmute',
+        preventExecution: false
+    },
+    'conn-status',
+    'flip-local-video',
+    'grant-moderator',
+    {
+        key: 'kick',
+        preventExecution: true
+    },
+    {
+        key: 'hide-self-view',
+        preventExecution: false
+    },
+    'mute',
+    'mute-others',
+    'mute-others-video',
+    'mute-video',
+    'pinToStage',
+    'privateMessage',
+    {
+        key: 'remote-control',
+        preventExecution: false
+    },
+    'send-participant-to-room',
+    'verify',
+]
 ```
 
 ### useHostPageLocalStorage

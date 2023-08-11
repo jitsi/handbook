@@ -413,7 +413,8 @@ The listener receives an object with the following structure:
 ```javascript
 {
     key: string, // the pressed button's key. The key is as defined in `toolbarButtons` config,
-    participantId: string // the id of the participant for which the button was clicked
+    participantId: string, // the id of the participant for which the button was clicked,
+    preventExecution: boolean // whether the execution of the button click was prevented or not
 }
 ```
 

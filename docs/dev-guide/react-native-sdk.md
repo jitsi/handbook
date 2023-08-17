@@ -9,7 +9,7 @@ in a customizable way which you can embed in your React Native apps.
 ## Sample application using the React Native SDK
 
 If you want to see how easy integrating the Jitsi React Native SDK into a React Native application is, take a look at the<br/>
-[sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples/react-native).
+[sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples#react-native).
 
 ## Usage
 

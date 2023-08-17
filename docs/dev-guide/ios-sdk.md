@@ -13,7 +13,7 @@ iOS 12.4 or higher is required.
 ## Sample applications using the SDK
 
 If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the
-[sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples).
+[sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples#ios).
 
 ## Usage
 

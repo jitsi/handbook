@@ -5,7 +5,7 @@ title: Modifying lib-jitsi-meet
 
 # Modifying `lib-jitsi-meet`
 
-By default the library is referenced as a prebuilt artifact in a HitHub release. Packages are NOT published to npm. The default dependency path in package.json is:
+By default the library is referenced as a prebuilt artifact in a GitHub release. Packages are NOT published to npm. The default dependency path in package.json is:
 
 ```json
 "lib-jitsi-meet": "https://github.com/jitsi/lib-jitsi-meet/releases/download/v<version>+<commit-hash>/lib-jitsi-meet.tgz)",

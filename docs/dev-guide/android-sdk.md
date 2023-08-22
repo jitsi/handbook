@@ -13,7 +13,7 @@ Android 6.0 (API level 23) or higher is required.
 ## Sample applications using the SDK
 
 If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the
-[sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples).
+[sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples#android).
 
 ## Build your own, or use a pre-build SDK artifacts/binaries
 

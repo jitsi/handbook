@@ -98,7 +98,7 @@ The component modules support a similar kind of customization to the Jitsi Meet 
 
 * `devices`: Optional. Information map about the devices used in a call.
 
-* `userInfo`: Optional. The JS object that contains information about the participant starting the meeting (e.g., email).
+* `userInfo`: Optional. The JS object that contains information about the participant starting or joining the meeting (e.g., email).
 
 * `release`: Optional. Information regarding the `stage.8x8.vc` or `8x8.vc` release version. Expects the following format: `release-1234`.
 

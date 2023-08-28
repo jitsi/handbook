@@ -97,7 +97,7 @@ The API object constructor uses the following options:
     
     * `devices`: Information map about the devices used in a call.
     
-    * `userInfo`: The JS object that contains information about the participant starting the meeting (e.g., email).
+    * `userInfo`: The JS object that contains information about the participant starting or joining the meeting (e.g., email).
 
     * `lang`: The default meeting language.
 

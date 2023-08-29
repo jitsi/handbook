@@ -21,7 +21,7 @@ Check you've got your firewall / NAT set up correctly — especially UDP 10000. 
 
 ## Can I mute and unmute other participants?
 
-If you are the moderator of a conference (everyone is a moderator if you are using `meet.jit.si`), you can mute everyone's microphone. You cannot unmute other people's microphones, and they can unmute their microphone at any time.
+If you are the moderator of a conference, you can mute everyone's microphone. You cannot unmute other people's microphones, and they can unmute their microphone at any time.
 
 You may want to set some "ground rules" for who can talk and when, just as with any physical meeting or classroom.
 

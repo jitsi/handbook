@@ -8,6 +8,6 @@ First, you need to [Join](https://jitsi.github.io/handbook/docs/user-guide/user-
 
 Next:
 
-- Click on the **More actions** <i class="fa-solid fa-ellipsis"></i> Button.
+- Click on the **More actions** "..." Button.
 - Click on **Invite people**.
 - Select the desired option using which you want to share the meeting.

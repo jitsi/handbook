@@ -9,7 +9,7 @@ Release notes for Jitsi Meet are kept [here](https://github.com/jitsi/jitsi-meet
 
 ## Mobile apps
 
-| <i class="fa-brands fa-android"></i> Android | <i class="fa-brands fa-android"></i> Android (F-Droid) | <i class="fa-brands fa-apple"></i> iOS |
+| Android | Android (F-Droid) | iOS |
 |:-:|:-:|:-:|
 | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/google-play-badge.png" height="50" />](https://play.google.com/store/apps/details?id=org.jitsi.meet) | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/f-droid-badge.png" height="50" />](https://f-droid.org/en/packages/org.jitsi.meet/) | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/appstore-badge.png" height="50" />](https://itunes.apple.com/us/app/jitsi-meet/id1165103905) |
 
@@ -18,13 +18,13 @@ Release notes for Jitsi Meet are kept [here](https://github.com/jitsi/jitsi-meet
 If you are feeling adventurous and want to get an early scoop of the features as they are being
 developed you can also sign up for our open beta testing here:
 
-| <i class="fa-brands fa-android"></i> Android | <i class="fa-brands fa-apple"></i> iOS |
+| Android | iOS |
 |:-:|:-:|
 | [Play Store Beta](https://play.google.com/apps/testing/org.jitsi.meet) | [TestFlight](https://testflight.apple.com/join/isy6ja7S)
 
 ## Desktop apps
 
-| <i class="fa-brands fa-windows"></i> Windows | <i class="fa-brands fa-apple"></i> macOS | <i class="fa-brands fa-linux"></i> GNU/Linux (AppImage) | <i class="fa-brands fa-linux"></i> GNU/Linux (Deb) |
+| Windows | macOS | GNU/Linux (AppImage) | GNU/Linux (Deb) |
 | :--: | :--: | :--: | :--: |
 | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |
 
@@ -32,7 +32,7 @@ The desktop applications are based on Electron. For macOS it is also available a
 
 ## Mobile SDKs
 
-| <i class="fa-brands fa-android"></i> Android | <i class="fa-brands fa-apple"></i> iOS |
+| Android | iOS |
 | :--: | :--: |
 | [Maven repository](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
 

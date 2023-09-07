@@ -11,9 +11,6 @@ module.exports = {
   favicon: "img/favicon.png",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
-  scripts: [
-    "https://kit.fontawesome.com/2f8664b4cd.js",
-  ],
   presets: [
     [
       "@docusaurus/preset-classic",

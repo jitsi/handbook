@@ -190,6 +190,22 @@ Returns the current video quality setting.
 api.getVideoQuality();
 ```
 
+### getSupportedCommands
+
+Returns array of commands supported by `api.executeCommand(command, ...arguments)`;
+
+```javascript
+api.getSupportedCommands();
+```
+
+### getSupportedEvents
+
+Returns array of events supported by `api.addListener(event, listener)`;
+
+```javascript
+api.getSupportedEvents();
+```
+
 ### isDeviceChangeAvailable
 
 Resolves to true if the device change is available and to false if not.

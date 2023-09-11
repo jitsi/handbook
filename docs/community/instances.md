@@ -57,6 +57,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | fairmeeting.net | ✅ 📞 |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=fairmeeting.net&latest) | fairkom Gesellschaft |
 | pro.fairmeeting.net | ✅ 📞 ⏺️ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=pro.fairmeeting.net&latest) | fairkom Gesellschaft |
 | meet.graz.social  |  ✅ |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.graz.social&latest) |    |
+| jitsi.projectsegfau.lt | ✅ | |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.projectsegfau.lt&latest) | [Project Segfault](https://psf.lt) | 
 
 
 ### Belarus <a id="belarus"></a>

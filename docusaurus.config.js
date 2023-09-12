@@ -110,11 +110,11 @@ module.exports = {
             },
             {
               label: "User Guide",
-              to: "docs/user-guide",
+              to: "docs/category/user-guide",
             },
             {
               label: "Developer Guide",
-              to: "docs/dev-guide",
+              to: "docs/category/developer-guide",
             },
             {
               label: "Self-Hosting Guide",

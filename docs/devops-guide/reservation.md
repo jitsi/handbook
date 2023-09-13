@@ -107,11 +107,11 @@ assigned by the system and `duration` measured in seconds. Sample response body:
 
 ```
 {
-  'id': 364758328,
-  'name': 'conference1234',
-  'mail_owner': 'user@server.com',
-  'start_time': '2048-04-20T17:55:12.000Z',
-  'duration': 900000
+  "id": 364758328,
+  "name": "conference1234",
+  "mail_owner": "user@server.com",
+  "start_time": "2048-04-20T17:55:12.000Z",
+  "duration": 900000
 }
 ```
 
@@ -129,7 +129,7 @@ that the conference room already exists. It is expected to contain
 
 ```
 {
-  'conflict_id': 364758328
+  "conflict_id": 364758328
 }
 ```
 
@@ -172,7 +172,7 @@ Content-Type: application/json; charset=utf-8
 Content-Length: length
 
 {
-  'message': 'client1 is not allowed to create the room at this time'
+  "message": "client1 is not allowed to create the room at this time"
 }
 ```
 
@@ -200,11 +200,11 @@ to read information about the conflicting conference using an `HTTP GET`
 '/conference/{conflict_id}' endpoint. The response should provide all
 information about the conference stored in the reservation system:
 
-* `'id'`: conference identifier assigned by the reservation system
-* `'name'`: conference room name
-* `'mail_owner'`: identity of the user who has created the conference
-* `'start_time'`: conference start date and time
-* `'duration'`: scheduled conference duration in seconds
+* `"id"`: conference identifier assigned by the reservation system
+* `"name"`: conference room name
+* `"mail_owner"`: identity of the user who has created the conference
+* `"start_time"`: conference start date and time
+* `"duration"`: scheduled conference duration in seconds
 
 The optional `max_occupants` value should also be provided if applicable.
 
@@ -213,11 +213,11 @@ Sample response JSON body (contains the same info as `200 OK` to
 
 ```
 {
-  'id': 364758328,
-  'name': 'conference1234',
-  'mail_owner': 'user@server.com',
-  'start_time': '2048-04-20T17:55:12.000Z',
-  'duration': 900000
+  "id": 364758328,
+  "name": "conference1234",
+  "mail_owner": "user@server.com",
+  "start_time": "2048-04-20T17:55:12.000Z",
+  "duration": 900000
 }
 ```
 

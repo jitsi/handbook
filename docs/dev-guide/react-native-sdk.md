@@ -14,8 +14,10 @@ If you want to see how easy integrating the Jitsi React Native SDK into a React 
 ## Usage
 
 While this is a published library, you can `npm i @jitsi/react-native-sdk`.<br/>
-Also, some dependencies need will maybe need to be added and this will be done by running the following script `node node_modules/@jitsi/react-native-sdk/update_dependencies.js`.
-This will sync all of our peer dependencies with your dependencies. Next you need to do `npm install`.
+Dependency conflicts may occur between RNSDK and your app. <br/>If that is the case, please run `npm i @jitsi/react-native-sdk --force`.<br/>
+To check if some dependencies need to be added, please run the following script `node node_modules/@jitsi/react-native-sdk/update_dependencies.js`.<br/>
+This will sync all of our peer dependencies with your dependencies. <br/>
+Next you will need to do `npm install`.
 
 Because our SDK uses SVG files, you will need to update your metro bundler configuration accordingly:
 

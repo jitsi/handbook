@@ -100,8 +100,10 @@ The API object constructor uses the following options:
     * `userInfo`: The JS object that contains information about the participant starting or joining the meeting (e.g., email).
 
     * `lang`: The default meeting language.
+    * `iceServers`: Object with rules that will be used to modify/remove the existing ice server configuration. **NOTE: This property is currently experimental and may be removed in the future!**
 
-      For example:
+
+For example:
 
 ```javascript
 const domain = 'meet.jit.si';
@@ -165,6 +167,32 @@ var options = {
         email: 'email@jitsiexamplemail.com',
         displayName: 'John Doe'
     }
+}
+var api = new JitsiMeetExternalAPI(domain, options);
+```
+
+You can modify the default ice servers configuration with the **`iceServers`** property (**NOTE: This property is currently experimental and may be removed in the future!**) using the following:
+```javascript
+var domain = "meet.jit.si";
+var options = {
+    ...
+    iceServers: {
+        replace: [
+            { // replace the URL of all existing ice servers with type matching targetType 
+                targetType: 'turn',
+                urls: 'turn:example.com:443'
+            },
+            { // replace the URL of all existing ice servers with type matching targetType 
+                targetType: 'turns',
+                urls: 'turns:example.com:443?transport=tcp'
+            },
+            { // remove all existing ice servers with type matching targetType 
+                targetType: 'stun',
+                urls: null
+            }
+        ]
+    },
+    ...
 }
 var api = new JitsiMeetExternalAPI(domain, options);
 ```

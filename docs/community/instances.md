@@ -6,7 +6,6 @@ title: Community-run instances
 ## Official Servers
 
 * 🔗 https://meet.jit.si
-* 🔗 https://8x8.vc
 
 :::important
 Any other server listed in this page, with the exception of the ones above, has no affiliation with the Jitsi project or 8x8, Inc.

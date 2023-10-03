@@ -322,7 +322,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | gruveo.com | ✅   |  ❌  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=gruveo.com&latest) | AMAZON-AES  |
 | meet.jit.si |    |  ❌  |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.jit.si&latest) | AMAZON-02  |
 | meet.mayfirst.org |  ✅  |    |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.mayfirst.org&latest) | HURRICANE  |
-| team.video |  ✅  |    |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=team.video&latest) | HURRICANE  |
 | swrtc.talky.io |   |  ❌ | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=swrtc.talky.io&latest) | AMAZON-02 |
 | jitsi.member.fsf.org | ✅ | | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.member.fsf.org&latest) | Free Software Foundation |
 | jitsi.vern.cc | ✅ | |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.vern.cc&latest) | ~vern |

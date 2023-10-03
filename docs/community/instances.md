@@ -290,8 +290,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
 |---|---|---|---|---|
 | jitsi.unp.edu.ar | ✅    |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.unp.edu.ar&latest) |   Red de Interconexion Universitaria  |
-| jitsi.uner.edu.ar |  ✅   |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.uner.edu.ar&latest) |   Universidad Nacional de Entre Rios   |
-| jitsi.hostcero.com |    |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.hostcero.com&latest) | Servicios y Telecomunicaciones S.A.  |
 | jitsi.justiciajujuy.gov.ar |    |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.justiciajujuy.gov.ar&latest) |  Telecom Argentina S.A.  |
 
 

@@ -22,7 +22,7 @@ $ flutter pub add jitsi_meet_flutter_sdk
 The command above will add this to the `pubspec.yaml` file in your project (you can do this manually):
 ```yaml
 dependencies:
-    jitsi_meet_flutter_sdk: ^0.1.4
+    jitsi_meet_flutter_sdk: ^0.1.7
 ```
 
 ### Install 

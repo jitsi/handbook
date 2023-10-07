@@ -248,7 +248,7 @@ to mount the following two volumes:
 Doing it in `docker-compose.yml` file should look like this:
 
 
-```
+```yaml
 services:
     web:
         ...
@@ -752,7 +752,7 @@ If you need to access the container's logs you have multiple options. Here are t
 
 For instance, if you want to have all logs related to a `<service_name>` written to `/var/log/jitsi/<service_name>` as `json` output, you could use [docker-file-log-driver](https://github.com/deep-compute/docker-file-log-driver) and configure it by adding the following block in your `docker-compose.yml` file, at the same level as the `image` block of the selected `<service_name>`:
 
-```
+```yaml
 services:
     <service_name>:
         image: ...
@@ -794,7 +794,7 @@ Due to the hop-by-hop nature of WebSockets the reverse proxy must properly termi
 
 With nginx, these routes can be forwarded using the following config snippet:
 
-```
+```nginx
 location /xmpp-websocket {
     proxy_pass https://localhost:8443;
     proxy_http_version 1.1;
@@ -810,7 +810,7 @@ location /colibri-ws {
 ```
 With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these routes can be forwarded using the following config snippet:
 
-```
+```apache
 <IfModule mod_proxy.c>
     <IfModule mod_proxy_wstunnel.c>
         ProxyTimeout 900

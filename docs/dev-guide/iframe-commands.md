@@ -255,6 +255,16 @@ This command requires the new avatar URL to be set as the single argument.
 api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
 ```
 
+### sendCameraFacingMode
+
+Sends a request to a given participant to set camera facing mode as `user` or `environment`.
+
+The receiving participant is shown a confirmation dialog. If the `facingMode` param is not sent, the camera will toggle between the two options on subsequent calls.
+
+```javascript
+api.executeCommand('sendCameraFacingMode', 'receiverParticipantId', 'facingMode');
+```
+
 ### sendEndpointTextMessage
 
 Sends a text message to another participant through the data channels.
@@ -452,10 +462,10 @@ api.executeCommand('answerKnockingParticipant',
 
 ### toggleCamera
 
-Toggles the front/back camera on mobile web.
+Sets the camera facing mode as `user` or `environment` on mobile web. If the `facingMode` param is not sent, a toggle between back and front camera happens on subsequent calls.
 
 ```javascript
-api.executeCommand('toggleCamera');
+api.executeCommand('toggleCamera', 'facingMode');
 ```
 
 ### toggleCameraMirror

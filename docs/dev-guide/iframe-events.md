@@ -752,6 +752,31 @@ Will only fire if rtcstats is enabled.
 }
 ```
 
+### transcriptionChunkReceived
+
+Provides event notifications about new transcription chunks being available.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    // ID for this chunk.
+    messageID: string,
+
+    // Name of the participant.
+    participantName: string,
+
+    // If the transcription is final, the text will be here.
+    final: string,
+
+    // If the transcription is not final but has high accuracy the text will be here.
+    stable: string,
+
+    // If the transcription is not final but has low accuracy the text will be here.
+    unstable: string,
+}
+```
+
 ### whiteboardStatusChanged
 
 Provides event notifications about changes to the whiteboard.

@@ -28,9 +28,18 @@ https://pub.dev/packages/jitsi_meet
 ## Galaxy
 
 Galaxy is a web application for Jitsi admins and users to organize their Jitsi
-meetings, meeting schedules and attendees.
+meetings, meeting schedules and attendees. It supports
+[JaaS](https://jaas.8x8.vc/) and self-hosted Jitsi deployments.
 
-https://github.com/emrahcom/galaxy
+GitHub: https://github.com/emrahcom/galaxy
+
+Demo: https://eparto.net
+
+## Galaxy-kc
+
+This is the version of `Galaxy` that uses `Keycloak` as the identity provider.
+
+https://github.com/emrahcom/galaxy-kc
 
 ## GStreamer pipelinee integration
 

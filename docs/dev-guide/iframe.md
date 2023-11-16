@@ -63,11 +63,11 @@ The API object constructor uses the following options:
 * `domain`: The domain used to build the conference URL (e.g., **`meet.jit.si`**).
 * `options`: The object with properties. 
 
-  Optional arguments include:
+  IFrame arguments include:
   
     * `roomName`: The name of the room to join.
 
-    * `width`: The created IFrame width.
+    * `width`: _Optional._ The created IFrame width.
     
       The width argument has the following characteristics:
     
@@ -75,7 +75,7 @@ The API object constructor uses the following options:
     
       - If a string is specified the format is a number followed by **`px`**, **`em`**, **`pt`**, or **`%`**.
     
-    * `height`: The height for the created IFrame. 
+    * `height`: _Optional._ The height for the created IFrame. 
     
       The height argument has the following characteristics: 
     
@@ -85,22 +85,23 @@ The API object constructor uses the following options:
     
     * `parentNode`: The HTML DOM Element where the IFrame is added as a child.
     
-    * `configOverwrite`: The JS object with overrides for options defined in the [config.js] file.
+    * `configOverwrite`: _Optional._ The JS object with overrides for options defined in the [config.js] file.
     
-    * `interfaceConfigOverwrite`: The JS object with overrides for options defined in the [interface_config.js] file.
+    * `interfaceConfigOverwrite`: _Optional._ The JS object with overrides for options defined in the [interface_config.js] file.
     
-    * `jwt`: The [JWT](https://jwt.io/) token.
+    * `jwt`: _Optional._ The [JWT](https://jwt.io/) token.
     
-    * `onload`: The IFrame onload event handler.
+    * `onload`: _Optional._ The IFrame onload event handler.
     
-    * `invitees`: Object arrays that contain information about participants invited to a call.
+    * `invitees`: _Optional._ Object arrays that contain information about participants invited to a call.
     
-    * `devices`: Information map about the devices used in a call.
+    * `devices`: _Optional._ Information map about the devices used in a call.
     
-    * `userInfo`: The JS object that contains information about the participant starting or joining the meeting (e.g., email).
+    * `userInfo`: _Optional._ The JS object that contains information about the participant starting or joining the meeting (e.g., email).
 
-    * `lang`: The default meeting language.
-    * `iceServers`: Object with rules that will be used to modify/remove the existing ice server configuration. **NOTE: This property is currently experimental and may be removed in the future!**
+    * `lang`: _Optional._ The default meeting language.
+
+    * `iceServers`: _Optional._ Object with rules that will be used to modify/remove the existing ice server configuration. **NOTE: This property is currently experimental and may be removed in the future!**
 
 
 For example:

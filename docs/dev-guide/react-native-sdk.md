@@ -106,6 +106,9 @@ that your meeting experience would like to have.
  - onConferenceFocused
 `Function` - Takes a function that gets triggered when ```CONFERENCE_FOCUSED``` action is dispatched, more exactly when a conference screen is focused.
 
+ - onAudioMutedChanged
+`Function` - Takes a function that gets triggered when ```SET_AUDIO_MUTED``` action is dispatched, more exactly when audio mute state is changed.
+
  - onConferenceJoined
 `Function` - Takes a function that gets triggered when ```CONFERENCE_JOINED``` action is dispatched, more exactly when a conference was joined.
 
@@ -124,6 +127,8 @@ that your meeting experience would like to have.
  - onReadyToClose
    `Function` - Takes a function that gets triggered when ```READY_TO_CLOSE``` action is dispatched, more exactly when one exits a conference.
 
+- onVideoMutedChanged
+  `Function` - Takes a function that gets triggered when ```SET_VIDEO_MUTED``` action is dispatched, more exactly when video mute state is changed.
 
 ### room
 `string` - Name of the room where the conference takes place.

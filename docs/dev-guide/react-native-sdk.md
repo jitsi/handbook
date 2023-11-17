@@ -53,7 +53,7 @@ module.exports = (async () => {
 
 ### Android permissions
 
-- In `android/app/src/debug/AndroidManifest.xml` and `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, include
+- In `android/app/src/debug/AndroidManifest.xml` and `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, please include
   ```xml
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.BLUETOOTH" />
@@ -66,6 +66,13 @@ module.exports = (async () => {
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
   ```
+- In `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, please include the following service:
+  ```xml
+    <service
+         android:name="org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService"
+         android:foregroundServiceType="mediaProjection" />
+  ```
+  This enables the screen share feature.
 
 ### iOS permissions
 

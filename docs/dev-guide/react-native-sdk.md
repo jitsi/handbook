@@ -78,6 +78,17 @@ module.exports = (async () => {
   ```
   This enables the screen share feature.
 
+#### API
+- Our app use react-native-orientation-locker dependency that uses API 33 features. Make sure that your app, in `android\build.gradle`, targets that version:
+  ```markdown
+    buildscript {
+        ext {
+            compileSdkVersion = 33
+            targetSdkVersion = 33
+        }
+    }
+  ```
+
 ### iOS 
 
 #### Permissions
@@ -92,7 +103,7 @@ module.exports = (async () => {
 #### Build Phases
 
 ##### Run Script Phases
-- For the sounds to work please add the following script in Xcode:
+- For the sounds to work, please add the following script in Xcode:
   ```shell
     SOUNDS_DIR="${PROJECT_DIR}/../node_modules/@jitsi/react-native-sdk/sounds"
     cp $SOUNDS_DIR/* ${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/

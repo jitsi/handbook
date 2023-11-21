@@ -321,7 +321,7 @@ Starts a local recording, file recording or streaming session using passed param
 
   Additionally, Dropbox saving should be enabled on the Jitsi meet deploy config you are using.
 
-  - **File recording** - Recording mode set to **`file`**.
+  - **File recording** - Recording mode set to **`file`**. The **`extraMetadata`** value is optional.
 
   Optionally, **`shouldShare`** should be passed on. No other params are required.
 
@@ -335,6 +335,7 @@ api.executeCommand('startRecording', {
     rtmpBroadcastID: string, //the RTMP broadcast ID.
     youtubeStreamKey: string, //the youtube stream key.
     youtubeBroadcastID: string //the youtube broacast ID.
+    extraMetada: Object // any extra metada for file recording.
 });
 ```
 

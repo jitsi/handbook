@@ -79,7 +79,7 @@ module.exports = (async () => {
   This enables the screen share feature.
 
 #### API
-- Our app use react-native-orientation-locker dependency that uses API 33 features. Make sure that your app, in `android\build.gradle`, targets that version:
+- Our app use `react-native-orientation-locker` dependency that uses API 33 features. Make sure that your app, in `android\build.gradle`, targets that version:
   ```markdown
     buildscript {
         ext {

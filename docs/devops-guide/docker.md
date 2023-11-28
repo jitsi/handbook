@@ -654,6 +654,10 @@ Variable | Description | Default value
 `LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
 `ENABLE_HSTS` | Send a `strict-transport-security` header to force browsers to use a secure and trusted connection. Recommended for production use. | 1
 `ENABLE_IPV6` | Provides means to disable IPv6 in environments that don't support it | 1
+`ENABLE_COLIBRI_WEBSOCKET_UNSAFE_REGEX` | Enabled older unsafe regex for JVB colibri-ws URLs. WARNING: Enable with caution, this regex allows connections to arbitrary internal IP addresses and is not recommended for production use.  Unsafe regex is defined as `[a-zA-Z0-9-\._]+` | 0
+`COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` | DNS name to look up JVB IP address, used for default value of `COLIBRI_WEBSOCKET_REGEX` | jvb
+`COLIBRI_WEBSOCKET_REGEX` | Overrides the colibri regex used for proxying to JVB.  Recommended to override in production with values matching possible JVB IP ranges | defaults to `dig $COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` unless `DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP` is set to true
+`DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP` | Controls whether to run `dig $COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` when defining COLIBRI_WEBSOCKET_REGEX | 0
 
 #### Advanced Prosody options
 

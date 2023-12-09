@@ -10,7 +10,7 @@ Please keep this list in alphabetical order.
 
 :::warning
 As these packages are not maintained by the Jitsi team, please ask
-their respective forums / issue trackers for help if you find issues.
+their respective forums/issue trackers for help if you find issues.
 :::
 
 ## Cketti's Jitsi Hacks
@@ -28,7 +28,7 @@ https://pub.dev/packages/jitsi_meet
 ## Galaxy
 
 Galaxy is a web application for Jitsi admins and users to organize their Jitsi
-meetings, meeting schedules and attendees. It supports
+meetings, meeting schedules, and attendees. It supports
 [JaaS](https://jaas.8x8.vc/) and self-hosted Jitsi deployments.
 
 GitHub: https://github.com/emrahcom/galaxy
@@ -41,7 +41,7 @@ This is the version of `Galaxy` that uses `Keycloak` as the identity provider.
 
 https://github.com/emrahcom/galaxy-kc
 
-## GStreamer pipelinee integration
+## GStreamer pipeline integration
 
 Integrate Jitsi Meet conferences with GStreamer pipelines.
 
@@ -59,13 +59,13 @@ Discussion: https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
 ## Jitsi-Admin
 
-An opensource platform to organize your meetings. Includes all function we know
+An open-source platform to organize your meetings. Includes all functions we know
 from the big conference-tools
 
 - Plan your Meeting
 - Secure your Meeting with user login credentials
 - Create a Report of each user visiting your conference
-- Creating an appointment poll and transfer it into a conference with one click
+- Create an appointment poll and transfer it into a conference with one click
 - Dockerised for easy installation
 
 Github: https://github.com/H2-invent/jitsi-admin
@@ -86,7 +86,7 @@ Github: https://github.com/shawnchin/jitsi-config-differ
 
 ## Jitsi URL Generator
 
-A simple tool to illustrate how URL params can be composed to customise Jitsi.
+A simple tool to illustrate how URL params can be composed to customize Jitsi.
 It only exposes a small fraction of what is possible, but should hopefully help
 build familiarity which users can then apply to other config values in the
 whitelist.

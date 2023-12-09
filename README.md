@@ -1,13 +1,13 @@
 # The Jitsi Handbook
 
-This is The Jitsi Handbook. Your one-stop-shop for Jitsi documentation. It's powered by [Docusaurus](https://docusaurus.io/).
+This is The Jitsi Handbook. Your one-stop shop for Jitsi documentation. It's powered by [Docusaurus](https://docusaurus.io/).
 The documentation website can be found [here](https://jitsi.github.io/handbook/).
 
 ## Building the site
 
 The site is built automatically with every push thanks to a [GH Actions](https://github.com/jitsi/handbook/blob/master/.github/workflows/gh-pages.yml).
 
-**NOTE:** You need to have Node.Js(>=16) installed in your system in order to build this site. NodeJs can be downloaded from [here](https://nodejs.org/en/download/)
+**NOTE:** You need to have Node.Js(>=16) installed in your system to build this site. NodeJs can be downloaded from [here](https://nodejs.org/en/download/)
 
 If you want to build it locally, follow these simple steps:
 
@@ -35,7 +35,7 @@ npm install
 npm start
 ```
 
-The website will be running in http://127.0.0.1:3000/handbook/
+The website will be running at http://127.0.0.1:3000/handbook/
 
 You can now edit the files in the `docs` folder and the site will reflect the changes immediately thanks to
 live reloading.

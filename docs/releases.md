@@ -28,7 +28,7 @@ developed you can also sign up for our open beta testing here:
 | :--: | :--: | :--: | :--: |
 | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |
 
-The desktop applications are based on Electron. For macOS it is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
+The desktop applications are based on Electron. For macOS, it is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
 
 ## Mobile SDKs
 

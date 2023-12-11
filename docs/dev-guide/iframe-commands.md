@@ -436,7 +436,9 @@ Enables or disables the subtitles.
 
 ```javascript
 api.executeCommand('setSubtitles',
-    enabled: boolean
+    enabled: boolean,
+    displaySubtitles: boolean = true,
+    language: string | null = 'en'
 );
 ```
 

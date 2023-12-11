@@ -480,7 +480,7 @@ Expects a `muted` key on the intent extra with a boolean value.
 
 ##### HANG_UP
 The localParticipant leaves the current conference.
-Do not expect any extra value.
+Does not expect any extra value.
 
 ##### SEND_ENDPOINT_TEXT_MESSAGE
 Sends a message via the data channel to one particular participant or all of them.

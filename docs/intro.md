@@ -12,7 +12,7 @@ capabilities that are secure, easy to use, and easy to self-host.
 
 This handbook aims to be the one-stop shop for all Jitsi documentation.
 
-:::note It's a work in progress.
+:::note It's work in progress.
 If you want to help, please create a **Pull Request** in our [GitHub repository](https://github.com/jitsi/handbook)!
 :::
 

@@ -760,11 +760,18 @@ The listener receives an object with the following structure:
 
 ```javascript
 {
+    // Transcription language
+    language: string,
+
     // ID for this chunk.
     messageID: string,
 
-    // Name of the participant.
-    participantName: string,
+    // participant info
+    participant: {
+        avatarUrl: string,
+        id: string
+        name: string,
+    },
 
     // If the transcription is final, the text will be here.
     final: string,

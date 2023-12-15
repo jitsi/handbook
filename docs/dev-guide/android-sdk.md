@@ -505,7 +505,7 @@ Opens the chat dialog. If a `to` key is present with a valid participantId, the 
 
 ##### CLOSE_CHAT
 Closes the chat dialog.
-Do not expect any extra value.
+Does not expect any extra value.
 
 ##### SEND_CHAT_MESSAGE
 Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody otherwise.

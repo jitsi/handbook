@@ -34,7 +34,7 @@ This folder is where it is best to start writing your code, as it contains most 
 
 Each feature folder consists of a subfolder called components, in this folder all of the React, or React Native for mobile, components are expressed. Usually, in this folder there will be a separation between native and web components, however, in some cases, the same component could be used for both Android, iOS, and web browsers, in which case there is no separation made.
 
-As stated before, the codebase mostly consists of React and React Native, which is the React version for mobile applications. Most of the features make use of the so-called class component by React [^class-comp], however, some new features start to use a new way to write functional components by using hooks[^func-comp].
+As stated before, the codebase mostly consists of React and React Native, which is the React version for mobile applications. Most of the features make use of the so-called class component by React [^class-comp], however, some new features start to use the new way to write functional components by using hooks[^func-comp].
 
 The application makes use of React Redux as well, this is used as a general state store to keep track of important parameters that are used throughout the application. More on React Redux can be found here [^react-redux].
 

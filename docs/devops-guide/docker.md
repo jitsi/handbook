@@ -414,16 +414,9 @@ Variable | Description | Example
 
 ### Jitsi Meet configuration
 
-:::tip This section partly contains duplicate settings
-
-There are settings within your ``docker-compose.yml`` like ``START_AUDIO_MUTED``
-that will be overwritten if you follow the below guide.
-
-:::
-
 Jitsi-Meet uses two configuration files for changing default settings within
 the web interface: ``config.js`` and ``interface_config.js``. The files are
-located within the ``CONFIG`` directory configured within your environment file.
+located within the ``CONFIG/web/`` directory configured within your environment file.
 
 These files are re-created on every container restart. 
 If you'd like to provide your own settings, create your own config files:

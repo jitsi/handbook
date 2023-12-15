@@ -452,7 +452,7 @@ Broadcasted when the local participant's video is muted or unmuted. `data` conta
 
 ##### READY_TO_CLOSE
 
-The SDK is ready to be closed/dismissed.
+The SDK is ready to be closed / dismissed.
 
 ### Broadcasting Actions
 

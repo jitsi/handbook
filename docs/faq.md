@@ -9,11 +9,11 @@ In general, if the tool ifconfig (or ipconfig) shows the assigned IPv4 address t
 
 If you are hosting your server on a VPS, and you are not sure, ask your VPS provider's support team.
 
-## Clients could communicate well in room created at `meet.jit.si`. The same clients still could connect to my self-hosted instance but can neither hear nor see one another. What's wrong?
+## Clients could communicate well in the room created at `meet.jit.si`. The same clients still could connect to my self-hosted instance but could neither hear nor see one another. What's wrong?
 
 Most probably, the server is behind NAT, but you haven't added the NAT-specific configuration. See this [resolved question](https://community.jitsi.org/t/cannot-see-video-or-hear-audio-on-self-hosted-instance/). You need to follow the steps detailed [here](devops-guide/devops-guide-quickstart#advanced-configuration).
 
-## It works with two participants, but crashes or does not work properly when a third joins
+## It works with two participants but crashes or does not work properly when a third joins
 
 P2P mode is working, but it fails when you are trying to pass traffic via jitsi-videobridge2.
 
@@ -21,23 +21,23 @@ Check you've got your firewall / NAT set up correctly — especially UDP 10000. 
 
 ## Can I mute and unmute other participants?
 
-If you are the moderator of a conference, you can mute everyone's microphone. You cannot unmute other people's microphones, and they can unmute their microphone at any time.
+If you are the moderator of a conference, you can mute everyone's microphone. You cannot unmute other people's microphones, and they can unmute their microphones at any time.
 
 You may want to set some "ground rules" for who can talk and when, just as with any physical meeting or classroom.
 
-If you would like to limit who can become a moderator, you need to set up your own instance of Jitsi and enable "secure domain". Please see [here](#4-enable-secure-domain-if-you-are-using-your-own-instance-of-jitsi) for more information.
+If you would like to limit who can become a moderator, you need to set up your instance of Jitsi and enable "secure domain". Please see [here](#4-enable-secure-domain-if-you-are-using-your-own-instance-of-jitsi) for more information.
 
 ## How can I protect my meetings with Jitsi?
 
 ### _1. Create a "strong" room name._
 
-Use a strong room name, which no-one else is likely to be using. Use the name generator on the welcome page, or else generate your own "strong" name.
+Use a strong room name, that no one else is likely to be using. Use the name generator on the welcome page, or else generate your own "strong" name.
 
-For example, on macOS, in terminal, you can use `uuidgen` to generate a string of letters of numbers (e.g. B741B63E-C5E6-4D82-BAC4-048BE25D8CC7).
+For example, on macOS, in the terminal, you can use `uuidgen` to generate a string of letters of numbers (e.g. B741B63E-C5E6-4D82-BAC4-048BE25D8CC7).
 
 Your room name would be `meet.jit.si/B741B63E-C5E6-4D82-BAC4-048BE25D8CC7` on the hosted `meet.jit.si` platform.
 
-If you use "test" or "LucysMeeting" or "pilates" or similar, then it's highly likely that other users will have had the same idea.
+If you use "test" or "LucysMeeting" "pilates" or similar, then it's highly likely that other users will have had the same idea.
 
 ### _2. Use a different room name for each meeting / conference you have._
 
@@ -53,7 +53,7 @@ You will need to tell everyone the password.
 
 If they give the password to others, those other people can also join.
 
-### _4. Enable "secure domain" if you are using your own instance of Jitsi._
+### _4. Enable "secure domain" if you are using your instance of Jitsi._
 
 In addition to the tips above, consider enabling the ["secure domain" configuration](https://jitsi.github.io/handbook/docs/devops-guide/secure-domain). This requires you (or someone else) to enter a username and password to open a room. It also allows you to become a moderator.
 

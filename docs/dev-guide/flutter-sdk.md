@@ -57,7 +57,7 @@ jitsiMeet.join(options);
 
 ### iOS
 
-Make sure in `Podfile` from `ios` directory you set the ios version `12.4 or higher` 
+Make sure in `Podfile` from the `ios` directory you set the ios version `12.4 or higher` 
 
 ```
 platform :ios, '12.4'
@@ -74,7 +74,7 @@ The plugin requests camera and microphone access, make sure to include the requi
 
 ### Android
 
-Go to `android/app/build.gradle` and make sure that the `minSdkVersion` is set to `at lest 24`
+Go to `android/app/build.gradle` and make sure that the `minSdkVersion` is set to at least 24`
 
 ```
 android {
@@ -105,7 +105,7 @@ The `application:label` field from the Jitsi Meet Android SDK will conflict with
 
 ### JitsiMeet
 
-The `JitsiMeet` class is the entry point for the sdk. It is used to launch the meeting screen, to send and receive all the events.
+The `JitsiMeet` class is the entry point for the SDK. It is used to launch the meeting screen and to send and receive all the events.
 
 1. ####  JitsiMeet()
     The constructor for the class.
@@ -115,7 +115,7 @@ The `JitsiMeet` class is the entry point for the sdk. It is used to launch the m
     Joins a meeting with the given options and optionally a listener is given
 
     - `options` : meeting options
-    - `listener` : event listener for events triggered by the native sdks
+    - `listener` : event listener for events triggered by the native SDKs
 
 3. #### hangUp()
 
@@ -129,9 +129,9 @@ The `JitsiMeet` class is the entry point for the sdk. It is used to launch the m
     Sets the state of the localParticipant video muted according to the `muted` parameter.
 
 6. #### sendEndpointTextMessage({String? to, required String message})
-    Sends a message via the data channel to one particular participant or to all of them. If the `to` param is empty, the message will be sent to all the participants in the conference.
+    Sends a message via the data channel to one particular participant or all of them. If the `to` param is empty, the message will be sent to all the participants in the conference.
 
-    In order to get the participantId, the `participantsJoined` event should be listened for, which have as a parameter the `participantId` and this should be stored somehow.
+    To get the participantId, the `participantsJoined` event should be listened for, which has as a parameter the `participantId` and this should be stored somehow.
 
 7. #### toggleScreenShare(bool enabled)
     Sets the state of the localParticipant screen sharing according to the `enabled` parameter.
@@ -142,9 +142,9 @@ The `JitsiMeet` class is the entry point for the sdk. It is used to launch the m
 
 9. #### sendChatMessage({String? to, required String message})
 
-    Sends a chat message via to one particular participant or to all of them. If the `to` param is empty, the message will be sent to all the participants in the conference.
+    Sends a chat message to one particular participant or all of them. If the `to` param is empty, the message will be sent to all the participants in the conference.
 
-    In order to get the participantId, the `participantsJoined` event should be listened for, which have as a parameter the `participantId` and this should be stored somehow.
+    To get the participantId, the `participantsJoined` event should be listened for, which has as a parameter the `participantId` and this should be stored somehow.
 
 10. #### closeChat()
 
@@ -152,7 +152,7 @@ The `JitsiMeet` class is the entry point for the sdk. It is used to launch the m
 
 11. #### retrieveParticipantsInfo()
 
-    Sends and event that will trigger the `participantsInfoRetrieved` event which will contain participants information
+    Sends an event that will trigger the `participantsInfoRetrieved` event which will contain participants' information
 
 
 ### JitsiMeetConferenceOptions
@@ -255,7 +255,7 @@ This class intends to be used as a listener for events that come from the native
 
     Called when a chat text message is received.
 
-    - `senderId` : the id of the participant that sent the message.
+    - `senderId` : the ID of the participant that sent the message.
     - `message` : the content of the message.
     - `isPrivate` : true if the message is private, false otherwise.
     - `timestamp` : the (optional) timestamp of the message.
@@ -267,9 +267,9 @@ This class intends to be used as a listener for events that come from the native
     - `isOpen` : true if the chat dialog is open, false otherwise.
 
 12. #### participantsInfoRetrieved(String participantsInfo)
-    Called when `retrieveParticipantsInfo` action is called
+    Called when the `retrieveParticipantsInfo` action is called
 
-    - `participantsInfo` : a list of participants information as a string.
+    - `participantsInfo` : a list of participants' information as a string.
 
 13. #### readyToClose()
     Called when the SDK is ready to be closed. No meeting is happening at this point.

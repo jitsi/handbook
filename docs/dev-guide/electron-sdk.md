@@ -53,12 +53,12 @@ setupScreenSharingMain(mainWindow, appName, osxBundleId);
 ```
 
 **Note**:
-An example using screensharing in Electron without the SDK is available here: [screensharing example without the sdk](https://github.com/gabiborlea/jitsi-meet-electron-example).
+An example using screensharing in Electron without the SDK is available here: [screensharing example without the SDK](https://github.com/gabiborlea/jitsi-meet-electron-example).
 
 ### Remote Control
 
 **Requirements**:
-The remote control utility requires iframe HTML Element that will load Jitsi Meet.
+The remote control utility requires an iframe HTML Element that will load Jitsi Meet.
 
 **Enable the remote control:**
 
@@ -78,7 +78,7 @@ To disable the remote control:
 remoteControl.dispose();
 ```
 
-NOTE: `dispose` method will be called automatically when the Jitsi Meet iframe unload.
+NOTE: The `dispose` method will be called automatically when the Jitsi Meet iframe unloads.
 
 In the **main** electron process:
 
@@ -92,12 +92,12 @@ const remoteControl = new RemoteControlMain(mainWindow);
 ```
 
 ### Always On Top
-Displays a small window with the current active speaker video when the main Jitsi Meet window is not focused.
+Displays a small window with the currently active speaker video when the main Jitsi Meet window is not focused.
 
 **Requirements**:
 1. Jitsi Meet should be initialized through our [iframe API](https://github.com/jitsi/jitsi-meet/blob/master/doc/api.md)
 2. The `BrowserWindow` instance where Jitsi Meet is displayed should use the [Chrome's window.open implementation](https://github.com/electron/electron/blob/master/docs/api/window-open.md#using-chromes-windowopen-implementation) (set `nativeWindowOpen` option of `BrowserWindow`'s constructor to `true`).
-3. If you have a custom handler for opening windows you have to filter the always on top window. You can do this by its `frameName` argument which will be set to `AlwaysOnTop`.
+3. If you have a custom handler for opening windows you have to filter the always-on-top window. You can do this by its `frameName` argument which will be set to `AlwaysOnTop`.
 
 **Enable the aways on top:**
 
@@ -124,16 +124,16 @@ const alwaysOnTop = setupAlwaysOnTopRender(api);
 alwaysOnTop.on('will-close', handleAlwaysOnTopClose);
 ```
 
-`setupAlwaysOnTopRender` return an instance of EventEmitter with the following events:
+`setupAlwaysOnTopRender` returns an instance of EventEmitter with the following events:
 
-* _dismissed_ - emitted when the always on top window is explicitly dismissed via its close button
+* _dismissed_ - emitted when the always-on-top window is explicitly dismissed via its close button
 
-* _will-close_ - emitted right before the always on top window is going to close
+* _will-close_ - emitted right before the always-on-top window is going to close
 
 
 ### Power Monitor
 
-Provides a way to query electron for system idle and receive power monitor events.
+Provides a way to query Electron for system idle and receive power monitor events.
 
 **enable power monitor:**
 In the **main** electron process:
@@ -163,4 +163,4 @@ You'll need to add 'disable-site-isolation-trials' switch because of [https://gi
 app.commandLine.appendSwitch('disable-site-isolation-trials')
 ```
 
-For more information please checkout the SDK's repository [https://github.com/jitsi/jitsi-meet-electron-sdk](https://github.com/jitsi/jitsi-meet-electron-sdk).
+For more information please check out the SDK's repository [https://github.com/jitsi/jitsi-meet-electron-sdk](https://github.com/jitsi/jitsi-meet-electron-sdk).

@@ -426,7 +426,7 @@ Broadcasted when a participant starts or stops sharing his screen. `data` contai
 ##### PARTICIPANTS_INFO_RETRIEVED
 
 Broadcasted when a RETRIEVE_PARTICIPANTS_INFO action is called. The `data` HashMap contains a `participantsInfo` key
-with a list of participants information and a `requestId` key with the id that was sent in the
+with a list of participants information and a `requestId` key with the ID that was sent in the
 RETRIEVE_PARTICIPANTS_INFO action.
 
 ##### CHAT_MESSAGE_RECEIVED
@@ -448,11 +448,11 @@ Broadcasted when the chat dialog is opened or closed. `data` contains the follow
 
 Broadcasted when the local participant's video is muted or unmuted. `data` contains the following information:
 
-- `muted`: an integer indicating whether the video is muted or not. 0 means unmuted, 4 means muted.
+- `muted`: an integer indicating whether the video is muted or not. 0 means unmuted, and 4 means muted.
 
 ##### READY_TO_CLOSE
 
-The SDK is ready to be closed / dismised.
+The SDK is ready to be closed / dismissed.
 
 ### Broadcasting Actions
 
@@ -464,7 +464,7 @@ The SDK listens for broadcasted actions from the users and reacts accordingly.
     LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(muteBroadcastIntent);
  ```
 
-The intents can be build manually (as shown above) or through the methods in `BroadcastIntentHelper`.
+The intents can be built manually (as shown above) or through the methods in `BroadcastIntentHelper`.
 
 Please see `JitsiMeetOngoingConferenceService` for more examples of sending actions.
 
@@ -483,21 +483,21 @@ The localParticipant leaves the current conference.
 Does not expect any extra value.
 
 ##### SEND_ENDPOINT_TEXT_MESSAGE
-Sends a message via the data channel to one particular participant or to all of them.
-Expects a `to` key on the intent extra with the id of the participant to which the message 
+Sends a message via the data channel to one particular participant or all of them.
+Expects a `to` key on the intent extra with the ID of the participant to which the message 
 is meant and a `message` key with a string value, the actual content of the message. 
-If the `to` key is not present or it's value is empty, the message will be sent 
+If the `to` key is not present or its value is empty, the message will be sent 
 to all the participants in the conference.
 
-In order to get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
+To get the participantId, the `PARTICIPANT_JOINED` event should be listened for,
 which `data` includes the id and this should be stored somehow.
 
 ##### TOGGLE_SCREEN_SHARE
 Sets the state of the localParticipant screen share according to the `enabled` parameter.
-Expects a `enabled` key on the intent extra with a boolean value.
+Expects an `enabled` key on the intent extra with a boolean value.
 
 ##### RETRIEVE_PARTICIPANTS_INFO
-Signals the SDK to retrieve a list with the participants information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event.
+Signals the SDK to retrieve a list with the participant's information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event.
 Expects a `requestId` key on the intent extra with a string value, this parameter will be present on the PARTICIPANTS_INFO_RETRIEVED event.
 
 ##### OPEN_CHAT
@@ -509,12 +509,11 @@ Does not expect any extra value.
 
 ##### SEND_CHAT_MESSAGE
 Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody otherwise.
-Expects a `message` key with a string value.
+Expect a `message` key with a string value.
 
 ## ProGuard rules
 
-When using the SDK on a project some proguard rules have to be added in order
-to avoid necessary code being stripped. Add the following to your project's
+When using the SDK on a project some proguard rules have to be added to avoid necessary code being stripped. Add the following to your project's
 rules file: https://github.com/jitsi/jitsi-meet/blob/master/android/app/proguard-rules.pro
 
 ## Picture-in-Picture
@@ -525,7 +524,7 @@ Picture-in-Picture style scenario, in a rectangle too small to accommodate its
 
 ## Dropbox integration
 
-To setup the Dropbox integration, follow these steps:
+To set up the Dropbox integration, follow these steps:
 
 1. Add the following to the app's AndroidManifest.xml and change `<APP_KEY>` to
 your Dropbox app key:

@@ -6,17 +6,17 @@ title: Introduction
 ## What is Jitsi?
 
 Jitsi is a [collection of Open Source projects](architecture.md) which provide state-of-the-art video conferencing
-capabilities that are secure, easy to use and easy to self-host.
+capabilities that are secure, easy to use, and easy to self-host.
 
 ## About this handbook
 
-This handbook aims to be the one-stop-shop for all Jitsi documentation.
+This handbook aims to be the one-stop shop for all Jitsi documentation.
 
 :::note It's work in progress.
-If you want to help out please create a **Pull Request** in our [GitHub repository](https://github.com/jitsi/handbook)!
+If you want to help, please create a **Pull Request** in our [GitHub repository](https://github.com/jitsi/handbook)!
 :::
 
-The content is divided in 3 main areas:
+The content is divided into 3 main areas:
 
 * [User guide](/docs/category/user-guide): Designed to help users of the service, to better
 understand all the available features and how to use them.

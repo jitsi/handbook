@@ -54,7 +54,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
     types and their members. Examples of tools which automatically generate
     documentation from such comments include JSDoc, Javadoc, Doxygen.
 
-  * Comments which are not automatically processed are strongly encouraged. They
+  * Comments that are not automatically processed are strongly encouraged. They
     are subject to case-by-case decisions. Such comments are often observed in
     function bodies.
 
@@ -69,7 +69,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
 
 * Line length is limited to 120 characters for JavaScript, Java, and Kotlin code.
 
-* Sort by alphabetical order in order to make the addition of new entities as
+* Sort by alphabetical order to make the addition of new entities as
   easy as looking a word up in a dictionary. Otherwise, one risks duplicate
   entries (with conflicting values in the cases of key-value pairs). For
   example:
@@ -94,7 +94,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
     ````
 
   * JavaScript: Within a group of imports (e.g. groups of imports delimited by an empty line
-    may be: third-party modules, then project modules, and eventually the
+    maybe: third-party modules, then project modules, and eventually the
     private files of a module), sort the module names in alphabetical order.
 
     ````javascript
@@ -103,11 +103,11 @@ in the agreement, unfortunately, we cannot accept your contribution.
     ````
   * Java: Use package imports (package.*) and DO NOT import classes themselves.
 
-* Java: Opening braces MUST be on their own line (especially those beginning a method).
+* Java: Opening braces MUST be on their line (especially those beginning a method).
 
 * Use 4 spaces to indent everything. Instruct your IDE **not to use tabs under any circumstance** and replace them with spaces.
 
-* Do not use double negative when naming properties, variables or methods/functions.
+* Do not use double negatives when naming properties, variables, or methods/functions.
 
 ### Naming
 
@@ -127,7 +127,7 @@ in the agreement, unfortunately, we cannot accept your contribution.
   `BACKGROUND_COLOR`.
 
 * The underscore character at the beginning of a name signals that the
-  respective variable, function, property is non-public i.e. private, protected,
+  respective variable, function, or property is non-public i.e. private, protected,
   or internal. In contrast, the lack of an underscore at the beginning of a name
   signals public API.
 
@@ -155,11 +155,11 @@ The middleware must be imported in `react/features/app/` specifically
 in `middlewares.any`, `middlewares.native.js` or `middlewares.web.js` where appropriate.
 Likewise for the reducer.
 
-In general we want to avoid `index` files. We prefer using the full path for imports.
-However there are cases where a common file (used by both web and native, eg. `actions.ts`)
+In general, we want to avoid `index` files. We prefer using the full path for imports.
+However, there are cases where a common file (used by both web and native, eg. `actions.ts`)
 needs to import from components (from `/native` or from `/web`, depending on the platform the build is for).
-In this case we create two `index` files in `components/`: `index.native.ts` and `index.web.ts` and export
-just the component we need. The common file should then import from `components/index`.
+In this case, we create two `index` files in `components/`: `index.native.ts` and `index.web.ts` and export
+just the component we need. The common file should then be imported from `components/index`.
 
 This has not always been the case and the entire codebase hasn't been migrated to
 this model but new features should follow this new layout.
@@ -169,7 +169,7 @@ model is encouraged.
 
 #### Avoiding bundle bloat
 
-When adding a new feature it's possible that it triggers a build failure due to the increased bundle size. We have safeguards inplace to avoid bundles growing disproportionatelly. While there are legit reasons for increasing the limits, please analyze the bundle first to make sure no unintended dependencies have been included, causing the increase in size.
+When adding a new feature it may trigger a build failure due to the increased bundle size. We have safeguards in place to avoid bundles growing disproportionately. While there are legitimate reasons for increasing the limits, please analyze the bundle first to make sure no unintended dependencies have been included, causing the increase in size.
 
 First, make a production build with bundle-analysis enabled:
 

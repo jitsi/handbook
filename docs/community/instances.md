@@ -211,7 +211,7 @@ Next to its native webclient interface, Jitsi Meet is also available as
 *    https://jitsi.zfn.uni-bremen.de -- DFN (valid Uni Bremen account is required for creating new rooms)
 *    https://jitsi.tu-dresden.de -- DFN (valid TU Dresden account is required for creating new rooms)
 *    https://meet.b-tu.de -- DFN (valid BTU Cottbus-Senftenberg account is required for creating new rooms)
-*    https://meet.lrz.de/ -- valid Münchner Wissenschaftsnetz account is required for creating new rooms
+*    https://meet.lrz.de/ -- A valid Münchner Wissenschaftsnetz account is required for creating new rooms
 
 ### Italy <a id="italy"></a>
 

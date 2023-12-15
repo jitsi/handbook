@@ -1341,7 +1341,7 @@ screenshotCapture: {
 
 type: `Object`
 
-Options regarding the security related UI elements.
+Options regarding the security-related UI elements.
 
 Default: **unset**
 
@@ -1364,7 +1364,7 @@ type: `Object`
 
 W3C spec-compliant video constraints to use for video capture. Currently
 used by browsers that return true from lib-jitsi-meet's
-`util#browser#usesNewGumFlow`. The constraints are independent from
+`util#browser#usesNewGumFlow`. The constraints are independent of
 this config's resolution value. Defaults to requesting an ideal
 resolution of 720p.
 
@@ -1384,8 +1384,8 @@ constraints: {
 
 type: `Boolean`
 
-When true the user cannot add more images to be used as virtual background.
-Only the default ones from will be available.
+When true the user cannot add more images to be used as a virtual background.
+Only the default ones will be available.
 
 ```javascript
 disableAddingBackgroundImages: true
@@ -1395,7 +1395,7 @@ disableAddingBackgroundImages: true
 
 type: `Boolean`
 
-If set to true, disable H.264 video codec by stripping it out of the SDP.
+If set to true, disable the H.264 video codec by stripping it out of the SDP.
 
 ```javascript
 disableH264: true
@@ -1415,7 +1415,7 @@ disableLocalVideoFlip: true
 
 type: `Boolean`
 
-Disables self-view tile. (hides it from tile view and from filmstrip)
+Disables self-view tile. (hides it from tile view and filmstrip)
 
 ```javascript
 disableSelfView: true
@@ -1436,7 +1436,7 @@ doNotFlipLocalVideo: true
 
 type: `Boolean`
 
-How many participants while in the tile view mode, before the receiving video quality is reduced from HD to SD.
+How many participants while in the tile view mode, before the receiving video quality is reduced from HD to SD?
 Use `-1` to disable.
 
 ```javascript
@@ -1447,7 +1447,7 @@ maxFullResolutionParticipants: 5
 
 type: `Boolean`
 
-__DEPRECATED__ Use `preferredCodec` under `videoQuality` section instead.
+__DEPRECATED__ Use `preferredCodec` under the `videoQuality` section instead.
 
 Prefer to use the H.264 video codec (if supported).
 Note that it's not recommended to do this because simulcast is not
@@ -1470,7 +1470,7 @@ resolution: 1080
 
 type: `Number`
 
-Every participant after the Nth will start video muted.
+Every participant after the Nth will start the video muted.
 
 ```javascript
 startVideoMuted: 5
@@ -1493,20 +1493,20 @@ type: `Object`
 Specify the settings for video quality optimizations on the client.
 
 Properties:
-* `codecPreferenceOrder` - Provides a way to set the codec preference on desktop based endpoints.
-* `mobileCodecPreferenceOrder` - Provides a way to set the codec preference on mobile devices, both on RN and mobile browser based endpoints.
+* `codecPreferenceOrder` - Provides a way to set the codec preference on desktop-based endpoints.
+* `mobileCodecPreferenceOrder` - Provides a way to set the codec preference on mobile devices, both on RN and mobile browser-based endpoints.
 * `disabledCodec` - __DEPRECATED__ Use `codecPreferenceOrder` or `mobileCodecPreferenceOrder` instead.
 * `preferredCodec` - __DEPRECATED__ Use `codecPreferenceOrder` or `mobileCodecPreferenceOrder` instead.
 * `maxBitratesVideo` - Provides a way to configure the maximum bitrates that will be enforced on the simulcast streams for
-    video tracks. The keys in the object represent the type of the stream (LD, SD or HD) and the values
+    video tracks. The keys in the object represent the type of stream (LD, SD, or HD), and the values
     are the max.bitrates to be set on that particular type of stream. The actual send may vary based on
     the available bandwidth calculated by the browser, but it will be capped by the values specified here.
-    This is currently not implemented on app based clients on mobile.
+    This is currently not implemented on app-based clients on mobile.
 * `minHeightForQualityLvl` - The options can be used to override default thresholds of video thumbnail heights corresponding to
-    the video quality levels used in the application. At the time of this writing the allowed levels are:
-    *    `low` - for the low quality level (180p at the time of this writing)
+    the video quality levels used in the application. At the time of this writing, the allowed levels are:
+    *    `low` - for the low-quality level (180p at the time of this writing)
     *    `standard` - for the medium quality level (360p)
-    *    `high` - for the high quality level (720p)
+    *    `high` - for the high-quality level (720p)
 
     The keys should be positive numbers which represent the minimal thumbnail height for the quality level.
     With the default config value below the application will use 'low' quality until the thumbnails are

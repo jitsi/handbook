@@ -30,7 +30,7 @@ The external connections can be categorized into two main groups. Firstly, the c
 In this section, we will look at the main parts of the codebase and see what they can be used for.
 
 **./react/features**
-This folder is where it is best to start writing your code, as it contains most of the app components that are used in the apps on Android and iOS, as well as on the web version. This source folder is split up into all the different features that Jitsi has to offer, such as authentication, chat interaction, keyboard shortcuts, screenshot capture, remote control, and virtual background. Each of these features has its folder in this map, which is then again split up to keep a hierarchy and consistency throughout the code.
+This folder is where it is best to start writing your code, as it contains most of the app components that are used in the apps on Android and iOS, as well as on the web version. This source folder is split up into all the different features that Jitsi has to offer, such as authentication, chat interaction, keyboard shortcuts, screenshot capture, remote control, and virtual background. Each of these features has a folder in this map, which is then again split up to keep a hierarchy and consistency throughout the code.
 
 Each feature folder consists of a subfolder called components, in this folder all of the React, or React Native for mobile, components are expressed. Usually, in this folder there will be a separation between native and web components, however, in some cases, the same component could be used for both Android, iOS, and web browsers, in which case there is no separation made.
 

@@ -133,7 +133,7 @@ alwaysOnTop.on('will-close', handleAlwaysOnTopClose);
 
 ### Power Monitor
 
-Provides a way to query electrons for system idle and receive power monitor events.
+Provides a way to query Electron for system idle and receive power monitor events.
 
 **enable power monitor:**
 In the **main** electron process:

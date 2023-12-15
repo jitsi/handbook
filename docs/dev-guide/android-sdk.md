@@ -494,7 +494,7 @@ which `data` includes the id and this should be stored somehow.
 
 ##### TOGGLE_SCREEN_SHARE
 Sets the state of the localParticipant screen share according to the `enabled` parameter.
-Expect an `enabled` key on the intent extra with a boolean value.
+Expects an `enabled` key on the intent extra with a boolean value.
 
 ##### RETRIEVE_PARTICIPANTS_INFO
 Signals the SDK to retrieve a list with the participant's information. The SDK will emit a PARTICIPANTS_INFO_RETRIEVED event.

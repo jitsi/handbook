@@ -39,7 +39,7 @@ Your room name would be `meet.jit.si/B741B63E-C5E6-4D82-BAC4-048BE25D8CC7` on th
 
 If you use "test" or "LucysMeeting" "pilates" or similar, then it's highly likely that other users will have had the same idea.
 
-### _2. Use a different room name for each meeting/conference you have._
+### _2. Use a different room name for each meeting / conference you have._
 
 If you are going to have multiple meetings, ideally use a different room name for each one.
 

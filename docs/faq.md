@@ -5,7 +5,7 @@ title: FAQ
 
 ## How to tell if my server instance is behind NAT?
 
-In general, if the tool ifconfig (or ipconfig) shows the assigned IPv4 address to be a private/local address (10.x.x.x, or  172.16.x.x - 172.31.x.x, or 192.168.x.x) but you know that its public IPv4 address is different from that, the server is most probably behind NAT.
+In general, if the tool ifconfig (or ipconfig) shows the assigned IPv4 address to be a private / local address (10.x.x.x, or  172.16.x.x - 172.31.x.x, or 192.168.x.x) but you know that its public IPv4 address is different from that, the server is most probably behind NAT.
 
 If you are hosting your server on a VPS, and you are not sure, ask your VPS provider's support team.
 

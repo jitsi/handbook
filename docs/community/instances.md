@@ -282,6 +282,11 @@ Next to its native webclient interface, Jitsi Meet is also available as
 | meet.hostpoint.ch | ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.hostpoint.ch&latest) | Hostpoint AG |
 | meet.coredump.ch |  ✅  |  | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=meet.coredump.ch&latest) | Nine Internet Solutions AG  |
 
+### United Kingdom <a id="united_kingdom"></a>
+
+| URL    | Non-Google STUN/TURN  | On Amazon, Google, Cloudflare or Microsoft   | SSL Test  | hoster |
+|---|---|---|---|---|
+| jitsi.kavin.rocks |  ✅   |   |  [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.kavin.rocks&latest) | [Kavin](https://kavin.rocks) |
 
 ## South & North America <a id="south_north_america"></a>
 

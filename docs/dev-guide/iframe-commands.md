@@ -699,3 +699,13 @@ Toggles the whiteboard to open, repeated toggling hidden the whiteboard
 ```javascript
 api.executeCommand('toggleWhiteboard');
 ```
+
+### setAssumedBandwidthBps
+
+Sets the assumed bandwidth bps.
+
+```javascript
+api.executeCommand('setAssumedBandwidthBps',
+    assumedBandwidthBps: number // Required. The value to set as assumed bandwidth expressed in bps.
+);
+```

@@ -1356,6 +1356,34 @@ securityUi: {
 }
 ```
 
+## Testing
+### testing
+
+type: `Object`
+
+Experimental features.
+
+Default: **unset**
+
+Properties:
+* `assumeBandwidth` - Allows the setting of a custom bandwidth value from the UI.
+* `disableE2EE` - Disables the End to End Encryption feature. Useful for debugging issues related to insertable streams.
+* `mobileXmppWsThreshold` - Enables XMPP WebSocket (as opposed to BOSH) for the given amount of users.
+* `p2pTestMode` - P2P test mode disables automatic switching to P2P when there are 2 participants in the conference.
+* `testMode` - Enables the test specific features consumed by jitsi-meet-torture.
+* `noAutoPlayVideo` - Disables the auto-play behavior of *all* newly created video element. This is useful when the client runs on a host with limited resources.
+
+```javascript
+testing: {
+    assumeBandwidth: true,
+    disableE2EE: false,
+    mobileXmppWsThreshold: 10, // enable XMPP WebSockets on mobile for 10% of the users
+    p2pTestMode: false,
+    testMode: false,
+    noAutoPlayVideo: false
+}
+```
+
 ## Video
 
 ### constraints

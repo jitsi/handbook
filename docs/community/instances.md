@@ -114,7 +114,6 @@ Next to its native webclient interface, Jitsi Meet is also available as
 |  	meet.yapbreak.fr	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meet.yapbreak.fr&latest)	   |  	OVH SAS
 |  	meeting.rezopole.net	   |  	 ⁉	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=meeting.rezopole.net&latest)	   |  	Rezopole A.D.
 |  	rendez-vous.renater.fr	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=rendez-vous.renater.fr&latest)	   |  	Renater
-|   jitsi.debamax.com   | ✅   |   | [run SSL check!](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.debamax.com&latest) | Online S.a.s. |
 |  	talk.fdn.fr	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.fdn.fr&latest)	   |  	Association Gitoyen
 |  	talk.ouvaton.coop	   |  	 ✅	   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=talk.ouvaton.coop&latest)	   |  	Inulogic Sarl
 |  	jitsi.laas.fr	   |  		   |  	   	   |  	[SSL check](https://www.ssllabs.com/ssltest/analyze.html?d=jitsi.laas.fr&latest)	   |  	 |

@@ -36,7 +36,7 @@ follow these steps:
    ```bash
    echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
-5. Run ``docker-compose up -d``
+5. Run ``docker compose up -d``
 6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
 
 :::note
@@ -50,27 +50,27 @@ If you want to use jigasi too, first configure your env file with SIP credential
 and then run Docker Compose as follows: 
 
 ```bash
-docker-compose -f docker-compose.yml -f jigasi.yml up
+docker compose -f docker-compose.yml -f jigasi.yml up
 ```
 
 If you want to enable document sharing via [Etherpad],
 configure it and run Docker Compose as follows: 
 
 ```bash
-docker-compose -f docker-compose.yml -f etherpad.yml up
+docker compose -f docker-compose.yml -f etherpad.yml up
 ```
 
 If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
 and then run Docker Compose as follows:
 
 ```bash
-docker-compose -f docker-compose.yml -f jibri.yml up -d
+docker compose -f docker-compose.yml -f jibri.yml up -d
 ```
 
 or to use jigasi too:
 
 ```bash
-docker-compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
+docker compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
 ### Testing development / unstable builds
@@ -85,7 +85,7 @@ git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
 The code in `master` is designed to work with the unstable images. Do not run it with release images.
 :::
 
-Run `docker-compose up` as usual.
+Run `docker compose up` as usual.
 
 Every day a new "unstable" image build is uploaded.
 
@@ -455,7 +455,7 @@ Internal users must be created with the ``prosodyctl`` utility in the ``prosody`
 In order to do that, first, execute a shell in the corresponding container:
 
 ```bash
-docker-compose exec prosody /bin/bash
+docker compose exec prosody /bin/bash
 ```
 
 Once in the container, run the following command to create a user:
@@ -742,7 +742,7 @@ While the logs are sent to `stdout`, they are not lost: unless configured to dro
 
 If you need to access the container's logs you have multiple options. Here are the main ones:
 
-* run `docker-compose logs -t -f <service_name>` from command line, where `<service_name>` is one of `web`, `prosody`,`jvb`, `jicofo`. This command will output the logs for the selected service to stdout with timestamps.
+* run `docker compose logs -t -f <service_name>` from command line, where `<service_name>` is one of `web`, `prosody`,`jvb`, `jicofo`. This command will output the logs for the selected service to stdout with timestamps.
 * use a standard [docker logging driver](https://docs.docker.com/config/containers/logging/configure/) to redirect the logs to the desired target (for instance `syslog` or `splunk`).
 * serach [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/) 
 * or [write your own driver plugin](https://docs.docker.com/engine/extend/plugins_logging/) if you have a very specific need.
@@ -775,7 +775,7 @@ The docker images can be built by running the `make` command in the main reposit
 
 If you are on the unstable branch, build the images with `FORCE_REBUILD=1 JITSI_RELEASE=unstable make`.
 
-You are now able to run `docker-compose up` as usual.
+You are now able to run `docker compose up` as usual.
 
 ## Running behind a reverse proxy
 

@@ -559,6 +559,7 @@ Variable | Description | Example
 `MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. It allows all issuers (`*`) by default. | my_issuer
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | my_matrix_secret
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
+`MATRIX_LOBBY_BYPASS` | (optional) Allow Matrix room members to bypass Jitsi lobby check. | 1
 `JWT_APP_ID` | Application identifier | my_jitsi_app_id
 `JWT_APP_SECRET` | Application secret known only to your token | my_jitsi_app_secret
 `JWT_ALLOW_EMPTY` | (Optional) Allow anonymous users with no JWT while validating JWTs when provided | 0

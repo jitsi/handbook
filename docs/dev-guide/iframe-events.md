@@ -752,6 +752,18 @@ Will only fire if rtcstats is enabled.
 }
 ```
 
+### transcribingStatusChanged
+
+Provides event notifications about status changes in the transcribing process.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    on: boolean,
+}
+```
+
 ### transcriptionChunkReceived
 
 Provides event notifications about new transcription chunks being available.

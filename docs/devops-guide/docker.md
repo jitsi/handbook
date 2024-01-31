@@ -13,21 +13,31 @@ Starting with release `stable-7289-1` our images are provided with `amd64` and `
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:
 
-1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images.
+1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images:
 
-2. Create a ``.env`` file by copying and adjusting ``env.example``:
+    ```bash
+    wget $(curl -s https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep 'zip' | cut -d\" -f4)
+    ```
+
+1. Unzip the package:
+
+    ```bash
+    unzip <filename>
+    ```
+
+1. Create a `.env` file by copying and adjusting `env.example`:
 
    ```bash
    cp env.example .env
    ```
 
-3. Set strong passwords in the security section options of ``.env`` file by running the following bash script
+1. Set strong passwords in the security section options of `.env` file by running the following bash script
 
    ```bash
    ./gen-passwords.sh
    ```
 
-4. Create required `CONFIG` directories
+1. Create required `CONFIG` directories
    * For linux:
 
    ```bash
@@ -40,8 +50,8 @@ follow these steps:
    echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
 
-5. Run ``docker compose up -d``
-6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
+1. Run ``docker compose up -d``
+1. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
 
 :::note
 HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
@@ -64,7 +74,7 @@ configure it and run Docker Compose as follows:
 docker compose -f docker-compose.yml -f etherpad.yml up
 ```
 
-If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
+If you want to use jibri too, first configure a host as described in Jitsi Broadcasting Infrastructure configuration section
 and then run Docker Compose as follows:
 
 ```bash
@@ -75,6 +85,20 @@ or to use jigasi too:
 
 ```bash
 docker compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
+```
+
+### Updating
+
+If you want to update, simply run 
+
+```bash
+wget $(curl -s https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep 'zip' | cut -d\" -f4)
+```
+
+again (just like how you initially downloaded Jitsi). Then unzip and overwrite all when being asked:
+
+```bash
+unzip <filename>
 ```
 
 ### Testing development / unstable builds

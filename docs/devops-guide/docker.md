@@ -225,7 +225,7 @@ You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTT
 **Let's Encrypt rate limit warning**: Let's Encrypt has a limit to how many times you can submit a request
 for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate)
 certificates for the same domain name every seven days. Because of this, it is recommended that you disable the
-Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder.
+Let's Encrypt environment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder.
 Otherwise, you might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
 the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
@@ -750,7 +750,7 @@ If you need to access the container's logs you have multiple options. Here are t
 
 * run `docker compose logs -t -f <service_name>` from command line, where `<service_name>` is one of `web`, `prosody`,`jvb`, `jicofo`. This command will output the logs for the selected service to stdout with timestamps.
 * use a standard [docker logging driver](https://docs.docker.com/config/containers/logging/configure/) to redirect the logs to the desired target (for instance `syslog` or `splunk`).
-* serach [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/)
+* search [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/)
 * or [write your own driver plugin](https://docs.docker.com/engine/extend/plugins_logging/) if you have a very specific need.
 
 For instance, if you want to have all logs related to a `<service_name>` written to `/var/log/jitsi/<service_name>` as `json` output, you could use [docker-file-log-driver](https://github.com/deep-compute/docker-file-log-driver) and configure it by adding the following block in your `docker-compose.yml` file, at the same level as the `image` block of the selected `<service_name>`:

@@ -223,7 +223,7 @@ Variable | Description | Example
 `HTTP_PORT` | Exposed port for HTTP traffic | 8000
 `HTTPS_PORT` | Exposed port for HTTPS traffic | 8443
 `JVB_ADVERTISE_IPS` | IP addresses of the Docker host (comma separated), needed for LAN environments | 192.168.1.1
-`PUBLIC_URL` | Public URL for the web service | <https://meet.example.com>
+`PUBLIC_URL` | Public URL for the web service | https://meet.example.com
 
 :::note
 The mobile apps won't work with self-signed certificates (the default).
@@ -241,7 +241,7 @@ Variable | Description | Example
 --- | --- | ---
 `ENABLE_LETSENCRYPT` | Enable Let's Encrypt certificate generation | 1
 `LETSENCRYPT_DOMAIN` | Domain for which to generate the certificate | meet.example.com
-`LETSENCRYPT_EMAIL` | E-Mail for receiving important account notifications (mandatory) | <alice@atlanta.net>
+`LETSENCRYPT_EMAIL` | E-Mail for receiving important account notifications (mandatory) | alice@atlanta.net
 
 In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443 and PUBLIC_URL to your domain.
 You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
@@ -260,7 +260,7 @@ you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
 :::
 
 For more information on Let's Encrypt's rate limits, visit:
-<https://letsencrypt.org/docs/rate-limits/>
+https://letsencrypt.org/docs/rate-limits/
 
 #### Using existing TLS certificate and key
 
@@ -306,7 +306,7 @@ If you want to enable the SIP gateway, these options are required:
 
 Variable | Description | Example
 --- | --- | ---
-`JIGASI_SIP_URI` | SIP URI for incoming / outgoing calls | <test@sip2sip.info>
+`JIGASI_SIP_URI` | SIP URI for incoming / outgoing calls | test@sip2sip.info
 `JIGASI_SIP_PASSWORD` | Password for the specified SIP account | `<unset>`
 `JIGASI_SIP_SERVER` | SIP server (use the SIP account domain if in doubt) | sip2sip.info
 `JIGASI_SIP_PORT` | SIP server port | 5060
@@ -316,8 +316,8 @@ Variable | Description | Example
 
 Variable | Description | Example
 --- | --- | ---
-`DIALIN_NUMBERS_URL` | URL to the JSON with all Dial-In numbers | <https://meet.example.com/dialin.json>
-`CONFCODE_URL` | URL to the API for checking/generating Dial-In codes | <https://jitsi-api.jitsi.net/conferenceMapper>
+`DIALIN_NUMBERS_URL` | URL to the JSON with all Dial-In numbers | https://meet.example.com/dialin.json
+`CONFCODE_URL` | URL to the API for checking/generating Dial-In codes | https://jitsi-api.jitsi.net/conferenceMapper
 
 The JSON with the Dial-In numbers should look like this:
 
@@ -539,7 +539,7 @@ Variable | Description | Example
 `JWT_APP_SECRET` | Application secret known only to your token | my_jitsi_app_secret
 `JWT_ACCEPTED_ISSUERS` | (Optional) Set asap_accepted_issuers as a comma separated list | my_web_client,my_app_client
 `JWT_ACCEPTED_AUDIENCES` | (Optional) Set asap_accepted_audiences as a comma separated list | my_server1,my_server2
-`JWT_ASAP_KEYSERVER` | (Optional) Set asap_keyserver to a url where public keys can be found | <https://example.com/asap>
+`JWT_ASAP_KEYSERVER` | (Optional) Set asap_keyserver to a url where public keys can be found | https://example.com/asap>
 `JWT_ALLOW_EMPTY` | (Optional) Allow anonymous users with no JWT while validating JWTs when provided | 0
 `JWT_AUTH_TYPE` | (Optional) Controls which module is used for processing incoming JWTs | token
 `JWT_TOKEN_AUTH_MODULE` | (Optional) Controls which module is used for validating JWTs | token_verification
@@ -568,7 +568,7 @@ For more information see the documentation of the "Prosody Auth Matrix User Veri
 
 Variable | Description | Example
 --- | --- | ---
-`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | <https://uvs.example.com:3000>
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000>
 `MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. | issuer (default)
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
@@ -584,7 +584,7 @@ For more information see the documentation of the "Hybrid Matrix Token"
 
 Variable | Description | Example
 --- | --- | ---
-`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | <https://uvs.example.com:3000>
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000>
 `MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. It allows all issuers (`*`) by default. | my_issuer
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | my_matrix_secret
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
@@ -597,7 +597,7 @@ Variable | Description | Example
 
 Variable | Description | Example
 --- | --- | ---
-`TOKEN_AUTH_URL` | Authenticate using external service or just focus external auth window if there is one already. | <https://auth.meet.example.com/{room}>
+`TOKEN_AUTH_URL` | Authenticate using external service or just focus external auth window if there is one already. | https://auth.meet.example.com/{room}>
 
 ### Shared document editing using Etherpad
 
@@ -608,7 +608,7 @@ Here are the required options:
 
 Variable | Description | Example
 --- | --- | ---
-`ETHERPAD_URL_BASE` | Set etherpad-lite URL | <http://etherpad.meet.jitsi:9001>
+`ETHERPAD_URL_BASE` | Set etherpad-lite URL | http://etherpad.meet.jitsi:9001>
 
 ### Transcription configuration
 
@@ -627,15 +627,15 @@ Variable | Description | Example
 `JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send transcribed text to the chat when transcriber is on | true
 `JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an url to the chat with transcription file | true
 
-For setting the Google Cloud Credentials please read <https://cloud.google.com/text-to-speech/docs/quickstart-protocol> section "Before you begin" paragraph 1 to 5.
+For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol> section "Before you begin" paragraph 1 to 5.
 
 ### Sentry logging configuration
 
 Variable | Description | Default value
 --- | --- | ---
-`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | <https://public:private@host:port/1>
-`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | <https://public:private@host:port/1>
-`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | <https://public:private@host:port/1>
+`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
+`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
+`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
 `SENTRY_ENVIRONMENT` | Optional environment info to filter events | production
 `SENTRY_RELEASE` | Optional release info to filter events | 1.0.0
 
@@ -661,7 +661,7 @@ Variable | Description | Default value
 `XMPP_DOMAIN` | Internal XMPP domain | meet.jitsi
 `XMPP_AUTH_DOMAIN` | Internal XMPP domain for authenticated services | auth.meet.jitsi
 `XMPP_SERVER` | Internal XMPP server name xmpp.meet.jitsi | xmpp.meet.jitsi
-`XMPP_BOSH_URL_BASE` | Internal XMPP server URL for BOSH module | <http://xmpp.meet.jitsi:5280>
+`XMPP_BOSH_URL_BASE` | Internal XMPP server URL for BOSH module | http://xmpp.meet.jitsi:5280>
 `XMPP_MUC_DOMAIN` | XMPP domain for the MUC | muc.meet.jitsi
 `XMPP_INTERNAL_MUC_DOMAIN` | XMPP domain for the internal MUC | internal-muc.meet.jitsi
 `XMPP_GUEST_DOMAIN` | XMPP domain for unauthenticated users | guest.meet.jitsi

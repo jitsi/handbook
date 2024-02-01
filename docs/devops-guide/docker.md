@@ -13,31 +13,45 @@ Starting with release `stable-7289-1` our images are provided with `amd64` and `
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
 follow these steps:
 
-1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images.
-    
-2. Create a ``.env`` file by copying and adjusting ``env.example``:
-   
+1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images:
+
+    ```bash
+    wget $(curl -s https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep 'zip' | cut -d\" -f4)
+    ```
+
+1. Unzip the package:
+
+    ```bash
+    unzip <filename>
+    ```
+
+1. Create a `.env` file by copying and adjusting `env.example`:
+
    ```bash
    cp env.example .env
    ```
-   
-3. Set strong passwords in the security section options of ``.env`` file by running the following bash script
-   
+
+1. Set strong passwords in the security section options of `.env` file by running the following bash script
+
    ```bash
    ./gen-passwords.sh
    ```
-   
-4. Create required `CONFIG` directories
-   * For linux: 
+
+1. Create required `CONFIG` directories
+   * For linux:
+
    ```bash
    mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
    ```
-   * For Windows: 
+
+   * For Windows:
+
    ```bash
    echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
    ```
-5. Run ``docker compose up -d``
-6. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
+
+1. Run ``docker compose up -d``
+1. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
 
 :::note
 HTTP (not HTTPS) is also available (on port 8000, by default), but that's e.g. for a reverse proxy setup;
@@ -47,20 +61,20 @@ or _navigator.mediaDevices is undefined_.
 :::
 
 If you want to use jigasi too, first configure your env file with SIP credentials
-and then run Docker Compose as follows: 
+and then run Docker Compose as follows:
 
 ```bash
 docker compose -f docker-compose.yml -f jigasi.yml up
 ```
 
 If you want to enable document sharing via [Etherpad],
-configure it and run Docker Compose as follows: 
+configure it and run Docker Compose as follows:
 
 ```bash
 docker compose -f docker-compose.yml -f etherpad.yml up
 ```
 
-If you want to use jibri too, first configure a host as described in JItsi BRoadcasting Infrastructure configuration section
+If you want to use jibri too, first configure a host as described in Jitsi Broadcasting Infrastructure configuration section
 and then run Docker Compose as follows:
 
 ```bash
@@ -73,10 +87,24 @@ or to use jigasi too:
 docker compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
+### Updating
+
+If you want to update, simply run 
+
+```bash
+wget $(curl -s https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep 'zip' | cut -d\" -f4)
+```
+
+again (just like how you initially downloaded Jitsi). Then unzip and overwrite all when being asked:
+
+```bash
+unzip <filename>
+```
+
 ### Testing development / unstable builds
 
 Download the latest code:
-     
+
 ```bash
 git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
 ```
@@ -92,7 +120,7 @@ Every day a new "unstable" image build is uploaded.
 ### Building your own images
 
 Download the latest code:
-     
+
 ```bash
 git clone https://github.com/jitsi/docker-jitsi-meet && cd docker-jitsi-meet
 ```
@@ -206,7 +234,7 @@ See below for instructions on how to obtain a proper certificate with Let's Encr
 
 #### Let's Encrypt configuration
 
-If you want to expose your Jitsi Meet instance to the outside traffic directly, but don't own a proper TLS certificate, you are in luck 
+If you want to expose your Jitsi Meet instance to the outside traffic directly, but don't own a proper TLS certificate, you are in luck
 because Let's Encrypt support is built right in. Here are the required options:
 
 Variable | Description | Example
@@ -219,9 +247,9 @@ In addition, you will need to set `HTTP_PORT` to 80 and `HTTPS_PORT` to 443 and 
 You might also consider to redirect HTTP traffic to HTTPS by setting `ENABLE_HTTP_REDIRECT=1`.
 
 **Let's Encrypt rate limit warning**: Let's Encrypt has a limit to how many times you can submit a request
-for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate) 
-certificates for the same domain name every seven days. Because of this, it is recommended that you disable the 
-Let's Encrypt enviroment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder.
+for a new certificate for your domain name. At the time of writing, the current limit is five new (duplicate)
+certificates for the same domain name every seven days. Because of this, it is recommended that you disable the
+Let's Encrypt environment variables from `.env` if you plan on deleting the `.jitsi-meet-cfg` folder.
 Otherwise, you might want to consider moving the `.jitsi-meet-cfg` folder to a different location so you have a safe place to find
 the certificate that already Let's Encrypt issued. Or do initial testing with Let's Encrypt disabled, then re-enable
 Let's Encrypt once you are done testing.
@@ -236,17 +264,16 @@ https://letsencrypt.org/docs/rate-limits/
 
 #### Using existing TLS certificate and key
 
-If you own a proper TLS certificate and don't need a Let's Encrypt certificate, you can configure Jitsi Meet container 
-to use it. 
+If you own a proper TLS certificate and don't need a Let's Encrypt certificate, you can configure Jitsi Meet container
+to use it.
 
-Unlike Let's Encrypt certificates, this is not configured through the `.env`file, but by telling Jitsi Meet's `web` service 
-to mount the following two volumes: 
+Unlike Let's Encrypt certificates, this is not configured through the `.env`file, but by telling Jitsi Meet's `web` service
+to mount the following two volumes:
 
-- mount `/path/to/your/cert.key` file to `/config/keys/cert.key` mount point
-- mount `/path/to/your/cert.fullchain` file to the `/config/keys/cert.crt` mount point.
+* mount `/path/to/your/cert.key` file to `/config/keys/cert.key` mount point
+* mount `/path/to/your/cert.fullchain` file to the `/config/keys/cert.crt` mount point.
 
 Doing it in `docker-compose.yml` file should look like this:
-
 
 ```yaml
 services:
@@ -293,6 +320,7 @@ Variable | Description | Example
 `CONFCODE_URL` | URL to the API for checking/generating Dial-In codes | https://jitsi-api.jitsi.net/conferenceMapper
 
 The JSON with the Dial-In numbers should look like this:
+
 ```json
 {"message":"Dial-In numbers:","numbers":{"DE": ["+49-721-0000-0000"]},"numbersEnabled":true}
 ```
@@ -391,6 +419,7 @@ For using multiple Jibri instances, you have to select different loopback interf
   ...
 
   ```
+
 </details>
 
 If you want to enable Jibri these options are required:
@@ -418,11 +447,11 @@ Jitsi-Meet uses two configuration files for changing default settings within
 the web interface: ``config.js`` and ``interface_config.js``. The files are
 located within the ``CONFIG/web/`` directory configured within your environment file.
 
-These files are re-created on every container restart. 
+These files are re-created on every container restart.
 If you'd like to provide your own settings, create your own config files:
 ``custom-config.js`` and ``custom-interface_config.js``.
 
-It's enough to provide your relevant settings only, the docker scripts will 
+It's enough to provide your relevant settings only, the docker scripts will
 append your custom files to the default ones!
 
 ### Authentication
@@ -510,7 +539,7 @@ Variable | Description | Example
 `JWT_APP_SECRET` | Application secret known only to your token | my_jitsi_app_secret
 `JWT_ACCEPTED_ISSUERS` | (Optional) Set asap_accepted_issuers as a comma separated list | my_web_client,my_app_client
 `JWT_ACCEPTED_AUDIENCES` | (Optional) Set asap_accepted_audiences as a comma separated list | my_server1,my_server2
-`JWT_ASAP_KEYSERVER` | (Optional) Set asap_keyserver to a url where public keys can be found | https://example.com/asap
+`JWT_ASAP_KEYSERVER` | (Optional) Set asap_keyserver to a url where public keys can be found | https://example.com/asap>
 `JWT_ALLOW_EMPTY` | (Optional) Allow anonymous users with no JWT while validating JWTs when provided | 0
 `JWT_AUTH_TYPE` | (Optional) Controls which module is used for processing incoming JWTs | token
 `JWT_TOKEN_AUTH_MODULE` | (Optional) Controls which module is used for validating JWTs | token_verification
@@ -539,8 +568,8 @@ For more information see the documentation of the "Prosody Auth Matrix User Veri
 
 Variable | Description | Example
 --- | --- | ---
-`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000
-`MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. | issuer (default) 
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000>
+`MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. | issuer (default)
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
 
@@ -555,7 +584,7 @@ For more information see the documentation of the "Hybrid Matrix Token"
 
 Variable | Description | Example
 --- | --- | ---
-`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000>
 `MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. It allows all issuers (`*`) by default. | my_issuer
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | my_matrix_secret
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
@@ -568,7 +597,7 @@ Variable | Description | Example
 
 Variable | Description | Example
 --- | --- | ---
-`TOKEN_AUTH_URL` | Authenticate using external service or just focus external auth window if there is one already. | https://auth.meet.example.com/{room}
+`TOKEN_AUTH_URL` | Authenticate using external service or just focus external auth window if there is one already. | https://auth.meet.example.com/{room}>
 
 ### Shared document editing using Etherpad
 
@@ -579,7 +608,7 @@ Here are the required options:
 
 Variable | Description | Example
 --- | --- | ---
-`ETHERPAD_URL_BASE` | Set etherpad-lite URL | http://etherpad.meet.jitsi:9001
+`ETHERPAD_URL_BASE` | Set etherpad-lite URL | http://etherpad.meet.jitsi:9001>
 
 ### Transcription configuration
 
@@ -598,15 +627,15 @@ Variable | Description | Example
 `JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send transcribed text to the chat when transcriber is on | true
 `JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an url to the chat with transcription file | true
 
-For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol section "Before you begin" paragraph 1 to 5.
+For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol> section "Before you begin" paragraph 1 to 5.
 
 ### Sentry logging configuration
 
 Variable | Description | Default value
 --- | --- | ---
-`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
-`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
-`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1
+`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
+`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
+`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
 `SENTRY_ENVIRONMENT` | Optional environment info to filter events | production
 `SENTRY_RELEASE` | Optional release info to filter events | 1.0.0
 
@@ -632,7 +661,7 @@ Variable | Description | Default value
 `XMPP_DOMAIN` | Internal XMPP domain | meet.jitsi
 `XMPP_AUTH_DOMAIN` | Internal XMPP domain for authenticated services | auth.meet.jitsi
 `XMPP_SERVER` | Internal XMPP server name xmpp.meet.jitsi | xmpp.meet.jitsi
-`XMPP_BOSH_URL_BASE` | Internal XMPP server URL for BOSH module | http://xmpp.meet.jitsi:5280
+`XMPP_BOSH_URL_BASE` | Internal XMPP server URL for BOSH module | http://xmpp.meet.jitsi:5280>
 `XMPP_MUC_DOMAIN` | XMPP domain for the MUC | muc.meet.jitsi
 `XMPP_INTERNAL_MUC_DOMAIN` | XMPP domain for the internal MUC | internal-muc.meet.jitsi
 `XMPP_GUEST_DOMAIN` | XMPP domain for unauthenticated users | guest.meet.jitsi
@@ -658,7 +687,7 @@ Variable | Description | Default value
 Variable | Description | Default value
 --- | --- | ---
 `PROSODY_RESERVATION_ENABLED` | Enable Prosody's reservation REST API | false
-`PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API | 
+`PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API |
 `PROSODY_AUTH_TYPE` | Select authentication type for Prosody (internal, jwt or ldap) | `AUTH_TYPE`
 
 #### Advanced Jicofo options
@@ -745,7 +774,7 @@ If you need to access the container's logs you have multiple options. Here are t
 
 * run `docker compose logs -t -f <service_name>` from command line, where `<service_name>` is one of `web`, `prosody`,`jvb`, `jicofo`. This command will output the logs for the selected service to stdout with timestamps.
 * use a standard [docker logging driver](https://docs.docker.com/config/containers/logging/configure/) to redirect the logs to the desired target (for instance `syslog` or `splunk`).
-* serach [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/) 
+* search [docker hub](https://hub.docker.com/search?q=) for a third party [docker logging driver plugin](https://docs.docker.com/config/containers/logging/plugins/)
 * or [write your own driver plugin](https://docs.docker.com/engine/extend/plugins_logging/) if you have a very specific need.
 
 For instance, if you want to have all logs related to a `<service_name>` written to `/var/log/jitsi/<service_name>` as `json` output, you could use [docker-file-log-driver](https://github.com/deep-compute/docker-file-log-driver) and configure it by adding the following block in your `docker-compose.yml` file, at the same level as the `image` block of the selected `<service_name>`:
@@ -762,7 +791,6 @@ services:
 ```
 
 If you want to only display the `message` part of the log in `json` format, simply execute the following command (for instance if `fpath` was set to `/jitsi/jvb.log`) which uses `jq` to extract the relevant part of the logs:
-
 
 ```
 sudo cat /var/log/jitsi/jvb.log | jq -r '.msg' | jq -r '.message'
@@ -806,6 +834,7 @@ location /colibri-ws {
     proxy_set_header Connection "upgrade";
 }
 ```
+
 With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these routes can be forwarded using the following config snippet:
 
 ```apache
@@ -839,18 +868,12 @@ ENABLE_COLIBRI_WEBSOCKET=0
 ENABLE_XMPP_WEBSOCKET=0
 ```
 
-[Jitsi]: https://jitsi.org/
-[Jitsi Meet]: https://jitsi.org/jitsi-meet/
-[Docker]: https://www.docker.com
-[Docker Compose]: https://docs.docker.com/compose/
-[Swarm mode]: https://docs.docker.com/engine/swarm/
 [S6 Overlay]: https://github.com/just-containers/s6-overlay
 [Jitsi repositories]: https://jitsi.org/downloads/
 [Prosody]: https://prosody.im/
 [Jicofo]: https://github.com/jitsi/jicofo
 [Jitsi Videobridge]: https://github.com/jitsi/jitsi-videobridge
 [Jigasi]: https://github.com/jitsi/jigasi
-[ICE]: https://en.wikipedia.org/wiki/Interactive_Connectivity_Establishment
 [STUN]: https://en.wikipedia.org/wiki/STUN
 [jwt.io]: https://jwt.io/#debugger-io
 [Etherpad]: https://github.com/ether/etherpad-lite

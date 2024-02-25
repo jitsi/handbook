@@ -835,6 +835,17 @@ location /colibri-ws {
 }
 ```
 
+In addition we need a route for /http-bind as XMPP over BOSH is still used by mobile clients:
+  
+```nginx
+location /http-bind {
+    proxy_pass https://localhost:8443;
+    proxy_http_version 1.1;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+}
+```
+
 With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these routes can be forwarded using the following config snippet:
 
 ```apache
@@ -847,9 +858,11 @@ With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these r
         <Location "/colibri-ws/">
             ProxyPass "wss://localhost:8443/colibri-ws/"
         </Location>
+        <Location "/http-bind">
+            ProxyPass "http://localhost:8443/http-bind"
+        </Location>
     </IfModule>
 </IfModule>
-
 ```
 
 where `https://localhost:8443/` is the url of the web service's ingress.

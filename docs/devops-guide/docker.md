@@ -813,11 +813,10 @@ By default this setup is using WebSocket connections for 2 core components:
 * Signalling (XMPP)
 * Bridge channel (colibri)
 
-Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 3 routes require such treatment:
+Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:
 
 * /xmpp-websocket
 * /colibri-ws
-* /http-bind (XMPP over BOSH still used by mobile clients)
 
 With nginx, these routes can be forwarded using the following config snippet:
 
@@ -834,6 +833,11 @@ location /colibri-ws {
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
 }
+```
+
+In addition we need a route for /http-bind as XMPP over BOSH is still used by mobile clients:
+  
+```nginx
 location /http-bind {
     proxy_pass https://localhost:8443;
     proxy_http_version 1.1;
@@ -859,7 +863,6 @@ With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these r
         </Location>
     </IfModule>
 </IfModule>
-
 ```
 
 where `https://localhost:8443/` is the url of the web service's ingress.

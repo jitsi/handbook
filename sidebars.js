@@ -18,7 +18,6 @@ module.exports = {
         id: "community/community-intro",
       },
       items: [
-        "community/community-instances",
         "community/third-party-software",
       ],
     },

@@ -1580,9 +1580,13 @@ Default: **unset**
 Properties:
 * `enabled` - Whether the feature is enabled or not.
 * `collabServerBaseUrl` - The [server](https://github.com/jitsi/excalidraw-backend) used to support whiteboard collaboration.
+* `userLimit` - The user access limit to the whiteboard, introduced as a means to control the performance.
+* `limitUrl` - The url for more info about the whiteboard and its usage limitations.
 
 ```javascript
 whiteboard: {
     enabled: true,
-    collabServerBaseUrl: 'https://excalidraw-backend.example.com'
+    collabServerBaseUrl: 'https://excalidraw-backend.example.com',
+    userLimit: 25,
+    limitUrl: 'https://example.com/blog/whiteboard-limits'
 }

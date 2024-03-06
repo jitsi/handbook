@@ -65,21 +65,18 @@ module.exports = (async () => {
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
   ```
 
 
 #### Services
-- In `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, please include the following service:
-  ```xml
-    <service
-         android:name="org.jitsi.meet.sdk.JitsiMeetOngoingConferenceService"
-         android:foregroundServiceType="mediaProjection" />
-  ```
-  This enables the screen share feature.
+- To enables the screen share feature you now need to go to your `MainApplication.java` file and:
+  1. `import com.oney.WebRTCModule.WebRTCModuleOptions;` that comes from `react-native-webrtc` dependency.
+  
+  2. `WebRTCModuleOptions options = WebRTCModuleOptions.getInstance();` instance it.
+  3. `options.enableMediaProjectionService = true;` enable foreground service that takes care of screen-sharing feature.
 
 #### API
-- Our app use `react-native-orientation-locker` dependency that uses API 33 features. Make sure that your app, in `android\build.gradle`, targets that version:
+- Our app use `react-native-orientation-locker` dependency that uses API 33 features. Make sure that your app, in `android\build.gradle`, targets, at least, that version:
   ```markdown
     buildscript {
         ext {

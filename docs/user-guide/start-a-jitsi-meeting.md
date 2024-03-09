@@ -23,7 +23,8 @@ Note: Jitsi offers a functionality that automatically suggests names for the con
 7. It is possible that no picture of you will appear at first. To do this, the browser will ask you whether you want to allow camera access. Please confirm this by clicking on `allow` or `permit`. Sometimes you also have to click the camera button at the bottom of the screen first to activate the dialog for allowing camera access. Do the same with the microphone the first time you use Jitsi.
 8. Now enter your display name in the "enter your name" field.
 9. Click the blue `Join meeting` button.
-10. Have fun in your first conference.
+10. If you are connecting to https://meet.jit.si and you are first participant you will be asked to either authenticate or wait for a moderator. You can authenticate with a Google, Facebook or GitHub account.
+11. Have fun in your first conference.
 
 :::note
 If you do not see a video image of yourself, check the following points:

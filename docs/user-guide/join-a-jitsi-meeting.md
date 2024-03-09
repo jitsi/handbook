@@ -17,3 +17,4 @@ People can invite each other to Jitsi meetings by simply sending a link.
 3. If prompted, enter a name, which will be visible to other participants in the Jitsi Meeting room.
 4. (Optional) Adjust the camera and/or microphone settings via the `v` dropdown menu items.
 5. Click on `Join meeting`.
+6. If your meeing is taking place on https://meet.jit.si and you are the first to join you will be asked to authenticate or wait for a moderator. You can authenticate with a Google, Facebook or GitHub account.

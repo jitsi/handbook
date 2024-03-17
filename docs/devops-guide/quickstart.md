@@ -37,6 +37,18 @@ sudo apt update
 sudo apt install apt-transport-https
 ```
 
+On Debian Bookworm (12.x), OpenJDK 11 is not packaged.  A backport is available from [The ZAP Group Australia](https://ftp.zap.org.au/pub/debian/).  You will need to download the signing key:
+
+```bash
+cd /etc/apt/trusted.gpg.d
+wget -N https://ftp.zap.org.au/pub/debian/zapgroup-archive-2022.gpg
+```
+
+Then add the following lines to your `/etc/apt/sources.list` file:
+
+      deb     https://ftp.zap.org.au/pub/debian zapgroup-bookworm main contrib non-free
+      deb-src https://ftp.zap.org.au/pub/debian zapgroup-bookworm main contrib non-free
+
 On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run this command:
 
 ```bash

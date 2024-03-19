@@ -277,7 +277,7 @@ disabledSounds: [
     // 'RAISE_HAND_SOUND'
     // 'REACTION_SOUND'
     // 'RECORDING_OFF_SOUND'
-    // 'RECORDING_ON_SOUND'
+    // '_ON_SOUND'
     // 'TALK_WHILE_MUTED_SOUND'
 ]
 ```
@@ -1270,6 +1270,25 @@ recordingLimit: {
     limit: 60,
     appName: 'Unlimited recordings APP',
     appURL: 'https://unlimited.recordings.app.com/'
+}
+```
+
+### recordings
+
+type: `Object`
+
+Options for the recordings features.
+
+Properties:
+* `recordAudioAndVideo` - If true (default) recording audio and video is selected by default in the recording dialog.
+* `suggestRecording` - If true, shows a notification at the start of the meeting with a call to action button to start recording (for users who can do so).
+* `showPrejoinWarning` - If true, shows a warning label in the prejoin screen to point out the possibility that the call you're joining might be recorded.
+
+```javascript
+recordings: {
+    recordAudioAndVideo: true,
+    suggestRecording: false,
+    showPrejoinWarning: true
 }
 ```
 

@@ -524,58 +524,46 @@ The default value is 100%. If set to 0, no automatic feedback will be requested
 feedbackPercentage: 100
 ```
 
-## Closed captions
+## Transcriptions
 
-### autoCaptionOnRecord*
+### autoCaptionOnRecord 
 
-type: `Boolean`
+__DEPRECATED__ Use `transcription.autoTranscribeOnRecord` instead.
 
-Enables turning captions on automatically when the recording starts
+### preferredTranscribingLanguage
 
-Default: `false`
+__DEPRECATED__ Use `transcription.preferredLanguage` instead.
 
-```javascript
-autoCaptionOnRecord: false
-```
+### transcribeWithAppLanguage
 
-### preferredTranscribingLanguage 🚫
-
-type: `Boolean`
-
-Transcriber language. This settings will only work if `transcribeWithAppLanguage` is explicitly set to `false`.
-Available languages can be found [here](https://github.com/jitsi/jitsi-meet/blob/master/react/features/transcribing/transcriber-langs.json).
-
-Default: `'en-US'`
-
-```javascript
-preferredTranscribeLanguage: 'en-CA'
-```
-
-### transcribeWithAppLanguage 🚫
-
-type: `Boolean`
-
-If `true` the transcriber will use the application language.
-The application language is either explicitly set by participants in their settings or automatically
-detected based on the environment, e.g. if the app is opened in a chrome instance which is using french as its
-default language then transcriptions for that participant will be in french.
-
-Default: `true`
-
-```javascript
-transcribeWithAppLanguage: false
-```
+__DEPRECATED__ Use `transcription.useAppLanguage` instead.
 
 ### transcribingEnabled
 
-type: `Boolean`
+__DEPRECATED__ Use `transcription.enabled` instead.
 
-Enable transcription (in interface_config, subtitles and buttons can be configured).
+### transcription
 
-Default: `false`
+type: `Object`
+
+Transcription related options.
+
+Properties:
+
+* `enabled` - Enable transcription (in interface_config, subtitles and buttons can be configured). Default `false`.
+* `translationLanguages` - Translation languages. Available languages can be found in ./src/react/features/transcribing/translation-languages.json.
+* `useAppLanguage` - If `true` the transcriber will use the application language. The application language is either explicitly set by participants in their settings or automatically detected based on the environment, e.g. if the app is opened in a Chrome instance which is using French as its default language then transcriptions for that participant will be in french. Default: `true`.
+* `preferredLanguage` - Transcriber language. This settings will only work if `useAppLanguage` is explicitly set to `false`. Available languages can be found [here](https://github.com/jitsi/jitsi-meet/blob/master/react/features/transcribing/transcriber-langs.json). Default: `'en-US'`.
+* `autoTranscribeOnRecord` - Enables automatic turning on transcribing when recording is started. Default: `true`.
 
 ```javascript
-transcribingEnabled: true
+transcription: {
+    enabled: true,
+    translationLanguages: ['en-US', 'es'],
+    useAppLanguage: false,
+    preferredLanguage: 'en-US',
+    autoTranscribeOnRecord: true
+}
 ```
 
 ## Connection

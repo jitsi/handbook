@@ -1310,21 +1310,6 @@ Disables using screensharing as virtual background.
 disableScreensharingVirtualBackground: false
 ```
 
-### enableLayerSuspension
-
-type: `Boolean`
-
-Enable layer suspension.  If enabled, endpoints whose HD layers are not in use will be suspended
-(no longer sent) until they are requested again. This must be enabled for screen
-sharing to work as expected on Chrome. Disabling this might result in low resolution screenshare being sent
-by the client.
-
-Default: `true`
-
-```javascript
-enableLayerSuspension: false
-```
-
 ### screenshotCapture
 
 type: `Object`

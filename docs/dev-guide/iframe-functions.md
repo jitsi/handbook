@@ -182,6 +182,18 @@ Response example structure:
 }
 ```
 
+### getSessionId
+
+Returns the meting's unique Id (`sessionId`). 
+Please note that the `sessionId` is not available when in prejoin screen and it's not guaranteed to be available immediately after joining - in which cases it will be empty.
+
+```javascript
+api.getSessionId().then(sessionId => {
+    //sessionId: string
+    ...
+});
+```
+
 ### getVideoQuality
 
 Returns the current video quality setting.

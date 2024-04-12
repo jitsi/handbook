@@ -181,7 +181,9 @@ export const Anchor = ({children, name}) => (
   </a>
 );
 
-<Anchor name = { "ice-servers" }></Anchor>You can modify the default ice servers configuration with the **`iceServers`** property (**NOTE: This property is currently experimental and may be removed in the future!**) using the following:
+<Anchor name = { "ice-servers" }></Anchor>
+
+You can modify the default ice servers configuration with the **`iceServers`** property (**NOTE: This property is currently experimental and may be removed in the future!**) using the following:
 
 
 ```javascript

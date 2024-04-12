@@ -172,7 +172,7 @@ var options = {
 var api = new JitsiMeetExternalAPI(domain, options);
 ```
 
-You can modify the default ice servers configuration with the **`iceServers`** property (**NOTE: This property is currently experimental and may be removed in the future!**) using the following:
+<a name="ice-servers"></a>You can modify the default ice servers configuration with the **`iceServers`** property (**NOTE: This property is currently experimental and may be removed in the future!**) using the following:
 ```javascript
 var domain = "meet.jit.si";
 var options = {

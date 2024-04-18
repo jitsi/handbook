@@ -300,6 +300,16 @@ JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
     .setConfigOverride("requireDisplayName", true)
+    .setConfigOverride("customToolbarButtons", [
+        {
+            icon: "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+            id: "btn1",
+            text: "Button one"
+        }, {
+            icon: "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+            id: "btn2",
+            text: "Button two"
+        }])
     .build();
 ```
 

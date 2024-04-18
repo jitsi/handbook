@@ -7,7 +7,7 @@ The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,
 in a customizable way which you can embed in your apps.
 
 :::important
-iOS 12.4 or higher is required.
+iOS 13.4 or higher is required.
 :::
 
 ## Sample applications using the SDK
@@ -29,7 +29,7 @@ do so, add the `JitsiMeetSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
 ```
-platform :ios, '12.4'
+platform :ios, '13.4'
 
 workspace 'JitsiMeetSDKTest.xcworkspace'
 
@@ -149,6 +149,17 @@ Joins the conference specified by the given options.
       builder.videoMuted = NO;
       builder.welcomePageEnabled = NO;
       [builder setConfigOverride:@"requireDisplayName" withBoolean:YES];
+      [builder setConfigOverride:@"customToolbarButtons" withArray:@[
+      @{
+          @"icon": @"https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+          @"id": @"btn1",
+          @"text": @"Button one"
+        }, 
+      @{
+          @"icon": @"https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+          @"id": @"btn2",
+          @"text": @"Button two"
+      }]];
   }];
 
   [jitsiMeetView join:options];

@@ -56,17 +56,21 @@ module.exports = (async () => {
 #### Permissions
 - In `android/app/src/debug/AndroidManifest.xml` and `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, please include
   ```xml
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
-    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+   <uses-permission android:name="android.permission.BLUETOOTH" />
+   <uses-permission android:name="android.permission.CAMERA" />
+   <uses-permission android:name="android.permission.INTERNET" />
+   <uses-permission android:name="android.permission.MANAGE_OWN_CALLS" />
+   <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+   <uses-permission android:name="android.permission.RECORD_AUDIO" />
+   <uses-permission android:name="android.permission.WAKE_LOCK" />
+   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   ```
-
+- For screen share feature: 
+  ```xml
+   <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+   <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
+  ```
 
 #### Services
 - To enables the screen share feature you now need to go to your `MainApplication.java` file and:
@@ -114,7 +118,26 @@ Our JitsiMeeting component renders the full meeting experience. This has some cu
 
 
 ### config
-`Object` - Updates [configuration](https://github.com/jitsi/jitsi-meet/blob/master/config.js).
+`Object` - Overwrite different [config](https://github.com/jitsi/jitsi-meet/blob/master/config.js) options.
+- For example:
+```javascript
+<JitsiMeeting
+    config = {{
+        hideConferenceTimer: true,
+        subject: "React Native SDK",
+        customToolbarButtons: [
+            {
+                icon: "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+                id: "btn1",
+                text: "Button one"
+            }, {
+                icon: "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+                id: "btn2",
+                text: "Button two"
+            }
+        ]
+    }} />
+```
 
 
 ### flags
@@ -122,7 +145,8 @@ Our JitsiMeeting component renders the full meeting experience. This has some cu
 that your meeting experience would like to have. 
 - For example: 
 ```javascript
-<JitsiMeeting flags={{
+<JitsiMeeting 
+    flags={{
     'call-integration.enabled': true, 
     'fullscreen.enabled': false, 
     'invite.enabled': true }} />
@@ -162,17 +186,22 @@ that your meeting experience would like to have.
 - onVideoMutedChanged
   `Function` - Takes a function that gets triggered when ```SET_VIDEO_MUTED``` action is dispatched, more exactly when video mute state is changed.
 
+
 ### room
 `string` - Name of the room where the conference takes place.
+
 
 ### serverURL
 `string` - Server where the conference should take place.
 
+
 ### style
 `Object` - CSS your meeting experience.
 
+
 ### token
 `string` - JWT token used for authentication.
+
 
 ### userInfo
 

@@ -75,6 +75,15 @@ configure it and run Docker Compose as follows:
 docker compose -f docker-compose.yml -f etherpad.yml up
 ```
 
+If you want to enable a virtual collaborative whiteboard via [Excalidraw],
+configure it and run Docker Compose as follows:
+
+```bash
+docker compose -f docker-compose.yml -f whiteboard.yml up
+```
+
+
+
 If you want to use jibri too, first configure a host as described in Jitsi Broadcasting Infrastructure configuration section
 and then run Docker Compose as follows:
 
@@ -629,6 +638,24 @@ Variable | Description | Example
 --- | --- | ---
 `ETHERPAD_URL_BASE` | Set etherpad-lite URL | `http://etherpad.meet.jitsi:9001`
 
+### Virtual collaborative whiteboard using Excalidraw
+
+You can use a virtual collaborative whiteboard via [Excalidraw]. In order to enable set `WHITEBOARD_ENABLED` and run
+Docker Compose with the additional config file `whiteboard.yml`.
+
+Here are the required options:
+
+Variable | Description | Default value
+--- | --- | ---
+`WHITEBOARD_ENABLED` | Enable whiteboard addon | false
+
+
+These options are also available
+
+Variable | Description | Example
+--- | --- | ---
+`WHITEBOARD_COLLAB_SERVER_PUBLIC_URL` | Set whiteboard URL | http://whiteboard.meet.jitsi:3000>
+
 ### Transcription configuration
 
 If you want to enable the Transcribing function, set the config options below and run Docker Compose with the additional config file transcriber.yml.
@@ -979,5 +1006,6 @@ ENABLE_XMPP_WEBSOCKET=0
 [STUN]: https://en.wikipedia.org/wiki/STUN
 [jwt.io]: https://jwt.io/#debugger-io
 [Etherpad]: https://github.com/ether/etherpad-lite
+[Excalidraw]: https://github.com/excalidraw/excalidraw
 [Jibri]: https://github.com/jitsi/jibri
 [latest release]: https://github.com/jitsi/docker-jitsi-meet/releases/latest

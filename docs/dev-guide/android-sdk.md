@@ -464,6 +464,13 @@ Broadcasted when the local participant's video is muted or unmuted. `data` conta
 
 The SDK is ready to be closed / dismissed.
 
+##### CUSTOM_OVERFLOW_MENU_BUTTON_PRESSED
+
+Broadcasted when a custom button in the overflow menu is pressed. `data` contains the following information:
+
+- `id`: the id of the pressed custom button.
+- `text`: the label of the pressed custom button.
+
 ### Broadcasting Actions
 
 The SDK listens for broadcasted actions from the users and reacts accordingly.

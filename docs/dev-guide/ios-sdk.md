@@ -346,6 +346,13 @@ Called when the chat dialog is opened or closed. `data` contains the following i
 
 Called when the SDK is ready to be closed. No meeting is happening at this point.
 
+#### customOverflowMenuButtonPressed
+
+Called when custom buttons are added to the overflow menu. `data` contains the following information:
+
+- `id`: the id of the pressed custom button.
+- `text`: the label of the pressed custom button.
+
 ### Picture-in-Picture
 
 `JitsiMeetView` will automatically adjust its UI when presented in a

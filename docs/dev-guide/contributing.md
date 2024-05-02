@@ -3,25 +3,49 @@ id: dev-guide-contributing
 title: Contributing Guidelines
 ---
 
-# How to contribute
-We would love to have your help. Before you start working however, please read
-and follow this short guide.
+# How to Contribute 🤝
+We greatly appreciate your willingness to contribute. Before you start working however, please take a moment to read and follow this brief guide.
 
-# Reporting Issues and Asking Questions
+# Reporting Issues and Asking Questions 💭
 
 We prefer issues to be discussed first in the [community forum](https://community.jitsi.org/) and when confirmed, then an issue can be opened in the [issue tracker](https://github.com/jitsi/jitsi-meet/issues).
 
-When opening an issue, please provide as much information as possible. Mention the version of Jitsi Meet, Jicofo and JVB you are using, and explain (as detailed as you can) how the problem can be reproduced.
+Feel free to report ***any bugs, ask for new features or anything else*** you need help with. When opening an issue, please provide as much information as possible.
 
-Please ask any general and implementation specific questions on the [community forum](https://community.jitsi.org/) for support.
+For bugs please follow these steps:
 
-# Code contributions
+- **Provide Detailed Information:**
+  Include versions of Jitsi Meet, Jicofo, and JVB.
+
+- **Description of the Issue:**
+  Clearly explain the problem encountered.
+
+- **Reproduction Steps:**
+  Provide step-by-step instructions to recreate the issue.
+
+- **Expected Behavior:**
+  Describe the expected outcome when using the software.
+
+- **Actual Behavior:**
+  Explain what actually happened, including any error messages.
+
+If you have an idea for a new feature or something you'd like to see improved in the Jitsi, here's how you can let us know:
+
+- **Describe the feature:** Specify the desired functionality.
+- **Provide examples:** Share similar features from other apps.
+- **Explain importance:** Justify the feature's relevance.
+- **Considerations:** Assess potential challenges.
+- **Additional details:** Include specific preferences.
+
+# Code Contributions 
 
 Visit the [issue tracker](https://github.com/jitsi/jitsi-meet/issues) to find a list of open issues that need attention.
 
+Discovered a bug or have a feature request and know how to fix it? Excellent! Keep reading 🔍
+
 The [Developer Guide](/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
 
-## Contributor License Agreement
+## Contributor License Agreement ✏️
 While the Jitsi projects are released under the
 [Apache License 2.0](https://github.com/jitsi/jitsi-meet/blob/master/LICENSE), the copyright
 holder and principal creator is [8x8](https://www.8x8.com/). To
@@ -31,19 +55,18 @@ license agreement as either a [corporation](https://jitsi.org/ccla) or an
 [individual](https://jitsi.org/icla). If you cannot accept the terms laid out
 in the agreement, unfortunately, we cannot accept your contribution.
 
-## Creating Pull Requests
-- Fork the repo.
-- Create a new topic branch for your changes based off the master branch with a suitable name.
-- Perform **one** logical change per pull request.
-- Maintain a clean list of commits, squash them if necessary.
-- Rebase your topic branch on top of the master branch before creating the pull
- request. **Never** merge master, always rebase.
-- Commits should have prefix indicating what they do is it feature, a fix or a translation update. This helps with automatted release notes generation. Prefix the commits with `feat(feature name) `, `fix(feature name)`, etc.
+## Creating Pull Requests 🛠️
+- Fork the repository to your GitHub account.
+- Create a new branch for your changes, based on the master branch. Choose a descriptive name for your branch.
+- Make **one** logical change per pull request to keep things organized.
+- Keep your commit history clean and concise. If necessary, squash multiple commits into one.
+- Rebase your branch onto the latest changes in the master branch before submitting the pull request. **Never** merge master, always rebase.
+- Commits should have prefix indicating what they do is it feature, a fix or a translation update. This helps with automated release notes generation. Prefix the commits with `feat(feature name) `, `fix(feature name)`, etc.
 
 ## For 8x8 employees
 - Don't link any internal resources such as Jira issues, this is an Open Source project
 
-## Coding style
+## Coding Style
 
 ### Comments
 
@@ -186,3 +209,7 @@ npx webpack-bundle-analyzer build/app-stats.json
 ### Kotlin
 
 For Kotlin code we use the [standard convention](https://kotlinlang.org/docs/coding-conventions.html) and limit line length to 120 characters. We use `ktlint` to enforce formatting.
+
+### Issue Closing 
+
+You can close issues automatically with keywords in pull requests and commit messages. For more information, see "[Linking a pull request to an issue.](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword#linking-a-pull-request-to-an-issue-using-a-keyword)"

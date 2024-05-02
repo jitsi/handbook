@@ -3,14 +3,18 @@ id: dev-guide-contributing
 title: Contributing Guidelines
 ---
 
-# How to Contribute 🤝
-We greatly appreciate your willingness to contribute. Before you start working however, please take a moment to read and follow this brief guide.
+# 🤝 How to Contribute 
+We greatly appreciate your willingness to contribute ❤️ Before you start working however, please take a moment to read and follow this brief guide.
 
-# Reporting Issues and Asking Questions 💭
+# 📥 Reporting Issues and Asking Questions 
 
-We prefer issues to be discussed first in the [community forum](https://community.jitsi.org/) and when confirmed, then an issue can be opened in the [issue tracker](https://github.com/jitsi/jitsi-meet/issues).
+- We prefer issues to be discussed first in the [community forum](https://community.jitsi.org/) and when confirmed, then an issue can be opened in the [issue tracker](https://github.com/jitsi/jitsi-meet/issues).
 
-Feel free to report ***any bugs, ask for new features or anything else*** you need help with. When opening an issue, please provide as much information as possible.
+- Feel free to report ***any bugs, ask for new features or anything else*** you need help with. When opening an issue, please provide as much information as possible.
+
+- Please ask any general and implementation specific questions on the [community forum](https://community.jitsi.org/) for support.
+
+### 🪲 Bug Reports and Other Issues
 
 For bugs please follow these steps:
 
@@ -29,6 +33,8 @@ For bugs please follow these steps:
 - **Actual Behavior:**
   Explain what actually happened, including any error messages.
 
+### 💟 Feature Requests
+
 If you have an idea for a new feature or something you'd like to see improved in the Jitsi, here's how you can let us know:
 
 - **Describe the feature:** Specify the desired functionality.
@@ -39,13 +45,13 @@ If you have an idea for a new feature or something you'd like to see improved in
 
 # Code Contributions 
 
-Visit the [issue tracker](https://github.com/jitsi/jitsi-meet/issues) to find a list of open issues that need attention.
+- Visit the [issue tracker](https://github.com/jitsi/jitsi-meet/issues) to find a list of open issues that need attention.
 
-Discovered a bug or have a feature request and know how to fix it? Excellent! Keep reading 🔍
+- Discovered a bug or have a feature request and know how to fix it? Excellent! Keep reading 🔍
 
-The [Developer Guide](/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
+- The [Developer Guide](/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
 
-## Contributor License Agreement ✏️
+## ✏️ Contributor License Agreement 
 While the Jitsi projects are released under the
 [Apache License 2.0](https://github.com/jitsi/jitsi-meet/blob/master/LICENSE), the copyright
 holder and principal creator is [8x8](https://www.8x8.com/). To
@@ -55,7 +61,7 @@ license agreement as either a [corporation](https://jitsi.org/ccla) or an
 [individual](https://jitsi.org/icla). If you cannot accept the terms laid out
 in the agreement, unfortunately, we cannot accept your contribution.
 
-## Creating Pull Requests 🛠️
+## 🔁 Creating Pull Requests 
 - Fork the repository to your GitHub account.
 - Create a new branch for your changes, based on the master branch. Choose a descriptive name for your branch.
 - Make **one** logical change per pull request to keep things organized.
@@ -63,10 +69,10 @@ in the agreement, unfortunately, we cannot accept your contribution.
 - Rebase your branch onto the latest changes in the master branch before submitting the pull request. **Never** merge master, always rebase.
 - Commits should have prefix indicating what they do is it feature, a fix or a translation update. This helps with automated release notes generation. Prefix the commits with `feat(feature name) `, `fix(feature name)`, etc.
 
-## For 8x8 employees
+## ❗️For 8x8 employees
 - Don't link any internal resources such as Jira issues, this is an Open Source project
 
-## Coding Style
+## 📝 Coding Style
 
 ### Comments
 
@@ -208,8 +214,17 @@ npx webpack-bundle-analyzer build/app-stats.json
 
 ### Kotlin
 
-For Kotlin code we use the [standard convention](https://kotlinlang.org/docs/coding-conventions.html) and limit line length to 120 characters. We use `ktlint` to enforce formatting.
+- For Kotlin code we use the [standard convention](https://kotlinlang.org/docs/coding-conventions.html) and limit line length to 120 characters. We use `ktlint` to enforce formatting.
 
-### Issue Closing 
+## ✅ Code Reviews
 
-You can close issues automatically with keywords in pull requests and commit messages. For more information, see "[Linking a pull request to an issue.](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword#linking-a-pull-request-to-an-issue-using-a-keyword)"
+- **Submit Your Contribution:** After completing your work, submit your contribution.
+- **Automatic Assignment:** Your pull request will be automatically assigned to appropriate reviewers based on the affected codebase and expertise required for the changes.
+- **Review Process:** Reviewers will carefully examine your code, checking for adherence to coding standards, correctness, performance and potential issues.
+- **Feedback and Iteration:** If any issues or suggestions are identified during the review, you'll receive feedback from the reviewers. Address any comments or concerns raised and make necessary revisions to your code.
+- **Test Your Changes:** Before finalizing your contribution, ensure that any relevant tests are run to verify the correctness and functionality of your changes.
+- **Approval:** Once the code meets the required standards, passes the review, and tests, it will be approved for merging into the main codebase.
+
+## 🎉 Issue Closing 
+
+- You can close issues automatically with keywords in pull requests and commit messages. For more information, see "[Linking a pull request to an issue.](https://docs.github.com/en/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue#linking-a-pull-request-to-an-issue-using-a-keyword#linking-a-pull-request-to-an-issue-using-a-keyword)"

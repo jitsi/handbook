@@ -8,7 +8,7 @@ We greatly appreciate your willingness to contribute ❤️ Before you start wor
 
 # 📥 Reporting Issues and Asking Questions 
 
-- We prefer issues to be discussed first in the [community forum](https://community.jitsi.org/) and when confirmed, then an issue can be opened in the [issue tracker](https://github.com/jitsi/jitsi-meet/issues).
+- We prefer issues to be discussed first in the [community forum](https://community.jitsi.org/) and when confirmed, then an issue can be opened in the issue tracker of the appropriate project on GitHub.
 
 - Feel free to report ***any bugs, ask for new features or anything else*** you need help with. When opening an issue, please provide as much information as possible.
 
@@ -35,7 +35,7 @@ For bugs please follow these steps:
 
 ### 💟 Feature Requests
 
-If you have an idea for a new feature or something you'd like to see improved in the Jitsi, here's how you can let us know:
+If you have an idea for a new feature or something you'd like to see improved in Jitsi, here's how you can let us know:
 
 - **Describe the feature:** Specify the desired functionality.
 - **Provide examples:** Share similar features from other apps.
@@ -219,10 +219,10 @@ npx webpack-bundle-analyzer build/app-stats.json
 ## ✅ Code Reviews
 
 - **Submit Your Contribution:** After completing your work, submit your contribution.
-- **Automatic Assignment:** Your pull request will be automatically assigned to appropriate reviewers based on the affected codebase and expertise required for the changes.
+- **Assign Reviewers:** Appropriate reviewers are assigned based on the affected code base and expertise required for changes.
 - **Review Process:** Reviewers will carefully examine your code, checking for adherence to coding standards, correctness, performance and potential issues.
 - **Feedback and Iteration:** If any issues or suggestions are identified during the review, you'll receive feedback from the reviewers. Address any comments or concerns raised and make necessary revisions to your code.
-- **Test Your Changes:** Before finalizing your contribution, ensure that any relevant tests are run to verify the correctness and functionality of your changes.
+- **Automated tests:** Once the PR is in a good state, a team member will trigger the automated tests. The PR needs to merge cleanly on top of master, and test failures or issues discovered at this stage will need to be addressed before the PR is approved for merging.
 - **Approval:** Once the code meets the required standards, passes the review, and tests, it will be approved for merging into the main codebase.
 
 ## 🎉 Issue Closing 

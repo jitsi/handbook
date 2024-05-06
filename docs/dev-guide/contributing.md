@@ -219,6 +219,7 @@ npx webpack-bundle-analyzer build/app-stats.json
 ## ✅ Code Reviews
 
 - **Submit Your Contribution:** After completing your work, submit your contribution.
+- **Draft PRs for Discussion:** Consider opening a draft PR early to discuss your approach with the team before fully implementing it. Draft PRs facilitate early collaboration, ensuring efficient progress.
 - **Assign Reviewers:** Appropriate reviewers are assigned based on the affected code base and expertise required for changes.
 - **Review Process:** Reviewers will carefully examine your code, checking for adherence to coding standards, correctness, performance and potential issues.
 - **Feedback and Iteration:** If any issues or suggestions are identified during the review, you'll receive feedback from the reviewers. Address any comments or concerns raised and make necessary revisions to your code.

@@ -650,6 +650,18 @@ The listener receives an object with the following structure:
 }
 ```
 
+### conferenceCreatedTimestamp
+
+Provides notification of the start time of the video conference.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    timestamp: timestamp // time the conference started
+}
+```
+
 ### videoAvailabilityChanged
 
 Provides event notifications about video availability status changes.

@@ -66,9 +66,10 @@ module.exports = (async () => {
    <uses-permission android:name="android.permission.WAKE_LOCK" />
    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   ```
-- For screen share feature: 
+- Starting Android 14, specific foreground service types permissions require to be added in the manifest file: 
   ```xml
    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+   <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK" />
    <uses-permission android:name="android.permission.FOREGROUND_SERVICE_MEDIA_PROJECTION" />
   ```
 

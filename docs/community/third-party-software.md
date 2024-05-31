@@ -163,3 +163,13 @@ https://github.com/avstack/jitsi-meet-unity-demo
 Plugin for using lib-jitsi-meet in a Unity environment (Android and iOS).
 
 https://github.com/SariskaIO/Sariska-Media-Unity-Demo
+
+## Generic OIDC and SAML adapter
+
+Add support for OIDC and SAML to Jitsi with JWT and anonymous domain activated.
+Authenticaten for the meeting host, allowing guests to join without requiring authentication.
+
+Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-SAML-adapter
+
+Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-adapter
+

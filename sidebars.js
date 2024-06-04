@@ -128,7 +128,6 @@ module.exports = {
             "devops-guide/devops-guide-quickstart",
             "devops-guide/devops-guide-opensuse",
             "devops-guide/devops-guide-docker",
-            "devops-guide/devops-guide-manual",
           ],
         },
         {

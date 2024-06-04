@@ -292,24 +292,31 @@ a conference.
 Example:
 
 ```java
+ArrayList<Bundle> customToolbarButtons = new ArrayList<Bundle>();
+
+Bundle firstCustomButton = new Bundle();
+Bundle secondCustomButton = new Bundle();
+
+firstCustomButton.putString("text", "Button one");
+firstCustomButton.putString("icon", "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png");
+firstCustomButton.putString("id", "btn1");
+
+secondCustomButton.putString("text", "Button two");
+secondCustomButton.putString("icon", "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png");
+secondCustomButton.putString("id", "btn2");
+
+customToolbarButtons.add(firstCustomButton);
+customToolbarButtons.add(secondCustomButton);
+        
 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setServerURL(new URL("https://meet.jit.si"))
-    .setRoom("test123")
+    .setRoom("MonthlyEndorsementsRebuildConsequently")
     .setAudioMuted(false)
     .setVideoMuted(false)
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
     .setConfigOverride("requireDisplayName", true)
-    .setConfigOverride("customToolbarButtons", [
-        {
-            icon: "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
-            id: "btn1",
-            text: "Button one"
-        }, {
-            icon: "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
-            id: "btn2",
-            text: "Button two"
-        }])
+    .setConfigOverride("customToolbarButtons", customToolbarButtons)
     .build();
 ```
 

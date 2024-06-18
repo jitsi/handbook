@@ -585,3 +585,12 @@ Finally, we are ready to test the implementation. Before doing so, make sure voi
 - Update `SampleHandler.swift` with the code from the sample project. Update `appGroupIdentifier` constant with the App Group name your app and extension are both registered to.
 - Update `JitsiMeetConferenceOptions` to enable screen sharing using the `ios.screensharing.enabled` feature flag.
 - Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.plist`, in order to work when the app is in the background.
+
+## Debugging
+
+ - If you choose Console app for debugging, please be sure that you select:
+Action(tab) -> Include Info Messages
+Action(tab) -> Include Debug Messages
+
+ - In the Search filter please type JitsiMeetSDK, press Return key and replace Any with Category.
+This will show you all the real time logs related to our SDK.

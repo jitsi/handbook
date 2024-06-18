@@ -588,9 +588,9 @@ Finally, we are ready to test the implementation. Before doing so, make sure voi
 
 ## Debugging
 
- - If you choose Console app for debugging, please be sure that you select:
-Action(tab) -> Include Info Messages
-Action(tab) -> Include Debug Messages
+ - If you choose `Console` app for debugging, please be sure that you select:
+`Action`(tab) -> `Include Info Messages`
+`Action`(tab) -> `Include Debug Messages`
 
- - In the Search filter please type JitsiMeetSDK, press Return key and replace Any with Category.
+ - In the Search filter please type `JitsiMeetSDK`, press Return key and replace `ANY` with `Category`.
 This will show you all the real time logs related to our SDK.

@@ -143,3 +143,7 @@ Note: the relationship between storage = "" and your prosody version, and you ne
 4. You need to use the command `prosodyctl restart` to see the effect.
 
 5. If you want to update to use prosody, you can check [here](https://community.jitsi.org/t/how-to-how-do-i-update-prosody/72205).
+
+## Other participants complain my screen sharing is very bright and appears washed out?
+You might have HDR streaming enabled in your OS display or graphic card settings.  If you are on Windows, you can quickly toggle HDR on/off using `Win + Alt + B` for all your HDR-capable screens at any time, even while screen sharing.
+

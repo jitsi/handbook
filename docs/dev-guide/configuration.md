@@ -767,6 +767,78 @@ Default: `10000`
 pcStatsInterval: 50000
 ```
 
+### peopleSearchQueryTypes
+
+type: `Array`
+
+The entity types which are queriable when inviting people in a room. Valid values are "phone", "room", "sip", "user", "videosipgw" and "email". Authentication for Jitsi entity types is done by passing a jwt, authentication for external entity types (e. g. email) is done by passing an alternative token (e. g. peopleSearchTokenLocation).
+
+Default: `[]`
+
+```javascript
+peopleSearchQueryTypes: ["user", "email"]
+```
+
+### peopleSearchUrl
+
+type: `String`
+
+Directory endpoint which is called for invite dialog autocomplete. Expected response format is an array of objects. Each object should be formatted as follows:
+
+```javascript
+{
+    id: int,
+    type: string, # the entity type (phone, room, user, email etc.),
+    name: string, # the entity display name
+    avatar?: string, # full URL to the entity picture, not mandatory
+    number?: string, # required for phone numbers
+}
+```
+
+Default: `""`
+
+```javascript
+peopleSearchUrl: "https://myservice.com/api/people"
+```
+
+### inviteServiceUrl
+
+type: `String`
+
+Endpoint which is called to send invitation requests. The request is made in POST and contains as a POST body an array of objects formatted the same as the peopleSearchUrl response body.
+
+Default: `""`
+
+```javascript
+inviteServiceUrl: "https://myservice.com/api/invite"
+```
+
+### peopleSearchTokenLocation
+
+type: `String`
+
+For external entities (e. g. email), the localStorage key holding the token value for directory and invite endpoints authentication.
+
+
+Default: `""`
+
+```javascript
+peopleSearchTokenLocation: "mytoken"
+```
+
+### peopleSearchTokenKey
+
+type: `String`
+
+For external entities (e. g. email), the query param name which will hold the token value. For example, if peopleSearchTokenLocation is "mytoken" and peopleSearchTokenKey is "token", then the following will be passed in the requests to the directory and invite endpoints : `?token={localStorage.getItem("mytoken")}`
+
+
+Default: `""`
+
+```javascript
+peopleSearchTokenKey: "token"
+```
+
 ### useTurnUdp
 
 type: `Boolean`

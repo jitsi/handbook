@@ -689,8 +689,8 @@ Variable | Description | Default value
 `PROSODY_RESERVATION_ENABLED` | Enable Prosody's reservation REST API | false
 `PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API |
 `PROSODY_AUTH_TYPE` | Select authentication type for Prosody (internal, jwt or ldap) | `AUTH_TYPE`
-`PROSODY_ENABLE_METRICS` | Enables the collection of metrics in Prosody | false
-`PROSODY_METRICS_ALLOWED_CIDR` | CIDR block permitted to access metrics from the internal Docker network | 172.16.0.0/12
+`PROSODY_ENABLE_METRICS` | Enables the http_openmetrics module which exposes Prometheus metrics at `/metrics` | false
+`PROSODY_METRICS_ALLOWED_CIDR` | CIDR block permitted to access metrics | 172.16.0.0/12
 
 #### Advanced Jicofo options
 

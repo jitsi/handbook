@@ -311,10 +311,10 @@ api.startRecording(options);
 
 ### stopRecording
 
-Stops an ongoing file recording or streaming session. See the `stopRecording` command for more details.
+Stops an ongoing file recording, streaming session or transcription. See the `stopRecording` command for more details.
 
 ```javascript
-api.stopRecording(mode);
+api.stopRecording(mode, transcription);
 ```
 
 ### getNumberOfParticipants

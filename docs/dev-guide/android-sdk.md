@@ -292,14 +292,31 @@ a conference.
 Example:
 
 ```java
+ArrayList<Bundle> customToolbarButtons = new ArrayList<Bundle>();
+
+Bundle firstCustomButton = new Bundle();
+Bundle secondCustomButton = new Bundle();
+
+firstCustomButton.putString("text", "Button one");
+firstCustomButton.putString("icon", "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png");
+firstCustomButton.putString("id", "btn1");
+
+secondCustomButton.putString("text", "Button two");
+secondCustomButton.putString("icon", "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png");
+secondCustomButton.putString("id", "btn2");
+
+customToolbarButtons.add(firstCustomButton);
+customToolbarButtons.add(secondCustomButton);
+        
 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setServerURL(new URL("https://meet.jit.si"))
-    .setRoom("test123")
+    .setRoom("MonthlyEndorsementsRebuildConsequently")
     .setAudioMuted(false)
     .setVideoMuted(false)
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
     .setConfigOverride("requireDisplayName", true)
+    .setConfigOverride("customToolbarButtons", customToolbarButtons)
     .build();
 ```
 
@@ -453,6 +470,13 @@ Broadcasted when the local participant's video is muted or unmuted. `data` conta
 ##### READY_TO_CLOSE
 
 The SDK is ready to be closed / dismissed.
+
+##### CUSTOM_OVERFLOW_MENU_BUTTON_PRESSED
+
+Broadcasted when a custom button in the overflow menu is pressed. `data` contains the following information:
+
+- `id`: the id of the pressed custom button.
+- `text`: the label of the pressed custom button.
 
 ### Broadcasting Actions
 

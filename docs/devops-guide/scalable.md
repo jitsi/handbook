@@ -19,8 +19,7 @@ Building a scalable infrastructure is not a task for beginning Jitsi Administrat
 The instructions assume that you have installed a single node version successfully, and that
 you are comfortable installing, configuring and debugging Linux software.
 This is not a step-by-step guide, but will show you, which packages to install and which
-configurations to change. Use the [manual install](devops-guide-manual) for
-details on how to setup Jitsi on a single host.
+configurations to change.
 It is highly recommended to use configuration management tools like Ansible or Puppet to manage the
 installation and configuration.
 :::
@@ -125,10 +124,6 @@ Open to the videobridges only
 #### NGINX
 
 Create the `/etc/nginx/sites-available/meet.example.com.conf` as usual
-
-#### Prosody
-
-Follow the steps in the [manual install](devops-guide-manual) for setup tasks
 
 #### Jitsi-Meet
 

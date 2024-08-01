@@ -7,7 +7,7 @@ The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,
 in a customizable way which you can embed in your apps.
 
 :::important
-iOS 12.4 or higher is required.
+iOS 13.4 or higher is required.
 :::
 
 ## Sample applications using the SDK
@@ -29,7 +29,7 @@ do so, add the `JitsiMeetSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
 ```
-platform :ios, '12.4'
+platform :ios, '13.4'
 
 workspace 'JitsiMeetSDKTest.xcworkspace'
 
@@ -149,6 +149,17 @@ Joins the conference specified by the given options.
       builder.videoMuted = NO;
       builder.welcomePageEnabled = NO;
       [builder setConfigOverride:@"requireDisplayName" withBoolean:YES];
+      [builder setConfigOverride:@"customToolbarButtons" withArray:@[
+      @{
+          @"icon": @"https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+          @"id": @"btn1",
+          @"text": @"Button one"
+        }, 
+      @{
+          @"icon": @"https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
+          @"id": @"btn2",
+          @"text": @"Button two"
+      }]];
   }];
 
   [jitsiMeetView join:options];
@@ -334,6 +345,13 @@ Called when the chat dialog is opened or closed. `data` contains the following i
 #### readyToClose
 
 Called when the SDK is ready to be closed. No meeting is happening at this point.
+
+#### customOverflowMenuButtonPressed
+
+Called when custom buttons are added to the overflow menu. `data` contains the following information:
+
+- `id`: the id of the pressed custom button.
+- `text`: the label of the pressed custom button.
 
 ### Picture-in-Picture
 
@@ -567,3 +585,12 @@ Finally, we are ready to test the implementation. Before doing so, make sure voi
 - Update `SampleHandler.swift` with the code from the sample project. Update `appGroupIdentifier` constant with the App Group name your app and extension are both registered to.
 - Update `JitsiMeetConferenceOptions` to enable screen sharing using the `ios.screensharing.enabled` feature flag.
 - Make sure `voip` is added to `UIBackgroundModes`, in the app's `Info.plist`, in order to work when the app is in the background.
+
+## Debugging
+
+ - If you choose `Console` app for debugging, please be sure that you select:
+`Action`(tab) -> `Include Info Messages`
+`Action`(tab) -> `Include Debug Messages`
+
+ - In the Search filter please type `JitsiMeetSDK`, press Return key and replace `ANY` with `Category`.
+This will show you all the real time logs related to our SDK.

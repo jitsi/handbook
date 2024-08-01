@@ -309,7 +309,7 @@ api.executeCommand('muteEveryone', 'video');
 
 ### startRecording
 
-Starts a local recording, file recording or streaming session using passed parameters:
+Starts a local recording, file recording, streaming session or transcription using passed parameters:
 
   - **RTMP streaming** - Recording mode set to **`stream`** with an **`rtmpStreamKey`**. The **`rtmpBroadcastID`** value is optional.
 
@@ -325,6 +325,8 @@ Starts a local recording, file recording or streaming session using passed param
 
   Optionally, **`shouldShare`** should be passed on. No other params are required.
 
+  - **Transcription** - Set the `transcription` option to `true`.
+
 ```javascript
 api.executeCommand('startRecording', {
     mode: string, //recording mode, either `local`, `file` or `stream`.
@@ -334,20 +336,22 @@ api.executeCommand('startRecording', {
     rtmpStreamKey: string, //the RTMP stream key.
     rtmpBroadcastID: string, //the RTMP broadcast ID.
     youtubeStreamKey: string, //the youtube stream key.
-    youtubeBroadcastID: string //the youtube broacast ID.
-    extraMetada: Object // any extra metada for file recording.
+    youtubeBroadcastID: string, //the youtube broacast ID.
+    extraMetada: Object, // any extra metada for file recording.
+    transcription: boolean, // Whether a transcription should be started. 
 });
 ```
 
 ### stopRecording
 
-Stops an ongoing  **`local`**, **`stream`** or **`file`** recording.
+Stops an ongoing  **`local`**, **`stream`**, **`file`** recording or transcription.
 
 The mode in which the recording was started must be specified.
 
 ```javascript
 api.executeCommand('stopRecording',
-    mode: string //recording mode to stop, `local`, `stream` or `file`
+    mode: string, //recording mode to stop, `local`, `stream` or `file`
+    transcription: boolean // whether the transcription should be stopped
 );
 ```
 

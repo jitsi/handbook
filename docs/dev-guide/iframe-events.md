@@ -650,6 +650,18 @@ The listener receives an object with the following structure:
 }
 ```
 
+### conferenceCreatedTimestamp
+
+Provides notification of the start time of the video conference.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    timestamp: timestamp // time the conference started
+}
+```
+
 ### videoAvailabilityChanged
 
 Provides event notifications about video availability status changes.
@@ -714,6 +726,7 @@ The listener receives an object with the following structure:
     on: boolean // new recording status - boolean,
     mode: string // recording mode, `local`, `stream` or `file`,
     error: string | undefined // error type if recording fails, undefined otherwise
+    transcription: boolean // whether a transcription is active or not
 }
 ```
 

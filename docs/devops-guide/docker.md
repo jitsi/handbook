@@ -188,7 +188,7 @@ sudo firewall-cmd --permanent --add-port=10000/udp
 sudo firewall-cmd --reload
 ```
 
-See [the corresponding section in the manual setup guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart#setup-and-configure-your-firewall).
+See [the corresponding section in the debian/ubuntu setup guide](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-quickstart#setup-and-configure-your-firewall).
 
 ### Images
 
@@ -689,6 +689,8 @@ Variable | Description | Default value
 `PROSODY_RESERVATION_ENABLED` | Enable Prosody's reservation REST API | false
 `PROSODY_RESERVATION_REST_BASE_URL` | Base URL of Prosody's reservation REST API |
 `PROSODY_AUTH_TYPE` | Select authentication type for Prosody (internal, jwt or ldap) | `AUTH_TYPE`
+`PROSODY_ENABLE_METRICS` | Enables the http_openmetrics module which exposes Prometheus metrics at `/metrics` | false
+`PROSODY_METRICS_ALLOWED_CIDR` | CIDR block permitted to access metrics | 172.16.0.0/12
 
 #### Advanced Jicofo options
 

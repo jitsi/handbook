@@ -817,26 +817,13 @@ inviteServiceUrl: "https://myservice.com/api/invite"
 
 type: `String`
 
-For external entities (e. g. email), the localStorage key holding the token value for directory and invite endpoints authentication.
+Useful for authentication against directories holding entities which don't exist in Prosody (e. g. email). This indicates the localStorage key where the alternate authentication token value is to be found. This alternate token will be used if the JWT value is not set. It will be sent in the Authorization: Bearer header, as the JWT would have been.
 
 
 Default: `""`
 
 ```javascript
-peopleSearchTokenLocation: "mytoken"
-```
-
-### peopleSearchTokenKey
-
-type: `String`
-
-For external entities (e. g. email), the query param name which will hold the token value. For example, if peopleSearchTokenLocation is "mytoken" and peopleSearchTokenKey is "token", then the following will be passed in the requests to the directory and invite endpoints : `?token={localStorage.getItem("mytoken")}`
-
-
-Default: `""`
-
-```javascript
-peopleSearchTokenKey: "token"
+peopleSearchTokenLocation: "service_token"
 ```
 
 ### useTurnUdp

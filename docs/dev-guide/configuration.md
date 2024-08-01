@@ -767,6 +767,65 @@ Default: `10000`
 pcStatsInterval: 50000
 ```
 
+### peopleSearchQueryTypes
+
+type: `Array`
+
+The entity types which are queriable when inviting people in a room. Valid values are "phone", "room", "sip", "user", "videosipgw" and "email". Authentication for Jitsi entity types is done by passing a jwt, authentication for external entity types (e. g. email) is done by passing an alternative token (e. g. peopleSearchTokenLocation).
+
+Default: `[]`
+
+```javascript
+peopleSearchQueryTypes: ["user", "email"]
+```
+
+### peopleSearchUrl
+
+type: `String`
+
+Directory endpoint which is called for invite dialog autocomplete. Expected response format is an array of objects. Each object should be formatted as follows:
+
+```javascript
+{
+    id: int,
+    type: string, # the entity type (phone, room, user, email etc.),
+    name: string, # the entity display name
+    avatar?: string, # full URL to the entity picture, not mandatory
+    number?: string, # required for phone numbers
+}
+```
+
+Default: `""`
+
+```javascript
+peopleSearchUrl: "https://myservice.com/api/people"
+```
+
+### inviteServiceUrl
+
+type: `String`
+
+Endpoint which is called to send invitation requests. The request is made in POST and contains as a POST body an array of objects formatted the same as the peopleSearchUrl response body.
+
+Default: `""`
+
+```javascript
+inviteServiceUrl: "https://myservice.com/api/invite"
+```
+
+### peopleSearchTokenLocation
+
+type: `String`
+
+Useful for authentication against directories holding entities which don't exist in Prosody (e. g. email). This indicates the localStorage key where the alternate authentication token value is to be found. This alternate token will be used if the JWT value is not set. It will be sent in the Authorization: Bearer header, as the JWT would have been.
+
+
+Default: `""`
+
+```javascript
+peopleSearchTokenLocation: "service_token"
+```
+
 ### useTurnUdp
 
 type: `Boolean`

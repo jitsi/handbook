@@ -42,11 +42,6 @@ end
 
 Replace `JitsiMeetSDKTest` with your project and target names.
 
-Bitcode is not provided in the prebuilt SDK, so turn it off for your project.
-
-The SDK uses Swift code, so make sure you select `Always Embed Swift Standard Libraries`
-in your project.
-
 Since the SDK requests camera and microphone access, make sure to include the
 required entries for `NSCameraUsageDescription` and `NSMicrophoneUsageDescription`
 in your `Info.plist` file.

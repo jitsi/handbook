@@ -19,7 +19,11 @@ This guide is about building the Jitsi Meet apps themselves. If you want to inte
 Jitsi Meet can be built as a standalone app for Android or iOS. It uses the
 [React Native] framework.
 
-First make sure the [React Native dependencies] (React Native CLI Quickstart) are installed.
+First make sure the following dependencies are installed:
+
+* `watchman`
+* `nodejs`
+* `npm`
 
 :::warning Node version
 Node 20.x and npm 10.x are required. Any other version may result in runtime errors.
@@ -68,13 +72,9 @@ Xcode 15 or higher is required.
 
 ## Android
 
-The [React Native dependencies] page has very detailed information on how to
-setup [Android Studio] and the required components for getting the necessary
-build environment. Make sure you follow it closely.
+Make sure [Android Studio] is installed.
 
 Set the JDK in Android Studio to at least Java 11: https://developer.android.com/studio/intro/studio-config#jdk
-
-The recommended way for building Jitsi Meet is building the app with Android Studio.
 
 ### Adding extra dependencies
 
@@ -110,7 +110,7 @@ preferred method for debugging.
 When using Chrome Developer Tools for debugging the JavaScript source
 code is being interpreted by Chrome's V8 engine, instead of JSCore which React
 Native uses. It's important to keep this in mind due to potential differences in
-supported JavaScript features.
+supported JavaScript features. Also note Jitsi Meet does not support Flipper.
 :::
 
 ## Enabling extra features
@@ -121,4 +121,3 @@ supported JavaScript features.
 [Android Studio]: https://developer.android.com/studio/index.html
 [debugging]: https://facebook.github.io/react-native/docs/debugging/
 [React Native]: https://facebook.github.io/react-native/
-[React Native dependencies]: https://reactnative.dev/docs/environment-setup

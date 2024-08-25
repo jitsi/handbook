@@ -127,11 +127,20 @@ module.exports = {
             "devops-guide/devops-guide-requirements",
             "devops-guide/devops-guide-quickstart",
             "devops-guide/devops-guide-opensuse",
-            "devops-guide/devops-guide-docker",
             {
-              type: "doc",
-              id: "devops-guide/devops-guide-log-analyser",
-              label: "Log Analyser",
+              type: "category",
+              label: "Docker",
+              link: {
+                type: "doc",
+                id: "devops-guide/devops-guide-docker",
+              },
+              items: [
+                {
+                  type: "doc",
+                  id: "devops-guide/devops-guide-log-analyser",
+                  label: "Log Analyser",
+                },
+              ],
             },
           ],
         },

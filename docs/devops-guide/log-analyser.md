@@ -176,16 +176,31 @@ By following these steps, you can not only customize your own monitoring setup b
 If you encounter issues while setting up or using the Jitsi Meet Log Analyser, here are some common problems and their solutions:
 
 1. **Grafana Not Starting:**
-   - Check if the Docker container is running correctly with `docker ps`. If not, inspect the logs with `docker logs <container_name>`.
+    - Check if the Grafana container is running with `docker ps` and inspect logs using `docker logs grafana` for any errors.
 
 2. **No Logs in Grafana Dashboards:**
-   - Ensure that Jitsi Meet components are generating logs. Also, verify that Loki is correctly receiving and indexing the logs.
+   - Ensure that Jitsi Meet components are generating logs. Clear browser cache, reload Grafana. Ensure OpenTelemetry, Loki, and Grafana containers are all running with `docker ps`, and inspect each container's logs for issues using `docker logs <container_name>`.
 
-3. **Slow Queries:**
-   - If LogQL queries are slow, try optimizing the query or increasing the resources allocated to Loki in your Docker setup.
+3. **OpenTelemetry Collector Not Forwarding Logs:**
+   - Check OpenTelemetry's logs with `docker logs otel`, ensure it's connected to the correct endpoints, and verify the log format is correct.
 
-4. **Permission Issues:**
+4. **Authentication Failures in Grafana:**
+    - Restart Grafana with `docker restart grafana otel`. If still unsuccessful, delete the data volume with `docker-compose down -v` and restart to reset to default credentials (admin/admin).
+ 
+5. **Slow Queries:**
+   - If LogQL queries are slow, try optimizing the query in Grafana.
+
+6. **Permission Issues:**
    - If you encounter permission issues, make sure that Docker has the necessary access rights to the directories where logs are stored.
+
+7. **Docker Network Issues:**
+    - Verify Docker network connections, IP range, and restart the network if necessary.
+
+8. **OpenTelemetry Collector Not Forwarding Logs:**
+    - Check OpenTelemetry logs, verify configuration, and ensure log format compatibility.
+
+9. **Docker Containers Failing to Start:**
+    - Use `docker-compose logs` to view detailed startup errors, and check for common issues like incorrect configurations.
 
 ## Acknowledgements
 

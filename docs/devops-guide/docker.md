@@ -87,6 +87,13 @@ or to use jigasi too:
 docker compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
+For the log analysis project, you will need both log-analyser.yml and grafana.yml files. This project allows you to analyze docker logs in grafana. If you want to run the log analyzer, run the Docker files as follows:
+
+```bash
+docker-compose -f docker-compose.yml -f log-analyser.yml -f grafana.yml up -d
+```
+Follow [this](http://localhost:3000/handbook/docs/devops-guide/devops-guide-log-analyser) document for detailed information on log analysis.
+
 ### Updating
 
 If you want to update, simply run 

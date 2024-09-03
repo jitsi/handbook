@@ -92,7 +92,7 @@ For the log analysis project, you will need both log-analyser.yml and grafana.ym
 ```bash
 docker-compose -f docker-compose.yml -f log-analyser.yml -f grafana.yml up -d
 ```
-Follow [this](http://localhost:3000/handbook/docs/devops-guide/devops-guide-log-analyser) document for detailed information on log analysis.
+Follow [this](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-log-analyser) document for detailed information on log analysis.
 
 ### Updating
 

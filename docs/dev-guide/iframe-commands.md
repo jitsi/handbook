@@ -431,6 +431,7 @@ Allows moderators to toggle the follow me functionality
 ```javascript
 api.executeCommand('setFollowMe',
     value: boolean, // set to true if participants should be following you, false otherwise
+    recorderOnly: boolean // Whether the recorder will be the only one following you. The default is false.
 );
 ```
 

@@ -64,7 +64,7 @@ stream {
 Make sure you edit the file and replace `jitsi-meet.example.com` with your domain of deployment, `turn-jitsi-meet.example.com` with the DNS name you will use for the TURN server and `__your_public_ip__` with your public IP of the deployment.
 If you have more virtual hosts make sure you add them here and do the port change for them (the next step).
 
-- Then go to `/etc/nginx/site-available/your-conf` and change your virtual host to listen on port 4444 instead of 443.
+- Then go to `/etc/nginx/sites-available/your-conf` and change your virtual host to listen on port 4444 instead of 443.
 ```
 server {
     listen 4444 ssl;

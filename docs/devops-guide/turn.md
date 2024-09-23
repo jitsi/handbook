@@ -10,9 +10,11 @@ This document describes how to enable TURN server support in one-to-one calls in
 
 One way to configure TURN support in meet is with a static configuration. You can simply fill out the `p2p.stunServers` option with appropriate values, e.g.:
 
+```
     [
         { urls: 'turn:turn.example.com1', username: 'user', credential: 'pass' },
     ]
+```
 
 :::caution
 This technique doesn't require any special configuration on the XMPP server, but it exposes the credentials to your TURN server and other people can use your bandwidth freely, so while it's simple to implement, it's not recommended.

@@ -575,7 +575,7 @@ For more information see the documentation of the "Prosody Auth Matrix User Veri
 
 Variable | Description | Example
 --- | --- | ---
-`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000>
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | `https://uvs.example.com:3000`
 `MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. | issuer (default)
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | changeme
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
@@ -591,7 +591,7 @@ For more information see the documentation of the "Hybrid Matrix Token"
 
 Variable | Description | Example
 --- | --- | ---
-`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | https://uvs.example.com:3000>
+`MATRIX_UVS_URL` | Base URL to the matrix user verification service (without ending slash) | `https://uvs.example.com:3000`
 `MATRIX_UVS_ISSUER` | (optional) The issuer of the auth token to be passed through. Must match what is being set as `iss` in the JWT. It allows all issuers (`*`) by default. | my_issuer
 `MATRIX_UVS_AUTH_TOKEN` | (optional) user verification service auth token, if authentication enabled | my_matrix_secret
 `MATRIX_UVS_SYNC_POWER_LEVELS` | (optional) Make Matrix room moderators owners of the Prosody room. | 1
@@ -615,7 +615,7 @@ Here are the required options:
 
 Variable | Description | Example
 --- | --- | ---
-`ETHERPAD_URL_BASE` | Set etherpad-lite URL | http://etherpad.meet.jitsi:9001>
+`ETHERPAD_URL_BASE` | Set etherpad-lite URL | `http://etherpad.meet.jitsi:9001`
 
 ### Transcription configuration
 
@@ -640,9 +640,9 @@ For setting the Google Cloud Credentials please read https://cloud.google.com/te
 
 Variable | Description | Default value
 --- | --- | ---
-`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
-`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
-`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | https://public:private@host:port/1>
+`JVB_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | `https://public:private@host:port/1`
+`JICOFO_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | `https://public:private@host:port/1`
+`JIGASI_SENTRY_DSN` | Sentry Data Source Name (Endpoint for Sentry project) | `https://public:private@host:port/1`
 `SENTRY_ENVIRONMENT` | Optional environment info to filter events | production
 `SENTRY_RELEASE` | Optional release info to filter events | 1.0.0
 
@@ -668,7 +668,7 @@ Variable | Description | Default value
 `XMPP_DOMAIN` | Internal XMPP domain | meet.jitsi
 `XMPP_AUTH_DOMAIN` | Internal XMPP domain for authenticated services | auth.meet.jitsi
 `XMPP_SERVER` | Internal XMPP server name xmpp.meet.jitsi | xmpp.meet.jitsi
-`XMPP_BOSH_URL_BASE` | Internal XMPP server URL for BOSH module | http://xmpp.meet.jitsi:5280>
+`XMPP_BOSH_URL_BASE` | Internal XMPP server URL for BOSH module | `http://xmpp.meet.jitsi:5280`
 `XMPP_MUC_DOMAIN` | XMPP domain for the MUC | muc.meet.jitsi
 `XMPP_INTERNAL_MUC_DOMAIN` | XMPP domain for the internal MUC | internal-muc.meet.jitsi
 `XMPP_GUEST_DOMAIN` | XMPP domain for unauthenticated users | guest.meet.jitsi

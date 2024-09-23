@@ -88,7 +88,9 @@ If you want to use a SDK that is built from source, you will likely benefit from
 
 In source code form, the Android SDK dependencies are locked/pinned by `package.json` and `package-lock.json` of the Jitsi Meet project. To obtain the data, execute NPM in the jitsi-meet project directory:
 
+```shell
     npm install
+```
 
 This will pull in the dependencies in either binary format, or in source code format, somewhere under /node_modules/
 
@@ -96,13 +98,16 @@ Third-party React Native _modules_, which Jitsi Meet SDK for Android depends on,
 or binary form. These need to be assembled into Maven artifacts, and then published to your local Maven repository.
 A script is provided to facilitate this. From the root of the jitsi-meet project repository, run:
 
+```shell
     ./android/scripts/release-sdk.sh /tmp/repo
+```
 
 This will build and publish the SDK, and all of its dependencies to the specified Maven repository (`/tmp/repo`) in
 this example.
 
 You're now ready to use the artifacts. In _your_ project, add the Maven repository that you used above (`/tmp/repo`) into your top-level `build.gradle` file:
 
+```gradle
     allprojects {
         repositories {
             maven { url "file:/tmp/repo" }
@@ -111,12 +116,15 @@ You're now ready to use the artifacts. In _your_ project, add the Maven reposito
             maven { url 'https://www.jitpack.io' }
         }
     }
+```
 
 You can use your local repository to replace the Jitsi repository (`maven { url "https://github.com/jitsi/jitsi-maven-repository/raw/master/releases" }`) when you published _all_ subprojects. If you didn't do that, you'll have to add both repositories. Make sure your local repository is listed first!
 
 Then, define the dependency `org.jitsi.react:jitsi-meet-sdk` into the `build.gradle` file of your module:
 
+```java
     implementation ('org.jitsi.react:jitsi-meet-sdk:+') { transitive = true }
+```
 
 Note that there should not be a need to explicitly add the other dependencies, as they will be pulled in as transitive
 dependencies of `jitsi-meet-sdk`.
@@ -131,7 +139,7 @@ experience and makes it reusable by third-party apps.
 First, add Java 1.8 compatibility support to your project by adding the
 following lines into your `build.gradle` file:
 
-```
+```gradle
 compileOptions {
     sourceCompatibility JavaVersion.VERSION_1_8
     targetCompatibility JavaVersion.VERSION_1_8
@@ -552,7 +560,8 @@ To set up the Dropbox integration, follow these steps:
 
 1. Add the following to the app's AndroidManifest.xml and change `<APP_KEY>` to
 your Dropbox app key:
-```
+
+```xml
 <activity
     android:configChanges="keyboard|orientation"
     android:launchMode="singleTask"
@@ -568,6 +577,7 @@ your Dropbox app key:
 
 2. Add the following to the app's strings.xml and change `<APP_KEY>` to your
 Dropbox app key:
-```
+
+```xml
 <string name="dropbox_app_key"><APP_KEY></string>
 ```

@@ -57,10 +57,10 @@ jitsiMeet.join(options);
 
 ### iOS
 
-Make sure in `Podfile` from the `ios` directory you set the ios version `12.4 or higher` 
+Make sure in `Podfile` from the `ios` directory you set the ios version `15.1 or higher` 
 
 ```
-platform :ios, '12.4'
+platform :ios, '15.1'
 ```
 
 The plugin requests camera and microphone access, make sure to include the required entries for `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` in your `Info.plist` file from the `ios/Runner` directory.

@@ -7,7 +7,7 @@ The Jitsi Meet iOS SDK provides the same user experience as the Jitsi Meet app,
 in a customizable way which you can embed in your apps.
 
 :::important
-iOS 13.4 or higher is required.
+iOS 15.1 or higher is required.
 :::
 
 ## Sample applications using the SDK
@@ -29,7 +29,7 @@ do so, add the `JitsiMeetSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
 ```ruby
-platform :ios, '13.4'
+platform :ios, '15.1'
 
 workspace 'JitsiMeetSDKTest.xcworkspace'
 

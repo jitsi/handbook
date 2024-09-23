@@ -1,6 +1,3 @@
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
-
 module.exports = {
   title: "Jitsi Meet",
   tagline: "State-of-the-art video conferencing you can self-host.",
@@ -51,7 +48,10 @@ module.exports = {
   ],
   themeConfig: {
     prism: {
-      additionalLanguages: ["java", "markdown", "shell", "bash", "gradle", "lua"],
+      additionalLanguages: ["java", "markdown", "bash", "gradle", "lua", "dart"],
+      lang: {
+        "shell": "bash"
+      },
     },
     algolia: {
       appId: 'K2ODL876OV',
@@ -159,10 +159,6 @@ module.exports = {
         href: "https://8x8.com",
       },
       copyright: `Copyright © 8x8, Inc.`,
-    },
-    prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
     },
   },
 };

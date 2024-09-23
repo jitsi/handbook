@@ -28,7 +28,7 @@ The recommended way for using the SDK is by using CocoaPods. In order to
 do so, add the `JitsiMeetSDK` dependency to your existing `Podfile` or create
 a new one following this example:
 
-```
+```ruby
 platform :ios, '13.4'
 
 workspace 'JitsiMeetSDKTest.xcworkspace'
@@ -415,7 +415,8 @@ We will update `SampleHandler.swift` to initiate the socket connection with RN W
 Even though an app extension bundle is nested within its containing app’s bundle, the running app extension and containing app have no direct access to each other’s containers. We will address this by enabling data sharing. To enable data sharing, use Xcode or the Developer portal to enable app groups for the containing app and its contained app extensions. Next, register the app group in the portal and specify the app group to use in the containing app. To learn about working with app groups, see [Adding an App to an App Group](https://developer.apple.com/library/archive/documentation/Miscellaneous/Reference/EntitlementKeyReference/Chapters/EnablingAppSandbox.html#//apple_ref/doc/uid/TP40011195-CH4-SW19).
 
 Now, add a `private var socketFilePath: String` to your `SampleHandler` class and set it up with a shared file named `rtc_SSFD`, using the newly registered app group, like this:
-```
+
+```swift
 private enum Constants {
     static let appGroupIdentifier = "my.custom.app.group"
 }
@@ -428,7 +429,8 @@ private var socketFilePath: String {
 ```
 
 Next, we will configure the `SocketConnection` to use the shared file. Add a `private var clientConnection: SocketConnection?` to the `SampleHandler` class and override `init` to set it up, like this:
-```
+
+```swift
 override init() {
     super.init()
     if let connection = SocketConnection(filePath: socketFilePath) {
@@ -444,7 +446,8 @@ In order for this to work, the RN WebRTC end needs to know about the app group i
 For starting screen sharing JitsiMeet SDK provides the UI to present the `RPSystemBroadcastPickerView` to the user. By default, the picker will display a list of all the available broadcast providers. In order to limit the picker to our particular broadcast provider, we have to set `preferredExtension` to the bundle identifier of the broadcast extension. We are doing this by adding a new key named `RTCScreenSharingExtension` to the app's Info.plist and setting the broadcast extension bundle identifier as the value.
 
 Once screen recording has started ReplayKit invokes the methods to handle video buffers, as well as the methods to handle starting and stopping the broadcast, from the `SampleHandler` class. The `broadcastStarted(withSetupInfo:)` method is our entry point for opening the socket connection with the RN WebRTC server. To do this we have to post the `broadcastStarted` notification the server is listening for, in order to start the connection, and we are ready to connect. Add a new method `openConnection()` to the `SampleHandler` class which will repeatedly attempt connecting to the server, for cases when the server connection start is delayed:
-```
+
+```swift
 func openConnection() {
     let queue = DispatchQueue(label: "broadcast.connectTimer")
     let timer = DispatchSource.makeTimerSource(queue: queue)
@@ -462,7 +465,8 @@ func openConnection() {
 ```
 
 Next, update the `broadcastStarted(withSetupInfo:)` method to post the notification and connect:
-```
+
+```swift
 override func broadcastStarted(withSetupInfo setupInfo: [String: NSObject]?) {
     DarwinNotificationCenter.shared.postNotification(.broadcastStarted)
     openConnection()
@@ -482,7 +486,8 @@ RN WebRTC is designed to work with jpeg encoded images framed in a `CFHTTPMessag
 - `Buffer-Orientation` - the value for the `RPVideoSampleOrientationKey` that describes the video orientation.
 
 We are going to prepare and send our video frames using the `SampleUploader` class. Add a new `private var uploader: SampleUploader?` to the SampleHandler class and update `init()` to initialize it:
-```
+
+```swift
 override init() {
     super.init()
     if let connection = SocketConnection(filePath: socketFilePath) {
@@ -493,7 +498,8 @@ override init() {
 ```
 
 Next, we are going to update the `processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType)` method to send our video frames. For performance reasons, we'll also implement a very simple mechanism for adjusting the frame rate by using every third frame. Add a new `private var frameCount = 0` and update the above-mentioned method like this:
-```
+
+```swift
 override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBufferType: RPSampleBufferType) {
     switch sampleBufferType {
     case .video:
@@ -509,7 +515,8 @@ override func processSampleBuffer(_ sampleBuffer: CMSampleBuffer, with sampleBuf
 ```
 
 Also, update `broadcastStarted(withSetupInfo setupInfo: [String: NSObject]?)` to reset the `frameCount` every time screen sharing is started:
-```
+
+```swift
 override func broadcastStarted(withSetupInfo setupInfo: [String: NSObject]?) {
     frameCount = 0
     
@@ -527,7 +534,8 @@ Besides the in-meeting UI (screenshot 2), ReplayKit integration with iOS provide
 ![ios-screensharing](../assets/iOS_screensharing_2.png "screenshot 2") ![ios-screensharing](../assets/iOS_screensharing_3.png "screenshot 3") ![ios-screensharing](../assets/iOS_screensharing_4.png "screenshot 4") 
 
 Any of these actions will trigger `broadcastFinished` in our `SampleHandler` implementation. This is our entry point for closing the connection and cleaning up. We will update `broadcastFinished` to post a `DarwinNotification.broadcastStopped` system-wide notification and close the connection:
-```
+
+```swift
 override func broadcastFinished() {
     DarwinNotificationCenter.shared.postNotification(.broadcastStopped)
     clientConnection?.close()
@@ -535,7 +543,8 @@ override func broadcastFinished() {
 ```
 
 Another scenario we need to take care of is when the server connection is dropped, like when leaving a meeting while screen sharing or an error is encountered. We will address this by handling `clientConnection.didClose` event. Add a new method `setupConnection` to the `SampleHandler` class and update `init` to call it:
-```
+
+```swift
 func setupConnection() {
     clientConnection?.didClose = { [weak self] error in      
         if let error = error {
@@ -561,7 +570,8 @@ override init() {
 ```
 
 Now, that we are done writing the implementation, we just need to enable the functionality in Jitsi. We are doing this by configuring `JitsiMeetConferenceOptionsBuilder` with the `ios.screensharing.enabled feature` flag, like this:
-```
+
+```swift
 let options = JitsiMeetConferenceOptions.fromBuilder { [weak self] builder in
     ...
     builder.setFeatureFlag("ios.screensharing.enabled", withBoolean: true)

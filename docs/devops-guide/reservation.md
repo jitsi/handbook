@@ -197,7 +197,7 @@ provide meaningful information to the user.
 
 In case of a `409` response to the `HTTP POST` request, Prosody will try
 to read information about the conflicting conference using an `HTTP GET`
-'/conference/{conflict_id}' endpoint. The response should provide all
+`/conference/{conflict_id}` endpoint. The response should provide all
 information about the conference stored in the reservation system:
 
 * `"id"`: conference identifier assigned by the reservation system

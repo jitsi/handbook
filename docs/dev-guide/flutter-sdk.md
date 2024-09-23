@@ -65,7 +65,7 @@ platform :ios, '12.4'
 
 The plugin requests camera and microphone access, make sure to include the required entries for `NSCameraUsageDescription` and `NSMicrophoneUsageDescription` in your `Info.plist` file from the `ios/Runner` directory.
 
-```
+```xml
 <key>NSCameraUsageDescription</key>
 <string>The app needs access to your camera for meetings.</string>
 <key>NSMicrophoneUsageDescription</key>
@@ -76,7 +76,7 @@ The plugin requests camera and microphone access, make sure to include the requi
 
 Go to `android/app/build.gradle` and make sure that the `minSdkVersion` is set to at least 24`
 
-```
+```gradle
 android {
     ...
     defaultConfig {
@@ -128,7 +128,7 @@ The `JitsiMeet` class is the entry point for the SDK. It is used to launch the m
 5. #### setVideoMuted(bool muted)
     Sets the state of the localParticipant video muted according to the `muted` parameter.
 
-6. #### sendEndpointTextMessage({String? to, required String message})
+6. #### sendEndpointTextMessage(`{String? to, required String message}`)
     Sends a message via the data channel to one particular participant or all of them. If the `to` param is empty, the message will be sent to all the participants in the conference.
 
     To get the participantId, the `participantsJoined` event should be listened for, which has as a parameter the `participantId` and this should be stored somehow.
@@ -140,7 +140,7 @@ The `JitsiMeet` class is the entry point for the SDK. It is used to launch the m
 
     Opens the chat dialog. If `to` contains a valid participantId, the private chat with that particular participant will be opened.
 
-9. #### sendChatMessage({String? to, required String message})
+9. #### sendChatMessage(`{String? to, required String message}`)
 
     Sends a chat message to one particular participant or all of them. If the `to` param is empty, the message will be sent to all the participants in the conference.
 
@@ -184,33 +184,35 @@ var options = JitsiMeetConferenceOptions(
 
 - All the values that can be added to the `featureFlags` can be found [here](https://github.com/jitsi/jitsi-meet/blob/master/react/features/base/flags/constants.ts).
 
-- #### JitsiMeetUserInfo({String displayName, String email, String avatar})
-    The constructor for the JitsiMeetUserInfo. 
+#### JitsiMeetUserInfo(`{String displayName, String email, String avatar}`)
+
+The constructor for the JitsiMeetUserInfo.
+
 P.S. the avatar should be an url.
 
 ### JitsiMeetEventListener
 
 This class intends to be used as a listener for events that come from the native sdks. It will receive as arguments the event handlers
 
-1. #### conferenceJoined(String url)
+#### conferenceJoined(String url)
 
     Called when a conference was joined.
     - `url` : the conference URL
 
-2. #### conferenceTerminated(String url, Object? error)
+#### conferenceTerminated(String url, Object? error)
 
     Called when the active conference ends, be it because of user choice or because of a failure.
 
     - `url` : the conference URL
     - `error` : missing if the conference finished gracefully, otherwise contains the error message
 
-3. #### conferenceWillJoin(String url)
+#### conferenceWillJoin(String url)
 
     Called before a conference is joined.
 
     - url: the conference URL
 
-4. #### participantJoined(String? email, String? name, String? role, String? participantId) 
+#### participantJoined(String? email, String? name, String? role, String? participantId) 
 
     Called when a participant has joined the conference.
 
@@ -219,39 +221,39 @@ This class intends to be used as a listener for events that come from the native
     - `role` : the role of the participant.
     - `participantId` : the id of the participant.
 
-5. #### participantLeft(String? participantId)
+#### participantLeft(String? participantId)
 
     Called when a participant has left the conference.
 
     - `participantId` : the id of the participant that left.
 
-6. #### audioMutedChanged(bool muted)
+#### audioMutedChanged(bool muted)
 
     Called when the local participant's audio is muted or unmuted. 
 
     - `muted` : a boolean indicating whether the audio is muted or not.
 
-7. #### videoMutedChanged(bool muted)
+#### videoMutedChanged(bool muted)
 
     Called when the local participant's video is muted or unmuted. 
 
     - `muted` : a boolean indicating whether the video is muted or not.
 
-8. #### endpointTextMessageReceived(String senderId, String message)
+#### endpointTextMessageReceived(String senderId, String message)
 
     Called when an endpoint text message is received.
 
     - `senderId` : the participantId of the sender
     - `message` : the content.
 
-9. #### screenShareToggled(String participantId, bool sharing)
+#### screenShareToggled(String participantId, bool sharing)
 
     Called when a participant starts or stops sharing his screen.
 
     - `participantId` : the id of the participant
     - `sharing` : the state of screen share
 
-10. #### chatMessageReceived(String senderId, String message, bool isPrivate, String? timestamp)
+#### chatMessageReceived(String senderId, String message, bool isPrivate, String? timestamp)
 
     Called when a chat text message is received.
 
@@ -260,18 +262,18 @@ This class intends to be used as a listener for events that come from the native
     - `isPrivate` : true if the message is private, false otherwise.
     - `timestamp` : the (optional) timestamp of the message.
 
-11. #### chatToggled(bool isOpen)
+#### chatToggled(bool isOpen)
 
     Called when the chat dialog is opened or closed.
 
     - `isOpen` : true if the chat dialog is open, false otherwise.
 
-12. #### participantsInfoRetrieved(String participantsInfo)
+#### participantsInfoRetrieved(String participantsInfo)
     Called when the `retrieveParticipantsInfo` action is called
 
     - `participantsInfo` : a list of participants' information as a string.
 
-13. #### readyToClose()
+#### readyToClose()
     Called when the SDK is ready to be closed. No meeting is happening at this point.
 
 #### Example of listener:

@@ -5,7 +5,7 @@ module.exports = {
   baseUrl: "/handbook/",
   organizationName: "jitsi",
   projectName: "handbook",
-  favicon: "img/favicon.png",
+  favicon: "img/favicon.svg",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "throw",
   presets: [

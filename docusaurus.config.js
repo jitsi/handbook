@@ -7,7 +7,7 @@ module.exports = {
   projectName: "handbook",
   favicon: "img/favicon.png",
   onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
+  onBrokenMarkdownLinks: "throw",
   presets: [
     [
       "@docusaurus/preset-classic",

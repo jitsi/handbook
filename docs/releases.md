@@ -7,8 +7,11 @@ title: Releases
 Release notes for Jitsi Meet are kept [here](https://github.com/jitsi/jitsi-meet-release-notes).
 :::
 
-## Mobile apps / sdks
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
+<Tabs queryString="release">
+  <TabItem value="mobile" label="Mobile" default>
 ### Apps
 
 | Android | Android (F-Droid) | iOS |
@@ -29,17 +32,15 @@ developed you can also sign up for our open beta testing here:
 | Android | iOS |
 | :--: | :--: |
 | [Maven repository](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
-
-## Desktop apps
-
+  </TabItem>
+  <TabItem value="desktop" label="Desktop">
 | Windows | macOS | GNU/Linux (AppImage) | GNU/Linux (Deb) |
 | :--: | :--: | :--: | :--: |
 | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.exe) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet.dmg) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-x86_64.AppImage) | [Download](https://github.com/jitsi/jitsi-meet-electron/releases/latest/download/jitsi-meet-amd64.deb) |
 
 The desktop applications are based on Electron. For macOS, it is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
-
-## Server components
-
+  </TabItem>
+  <TabItem value="server" label="Server">
 ### Docker images
 
 See the Docker image releases [here](https://github.com/jitsi/docker-jitsi-meet/releases).
@@ -60,3 +61,5 @@ Prebuilt [source builds](https://download.jitsi.org/jitsi-meet/src/) are also av
 :::note
 Generally, you won't need to download this, as it's part of the Debian packages and Docker images already.
 :::
+  </TabItem>
+</Tabs>

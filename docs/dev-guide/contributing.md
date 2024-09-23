@@ -45,7 +45,7 @@ If you have an idea for a new feature or something you'd like to see improved in
 
 # Code Contributions 
 
-- Visit the [issue tracker](https://github.com/jitsi/jitsi-meet/issues) to find a list of open issues that need attention.
+- Visit the issue tracker ([Jitsi Meet's for example](https://github.com/jitsi/jitsi-meet/issues)) to find a list of open issues that need attention.
 
 - Discovered a bug or have a feature request and know how to fix it? Excellent! Keep reading 🔍
 
@@ -67,7 +67,37 @@ in the agreement, unfortunately, we cannot accept your contribution.
 - Make **one** logical change per pull request to keep things organized.
 - Keep your commit history clean and concise. If necessary, squash multiple commits into one.
 - Rebase your branch onto the latest changes in the master branch before submitting the pull request. **Never** merge master, always rebase.
-- Commits should have prefix indicating what they do is it feature, a fix or a translation update. This helps with automated release notes generation. Prefix the commits with `feat(feature name) `, `fix(feature name)`, etc.
+
+### 📝 Commit messages
+Jitsi projects follow the [Conventional Commits](https://www.conventionalcommits.org) spec, while making the scope
+mandatory.
+
+That is, we use `feat(feature name) add some functionality` as opposed to `feat: add some functionality`. As projects
+grow large, scoping down changes is helpful.
+
+This is a non-exhaustive list of types of commits:
+
+```
+[
+  'build',
+  'chore',
+  'ci',
+  'docs',
+  'feat',
+  'fix',
+  'perf',
+  'refactor',
+  'revert',
+  'style',
+  'test'
+];
+```
+
+As for what constitutes a "feature", that can vary across projects. "Subsystem" is another valid analogy.
+In Jitsi Meet, for example, the feature name can be the feature where you made the changes: `react/features/<this>`.
+In lib-jitsi-meet, the module: `modules/<this>`.
+
+Use your judgement and look into the commit history when in doubt.
 
 ## ❗️For 8x8 employees
 - Don't link any internal resources such as Jira issues, this is an Open Source project
@@ -93,50 +123,6 @@ in the agreement, unfortunately, we cannot accept your contribution.
 ### Duplication
 
 * Don't copy-paste source code. Reuse it. Be careful not to create bad abstractions just to reuse a small chunk of code, however.
-
-### Formatting
-
-* Line length is limited to 120 characters for JavaScript, Java, and Kotlin code.
-
-* Sort by alphabetical order to make the addition of new entities as
-  easy as looking a word up in a dictionary. Otherwise, one risks duplicate
-  entries (with conflicting values in the cases of key-value pairs). For
-  example:
-
-  * JavaScript: Within an `import` of multiple names from a module, sort the names in
-    alphabetical order. (Of course, the default name stays first as required by
-    the `import` syntax.)
-
-    ````javascript
-    import {
-        DOMINANT_SPEAKER_CHANGED,
-        JITSI_CLIENT_CONNECTED,
-        JITSI_CLIENT_CREATED,
-        JITSI_CLIENT_DISCONNECTED,
-        JITSI_CLIENT_ERROR,
-        JITSI_CONFERENCE_JOINED,
-        MODERATOR_CHANGED,
-        PEER_JOINED,
-        PEER_LEFT,
-        RTC_ERROR
-    } from './actionTypes';
-    ````
-
-  * JavaScript: Within a group of imports (e.g. groups of imports delimited by an empty line
-    maybe: third-party modules, then project modules, and eventually the
-    private files of a module), sort the module names in alphabetical order.
-
-    ````javascript
-    import React, { Component } from 'react';
-    import { connect } from 'react-redux';
-    ````
-  * Java: Use package imports (package.*) and DO NOT import classes themselves.
-
-* Java: Opening braces MUST be on their line (especially those beginning a method).
-
-* Use 4 spaces to indent everything. Instruct your IDE **not to use tabs under any circumstance** and replace them with spaces.
-
-* Do not use double negatives when naming properties, variables, or methods/functions.
 
 ### Naming
 

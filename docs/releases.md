@@ -7,13 +7,15 @@ title: Releases
 Release notes for Jitsi Meet are kept [here](https://github.com/jitsi/jitsi-meet-release-notes).
 :::
 
-## Mobile apps
+## Mobile apps / sdks
+
+### Apps
 
 | Android | Android (F-Droid) | iOS |
 |:-:|:-:|:-:|
 | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/google-play-badge.png" height="50" />](https://play.google.com/store/apps/details?id=org.jitsi.meet) | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/f-droid-badge.png" height="50" />](https://f-droid.org/en/packages/org.jitsi.meet/) | [<img src="https://raw.githubusercontent.com/jitsi/handbook/master/docs/assets/appstore-badge.png" height="50" />](https://itunes.apple.com/us/app/jitsi-meet/id1165103905) |
 
-### Beta versions
+### Apps (beta)
 
 If you are feeling adventurous and want to get an early scoop of the features as they are being
 developed you can also sign up for our open beta testing here:
@@ -21,6 +23,12 @@ developed you can also sign up for our open beta testing here:
 | Android | iOS |
 |:-:|:-:|
 | [Play Store Beta](https://play.google.com/apps/testing/org.jitsi.meet) | [TestFlight](https://testflight.apple.com/join/isy6ja7S)
+
+### SDKs
+
+| Android | iOS |
+| :--: | :--: |
+| [Maven repository](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
 
 ## Desktop apps
 
@@ -30,23 +38,19 @@ developed you can also sign up for our open beta testing here:
 
 The desktop applications are based on Electron. For macOS, it is also available as a `brew` cask which can be installed using `brew install jitsi-meet`.
 
-## Mobile SDKs
+## Server components
 
-| Android | iOS |
-| :--: | :--: |
-| [Maven repository](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-android-sdk#use-pre-build-sdk-artifactsbinaries) | [CocoaPods](https://cocoapods.org/pods/JitsiMeetSDK)
-
-## Docker images
+### Docker images
 
 See the Docker image releases [here](https://github.com/jitsi/docker-jitsi-meet/releases).
 
-## Debian/Ubuntu packages
+### Debian/Ubuntu packages
 
 * [`stable`](https://download.jitsi.org/stable/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions/))
 * [`testing`](https://download.jitsi.org/testing/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions-for-testing/))
 * [`nightly`](https://download.jitsi.org/unstable/) ([instructions](https://jitsi.org/downloads/ubuntu-debian-installations-instructions-nightly/))
 
-## Web frontend
+### Web frontend
 
 Latest stable release | [![release](https://img.shields.io/badge/release-latest-green.svg)](https://github.com/jitsi/jitsi-meet/releases/latest) |
 |---|---|

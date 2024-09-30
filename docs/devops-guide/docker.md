@@ -4,10 +4,6 @@ title: Self-Hosting Guide - Docker
 sidebar_label: Docker
 ---
 
-:::note
-Starting with release `stable-7289-1` our images are provided with `amd64` and `arm64` architecture.
-:::
-
 ## Quick start
 
 In order to quickly run Jitsi Meet on a machine running Docker and Docker Compose,
@@ -59,6 +55,8 @@ direct access via HTTP instead HTTPS leads to WebRTC errors such as
 _Failed to access your microphone/camera: Cannot use microphone/camera for an unknown reason. Cannot read property 'getUserMedia' of undefined_
 or _navigator.mediaDevices is undefined_.
 :::
+
+**IMPORTANT**: When deploying Jitsi Meet for real use you must set the `PUBLIC_URL` env variable to the real domain where your setup is running.
 
 If you want to use jigasi too, first configure your env file with SIP credentials
 and then run Docker Compose as follows:

@@ -739,7 +739,7 @@ Variable | Description | Default value
 ### Running behind NAT or on a LAN environment
 
 When running running in a LAN environment, or on the public Internet via NAT, the ``JVB_ADVERTISE_IPS`` env variable should be set.
-This variable allows to control which IP addresses the JVB will advertise for WebRTC media traffic.
+This variable allows to control which IP addresses the JVB will advertise for WebRTC media traffic. It is necessary to set it regardless of the use of a reverse proxy, since it's the IP address that will receive the media (audio / video) and not HTTP traffic, hence it's oblivious to the reverse proxy.
 
 :::note
 This variable used to be called ``DOCKER_HOST_ADDRESS`` but it got renamed for clarity and to support a list of IPs.

@@ -315,7 +315,6 @@ This objects represents the server connection. You can create new `JitsiConnecti
         - `e2eping`
             - `pingInterval`
         - `enableForcedReload`
-        - `enableIceRestart`
         - `enableNoAudioDetection` - boolean property.
         - `enableOpusRed`
         - `enableTalkWhileMuted` - boolean property.

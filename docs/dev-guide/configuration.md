@@ -665,21 +665,6 @@ the bridge going down.
 enableForcedReload: true
 ```
 
-### enableIceRestart
-
-type: `Boolean`
-
-Enables ICE restart logic in LJM and displays the page reload overlay on
-ICE failure. Current disabled by default because it's causing issues with
-signaling when Octo is enabled. Also when we do an "ICE restart"(which is
-not a real ICE restart), the client maintains the TCC sequence number
-counter, but the bridge resets it. The bridge sends media packets with
-TCC sequence numbers starting from 0.
-
-```javascript
-enableIceRestart: true
-```
-
 ### gatherStats
 
 type: `Boolean`

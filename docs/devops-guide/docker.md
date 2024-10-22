@@ -85,6 +85,17 @@ or to use jigasi too:
 docker compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
+To include a transcriber component, run Docker Compose as follows:
+
+```bash
+docker compose -f docker-compose.yml -f transcriber.yml up -d
+```
+
+Or for them all together:
+```bash
+docker compose -f docker-compose.yml -f transcriber.yml -f jigasi.yml -f jibri.yml up -d
+```
+
 For the log analysis project, you will need both log-analyser.yml and grafana.yml files. This project allows you to analyze docker logs in grafana. If you want to run the log analyzer, run the Docker files as follows:
 
 ```bash

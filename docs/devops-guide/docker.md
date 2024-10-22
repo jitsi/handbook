@@ -85,6 +85,17 @@ or to use jigasi too:
 docker compose -f docker-compose.yml -f jigasi.yml -f jibri.yml up -d
 ```
 
+To include a transcriber component, run Docker Compose as follows:
+
+```bash
+docker compose -f docker-compose.yml -f transcriber.yml up -d
+```
+
+Or for them all together:
+```bash
+docker compose -f docker-compose.yml -f transcriber.yml -f jigasi.yml -f jibri.yml up -d
+```
+
 For the log analysis project, you will need both log-analyser.yml and grafana.yml files. This project allows you to analyze docker logs in grafana. If you want to run the log analyzer, run the Docker files as follows:
 
 ```bash
@@ -617,20 +628,38 @@ Variable | Description | Example
 
 ### Transcription configuration
 
-If you want to enable the Transcribing function, these options are required:
+If you want to enable the Transcribing function, set the config options below and run Docker Compose with the additional config file transcriber.yml.
 
 Variable | Description | Example
 --- | --- | ---
 `ENABLE_TRANSCRIPTIONS` | Enable Jigasi transcription in a conference | 1
+
+In addition, the following are options are used to configure the various transcription backends and features:
+
+Variable | Description | Default
+--- | --- | ---
 `GC_PROJECT_ID` | `project_id` from Google Cloud Credentials
 `GC_PRIVATE_KEY_ID` | `private_key_id` from Google Cloud Credentials
 `GC_PRIVATE_KEY` | `private_key` from Google Cloud Credentials
 `GC_CLIENT_EMAIL` | `client_email` from Google Cloud Credentials
 `GC_CLIENT_ID` | `client_id` from Google Cloud Credentials
 `GC_CLIENT_CERT_URL` | `client_x509_cert_url` from Google Cloud Credentials
-`JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
-`JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send transcribed text to the chat when transcriber is on | true
 `JIGASI_TRANSCRIBER_ADVERTISE_URL` | Jigasi will post an url to the chat with transcription file | true
+`JIGASI_TRANSCRIBER_CUSTOM_SERVICE` | Jigasi will use this class for custom transcriptions instead of google cloud
+`JIGASI_TRANSCRIBER_CUSTOM_TRANSLATION_SERVICE` | Jigasi will use this class for custom transctions instead of google cloud
+`JIGASI_TRANSCRIBER_ENABLE_SAVING` | Jigasi will save results to a transcription file | true
+`JIGASI_TRANSCRIBER_FILTER_SILENCE` | Jigasi will filter silent audio and not forward to backends
+`JIGASI_TRANSCRIBER_LIBRETRANSLATE_URL` | URL for libretranslate services
+`JIGASI_TRANSCRIBER_OCI_COMPARTMENT` | OCI compartment for use with Oracle Cloud Speech AI services
+`JIGASI_TRANSCRIBER_OCI_REGION` | OCI region name for use with Oracle Cloud Speech AI services
+`JIGASI_TRANSCRIBER_RECORD_AUDIO` | Jigasi will record audio when transcriber is on | true
+`JIGASI_TRANSCRIBER_REMOTE_CONFIG_URL` | URL to control transcriber custom service based on conference details
+`JIGASI_TRANSCRIBER_SEND_TXT` | Jigasi will send transcribed text to the chat when transcriber is on | true
+`JIGASI_TRANSCRIBER_USER` | Jigasi XMPP user
+`JIGASI_TRANSCRIBER_VOSK_URL` | URL for use with vosk backend
+`JIGASI_TRANSCRIBER_WHISPER_URL` | URL for use with whisper backend
+`JIGASI_TRANSCRIBER_WHISPER_PRIVATE_KEY_NAME` | Private Key ID of the private key to use with whisper
+`JIGASI_TRANSCRIBER_WHISPER_PRIVATE_KEY` | Private Key material to use with whisper, without newlines or START/END delimiters 
 
 For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol> section "Before you begin" paragraph 1 to 5.
 

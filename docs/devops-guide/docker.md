@@ -854,6 +854,8 @@ Due to the hop-by-hop nature of WebSockets the reverse proxy must properly termi
 * /xmpp-websocket
 * /colibri-ws
 
+### nginx
+
 With nginx, these routes can be forwarded using the following config snippet:
 
 ```nginx
@@ -881,27 +883,47 @@ location /http-bind {
     proxy_set_header Connection "upgrade";
 }
 ```
+where `https://localhost:8443/` is the url of the web service's ingress.
 
-With apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled and these routes can be forwarded using the following config snippet:
+### Apache
+
+With Apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled.
+
+Then, HTTPS must be disabled in the Docker Compose configuration (since HTTPS will probably not work on localhost):
+
+```bash
+DISABLE_HTTPS=1
+ENABLE_HTTP_REDIRECT=0
+ENABLE_LETS_ENCRYPT=0
+```
+      
+Finally, the reverse proxy must be configured using the following config snippet:
 
 ```apache
 <IfModule mod_proxy.c>
     <IfModule mod_proxy_wstunnel.c>
         ProxyTimeout 900
-        <Location "/xmpp-websocket">
-            ProxyPass "wss://localhost:8443/xmpp-websocket"
-        </Location>
-        <Location "/colibri-ws/">
-            ProxyPass "wss://localhost:8443/colibri-ws/"
-        </Location>
-        <Location "/http-bind">
-            ProxyPass "http://localhost:8443/http-bind"
-        </Location>
+        ProxyPass /xmpp-websocket ws://localhost:8000/xmpp-websocket
+        ProxyPass /colibri-ws/ ws://localhost:8000/colibri-ws/
+        ProxyPass / http://localhost:8000/
+        ProxyPassReverse / http://localhost:8000/
     </IfModule>
 </IfModule>
 ```
 
-where `https://localhost:8443/` is the url of the web service's ingress.
+where `http://localhost:8000/` is the url of the web service's ingress.
+
+Note that HTTP_PORT and HTTPS_PORT are binding to any ip address, so are publicly open unless a firewall blocks them. When using a reverse proxy, this is not necessary. This can be changed by updating the web container's ports configuration:
+```yaml
+            - '127.0.0.1:${HTTP_PORT}:80'
+            - '127.0.0.1:${HTTPS_PORT}:443'
+```
+insteaf of
+```yaml
+            - '${HTTP_PORT}:80'
+            - '${HTTPS_PORT}:443'
+```
+
 
 ### Disabling WebSocket connections
 

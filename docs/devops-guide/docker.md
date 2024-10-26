@@ -912,7 +912,7 @@ location / {
 
 #### Apache
 
-With Apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled.
+With Apache, `mod_proxy`, `mod_proxy_http` and `mod_proxy_wstunnel` need to be enabled.
       
 The reverse proxy can be configured using the following config snippet:
 

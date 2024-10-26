@@ -883,7 +883,7 @@ Due to the hop-by-hop nature of WebSockets the reverse proxy must properly termi
 
 The other HTTP requests must be handled by the web container.
 
-In the following configuration examples, `http://localhost:8000/` is the url of the web service's ingress.
+In the following configuration examples, `http://localhost:8000/` is the url of the web service's ingress (`8000` corresponds to `HTTP_PORT`).
 
 #### nginx
 

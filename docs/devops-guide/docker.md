@@ -844,6 +844,33 @@ You are now able to run `docker compose up` as usual.
 
 ## Running behind a reverse proxy
 
+When running behing a reverse proxy from the same host, the communication between the proxy and Jitsi Meet is often in HTTP and not HTTPS since we generally don't have valid certificates for `localhost`.
+
+### Disable HTTPS
+
+HTTPS can be disabled in the Docker Compose configuration (since HTTPS will probably not work on localhost):
+
+```bash
+DISABLE_HTTPS=1
+ENABLE_HTTP_REDIRECT=0
+ENABLE_LETS_ENCRYPT=0
+```
+
+### Do not expose the Jitsi Meet's ports publicly
+
+By default, the `HTTP_PORT` and `HTTPS_PORT` are binding to any ip address, so are publicly open unless a firewall blocks them. When using a reverse proxy, this is not necessary. This can be changed by updating the web container's ports configuration:
+```yaml
+            - '127.0.0.1:${HTTP_PORT}:80'
+            - '127.0.0.1:${HTTPS_PORT}:443'
+```
+insteaf of
+```yaml
+            - '${HTTP_PORT}:80'
+            - '${HTTPS_PORT}:443'
+```
+
+### Reverse proxy configuration
+
 By default this setup is using WebSocket connections for 2 core components:
 
 * Signalling (XMPP)
@@ -851,53 +878,43 @@ By default this setup is using WebSocket connections for 2 core components:
 
 Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:
 
-* /xmpp-websocket
-* /colibri-ws
+* `/xmpp-websocket`
+* `/colibri-ws`
 
-### nginx
+The other HTTP requests must be handled by the web container.
+
+In the following configuration examples, `http://localhost:8000/` is the url of the web service's ingress.
+
+#### nginx
 
 With nginx, these routes can be forwarded using the following config snippet:
 
 ```nginx
 location /xmpp-websocket {
-    proxy_pass https://localhost:8443;
+    proxy_pass http://localhost:8000/xmpp-websocket;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
 }
+
 location /colibri-ws {
-    proxy_pass https://localhost:8443;
+    proxy_pass http://localhost:8080/colibri-ws;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
 }
-```
 
-In addition we need a route for /http-bind as XMPP over BOSH is still used by mobile clients:
-  
-```nginx
-location /http-bind {
-    proxy_pass https://localhost:8443;
+location / {
+    proxy_pass http://localhost:8000/;
     proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
 }
 ```
-where `https://localhost:8443/` is the url of the web service's ingress.
 
-### Apache
+#### Apache
 
 With Apache, `mod_proxy` and `mod_proxy_wstunnel` need to be enabled.
-
-Then, HTTPS must be disabled in the Docker Compose configuration (since HTTPS will probably not work on localhost):
-
-```bash
-DISABLE_HTTPS=1
-ENABLE_HTTP_REDIRECT=0
-ENABLE_LETS_ENCRYPT=0
-```
       
-Finally, the reverse proxy must be configured using the following config snippet:
+The reverse proxy can be configured using the following config snippet:
 
 ```apache
 <IfModule mod_proxy.c>
@@ -912,18 +929,6 @@ Finally, the reverse proxy must be configured using the following config snippet
 ```
 
 where `http://localhost:8000/` is the url of the web service's ingress.
-
-Note that HTTP_PORT and HTTPS_PORT are binding to any ip address, so are publicly open unless a firewall blocks them. When using a reverse proxy, this is not necessary. This can be changed by updating the web container's ports configuration:
-```yaml
-            - '127.0.0.1:${HTTP_PORT}:80'
-            - '127.0.0.1:${HTTPS_PORT}:443'
-```
-insteaf of
-```yaml
-            - '${HTTP_PORT}:80'
-            - '${HTTPS_PORT}:443'
-```
-
 
 ### Disabling WebSocket connections
 

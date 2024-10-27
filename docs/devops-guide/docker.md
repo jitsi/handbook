@@ -928,8 +928,6 @@ The reverse proxy can be configured using the following config snippet:
 </IfModule>
 ```
 
-where `http://localhost:8000/` is the url of the web service's ingress.
-
 ### Disabling WebSocket connections
 
 :::note

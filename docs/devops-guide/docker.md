@@ -800,6 +800,13 @@ If your setup does not have access to the Internet you'll need to disable STUN o
 JVB_DISABLE_STUN=true
 ```
 
+### Adjust UDP buffers
+
+If you are experiencing issues with UDP traffic, like synchronization issues, skipping frames and similar, or if you expect a high traffic and big conferences, you might want to adjust the UDP buffer sizes.
+You need to do that on the host system, that hosts the jvb container.
+To do so you can get this [sysctl config file](https://github.com/jitsi/jitsi-videobridge/blob/master/config/20-jvb-udp-buffers.conf) and save it in `/etc/sysctl.d` and load it via: `sysctl --system`.
+
+
 ## Accessing server logs
 
 The default bahavior of `docker-jitsi-meet` is to log to `stdout`.

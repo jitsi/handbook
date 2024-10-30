@@ -245,16 +245,6 @@ This command requires the new email address as the single argument.
 api.executeCommand('email', 'example@example.com');
 ```
 
-### avatarUrl
-
-Changes the local avatar URL.
-
-This command requires the new avatar URL to be set as the single argument.
-
-```javascript
-api.executeCommand('avatarUrl', 'https://avatars0.githubusercontent.com/u/3671647');
-```
-
 ### sendCameraFacingMode
 
 Sends a request to a given participant to set camera facing mode as `user` or `environment`.

@@ -57,7 +57,6 @@ To be used with the `8x8.vc` domain as-it-is in React projects:
     roomName = "PleaseUseAGoodRoomName"
     jwt = { YOUR_VALID_JWT }
     configOverwrite = {{
-        disableThirdPartyRequests: true,
         disableLocalVideoFlip: true,
         backgroundAlpha: 0.5
     }}

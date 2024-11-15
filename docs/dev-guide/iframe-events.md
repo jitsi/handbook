@@ -833,6 +833,19 @@ The listener receives an object with the following structure:
 }
 ```
 
+
+### audioOnlyChanged
+
+Provides event notifications about changes to the audio only mode status.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    audioOnlyChanged: boolean // whether the audio only is enabled or disabled.
+}
+```
+
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js
 [EventEmitter]: https://nodejs.org/api/events.html

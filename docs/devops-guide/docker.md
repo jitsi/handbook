@@ -685,6 +685,7 @@ Variable | Description | Default value
 `TURN_TRANSPORT` | TURN server protocols as a comma separated list (UDP or TCP or both) | tcp
 `TURNS_HOST` | TURN server hostnames as a comma separated list (TLS transport) |
 `TURNS_PORT` | TURN server port (TLS transport) | 443
+`TURN_TLL`| TURN max allocation duration (sec) | 86400
 
 ### Advanced configuration
 

@@ -323,10 +323,11 @@ The listener receives an object with the following structure:
 
 ```javascript
 {
-    from: string, // The id of the user that sent the message
+    from: string, // the id of the user that sent the message
     nick: string, // the nickname of the user that sent the message
     privateMessage: boolean, // whether this is a private or group message
     message: string // the text of the message
+    stamp: string // the message timestamp as string (ISO-8601)
 }
 ```
 

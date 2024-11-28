@@ -47,6 +47,12 @@ Integrate Jitsi Meet conferences with GStreamer pipelines.
 
 https://github.com/avstack/gst-meet
 
+## GStreamer plugin in C++
+
+Jitsi Meet GStreamer plugin
+
+https://github.com/mojyack/gstjitsimeet
+
 ## Jitok: Jitsi Token generator
 
 Helper web tool and API for generating Jitsi Meet compatible JWT.

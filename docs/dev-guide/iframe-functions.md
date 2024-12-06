@@ -409,6 +409,14 @@ api.isVideoAvailable().then(available => {
 });
 ```
 
+### isVisitor
+
+Returns a whether the current user is a visitor or not.
+
+```javascript
+const isVisitor = api.isVisitor();
+```
+
 ### isModerationOn
 
 Returns a Promise which resolves to the current moderation state of the given media type.

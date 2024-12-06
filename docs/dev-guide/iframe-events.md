@@ -635,7 +635,8 @@ The listener receives an object with the following structure:
     id: string, // the id of the local participant
     displayName: string, // the display name of the local participant
     avatarURL: string, // the avatar URL of the local participant
-    breakoutRoom: boolean // whether the current room is a breakout room
+    breakoutRoom: boolean, // whether the current room is a breakout room
+    visitor: boolean // whether the current user is a visitor
 }
 ```
 

@@ -5,7 +5,7 @@ sidebar_label: LDAP Authentication
 ---
 
 :::note
-This is a first draft and might not work on your system. It has been tested on a Debian 11 installation with prosody 0.11 and authenticates against an OpenLDAP directory.
+This is a first draft and might not work on your system. It has been tested on Debian 11 installation with prosody 0.11 and authenticates against an OpenLDAP directory, and on Ubuntu 24.04 with Prosody 0.12 against an Active Directory.
 :::
 
 If you want to authenticate your users against an LDAP directory instead 
@@ -24,7 +24,7 @@ described in [Authentication (Secure Domain)](secure-domain.md) first.
 On Debian systems you need to install some required packages:
 
 ```
-sudo apt-get install sasl2-bin libsasl2-modules-ldap lua-cyrussasl
+sudo apt-get install sasl2-bin libsasl2-modules-ldap lua-cyrussasl prosody-modules
 sudo prosodyctl install --server=https://modules.prosody.im/rocks/ mod_auth_cyrus
 ```
 

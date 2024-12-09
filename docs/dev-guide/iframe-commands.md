@@ -710,15 +710,8 @@ api.executeCommand('setAssumedBandwidthBps',
 Sets or removes the blurred virtual background to the user camera.
 
 ```javascript
-
-
-### setAssumedBandwidthBps
-
-Sets the assumed bandwidth bps.
-
-```javascript
-api.executeCommand('setAssumedBandwidthBps',
-    assumedBandwidthBps: number // Required. The value to set as assumed bandwidth expressed in bps.
+api.executeCommand('setBlurredBackground',
+	blurType: String // Required. Blur type to apply. Accepted values are 'slight-blur', 'blur' or 'none'.
 );
 ```
 

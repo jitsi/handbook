@@ -724,3 +724,14 @@ api.executeCommand('setAudioOnly',
     enable: boolean // Required. true for enable and false for disable 
 );
 ```
+
+### setVirtualBackground
+
+Set your virtual background with a base64 image.
+
+```javascript
+api.executeCommand('setVirtualBackground',
+    enabled: boolean, // Required. Enable or disable the virtual background.
+    backgroundImage: string // Required. Base64 image string, eg. "data:image/png;base64, iVBOR...".
+);
+```

@@ -301,6 +301,18 @@ Sets the video input device to the one with the passed label or ID.
 api.setVideoInputDevice(deviceLabel, deviceId);
 ```
 
+### setVirtualBackground
+
+Set your virtual background with a base64 image.
+
+```javascript
+/**
+ * @param {boolean} enabled - Enable or disable the virtual background.
+ * @param {string} backgroundImage - Base64 image string, eg. "data:image/png;base64, iVBOR...".
+ */
+api.setVirtualBackground(enabled, backgroundImage);
+```
+
 ### startRecording
 
 Starts a file recording or streaming session. See the `startRecording` command for more details.

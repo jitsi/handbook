@@ -120,9 +120,7 @@ JitsiMeetJS.setLogLevel(JitsiMeetJS.logLevels.ERROR);
         7. `maxFps` - the maximum frame rate for the video stream (passed to GUM)
         8. `desktopSharingSourceDevice` - The device id or label for a video input source that should be used for screensharing.
         9. `facingMode` - facing mode for a camera (possible values - 'user', 'environment')
-        10. `firePermissionPromptIsShownEvent` - optional boolean parameter. If set to `true`, `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` will be fired when browser shows gUM permission prompt.
-        11. `fireSlowPromiseEvent` - optional boolean parameter. If set to `true`, `JitsiMediaDevicesEvents.USER_MEDIA_SLOW_PROMISE_TIMEOUT` will be fired when browser takes too long to resolve the gUM promise. This event is mutual exclusive with the above `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` event
-    - `firePermissionPromptIsShownEvent` - __DEPRECATED__. Use options.firePermissionPromptIsShownEvent instead
+        10. `fireSlowPromiseEvent` - optional boolean parameter. If set to `true`, `JitsiMediaDevicesEvents.USER_MEDIA_SLOW_PROMISE_TIMEOUT` will be fired when browser takes too long to resolve the gUM promise. This event is mutual exclusive with the above `JitsiMediaDevicesEvents.PERMISSION_PROMPT_IS_SHOWN` event
 
 * `JitsiMeetJS.createTrackVADEmitter(localAudioDeviceId, sampleRate, vadProcessor)` - Creates a TrackVADEmitter service that connects an audio track to a VAD (voice activity detection) processor in order to obtain VAD scores for individual PCM audio samples.
     - `localAudioDeviceId` - The target local audio device.

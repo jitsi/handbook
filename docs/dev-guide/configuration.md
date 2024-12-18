@@ -1315,12 +1315,14 @@ Properties:
 * `recordAudioAndVideo` - If true (default) recording audio and video is selected by default in the recording dialog.
 * `suggestRecording` - If true, shows a notification at the start of the meeting with a call to action button to start recording (for users who can do so).
 * `showPrejoinWarning` - If true, shows a warning label in the prejoin screen to point out the possibility that the call you're joining might be recorded.
+* `showRecordingLink` - If true, the notification for recording start will display a link to download the cloud recording.
 
 ```javascript
 recordings: {
     recordAudioAndVideo: true,
     suggestRecording: false,
-    showPrejoinWarning: true
+    showPrejoinWarning: true,
+    showRecordingLink: true
 }
 ```
 

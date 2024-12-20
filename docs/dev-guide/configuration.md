@@ -551,7 +551,7 @@ Transcription related options.
 Properties:
 
 * `enabled` - Enable transcription (in interface_config, subtitles and buttons can be configured). Default `false`.
-* `translationLanguages` - Translation languages. Available languages can be found in ./src/react/features/transcribing/translation-languages.json.
+* `translationLanguages` - Translation languages. Available languages can be found in ./lang/translation-languages.json.
 * `useAppLanguage` - If `true` the transcriber will use the application language. The application language is either explicitly set by participants in their settings or automatically detected based on the environment, e.g. if the app is opened in a Chrome instance which is using French as its default language then transcriptions for that participant will be in french. Default: `true`.
 * `preferredLanguage` - Transcriber language. This settings will only work if `useAppLanguage` is explicitly set to `false`. Available languages can be found [here](https://github.com/jitsi/jitsi-meet/blob/master/react/features/transcribing/transcriber-langs.json). Default: `'en-US'`.
 * `autoTranscribeOnRecord` - Enables automatic turning on transcribing when recording is started. Default: `true`.

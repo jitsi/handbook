@@ -661,7 +661,7 @@ Variable | Description | Default
 `JIGASI_TRANSCRIBER_WHISPER_PRIVATE_KEY_NAME` | Private Key ID of the private key to use with whisper
 `JIGASI_TRANSCRIBER_WHISPER_PRIVATE_KEY` | Private Key material to use with whisper, without newlines or START/END delimiters 
 
-For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol> section "Before you begin" paragraph 1 to 5.
+For setting the Google Cloud Credentials please read https://cloud.google.com/text-to-speech/docs/quickstart-protocol &gt; section "Before you begin" paragraph 1 to 5.
 
 ### Sentry logging configuration
 
@@ -871,7 +871,7 @@ By default, the `HTTP_PORT` and `HTTPS_PORT` are binding to any ip address, so a
             - '127.0.0.1:${HTTP_PORT}:80'
             - '127.0.0.1:${HTTPS_PORT}:443'
 ```
-insteaf of
+instead of
 ```yaml
             - '${HTTP_PORT}:80'
             - '${HTTPS_PORT}:443'

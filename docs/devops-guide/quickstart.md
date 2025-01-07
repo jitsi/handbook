@@ -221,16 +221,24 @@ If the installation is on a machine [behind NAT](https://jitsi.github.io/handboo
 
 Provided that all required ports are routed (forwarded) to the machine that it runs on. By default these ports are TCP/443 and UDP/10000.
 
-The following extra lines need to be added to the file `/etc/jitsi/videobridge/sip-communicator.properties`:
+Add a static mapping to the `ice4j.harvest.mapping` section in `/etc/jitsi/videobridge/jvb.conf`:
 
 ```
-org.ice4j.ice.harvest.NAT_HARVESTER_LOCAL_ADDRESS=<Local.IP.Address>
-org.ice4j.ice.harvest.NAT_HARVESTER_PUBLIC_ADDRESS=<Public.IP.Address>
+ice4j {
+  harvest {
+    mapping {
+      static-mappings = [
+        {
+          local-address = "<Local.IP.Address>"
+          public-address = "<Public.IP.Address>"
+        }
+      ]
+    }
+  }
+}
 ```
 
-And comment the existing `org.ice4j.ice.harvest.STUN_MAPPING_HARVESTER_ADDRESSES`.
-
-See [the documentation of ice4j](https://github.com/jitsi/ice4j/blob/master/doc/configuration.md)
+See [the documentation of ice4j](https://github.com/jitsi/ice4j/blob/4f1329607cdcfd9ea13c0a5e7e099205775f7a0b/src/main/resources/reference.conf#L91)
 for details.
 
 **Systemd/Limits:**

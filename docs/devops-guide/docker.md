@@ -854,6 +854,10 @@ You are now able to run `docker compose up` as usual.
 
 When running behing a reverse proxy from the same host, the communication between the proxy and Jitsi Meet is often in HTTP and not HTTPS since we generally don't have valid certificates for `localhost`.
 
+:::note
+Jitsi Meet does not currently work well when deployed in a subdirectory.
+:::
+
 ### Disable HTTPS
 
 HTTPS can be disabled in the Docker Compose configuration (since HTTPS will probably not work on localhost):

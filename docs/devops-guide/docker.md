@@ -43,7 +43,10 @@ follow these steps:
    * For Windows:
 
    ```bash
-   echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri | % { mkdir "~/.jitsi-meet-cfg/$_" }
+   echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri
+   ```
+   ```bash
+    mkdir "~/.jitsi-meet-cfg/$_"
    ```
 
 1. Run ``docker compose up -d``

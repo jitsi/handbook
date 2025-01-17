@@ -672,7 +672,7 @@ api.executeCommand('showNotification', {
   title: String, // Title of the notification.
   description: String, // Content of the notification.
   uid: String, // Optional. Unique identifier for the notification.
-  type: String, // Optional. Can be 'info', 'normal', 'success', 'warning' or 'error'. Defaults to 'normal'.
+  type: String, // Optional. Can be 'normal', 'success', 'warning' or 'error'. Defaults to 'normal'.
   timeout: String // optional. Can be 'short', 'medium', 'long', or 'sticky'. Defaults to 'short'.
 });
 ```

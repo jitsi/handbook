@@ -16,7 +16,7 @@ JaaS customers, please make sure you also read [this](https://developer.8x8.com/
 :::
 
 :::tip
-If you use React in your web application you might want to use our [React SDK](dev-guide-react-sdk) instead.
+If you use React in your web application you might want to use our [React SDK](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-react-sdk/) instead.
 :::
 
 ## Integration

@@ -9,16 +9,14 @@ This guide will help you setup a development environment to start working on the
 ## Building the sources
 
 :::note
-Node.js >= 16 and npm >= 8 are required.
+Node.js >= 22 and npm >= 10 are required.
 :::
 
 :::caution
 Windows is not supported.
 :::
 
-On Debian/Ubuntu systems, the required packages can be installed with:
-- Download "Linux Binaries (x64)" from https://nodejs.org/en/download/
-- Install Node.js following these instructions: https://github.com/nodejs/help/wiki/Installation
+Make sure you have Node.js installed. If you don't, follow [these instructions](https://nodejs.org/en/download/).
 
 Then go ahead:
 ```bash
@@ -28,8 +26,11 @@ cd ./jitsi-meet
 
 npm install
 
-# To build the Jitsi Meet application, just type
+# To build the Jitsi Meet production application:
 make
+
+# For development:
+make dev
 ```
 
 :::warning

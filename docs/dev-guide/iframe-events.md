@@ -422,8 +422,7 @@ The listener receives an object with the following structure:
 ### toolbarButtonClicked
 
 Provides event notifications about a toolbar button being clicked and whether the click routine was executed or not.
-For overriding a button's click, please use the following config overwrite:
-https://github.com/jitsi/jitsi-meet/blob/042a2cb447bd9ff39ab3904e493952787bd30924/config.js#L547
+To enable this notification you need to add the button to [`buttonsWithNotifyClick` config](/handbook/docs/dev-guide/dev-guide-configuration#buttonswithnotifyclick). 
 
 The listener receives an object with the following structure:
 

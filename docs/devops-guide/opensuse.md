@@ -174,7 +174,9 @@ along with `jitsi-meet`) and do the following:
 * Check the `server_name` value.
 * Check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example).
 
-__Note:__ If you are using an existing server, please make sure to adjust the websocket and bosh part, too.
+:::warning[Mobile apps] The jitsi mobile apps _require_ a valid certificate signed by a trusted [Certificate Authority](https://en.wikipedia.org/wiki/Certificate_authority), so if you don't have TLS configured, the mobile apps won't be able to connect to your jitsi instance. :::
+
+:::note If you are using an existing server, please make sure to adjust the websocket and bosh part, too.:::
 
 ### Jitsi-Meet
 

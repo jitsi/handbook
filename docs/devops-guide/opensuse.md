@@ -7,7 +7,9 @@ sidebar_label: openSUSE
 This document describes the steps for a quick Jitsi-Meet installation, paired
 with a single Videobridge and a single Jicofo on openSUSE Leap 15.2.
 
-__Note__: Many of the installation steps require root access.
+:::note
+Many of the installation steps require root access.
+:::
 
 ## Installation
 
@@ -174,9 +176,13 @@ along with `jitsi-meet`) and do the following:
 * Check the `server_name` value.
 * Check the TLS certificates (Let's Encrypt for production use, Prosody for testing, for example).
 
-:::warning[Mobile apps] The jitsi mobile apps _require_ a valid certificate signed by a trusted [Certificate Authority](https://en.wikipedia.org/wiki/Certificate_authority), so if you don't have TLS configured, the mobile apps won't be able to connect to your jitsi instance. :::
+:::warning[Mobile apps]
+The jitsi mobile apps _require_ a valid certificate signed by a trusted [Certificate Authority](https://en.wikipedia.org/wiki/Certificate_authority), so if you don't have TLS configured, the mobile apps won't be able to connect to your jitsi instance.
+:::
 
-:::note If you are using an existing server, please make sure to adjust the websocket and bosh part, too.:::
+:::note
+If you are using an existing server, please make sure to adjust the websocket and bosh part, too.
+:::
 
 ### Jitsi-Meet
 
@@ -195,13 +201,17 @@ var config = {
 };
 ```
 
-__Note:__ Please be aware that this is the minimal configuration.
+:::note
+Please be aware that this is the minimal configuration.
+:::
 
 ### Jitsi-Videobridge
 
-__Note:__ We use a combination of the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
+:::note
+We use a combination of the [new Videobridge configuration](https://github.com/jitsi/jitsi-videobridge/blob/master/doc/muc.md#videobridge-configuration)
 and the legacy one with the `sip-communicator.properties` file. We have
 to do this because of the `STATISTICS_TRANSPORT` property.
+:::
 
 If we remove `org.jitsi.videobridge.STATISTICS_TRANSPORT=muc,colibri`
 from `sip-communicator.properties`, the videobridge will not work!
@@ -325,7 +335,9 @@ TOOLBAR_BUTTONS: [
 
 ## Add-On: Jitsi-Jigasi
 
-__Note from openSUSE packagers:__ We've packaged it but we don't have the infrastructure to set up this component. Hence we can't provide a guide for this so far.
+:::note[Note from openSUSE packagers:]
+We've packaged it but we don't have the infrastructure to set up this component. Hence we can't provide a guide for this so far.
+:::
 
 ## Services
 

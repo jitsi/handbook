@@ -915,6 +915,18 @@ filmstrip: {
 }
 ```
 
+### disableCameraTintForeground
+
+type: `Boolean`
+
+Default: **unset**
+
+If true disable the camera tint foreground on the active speaker in the filmstrip
+
+```javascript
+disableCameraTintForeground: true
+```
+
 ## Face Landmarks
 
 ### faceLandmarks

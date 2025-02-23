@@ -8,10 +8,8 @@ by the Jitsi team.
 
 Please keep this list in alphabetical order.
 
-:::warning
-As these packages are not maintained by the Jitsi team, please ask
-their respective forums / issue trackers for help if you find issues.
-:::
+:::warning As these packages are not maintained by the Jitsi team, please ask
+their respective forums / issue trackers for help if you find issues. :::
 
 ## Cketti's Jitsi Hacks
 
@@ -75,8 +73,8 @@ Discussion: https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
 ## Jitsi-Admin
 
-An open-source platform to organize your meetings. Includes all functions we know
-from the big conference-tools
+An open-source platform to organize your meetings. Includes all functions we
+know from the big conference-tools
 
 - Plan your Meeting
 - Secure your Meeting with user login credentials
@@ -93,8 +91,9 @@ https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
 
 ## Jitsi Config Differ
 
-Web app to compare reference configs between different Jitsi releases. This aims to help users identify 
-potential changes in config keys and default values when upgrading their deployment.
+Web app to compare reference configs between different Jitsi releases. This aims
+to help users identify potential changes in config keys and default values when
+upgrading their deployment.
 
 https://shawnchin.github.io/jitsi-config-differ/
 
@@ -150,16 +149,17 @@ https://github.com/jitsi-contrib/prosody-plugins
 - **jibri_autostart**: Automatically starts recording when the moderator enters
   the room.
 - **lobby_autostart**: Automatically enables lobby for all rooms.
-- **per_room_max_occupants**: Set different max occupants based on room name and subdomain.
-- **secure_domain_lobby_bypass**: Allows secure domain authenticated users to bypass lobby.
+- **per_room_max_occupants**: Set different max occupants based on room name and
+  subdomain.
+- **secure_domain_lobby_bypass**: Allows secure domain authenticated users to
+  bypass lobby.
 - **time_restricted**: Sets a time limit on rooms and terminates the conference
   when the time is up.
 - **token_affiliation**: Promotes users to moderators based on affiliation
   property in token (JWT).
 - **token_lobby_bypass**: Enables some users to bypass lobby based on a flag in
   token (JWT).
-- **token_lobby_ondemand**: Activates lobby based on a flag in
-  token (JWT).
+- **token_lobby_ondemand**: Activates lobby based on a flag in token (JWT).
 - **token_owner_party**: Prevents unauthorized users from create a room and
   terminates the conference when the owner leaves.
 
@@ -183,9 +183,9 @@ https://github.com/SariskaIO/Sariska-Media-Unity-Demo
 ## Generic OIDC and SAML adapter
 
 Add support for OIDC and SAML to Jitsi with JWT and anonymous domain activated.
-Authenticaten for the meeting host, allowing guests to join without requiring authentication.
+Authenticaten for the meeting host, allowing guests to join without requiring
+authentication.
 
 Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-SAML-adapter
 
 Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-adapter
-

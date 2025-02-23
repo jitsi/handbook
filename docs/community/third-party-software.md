@@ -19,6 +19,16 @@ Some extra features using injected scripts.
 
 https://jitsi-hacks.cketti.eu/
 
+## Eparto Virtual Phone
+
+This is a Chrome extension that allow users to use their browser as a virtual
+phone and to make Jitsi-based calls without opening any web site.
+
+Chrome web store:
+[Eparto virtual phone extension](https://chromewebstore.google.com/detail/eparto-virtual-phone/njihflnogjnjnmflicfongbnehhpkhmj)
+
+GitHub: https://github.com/emrahcom/eparto-virtual-phone
+
 ## Flutter plugin
 
 Plugin for Flutter.

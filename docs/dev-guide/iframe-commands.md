@@ -667,10 +667,13 @@ Shows a custom notification. This affects only the local user.
 If `uid` is provided, the notification will replace existing notification with the same `uid`. The `uid` can also be
 passed to the `hideNotification` command to programmatically hide the notification.
 
+If `customActions` is provided, when triggered, the actions will fire a [customNotificationActionTriggered](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe-events#customnotificationactiontriggered) event with their corresponding uuid
+
 ```javascript
 api.executeCommand('showNotification', {
   title: String, // Title of the notification.
   description: String, // Content of the notification.
+  customActions: Object(label: String, uuid: String)[], // Optional. Define custom actions to be displayed on the notification
   uid: String, // Optional. Unique identifier for the notification.
   type: String, // Optional. Can be 'normal', 'success', 'warning' or 'error'. Defaults to 'normal'.
   timeout: String // optional. Can be 'short', 'medium', 'long', or 'sticky'. Defaults to 'short'.

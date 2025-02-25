@@ -123,6 +123,20 @@ The listener receives an object with the following structure:
 }
 ```
 
+### customNotificationActionTriggered
+
+Callback that triggers for custom actions defined for the [showNotification](https://jitsi.github.io/handbook/docs/dev-guide/dev-guide-iframe-commands/#shownotification) command
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    data: {
+        id: string // uuid of the triggered action
+    }
+}
+```
+
 ### dataChannelOpened
 
 Indicates the data channel is open and thus messages can be sent over it.

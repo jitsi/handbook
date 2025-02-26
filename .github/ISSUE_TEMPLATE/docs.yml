@@ -1,0 +1,36 @@
+name: 📑 Docs
+description: Propose changes and improvements to Jitsi Docs.
+labels: ["📑 docs"]
+title: "[📑 Docs]: "
+
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing to Jisti Docs! 📑 👩🏻‍💻 We appreciate your feedback, ideas, and contributions. 
+  
+  - type: textarea
+    id: reason-context
+    attributes:
+      label: What Dev Docs changes are you proposing?
+      description: Why do the Docs need this improvement? What is the motivation for this change? How will this change benefit our Open-Source community?
+      placeholder: "I would like to contribute to JItsi Docs 📑 by..."
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our Code of Conduct
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
+          
+  - type: dropdown
+    attributes:
+      label: Are you willing to work on this issue ?
+      description: This is absolutely not required, but we are happy to guide you in the contribution process.
+      options:
+        - "Yes I am willing to submit a PR!"
+        - "No, someone else can work on it" 
+

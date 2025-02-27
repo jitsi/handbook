@@ -16,21 +16,13 @@ body:
       description: Why do the Docs need this improvement? What is the motivation for this change? How will this change benefit our Open-Source community?
       placeholder: "I would like to contribute to JItsi Docs 📑 by..."
     validations:
-      required: true
+      required: false
   - type: checkboxes
-    id: terms
+    id: check-Community-Forum
     attributes:
-      label: Code of Conduct
-      description: By submitting this issue, you agree to follow our Code of Conduct
+      label: "🏢 Have you checked the Community Forum?"
       options:
-        - label: I agree to follow this project's Code of Conduct
+        - label: "please make sure you check https://community.jitsi.org"
           required: true
-          
-  - type: dropdown
-    attributes:
-      label: Are you willing to work on this issue ?
-      description: This is absolutely not required, but we are happy to guide you in the contribution process.
-      options:
-        - "Yes I am willing to submit a PR!"
-        - "No, someone else can work on it" 
+
 

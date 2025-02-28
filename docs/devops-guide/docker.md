@@ -913,7 +913,7 @@ location /xmpp-websocket {
 }
 
 location /colibri-ws {
-    proxy_pass http://localhost:8080/colibri-ws;
+    proxy_pass http://localhost:8000/colibri-ws;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";

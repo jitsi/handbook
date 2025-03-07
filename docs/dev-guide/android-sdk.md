@@ -486,7 +486,7 @@ Broadcasted when a custom button is pressed. `data` contains the following infor
 - `id`: the id of the pressed custom button.
 - `text`: the label of the pressed custom button.
 
-#### CONFERENCE_UNIQUE_ID_SET
+##### CONFERENCE_UNIQUE_ID_SET
 
 Broadcasted when an meeting unique id has been set. `data` contains the following information:
 
@@ -506,7 +506,7 @@ The intents can be built manually (as shown above) or through the methods in `Br
 
 Please see `JitsiMeetOngoingConferenceService` for more examples of sending actions.
 
-## Supported actions
+#### Supported actions
 
 ##### SET_AUDIO_MUTED
 Sets the state of the localParticipant audio muted according to the `muted` parameter.

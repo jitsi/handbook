@@ -441,7 +441,7 @@ Called when a participant has left the conference. `data` contains the following
 Broadcasted when an endpoint text message is received. The `data` HashMap contains a `senderId` key with the
 participantId of the sender and a `message` key with the content.
 
-#### SCREEN_SHARE_TOGGLED
+##### SCREEN_SHARE_TOGGLED
 
 Broadcasted when a participant starts or stops sharing his screen. `data` contains the following information:
 
@@ -486,6 +486,12 @@ Broadcasted when a custom button is pressed. `data` contains the following infor
 - `id`: the id of the pressed custom button.
 - `text`: the label of the pressed custom button.
 
+#### CONFERENCE_UNIQUE_ID_SET
+
+Broadcasted when an meeting unique id has been set. `data` contains the following information:
+
+- `sessionId`: the unique meeting id.
+
 ### Broadcasting Actions
 
 The SDK listens for broadcasted actions from the users and reacts accordingly.
@@ -500,7 +506,7 @@ The intents can be built manually (as shown above) or through the methods in `Br
 
 Please see `JitsiMeetOngoingConferenceService` for more examples of sending actions.
 
-#### Supported actions
+## Supported actions
 
 ##### SET_AUDIO_MUTED
 Sets the state of the localParticipant audio muted according to the `muted` parameter.
@@ -542,6 +548,23 @@ Does not expect any extra value.
 ##### SEND_CHAT_MESSAGE
 Sends a chat message, either a private one if a `to` key is present with a valid participantId and to everybody otherwise.
 Expect a `message` key with a string value.
+
+##### SHOW_NOTIFICATION
+Show a notification that can be configured based on `appearance`, `description`, `timeout`, `title` and an `uid`.
+
+##### HIDE_NOTIFICATION
+Hides a notification according to its `uid`.
+
+##### START_RECORDING
+Starts the recording by setting up a `mode`, either as a `file` or a `stream`, which can also have a `dropboxToken`, `shouldShare`
+you can provide a `rtmpStreamKey`, `rtmBroadcastID`, `youtubeStreamKey`, `youtubeBroadcastID`, other `extraMetadata`. You can also enable
+`transcription` through this action.
+
+##### STOP_RECORDING
+Stops the recording based on `mode` and also can stop `transcription` if it was enabled.
+
+##### OVERWRITE_CONFIG
+Overwrites `config` during the meeting.
 
 ## ProGuard rules
 

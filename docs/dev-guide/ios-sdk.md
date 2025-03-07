@@ -341,12 +341,18 @@ Called when the chat dialog is opened or closed. `data` contains the following i
 
 Called when the SDK is ready to be closed. No meeting is happening at this point.
 
-#### customOverflowMenuButtonPressed
+#### customButtonPressed
 
 Called when custom buttons are added to the overflow menu. `data` contains the following information:
 
 - `id`: the id of the pressed custom button.
 - `text`: the label of the pressed custom button.
+
+#### conferenceUniqueIdSet
+
+Called when a meeting unique id was set. `data` contains the following information:
+
+- `sessionId`: the unique conference id.
 
 ### Picture-in-Picture
 

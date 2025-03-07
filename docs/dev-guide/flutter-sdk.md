@@ -276,6 +276,13 @@ This class intends to be used as a listener for events that come from the native
 #### readyToClose()
     Called when the SDK is ready to be closed. No meeting is happening at this point.
 
+#### customButtonPressed()
+    Called when a custom button is pressed.
+
+    - `id` : the ID of the button.
+    - `text` : the label of the button.
+
+
 #### Example of listener:
 
 ```dart

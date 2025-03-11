@@ -86,9 +86,12 @@ xcodebuild -create-xcframework \
     -framework ios/sdk/out/ios-device.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
     -framework ios/sdk/out/ios-simulator.xcarchive/Products/Library/Frameworks/JitsiMeetSDK.framework \
     -output ios/sdk/out/JitsiMeetSDK.xcframework
+cp -a ios/Pods/hermes-engine/destroot/Library/Frameworks/universal/hermes.xcframework ios/sdk/out
 ```
 
-After successfully building Jitsi Meet SDK for iOS, the resulting XCFramework will be in the ios/sdk/out directory.
+After successfully building Jitsi Meet SDK for iOS, the resulting XCFramework(s) will be in the ios/sdk/out directory.
+
+If you are embedding the Framework directly into your project you'll also need to add the generated `hermes.xcframework`.
 
 NOTE: Your app will need to depend on the JitsiWebRTC CocoaPod.
 

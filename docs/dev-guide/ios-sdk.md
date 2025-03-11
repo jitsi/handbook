@@ -357,6 +357,19 @@ Called when a meeting unique id was set. `data` contains the following informati
 
 - `sessionId`: the unique conference id.
 
+#### recordingStatusChanged
+
+Called when current recording status is changing. `data` contains the following information:
+
+- `error`
+- `id`
+- `initiator`
+- `liveStreamViewURL`
+- `mode`
+- `status`
+- `terminator`
+- `timestamp`
+
 ### Picture-in-Picture
 
 `JitsiMeetView` will automatically adjust its UI when presented in a

@@ -566,6 +566,9 @@ Stops the recording based on `mode` and also can stop `transcription` if it was 
 ##### OVERWRITE_CONFIG
 Overwrites `config` during the meeting.
 
+##### SEND_CAMERA_FACING_MODE_MESSAGE
+Sends a message `to` with the `facingMode` via data channel. 
+
 ## ProGuard rules
 
 When using the SDK on a project some proguard rules have to be added to avoid necessary code being stripped. Add the following to your project's

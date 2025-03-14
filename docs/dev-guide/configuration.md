@@ -927,6 +927,19 @@ If true disable the camera tint foreground on the active speaker in the filmstri
 disableCameraTintForeground: true
 ```
 
+### filmstripBackgroundOpaque
+
+type: `Boolean`
+
+Default: **unset**
+
+If true force the filmstrip container background to have an opacity of 1
+
+```javascript
+filmstripBackgroundOpaque: true
+```
+
+
 ## Face Landmarks
 
 ### faceLandmarks

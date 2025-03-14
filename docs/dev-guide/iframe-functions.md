@@ -194,6 +194,18 @@ api.getSessionId().then(sessionId => {
 });
 ```
 
+### getSharedDocumentUrl
+
+Returns the meeting's unique etherpad shared document url (`sharedDocumentUrl`). 
+Please note that the `sharedDocumentUrl` is not available when in prejoin screen and it's not guaranteed to be available immediately after joining - in which cases it will be empty.
+
+```javascript
+api.getSharedDocumentUrl().then(sharedDocumentUrl => {
+    //sharedDocumentUrl: string
+    ...
+});
+```
+
 ### getVideoQuality
 
 Returns the current video quality setting.

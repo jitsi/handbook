@@ -721,8 +721,6 @@ Properties:
     If not set, the effective value is `all`.
 * `codecPreferenceOrder` - Provides a way to set the codec preference on desktop based endpoints.
 * `mobileCodecPreferenceOrder` - Provides a way to set the codec preference on mobile devices, both on RN and mobile browser based endpoints.
-* `preferredCodec` - __DEPRECATED__ Use `codecPreferenceOrder` or `mobileCodecPreferenceOrder` instead.
-* `disabledCodec` - __DEPRECATED__ Use `codecPreferenceOrder` or `mobileCodecPreferenceOrder` instead.
 * `backToP2PDelay` - How long we're going to wait, before going back to P2P after the 3rd
     participant has left the conference (to filter out page reload).
 * `stunServers` - The STUN servers that will be used in the peer to peer connections.
@@ -1029,29 +1027,6 @@ Default value for the channel "last N" attribute. -1 for unlimited.
 
 ```javascript
 channelLastN: -1
-```
-
-### lastNLimits 🚫
-
-type: `Object`
-
-Provides a way to use different "last N" values based on the number of participants in the conference.
-The keys in an Object represent number of participants and the values are "last N" to be used when number of
-participants gets to or above the number.
-
-
-For the given example mapping, "last N" will be set to 20 as long as there are at least 5, but less than
-29 participants in the call and it will be lowered to 15 when the 30th participant joins. The 'channelLastN'
-will be used as default until the first threshold is reached.
-
-```javascript
-lastNLimits: {
-    5: 20,
-    30: 15,
-    50: 10,
-    70: 5,
-    90: 2
-}
 ```
 
 ### startLastN
@@ -1521,17 +1496,6 @@ Use `-1` to disable.
 maxFullResolutionParticipants: 5
 ```
 
-### ~~preferH264~~
-
-type: `Boolean`
-
-__DEPRECATED__ Use `preferredCodec` under the `videoQuality` section instead.
-
-Prefer to use the H.264 video codec (if supported).
-Note that it's not recommended to do this because simulcast is not
-supported when  using H.264. For 1-to-1 calls this setting is enabled by
-default and can be toggled in the p2p section.
-
 ### resolution
 
 type: `Number`
@@ -1630,8 +1594,6 @@ vp9: {
     useKSVC: true
 },
 ```
-* `disabledCodec` - __DEPRECATED__ Use `codecPreferenceOrder` or `mobileCodecPreferenceOrder` instead.
-* `preferredCodec` - __DEPRECATED__ Use `codecPreferenceOrder` or `mobileCodecPreferenceOrder` instead.
 * `minHeightForQualityLvl` - The options can be used to override default thresholds of video thumbnail heights corresponding to
     the video quality levels used in the application. At the time of this writing, the allowed levels are:
     *    `low` - for the low-quality level (180p at the time of this writing)

@@ -868,7 +868,7 @@ HTTPS can be disabled in the Docker Compose configuration (since HTTPS will prob
 ```bash
 DISABLE_HTTPS=1
 ENABLE_HTTP_REDIRECT=0
-ENABLE_LETS_ENCRYPT=0
+ENABLE_LETSENCRYPT=0
 ```
 
 ### Do not expose the Jitsi Meet's ports publicly

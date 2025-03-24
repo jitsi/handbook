@@ -798,11 +798,16 @@ JVB_ADVERTISE_IPS=192.168.1.1,1.2.3.4
 
 #### Advertising Ports
 
-If you have a different external port than the internal one(`JVB_PORT`), you can specify the advertised port together with the advertised IP. This also works for IPv6 addresses, if they are encapsulated with squared brackets:
+If your external port differs from the internal `JVB_PORT`, you can specify the advertised port along with the advertised IP:
 
 ```
-JVB_ADVERTISE_IPS=192.168.1.1:12345,[fe80::1]:12345
+JVB_ADVERTISE_IPS=192.168.1.1#12345,fe80::1#12345
 ```
+
+:::note
+Since IPv6 addresses use `:` in their representation, the `#` character is used to separate the IP from the port.
+:::
+
 
 #### Offline / airgapped installation
 

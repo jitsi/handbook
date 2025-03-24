@@ -69,7 +69,15 @@ In nginx, if you are using Let's Encrypt, you should have a line like this:
 
 ## Can I record and save the video?
 
-Yes. There are multiple methods (using external software or services):
+Yes. There are multiple methods (using external software, services or the embedded feature):
+
+#### Record using the native feature
+
+Jitsi offers the possiblity to record locally the video (with audio) of the room. When the recording is stopped (either manually or when the max size of the file is reached) the file (in webm format) is saved into the device storage.
+
+To configure the feature, for self-hosted instances, see information [here](dev-guide/dev-guide-configuration/#recording).
+
+#### Record using external software / services
 
 _Note_: If you want to use a privacy-friendly method, use method 1 or 2.
 
@@ -80,8 +88,6 @@ _Note_: If you want to use a privacy-friendly method, use method 1 or 2.
 3. **Dropbox**: [Connect to Dropbox with Jitsi Meet](/handbook/docs/dev-guide/dev-guide-web-integrations#creating-the-dropbox-app-for-dropbox-recording-integration) and save the video in the Dropbox. 
 
 4. **Video Services/Websites**: Stream your conference to YouTube or other sites (e.g. Twitch) and access the recording there (see [howto](https://jitsi.org/blog/live-streaming-with-jitsi-and-youtube/)). Self-installed Jitsi Meet deployments will need to setup Jibri to do this. 
-
-More methods might be implemented in the future, but are not ready yet (e.g. [Local Recording](https://github.com/jitsi/jitsi-meet/issues/6014).
 
 ## I set the password in meeting but it is not working the next time
 Once the meeting ends it's password also gets removed, so you need to set the password again for next meeting.

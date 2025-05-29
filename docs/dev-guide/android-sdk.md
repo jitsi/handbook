@@ -300,21 +300,32 @@ a conference.
 Example:
 
 ```java
-ArrayList<Bundle> customToolbarButtons = new ArrayList<Bundle>();
+private static @NonNull ArrayList<Bundle> getCustomToolbarButtons() {
+    ArrayList<Bundle> customToolbarButtons = new ArrayList<>();
 
-Bundle firstCustomButton = new Bundle();
-Bundle secondCustomButton = new Bundle();
+    Bundle firstCustomButton = new Bundle();
+    Bundle secondCustomButton = new Bundle();
+    Bundle thirdCustomButton = new Bundle();
+    Bundle fourthCustomButton = new Bundle();
+    Bundle fifthCustomButton = new Bundle();
 
-firstCustomButton.putString("text", "Button one");
-firstCustomButton.putString("icon", "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png");
-firstCustomButton.putString("id", "btn1");
+    firstCustomButton.putString("icon", "ICON_URL");
+    firstCustomButton.putString("id", "CUSTOM_BTN_ID");
+    
+    secondCustomButton.putString("backgroundColor", "CUSTOM_BTN_BACKGROUND_COLOR");
+    secondCustomButton.putString("icon", "ICON_URL");
+    secondCustomButton.putString("id", "CUSTOM_BTN_ID");
 
-secondCustomButton.putString("text", "Button two");
-secondCustomButton.putString("icon", "https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png");
-secondCustomButton.putString("id", "btn2");
+    customToolbarButtons.add(firstCustomButton);
+    customToolbarButtons.add(secondCustomButton);
 
-customToolbarButtons.add(firstCustomButton);
-customToolbarButtons.add(secondCustomButton);
+    return customToolbarButtons;
+}
+
+// You need to set what your toolbar buttons too and always include "overflowmenu", "close"
+private String[] getToolbarButtons() {
+    return new String[]{"CUSTOM_BTN_ID", "CUSTOM_BTN_ID", "microphone", "overflowmenu", "close"};
+}
         
 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setServerURL(new URL("https://meet.jit.si"))
@@ -324,7 +335,8 @@ JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()
     .setAudioOnly(false)
     .setWelcomePageEnabled(false)
     .setConfigOverride("requireDisplayName", true)
-    .setConfigOverride("customToolbarButtons", customToolbarButtons)
+    .setConfigOverride("customToolbarButtons", getCustomToolbarButtons())
+    .setConfigOverride("toolbarButtons", getToolbarButtons())
     .build();
 ```
 

@@ -141,23 +141,37 @@ Joins the conference specified by the given options.
 ```objc
   JitsiMeetConferenceOptions *options = [JitsiMeetConferenceOptions fromBuilder:^(JitsiMeetConferenceOptionsBuilder *builder) {
       builder.serverURL = [NSURL URLWithString:@"https://meet.jit.si"];
-      builder.room = @"test123";
+      builder.room = @"test123testing";
       builder.audioOnly = NO;
       builder.audioMuted = NO;
       builder.videoMuted = NO;
       builder.welcomePageEnabled = NO;
-      [builder setConfigOverride:@"requireDisplayName" withBoolean:YES];
-      [builder setConfigOverride:@"customToolbarButtons" withArray:@[
-      @{
-          @"icon": @"https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
-          @"id": @"btn1",
-          @"text": @"Button one"
-        }, 
-      @{
-          @"icon": @"https://w7.pngwing.com/pngs/987/537/png-transparent-download-downloading-save-basic-user-interface-icon-thumbnail.png",
-          @"id": @"btn2",
-          @"text": @"Button two"
-      }]];
+     [builder setConfigOverride:@"requireDisplayName" withBoolean:YES];
+     [builder setConfigOverride:@"customToolbarButtons" withArray:@[
+        @{
+            @"icon": @"ICON_URL",
+            @"id": @"CUSTOM_BTN_ID"
+        },
+        @{
+            @"icon": @"ICON_URL",
+            @"id": @"CUSTOM_BTN_ID"
+        },
+        @{
+            @"icon": @"ICON_URL",
+            @"id": @"CUSTOM_BTN_ID"
+        },
+        @{
+            @"icon": @"ICON_URL",
+            @"id": @"CUSTOM_BTN_ID"
+        },
+        @{
+            @"backgroundColor": @"CUSTOM_BTN_BACKGROUND_COLOR",
+            @"icon": @"ICON_URL",
+            @"id": @"CUSTOM_BTN_ID"
+        }
+     ]];
+        <!-- You need to set what your toolbar buttons too and always include "overflowmenu", "close" -->
+     [builder setConfigOverride:@"toolbarButtons" withArray:@[@"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"overflowmenu", @"close"]];
   }];
 
   [jitsiMeetView join:options];

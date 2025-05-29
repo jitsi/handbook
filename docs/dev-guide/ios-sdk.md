@@ -170,8 +170,10 @@ Joins the conference specified by the given options.
             @"id": @"CUSTOM_BTN_ID"
         }
      ]];
-        <!-- You need to set what your toolbar buttons too and always include "overflowmenu", "close" -->
-     [builder setConfigOverride:@"toolbarButtons" withArray:@[@"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"overflowmenu", @"close"]];
+        <!-- If you want your custom button/s to appear inside the toolbar, 
+        you will need to set your toolbar buttons too and always include "overflowmenu", "hangup".
+        All the buttons that, because of the screen size, won't fit the toolbar, will be automatically moved to the overflow menu. -->
+     [builder setConfigOverride:@"toolbarButtons" withArray:@[@"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"CUSTOM_BTN_ID", @"overflowmenu", @"hangup"]];
   }];
 
   [jitsiMeetView join:options];

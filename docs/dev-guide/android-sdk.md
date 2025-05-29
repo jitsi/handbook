@@ -322,9 +322,11 @@ private static @NonNull ArrayList<Bundle> getCustomToolbarButtons() {
     return customToolbarButtons;
 }
 
-// You need to set what your toolbar buttons too and always include "overflowmenu", "close"
+// If you want your custom button/s to appear inside the toolbar, 
+// you will need to set your toolbar buttons too and always include "overflowmenu", "hangup".
+// All the buttons that, because of the screen size, won't fit the toolbar, will be automatically moved to the overflow menu.
 private String[] getToolbarButtons() {
-    return new String[]{"CUSTOM_BTN_ID", "CUSTOM_BTN_ID", "microphone", "overflowmenu", "close"};
+    return new String[]{"CUSTOM_BTN_ID", "CUSTOM_BTN_ID", "microphone", "overflowmenu", "hangup"};
 }
         
 JitsiMeetConferenceOptions options = new JitsiMeetConferenceOptions.Builder()

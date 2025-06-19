@@ -215,7 +215,7 @@ If you want to limit the ability to start a conference to registered users, foll
 The access control for conferences/rooms is managed in the rooms, you can set a password on the webpage of the specific room after creation.
 See the User Guide for details: https://jitsi.github.io/handbook/docs/user-guide/user-guide-start-a-jitsi-meeting
 
-#### Advanced configuration
+### Advanced configuration
 
 If the installation is on a machine [behind NAT](https://jitsi.github.io/handbook/docs/faq#how-to-tell-if-my-server-instance-is-behind-nat) jitsi-videobridge should configure itself automatically on boot. If three way calls do not work, further configuration of jitsi-videobridge is needed in order for it to be accessible from outside.
 

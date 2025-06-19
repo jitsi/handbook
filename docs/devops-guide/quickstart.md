@@ -6,8 +6,8 @@ sidebar_label: "Debian/Ubuntu server"
 
 Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
 The following distributions are supported out-of-the-box:
-- Debian 10 (Buster) or newer
-- Ubuntu 22.04 (Jammy Jellyfish) or newer (Ubuntu 18.04 or 20.04 can be used, but Prosody must be updated to version 0.11+ before installation)
+- Debian 11 (Bullseye) or newer
+- Ubuntu 22.04 (Jammy Jellyfish) or newer
 
 :::note
 Many of the installation steps require `root` or `sudo` access. So it's recommended to have `sudo`/`root` access to your system.
@@ -22,7 +22,7 @@ You will need the following packages:
 * `curl` => **Or** `wget` **to [Add the Jitsi package repository](#add-the-jitsi-package-repository)**
 
 :::note Note
-OpenJDK 11 must be used.
+OpenJDK 17 must be used.
 :::
 
 Make sure your system is up-to-date and required packages are installed:
@@ -94,16 +94,9 @@ If all worked as expected, you should see:
 
 This will add the Prosody repository so that an up to date Prosody is installed, which is necessary for features including the lobby feature.
 
-**Ubuntu 18.04 and 20.04**
 ```bash
-echo deb http://packages.prosody.im/debian $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list
-wget https://prosody.im/files/prosody-debian-packages.key -O- | sudo apt-key add -
-sudo apt install lua5.2
-```
-**Ubuntu 22.04**
-```bash
-sudo curl -sL https://prosody.im/files/prosody-debian-packages.key -o /etc/apt/keyrings/prosody-debian-packages.key
-echo "deb [signed-by=/etc/apt/keyrings/prosody-debian-packages.key] http://packages.prosody.im/debian $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/prosody-debian-packages.list
+sudo curl -sL https://prosody.im/files/prosody-debian-packages.key -o /usr/share/keyrings/prosody-debian-packages.key
+echo "deb [signed-by=/usr/share/keyrings/prosody-debian-packages.key] http://packages.prosody.im/debian $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/prosody-debian-packages.list
 sudo apt install lua5.2
 ```
 
@@ -111,12 +104,6 @@ sudo apt install lua5.2
 
 This will add the jitsi repository to your package sources to make the Jitsi Meet packages available.
 
-**Ubuntu 18.04 and 20.04**
-```bash
-curl https://download.jitsi.org/jitsi-key.gpg.key | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg'
-echo 'deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/' | sudo tee /etc/apt/sources.list.d/jitsi-stable.list > /dev/null
-```
-**Ubuntu 22.04**
 ```bash
 curl -sL https://download.jitsi.org/jitsi-key.gpg.key | sudo sh -c 'gpg --dearmor > /usr/share/keyrings/jitsi-keyring.gpg'
 echo "deb [signed-by=/usr/share/keyrings/jitsi-keyring.gpg] https://download.jitsi.org stable/" | sudo tee /etc/apt/sources.list.d/jitsi-stable.list

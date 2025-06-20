@@ -116,14 +116,14 @@ sudo prosodyctl register myname jitsi.example.com mypassword123
 Docker users may require an alternate config path. Users of the official
 [`jitsi/prosody`](https://github.com/jitsi/docker-jitsi-meet) image should
 invoke `prosodyctl` as follows.
-:::
 
 ```
 prosodyctl --config /config/prosody.cfg.lua register <username> meet.jitsi <password>
 ```
 
 Full documentation for `prosodyctl` can be found on
-[the official site](https://prosody.im/doc/prosodyctl). :::
+[the official site](https://prosody.im/doc/prosodyctl).
+:::
 
 ## Remove users from Prosody
 

@@ -97,14 +97,15 @@ Add this section **after the previous VirtualHost** to enable the anonymous
 login method for guests:
 
 ```
-VirtualHost "guest.meet.jitsi"
+VirtualHost "guest.jitsi.example.com"
     authentication = "jitsi-anonymous"
     c2s_require_encryption = false
 ```
 
-_Note that `guest.meet.jitsi` is internal to Jitsi, and you do not need to (and
-should not) create a DNS record for it, or generate an SSL/TLS certificate, or
-do any web server configuration._
+_Note that `guest.jitsi.example.com` is internal to Jitsi, and you do not need
+to (and should not) create a DNS record for it, or generate an SSL/TLS
+certificate, or do any web server configuration. While it is internal, you
+should still replace `jitsi.example.com` with your hostname._
 
 ## Jitsi Meet configuration
 
@@ -117,7 +118,7 @@ be made in `/etc/jitsi/meet/[your-hostname]-config.js`.
 var config = {
     hosts: {
         domain: 'jitsi.example.com',
-        anonymousdomain: 'guest.meet.jitsi',
+        anonymousdomain: 'guest.jitsi.example.com',
         // ...
     },
     // ...

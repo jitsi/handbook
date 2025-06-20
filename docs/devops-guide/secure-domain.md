@@ -102,7 +102,7 @@ systemctl restart jitsi-videobridge2
 Finally, run `prosodyctl` to create a user in Prosody:
 
 ```
-sudo prosodyctl register <username> jitsi.example.com <password>
+sudo prosodyctl register <username> <your-hostname> <password>
 ```
 
 For example:
@@ -127,6 +127,12 @@ Full documentation for `prosodyctl` can be found on
 ## Remove users from Prosody
 
 To remove an existing user:
+
+```
+sudo prosodyctl unregister <username> <your-hostname>
+```
+
+For example:
 
 ```
 sudo prosodyctl unregister myname jitsi.example.com

@@ -1,7 +1,7 @@
 ---
 id: ldap-authentication
-title: LDAP authentication
-sidebar_label: LDAP Authentication
+title: LDAP Authentication
+sidebar_label: Authentication (LDAP)
 ---
 
 :::note

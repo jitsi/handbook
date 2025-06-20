@@ -152,6 +152,7 @@ module.exports = {
           },
           items: [
             "devops-guide/secure-domain",
+            "devops-guide/token-authentication",
             "devops-guide/ldap-authentication",
             "devops-guide/devops-guide-scalable",
             "devops-guide/reservation",

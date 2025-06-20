@@ -14,33 +14,36 @@ anonymous domain. Here's what has to be configured:
 If you have installed Jitsi Meet from the Debian package, these changes should
 be made in `/etc/prosody/conf.avail/[your-hostname].cfg.lua`
 
+In the example below, this hostname is assumed to be `jitsi.example.com`. Update
+this value according to your own hostname.
+
 ### Enable authentication
 
-Inside the `VirtualHost "[your-hostname]"` block, replace anonymous
+Inside the `VirtualHost "[your-hostname]"` section, replace anonymous
 authentication with hashed password authentication:
 
 ```
-VirtualHost "jitsi-meet.example.com"
+VirtualHost "jitsi.example.com"
     authentication = "internal_hashed"
 ```
 
-Replace `jitsi-meet.example.com` with your hostname.
+You will see your own hostname instead of `jitsi.example.com` in your config
+file.
 
 ### Enable anonymous login for guests
 
-Add this block **after the previous VirtualHost** to enable the anonymous login
-method for guests:
+Add this section **after the previous VirtualHost** to enable the anonymous
+login method for guests:
 
 ```
-VirtualHost "guest.jitsi-meet.example.com"
-    authentication = "anonymous"
+VirtualHost "guest.meet.jitsi"
+    authentication = "jitsi-anonymous"
     c2s_require_encryption = false
 ```
 
-_Note that `guest.jitsi-meet.example.com` is internal to Jitsi, and you do not
-need to (and should not) create a DNS record for it, or generate an SSL/TLS
-certificate, or do any web server configuration. While it is internal, you
-should still replace `jitsi-meet.example.com` with your hostname._
+_Note that `guest.meet.jitsi` is internal to Jitsi, and you do not need to (and
+should not) create a DNS record for it, or generate an SSL/TLS certificate, or
+do any web server configuration._
 
 ## Jitsi Meet configuration
 
@@ -52,19 +55,22 @@ be made in `/etc/jitsi/meet/[your-hostname]-config.js`.
 ```
 var config = {
     hosts: {
-            domain: 'jitsi-meet.example.com',
-            anonymousdomain: 'guest.jitsi-meet.example.com',
-            ...
-        },
-        ...
+        domain: 'jitsi.example.com',
+        anonymousdomain: 'guest.meet.jitsi',
+        // ...
+    },
+    // ...
 }
 ```
+
+You will see your own hostname instead of `jitsi.example.com` in your config
+file. You should add only the `anonymousdomain` line. Be carefull of commas.
 
 ## Jicofo configuration
 
 When running Jicofo, specify your main domain in an additional configuration
 property. Jicofo will accept conference allocation requests only from the
-authenticated domain. This should go as a new 'authentication' section in
+authenticated domain. This should go as a new `authentication` section in
 `/etc/jitsi/jicofo/jicofo.conf`:
 
 ```
@@ -72,38 +78,37 @@ jicofo {
   authentication: {
     enabled: true
     type: XMPP
-    login-url: jitsi-meet.example.com
- }
- ...
+    login-url: jitsi.example.com
+  }
+}
 ```
 
-When using token based authentication, the type must use `JWT` as the scheme
-instead:
+Replace `jitsi.example.com` with your own hostname. Don't create a new `jicofo`
+section. Create the `authentication` section inside the existing `jicofo`
+section.
 
-```
-jicofo {
-  authentication: {
-    enabled: true
-    type: JWT
-    login-url: jitsi-meet.example.com
- }
- ...
-```
+## Restart the services
 
-## Create users in Prosody (internal auth)
-
-Finally, run `prosodyctl` to create a user in Prosody:
-
-```
-sudo prosodyctl register <username> jitsi-meet.example.com <password>
-```
-
-and then restart prosody, jicofo and jitsi-videobridge2
+Restart prosody, jicofo and jitsi-videobridge2 as `root`.
 
 ```
 systemctl restart prosody
 systemctl restart jicofo
 systemctl restart jitsi-videobridge2
+```
+
+## Create users in Prosody
+
+Finally, run `prosodyctl` to create a user in Prosody:
+
+```
+sudo prosodyctl register <username> jitsi.example.com <password>
+```
+
+For example:
+
+```
+sudo prosodyctl register myname jitsi.example.com mypassword123
 ```
 
 :::note
@@ -118,6 +123,14 @@ prosodyctl --config /config/prosody.cfg.lua register <username> meet.jitsi <pass
 
 Full documentation for `prosodyctl` can be found on
 [the official site](https://prosody.im/doc/prosodyctl). :::
+
+## Remove users from Prosody
+
+To remove an existing user:
+
+```
+sudo prosodyctl unregister myname jitsi.example.com
+```
 
 ## Optional: Jigasi configuration
 

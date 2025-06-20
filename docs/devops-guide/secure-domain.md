@@ -1,6 +1,6 @@
 ---
 id: secure-domain
-title: Secure Domain setup
+title: Secure Domain Setup
 sidebar_label: Authentication (Secure Domain)
 ---
 

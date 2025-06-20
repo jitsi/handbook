@@ -29,7 +29,6 @@ In the example below, this hostname is assumed to be `jitsi.example.com`.
 After installing the package you will see the following lines in your Prosody
 config:
 
-
 ```
 VirtualHost "jitsi.example.com"
     authentication = "token"
@@ -65,7 +64,6 @@ VirtualHost "jitsi.example.com"
 ### persistent_lobby
 
 Add `persistent_lobby` as module into `VirtualHost`:
-
 
 ```
 VirtualHost "jitsi.example.com"

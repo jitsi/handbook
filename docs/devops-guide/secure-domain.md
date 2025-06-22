@@ -79,7 +79,7 @@ jicofo {
   authentication: {
     enabled: true
     type: XMPP
-    login-url: jitsi.example.com
+    login-url: "jitsi.example.com"
   }
 }
 ```

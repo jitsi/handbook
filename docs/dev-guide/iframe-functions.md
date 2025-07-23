@@ -5,6 +5,23 @@ title: Functions
 
 Use the following API functions to control your embedded Jitsi Meet Conference.
 
+### captureCameraPicture
+
+Mobile browsers only. Captures a high quality picture using the device's camera. All parameters are optional.
+
+```javascript
+api.captureCameraPicture(
+        cameraFacingMode, // the facing mode: environment/user. Defaults to environment.
+        descriptionText, // a custom description text to replace the default text on the consent dialog.
+        titleText // a custom title to replace the default title on the consent dialog.
+    ).then(data => {
+    // data is an Object with only one param, either dataURL on success or error on failure.
+    // - dataURL is the base64 string of the taken picture
+    // - error is a string, a verbose explanation of the problem
+    // data.dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+});
+```
+
 ### captureLargeVideoScreenshot
 
 Captures a screenshot for the participant in the large video view (on stage).

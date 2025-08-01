@@ -120,7 +120,8 @@ UPLOAD_DIR=/var/www/jitsi-meet-file-sharing-service/uploads
 ```bash
 cd /srv/jitsi-meet-file-sharing-service
 nvm use
-pm2 restart jitsi-meet-file-sharing-service
+pm2 delete jitsi-meet-file-sharing-service
+pm2 start ecosystem.config.js --env production
 ```
 
 - If you are using jwt authentication, make sure you pass 'file-upload' feature in user.context.features.

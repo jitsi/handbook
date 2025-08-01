@@ -120,7 +120,7 @@ UPLOAD_DIR=/var/www/jitsi-meet-file-sharing-service/uploads
 ```bash
 cd /srv/jitsi-meet-file-sharing-service
 nvm use
-./deploy.sh
+pm2 restart jitsi-meet-file-sharing-service
 ```
 
 - If you are using jwt authentication, make sure you pass 'file-upload' feature in user.context.features.
@@ -137,6 +137,7 @@ jitsi_default_permissions = {
         flip = true;
     };
 ```
+If you change prosody configuration, make sure to restart it.
 
 ### Usage
 

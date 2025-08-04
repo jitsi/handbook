@@ -160,6 +160,7 @@ module.exports = {
             "devops-guide/speakerstats",
             "devops-guide/videosipgw",
             "devops-guide/cloud-api",
+            "devops-guide/file-sharing"
           ],
         },
         "devops-guide/devops-guide-videotutorials",

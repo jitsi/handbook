@@ -12,7 +12,7 @@ follow these steps:
 1. Download and extract the [latest release]. **DO NOT** clone the git repository. See below if you are interested in running test images:
 
     ```bash
-    wget $(curl -s https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep 'zip' | cut -d\" -f4)
+    wget $(wget -q -O - https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep zip | cut -d\" -f4)
     ```
 
 1. Unzip the package:
@@ -111,7 +111,7 @@ Follow [this](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-lo
 If you want to update, simply run 
 
 ```bash
-wget $(curl -s https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep 'zip' | cut -d\" -f4)
+wget $(wget -q -O - https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep zip | cut -d\" -f4)
 ```
 
 again (just like how you initially downloaded Jitsi). Then unzip and overwrite all when being asked:

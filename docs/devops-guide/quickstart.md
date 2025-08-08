@@ -40,7 +40,7 @@ sudo apt install apt-transport-https
 On Ubuntu systems, Jitsi requires dependencies from Ubuntu's `universe` package repository.  To ensure this is enabled, run this command:
 
 ```bash
-sudo apt-add-repository universe
+sudo add-apt-repository universe
 ```
 
 Retrieve the latest package versions across all repositories:

@@ -1487,7 +1487,7 @@ doNotFlipLocalVideo: true
 
 ### maxFullResolutionParticipants
 
-type: `Boolean`
+type: `Number`
 
 How many participants while in the tile view mode, before the receiving video quality is reduced from HD to SD?
 Use `-1` to disable.

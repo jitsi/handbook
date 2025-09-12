@@ -54,9 +54,10 @@ module.exports = (async () => {
 ### Android
 
 #### Permissions
-- In `android/app/src/debug/AndroidManifest.xml` and `android/app/src/main/AndroidManifest.xml`, under the `</application>` tag, please include
+- In `android/app/src/debug/AndroidManifest.xml` and `android/app/src/main/AndroidManifest.xml`, above the `</application>` tag, please include
   ```xml
    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
    <uses-permission android:name="android.permission.BLUETOOTH" />
    <uses-permission android:name="android.permission.CAMERA" />
    <uses-permission android:name="android.permission.INTERNET" />
@@ -64,7 +65,6 @@ module.exports = (async () => {
    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
    <uses-permission android:name="android.permission.RECORD_AUDIO" />
    <uses-permission android:name="android.permission.WAKE_LOCK" />
-   <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
   ```
 - Starting Android 14, specific foreground service types permissions require to be added in the manifest file: 
   ```xml

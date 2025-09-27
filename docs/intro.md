@@ -5,8 +5,7 @@ title: Introduction
 
 ## What is Jitsi?
 
-Jitsi is a [collection of Open Source projects](architecture.md) which provide state-of-the-art video conferencing
-capabilities that are secure, easy to use, and easy to self-host.
+Jitsi is a video conferencing platform.  It is easy to use, easy to self-host, secure, state-of-the-art, and built from a [collection of Open Source projects](architecture.md).
 
 ## About this handbook
 

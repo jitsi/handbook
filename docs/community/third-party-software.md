@@ -91,6 +91,12 @@ Demo: https://jitsi-admin.de
 Docker:
 https://github.com/H2-invent/jitsi-admin/wiki/Install-jitsi-admin-in-docker
 
+## JitsiMeet-AutoStart
+
+A lightweight, single-page utility for unattended systems that need to automatically join a Jitsi meeting with the camera enabled. Perfect for kiosks, monitoring setups, or any scenario where a system should automatically connect and display video without user interaction. No deployment required.
+
+Github: https://github.com/GammaPi/JitsiMeet-AutoStart
+
 ## Jitsi Config Differ
 
 Web app to compare reference configs between different Jitsi releases. This aims

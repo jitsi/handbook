@@ -32,6 +32,7 @@ Here is how to remove multiplexing and enable websockets in favor of WebRTC Data
     http-servers {
         public {
             port = 9090
+            host = "localhost"
         }
     }
     websockets {

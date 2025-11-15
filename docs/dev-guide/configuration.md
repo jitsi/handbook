@@ -711,7 +711,6 @@ hosts: {
     focus: 'focus.jitsi-meet.example.com',
     muc: 'conference.jitsi-meet.example.com'
 }
-c
 
 ### p2p
 

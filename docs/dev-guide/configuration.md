@@ -682,14 +682,26 @@ gatherStats: false
 
 type: `Object`
 
-URLs for the app connection.
+⚠️ **Note:** Since commit `97146ed`, the `hosts` configuration can **no longer be overridden** via `configOverwrite`.  
+It must be defined only in the main `config.js` served by your deployment.
 
-Properties
-* `domain` - XMPP domain
-* `anonymousdomain` - When using authentication, domain for guest users.
-* `authdomain` - Domain for authenticated users. Defaults to `domain`.
-* `focus` - Focus component domain. Defaults to **focus.`domain`**.
-* `muc` - XMPP MUC domain.
+This option previously supported dynamic overrides (e.g., for custom domains or hidden domains),  
+but that functionality has been removed from the client for security and consistency reasons.
+
+If you need to separate users into different domains (for example, to hide participants from each other),  
+use the **Visitors / Lobby / JWT roles** features instead of host overrides.
+
+---
+
+#### Properties
+
+- `domain` — XMPP domain  
+- `anonymousdomain` — Domain for guest / unauthenticated users  
+- `authdomain` — Domain for authenticated users (defaults to `domain`)  
+- `focus` — Focus component domain (defaults to `focus.<domain>`)  
+- `muc` — XMPP MUC domain
+
+#### Example
 
 ```javascript
 hosts: {
@@ -699,7 +711,7 @@ hosts: {
     focus: 'focus.jitsi-meet.example.com',
     muc: 'conference.jitsi-meet.example.com'
 }
-```
+c
 
 ### p2p
 

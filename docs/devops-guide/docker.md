@@ -654,7 +654,7 @@ These options are also available
 
 Variable | Description | Example
 --- | --- | ---
-`WHITEBOARD_COLLAB_SERVER_PUBLIC_URL` | Set whiteboard URL | http://whiteboard.meet.jitsi:3000>
+`WHITEBOARD_COLLAB_SERVER_PUBLIC_URL` | Set whiteboard URL | http://whiteboard.meet.jitsi:3000
 
 ### Transcription configuration
 

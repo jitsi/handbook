@@ -21,31 +21,71 @@ The **`event`** parameter is a string object with the name of the event.
 
 The **`listener`** parameter is a function object with one argument that creates a notification when the event occurs along with related event data.
 
-The following events are currently supported:
+## Event Categories
+
+**Conference Lifecycle:**
+- `videoConferenceJoined`, `videoConferenceLeft`
+- `readyToClose`, `participantJoined`, `participantLeft`
+
+**Participant Events:**
+- `participantJoined`, `participantLeft`, `participantKickedOut`
+- `participantRoleChanged`, `displayNameChange`
+- `avatarChanged`, `emailChange`
+
+**Audio/Video Events:**
+- `audioMuteStatusChanged`, `videoMuteStatusChanged`
+- `audioAvailabilityChanged`, `videoAvailabilityChanged`
+- `cameraError`, `micError`
+- `screenSharingStatusChanged`, `contentSharingParticipantsChanged`
+
+**UI & Layout Events:**
+- `tileViewChanged`, `filmstripDisplayChanged`
+- `largeVideoChanged`, `dominantSpeakerChanged`
+- `participantsPaneToggled`
+
+**Chat & Communication:**
+- `incomingMessage`, `chatUpdated`
+- `endpointTextMessageReceived`, `nonParticipantMessageReceived`
+
+**Recording & Streaming:**
+- `recordingStatusChanged`, `recordingLinkAvailable`
+
+**Lobby & Moderation:**
+- `knockingParticipant`
+- `moderationStatusChanged`, `moderationParticipantApproved`, `moderationParticipantRejected`
+
+**Breakout Rooms:**
+- `breakoutRoomsUpdated`
+
+**System Events:**
+- `errorOccurred`, `log`, `browserSupport`
+- `deviceListChanged`, `dataChannelOpened`
+
+---
+
+## Events
 
 ### cameraError
 
-Provides event notifications about Jitsi Meet having failed to access the meeting camera.
+Fired when camera access fails.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    type: string, // A constant representing the overall type of the error.
-    message: string // Additional information about the error.
+    type: string,    // Error type constant
+    message: string  // Error description
 }
 ```
 
 ### avatarChanged
 
-Provides event notifications about changes to a participant's avatar.
+Fired when a participant's avatar changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string, // the id of the participant that changed his avatar.
-    avatarURL: string // the new avatar URL.
+    id: string,        // Participant ID
+    avatarURL: string  // New avatar URL
 }
 ```
 
@@ -101,26 +141,25 @@ The listener receives an object with the following structure:
 
 ### browserSupport
 
-Provides event notifications about the current browser support.
+Fired when browser support status is determined.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    supported: boolean
+    supported: boolean  // true if browser is supported, false otherwise
 }
 ```
 
 ### contentSharingParticipantsChanged
 
-Provides real-time list of currently screen sharing participant ID's.
+Fired when the list of screen-sharing participants changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    data: ["particId1", "particId2", ...]
+    data: string[]  // Array of participant IDs currently sharing their screen
 }
+// Example: { data: ['participant1', 'participant2'] }
 ```
 
 ### customNotificationActionTriggered
@@ -139,37 +178,37 @@ The listener receives an object with the following structure:
 
 ### dataChannelOpened
 
-Indicates the data channel is open and thus messages can be sent over it.
+Fired when the data channel opens, enabling peer-to-peer messaging.
+
+**Payload:** None
 
 ### endpointTextMessageReceived
 
-Provides event notifications about a text messages received through data channels.
+Fired when a text message is received via data channels.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
     senderInfo: {
-        jid: string, // the jid of the sender
-        id: string // the participant id of the sender
+        jid: string,  // Sender's Jabber ID
+        id: string    // Sender's participant ID
     },
     eventData: {
-        name: string, // the name of the datachannel event: `endpoint-text-message`
-        text: string // the received text from the sender
+        name: string,  // Event name: 'endpoint-text-message'
+        text: string   // Message content
     }
 }
 ```
 
 ### nonParticipantMessageReceived
 
-Provides event notifications about a messages sent by a non-participant, e.g. a custom prosody message.
+Fired when a message is received from a non-participant (e.g., server, bot).
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-        id: string, // the id of the message, may be null
-        message: string // the message received
+    id: string | null,  // Message ID (may be null)
+    message: string     // Message content
 }
 ```
 
@@ -208,187 +247,160 @@ The listener receives an object with the following structure:
 
 ### knockingParticipant
 
-Provides event notifications about a knocking participant in the lobby.
+Fired when a participant is waiting in the lobby.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
     participant: {
-        // the id and name of the participant that is currently knocking in the lobby
-        id: string,
-        name: string
+        id: string,    // Participant ID
+        name: string   // Participant display name
     }
 }
 ```
 
 ### largeVideoChanged
 
-Provides event notifications about changes in the large video display.
+Fired when the participant displayed in large video changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string // id of the participant that is now on large video in the stage view.
+    id: string  // Participant ID now displayed in large video
 }
 ```
 
 ### log
 
-Provides log event notifications with the log level being one of the values specified in the [config.js] file in the **`apiLogLevels`** property (if not specified the event does not fire).
+Fired for log messages when `apiLogLevels` is configured in config.js.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    logLevel: string, // A constant representing the log type (info, error, debug, warn).
-    args: string // Additional log information.
+    logLevel: string,  // Log level: 'info', 'error', 'debug', or 'warn'
+    args: string       // Log message and additional information
 }
 ```
 
 ### micError
 
-Provides event notifications about Jitsi Meet issues with mic access.
+Fired when microphone access fails.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    type: string, // A constant representing the overall type of the error.
-    message: string // Additional information about the error.
+    type: string,    // Error type constant
+    message: string  // Error description
 }
 ```
 
 ### screenSharingStatusChanged
 
-Provides event notifications about either turning on or off local user screen sharing.
+Fired when local screen sharing is started or stopped.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    on: boolean, //whether screen sharing is on
+    on: boolean,  // true if screen sharing is active, false if stopped
     details: {
-
-        // From where the screen sharing is capturing, if known. Values which are
-        // passed include 'window', 'screen', 'proxy', 'device'. The value undefined
-        // will be passed if the source type is unknown or screen share is off.
-        sourceType: string|undefined
+        sourceType: string | undefined  // Capture source: 'window', 'screen', 'proxy', 'device', or undefined
     }
 }
 ```
 
 ### dominantSpeakerChanged
 
-Provides event notifications about dominant speaker changes.
+Fired when the dominant (loudest) speaker changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string //participantId of the new dominant speaker
+    id: string  // Participant ID of the new dominant speaker
 }
 ```
 
 ### raiseHandUpdated
 
-Provides event notifications about the participant raising/lowering the hand.
+Fired when a participant raises or lowers their hand.
 
-The listener will receive an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string,         // participantId of the user who raises/lowers the hand
-    handRaised: number  // 0 when hand is lowered and the hand raised timestamp when raised.
+    id: string,         // Participant ID
+    handRaised: number  // 0 when lowered, or timestamp (ms) when raised
 }
 ```
 
 ### tileViewChanged
 
-Provides event notifications about entrance or exit from the tile view layout mode.
+Fired when tile view mode is enabled or disabled.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    enabled: boolean, // whether tile view is not displayed or not
+    enabled: boolean  // true if tile view is active, false otherwise
 }
 ```
 
 ### chatUpdated
 
-Provides event notifications about chat state being updated.
+Fired when the chat panel state changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    isOpen: boolean, // Whether the chat panel is open or not
-    unreadCount: number // The unread messages counter
+    isOpen: boolean,      // true if chat panel is open, false if closed
+    unreadCount: number   // Number of unread messages
 }
 ```
 
 ### incomingMessage
 
-Provides event notifications about incoming chat messages.
+Fired when a chat message is received.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    from: string, // the id of the user that sent the message
-    nick: string, // the nickname of the user that sent the message
-    privateMessage: boolean, // whether this is a private or group message
-    message: string // the text of the message
-    stamp: string // the message timestamp as string (ISO-8601)
+    from: string,              // Sender's participant ID
+    nick: string,              // Sender's display name
+    privateMessage: boolean,   // true for private message, false for group
+    message: string,           // Message text
+    stamp: string              // ISO-8601 timestamp
 }
 ```
 
 ### mouseEnter
 
-Provides event notifications when mouse enters the iframe.
-The listener receives an object with the following structure based on [MouseEvent]:
+Fired when the mouse pointer enters the iframe.
 
+**Payload:**
 ```javascript
 {
-    event: {
-        clientX,
-        clientY,
-        movementX,
-        movementY,
-        offsetX,
-        offsetY,
-        pageX,
-        pageY,
-        x,
-        y,
-        screenX,
-        screenY
+    event: {  // MouseEvent properties
+        clientX: number, clientY: number,
+        movementX: number, movementY: number,
+        offsetX: number, offsetY: number,
+        pageX: number, pageY: number,
+        x: number, y: number,
+        screenX: number, screenY: number
     }
 }
 ```
 
 ### mouseLeave
 
-Provides event notifications when mouse leaves the iframe.
-The listener receives an object with the following structure based on [MouseEvent]:
+Fired when the mouse pointer leaves the iframe.
 
+**Payload:**
 ```javascript
 {
-    event: {
-        clientX,
-        clientY,
-        movementX,
-        movementY,
-        offsetX,
-        offsetY,
-        pageX,
-        pageY,
-        x,
-        y,
-        screenX,
-        screenY
+    event: {  // MouseEvent properties
+        clientX: number, clientY: number,
+        movementX: number, movementY: number,
+        offsetX: number, offsetY: number,
+        pageX: number, pageY: number,
+        x: number, y: number,
+        screenX: number, screenY: number
     }
 }
 ```
@@ -475,157 +487,156 @@ The listener receives an object with the following structure:
 
 ### deviceListChanged
 
-Provides event notifications about device list changes.
+Fired when the list of available media devices changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    devices: Object // the new list of available devices.
+    devices: object  // Available devices (same format as getAvailableDevices())
 }
 ```
 
-**NOTE:** The **`device`** object has the same format as the **`getAvailableDevices`** result format.
+**Note:** The `devices` object has the same structure as returned by `getAvailableDevices()`.
 
 ### emailChange
 
-Provides event notifications about email changes.
+Fired when a participant's email address changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string, // the id of the participant that changed his email
-    email: string // the new email
+    id: string,     // Participant ID
+    email: string   // New email address
 }
 ```
 
 ### feedbackSubmitted
 
-Provides event notifications about conference feedback submissions:
+Fired when conference feedback is submitted.
 
+**Payload:**
 ```javascript
 {
-    error: string // The error which occurred during submission, if any.
+    error: string | undefined  // Error message if submission failed, undefined if successful
 }
 ```
 
 ### filmstripDisplayChanged
 
-Provides event visibility notifications for the filmstrip that is being updated:
+Fired when the filmstrip visibility changes.
 
+**Payload:**
 ```javascript
 {
-    visible: boolean // Whether or not the filmstrip is displayed or hidden.
+    visible: boolean  // true if filmstrip is visible, false if hidden
 }
 ```
 
 ### moderationStatusChanged
 
-Provides event notifications about changes to moderation status.
+Fired when moderation status changes for a media type.
 
+**Payload:**
 ```javascript
 {
-    mediaType: string, // The media type for which moderation changed.
-    enabled: boolean // Whether or not moderation changed to enabled.
+    mediaType: string,  // Media type: 'audio' or 'video'
+    enabled: boolean    // true if moderation is enabled, false if disabled
 }
 ```
 
 ### moderationParticipantApproved
 
-Provides event notifications about participants approvals for moderation.
+Fired when a participant is approved to unmute.
 
+**Payload:**
 ```javascript
 {
-    id: string, // The ID of the participant that got approved.
-    mediaType: string // The media type for which the participant was approved.
+    id: string,         // Participant ID
+    mediaType: string   // Media type approved: 'audio' or 'video'
 }
 ```
 
 ### moderationParticipantRejected
 
-Provides event notifications about participants rejections for moderation.
+Fired when a participant's unmute request is rejected.
 
+**Payload:**
 ```javascript
 {
-    id: string, // The ID of the participant that got rejected.
-    mediaType: string // The media type for which the participant was rejected.
+    id: string,         // Participant ID
+    mediaType: string   // Media type rejected: 'audio' or 'video'
 }
 ```
 
 ### notificationTriggered
 
-Provides event notifications when an application notification occurs.
+Fired when an application notification is displayed.
 
+**Payload:**
 ```javascript
 {
-    title: string, // The notification title.
-    description: string // The notification description.
+    title: string,        // Notification title
+    description: string   // Notification message
 }
 ```
 
 ### participantJoined
 
-Provides event notifications about new participants who join the room.
+Fired when a new participant joins the conference.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string, // the id of the participant
-    displayName: string // the display name of the participant
+    id: string,            // Participant ID
+    displayName: string    // Participant's display name
 }
 ```
 
 ### participantKickedOut
 
-Provides event notifications about participants being removed from the room.
+Fired when a participant is removed from the conference.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
     kicked: {
-        id: string, // the id of the participant removed from the room
-        local: boolean // whether or not the participant is the local particiapnt
+        id: string,      // ID of the removed participant
+        local: boolean   // true if the local participant was kicked
     },
     kicker: {
-        id: string // the id of the participant who kicked out the other participant
+        id: string       // ID of the participant who performed the kick
     }
 }
 ```
 
 ### participantLeft
 
-Provides event notifications about participants that leave the meeting room.
+Fired when a participant leaves the conference.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string // the id of the participant
+    id: string  // Participant ID
 }
 ```
 
 ### participantRoleChanged
 
-Provides event notifications that fire when the local user role has changed (e.g., none, moderator, participant).
+Fired when a participant's role changes.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
-    id: string // the id of the participant
-    role: string // the new role of the participant
+    id: string,    // Participant ID
+    role: string   // New role: 'moderator', 'participant', or 'none'
 }
 ```
 
 ### participantsPaneToggled
 
-Provides event notifications that fire when the participants pane status changes.
+Fired when the participants pane is opened or closed.
 
-The listener receives an object with the following structure:
-
+**Payload:**
 ```javascript
 {
     open: boolean // whether the pane is open or not

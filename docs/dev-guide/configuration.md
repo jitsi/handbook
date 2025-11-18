@@ -199,7 +199,9 @@ useHostPageLocalStorage: true
 
 type: `Number`
 
-The interval (milliseconds) at which the audio levels are calculated.
+The interval (in milliseconds) at which audio levels are calculated.
+
+**Valid range:** Positive integers (recommended: 100-500ms)
 
 Default: `200`
 
@@ -211,15 +213,18 @@ audioLevelsInterval: 200
 
 type: `Object`
 
-Specify audio quality stereo and opusMaxAverageBitrate values in order to enable HD audio.
-Beware, by doing so, you are disabling echo cancellation, noise suppression and AGC.
+Configures HD audio settings. Enabling HD audio disables echo cancellation, noise suppression, and automatic gain control (AGC).
+
+**Properties:**
+- `stereo` (boolean) - Enable stereo audio
+- `opusMaxAverageBitrate` (number | null) - Opus codec bitrate in bps (valid range: 6000-510000)
 
 Default: **unset**
 
 ```javascript
 audioQuality: {
     stereo: false,
-    opusMaxAverageBitrate: null // Value to fit the 6000 to 510000 range.
+    opusMaxAverageBitrate: null  // null or value between 6000-510000 bps
 }
 ```
 
@@ -251,11 +256,11 @@ disableSpeakerStatsSearch: false
 
 ### disabledSounds
 
-type: `Array`
+type: `Array<string>`
 
-The sounds passed in this array will be disabled.
+List of sound effects to disable. Add sound identifiers to this array to mute specific audio notifications.
 
-Default: **unset**
+Default: **unset** (all sounds enabled)
 
 ```javascript
 disabledSounds: [
@@ -286,9 +291,7 @@ disabledSounds: [
 
 type: `Boolean`
 
-Enabling this will run the lib-jitsi-meet no audio detection module which
-will notify the user if the current selected microphone has no audio
-input and will suggest another valid device if one is present.
+Enables detection of microphones with no audio input. When enabled, notifies the user if their microphone isn't picking up audio and suggests alternative devices if available.
 
 Default: `true`
 
@@ -753,7 +756,9 @@ p2p: {
 
 type: `Number`
 
-The interval at which PeerConnection.getStats() is called.
+The interval (in milliseconds) at which WebRTC PeerConnection statistics are collected.
+
+**Valid range:** Positive integers (recommended: 5000-30000ms)
 
 Default: `10000`
 
@@ -1034,7 +1039,11 @@ gravatarBaseURL: 'https://www.gravatar.com/avatar/'
 
 type: `Number`
 
-Default value for the channel "last N" attribute. -1 for unlimited.
+Default number of video streams to receive. Controls bandwidth usage.
+
+**Valid values:** `-1` for unlimited, or positive integer
+
+Default: `-1`
 
 ```javascript
 channelLastN: -1
@@ -1044,9 +1053,11 @@ channelLastN: -1
 
 type: `Number`
 
-Provides a way for the lastN value to be controlled through the UI.
-When startLastN is present, conference starts with a last-n value of startLastN and channelLastN
-value will be used when the quality level is selected using "Manage Video Quality" slider.
+Initial number of video streams to receive when joining. The value increases to `channelLastN` when video quality is adjusted via the UI.
+
+**Valid values:** Positive integers (typically 1-20)
+
+Default: **unset**
 
 ```javascript
 startLastN: 1

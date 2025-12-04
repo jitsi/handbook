@@ -124,7 +124,22 @@ pm2 delete jitsi-meet-file-sharing-service
 pm2 start ecosystem.config.js --env production
 ```
 
-- If you are using jwt authentication, make sure you pass 'file-upload' feature in user.context.features.
+- If you are using jwt authentication, make sure you pass 'file-upload' feature in `context.features` in the jwt.
+```
+{
+  ...,
+  "context": {
+    "user": {
+      "id": "....",
+      ...
+    },
+    "features": {
+        "file-upload":  true,
+        ...
+    }
+    ...
+}
+```
 - If you are using some other authentication method, you need to configure jitsi_default_permissions to include it.
 ```
 jitsi_default_permissions = {

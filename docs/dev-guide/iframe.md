@@ -147,6 +147,22 @@ const options = {
 };
 const api = new JitsiMeetExternalAPI(domain, options);
 ```
+
+You can also override toolbar styling via `configOverwrite`. For example, to change the in-meeting toolbar background color:
+
+```javascript
+const options = {
+    roomName: 'MyRoom',
+    configOverwrite: {
+        toolbarConfig: {
+            backgroundColor: '#ff0000'
+        }
+    }
+};
+
+const api = new JitsiMeetExternalAPI(domain, options);
+```
+
 To pass a JWT token to Jitsi Meet use the following:
 
  ```javascript

@@ -520,6 +520,18 @@ Provides event visibility notifications for the filmstrip that is being updated:
 }
 ```
 
+### toolbarVisibilityChanged
+
+Provides event notifications when the in-page Jitsi Meet toolbar (toolbox) is shown or hidden.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    visible: boolean // Whether the toolbar is currently visible.
+}
+```
+
 ### moderationStatusChanged
 
 Provides event notifications about changes to moderation status.

@@ -126,6 +126,20 @@ customToolbarButtons: [
 ]
 ```
 
+### toolbarConfig.backgroundColor
+
+type: `String`
+
+Optional string. Sets the background color of the main in-meeting toolbar. Accepts any valid CSS color (for example `'#ff0000'`). The value is applied on both web and mobile toolbars. It can be set in `config.js` or overridden using `configOverwrite.toolbarConfig.backgroundColor` when embedding via the IFrame API.
+
+Default: **unset**
+
+```javascript
+toolbarConfig: {
+    backgroundColor: '#ff0000' // any valid CSS color value
+}
+```
+
 ### mouseMoveCallbackInterval
 
 type: `Number`

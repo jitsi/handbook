@@ -15,6 +15,15 @@ Android 7.0 (API level 24) or higher is required.
 If you want to see how easy integrating the Jitsi Meet SDK into a native application is, take a look at the
 [sample applications repository](https://github.com/jitsi/jitsi-meet-sdk-samples#android).
 
+### Android system bars behavior (immersive mode removed)
+
+Immersive mode (where the app would hide system status/navigation bars and force a full-screen experience) was removed in PR https://github.com/jitsi/jitsi-meet/pull/16513. The Android SDK no longer forces full-screen hiding of system bars; instead embedded apps should expect status and navigation bars to follow the device's OS defaults.This aligns Jitsi Meet with Android platform expectations and avoids inconsistent UI behavior on different devices.
+
+Integrators embedding the SDK should:
+
+- Design layouts that respect system safe insets and avoid placing important controls under the status or navigation bars.
+- Test behavior across Android versions and devices (system UI and gesture navigation behavior can vary, particularly on Android 14/15+).
+
 ## Build your own, or use a pre-build SDK artifacts/binaries
 
 Jitsi conveniently provides a pre-build SDK artifacts/binaries in its Maven repository. When you do not require any

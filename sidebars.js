@@ -142,6 +142,7 @@ module.exports = {
                 },
               ],
             },
+            "devops-guide/devops-guide-region"
           ],
         },
         {

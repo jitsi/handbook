@@ -13,7 +13,7 @@ This approach allows jicofo to recognize the region of a participant and then ch
   
 ## User region detection
 
-For your global deployment we assume you are using some sort of DNS routing from a cloud provider. At some point on your ingress add the 'X-Proxy-Region' HTTP header with the region name to the request, and forward that to the shard. This header will be handled and send to jicofo. Some cloud providers have a feature like this built in. If you have to add the proxy yourself, you can add a regional nginx reverse proxy or HAProxy in front of your shards that adds this header.
+For your global deployment we assume you are using some sort of DNS routing from a cloud provider. At some point on your ingress add the 'X-Proxy-Region' HTTP header with the region name to the request, and forward that to the shard. This header will be handled and sent to jicofo. Some cloud providers have a feature like this built in. If you have to add the proxy yourself, you can add a regional nginx reverse proxy or HAProxy in front of your shards that adds this header.
 
 ## How it works
 On the shard, the request to /xmpp-websocket will go through nginx. On participant join, prosody will extract the region and add it to the participant presence, which will be seen by jicofo.

@@ -24,12 +24,14 @@ api.captureCameraPicture(
 
 ### captureLargeVideoScreenshot
 
-Captures a screenshot for the participant in the large video view (on stage).
+Captures a screenshot of the participant currently displayed in the large video view.
+
+**Returns:** `Promise<{ dataURL: string }>`
 
 ```javascript
 api.captureLargeVideoScreenshot().then(data => {
-    // data is an Object with only one param, dataURL
-    // data.dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+    // data.dataURL contains the base64-encoded PNG image
+    console.log(data.dataURL); // "data:image/png;base64,iVBORw0KGgo..."
 });
 ```
 
@@ -65,11 +67,13 @@ api.getAvailableDevices().then(devices => {
 
 ### getContentSharingParticipants
 
-Returns a promise which resolves with an array of currently sharing participants ID's.
+Retrieves the IDs of participants currently sharing their screen.
+
+**Returns:** `Promise<{ sharingParticipantIds: string[] }>`
 
 ```javascript
 api.getContentSharingParticipants().then(res => {
-    //res.sharingParticipantIds = [particId1, particId2, ...]
+    console.log(res.sharingParticipantIds); // ['participantId1', 'participantId2']
 });
 ```
 
@@ -105,29 +109,26 @@ api.getCurrentDevices().then(devices => {
 
 ### getDeploymentInfo
 
-Retrieves an object containing information about the deployment.
+Retrieves information about the current deployment.
+
+**Returns:** `Promise<{ region: string, shard: string, ... }>`
 
 ```javascript
 api.getDeploymentInfo().then(deploymentInfo => {
-    // deploymentInfo = {
-    //     region: 'deployment-region',
-    //     shard: 'deployment-shard',
-    //     ...
-    // }
-    ...
+    console.log(deploymentInfo.region); // 'us-east-1'
+    console.log(deploymentInfo.shard);  // 'shard-3'
 });
 ```
 
 ### getLivestreamUrl
 
-Retrieves an object containing information about livestreamUrl of the current live stream.
+Retrieves the URL of the current livestream.
+
+**Returns:** `Promise<{ livestreamUrl: string }>`
 
 ```javascript
 api.getLivestreamUrl().then(livestreamData => {
-    // livestreamData = {
-    //     livestreamUrl: 'livestreamUrl'
-    // }
-    ...
+    console.log(livestreamData.livestreamUrl); // 'https://youtube.com/watch?v=...'
 });
 ```
 
@@ -201,133 +202,185 @@ Response example structure:
 
 ### getSessionId
 
-Returns the meting's unique Id (`sessionId`). 
-Please note that the `sessionId` is not available when in prejoin screen and it's not guaranteed to be available immediately after joining - in which cases it will be empty.
+Retrieves the meeting's unique session ID.
+
+**Returns:** `Promise<string>`
+
+**Note:** The session ID is not available in the prejoin screen and may not be immediately available after joining (returns empty string in these cases).
 
 ```javascript
 api.getSessionId().then(sessionId => {
-    //sessionId: string
-    ...
+    console.log(sessionId); // 'abc123def456'
 });
 ```
 
 ### getSharedDocumentUrl
 
-Returns the meeting's unique etherpad shared document url (`sharedDocumentUrl`). 
-Please note that the `sharedDocumentUrl` is not available when in prejoin screen and it's not guaranteed to be available immediately after joining - in which cases it will be empty.
+Retrieves the URL of the meeting's shared Etherpad document.
+
+**Returns:** `Promise<string>`
+
+**Note:** The shared document URL is not available in the prejoin screen and may not be immediately available after joining (returns empty string in these cases).
 
 ```javascript
 api.getSharedDocumentUrl().then(sharedDocumentUrl => {
-    //sharedDocumentUrl: string
-    ...
+    console.log(sharedDocumentUrl); // 'https://etherpad.example.com/p/meeting-123'
 });
 ```
 
 ### getVideoQuality
 
-Returns the current video quality setting.
+Retrieves the current video quality/resolution setting.
+
+**Returns:** `number` - The video height in pixels (e.g., `180`, `360`, `720`, `1080`).
 
 ```javascript
-api.getVideoQuality();
+const quality = api.getVideoQuality();
+console.log(quality); // 720
 ```
 
 ### getSupportedCommands
 
-Returns array of commands supported by `api.executeCommand(command, ...arguments)`;
+Retrieves a list of all commands supported by the External API.
+
+**Returns:** `string[]` - Array of command names.
 
 ```javascript
-api.getSupportedCommands();
+const commands = api.getSupportedCommands();
+console.log(commands); // ['displayName', 'toggleAudio', 'hangup', ...]
 ```
 
 ### getSupportedEvents
 
-Returns array of events supported by `api.addListener(event, listener)`;
+Retrieves a list of all events supported by the External API.
+
+**Returns:** `string[]` - Array of event names.
 
 ```javascript
-api.getSupportedEvents();
+const events = api.getSupportedEvents();
+console.log(events); // ['participantJoined', 'videoConferenceJoined', ...]
 ```
 
 ### isDeviceChangeAvailable
 
-Resolves to true if the device change is available and to false if not.
+Checks if changing devices of a specific type is supported.
+
+**Parameters:**
+- `deviceType` (string) - Optional. Device type: `'output'`, `'input'`, or omit for all devices.
+
+**Returns:** `Promise<boolean>`
 
 ```javascript
-// The accepted deviceType values are - 'output', 'input' or undefined.
-api.isDeviceChangeAvailable(deviceType).then(isDeviceChangeAvailable => {
-    ...
+api.isDeviceChangeAvailable('output').then(isAvailable => {
+    console.log(isAvailable); // true or false
 });
 ```
 
 ### isDeviceListAvailable
 
-Resolves to true if the device list is available and to false if not.
+Checks if device enumeration is supported by the browser.
+
+**Returns:** `Promise<boolean>`
 
 ```javascript
-api.isDeviceListAvailable().then(isDeviceListAvailable => {
-    ...
+api.isDeviceListAvailable().then(isAvailable => {
+    console.log(isAvailable); // true or false
 });
 ```
 
 ### isMultipleAudioInputSupported
 
-Resolves to true if multiple audio input is supported and to false if not.
+Checks if using multiple audio input devices simultaneously is supported.
+
+**Returns:** `Promise<boolean>`
 
 ```javascript
-api.isMultipleAudioInputSupported().then(isMultipleAudioInputSupported => {
-    ...
+api.isMultipleAudioInputSupported().then(isSupported => {
+    console.log(isSupported); // true or false
 });
 ```
 
 ### pinParticipant
 
-Selects the participant ID to be the pinned participant in order to always receive video for this participant.
+Pins a specific participant to always receive their video.
 
-The second parameter is optional and can be used to specify a `videoType`. When multistream support is enabled by passing this parameter you can specify whether the desktop or the camera video for the specified participant should be pinned. The accepted values are `'camera'` and `'desktop'`. The default is `'camera'`. Any invalid values will be ignored and default will be used.
+**Parameters:**
+- `participantId` (string) - Required. The ID of the participant to pin.
+- `videoType` (string) - Optional. Type of video to pin: `'camera'` (default) or `'desktop'`. Only effective when multistream is enabled.
+
+**Returns:** `void`
 
 ```javascript
-api.pinParticipant(participantId, videoType);
+api.pinParticipant('participantId123', 'desktop');
 ```
 
 ### resizeLargeVideo
 
-Resizes the large video container per the provided dimensions.
+Resizes the large video container to specific dimensions.
+
+**Parameters:**
+- `width` (number) - Required. Width in pixels.
+- `height` (number) - Required. Height in pixels.
+
+**Returns:** `void`
 
 ```javascript
-api.resizeLargeVideo(width, height);
+api.resizeLargeVideo(1280, 720);
 ```
 
 ### setAudioInputDevice
 
-Sets the audio input device to the one with the passed label or ID.
+Sets the audio input device (microphone).
+
+**Parameters:**
+- `deviceLabel` (string) - Required. The device label.
+- `deviceId` (string) - Required. The device ID.
+
+**Returns:** `Promise<void>`
 
 ```javascript
-api.setAudioInputDevice(deviceLabel, deviceId);
+api.setAudioInputDevice('Built-in Microphone', 'default');
 ```
 
 ### setAudioOutputDevice
 
-Sets the audio output device to the one with the passed label or ID.
+Sets the audio output device (speaker/headphones).
+
+**Parameters:**
+- `deviceLabel` (string) - Required. The device label.
+- `deviceId` (string) - Required. The device ID.
+
+**Returns:** `Promise<void>`
 
 ```javascript
-api.setAudioOutputDevice(deviceLabel, deviceId);
+api.setAudioOutputDevice('External Speakers', 'abc123');
 ```
 
 ### setLargeVideoParticipant
 
-Displays the participant with the given participant ID on the large video.
+Sets which participant is displayed in the large video view.
 
-If no participant ID is given, a participant is picked based on the dominant, pinned speaker settings.
+**Parameters:**
+- `participantId` (string) - Optional. The participant ID to display. If omitted, automatically selects based on dominant/pinned speaker.
+
+**Returns:** `void`
 
 ```javascript
-api.setLargeVideoParticipant(participantId);
+api.setLargeVideoParticipant('participantId123');
 ```
 
 ### setVideoInputDevice
 
-Sets the video input device to the one with the passed label or ID.
+Sets the video input device (camera).
+
+**Parameters:**
+- `deviceLabel` (string) - Required. The device label.
+- `deviceId` (string) - Required. The device ID.
+
+**Returns:** `Promise<void>`
 
 ```javascript
-api.setVideoInputDevice(deviceLabel, deviceId);
+api.setVideoInputDevice('HD Webcam', 'xyz789');
 ```
 
 ### setVirtualBackground
@@ -360,10 +413,13 @@ api.stopRecording(mode, transcription);
 
 ### getNumberOfParticipants
 
-Returns the number of conference participants:
+Returns the total number of participants in the conference.
+
+**Returns:** `number`
 
 ```javascript
-const numberOfParticipants = api.getNumberOfParticipants();
+const count = api.getNumberOfParticipants();
+console.log(count); // 5
 ```
 
 ### getAvatarURL
@@ -378,26 +434,41 @@ const avatarURL = api.getAvatarURL(participantId);
 
 ### getDisplayName
 
-Returns a participant's display name:
+Retrieves a participant's display name.
+
+**Parameters:**
+- `participantId` (string) - Required. The participant ID.
+
+**Returns:** `string`
 
 ```javascript
-const displayName = api.getDisplayName(participantId);
+const name = api.getDisplayName('participantId123');
+console.log(name); // 'John Doe'
 ```
 
 ### getEmail
 
-Returns a participant's email:
+Retrieves a participant's email address.
+
+**Parameters:**
+- `participantId` (string) - Required. The participant ID.
+
+**Returns:** `string`
 
 ```javascript
-const email = api.getEmail(participantId);
+const email = api.getEmail('participantId123');
+console.log(email); // 'john@example.com'
 ```
 
 ### getIFrame
 
-Returns the IFrame HTML element which is used to load the Jitsi Meet conference:
+Returns the IFrame HTML element containing the Jitsi Meet conference.
+
+**Returns:** `HTMLIFrameElement`
 
 ```javascript
 const iframe = api.getIFrame();
+console.log(iframe.src); // 'https://meet.jit.si/...'
 ```
 
 ### isAudioDisabled
@@ -526,13 +597,21 @@ api.listBreakoutRooms().then(breakoutRooms => {
 
 ### invite
 
-Invite the given array of participants to the meeting:
+Invites an array of participants to the meeting.
+
+**Parameters:**
+- `invitees` (array) - Required. Array of invitee objects (format depends on invite service configuration).
+
+**Returns:** `Promise<void>`
 
 ```javascript
-api.invite([ {...}, {...}, {...} ]).then(() => {
-    // success
-}).catch(() => {
-    // failure
+api.invite([
+    { type: 'phone', number: '+12025551234' },
+    { type: 'sip', address: 'user@sip.example.com' }
+]).then(() => {
+    console.log('Invitations sent successfully');
+}).catch(error => {
+    console.error('Failed to send invitations:', error);
 });
 ```
 **NOTE:** The invitee format in the array depends on the invite service used in the deployment.
@@ -557,10 +636,200 @@ SIP invite objects have the following structure:
 
 ### dispose
 
-Removes the embedded Jitsi Meet conference:
+Removes the embedded Jitsi Meet conference and cleans up resources.
+
+**Returns:** `void`
+
+**Note:** It's recommended to call this before the page is unloaded to properly clean up resources.
 
 ```javascript
 api.dispose();
 ```
 
-**NOTE:** Jitsi recommends removing the conference before the page is unloaded.
+---
+
+## Error Handling
+
+### Promise-based Functions
+
+Many functions return promises. Always handle both success and error cases:
+
+```javascript
+// Good: Handle both cases
+api.getAvailableDevices()
+    .then(devices => {
+        console.log('Available devices:', devices);
+    })
+    .catch(error => {
+        console.error('Failed to get devices:', error);
+    });
+
+// Better: Using async/await with try-catch
+async function getDevices() {
+    try {
+        const devices = await api.getAvailableDevices();
+        console.log('Available devices:', devices);
+        return devices;
+    } catch (error) {
+        console.error('Failed to get devices:', error);
+        return null;
+    }
+}
+```
+
+### Common Error Scenarios
+
+#### Device Access Errors
+```javascript
+// Camera/microphone access may be denied
+try {
+    await api.getCurrentDevices();
+} catch (error) {
+    if (error.name === 'NotAllowedError') {
+        console.error('User denied device access');
+    } else if (error.name === 'NotFoundError') {
+        console.error('No devices found');
+    }
+}
+```
+
+#### Device Switching Failures
+```javascript
+// Device may not exist or be available
+api.setAudioInputDevice('device-id-123')
+    .catch(error => {
+        console.error('Failed to switch audio device:', error);
+        // Fallback to default device or show error to user
+    });
+```
+
+#### Empty Results
+```javascript
+// Some functions may return empty arrays
+const devices = await api.getAvailableDevices();
+if (!devices.audioInput || devices.audioInput.length === 0) {
+    console.warn('No audio input devices available');
+}
+```
+
+#### Network/Connection Errors
+```javascript
+// Avatar URL fetching may fail
+api.getAvatarURL('participant-id')
+    .catch(error => {
+        console.error('Failed to fetch avatar:', error);
+        return 'path/to/default-avatar.png'; // Fallback
+    });
+```
+
+### Best Practices
+
+1. **Always use `.catch()` or `try-catch`**: Never leave promises unhandled
+2. **Provide user feedback**: Inform users when operations fail
+3. **Implement fallbacks**: Have default behavior when operations fail
+4. **Log errors appropriately**: Use console.error for debugging
+5. **Check return values**: Some functions may return `null` or empty results
+
+### Debugging Tips
+
+- Use browser DevTools to check for errors in the console
+- Verify device permissions in browser settings
+- Check that device IDs are valid before switching
+- Test error paths by denying permissions or unplugging devices
+- Use `console.log` to trace function calls and return values
+
+**See also:** [Troubleshooting](iframe-commands.md#troubleshooting) for common issues when using commands.
+
+---
+
+## Error Handling
+
+### Promise-based Functions
+
+Many functions return promises. Always handle both success and error cases:
+
+```javascript
+// Good: Handle both cases
+api.getAvailableDevices()
+    .then(devices => {
+        console.log('Available devices:', devices);
+    })
+    .catch(error => {
+        console.error('Failed to get devices:', error);
+    });
+
+// Better: Using async/await with try-catch
+async function getDevices() {
+    try {
+        const devices = await api.getAvailableDevices();
+        console.log('Available devices:', devices);
+        return devices;
+    } catch (error) {
+        console.error('Failed to get devices:', error);
+        return null;
+    }
+}
+```
+
+### Common Error Scenarios
+
+#### Device Access Errors
+```javascript
+// Camera/microphone access may be denied
+try {
+    await api.getCurrentDevices();
+} catch (error) {
+    if (error.name === 'NotAllowedError') {
+        console.error('User denied device access');
+    } else if (error.name === 'NotFoundError') {
+        console.error('No devices found');
+    }
+}
+```
+
+#### Device Switching Failures
+```javascript
+// Device may not exist or be available
+api.setAudioInputDevice('device-id-123')
+    .catch(error => {
+        console.error('Failed to switch audio device:', error);
+        // Fallback to default device or show error to user
+    });
+```
+
+#### Empty Results
+```javascript
+// Some functions may return empty arrays
+const devices = await api.getAvailableDevices();
+if (!devices.audioInput || devices.audioInput.length === 0) {
+    console.warn('No audio input devices available');
+}
+```
+
+#### Network/Connection Errors
+```javascript
+// Avatar URL fetching may fail
+api.getAvatarURL('participant-id')
+    .catch(error => {
+        console.error('Failed to fetch avatar:', error);
+        return 'path/to/default-avatar.png'; // Fallback
+    });
+```
+
+### Best Practices
+
+1. **Always use `.catch()` or `try-catch`**: Never leave promises unhandled
+2. **Provide user feedback**: Inform users when operations fail
+3. **Implement fallbacks**: Have default behavior when operations fail
+4. **Log errors appropriately**: Use console.error for debugging
+5. **Check return values**: Some functions may return `null` or empty results
+
+### Debugging Tips
+
+- Use browser DevTools to check for errors in the console
+- Verify device permissions in browser settings
+- Check that device IDs are valid before switching
+- Test error paths by denying permissions or unplugging devices
+- Use `console.log` to trace function calls and return values
+
+**See also:** [Troubleshooting](iframe-commands.md#troubleshooting) for common issues when using commands.

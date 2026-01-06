@@ -48,21 +48,21 @@ module.exports = {
       items: [
         "dev-guide/dev-guide-contributing",
         {
-            type: "category",
-            label: "SDKs",
-            link: {
-              type: "generated-index",
-            },
-            items: [
-                "dev-guide/dev-guide-iframe",
-                "dev-guide/dev-guide-ljm-api",
-                "dev-guide/dev-guide-electron-sdk",
-                "dev-guide/dev-guide-react-sdk",
-                "dev-guide/dev-guide-android-sdk",
-                "dev-guide/dev-guide-ios-sdk",
-                "dev-guide/dev-guide-react-native-sdk",
-                "dev-guide/dev-guide-flutter-sdk",
-            ]
+          type: "category",
+          label: "SDKs",
+          link: {
+            type: "generated-index",
+          },
+          items: [
+            "dev-guide/dev-guide-iframe",
+            "dev-guide/dev-guide-ljm-api",
+            "dev-guide/dev-guide-electron-sdk",
+            "dev-guide/dev-guide-react-sdk",
+            "dev-guide/dev-guide-android-sdk",
+            "dev-guide/dev-guide-ios-sdk",
+            "dev-guide/dev-guide-react-native-sdk",
+            "dev-guide/dev-guide-flutter-sdk",
+          ]
         },
         {
           type: "category",
@@ -82,9 +82,13 @@ module.exports = {
                 id: "dev-guide/dev-guide-iframe",
               },
               items: [
+                "dev-guide/iframe-quick-start",
                 "dev-guide/dev-guide-iframe-functions",
                 "dev-guide/dev-guide-iframe-commands",
-                "dev-guide/dev-guide-iframe-events"
+                "dev-guide/dev-guide-iframe-events",
+                "dev-guide/iframe-workflows",
+                "dev-guide/iframe-migration-guide",
+                "dev-guide/iframe-best-practices"
               ]
             },
             "dev-guide/dev-guide-react-sdk",

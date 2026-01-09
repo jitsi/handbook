@@ -49,7 +49,7 @@ If you have an idea for a new feature or something you'd like to see improved in
 
 - Discovered a bug or have a feature request and know how to fix it? Excellent! Keep reading 🔍
 
-- The [Developer Guide](/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
+- The [Developer Guide](https://jitsi.github.io/handbook/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
 
 ## ✏️ Contributor License Agreement 
 While the Jitsi projects are released under the

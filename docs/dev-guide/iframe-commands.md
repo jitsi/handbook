@@ -297,6 +297,23 @@ This command can only be executed by the meeting moderator and can take one argu
 api.executeCommand('muteEveryone', 'video');
 ```
 
+### muteRemoteParticipant
+
+Mutes a specific remote participant.
+
+This command can only be executed by the meeting moderator and takes two arguments:
+
+- `participantId` - The ID of the participant to mute (required)
+- `mediaType` - The media type to mute: either `'audio'` (default) or `'video'`
+
+```javascript
+// Mute participant's audio
+api.executeCommand('muteRemoteParticipant', 'participantId123');
+
+// Mute participant's video
+api.executeCommand('muteRemoteParticipant', 'participantId123', 'video');
+```
+
 ### startRecording
 
 Starts a local recording, file recording, streaming session or transcription using passed parameters:

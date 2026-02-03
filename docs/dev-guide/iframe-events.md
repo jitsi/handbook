@@ -585,7 +585,10 @@ The listener receives an object with the following structure:
 ```javascript
 {
     id: string, // the id of the participant
-    displayName: string // the display name of the participant
+    displayName: string, // the display name of the participant
+    userContext: {
+        id: string // the JWT id of the participant
+    }
 }
 ```
 

@@ -647,6 +647,20 @@ The listener receives an object with the following structure:
 }
 ```
 
+### participantMuted
+
+Provides event notifications about participant mute state changes.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    participantId: string, // the id of the participant whose mute state changed
+    isMuted: boolean, // whether the participant is now muted
+    mediaType: string // the media type: 'audio' or 'video'
+}
+```
+
 ### passwordRequired
 
 Provides event notifications that fire when participants fail to join a password protected room.

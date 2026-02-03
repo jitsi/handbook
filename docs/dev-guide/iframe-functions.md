@@ -150,8 +150,7 @@ Returns an array of available rooms and details of it:
     - `jid`
     - `role`
     - `displayName`
-
-
+    - `userContext`
 
 ```javascript
 api.getRoomsInfo().then(rooms => {
@@ -173,13 +172,19 @@ Response example structure:
           "jid": "room_name@conference.jitsi/bbbbbb",
           "role": "participant",
           "displayName": "p1",
-          "id": "bbbbbb"
+          "id": "bbbbbb",
+          "userContext": {
+            "id": "google-oauth2|12345678901234567890"
+          }
         },
         {
           "jid": "room_name@conference.jitsi/cccccc",
           "role": "participant",
           "displayName": "p2",
-          "id": "cccccc"
+          "id": "cccccc",
+          "userContext": {
+            "id": "400e45d607256777df4e0f3a6a447901"
+          }
         }
       ]
     },
@@ -192,7 +197,10 @@ Response example structure:
         "role": "moderator",
         "displayName": "Participant name",
         "avatarUrl": "",
-        "id": "abcd1234"
+        "id": "abcd1234",
+        "userContext": {
+            "id": "73317803a589aaa027132696dd77ac34"
+        }
     }]
     },
   ]

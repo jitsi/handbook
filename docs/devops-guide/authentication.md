@@ -11,38 +11,99 @@ name and password. After the room is created, others will be able to join from
 anonymous domain. Here's what has to be configured:
 
 ## Keycloak install and configure
-Build it first: 
+Install docker and prepare keycloak user. 
 ```
-docker run --rm \
-  -v keycloak_data:/opt/keycloak/data quay.io/keycloak/keycloak:26.4.5 \
-  build
-```
-And start it, make sure to change the admin username and password, and the port if needed:
-```
-docker run -d \
-  --name keycloak \
-  --restart unless-stopped \
-  -p 127.0.0.1:18080:8080 \
-  -e KC_BOOTSTRAP_ADMIN_USERNAME=admin \
-  -e KC_BOOTSTRAP_ADMIN_PASSWORD=<somestrongpassword> \
-  -v keycloak_data:/opt/keycloak/data quay.io/keycloak/keycloak:26.4.5 \
-  start --optimized
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
+sudo chmod a+r /etc/apt/keyrings/docker.asc
+
+sudo tee /etc/apt/sources.list.d/docker.sources <<EOF
+Types: deb
+URIs: https://download.docker.com/linux/ubuntu
+Suites: $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}")
+Components: stable
+Signed-By: /etc/apt/keyrings/docker.asc
+EOF
+apt update
+
+apt install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+systemctl start docker
+
+sudo useradd -r -m -s /bin/bash keycloak
+sudo usermod -aG docker keycloak
+sudo mkdir -p /home/keycloak/keycloak-data 
+sudo chown -R keycloak:keycloak /home/keycloak/keycloak-data
+sudo su - keycloak
 ```
 
-Open the Keycloak admin console at http://localhost:18080/auth/admin/.
+Create .env file. Fill in your host and admin password:
+```
+KC_VERSION=26.2.3
+KEYCLOAK_ADMIN_PASSWORD=admin
+```
+
+Create Dockerfile:
+```
+ARG KC_VERSION
+
+FROM quay.io/keycloak/keycloak:${KC_VERSION} AS builder
+
+ARG KC_VERSION
+RUN /opt/keycloak/bin/kc.sh build
+
+FROM quay.io/keycloak/keycloak:${KC_VERSION}
+COPY --from=builder /opt/keycloak/ /opt/keycloak/
+
+ENTRYPOINT ["/opt/keycloak/bin/kc.sh", "start", "--optimized"]
+```
+
+And docker-compose.yml file:
+```
+services:
+  keycloak:
+    build:
+      context: .
+      args:
+        - KC_VERSION=${KC_VERSION}
+    container_name: keycloak
+    environment:
+      - KC_HTTP_ENABLED=true
+      - KC_HOSTNAME_STRICT=false
+      - KC_PROXY=edge
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=${KEYCLOAK_ADMIN_PASSWORD}
+    volumes:
+      - ./keycloak-data:/opt/keycloak/data
+    ports:
+      - "18080:8080"
+    restart: unless-stopped
+```
+
+Start it:
+```
+docker compose up -d --build
+```
+
+Open the Keycloak admin console at http://localhost:18080/admin/.
 If you are running Keycloak on a remote machine you can use ssh port forwarding to access the admin console, for example:
 ```
-ssh -L18080:localhost:18080 user@remote-machine
+ssh -L18080:localhost:8080 user@remote-machine
 ```
 
-You need to create a realm, name it `jitsi-realm`, and select it. 
+You need to create a realm, name it `jitsi-realm`, and select it.
+
+<img src="../assets/auth-scr-1.png" title="screenshot create realm" width="600"/>
+
 Add new client in the realm, name it jitsi. When creating the client make sure you set for "Valid Redirect URIs":
 `https://jitsi.example.com/static/sso.html` and for "Valid post logout redirect URIs": `https://jitsi.example.com/static/logout.html`.
 And for "Web origins": `https://jitsi.example.com`. Replace `jitsi.example.com` with your own hostname.
 
+<img src="../assets/auth-scr-2.png" title="screenshot create client" width="600"/><img src="../assets/auth-scr-3.png" title="screenshot create client options" width="600"/>
+
+<img src="../assets/auth-scr-4.png" title="screenshot create client URLs" width="600"/>
+
 In your nginx configuration for jitsi, you need to add the following lines to the server block somewhere before `/xmpp-websocket`:
 ```
-   location /realms/ {
+   location ~ ^/realms/(.*) {
         proxy_pass http://localhost:18080; # Or your Keycloak instance address
         proxy_set_header Host $host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -52,8 +113,10 @@ In your nginx configuration for jitsi, you need to add the following lines to th
 ```
 
 Go to "Realm Settings" → "General tab" and for "Frontend URL" set `https://jitsi.example.com`. Replace `jitsi.example.com` with your own hostname.
+<img src="../assets/auth-scr-5.png" title="screenshot frontend url" width="600"/>
 
 In "Users" create a new user. After creating the user, go to "Credentials" tab of the user and set a password for the user. You will need it later.
+<img src="../assets/auth-scr-6.png" title="screenshot create user" width="600"/><img src="../assets/auth-scr-7.png" title="screenshot create password" width="600"/>
 
 More information about keycloak and running it with docker can be found in the official documentation: https://www.keycloak.org/getting-started/getting-started-docker
 
@@ -71,7 +134,7 @@ Inside the `VirtualHost "[your-hostname]"` section, replace anonymous
 authentication with token authentication:
 
 ```
-asap_accepted_issuers = { "http://jitsi.example.com/realms/jitsi-realm" }
+asap_accepted_issuers = { "https://jitsi.example.com/realms/jitsi-realm" }
 asap_accepted_audiences = { "account" }
 asap_require_room_claim = false;
 
@@ -147,11 +210,11 @@ file. You should add only the `anonymousdomain` line. Be careful of commas.
 
 Set the token authentication URLs in the same file at the end append:
 ```
-config.tokenAuthUrl='https://jitsi.example.com/realms/jitsi-test/protocol/openid-connect/auth?client_id=jitsi&response_type=code&scope=openid&state={state}&redirect_uri=https://jitsi.example.com/static/sso.html&code_challenge={code_challenge}&code_challenge_method=S256';
-config.tokenLogoutUrl='https://jitsi.example.com/realms/jitsi-test/protocol/openid-connect/logout?post_logout_redirect_uri=https://jitsi.example.com/static/logout.html';
+config.tokenAuthUrl='https://'+ config.hosts.domain + '/realms/jitsi-realm/protocol/openid-connect/auth?client_id=jitsi&response_type=code&scope=openid&state={state}&redirect_uri=https://'+ config.hosts.domain + '/static/sso.html&code_challenge={code_challenge}&code_challenge_method=S256';
+config.tokenLogoutUrl='https://'+ config.hosts.domain + '/realms/jitsi-realm/protocol/openid-connect/logout?post_logout_redirect_uri=https://'+ config.hosts.domain + '/static/logout.html';
 config.tokenAuthUrlAutoRedirect=true;
 config.tokenAuthInline=true;
-config.sso={ ssoService: 'jitsi.example.com', tokenService: 'jitsi.example.com/realms/jitsi-test/protocol/openid-connect', clientId: 'jitsi' };
+config.sso={ ssoService: config.hosts.domain, tokenService: config.hosts.domain + '/realms/jitsi-realm/protocol/openid-connect', clientId: "jitsi" };
 ```
 
 ## Restart the services

@@ -510,6 +510,40 @@ Provides event notifications about conference feedback submissions:
 }
 ```
 
+### fileDeleted
+
+Provides event notifications when a file is deleted from the meeting.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    fileId: string // The ID of the deleted file
+}
+```
+
+### fileUploaded
+
+Provides event notifications when a file is uploaded to the meeting.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    file: {
+      authorParticipantId: string,   // ID of participant who uploaded the file
+      authorParticipantJid: string,  // Full JID of participant who uploaded the file
+      authorParticipantName: string, // Display name of participant who uploaded the file
+      conferenceFullName: string,    // Full conference JID
+      fileId: string,                // Unique ID of the file
+      fileName: string,              // Name of the file
+      fileSize: number,              // Size of the file in bytes
+      fileType: string,              // File extension/type
+      timestamp: number              // Upload timestamp in milliseconds
+    }
+}
+```
+
 ### filmstripDisplayChanged
 
 Provides event visibility notifications for the filmstrip that is being updated:

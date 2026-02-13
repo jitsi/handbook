@@ -48,21 +48,21 @@ module.exports = {
       items: [
         "dev-guide/dev-guide-contributing",
         {
-            type: "category",
-            label: "SDKs",
-            link: {
-              type: "generated-index",
-            },
-            items: [
-                "dev-guide/dev-guide-iframe",
-                "dev-guide/dev-guide-ljm-api",
-                "dev-guide/dev-guide-electron-sdk",
-                "dev-guide/dev-guide-react-sdk",
-                "dev-guide/dev-guide-android-sdk",
-                "dev-guide/dev-guide-ios-sdk",
-                "dev-guide/dev-guide-react-native-sdk",
-                "dev-guide/dev-guide-flutter-sdk",
-            ]
+          type: "category",
+          label: "SDKs",
+          link: {
+            type: "generated-index",
+          },
+          items: [
+            "dev-guide/dev-guide-iframe",
+            "dev-guide/dev-guide-ljm-api",
+            "dev-guide/dev-guide-electron-sdk",
+            "dev-guide/dev-guide-react-sdk",
+            "dev-guide/dev-guide-android-sdk",
+            "dev-guide/dev-guide-ios-sdk",
+            "dev-guide/dev-guide-react-native-sdk",
+            "dev-guide/dev-guide-flutter-sdk",
+          ]
         },
         {
           type: "category",
@@ -89,6 +89,7 @@ module.exports = {
             },
             "dev-guide/dev-guide-react-sdk",
             "dev-guide/dev-guide-ljm-api",
+            "dev-guide/dev-guide-windows",
           ],
         },
         {

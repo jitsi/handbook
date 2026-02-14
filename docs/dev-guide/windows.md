@@ -1,14 +1,14 @@
 ---
 id: dev-guide-windows
-title: Running Jitsi Meet on Windows (Unofficial)
-sidebar_label: Windows (Unofficial)
+title: Running Jitsi Meet on Windows
+sidebar_label: Windows
 ---
 
 :::caution
-Windows is **not** officially supported for Jitsi Meet development or deployment. The methods described below rely on running a Linux environment on your Windows machine. These are community-provided workarounds and issues specific to these setups may not receive official support.
+Windows is **not** natively supported for Jitsi Meet development or deployment. The methods described below rely on running a Linux environment on your Windows machine.
 :::
 
-This guide describes unofficial ways to build and run [Jitsi Meet](dev-guide-web-jitsi-meet) on a Windows machine. All approaches work by providing a Linux environment where the standard Linux-based instructions apply.
+This guide describes ways to build and run [Jitsi Meet](dev-guide-web-jitsi-meet) on a Windows machine. All approaches work by providing a Linux environment where the standard Linux-based instructions apply.
 
 ## Prerequisites
 
@@ -37,23 +37,18 @@ After restarting, open **Ubuntu** from the Start menu. On first launch you will 
 sudo apt update && sudo apt upgrade -y
 ```
 
-### Install Node.js
+### Install nvm
 
-Jitsi Meet requires **Node.js >= 22** and **npm >= 10**. Install them using [nvm](https://github.com/nvm-sh/nvm):
+[nvm](https://github.com/nvm-sh/nvm) (Node Version Manager) lets you install and switch between multiple versions of Node.js. The Jitsi Meet repository includes an `.nvmrc` file that specifies the exact Node.js version the project requires. When you run `nvm install` or `nvm use` inside the project directory, nvm reads this file and automatically installs or switches to the correct version. This means you do not need to look up which version to install and the setup stays correct even when the project updates its Node.js requirement.
+
+Install nvm by running:
 
 ```bash
 # Install nvm
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
 
-# Reload your shell profile
+# Reload your shell profile so the nvm command becomes available
 source ~/.bashrc
-
-# Install Node.js 22
-nvm install 22
-
-# Verify installation
-node -v   # should print v22.x.x
-npm -v    # should print 10.x.x
 ```
 
 ### Install build tools
@@ -72,11 +67,18 @@ Always clone the repository inside the **Linux filesystem** (your home directory
 
 ```bash
 # Navigate to your Linux home directory
-cd ~
+cd
 
 # Clone the Jitsi Meet repository
 git clone https://github.com/jitsi/jitsi-meet
 cd jitsi-meet
+
+# Install the Node.js version specified in the .nvmrc file
+nvm install
+
+# Switch to that version (nvm install usually does this automatically,
+# but running nvm use ensures the correct version is active)
+nvm use
 
 # Install dependencies
 npm install
@@ -85,10 +87,10 @@ npm install
 make dev
 ```
 
-The development server will start at `https://localhost:8080/`. Open this URL in your Windows browser (Chrome, Edge, etc.). WSL2 automatically forwards `localhost` to Windows.
+The development server will start at `https://localhost:8080/`. Open this URL in your Windows browser (Chrome, Edge, etc.). WSL2 automatically forwards `localhost` to Windows. You can also use `http://localhost:8080/` which avoids the certificate warning below.
 
 :::note
-Your browser will show a certificate error because the development server uses a self-signed certificate. It is safe to accept the warning and proceed.
+If you access the development server over `https://`, your browser will show a certificate error because the server uses a self-signed certificate. It is safe to accept the warning and proceed. Alternatively, use `http://localhost:8080/` to avoid the warning entirely.
 :::
 
 For the full list of build commands and configuration options, see the [Jitsi Meet web development guide](dev-guide-web-jitsi-meet).
@@ -179,42 +181,11 @@ Download and install one of the following:
 
 3. Mount the Ubuntu ISO and complete the installation.
 
-### Install dependencies inside the VM
+### Install dependencies and build
 
-After Ubuntu is installed and running, open a terminal and run:
+After Ubuntu is installed and running, open a terminal and follow the same steps described in [Method 1: WSL2](#method-1-wsl2-recommended) starting from [Install nvm](#install-nvm). The setup is identical since the VM runs a full Linux environment.
 
-```bash
-# Update system packages
-sudo apt update && sudo apt upgrade -y
-
-# Install build tools
-sudo apt install -y build-essential git curl
-
-# Install nvm
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
-source ~/.bashrc
-
-# Install Node.js 22
-nvm install 22
-
-# Verify
-node -v   # should print v22.x.x
-npm -v    # should print 10.x.x
-```
-
-### Clone and build Jitsi Meet
-
-```bash
-# Clone the repository
-git clone https://github.com/jitsi/jitsi-meet
-cd jitsi-meet
-
-# Install dependencies
-npm install
-
-# Start the development server
-make dev
-```
+Once dependencies are installed, follow the [Jitsi Meet web development guide](dev-guide-web-jitsi-meet) to clone and build the project.
 
 The development server will be available at `https://localhost:8080/` inside the VM's browser.
 

@@ -14,7 +14,7 @@ Node.js >= 22 and npm >= 10 are required.
 
 :::caution
 Windows is not supported natively. If you are on Windows, see
-[Running Jitsi Meet on Windows (Unofficial)](dev-guide-windows) for workarounds using Linux-based environments.
+[Running Jitsi Meet on Windows](dev-guide-windows) for workarounds using Linux-based environments.
 :::
 
 Make sure you have Node.js installed. If you don't, follow [these instructions](https://nodejs.org/en/download/).

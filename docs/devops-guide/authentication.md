@@ -212,7 +212,6 @@ Set the token authentication URLs in the same file at the end append:
 ```
 config.tokenAuthUrl='https://'+ config.hosts.domain + '/realms/jitsi-realm/protocol/openid-connect/auth?client_id=jitsi&response_type=code&scope=openid&state={state}&redirect_uri=https://'+ config.hosts.domain + '/static/sso.html&code_challenge={code_challenge}&code_challenge_method=S256';
 config.tokenLogoutUrl='https://'+ config.hosts.domain + '/realms/jitsi-realm/protocol/openid-connect/logout?post_logout_redirect_uri=https://'+ config.hosts.domain + '/static/logout.html';
-config.tokenAuthUrlAutoRedirect=true;
 config.tokenAuthInline=true;
 config.sso={ ssoService: config.hosts.domain, tokenService: config.hosts.domain + '/realms/jitsi-realm/protocol/openid-connect', clientId: "jitsi" };
 ```

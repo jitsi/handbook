@@ -443,6 +443,39 @@ Default: `false`
 hideAddRoomButton: false
 ```
 
+## Analytics
+
+### enableDisplayNameInStats
+
+type: `Boolean`
+
+Enables sending participants' display names to analytics services.
+
+```javascript
+enableDisplayNameInStats: false
+```
+
+### enableEmailInStats
+
+type: `Boolean`
+
+Enables sending participants' emails (if available) to analytics services.
+
+```javascript
+enableEmailInStats: false
+```
+
+### feedbackPercentage
+
+type: `Number`
+
+Controls the percentage of automatic feedback shown to participants when analytics is enabled.
+The default value is 100%. If set to 0, no automatic feedback will be requested.
+
+```javascript
+feedbackPercentage: 100
+```
+
 ## Transcriptions
 
 ### autoCaptionOnRecord 

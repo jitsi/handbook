@@ -35,9 +35,9 @@ These parameters have an effect on the user interface.
 Key                             | Value  | Effect
 ------------------------------- | ------ | -----------------------------------
 `defaultLanguage`               | `en`   | change the UI default language
-`disableThirdPartyRequests`     | `true` | generate avatars locally and disable callstats integration
-`enableDisplayNameInStats`      | `true` | send display names of participants to callstats
-`enableEmailInStats`            | `true` | send email (if available) to callstats and other analytics
+`disableThirdPartyRequests`     | `true` | generate avatars locally and disable third-party requests
+`enableDisplayNameInStats`      | `true` | send display names of participants to analytics
+`enableEmailInStats`            | `true` | send email (if available) to analytics
 `enableInsecureRoomNameWarning` | `true` | show a warning label if the room name is deemed insecure
 
 ## Video

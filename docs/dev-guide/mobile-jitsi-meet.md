@@ -175,26 +175,7 @@ From the **repository root**, run:
 npm install
 ```
 
-#### 5. Build the debug APK
-
-Navigate to the `android/` directory and run the Gradle wrapper:
-
-```bash
-cd android
-./gradlew assembleDebug
-```
-
-:::note
-The first build may take several minutes as Gradle downloads its own dependencies. Subsequent builds are faster due to caching.
-:::
-
-On success, the debug APK is produced at:
-
-```
-android/app/build/outputs/apk/debug/app-debug.apk
-```
-
-#### 6. Install on a physical device
+#### 5. Build and install on a physical device
 
 1. Enable **USB debugging** on your Android device (**Settings → Developer options → USB debugging**).
 2. Connect the device via USB and verify it is detected:
@@ -205,28 +186,18 @@ android/app/build/outputs/apk/debug/app-debug.apk
 
    You should see your device listed with the status `device`. If it shows `unauthorized`, unlock your phone and accept the RSA key fingerprint prompt.
 
-3. Install the APK:
+3. Navigate to the `android/` directory and run:
 
    ```bash
-   adb install android/app/build/outputs/apk/debug/app-debug.apk
+   cd android
+   ./gradlew installDebug
    ```
 
-#### 7. Start the Metro bundler
+   This will build the debug APK, install it on the connected device, and automatically start the Metro bundler. You do not need to run `npm start` separately.
 
-From the **repository root**, start the React Native bundler:
-
-```bash
-npm start
-```
-
-The app will automatically connect to the Metro bundler running on your machine. You do not need to configure anything extra — as long as the device and your machine are on the same network (or connected via USB), Metro will serve the JavaScript bundle on demand.
-
-:::tip
-If the app cannot reach Metro over the network, you can forward the bundler port over the USB connection:
-```bash
-adb reverse tcp:8081 tcp:8081
-```
-:::
+   :::note
+   The first build may take several minutes as Gradle downloads its own dependencies. Subsequent builds are faster due to caching.
+   :::
 
 ### Adding extra dependencies
 

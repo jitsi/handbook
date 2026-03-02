@@ -72,9 +72,132 @@ Xcode 15 or higher is required.
 
 ## Android
 
-Make sure [Android Studio] is installed.
+### Building and running with Android Studio
 
-Set the JDK in Android Studio to at least Java 11: https://developer.android.com/studio/intro/studio-config#jdk
+1. Install [Android Studio].
+
+2. Set the JDK to at least Java 11: **Android Studio → Settings → Build, Execution, Deployment → Build Tools → Gradle → Gradle JDK**.
+
+   See also: https://developer.android.com/studio/intro/studio-config#jdk
+
+3. Install JavaScript dependencies from the **repository root**:
+
+   ```bash
+   npm install
+   ```
+
+4. Open the project in Android Studio:
+
+   - Choose **Open** and select the `android/` folder inside the repository.
+   - Wait for the Gradle sync to complete. Android Studio will download all required SDK components automatically on the first run.
+
+   :::tip
+   If Gradle sync fails, go to **File → Invalidate Caches / Restart** and try again. Make sure your JDK is set correctly (step 2).
+   :::
+
+5. Select your target device from the device drop-down in the top toolbar (a connected physical device or a configured AVD emulator).
+
+6. Click the **Run ▶️** button (or press `Shift + F10`). Android Studio will build the APK and deploy it to the selected device.
+
+7. Start the Metro bundler from the **repository root**:
+
+   ```bash
+   npm start
+   ```
+
+   The app will automatically connect to Metro once it launches on the device.
+
+   :::note
+   If the app cannot find the Metro bundler (e.g., on a physical device), run:
+   ```bash
+   adb reverse tcp:8081 tcp:8081
+   ```
+   :::
+
+### Building and running without Android Studio
+
+:::note
+This section describes a fully command-line based workflow that works on **Linux**, **macOS**, and **WSL** (Windows Subsystem for Linux). You do not need Android Studio installed.
+:::
+
+#### 1. Download the Android SDK command-line tools
+
+Download the **Command-line tools only** package (not Android Studio) from the [official Android developer site](https://developer.android.com/studio#command-tools).
+
+After extracting the archive, the expected directory structure should look like this:
+
+```
+~/Android/Sdk/
+└── cmdline-tools/
+    └── latest/          ← rename the extracted folder to "latest" if it isn't already
+        ├── bin/
+        ├── lib/
+        ├── NOTICE.txt
+        └── source.properties
+```
+
+:::tip
+If the extracted folder has a name like `cmdline-tools-<version>`, rename it to `latest` so that `sdkmanager` and other tools resolve paths correctly:
+```bash
+mv ~/Android/Sdk/cmdline-tools/cmdline-tools-<version> ~/Android/Sdk/cmdline-tools/latest
+```
+:::
+
+#### 2. Configure environment variables
+
+Add the following lines to your `~/.bashrc` or `~/.zshrc`, then reload the shell:
+
+```bash
+export ANDROID_HOME="$HOME/Android/Sdk"
+export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$PATH"
+```
+
+```bash
+source ~/.bashrc   # or source ~/.zshrc
+```
+
+#### 3. Install required SDK packages and accept licenses
+
+Use `sdkmanager` to install the necessary SDK components:
+
+```bash
+sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+sdkmanager --licenses
+```
+
+Accept all prompts by pressing `y` when asked.
+
+#### 4. Install JavaScript dependencies
+
+From the **repository root**, run:
+
+```bash
+npm install
+```
+
+#### 5. Build and install on a physical device
+
+1. Enable **USB debugging** on your Android device (**Settings → Developer options → USB debugging**).
+2. Connect the device via USB and verify it is detected:
+
+   ```bash
+   adb devices
+   ```
+
+   You should see your device listed with the status `device`. If it shows `unauthorized`, unlock your phone and accept the RSA key fingerprint prompt.
+
+3. Navigate to the `android/` directory and run:
+
+   ```bash
+   cd android
+   ./gradlew installDebug
+   ```
+
+   This will build the debug APK, install it on the connected device, and automatically start the Metro bundler. You do not need to run `npm start` separately.
+
+   :::note
+   The first build may take several minutes as Gradle downloads its own dependencies. Subsequent builds are faster due to caching.
+   :::
 
 ### Adding extra dependencies
 

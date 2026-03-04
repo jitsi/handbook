@@ -14,6 +14,12 @@ title: Keyboard shortcuts
 * <kbd>S</kbd> - View or exit full screen
 * <kbd>W</kbd> - Toggle tile view
 * <kbd>T</kbd> - Show participants stats
+* <kbd>N</kbd> - Toggle noise suppression
+* <kbd>B</kbd> - Toggle virtual background
+* <kbd>I</kbd> - Open invite dialog
+* <kbd>X</kbd>- Start or stop recording
+* <kbd>L</kbd> - Toggle lobby/security
+* <kbd>Alt</kbd> <kbd>W</kbd> - Toggle whiteboard
 * <kbd>Alt</kbd> <kbd>T</kbd> - Send thumbs up reaction
 * <kbd>Alt</kbd> <kbd>C</kbd> - Send clap reaction
 * <kbd>Alt</kbd> <kbd>L</kbd> - Send laugh reaction

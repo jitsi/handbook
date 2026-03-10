@@ -164,3 +164,101 @@ app.commandLine.appendSwitch('disable-site-isolation-trials')
 ```
 
 For more information please check out the SDK's repository [https://github.com/jitsi/jitsi-meet-electron-sdk](https://github.com/jitsi/jitsi-meet-electron-sdk).
+
+## Contributing and Local Development
+
+This section explains how the Electron SDK and the Electron app are structured as separate repositories, how to decide where a fix or feature belongs, and how to develop them together locally without publishing to npm.
+
+### SDK vs Electron App — which layer owns what?
+
+The Electron desktop experience is split across two repositories:
+
+| Repository | Responsibility |
+|---|---|
+| [`jitsi-meet-electron-sdk`](https://github.com/jitsi/jitsi-meet-electron-sdk) | Native OS integrations: screen sharing, remote control, always-on-top window, power monitor |
+| [`jitsi-meet-electron`](https://github.com/jitsi/jitsi-meet-electron) | The application shell: window management, app menus, auto-updates, packaging and distribution |
+| [`jitsi-meet`](https://github.com/jitsi/jitsi-meet) | The meeting logic itself, rendered inside an iframe inside the Electron shell |
+
+Use this as a quick guide when triaging a bug or planning a feature:
+
+- **Always-on-top / PiP window layout or lifecycle** → fix in `jitsi-meet-electron-sdk`
+- **Remote control or screen sharing capture** → fix in `jitsi-meet-electron-sdk`
+- **App window size, tray icon, menu, auto-update** → fix in `jitsi-meet-electron`
+- **In-meeting UI or conference behaviour** → fix in `jitsi-meet`
+
+:::tip
+If a bug is visible in the Electron app but not in the web browser, it is almost always the SDK or the Electron shell. Start with `jitsi-meet-electron-sdk`.
+:::
+
+### Local development with a linked SDK
+
+When you need to test SDK changes against the Electron app without publishing a new npm release, use `npm link` to symlink your local SDK clone into the app.
+
+#### Step 1 — Clone and build the SDK
+
+```bash
+git clone https://github.com/jitsi/jitsi-meet-electron-sdk
+cd jitsi-meet-electron-sdk
+npm install
+npm run build
+```
+
+#### Step 2 — Register the local SDK globally
+
+```bash
+# Still inside jitsi-meet-electron-sdk/
+npm link
+```
+
+This creates a global symlink named `@jitsi/electron-sdk` pointing to your local clone.
+
+#### Step 3 — Link it into the Electron app
+
+```bash
+git clone https://github.com/jitsi/jitsi-meet-electron
+cd jitsi-meet-electron
+npm install
+npm link @jitsi/electron-sdk
+```
+
+#### Step 4 — Start the app
+
+```bash
+npm start
+```
+
+Any changes you make in `jitsi-meet-electron-sdk/` are reflected immediately in the running app (after a rebuild of the SDK if it uses a compile step).
+
+### Verifying the linked version is active
+
+After linking, confirm the symlink is in place:
+
+```bash
+# In the jitsi-meet-electron/ directory
+ls -la node_modules/@jitsi/electron-sdk
+```
+
+The output should show an arrow (`->`) pointing to your local SDK path, for example:
+
+```
+node_modules/@jitsi/electron-sdk -> /home/user/jitsi-meet-electron-sdk
+```
+
+If it shows a regular directory instead, re-run `npm link @jitsi/electron-sdk`.
+
+### Restoring the published package
+
+When you are done with local development, unlink and restore the npm-published version:
+
+```bash
+# In the jitsi-meet-electron/ directory
+npm unlink @jitsi/electron-sdk
+npm install
+```
+
+To also remove the global symlink created in Step 2:
+
+```bash
+# In the jitsi-meet-electron-sdk/ directory
+npm unlink
+```

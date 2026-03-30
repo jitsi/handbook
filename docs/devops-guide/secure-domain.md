@@ -1,8 +1,12 @@
 ---
 id: secure-domain
 title: Secure Domain Setup
-sidebar_label: Authentication (Secure Domain)
+sidebar_label: Authentication (Secure Domain) - Deprecated
 ---
+
+:::note
+This method of authentication is deprecated and should not be used in new installations. It is recommended to use JWT authentication instead, as described in [Authentication](authentication.md).
+:::
 
 It is possible to allow only authenticated users to create new conference rooms.
 Whenever a new room is about to be created, Jitsi Meet will prompt for a user

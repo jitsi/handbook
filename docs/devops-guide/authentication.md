@@ -92,15 +92,15 @@ ssh -L18080:localhost:8080 user@remote-machine
 
 You need to create a realm, name it `jitsi-realm`, and select it.
 
-<img src="../assets/auth-scr-1.png" title="screenshot create realm" width="600"/>
+![create realm](../assets/auth-scr-1.png "screenshot create realm")
 
 Add new client in the realm, name it jitsi. When creating the client make sure you set for "Valid Redirect URIs":
 `https://jitsi.example.com/static/sso.html` and for "Valid post logout redirect URIs": `https://jitsi.example.com/static/logout.html`.
 And for "Web origins": `https://jitsi.example.com`. Replace `jitsi.example.com` with your own hostname.
 
-<img src="../assets/auth-scr-2.png" title="screenshot create client" width="600"/><img src="../assets/auth-scr-3.png" title="screenshot create client options" width="600"/>
+![create client](../assets/auth-scr-2.png "screenshot create client")![create client options](../assets/auth-scr-3.png "screenshot create client options")
 
-<img src="../assets/auth-scr-4.png" title="screenshot create client URLs" width="600"/>
+![create client URLs](../assets/auth-scr-4.png "screenshot create client URLs")
 
 In your nginx configuration for jitsi, you need to add the following lines to the server block somewhere before `/xmpp-websocket`:
 ```
@@ -114,10 +114,10 @@ In your nginx configuration for jitsi, you need to add the following lines to th
 ```
 
 Go to "Realm Settings" → "General tab" and for "Frontend URL" set `https://jitsi.example.com`. Replace `jitsi.example.com` with your own hostname.
-<img src="../assets/auth-scr-5.png" title="screenshot frontend url" width="600"/>
+![frontend url](../assets/auth-scr-5.png "screenshot frontend url")
 
 In "Users" create a new user. After creating the user, go to "Credentials" tab of the user and set a password for the user. You will need it later.
-<img src="../assets/auth-scr-6.png" title="screenshot create user" width="600"/><img src="../assets/auth-scr-7.png" title="screenshot create password" width="600"/>
+![create user](../assets/auth-scr-6.png "screenshot create user")
 
 More information about keycloak and running it with docker can be found in the official documentation: https://www.keycloak.org/getting-started/getting-started-docker
 

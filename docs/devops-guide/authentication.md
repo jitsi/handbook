@@ -82,6 +82,7 @@ Start it:
 ```
 docker compose up -d --build
 ```
+_Note that if for some reason you cannot use docker you can follow this [guide](https://www.keycloak.org/getting-started/getting-started-zip).
 
 Open the Keycloak admin console at http://localhost:18080/admin/.
 If you are running Keycloak on a remote machine you can use ssh port forwarding to access the admin console, for example:

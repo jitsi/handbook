@@ -153,6 +153,7 @@ module.exports = {
             type: "generated-index",
           },
           items: [
+            "devops-guide/authentication",
             "devops-guide/secure-domain",
             "devops-guide/token-authentication",
             "devops-guide/ldap-authentication",

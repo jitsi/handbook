@@ -15,10 +15,11 @@ follow these steps:
     wget $(wget -q -O - https://api.github.com/repos/jitsi/docker-jitsi-meet/releases/latest | grep zip | cut -d\" -f4)
     ```
 
-1. Unzip the package:
+1. Unzip the package, and enter the new folder:
 
     ```bash
     unzip <filename>
+    cd <foldername>
     ```
 
 1. Create a `.env` file by copying and adjusting `env.example`:

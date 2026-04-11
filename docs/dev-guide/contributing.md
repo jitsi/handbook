@@ -202,6 +202,32 @@ npx webpack-bundle-analyzer build/app-stats.json
 
 - For Kotlin code we use the [standard convention](https://kotlinlang.org/docs/coding-conventions.html) and limit line length to 120 characters. We use `ktlint` to enforce formatting.
 
+## 🪟 Windows Development Tips
+
+Git on Windows defaults to checking out files with `CRLF` (Carriage Return & Line Feed) line endings. The Jitsi projects are primarily developed in Linux/macOS environments using `LF` line endings. If not configured correctly, Windows contributors will encounter lint failures and cause unnecessary diff noise in pull requests.
+
+### 1. Global Git Configuration
+
+To prevent issues, it is highly recommended to configure Git to automatically handle line conversions:
+
+```bash
+git config --global core.autocrlf input
+```
+
+This tells Git to automatically convert `CRLF` endings to `LF` upon commit, ensuring you do not accidentally push Windows line endings into the repository.
+
+### 2. .gitattributes Configuration
+
+Many Jitsi repositories use a `.gitattributes` file to explicitly enforce `LF` line endings across the repository. If you use an editor like VS Code or IntelliJ, ensure you have an **EditorConfig** plugin installed (if not built-in) so your editor respects the repository's native line ending preferences. 
+
+### 3. Renormalizing an Existing Checkout
+
+If you cloned the repository *before* fixing your Git configuration and are currently experiencing lint errors or noisy diffs, you can forcefully re-normalize the line endings in your local repository checkout:
+
+```bash
+git add --renormalize .
+git commit -m "docs: fix line endings"
+```
 ## ✅ Code Reviews
 
 - **Submit Your Contribution:** After completing your work, submit your contribution.

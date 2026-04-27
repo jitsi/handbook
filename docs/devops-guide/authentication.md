@@ -110,6 +110,10 @@ In your nginx configuration for jitsi, you need to add the following lines to th
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header X-Forwarded-Proto $scheme;
+        
+        proxy_buffer_size          128k;                                                                                                        
+        proxy_buffers              4 256k;
+        proxy_busy_buffers_size    256k;
     }
 ```
 

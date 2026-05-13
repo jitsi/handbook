@@ -947,14 +947,14 @@ With nginx, these routes can be forwarded using the following config snippet:
 
 ```nginx
 location /xmpp-websocket {
-    proxy_pass http://localhost:8000/xmpp-websocket;
+    proxy_pass http://localhost:8000$request_uri;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";
 }
 
 location /colibri-ws {
-    proxy_pass http://localhost:8000/colibri-ws;
+    proxy_pass http://localhost:8000$request_uri;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
     proxy_set_header Connection "upgrade";

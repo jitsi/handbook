@@ -135,6 +135,7 @@ https://github.com/D3473R/jitsi-keycloak
 A simple app for creating events with video conferencing links for a configurable Jitsi instance.
 
 Mac App Store: https://apps.apple.com/de/app/calendar-freedom/id6759659484?mt=12
+
 GitHub: https://github.com/mechko/calendar-freedom  
 
 ## Outlook Plugin

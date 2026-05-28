@@ -360,9 +360,6 @@ Should be called from the activity method of the same name.
 #### onBackPressed()
 
 Helper method which should be called from the activity's `onBackPressed` method.
-If this function returns `true`, it means the action was handled and thus no
-extra processing is required; otherwise the app should call the parent's
-`onBackPressed` method.
 
 #### onHostDestroy(...)
 
@@ -372,10 +369,6 @@ Helper method which should be called from the activity's `onDestroy` method.
 
 Helper method which should be called from the activity's `onResume` or `onStop`
 method.
-
-#### onHostStop(...)
-
-Helper method which should be called from the activity's `onSstop` method.
 
 #### onNewIntent(...)
 

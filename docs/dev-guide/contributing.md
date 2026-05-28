@@ -4,7 +4,7 @@ title: Contributing Guidelines
 ---
 
 # 🤝 How to Contribute 
-We greatly appreciate your willingness to contribute ❤️ Before you start working however, please take a moment to read and follow this brief guide.
+We greatly appreciate your willingness to contribute ❤️ Before you start working, however, please take a moment to read and follow this brief guide.
 
 # 📥 Reporting Issues and Asking Questions 
 
@@ -12,7 +12,7 @@ We greatly appreciate your willingness to contribute ❤️ Before you start wor
 
 - Feel free to report ***any bugs, ask for new features or anything else*** you need help with. When opening an issue, please provide as much information as possible.
 
-- Please ask any general and implementation specific questions on the [community forum](https://community.jitsi.org/) for support.
+- Please ask any general and implementation-specific questions on the [community forum](https://community.jitsi.org/) for support.
 
 ### 🪲 Bug Reports and Other Issues
 
@@ -49,7 +49,7 @@ If you have an idea for a new feature or something you'd like to see improved in
 
 - Discovered a bug or have a feature request and know how to fix it? Excellent! Keep reading 🔍
 
-- The [Developer Guide](/docs/category/developer-guide) will help you to setup a development environment to start working on the Jitsi Meet applications.
+- The [Developer Guide](/docs/category/developer-guide) will help you to set up a development environment to start working on the Jitsi Meet applications.
 
 ## ✏️ Contributor License Agreement 
 While the Jitsi projects are released under the
@@ -106,7 +106,7 @@ Use your judgement and look into the commit history when in doubt.
 
 ### Comments
 
-* Comments documenting the source code are required.
+* Comments that document the source code are required.
 
   * Comments from which documentation is automatically generated are **not**
     subject to case-by-case decisions. Such comments are used, for example, on

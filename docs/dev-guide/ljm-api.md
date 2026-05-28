@@ -3,7 +3,7 @@ id: dev-guide-ljm-api
 title: lib-jitsi-meet API (low level)
 ---
 
-You can use Jitsi Meet API to create Jitsi Meet video conferences with a custom GUI.
+You can use the Jitsi Meet API to create Jitsi Meet video conferences with a custom GUI.
 
 ## Installation
 
@@ -18,7 +18,7 @@ Now you can access Jitsi Meet API through the `JitsiMeetJS` global object.
 
 ## Getting Started
 
-1. The first thing you must do in order to use Jitsi Meet API is to initialize `JitsiMeetJS` object:
+1. The first thing you must do in order to use the Jitsi Meet API is to initialize `JitsiMeetJS` object:
 
 ```javascript
 JitsiMeetJS.init();
@@ -59,7 +59,7 @@ JitsiMeetJS.createLocalTracks().then(onLocalTracks);
 
 NOTE: Adding listeners and creating local streams are not mandatory steps.
 
-6. Then you are ready to create / join a conference :
+6. Then you are ready to create or join a conference:
 
 ```javascript
 room.join();

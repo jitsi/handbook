@@ -4,7 +4,7 @@ title: Developer Guide for Jitsi Meet
 sidebar_label: Jitsi Meet development
 ---
 
-This guide will help you setup a development environment to start working on the Jitsi Meet web app itself.
+This guide will help you set up a development environment to start working on the Jitsi Meet web app itself.
 
 ## Building the sources
 
@@ -57,12 +57,12 @@ The app should be running at https://localhost:8080/
 
 #### Certificate Error
 
-Browsers may show a certificate error since the development certificate is self-signed. It's safe to disregard those
+Browsers may show a certificate error since the development certificate is self-signed. It's safe to disregard that
 warning and continue to your site.
 
 ### Building .debs
 
-To make a deb you can easily deploy to a public test server, ensure you have the lib-jitsi-meet sources you wish, then:
+To create a deb package for deployment to a public test server, ensure you have the desired lib-jitsi-meet sources, then run:
 ```
 npm install
 make

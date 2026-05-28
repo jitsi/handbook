@@ -39,7 +39,7 @@ sudo apt update && sudo apt upgrade -y
 
 ### Install nvm
 
-[nvm](https://github.com/nvm-sh/nvm) (Node Version Manager) lets you install and switch between multiple versions of Node.js. The Jitsi Meet repository includes an `.nvmrc` file that specifies the exact Node.js version the project requires. When you run `nvm install` or `nvm use` inside the project directory, nvm reads this file and automatically installs or switches to the correct version. This means you do not need to look up which version to install and the setup stays correct even when the project updates its Node.js requirement.
+[nvm](https://github.com/nvm-sh/nvm) (Node Version Manager) lets you install and switch between multiple versions of Node.js. The Jitsi Meet repository includes an `.nvmrc` file that specifies the exact Node.js version the project requires. When you run `nvm install` or `nvm use` inside the project directory, nvm reads this file and automatically installs or switches to the correct version. This means you do not need to look up which version to install, and the setup stays correct even when the project updates its Node.js requirement.
 
 Install nvm by running:
 

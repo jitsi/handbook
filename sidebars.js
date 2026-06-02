@@ -166,8 +166,7 @@ module.exports = {
             "devops-guide/file-sharing"
           ],
         },
-        "devops-guide/devops-guide-videotutorials",
-        "devops-guide/faq",
+        "devops-guide/devops-guide-videotutorials"
       ],
     },
   ],

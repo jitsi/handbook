@@ -755,3 +755,24 @@ api.executeCommand('setVirtualBackground',
     backgroundImage: string // Required. Base64 image string, eg. "data:image/png;base64, iVBOR...".
 );
 ```
+
+### setMeetingTimer
+
+Drives the meeting-pace timer shown in the conference info bar. Use this to
+set the meeting's scheduled duration (and, optionally, how much of it has
+already elapsed). This is the way to control the timer in deployments that do
+not use calendar sync.
+
+A positive `duration` starts or updates the timer; omitting `duration` (or
+passing a value `<= 0`) clears it.
+
+```javascript
+api.executeCommand('setMeetingTimer', {
+    duration: number, // The scheduled meeting duration, in seconds. Omit or pass <= 0 to hide the timer.
+    elapsed: number // Optional. Seconds already elapsed since the scheduled start. May exceed `duration` for a participant joining after the scheduled end. Defaults to 0.
+});
+```
+
+The timer is enabled by default and renders nothing until a duration is known
+(from this command or from calendar sync). To hide it entirely — even when a
+duration is available — set `configOverwrite.timeTimer = { enabled: false }`.

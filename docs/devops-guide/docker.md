@@ -313,13 +313,14 @@ services:
             - /path/to/your/cert.fullchain:/config/keys/cert.crt
             - /path/to/your/cert.key:/config/keys/cert.key
 ```
-
-### Features configuration (config.js)
+### Features configuration (config.js)  
 
 Variable | Description | Example
 --- | --- | ---
-`TOOLBAR_BUTTONS` | Configure toolbar buttons. Add the buttons name separated with comma(no spaces between comma) | |
+`TOOLBAR_BUTTONS` | Configure toolbar buttons. Add the buttons name separated with comma(no spaces between comma) | microphone,chat,hangup,desktop,camera,settings,raisehand,mute-everyone
 `HIDE_PREMEETING_BUTTONS` | Hide the buttons at pre-join screen. Add the buttons name separated with comma | |
+`START_WITH_AUDIO_MUTED` | Start calls with the local participant's audio muted | 1
+`START_WITH_VIDEO_MUTED` | Start calls with the local participant's video muted | 1
 `ENABLE_LOBBY` | Control whether the lobby feature should be enabled or not | 1
 `ENABLE_AV_MODERATION` | Control whether the A/V moderation should be enabled or not | 1
 `ENABLE_PREJOIN_PAGE` | Show a prejoin page before entering a conference | 1
@@ -328,7 +329,6 @@ Variable | Description | Example
 `DISABLE_AUDIO_LEVELS` | Disable measuring of audio levels | 0
 `ENABLE_NOISY_MIC_DETECTION` | Enable noisy mic detection | 1
 `ENABLE_BREAKOUT_ROOMS` | Enable breakout rooms | 1
-
 ### Jigasi SIP gateway (audio only) configuration
 
 If you want to enable the SIP gateway, these options are required:

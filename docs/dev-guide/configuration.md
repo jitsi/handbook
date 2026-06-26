@@ -126,6 +126,32 @@ customToolbarButtons: [
 ]
 ```
 
+### toolbarConfig
+
+type: `Object`
+
+Options related to toolbar visibility behavior and styling.
+
+Properties:
+
+* `alwaysVisible` - If `true`, the toolbar is always visible. If `false`, it auto-hides after the configured timeouts. Default: `false`.
+* `autoHideWhileChatIsOpen` - If `true`, the toolbar can auto-hide while the chat panel is open. Default: `false`.
+* `backgroundColor` - Optional string. Sets the background color of the main toolbar. Accepts any valid CSS color (for example `'#ff0000'`). This value can also be overridden through `configOverwrite.toolbarConfig.backgroundColor` when using the IFrame API. Default: `'#ffffff'`.
+* `initialTimeout` - Initial number of milliseconds for the toolbar to remain visible when a meeting starts. Default: `20000`.
+* `timeout` - Number of milliseconds for the toolbar to remain visible after user activity. Default: `4000`.
+
+Default:
+
+```javascript
+toolbarConfig: {
+    alwaysVisible: false,
+    autoHideWhileChatIsOpen: false,
+    backgroundColor: '#ffffff',
+    initialTimeout: 20000,
+    timeout: 4000
+}
+```
+
 ### mouseMoveCallbackInterval
 
 type: `Number`

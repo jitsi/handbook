@@ -329,6 +329,9 @@ Variable | Description | Example
 `DISABLE_AUDIO_LEVELS` | Disable measuring of audio levels | 0
 `ENABLE_NOISY_MIC_DETECTION` | Enable noisy mic detection | 1
 `ENABLE_BREAKOUT_ROOMS` | Enable breakout rooms | 1
+`ENABLE_REQUIRE_DISPLAY_NAME` | Force all participants to set a display name | 0
+`DISABLE_PRIVATE_CHAT` | Disable private messaging between users | 0
+
 ### Jigasi SIP gateway (audio only) configuration
 
 If you want to enable the SIP gateway, these options are required:

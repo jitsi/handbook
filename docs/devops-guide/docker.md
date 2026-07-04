@@ -1012,6 +1012,7 @@ Variable | Description | Default value
 `GF_SECURITY_CONTENT_SECURITY_POLICY` | Grafana CSP | false
 `GF_SECURITY_COOKIE_SECURE` |Grafana cookies policy | false
 `GF_SECURITY_COOKIE_SAMESITE` | Grafana cookie samesite policy | false
+
 Note: `_` for sub-uri begining is to let monitoring be used as a meeting name   
 if password is commented/and or admin is commented default Grafana admin and password is used for provisioning and should be changed immediately   
 

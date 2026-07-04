@@ -998,6 +998,23 @@ ENABLE_COLIBRI_WEBSOCKET=0
 ENABLE_XMPP_WEBSOCKET=0
 ```
 
+#### Configuring Grafana 
+If you do not wish to use Grafana in public you can run it without extra config and access it with localhost:3000   
+You can add Grafana monitoring to to project by adding the respective grafana.yml to docker compose command. Then you can access it with sub-uri.   
+to achieve this uncomment the respective variables in an .env file
+
+Variable | Description | Default value
+--- | --- | ---
+`GRAFANA` | Enable Grafana endpoint | 0
+`GRAFANA_SUB_URI` | sub-uri to access Grafana | _monitoring
+`GF_SECURITY_ADMIN_USER` | admin user to provision | admin
+`GF_SECURITY_ADMIN_PASSWORD` | admin user to provision with | `<unset>`
+`GF_SECURITY_CONTENT_SECURITY_POLICY` | XMPP user for Jigasi MUC client connections | false
+`GF_SECURITY_COOKIE_SECURE` | XMPP password for Jigasi MUC client connections | false
+`GF_SECURITY_COOKIE_SAMESITE` | MUC name for the Jigasi pool | false
+Note: `_` for sub-uri begining is to let monitoring be used as a meeting name   
+if password is commented/and or admin is commented default Grafana admin and password is used for provisioning and should be changed immediately   
+
 [S6 Overlay]: https://github.com/just-containers/s6-overlay
 [Jitsi repositories]: https://jitsi.org/downloads/
 [Prosody]: https://prosody.im/

@@ -1009,9 +1009,9 @@ Variable | Description | Default value
 `GRAFANA_SUB_URI` | sub-uri to access Grafana | _monitoring
 `GF_SECURITY_ADMIN_USER` | admin user to provision | admin
 `GF_SECURITY_ADMIN_PASSWORD` | admin user to provision with | `<unset>`
-`GF_SECURITY_CONTENT_SECURITY_POLICY` | XMPP user for Jigasi MUC client connections | false
-`GF_SECURITY_COOKIE_SECURE` | XMPP password for Jigasi MUC client connections | false
-`GF_SECURITY_COOKIE_SAMESITE` | MUC name for the Jigasi pool | false
+`GF_SECURITY_CONTENT_SECURITY_POLICY` | Grafana CSP | false
+`GF_SECURITY_COOKIE_SECURE` |Grafana cookies policy | false
+`GF_SECURITY_COOKIE_SAMESITE` | Grafana cookie samesite policy | false
 Note: `_` for sub-uri begining is to let monitoring be used as a meeting name   
 if password is commented/and or admin is commented default Grafana admin and password is used for provisioning and should be changed immediately   
 

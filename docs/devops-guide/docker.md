@@ -1008,7 +1008,7 @@ Variable | Description | Default value
 `GRAFANA` | Enable Grafana endpoint | 0
 `GRAFANA_SUB_URI` | sub-uri to access Grafana | _monitoring
 `GF_SECURITY_ADMIN_USER` | admin user to provision | admin
-`GF_SECURITY_ADMIN_PASSWORD` | admin user to provision with | `<unset>`
+`GF_SECURITY_ADMIN_PASSWORD` | admin password to provision with | `<unset>`
 `GF_SECURITY_CONTENT_SECURITY_POLICY` | Grafana CSP | false
 `GF_SECURITY_COOKIE_SECURE` |Grafana cookies policy | false
 `GF_SECURITY_COOKIE_SAMESITE` | Grafana cookie samesite policy | false

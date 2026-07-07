@@ -75,19 +75,26 @@ in the `X-Custom-Openai-Api-Key` header). See the project's `README.md` /
 
 ### As a standalone container
 
-The repo ships a `Dockerfile`. The WASM Opus decoder and the server bundle must
-be built **before** the Docker build (the image only copies `dist/`):
+The repo ships a `Dockerfile` and a `docker:build` npm script that builds the
+image for you. The Opus codec is pulled in as a **git submodule**, so it must be
+checked out before building — otherwise the build fails with
+`No rule to make target 'src/OpusDecoder/opus/configure.ac'`:
 
 ```bash
-# one-time: install the Emscripten toolchain
-npm run configure
+# check out the libopus submodule (required)
+git submodule update --init src/OpusDecoder/opus
 
-# build the WASM decoder + bundle into dist/
-npm run build
-
-# build the image
-docker build -t opus-transcriber-proxy .
+npm install
+npm run docker:build   # builds the WASM artifacts on the host, then the image
 ```
+
+:::note Opus backend
+The image ships both Opus backends and selects one at runtime via the
+`OPUS_BACKEND` environment variable — `wasm` (default) or `native` (the
+compiled libopus addon). The native addon is compiled inside the container; the
+WASM artifacts are built on the host by `docker:build`. See the project's
+`README.md` for toolchain prerequisites (Node.js 22+, a C/C++ toolchain).
+:::
 
 Run it, passing configuration as environment variables (or an env file):
 
@@ -126,15 +133,20 @@ handles the WebSocket upgrade and routing). Configuration lives in
 and `CONTAINER_ROUTING.md` in the repo for the full details.
 
 ```bash
-# one-time
-npm run configure
-cd worker && npm install && npx wrangler login
+# check out the libopus submodule (one-time; the image builds it)
+git submodule update --init src/OpusDecoder/opus
+
+# install worker deps and authenticate
+cd worker
+npm install
+npx wrangler login
 
 # set backend API keys as Worker secrets
 npx wrangler secret put OPENAI_API_KEY --config ../wrangler-container.jsonc
 
-# deploy
-cd .. && npm run cf:deploy
+# deploy (builds locally, then deploys)
+cd ..
+npm run cf:deploy
 ```
 
 After deploy (allow a few minutes) the endpoint is the Worker URL, e.g.:

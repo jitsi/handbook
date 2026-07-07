@@ -75,28 +75,10 @@ in the `X-Custom-Openai-Api-Key` header). See the project's `README.md` /
 
 ### As a standalone container
 
-The repo ships a `Dockerfile` and a `docker:build` npm script that builds the
-image for you. The Opus codec is pulled in as a **git submodule**, so it must be
-checked out before building — otherwise the build fails with
-`No rule to make target 'src/OpusDecoder/opus/configure.ac'`:
-
-```bash
-# check out the libopus submodule (required)
-git submodule update --init src/OpusDecoder/opus
-
-npm install
-npm run docker:build   # builds the WASM artifacts on the host, then the image
-```
-
-:::note Opus backend
-The image ships both Opus backends and selects one at runtime via the
-`OPUS_BACKEND` environment variable — `wasm` (default) or `native` (the
-compiled libopus addon). The native addon is compiled inside the container; the
-WASM artifacts are built on the host by `docker:build`. See the project's
-`README.md` for toolchain prerequisites (Node.js 22+, a C/C++ toolchain).
-:::
-
-Run it, passing configuration as environment variables (or an env file):
+Prebuilt multi-arch images are published to Docker Hub as
+[`jitsi/opus-transcriber-proxy`](https://hub.docker.com/r/jitsi/opus-transcriber-proxy)
+(`latest`, plus per-commit SHA tags). Just pull and run — passing configuration
+as environment variables:
 
 ```bash
 docker run -d --name transcriber \
@@ -104,7 +86,7 @@ docker run -d --name transcriber \
   -e PROVIDERS_PRIORITY=openai \
   -e OPENAI_API_KEY=<your-key> \
   -e OPENAI_MODEL=gpt-4o-mini-transcribe \
-  opus-transcriber-proxy
+  jitsi/opus-transcriber-proxy:latest
 ```
 
 Or with an `.env` file:
@@ -113,8 +95,17 @@ Or with an `.env` file:
 docker run -d --name transcriber \
   -p 8080:8080 \
   --env-file .env \
-  opus-transcriber-proxy
+  jitsi/opus-transcriber-proxy:latest
 ```
+
+:::note Opus backend
+The image ships both Opus backends and selects one at runtime via the
+`OPUS_BACKEND` environment variable — `wasm` (default) or `native` (the
+compiled libopus addon).
+:::
+
+To build the image yourself instead of using the published one, see the build
+instructions in the project's `README.md`.
 
 The bridge then connects to `ws://<host>:8080/transcribe`. Put it behind a TLS
 reverse proxy if the bridge reaches it over `wss://`.

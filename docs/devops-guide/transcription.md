@@ -33,13 +33,14 @@ to migrate.
                                    └────────────────────────┘
 ```
 
-Three pieces must be configured:
+Four pieces must be configured:
 
 1. **Transcription service** — the proxy itself.
 2. **Prosody** — enable transcription on rooms (this guide includes a sample
    module that forces it on for *all* rooms).
 3. **Jicofo** — point the bridge at the service URL and (optionally) attach auth
    headers.
+4. **config.js** — enable transcription in the jitsi-meet client.
 
 ---
 
@@ -320,3 +321,16 @@ changing to a different URL mid-conference. If transcription is enabled but no
 `url-template` is configured, Jicofo logs *"Transcription enabled, but no URL is
 configured"* and does nothing.
 :::
+
+---
+
+## 4. Client configuration (config.js)
+
+Transcription must also be enabled in the jitsi-meet client configuration.
+Add the following to your `config.js`:
+
+```javascript
+transcription: {
+    enabled: true,
+},
+```

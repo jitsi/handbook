@@ -47,7 +47,7 @@ Three pieces must be configured:
 
 The service is a Node.js application. It is configured entirely through
 environment variables (no config file; a `.env` file is read if present). It
-listens on port `8080` and exposes a WebSocket endpoint at `/transcribe`.
+listens on port `8080` by default and exposes a WebSocket endpoint at `/transcribe`.
 
 At minimum you must set the API key for at least one backend and pick a provider
 priority. Example for OpenAI:
@@ -82,7 +82,7 @@ as environment variables:
 
 ```bash
 docker run -d --name transcriber \
-  -p 8080:8080 \
+  -p 9090:8080 \
   -e PROVIDERS_PRIORITY=openai \
   -e OPENAI_API_KEY=<your-key> \
   -e OPENAI_MODEL=gpt-4o-mini-transcribe \
@@ -93,7 +93,7 @@ Or with an `.env` file:
 
 ```bash
 docker run -d --name transcriber \
-  -p 8080:8080 \
+  -p 9090:8080 \
   --env-file .env \
   jitsi/opus-transcriber-proxy:latest
 ```
@@ -107,13 +107,13 @@ compiled libopus addon).
 To build the image yourself instead of using the published one, see the build
 instructions in the project's `README.md`.
 
-The bridge then connects to `ws://<host>:8080/transcribe`. Put it behind a TLS
+The bridge then connects to `ws://<host>:9090/transcribe`. Put it behind a TLS
 reverse proxy if the bridge reaches it over `wss://`.
 
 Quick connectivity check:
 
 ```bash
-wscat -c "ws://localhost:8080/transcribe?sessionId=test&sendBack=true"
+wscat -c "ws://localhost:9090/transcribe?sessionId=test&sendBack=true"
 ```
 
 ### In Cloudflare (CF)
@@ -225,12 +225,15 @@ Component "conference.example.com" "muc"
     modules_enabled = {
         -- ... existing modules ...
         "muc_meeting_id";
-        "room_metadata";          -- required: provides room.jitsiMetadata
         "force_async_transcription";
     }
 ```
 
-Reload prosody (`prosodyctl reload`) afterwards.
+Restart prosody afterward.
+
+```bash
+systemctl restart prosody
+```
 
 :::note
 This only forces the `asyncTranscription` flag. For transcription to actually
@@ -265,7 +268,7 @@ Basic configuration pointing at a standalone service:
 ```hocon
 jicofo {
   transcription {
-    url-template = "ws://transcriber.internal:8080/transcribe?sessionId={{MEETING_ID}}"
+    url-template = "ws://transcriber.internal:9090/transcribe?sessionId={{MEETING_ID}}&sendBack=true"
 
     ping {
       enabled = true
@@ -274,6 +277,12 @@ jicofo {
     }
   }
 }
+```
+
+Restart Jicofo to apply the new configuration:
+
+```bash
+systemctl restart jicofo
 ```
 
 With a regionalized Cloudflare deployment:

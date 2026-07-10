@@ -269,7 +269,7 @@ Basic configuration pointing at a standalone service:
 ```hocon
 jicofo {
   transcription {
-    url-template = "ws://transcriber.internal:9090/transcribe?sessionId={{MEETING_ID}}&sendBack=true"
+    url-template = "ws://localhost:9090/transcribe?sessionId={{MEETING_ID}}&sendBack=true"
 
     ping {
       enabled = true

@@ -63,6 +63,46 @@ api.getAvailableDevices().then(devices => {
 });
 ```
 
+### getConnectionStats
+
+Returns a promise which resolves with the local connection stats (bitrate, packet loss, connection quality, etc).
+The `codec`, `framerate`, `framesDecoded` and `resolution` fields are keyed by participant ID, then by SSRC.
+
+```javascript
+api.getConnectionStats().then(stats => {
+    // stats = {
+    //     connectionQuality: 95.4,
+    //     jvbRTT: 1,
+    //     bridgeCount: 1,
+    //     serverRegion: null,
+    //     bandwidth: {
+    //         download: null,
+    //         upload: 2216
+    //     },
+    //     bitrate: {
+    //         download: 0,
+    //         upload: 954,
+    //         audio: { download: 0, upload: 7 },
+    //         video: { download: 0, upload: 947 }
+    //     },
+    //     packetLoss: {
+    //         download: 0,
+    //         total: 0,
+    //         upload: 0
+    //     },
+    //     maxEnabledResolution: 720,
+    //     codec: { ... },
+    //     framerate: { ... },
+    //     framesDecoded: { ... },
+    //     resolution: { ... },
+    //     transport: [
+    //         { ip: '...', localCandidateType: 'host', p2p: false, rtt: 1, type: 'udp', ... }
+    //     ]
+    // }
+    ...
+});
+```
+
 ### getContentSharingParticipants
 
 Returns a promise which resolves with an array of currently sharing participants ID's.

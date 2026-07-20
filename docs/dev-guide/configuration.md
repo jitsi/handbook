@@ -1152,6 +1152,35 @@ participantsPane: {
 }
 ```
 
+## Prejoin
+
+### prejoinConfig
+
+type: `Object`
+
+Options related to the prejoin (pre-meeting) screen, shown before a participant joins the conference so they can configure their devices.
+
+Default: **unset**
+
+Properties:
+* `enabled` - When `true`, shows the prejoin screen before joining, where the user can configure their devices. Default: `true`.
+* `hideDisplayName` - Hides the participant name editing field on the prejoin screen. If `requireDisplayName` is also `true`, a name must still be provided through the JWT or the `userInfo` from the iframe API init object for this to have an effect. Default: `false`.
+* `hideExtraJoinButtons` - List of secondary join buttons to hide from the extra join options dropdown on the prejoin screen. Supported values: `'no-audio'` (the "Join without audio" button, which joins the conference without acquiring a microphone) and `'by-phone'` (the "Join by phone" button, which lets the participant dial in for audio while video stays in the browser; requires dial-in to be configured). Default: `[]` (all buttons shown).
+* `preCallTestEnabled` - Enables the pre-call connection/quality test on the prejoin page. ICE server credentials must be provided via `preCallTestICEUrl`. Default: `false`.
+* `preCallTestICEUrl` - URL that provides the ICE server credentials used by the pre-call test. Default: `''`.
+* `showHangUp` - Shows the hang up button on the prejoin/lobby screen. Default: `true`.
+
+```javascript
+prejoinConfig: {
+    enabled: true,
+    hideDisplayName: false,
+    hideExtraJoinButtons: ['no-audio', 'by-phone'],
+    preCallTestEnabled: false,
+    preCallTestICEUrl: '',
+    showHangUp: true
+}
+```
+
 ## Recording
 
 ### dropbox

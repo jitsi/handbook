@@ -97,7 +97,8 @@ api.getConnectionStats().then(stats => {
     //     resolution: { ... },
     //     transport: [
     //         { ip: '...', localCandidateType: 'host', p2p: false, rtt: 1, type: 'udp', ... }
-    //     ]
+    //     ],
+    //     iceConnected: true
     // }
     ...
 });

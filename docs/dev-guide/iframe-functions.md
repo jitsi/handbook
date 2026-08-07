@@ -193,7 +193,7 @@ Returns an array of available rooms and details of it:
     - `displayName`
     - `userContext`
     - `isJigasi`
-    - `isJibri`
+    - `isHidden`
     - `audioMuted`
     - `videoMuted`
 
@@ -225,7 +225,7 @@ Response example structure:
             "id": "google-oauth2|12345678901234567890"
           },
           "isJigasi": false,
-          "isJibri": true,
+          "isHidden": true,
           "audioMuted": true,
           "videoMuted": true
         },
@@ -238,7 +238,7 @@ Response example structure:
             "id": "400e45d607256777df4e0f3a6a447901"
           },
           "isJigasi": true,
-          "isJibri": false,
+          "isHidden": false,
           "audioMuted": false,
           "videoMuted": false
         }

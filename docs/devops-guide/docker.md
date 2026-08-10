@@ -35,20 +35,41 @@ follow these steps:
    ```
 
 1. Create required `CONFIG` directories
-   * For linux:
+
+   :::note
+   This directory layout applies to release `stable-11146` and newer, where the containers run
+   rootless with a read-only filesystem. Earlier releases use a different layout: they have no
+   `storage` or `tmp` directories, and keep the transcripts in `~/.jitsi-meet-cfg/transcripts`.
+   :::
+
+   * For Linux:
 
    ```bash
-   mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   mkdir -p ~/.jitsi-meet-cfg/{web,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri,transcriber}
+   mkdir -p ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+   mkdir -p ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
+   chmod 777 ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+   chmod 777 ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
    ```
 
-   * For Windows:
+   * For Windows (PowerShell):
 
-   ```bash
-   echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri
+   ```powershell
+   $dirs = "web","prosody/config","prosody/prosody-plugins-custom","jicofo","jvb","jigasi","jibri","transcriber","storage/jibri","storage/prosody","storage/transcripts","storage/web","tmp/web-crontabs","tmp/web-load-test"
+   $dirs | ForEach-Object { New-Item -ItemType Directory -Force -Path "$HOME/.jitsi-meet-cfg/$_" }
    ```
-   ```bash
-    mkdir "~/.jitsi-meet-cfg/$_"
-   ```
+
+   The `chmod` step has no equivalent on Docker Desktop for Windows and is not needed there.
+
+   :::caution
+   The containers run as an unprivileged user (uid/gid 1000), so the `storage` and `tmp`
+   directories must be writable by that user. Create them yourself before the first start and run
+   the `chmod` commands above. Leaving them to be created automatically results in directories the
+   containers cannot write to.
+
+   Containers that need one of these directories refuse to start with an explicit error if it is
+   missing or not writable.
+   :::
 
 1. Run ``docker compose up -d``
 1. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).

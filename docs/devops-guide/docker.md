@@ -1001,13 +1001,13 @@ ENABLE_LETSENCRYPT=0
 
 By default, the `HTTP_PORT` and `HTTPS_PORT` are binding to any ip address, so are publicly open unless a firewall blocks them. When using a reverse proxy, this is not necessary. This can be changed by updating the web container's ports configuration:
 ```yaml
-            - '127.0.0.1:${HTTP_PORT}:80'
-            - '127.0.0.1:${HTTPS_PORT}:443'
+            - '127.0.0.1:${HTTP_PORT}:8000'
+            - '127.0.0.1:${HTTPS_PORT}:8443'
 ```
 instead of
 ```yaml
-            - '${HTTP_PORT}:80'
-            - '${HTTPS_PORT}:443'
+            - '${HTTP_PORT}:8000'
+            - '${HTTPS_PORT}:8443'
 ```
 
 ### Reverse proxy configuration

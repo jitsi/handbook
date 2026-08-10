@@ -168,7 +168,7 @@ The following paths moved:
 
 What | Old location | New location | Migration
 --- | --- | --- | ---
-Prosody data | `${CONFIG}/prosody/config/data` | `${CONFIG}/storage/prosody` | Automatic on the first start
+Prosody data | `${CONFIG}/prosody/config/data` | `${CONFIG}/storage/prosody/data` | Automatic on the first start
 Web TLS material | `${CONFIG}/web` | `${CONFIG}/storage/web` | Automatic on the first start
 Jibri recordings and logs | `${CONFIG}/jibri/recordings`, `${CONFIG}/jibri/logs` | `${CONFIG}/storage/jibri` | Move the existing files yourself if you want to keep them
 Transcripts | `${CONFIG}/transcripts` | `${CONFIG}/storage/transcripts` | Move the existing files yourself if you want to keep them
@@ -618,7 +618,7 @@ prosodyctl --config /run/prosody/config/prosody.cfg.lua unregister TheDesiredUse
 To list all users, run the following command in the container:
 
 ```bash
-find /var/lib/prosody/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
+find /var/lib/prosody/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
 ```
 
 #### Authentication using LDAP

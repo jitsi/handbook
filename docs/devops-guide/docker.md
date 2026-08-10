@@ -261,6 +261,34 @@ Instead, it's kept completely sealed, and routing of XMPP traffic only happens o
 The XMPP server can be exposed to the outside world,
 but that's out of the scope of this project.
 
+### Rootless and read-only containers
+
+Since release `stable-11146` the Jitsi containers are hardened:
+
+* Every service runs as an unprivileged user (uid/gid 1000) instead of root, with no effective
+  Linux capabilities.
+* The container filesystem is mounted read-only. `/run` and `/tmp` are writable `tmpfs` mounts,
+  sized per service in the Compose files.
+* The configuration under `/config` is treated as input only. On startup each service renders its
+  effective configuration into `/run/<service>/config`, so nothing is written back to `/config`
+  at runtime.
+
+As a result the `CONFIG` directory is split into three kinds of directory:
+
+Directory | Purpose | Written by the containers
+--- | --- | ---
+`${CONFIG}/<service>` | Configuration read at startup, for example `web` or `prosody/config` | No
+`${CONFIG}/storage/*` | Persistent state, for example recordings, Prosody data and TLS material | Yes
+`${CONFIG}/tmp/*` | Runtime files that can be regenerated, for example the web crontabs | Yes
+
+Every directory the containers write to must be writable by uid 1000. A service refuses to start,
+with an explicit error naming the directory, when one of them is missing or not writable.
+
+:::note
+Despite the name, `${CONFIG}/tmp` is a regular directory on the host and is not cleared
+automatically. It holds the Let's Encrypt renewal cron job, among other things.
+:::
+
 ## Configuration
 
 The configuration is performed via environment variables contained in a ``.env`` file.

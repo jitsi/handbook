@@ -593,7 +593,7 @@ docker compose exec prosody /bin/bash
 Once in the container, run the following command to create a user:
 
 ```bash
-prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
+prosodyctl --config /run/prosody/config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
 ```
 
 Note that the command produces no output.
@@ -601,13 +601,13 @@ Note that the command produces no output.
 To delete a user, run the following command in the container:
 
 ```bash
-prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
+prosodyctl --config /run/prosody/config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
 ```
 
 To list all users, run the following command in the container:
 
 ```bash
-find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
+find /var/lib/prosody/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
 ```
 
 #### Authentication using LDAP

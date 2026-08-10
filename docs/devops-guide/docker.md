@@ -359,7 +359,7 @@ Let's Encrypt once you are done testing.
 
 :::note
 When you move away from `LETSENCRYPT_USE_STAGING`,
-you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
+you will have to manually clear the certificates from `.jitsi-meet-cfg/storage/web`.
 :::
 
 For more information on Let's Encrypt's rate limits, visit:
@@ -387,6 +387,10 @@ services:
             - /path/to/your/cert.fullchain:/config/keys/cert.crt
             - /path/to/your/cert.key:/config/keys/cert.key
 ```
+
+On startup the `web` container copies these files into its `storage` volume and uses them instead
+of generating a self-signed certificate.
+
 ### Features configuration (config.js)  
 
 Variable | Description | Example

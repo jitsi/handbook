@@ -525,6 +525,13 @@ For using multiple Jibri instances, you have to select different loopback interf
 
 </details>
 
+Jibri writes its recordings and logs to the `/storage` volume, which is
+`${CONFIG}/storage/jibri` on the host. This directory must exist and be writable by the container
+user before Jibri is started, otherwise the container refuses to start.
+
+Jibri no longer needs the `SYS_ADMIN` capability. Chrome runs without the sandbox instead, and
+`jibri.yml` gives the container the shared memory it needs with `shm_size: '2gb'`.
+
 If you want to enable Jibri these options are required:
 
 Variable | Description | Example
@@ -537,7 +544,7 @@ Variable | Description | Example
 --- | --- | ---
 `JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
 `JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
-`JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
+`JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /storage/recordings
 `JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
 `JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
 `JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc

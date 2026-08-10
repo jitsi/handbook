@@ -151,6 +151,31 @@ again (just like how you initially downloaded Jitsi). Then unzip and overwrite a
 unzip <filename>
 ```
 
+#### Updating from a release older than `stable-11146`
+
+You can keep your existing `CONFIG` directory, but the release that introduced the rootless
+containers added new directories and moved some paths. Create the new directories and make them
+writable by the container user before starting the updated containers:
+
+```bash
+mkdir -p ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+mkdir -p ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
+chmod 777 ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+chmod 777 ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
+```
+
+The following paths moved:
+
+What | Old location | New location | Migration
+--- | --- | --- | ---
+Prosody data | `${CONFIG}/prosody/config/data` | `${CONFIG}/storage/prosody` | Automatic on the first start
+Web TLS material | `${CONFIG}/web` | `${CONFIG}/storage/web` | Automatic on the first start
+Jibri recordings and logs | `${CONFIG}/jibri/recordings`, `${CONFIG}/jibri/logs` | `${CONFIG}/storage/jibri` | Move the existing files yourself if you want to keep them
+Transcripts | `${CONFIG}/transcripts` | `${CONFIG}/storage/transcripts` | Move the existing files yourself if you want to keep them
+Web crontabs and load test | `${CONFIG}/web/crontabs`, `${CONFIG}/web/load-test` | `${CONFIG}/tmp/web-crontabs`, `${CONFIG}/tmp/web-load-test` | Recreated when needed, nothing to move
+
+The old directories are left untouched and can be removed once the new setup works.
+
 ### Testing development / unstable builds
 
 Download the latest code:

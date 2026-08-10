@@ -558,15 +558,15 @@ Variable | Description | Example
 ### Jitsi Meet configuration
 
 Jitsi-Meet uses two configuration files for changing default settings within
-the web interface: ``config.js`` and ``interface_config.js``. The files are
-located within the ``CONFIG/web/`` directory configured within your environment file.
+the web interface: ``config.js`` and ``interface_config.js``.
 
-These files are re-created on every container restart.
-If you'd like to provide your own settings, create your own config files:
+Both files are generated inside the container on every start and are not written to the host,
+so editing them directly is not possible. If you'd like to provide your own settings, create your
+own config files in the ``CONFIG/web/`` directory configured within your environment file:
 ``custom-config.js`` and ``custom-interface_config.js``.
 
 It's enough to provide your relevant settings only, the docker scripts will
-append your custom files to the default ones!
+append your custom files to the generated ones!
 
 ### Authentication
 

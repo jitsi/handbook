@@ -4,20 +4,22 @@ title: Live audio translation
 sidebar_label: Live audio translation
 ---
 
-Live audio translation is a speech-to-speech "dubbing" feature: a listener
-subscribes to a speaker in a target language, the Jitsi Videobridge (JVB)
-forwards that speaker's Opus audio to a translation service over a WebSocket,
-and translated audio (as a synthetic source) is sent back into the conference
-for that listener, ducking or muting the original.
+Live audio translation is a speech-to-speech dubbing feature. A listener
+subscribes to a speaker in a target language. The Jitsi Videobridge (JVB)
+forwards the Opus audio of that speaker to a translation service over a
+WebSocket. As a synthetic source, the service sends the translation back into
+the conference. The synthetic source ducks or mutes the original audio for
+that listener.
 
-The reference implementation is the `/translate` endpoint of
-[opus-transcriber-proxy](https://github.com/jitsi/opus-transcriber-proxy) —
-the same project used for [bridge-based transcription](transcription.md).
+The `/translate` endpoint of
+[opus-transcriber-proxy](https://github.com/jitsi/opus-transcriber-proxy) is
+the reference implementation. The same project also provides
+[bridge-based transcription](transcription.md).
 
 :::note Not the same as transcript translation
-This is unrelated to the older "translated captions" feature
-(`transcription.translationEnabled`), which translates *text* transcripts
-client-side. Live audio translation produces translated *audio*.
+This feature differs from the older "translated captions" feature
+(`transcription.translationEnabled`). That feature translates text
+transcripts on the client. This feature produces translated speech, not text.
 :::
 
 ```
@@ -29,7 +31,7 @@ client-side. Live audio translation produces translated *audio*.
                                    └────────────────────────┘
 ```
 
-Four pieces must be configured:
+Configure four pieces:
 
 1. **Translation service** — the proxy itself, running in translation mode.
 2. **Prosody** — the `audio_translation` component that collects per-listener
@@ -41,10 +43,10 @@ Four pieces must be configured:
 
 ## 1. Running the translation service
 
-Live audio translation is served by the **same** opus-transcriber-proxy
-process/image as transcription, on its `/translate` endpoint (as opposed to
-`/transcribe`). It uses OpenAI's realtime *translations* endpoint
-(`gpt-realtime-translate`) for speech-to-speech translation.
+The same opus-transcriber-proxy process, or image, that serves transcription
+also serves live audio translation, on the `/translate` endpoint instead of
+`/transcribe`. For speech-to-speech translation, the service calls the
+realtime translations endpoint that OpenAI names `gpt-realtime-translate`.
 
 | Variable | Default | Description |
 |---|---|---|
@@ -58,10 +60,10 @@ process/image as transcription, on its `/translate` endpoint (as opposed to
 
 ### As a standalone container
 
-Same prebuilt image as transcription
-([`jitsi/opus-transcriber-proxy`](https://hub.docker.com/r/jitsi/opus-transcriber-proxy)) —
-just add the translation env vars. `/transcribe` and `/translate` are both
-served on the same port:
+Use the same prebuilt image as transcription
+([`jitsi/opus-transcriber-proxy`](https://hub.docker.com/r/jitsi/opus-transcriber-proxy))
+and add the translation environment variables. The image serves both
+`/transcribe` and `/translate` on the same port:
 
 ```bash
 docker run -d --name transcriber \
@@ -76,32 +78,33 @@ reverse proxy if the bridge reaches it over `wss://`.
 
 ### In Cloudflare (CF)
 
-`/translate` runs **entirely inside the Worker isolate** — no container and no
-Durable Object are involved for this path, unlike `/transcribe`. The
-production `wrangler.jsonc` already binds both endpoints on the same Worker,
-so deploying for transcription (`npm run cf:deploy`) also serves
-`/translate` — no separate deploy is needed.
+The `/translate` endpoint runs entirely inside the Worker isolate. Unlike
+`/transcribe`, this path needs no container and no Durable Object. The
+production `wrangler.jsonc` binds both endpoints on the same Worker, so the
+transcription deploy command (`npm run cf:deploy`) also deploys `/translate`.
+You do not need a separate deploy step.
 
-For fast local iteration on `/translate` only (skips the container image
-build):
+To test `/translate` alone, run this command. It skips the container image
+build:
 
 ```bash
 npx wrangler dev --config wrangler.translate.jsonc
 ```
 
-`wrangler.translate.jsonc` is dev-only (omits `containers` /
-`durable_objects`); it does not serve `/transcribe`.
+`wrangler.translate.jsonc` is for development only. It omits `containers` and
+`durable_objects`, and it does not serve `/transcribe`.
 
 ---
 
 ## 2. Prosody configuration
 
-`mod_audio_translation_component.lua` is a separate Prosody **component**
-(not loaded on the MUC directly). It collects each listener's
-`<senderId, language>` subscriptions, aggregates them into
-`audioTranslationRequests`, and exposes that map to Jicofo only via
-RoomMetadata (`mod_room_metadata_component` forwards it to jicofo/admin
-occupants only — it is never sent to regular clients).
+`mod_audio_translation_component.lua` is a separate Prosody component.
+Prosody does not load it directly on the MUC. The component collects the
+`<senderId, language>` subscription of each listener. It aggregates the
+subscriptions into `audioTranslationRequests` and exposes that map to Jicofo
+only, through RoomMetadata. `mod_room_metadata_component` forwards the map
+only to jicofo and admin occupants, and it never sends the map to regular
+clients.
 
 Enable it as its own component in `prosody.cfg.lua`:
 
@@ -132,33 +135,34 @@ Two permissions gate the feature, both enabled for everyone by default in
 | Permission | Default | Governs |
 |---|---|---|
 | `live-translation` | `true` | Toggling the room-level `audioTranslation.enabled` flag (moderators only, enforced separately in the component) |
-| `live-translation-subscribe` | `true` | A listener subscribing to a speaker's translation |
+| `live-translation-subscribe` | `true` | A listener subscribing to the translation of a speaker |
 
-Override via `jitsi_default_permissions` in `prosody.cfg.lua`, or per-token
-via `context.features`, the same way as other feature permissions.
+Set `jitsi_default_permissions` in `prosody.cfg.lua` to override the default
+for all rooms. A token can also set `context.features`, the same way it does
+for other feature permissions.
 
 :::note
 The room-level enable flag (`audioTranslation.enabled` in RoomMetadata) is a
-normal, client-writable key gated by the `live-translation` permission —
-unlike transcription's `asyncTranscription`, which is blocked from client
-writes entirely.
+normal key. A client can write it, and the `live-translation` permission
+gates that write. This differs from transcription: Prosody blocks all client
+writes to `asyncTranscription`.
 :::
 
 ---
 
 ## 3. Jicofo configuration
 
-Jicofo reads the aggregated `audioTranslationRequests` map from RoomMetadata,
-creates a synthetic translated audio source per `<sender, language>`, and
-drives one or more translator `<connect>`s to the bridge(s) — mirroring how
-it drives the transcriber connect. Configuration is under
-`jicofo.translation` in `jicofo.conf` (HOCON).
+Jicofo reads the aggregated `audioTranslationRequests` map from RoomMetadata.
+For each `<sender, language>` pair, Jicofo creates one synthetic audio
+source. It also drives one or more translator `<connect>`s to the bridge or
+bridges, the same way it drives the transcriber connect. This configuration
+is under `jicofo.translation` in `jicofo.conf` (HOCON).
 
 | Key | Type | Default | Purpose |
 |---|---|---|---|
 | `jicofo.translation.url-template` | string | — (feature disabled if unset) | WebSocket URL template for the translation service. Supports `{{MEETING_ID}}` (required) and `{{REGION}}` (optional). |
 | `jicofo.translation.http-headers` | map | `{}` | HTTP headers sent on the WebSocket connect. |
-| `jicofo.translation.mode` | string | `per-source` | `per-source`: each sender's audio is translated by a connect on its own (local) bridge. `single-bridge`: a single connect on one selected bridge handles all sources/languages (mirrors transcriber selection). |
+| `jicofo.translation.mode` | string | `per-source` | `per-source`: a connect on its own (local) bridge translates the audio of each sender. `single-bridge`: a single connect on one selected bridge handles all sources and languages (mirrors transcriber selection). |
 | `jicofo.translation.max-languages-per-connect` | int | `5` | Max target languages per connect in `per-source` mode; a sender requesting more is split across multiple connects. Ignored in `single-bridge` mode. |
 | `jicofo.translation.ping.enabled` | boolean | `true` | Send WebSocket pings to keep the connection alive. |
 | `jicofo.translation.ping.interval` | duration | `10 seconds` | Interval between pings. |
@@ -192,25 +196,26 @@ systemctl restart jicofo
 
 ## 4. Client configuration (config.js)
 
-Live audio translation must also be enabled in the jitsi-meet client
-configuration. Add the following to your `config.js`:
+Enable live audio translation in the jitsi-meet client too. Add the
+following to your `config.js`:
 
 ```javascript
 audioTranslation: {
     enabled: false,
 
-    // Volume (0..1) a speaker's original audio is ducked to while its translation plays.
-    // Defaults to 0.15. Ignored on iOS, where the original is muted instead because the
-    // element volume cannot be lowered there.
+    // Volume (0..1) to which the original audio of a speaker is ducked while its translation
+    // plays. Defaults to 0.15. Ignored on iOS: there the client mutes the original instead,
+    // because iOS cannot lower the volume of that audio element.
     duckedVolume: 0.15,
 
-    // Whether to process the bridge's translated-source sending notifications, which drive the
-    // per-participant "receiving translated audio" indicator. Off by default until the bridge
-    // emits stop notifications as well as start ones.
+    // Whether to process the translated-source sending notifications from the bridge. These
+    // notifications drive the per-participant "receiving translated audio" indicator. Off by
+    // default until the bridge also emits stop notifications, not only start notifications.
     enableSendingChangeEvents: false,
 },
 ```
 
-`audioTranslation` (e.g. `audioTranslation.enabled`) is also whitelisted for
-`configOverwrite` / URL-hash overrides, so it can be toggled per-room for
-testing or controlled rollout without changing the served `config.js`.
+The `configOverwrite` and URL-hash mechanisms can also override
+`audioTranslation` keys, for example `audioTranslation.enabled`. So you can
+toggle the feature for one room, for testing or for a staged rollout, without
+a change to the served `config.js`.

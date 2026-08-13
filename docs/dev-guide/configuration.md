@@ -1367,8 +1367,9 @@ The feature requires the [Window Management API][window-management], so it is
 Chromium-only. It is aimed at managed or kiosk room appliances, which also need
 the `window-management` browser permission granted by policy, and the
 `automatic-fullscreen` permission if the second window is to go fullscreen on its
-own. On a browser without the API the feature stays off and the command reports a
-`second-screen-error` rather than doing nothing silently.
+own. On a browser without the API the feature stays off and the command reports
+[`secondScreenError`](dev-guide-iframe-events#secondscreenerror) with
+`second-screen-disabled` rather than doing nothing silently.
 
 Default: **unset** (disabled)
 

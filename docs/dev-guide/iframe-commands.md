@@ -797,10 +797,10 @@ api.executeCommand('setParticipantProperties', {
 ### setSecondScreen
 
 Renders a meeting surface in its own window on another physical display: the
-active-speaker stage, a screenshare, a tile grid of everyone, the whiteboard, or
-the video being shared in the meeting. The window is a view onto the existing
-conference, so it does not join the meeting a second time, duplicate media
-subscriptions, or play the audio twice.
+main stage, a screenshare, a tile grid of everyone, the whiteboard, or the video
+being shared in the meeting. The window is a view onto the existing conference,
+so it does not join the meeting a second time, duplicate media subscriptions, or
+play the audio twice.
 
 Requires `secondScreen: { enabled: true }` in [config.js] and the
 [Window Management API][window-management] (Chromium only). See the
@@ -826,12 +826,15 @@ embedder has no access to the meeting's media tracks:
 }
 ```
 
-The roles stay live: `stage` follows the active speaker and `tile` follows
+The roles stay live: `stage` follows the meeting's main stage and `tile` follows
 conference membership, so neither needs to be re-sent as the meeting changes.
+`stage` shows whoever the meeting itself is showing large, which is the active
+speaker until somebody pins a participant and the pinned one after that, so a
+display driven this way follows a pin rather than ignoring it.
 
 | `source` | Result |
 | --- | --- |
-| `{ role: 'stage' }` | The active-speaker stage |
+| `{ role: 'stage' }` | The main stage: the active speaker, or the pinned participant when there is one |
 | `{ role: 'tile' }` | A tile grid of every participant |
 | `{ role: 'screenshare' }` | Whatever is being shared, full-bleed |
 | `{ role: 'screenshare', participant: 'abc123' }` | That participant's screenshare, when several are live at once |
@@ -844,7 +847,7 @@ Send the same `id` again to change what a window shows; the window is updated in
 place rather than reopened. Send the command with no `source` to close it:
 
 ```javascript
-// Put the active speaker on the first external display.
+// Put the main stage on the first external display.
 api.executeCommand('setSecondScreen', {
     id: 'stage-screen',
     source: { role: 'stage' }

@@ -930,7 +930,8 @@ Provides event notifications about what a second-screen window is currently
 rendering. Fired when a window is first given a source, whenever that source is
 changed with [`setSecondScreen`](dev-guide-iframe-commands#setsecondscreen), and
 whenever a live role resolves to a different participant, so a `stage` window
-emits this every time the active speaker changes.
+emits this every time the meeting's main stage changes, whether that is a new
+active speaker or a participant somebody pinned.
 
 The listener receives an object with the following structure:
 
@@ -942,8 +943,11 @@ The listener receives an object with the following structure:
 }
 ```
 
-`participantId` is `null` for a source that is not backed by a participant, such
-as the whiteboard, and for one whose participant has no video to render yet.
+`participantId` is `null` when nothing in the meeting backs the source: the
+`whiteboard`, `sharedvideo` and `tile` roles, a `screenshare` role while nobody
+is sharing, or a named participant who has since left. A participant who is
+there but has no video to render still reports their id, because the source
+resolves the participant independently of the track.
 
 ### secondScreenClosed
 
@@ -961,9 +965,11 @@ The listener receives an object with the following structure:
 
 ### secondScreenError
 
-Provides event notifications about a second-screen window that could not be
-opened or set up. No window exists afterwards, so nothing has to be closed in
-response, and retrying the command is safe.
+Provides event notifications about a second-screen window that failed. Nearly
+all of these are failures to open or set up the window: no window exists
+afterwards, so nothing has to be closed in response, and retrying the command is
+safe. The exception is `shared-video-error`, which comes from a window that is
+already open and stays open.
 
 The listener receives an object with the following structure:
 
@@ -983,6 +989,13 @@ The listener receives an object with the following structure:
 | `window-management-unavailable` | The window-management permission was denied or is unavailable, so the window cannot be placed on a chosen display. |
 | `window-load-failed` | The window opened but never loaded the expected page, or was served something else, for example by a proxy or a redirect. |
 | `window-setup-failed` | The window loaded but could not be prepared for rendering. |
+| `shared-video-error` | A `sharedvideo` window could not play the video being shared in the meeting. |
+
+`shared-video-error` is the only code that does not mean the window is gone. The
+window stays open, keeps its id, and renders a message in place of the player,
+so an embedder that does not want it left there has to close it with
+`setSecondScreen` and no `source`. Sharing a different video gives that window a
+fresh attempt.
 
 [config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
 [interface_config.js]: https://github.com/jitsi/jitsi-meet/blob/master/interface_config.js

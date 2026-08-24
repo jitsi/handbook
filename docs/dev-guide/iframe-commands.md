@@ -782,16 +782,18 @@ duration is available — set `configOverwrite.timeTimer = { enabled: false }`.
 Sets properties for the local participant.
 
 ```javascript
-api.executeCommand('setParticipantProperties', properties: Object);
+api.executeCommand('setParticipantProperties', properties: Object, useRawKeys: boolean);
 ```
 
-For example, the properties Jibri sets to describe a recording session:
+`useRawKeys` is optional and defaults to `false`.
+When `true`, property keys are set as given instead of being prefixed with `jitsi_participant_` in presence.
 
+For example, the properties Jibri sets to describe a recording session:
 ```javascript
 api.executeCommand('setParticipantProperties', {
     mode: 'file',
     session_id: 'abc123'
-});
+}, true);
 ```
 
 ### setSecondScreen

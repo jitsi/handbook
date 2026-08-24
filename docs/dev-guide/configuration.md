@@ -1353,6 +1353,36 @@ screenshotCapture: {
 }
 ```
 
+## Second screen
+### secondScreen
+
+type: `Object`
+
+Options related to rendering meeting surfaces on additional physical displays.
+When enabled, an embedder can drive one or more extra windows through the
+[`setSecondScreen`](dev-guide-iframe-commands#setsecondscreen) command, and
+participants get in-app controls to send a tile to another display.
+
+The feature requires the
+[Window Management API](https://developer.mozilla.org/en-US/docs/Web/API/Window_Management_API),
+so it is Chromium-only. It is aimed at managed or kiosk room appliances, which
+also need the `window-management` browser permission granted by policy, and the
+`automatic-fullscreen` permission if the second window is to go fullscreen on
+its own. On a browser without the API the feature stays off and the command
+reports [`secondScreenError`](dev-guide-iframe-events#secondscreenerror) with
+`second-screen-disabled` rather than doing nothing silently.
+
+Default: **unset** (disabled)
+
+Properties:
+* `enabled` - Whether the feature is enabled or not.
+
+```javascript
+secondScreen: {
+    enabled: true
+}
+```
+
 ## Security UI
 ### securityUi
 

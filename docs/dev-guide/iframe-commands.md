@@ -793,3 +793,98 @@ api.executeCommand('setParticipantProperties', {
     session_id: 'abc123'
 });
 ```
+
+### setSecondScreen
+
+Renders a meeting surface in its own window on another physical display: the
+main stage, a screenshare, a tile grid of everyone, the whiteboard, or the video
+being shared in the meeting. The window is a view onto the existing conference,
+so it does not join the meeting a second time, duplicate media subscriptions, or
+play the audio twice.
+
+Requires `secondScreen: { enabled: true }` in [config.js] and the
+[Window Management API][window-management] (Chromium only). See the
+[`secondScreen`](dev-guide-configuration#secondscreen) configuration option for
+the browser permissions a deployment needs.
+
+```javascript
+api.executeCommand('setSecondScreen', {
+    id: string, // Optional. Identifies the window, so several can be driven at once. Defaults to 'default'.
+    source: Object, // What to render. Omit it to close this window.
+    screen: number // Optional. Index into the displays reported by the Window Management API.
+});
+```
+
+The `source` object selects content by name rather than by stream, because an
+embedder has no access to the meeting's media tracks:
+
+```javascript
+{
+    role: string, // Optional. One of 'stage', 'screenshare', 'tile', 'whiteboard', 'sharedvideo'.
+    participant: string, // Optional. Id of a participant to render. On its own it pins that participant.
+    media: string // Optional. 'camera' or 'desktop', for an explicitly pinned participant. Defaults to 'camera'.
+}
+```
+
+The roles stay live: `stage` follows the meeting's main stage and `tile` follows
+conference membership, so neither needs to be re-sent as the meeting changes.
+`stage` shows whoever the meeting itself is showing large, which is the active
+speaker until somebody pins a participant and the pinned one after that, so a
+display driven this way follows a pin rather than ignoring it.
+
+| `source` | Result |
+| --- | --- |
+| `{ role: 'stage' }` | The main stage: the active speaker, or the pinned participant when there is one |
+| `{ role: 'tile' }` | A tile grid of every participant |
+| `{ role: 'screenshare' }` | Whatever is being shared, full-bleed |
+| `{ role: 'screenshare', participant: 'abc123' }` | That participant's screenshare, when several are live at once |
+| `{ role: 'whiteboard' }` | The collaborative whiteboard |
+| `{ role: 'sharedvideo' }` | The video shared in the meeting, muted and view-only |
+| `{ participant: 'abc123' }` | That participant, featured, with a filmstrip |
+| `{ participant: 'abc123', media: 'desktop' }` | That participant's screen rather than their camera |
+
+Send the same `id` again to change what a window shows; the window is updated in
+place rather than reopened. Send the command with no `source` to close it:
+
+```javascript
+// Put the main stage on the first external display.
+api.executeCommand('setSecondScreen', {
+    id: 'stage-screen',
+    source: { role: 'stage' }
+});
+
+// Same window, now showing the whiteboard.
+api.executeCommand('setSecondScreen', {
+    id: 'stage-screen',
+    source: { role: 'whiteboard' }
+});
+
+// Close it.
+api.executeCommand('setSecondScreen', { id: 'stage-screen' });
+```
+
+A room appliance driving two displays picks the screen explicitly:
+
+```javascript
+api.executeCommand('setSecondScreen', {
+    id: 'tv-left',
+    source: { role: 'stage' },
+    screen: 1
+});
+api.executeCommand('setSecondScreen', {
+    id: 'tv-right',
+    source: { role: 'tile' },
+    screen: 2
+});
+```
+
+Opening a window is subject to the browser's popup blocker, and placing it on a
+chosen display needs the window-management permission, so the command is not
+guaranteed to succeed. Listen for
+[`secondScreenError`](dev-guide-iframe-events#secondscreenerror) to find out why
+it did not, and for
+[`secondScreenClosed`](dev-guide-iframe-events#secondscreenclosed) to know when a
+window has gone, including when a user closes it by hand on the other display.
+
+[config.js]: https://github.com/jitsi/jitsi-meet/blob/master/config.js
+[window-management]: https://developer.mozilla.org/en-US/docs/Web/API/Window_Management_API

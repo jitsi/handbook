@@ -39,6 +39,9 @@ Configure four pieces:
 3. **Jicofo** — point the bridge at the service URL and choose a connect mode.
 4. **config.js** — enable the feature (and its UI) in the jitsi-meet client.
 
+A fifth part is optional: usage reporting, which meters the translated audio
+and attributes it to a customer.
+
 ---
 
 ## 1. Running the translation service
@@ -219,3 +222,189 @@ The `configOverwrite` and URL-hash mechanisms can also override
 `audioTranslation` keys, for example `audioTranslation.enabled`. So you can
 toggle the feature for one room, for testing or for a staged rollout, without
 a change to the served `config.js`.
+
+---
+
+## 5. Usage reporting and billing
+
+The translation service can report how much audio it translated. A deployment
+uses these reports to meter the feature, or to bill a customer for it.
+
+Two parts make this work:
+
+- A **token** that says who to charge. Prosody supplies the token. Jicofo and
+  the JVB pass it to the translation service.
+- A **usage endpoint** that receives the reports. The service authenticates
+  each report with the token.
+
+Usage reporting is optional. Leave `TRANSLATION_USAGE_URL` unset, and the
+service does not report anything.
+
+### How the token reaches the service
+
+```
+ Prosody main MUC module        gets the token for the room
+        │
+        │  room metadata, admin-only:  translation.httpHeaders
+        ▼
+ Jicofo                         merges it over jicofo.translation.http-headers
+        │
+        │  colibri2 <connect>:  httpHeaders
+        ▼
+ JVB                            opens the WebSocket to the translation service
+        │
+        │  upgrade request header:  X-Translation-Token
+        ▼
+ Translation service            keeps the token for the connection
+        │
+        │  POST TRANSLATION_USAGE_URL, Authorization: Bearer <token>
+        ▼
+ Usage endpoint                 resolves the token and records the usage
+```
+
+The token moves in five steps:
+
+1. A Prosody module on the main MUC gets the token for the room. jitsi-meet
+   contains no such module. Each deployment supplies its own. The module
+   usually reads the token from an entitlement service, or from the JWT of the
+   room. Keep the token on `room._data`. Do not put it in
+   `room.jitsiMetadata`, because Prosody broadcasts that table to all clients.
+
+2. The module returns the token from the `jitsi-room-metadata-admin-extra`
+   event:
+
+   ```lua
+   module:hook('jitsi-room-metadata-admin-extra', function(event)
+       local token = get_translation_token(event.room);
+
+       if token then
+           return { translation = { httpHeaders = { ['X-Translation-Token'] = token } } };
+       end
+   end);
+   ```
+
+   `mod_room_metadata_component.lua` fires this event in its admin-only
+   branch. Thus the fields that you return go to Jicofo only. Regular
+   occupants receive a sanitized copy of the metadata, without these fields.
+
+3. Jicofo reads `translation.httpHeaders` from the room metadata. It merges
+   that map over the static `jicofo.translation.http-headers` map. The values
+   from the room win. Jicofo puts the result on each translator `<connect>`,
+   in `per-source` mode and in `single-bridge` mode.
+
+4. The JVB sets each header on the WebSocket upgrade request to the
+   translation service.
+
+5. The service reads the `X-Translation-Token` header from the upgrade
+   request. It keeps the token for the life of the connection.
+
+Jicofo masks these header values in its logs.
+
+:::note Breakout rooms
+A breakout room is a different room, on a different component. It has no
+token of its own. If your deployment uses breakout rooms, resolve a breakout
+room to its main room in the hook, and return the token of the main room.
+:::
+
+### A static token for one tenant
+
+A deployment with one customer does not need a Prosody module. Put the token
+directly in `jicofo.conf`:
+
+```hocon
+jicofo.translation.http-headers {
+  "X-Translation-Token" = "<token>"
+}
+```
+
+Jicofo sends these headers on every translator connect. A token from room
+metadata overrides a header with the same name.
+
+### Blocking translation for a room
+
+`mod_audio_translation_component.lua` fires
+`jitsi-audio-translation-allow-publish` before it publishes the aggregated
+request map. Return `false` from a handler, and the component does not
+publish the map. Jicofo then starts no translator connect, and the room gets
+no translation. The component logs a warning when it suppresses a non-empty
+request set.
+
+The event is open by default. No handler, or any return value other than
+`false`, permits the publish.
+
+```lua
+module:hook('jitsi-audio-translation-allow-publish', function(event)
+    if is_entitled(event.room) then
+        return; -- no opinion: permit the publish
+    end
+
+    return false; -- block translation for the whole room
+end);
+```
+
+Use this hook together with the token hook. A room with no token then gets no
+translation at all, instead of translation that nobody can charge for.
+
+To also hide the feature in the client, set the `audioTranslationAvailable`
+key in `room.jitsiMetadata` to `false`. The client hides the translation
+controls when this key is `false`. Prosody blocks all client writes to this
+key, so only the server can set it.
+
+### What the service reports
+
+The service counts the audio that it sends to the translation model. It
+counts one direction at a time. A direction is one speaker translated into
+one target language. The service counts only the audio that it appends to
+the model. It does not count audio that it decodes and then discards,
+for example when the connection to the model never opens.
+
+The service reports each direction more than one time:
+
+- While the direction is open, the service reports the duration translated
+  since the previous report. The interval is
+  `TRANSLATION_USAGE_REPORT_INTERVAL_MS` (default 15000 ms). Set the value to
+  `0` or less to stop the periodic reports.
+- When the direction closes, the service reports the last remaining duration.
+  It also does this at shutdown, for each direction that is still open.
+
+Periodic reports prevent a total loss of usage data if the process stops
+before a long call ends.
+
+The service collects these reports in a buffer. It sends the buffer after 50
+events, or after 1000 ms, whichever occurs first. It groups the events by
+token, and sends one request for each token:
+
+```
+POST <TRANSLATION_USAGE_URL>
+Authorization: Bearer <X-Translation-Token>
+Content-Type: application/json
+
+{
+  "events": [
+    { "duration_seconds": 12.5, "event_id": "0f7c…" },
+    { "duration_seconds": 3.25, "event_id": "b214…" }
+  ]
+}
+```
+
+`event_id` is a new UUID for each event. Use it as an idempotency key: if the
+service sends the same event two times, discard the second one. This prevents
+a double charge.
+
+The request body contains no room name, no participant, and no language. The
+receiving service resolves the token, and records the usage against the
+correct account.
+
+### Limits of the reporting
+
+Know these properties before you bill from these reports:
+
+- **Reporting is best-effort.** The service gives each request 5 seconds. If
+  the request fails or times out, the service writes a log message and
+  discards the batch. It does not try again. A lost batch loses at most one
+  second of buffered events.
+- **A connection with no token reports nothing.** The service drops the event
+  without a log message. This applies to the development path
+  (`/translate?lang=…`), which sends no token.
+- **A missing usage URL is not an error.** The service writes one warning, and
+  then discards all reports quietly.

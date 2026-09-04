@@ -828,10 +828,6 @@ Variable | Description | Default value
 `LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
 `ENABLE_HSTS` | Send a `strict-transport-security` header to force browsers to use a secure and trusted connection. Recommended for production use. | 1
 `ENABLE_IPV6` | Provides means to disable IPv6 in environments that don't support it | 1
-`ENABLE_COLIBRI_WEBSOCKET_UNSAFE_REGEX` | Enabled older unsafe regex for JVB colibri-ws URLs. WARNING: Enable with caution, this regex allows connections to arbitrary internal IP addresses and is not recommended for production use.  Unsafe regex is defined as `[a-zA-Z0-9-\._]+` | 0
-`COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` | DNS name to look up JVB IP address, used for default value of `COLIBRI_WEBSOCKET_REGEX` | jvb
-`COLIBRI_WEBSOCKET_REGEX` | Overrides the colibri regex used for proxying to JVB.  Recommended to override in production with values matching possible JVB IP ranges | defaults to `dig $COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` unless `DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP` is set to true
-`DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP` | Controls whether to run `dig $COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` when defining COLIBRI_WEBSOCKET_REGEX | 0
 
 #### Advanced Prosody options
 
@@ -863,7 +859,6 @@ Variable | Description | Default value
 `JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
 `JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
 `JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
-`JVB_COLIBRI_PORT` | COLIBRI REST API port of JVB exposed to localhost | 8080
 `JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
 `COLIBRI_REST_ENABLED` | Enable the COLIBRI REST API | true
 `SHUTDOWN_REST_ENABLED` | Enable the shutdown REST API | true
@@ -1012,15 +1007,13 @@ instead of
 
 ### Reverse proxy configuration
 
-By default this setup is using WebSocket connections for 2 core components:
+By default this setup is using WebSocket connections for:
 
 * Signalling (XMPP)
-* Bridge channel (colibri)
 
-Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:
+Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. This route requires such treatment:
 
 * `/xmpp-websocket`
-* `/colibri-ws`
 
 The other HTTP requests must be handled by the web container.
 
@@ -1032,13 +1025,6 @@ With nginx, these routes can be forwarded using the following config snippet:
 
 ```nginx
 location /xmpp-websocket {
-    proxy_pass http://localhost:8000$request_uri;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-}
-
-location /colibri-ws {
     proxy_pass http://localhost:8000$request_uri;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
@@ -1062,7 +1048,6 @@ The reverse proxy can be configured using the following config snippet:
     <IfModule mod_proxy_wstunnel.c>
         ProxyTimeout 900
         ProxyPass /xmpp-websocket ws://localhost:8000/xmpp-websocket
-        ProxyPass /colibri-ws/ ws://localhost:8000/colibri-ws/
         ProxyPass / http://localhost:8000/
         ProxyPassReverse / http://localhost:8000/
     </IfModule>
@@ -1079,7 +1064,6 @@ If using WebSockets is not an option, these environment variables can be set to 
 
 ```bash
 ENABLE_SCTP=1
-ENABLE_COLIBRI_WEBSOCKET=0
 ENABLE_XMPP_WEBSOCKET=0
 ```
 

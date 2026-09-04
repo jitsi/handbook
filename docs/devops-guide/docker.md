@@ -1047,7 +1047,7 @@ The reverse proxy can be configured using the following config snippet:
 <IfModule mod_proxy.c>
     <IfModule mod_proxy_wstunnel.c>
         ProxyTimeout 900
-        ProxyPass /xmpp-websocket ws://localhost:8000/xmpp-websocket        
+        ProxyPass /xmpp-websocket ws://localhost:8000/xmpp-websocket
         ProxyPass / http://localhost:8000/
         ProxyPassReverse / http://localhost:8000/
     </IfModule>

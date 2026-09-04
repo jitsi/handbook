@@ -228,7 +228,7 @@ a change to the served `config.js`.
 ## 5. Usage reporting and billing
 
 The translation service can report how much audio it translated. A deployment
-uses these reports to meter the feature, or to bill a customer for it.
+can use these reports to meter the feature, or to bill a customer for it.
 
 Two parts make this work:
 

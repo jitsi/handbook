@@ -205,3 +205,5 @@ authentication.
 Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-SAML-adapter
 
 Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-adapter
+
+Github: https://github.com/badsmoke/jitsi-openid

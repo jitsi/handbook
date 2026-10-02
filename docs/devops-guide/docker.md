@@ -391,6 +391,23 @@ services:
 On startup the `web` container copies these files into its `storage` volume and uses them instead
 of generating a self-signed certificate.
 
+#### Trusting custom CA certificates
+
+If a service connects to an internal server that uses a certificate from a
+private CA, put the root CA certificate into `${CONFIG}/<service>/custom-ca`
+and restart the service. `<service>` is one of `web`, `prosody`, `jicofo`,
+`jvb`, `jigasi` or `jibri`.
+
+Files can be `*.crt`, `*.cer` or `*.pem`, in PEM (one or more certificates) or
+DER format. They are trusted next to the system CAs. An invalid file stops the
+container with an error that names the file.
+
+To share one folder between services, use a symlink:
+
+```bash
+ln -s ../custom-ca ${CONFIG}/jigasi/custom-ca
+```
+
 ### Features configuration (config.js)  
 
 Variable | Description | Example

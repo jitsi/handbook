@@ -6,8 +6,8 @@ sidebar_label: "Debian/Ubuntu server"
 
 Follow these steps for a quick Jitsi-Meet installation on a Debian-based GNU/Linux system.
 The following distributions are supported out-of-the-box:
-- Debian 11 (Bullseye) or newer
-- Ubuntu 22.04 (Jammy Jellyfish) or newer
+- Debian 12 (Bookworm) or newer
+- Ubuntu 24.04 (Noble Numbat) or newer
 
 :::note
 Many of the installation steps require `root` or `sudo` access. So it's recommended to have `sudo`/`root` access to your system.
@@ -97,7 +97,6 @@ This will add the Prosody repository so that an up to date Prosody is installed,
 ```bash
 sudo curl -sL https://prosody.im/files/prosody-debian-packages.key -o /usr/share/keyrings/prosody-debian-packages.key
 echo "deb [signed-by=/usr/share/keyrings/prosody-debian-packages.key] http://packages.prosody.im/debian $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/prosody-debian-packages.list
-sudo apt install lua5.2
 ```
 
 ### Add the Jitsi package repository

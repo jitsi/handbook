@@ -164,7 +164,8 @@ module.exports = {
             "devops-guide/videosipgw",
             "devops-guide/cloud-api",
             "devops-guide/file-sharing",
-            "devops-guide/transcription"
+            "devops-guide/transcription",
+            "devops-guide/live-audio-translation"
           ],
         },
         "devops-guide/devops-guide-videotutorials"

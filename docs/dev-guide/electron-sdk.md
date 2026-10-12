@@ -200,7 +200,6 @@ When you need to test SDK changes against the Electron app without publishing a 
 git clone https://github.com/jitsi/jitsi-meet-electron-sdk
 cd jitsi-meet-electron-sdk
 npm install
-npm run prebuild
 ```
 
 #### Step 2 — Register the local SDK globally

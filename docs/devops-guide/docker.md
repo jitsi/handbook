@@ -570,6 +570,11 @@ Variable | Description | Example
 `JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
 `JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc
 `JIBRI_BREWERY_MUC` | MUC name for the Jibri pool | jibribrewery
+`JIBRI_BREWERY_XMPP_SERVER` | Comma separated list of additional XMPP servers (`host[:port]`, e.g. the JVB brewery Prosody) on which Jibri joins the Jibri pool, in addition to `XMPP_SERVER` | xmpp.jvb.meet.jitsi,10.0.0.2:6223
+`JIBRI_BREWERY_XMPP_PORT` | Default port for `JIBRI_BREWERY_XMPP_SERVER` entries without one | 6222
+`JIBRI_BREWERY_XMPP_AUTH_DOMAIN` | XMPP domain Jibri logs in to on `JIBRI_BREWERY_XMPP_SERVER` | auth.jvb.`<XMPP_DOMAIN>`
+`JIBRI_BREWERY_XMPP_INTERNAL_MUC_DOMAIN` | MUC domain of the Jibri pool on `JIBRI_BREWERY_XMPP_SERVER` | muc.jvb.`<XMPP_DOMAIN>`
+`JIBRI_BREWERY_XMPP_ONLY` | Join the Jibri pool only on `JIBRI_BREWERY_XMPP_SERVER`, not on `XMPP_SERVER` (ignored when `JIBRI_BREWERY_XMPP_SERVER` is unset) | false
 `JIBRI_PENDING_TIMEOUT` | MUC connection timeout | 90
 
 ### Jitsi Meet configuration

@@ -73,6 +73,12 @@ Demo: https://jitok.emrah.com/
 
 Discussion: https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
+## Jitsi RTMP to Conference
+
+Publish RTMP/FLV/RTSP/HLS streams or OBS feeds directly into Jitsi Meet as a native participant (Go + WebRTC + FFmpeg, no browser).
+
+GitHub: https://github.com/SbinFZ/jitsi_rtmp_to_conference
+
 ## Jitsi-Admin
 
 An open-source platform to organize your meetings. Includes all functions we

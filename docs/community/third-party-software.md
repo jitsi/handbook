@@ -192,6 +192,17 @@ generator.
 
 Github: https://github.com/Renater/Jitsi-SAML2JWT
 
+## Sangam
+
+Native Jitsi Meet client for macOS, iPadOS, and iOS. It connects to a Jitsi
+deployment directly (XMPP over WebSocket, Jingle, Colibri, and native WebRTC)
+rather than embedding the Jitsi Meet web app. Works with self-hosted
+deployments, including password, lobby, and JWT-authenticated rooms.
+
+https://twarge.com/sangam/
+
+GitHub: https://github.com/twarge/sangam
+
 ## Unity plugin
 
 Plugin for using lib-jitsi-meet in a Unity environment (WebGL).

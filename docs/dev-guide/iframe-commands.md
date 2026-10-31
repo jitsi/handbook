@@ -194,6 +194,16 @@ api.executeCommand('setNoiseSuppressionEnabled', {
 });
 ```
 
+### toggleNoiseSuppression
+
+Enable or disable noise suppression on the current audio track, depending on its current state.
+
+No arguments are required.
+
+```javascript
+api.executeCommand('toggleNoiseSuppression');
+```
+
 ### toggleSubtitles
 
 Start or stop subtitles.

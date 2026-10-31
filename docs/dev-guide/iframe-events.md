@@ -924,6 +924,20 @@ The listener receives an object with the following structure:
 }
 ```
 
+### noiseSuppressionChanged
+
+Provides event notifications about noise suppression being enabled or disabled, for example through the
+[`setNoiseSuppressionEnabled`](dev-guide-iframe-commands#setnoisesuppressionenabled) or
+[`toggleNoiseSuppression`](dev-guide-iframe-commands#togglenoisesuppression) commands or from the meeting UI.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    enabled: boolean // whether noise suppression is enabled or disabled.
+}
+```
+
 ### secondScreenSourceChanged
 
 Provides event notifications about what a second-screen window is currently

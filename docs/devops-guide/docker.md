@@ -860,6 +860,7 @@ Variable | Description | Default value
 `PROSODY_AUTH_TYPE` | Select authentication type for Prosody (internal, jwt or ldap) | `AUTH_TYPE`
 `PROSODY_ENABLE_METRICS` | Enables the http_openmetrics module which exposes Prometheus metrics at `/metrics` | false
 `PROSODY_METRICS_ALLOWED_CIDR` | CIDR block permitted to access metrics | 172.16.0.0/12
+`PROSODY_ENABLE_FILTER_MESSAGES` | Loads `mod_filter_messages` on the main and the breakout rooms MUC components, which enforces the chat and shared video permissions that moderators set (see `showChatPermissionsModeratorSetting` and `showSharedVideoPermissionsModeratorSetting`) | false
 
 #### Advanced Jicofo options
 

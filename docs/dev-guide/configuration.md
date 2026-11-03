@@ -1099,6 +1099,39 @@ Default: `false`
 disableRemoteMute: true
 ```
 
+### showChatPermissionsModeratorSetting
+
+type: `Boolean`
+
+Shows the moderator settings that restrict group chat and private chat to the participants with the `send-groupchat`
+and `send-private-message` features. A moderator sets the restrictions for the room they are in, and every room has its
+own, a breakout room as well.
+
+The restrictions are enforced by the `mod_filter_messages` Prosody module. Enable this only when that module is loaded on
+the main MUC component and on the breakout rooms MUC component.
+
+Default: `false`
+
+```javascript
+showChatPermissionsModeratorSetting: true
+```
+
+### showSharedVideoPermissionsModeratorSetting
+
+type: `Boolean`
+
+Shows the moderator setting that restricts video sharing to the participants with the `share-video` feature. A
+moderator sets the restriction for the room they are in, and every room has its own, a breakout room as well.
+
+The restriction is enforced by the `mod_filter_messages` Prosody module. Enable this only when that module is loaded on
+the main MUC component and on the breakout rooms MUC component.
+
+Default: `false`
+
+```javascript
+showSharedVideoPermissionsModeratorSetting: true
+```
+
 ## Notifications
 
 ### notifications

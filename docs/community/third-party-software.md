@@ -79,6 +79,12 @@ Publish RTMP/FLV/RTSP/HLS streams or OBS feeds directly into Jitsi Meet as a nat
 
 GitHub: https://github.com/SbinFZ/jitsi_rtmp_to_conference
 
+## Jitsi Media Tools
+
+CLI and WHIP gateway to publish files, cameras or OBS streams into a Jitsi Meet room as a participant, and to record or re-stream the room.
+
+GitHub: [https://github.com/daimoc/jitsi-media-tools](https://github.com/daimoc/jitsi-media-tools)
+
 ## Jitsi-Admin
 
 An open-source platform to organize your meetings. Includes all functions we

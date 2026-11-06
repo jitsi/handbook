@@ -73,6 +73,12 @@ Demo: https://jitok.emrah.com/
 
 Discussion: https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
+## Jitsi Music Bot
+
+Headless stereo music bot for Jitsi Meet with YouTube autoplay and remote control via Telegram or in-meeting chat. Uses Playwright and WebAudio to inject high-bitrate stereo audio directly into the WebRTC pipeline without browser AEC/AGC filters. Works with public and self-hosted deployments.
+
+GitHub: https://github.com/mikhailde/jitsi-music-bot
+
 ## Jitsi RTMP to Conference
 
 Publish RTMP/FLV/RTSP/HLS streams or OBS feeds directly into Jitsi Meet as a native participant (Go + WebRTC + FFmpeg, no browser).

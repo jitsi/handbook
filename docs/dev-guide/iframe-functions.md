@@ -26,10 +26,15 @@ api.captureCameraPicture(
 
 Captures a screenshot for the participant in the large video view (on stage).
 
+The promise rejects when there is no large video to capture, for example when the participant on stage has their
+video muted. The rejection value is an object with a `message` field, not an `Error` instance.
+
 ```javascript
 api.captureLargeVideoScreenshot().then(data => {
     // data is an Object with only one param, dataURL
     // data.dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+}).catch(error => {
+    // error.message = "No large video found!"
 });
 ```
 

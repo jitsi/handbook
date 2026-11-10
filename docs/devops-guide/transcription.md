@@ -334,3 +334,160 @@ transcription: {
     enabled: true,
 },
 ```
+
+---
+
+## 5. Text translation (optional)
+
+The transcription service can translate each final transcript into other
+languages. Participants then see subtitles in the language that they choose.
+
+:::note Not the same as audio translation
+Text translation changes the *text* of the transcript. It does not change the
+audio. Live audio translation is a different feature. It uses a separate
+service endpoint (`/translate`) and separate Jicofo settings
+(`jicofo.translation`).
+:::
+
+Text translation is **off by default**. You do not change the configuration of
+Prosody, Jicofo or the bridge. You change only the configuration of the
+transcription service. Use versions of Jicofo, the bridge and jitsi-meet that
+include text translation.
+
+### How it works
+
+1. A participant chooses a subtitle language in the client. The client sends the
+   language in the presence of the participant (`translation_language`). When
+   the participant goes back to the original language, the client sends an empty
+   value.
+2. Jicofo collects the languages of all participants. For visitors, Jicofo reads
+   the languages from the room metadata (`visitors.transcribingLanguages`).
+3. Jicofo puts the set of languages in the `requests` list of the transcriber
+   connection. The bridge forwards the set to the transcription service in the
+   `sources` control event.
+4. For each final transcript, the service makes one translation request for each
+   language in the set. The service sends the results back through the bridge.
+
+Note the following:
+
+- The set of languages is always the complete set. When a participant changes
+  language, Jicofo sends the new set. The bridge updates the open connection. It
+  does not reconnect. An empty set stops all translation.
+- The service translates only final transcripts. It does not translate interim
+  results.
+- The service does not wait for a translation. A slow provider does not delay the
+  original transcript. If one translation fails, the service drops only that
+  language for that transcript.
+- The service does not translate a transcript into the language that it is
+  already in.
+- The service returns the language code exactly as the client sent it. The
+  provider must accept that code.
+
+The service sends each translation as a `transcription-result` event. The
+`type` field is `translation-result`. The `message_id` is the same as the
+`message_id` of the original transcript. The client shows the translation in
+place of the original transcript. The message can contain more fields than the
+fields in this example:
+
+```json
+{
+  "event": "transcription-result",
+  "type": "translation-result",
+  "message_id": "<message_id of the original transcript>",
+  "language": "fr",
+  "text": "bonjour",
+  "participant": { "id": "<participant-id>" },
+  "timestamp": 1768341932000
+}
+```
+
+### Enable it in the transcription service
+
+Set `ENABLE_TEXT_TRANSLATION=true` and give the service a key for at least one
+provider. If `ENABLE_TEXT_TRANSLATION` is `false`, the service ignores the
+requested languages and writes a log message. In this case, also set
+`translationEnabled: false` in `config.js` (see
+[Client configuration](#client-configuration)). Otherwise the client shows a
+language selector that gives no translation.
+
+```bash
+docker run -d --name transcriber \
+  -p 8090:8080 \
+  -e PROVIDERS_PRIORITY=openai \
+  -e OPENAI_API_KEY=<your-key> \
+  -e OPENAI_MODEL=gpt-4o-mini-transcribe \
+  -e ENABLE_TEXT_TRANSLATION=true \
+  jitsi/opus-transcriber-proxy:latest
+```
+
+The service picks the provider in the same way as for transcription.
+`TEXT_TRANSLATION_PROVIDERS_PRIORITY` is a comma-separated, ordered list. A
+provider is available when it has a key. The first available provider is the
+default.
+
+| Provider | Default model | Key variable | Key fallback |
+|---|---|---|---|
+| `openai` | `gpt-4o-mini` | `TEXT_TRANSLATION_OPENAI_API_KEY` | `OPENAI_API_KEY` |
+| `gemini` | `gemini-3.5-flash-lite` | `TEXT_TRANSLATION_GEMINI_API_KEY` | `GEMINI_API_KEY` |
+| `xai` | `grok-4.20-0309-non-reasoning` | `TEXT_TRANSLATION_XAI_API_KEY` | `XAI_API_KEY` |
+| `google` (Cloud Translation v2) | not applicable | `TEXT_TRANSLATION_GOOGLE_API_KEY` or `TEXT_TRANSLATION_GOOGLE_CREDENTIALS_JSON` | none for the API key. `TEXT_TRANSLATION_GOOGLE_CREDENTIALS_JSON` falls back to `GOOGLE_CREDENTIALS_JSON` |
+
+The default order is `openai,gemini,xai,google`. If a provider already has a
+transcription key, you do not need a new key for text translation with that
+provider.
+
+:::caution The google provider needs its own key
+The `google` provider uses Cloud Translation. This is a different API from
+Gemini. A Gemini API key does not work for it. There is no fallback to
+`GEMINI_API_KEY`.
+
+If you set both an API key and service-account credentials, the service uses the
+API key. If you set neither, the provider is not available.
+:::
+
+The `openai`, `gemini` and `xai` providers use a large language model. They get
+the most recent final results as context. The context helps the model to choose
+the correct pronoun, gender and level of formality. The `google` provider
+translates each text alone and does not use context.
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `ENABLE_TEXT_TRANSLATION` | `false` | Turn text translation on. |
+| `TEXT_TRANSLATION_PROVIDERS_PRIORITY` | `openai,gemini,xai,google` | Provider order. The first available provider is the default. |
+| `TEXT_TRANSLATION_HISTORY_TURNS` | `6` | Number of earlier final transcripts to send as context. `0` turns the context off. |
+| `TEXT_TRANSLATION_HISTORY_MAX_CHARS` | `2000` | Maximum size of the context, in characters. The service removes the oldest turns first. |
+| `TEXT_TRANSLATION_INCLUDE_SPEAKERS` | `true` | Send a speaker label (`Speaker 1`, `Speaker 2`) with each turn of the context. The label is a number for the session, not a display name. |
+| `TEXT_TRANSLATION_TIMEOUT_MS` | `10000` | Time limit for one translation request. The service discards a late translation. |
+
+To override the default provider, add `text_translation_provider=<name>` to the
+`url-template` in Jicofo. For example:
+`...transcribe?sessionId={{MEETING_ID}}&sendBack=true&text_translation_provider=gemini`.
+If the name is not valid or not available, the service writes an error message
+and uses the default provider. It does not close the connection.
+
+The service README lists more variables. They set the model, the endpoint URL,
+the temperature, the reasoning effort and the output limit. See the
+[opus-transcriber-proxy README](https://github.com/jitsi/opus-transcriber-proxy#text-translation-transcribe).
+
+### Client configuration
+
+The subtitle language list is part of the `transcription` block in `config.js`.
+These options are optional:
+
+```javascript
+transcription: {
+    enabled: true,
+
+    // Show the language selection in the UI. Default: true.
+    translationEnabled: true,
+
+    // Language codes to offer. The available codes are in
+    // lang/translation-languages.json in jitsi-meet. The default is all of them.
+    translationLanguages: [ 'en', 'es', 'fr', 'ro' ],
+
+    // Languages to show at the top of the list.
+    translationLanguagesHead: [ 'en' ],
+},
+```
+
+Offer only languages that your translation provider accepts.

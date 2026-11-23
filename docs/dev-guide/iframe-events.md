@@ -487,6 +487,30 @@ The listener receives an object with the following structure:
 
 **NOTE:** The **`device`** object has the same format as the **`getAvailableDevices`** result format.
 
+### devicePermissionsChanged
+
+Provides event notifications about the permission status of the microphone and the camera. It is sent with the current
+status when the meeting page loads, and again whenever the status changes.
+
+The listener receives an object with the following structure:
+
+```javascript
+{
+    permissions: {
+        audio: { // the microphone, missing while its status is unknown
+            state: string, // 'granted', 'denied' or 'prompt'
+            reason: string // optional, see below
+        },
+        video: { ... } // the camera, in the same format
+    }
+}
+```
+
+With `denied`, `reason` says what blocks the device: `user` (the user denied the browser's prompt), `browser` (it is
+blocked in the browser's site settings), `os` (it is blocked in the OS privacy settings) or `policy` (the page's
+permissions policy blocks it, e.g. an iframe without `allow="camera; microphone"`). With `prompt`, `user` means that
+the user dismissed the browser's prompt.
+
 ### emailChange
 
 Provides event notifications about email changes.

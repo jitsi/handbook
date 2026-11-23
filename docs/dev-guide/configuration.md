@@ -814,6 +814,36 @@ Websocket URL
 websocket: 'wss://jitsi-meet.example.com/xmpp-websocket'
 ```
 
+## Device permissions
+
+### disablePermissionGuidanceDialog
+
+type: `Boolean`
+
+Disables the dialog that guides the user through unblocking the microphone or camera after access to them was denied.
+The dialog says whether the browser, the OS or the page's permissions policy blocks the device, and how to allow it.
+When disabled, the permission-denied notification shows instead.
+
+Default: `false`
+
+```javascript
+disablePermissionGuidanceDialog: false
+```
+
+### disablePermissionPromptDialog
+
+type: `Boolean`
+
+Disables the dialog that explains why the microphone and camera are needed before the browser asks for access to
+them, on the pre-join screen and when the user turns on the microphone or camera in the meeting. When disabled, the
+browser asks right away.
+
+Default: `false`
+
+```javascript
+disablePermissionPromptDialog: false
+```
+
 ## Etherpad
 
 ### etherpad_base

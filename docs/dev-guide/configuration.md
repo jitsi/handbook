@@ -1229,8 +1229,9 @@ Properties:
 * `enabled` - When `true`, shows the prejoin screen before joining, where the user can configure their devices. Default: `true`.
 * `hideDisplayName` - Hides the participant name editing field on the prejoin screen. If `requireDisplayName` is also `true`, a name must still be provided through the JWT or the `userInfo` from the iframe API init object for this to have an effect. Default: `false`.
 * `hideExtraJoinButtons` - List of secondary join buttons to hide from the extra join options dropdown on the prejoin screen. Supported values: `'no-audio'` (the "Join without audio" button, which joins the conference without acquiring a microphone) and `'by-phone'` (the "Join by phone" button, which lets the participant dial in for audio while video stays in the browser; requires dial-in to be configured). Default: `[]` (all buttons shown).
-* `preCallTestEnabled` - Enables the pre-call connection/quality test on the prejoin page. ICE server credentials must be provided via `preCallTestICEUrl`. Default: `false`.
-* `preCallTestICEUrl` - URL that provides the ICE server credentials used by the pre-call test. Default: `''`.
+* `preCallTestEnabled` - Checks on the prejoin page that the browser can connect through the TURN servers from `preCallTestICEUrl`, and warns when the network blocks the connection or allows only TCP. Nothing is shown when the check passes or can't run. Default: `false`.
+* `preCallTestHelpUrl` - A page linked from that warning, e.g. a fuller network test. It opens in a new tab. Default: unset.
+* `preCallTestICEUrl` - URL that returns the TURN servers and their credentials for the check, as JSON: `{ "iceServers": [...] }`, in the format the `RTCPeerConnection` constructor takes. The browser fetches it, so it must allow CORS from the deployment's origin. Default: `''`.
 * `showHangUp` - Shows the hang up button on the prejoin/lobby screen. Default: `true`.
 
 ```javascript
@@ -1239,6 +1240,7 @@ prejoinConfig: {
     hideDisplayName: false,
     hideExtraJoinButtons: ['no-audio', 'by-phone'],
     preCallTestEnabled: false,
+    preCallTestHelpUrl: '',
     preCallTestICEUrl: '',
     showHangUp: true
 }

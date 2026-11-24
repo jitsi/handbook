@@ -105,9 +105,11 @@ npx wrangler dev --config wrangler.translate.jsonc
 Prosody does not load it directly on the MUC. The component collects the
 `<senderId, language>` subscription of each listener. It aggregates the
 subscriptions into `audioTranslationRequests` and exposes that map to Jicofo
-only, through RoomMetadata. `mod_room_metadata_component` forwards the map
-only to jicofo and admin occupants, and it never sends the map to regular
-clients.
+only, through RoomMetadata.
+
+`mod_room_metadata_component` forwards the map only to admin occupants, and
+it never sends the map to regular clients. Jicofo must be an admin on that
+component.
 
 Enable it as its own component in `prosody.cfg.lua`:
 
@@ -123,7 +125,34 @@ Component "audiotranslation.jitmeet.example.com" "audio_translation_component"
     -- audio_translation_debounce_interval = 0.5
 ```
 
-Restart prosody afterward:
+### Make Jicofo an admin on the metadata component
+
+`mod_room_metadata_component` sends the `audioTranslationRequests` map only
+to an admin occupant. So Jicofo must be an admin on the metadata component.
+The default configuration does not make it one. The example
+`prosody.cfg.lua` sets `admins` on the main virtual host and on the MUC
+components, but not on the metadata component.
+
+Add the Jicofo user to that component:
+
+```lua
+Component "metadata.jitmeet.example.com" "room_metadata_component"
+    muc_component = "conference.jitmeet.example.com"
+    breakout_rooms_component = "breakout.jitmeet.example.com"
+    admins = { "focus@auth.jitmeet.example.com" }
+```
+
+Use the same Jicofo user that the other components use. Jicofo
+authenticates with the user name `focus` by default.
+
+:::warning
+Without this line the feature fails, and it shows no error. The client shows
+the controls, and the component collects the subscriptions of the listeners.
+But Jicofo does not get the map, so it starts no translator connect. No
+translated audio arrives.
+:::
+
+Restart Prosody after you change the configuration:
 
 ```bash
 systemctl restart prosody

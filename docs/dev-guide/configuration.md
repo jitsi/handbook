@@ -1231,6 +1231,7 @@ Properties:
 * `hideExtraJoinButtons` - List of secondary join buttons to hide from the extra join options dropdown on the prejoin screen. Supported values: `'no-audio'` (the "Join without audio" button, which joins the conference without acquiring a microphone) and `'by-phone'` (the "Join by phone" button, which lets the participant dial in for audio while video stays in the browser; requires dial-in to be configured). Default: `[]` (all buttons shown).
 * `preCallTestEnabled` - Enables the pre-call connection/quality test on the prejoin page. ICE server credentials must be provided via `preCallTestICEUrl`. Default: `false`.
 * `preCallTestICEUrl` - URL that provides the ICE server credentials used by the pre-call test. Default: `''`.
+* `showAudioTest` - Shows the audio test over the camera preview on the prejoin screen. The test records a few seconds from the microphone and plays them back through the speakers, so the user hears how they sound. Once the user finishes or skips it, it isn't shown again in that browser; it stays available from the audio settings. It isn't shown on mobile browsers, or when the microphone isn't allowed. Set to `false` to turn it off. Default: `true`.
 * `showHangUp` - Shows the hang up button on the prejoin/lobby screen. Default: `true`.
 
 ```javascript
@@ -1240,6 +1241,7 @@ prejoinConfig: {
     hideExtraJoinButtons: ['no-audio', 'by-phone'],
     preCallTestEnabled: false,
     preCallTestICEUrl: '',
+    showAudioTest: true,
     showHangUp: true
 }
 ```

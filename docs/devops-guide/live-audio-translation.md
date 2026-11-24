@@ -48,18 +48,34 @@ and attributes it to a customer.
 
 The same opus-transcriber-proxy process, or image, that serves transcription
 also serves live audio translation, on the `/translate` endpoint instead of
-`/transcribe`. For speech-to-speech translation, the service calls the
-realtime translations endpoint that OpenAI names `gpt-realtime-translate`.
+`/transcribe`. The service calls the realtime translations endpoint of a
+speech-to-speech provider. It supports two providers: OpenAI and xAI.
 
 | Variable | Default | Description |
 |---|---|---|
 | `ENABLE_TRANSLATE` | `true` | Enable the `/translate` endpoint (disabled → its WebSocket upgrade is rejected with 404) |
 | `TRANSLATE_TRANSCRIPTS` | `true` | Also emit target-language transcripts (`false` → translated audio only) |
-| `OPENAI_TRANSLATION_MODEL` | `gpt-realtime-translate` | Speech-to-speech translation model |
+| `TRANSLATION_PROVIDER` | `openai` | Provider for a connection that does not name one: `openai` or `xai`. An unknown value gives a warning, and the service uses `openai`. |
+| `OPENAI_TRANSLATION_MODEL` | `gpt-realtime-translate` | Speech-to-speech translation model of OpenAI |
 | `OPENAI_TRANSLATION_API_KEY` | (falls back to `OPENAI_API_KEY`) | Separate API key/quota for translation |
+| `XAI_TRANSLATION_API_KEY` | (falls back to `XAI_API_KEY`) | API key for the realtime translations endpoint of xAI. Unset → the `xai` provider is not available. |
+| `XAI_TRANSLATION_URL` | (unset) | Override of the realtime translations URL of xAI |
 | `TRANSLATION_USAGE_URL` | (unset) | Endpoint that receives translated-audio duration usage reports; unset → a no-op |
 | `TRANSLATION_USAGE_REPORT_INTERVAL_MS` | `15000` | Interval between incremental usage reports for an open translation |
 | `TRANSLATION_TALK_SILENCE_TIMEOUT_MS` | `350` | Silence before a translated "talk" ends and a `sending=false` notification is emitted |
+
+### Choosing the provider
+
+`TRANSLATION_PROVIDER` sets the provider for the deployment. One connection
+can select a different provider with the `provider` URL parameter, for
+example `wss://<host>/translate?sessionId=<id>&provider=xai`. Give the
+provider an API key, or the service refuses the WebSocket upgrade. It answers
+400 for an unknown provider name, and 503 when the named provider has no key.
+
+:::note
+The xAI provider needs the realtime-translation entitlement on the xAI
+account. A key without that entitlement fails at the first connection.
+:::
 
 ### As a standalone container
 
@@ -124,6 +140,20 @@ Component "audiotranslation.jitmeet.example.com" "audio_translation_component"
     -- Optional: debounce window for aggregate/listener publishes (default 0.5s)
     -- audio_translation_debounce_interval = 0.5
 ```
+
+#### Why to set a subscription cap
+
+The component applies no cap by default. Set
+`audio_translation_max_subscriptions` in a deployment that has large rooms.
+
+A listener who selects one language for the whole meeting subscribes to every
+other participant. In `per-source` mode, each translated speaker gets its own
+connect. So one listener in a large room can open many sessions to the model
+at the same time. Without a cap, this fan-out has no limit.
+
+The component counts the distinct subscriptions of each listener. It refuses
+a request above the cap with `policy-violation`, and it keeps the previous
+subscriptions of that listener.
 
 ### Make Jicofo an admin on the metadata component
 
@@ -233,24 +263,61 @@ following to your `config.js`:
 
 ```javascript
 audioTranslation: {
-    enabled: false,
+    enabled: true,
 
     // Volume (0..1) to which the original audio of a speaker is ducked while its translation
     // plays. Defaults to 0.15. Ignored on iOS: there the client mutes the original instead,
     // because iOS cannot lower the volume of that audio element.
     duckedVolume: 0.15,
 
-    // Whether to process the translated-source sending notifications from the bridge. These
-    // notifications drive the per-participant "receiving translated audio" indicator. Off by
-    // default until the bridge also emits stop notifications, not only start notifications.
-    enableSendingChangeEvents: false,
+    // Target languages offered in the picker. Optional. See "Target languages" below.
+    translationLanguages: [ 'en', 'es', 'fr', 'nl' ],
+
+    // Languages to pin to the top of the picker, in this order. Optional.
+    translationLanguagesHead: [ 'en' ],
 },
 ```
+
+The `config.js` that ships with jitsi-meet has this block commented out, with
+`enabled: false`. That `false` is the default of the shipped file. Use
+`enabled: true` to turn the feature on.
 
 The `configOverwrite` and URL-hash mechanisms can also override
 `audioTranslation` keys, for example `audioTranslation.enabled`. So you can
 toggle the feature for one room, for testing or for a staged rollout, without
 a change to the served `config.js`.
+
+### The meeting indicator
+
+The client shows one label for the whole meeting. There is no indicator for
+each participant. The label is blue when translation is in use in the
+meeting. It turns amber when a translated source plays out. The second state
+covers the whole conference, because the bridge sends the notifications about
+a translated source to every endpoint.
+
+### Target languages
+
+`translationLanguages` replaces the list of target languages that the picker
+offers. The default list has the 13 languages that every provider supports:
+`en`, `es`, `pt`, `fr`, `de`, `it`, `ru`, `zh`, `ja`, `ko`, `hi`, `id`, `vi`.
+Extend the list only if your translation service accepts more codes. The
+client sends each code to the bridge without a change, and it names the
+translated track `<source>.<code>`.
+
+`translationLanguagesHead` pins some of the offered languages to the top of
+the picker, in the given order. It only changes the order. A head entry that
+is not in the offered list has no effect, so the head cannot add a language.
+
+:::warning Codes must be ASCII letters only
+A code must have 1 to 20 ASCII letters. The `is_valid_language` function of
+`mod_audio_translation_component.lua` refuses any other code with
+`bad-request`. One invalid code makes a meeting-wide request fail for every
+speaker. So the client drops a code such as `pt-BR` or `pt_BR` from the list,
+and it writes a warning.
+
+A list that keeps no usable code offers no language at all, and the client
+writes a warning. It does not fall back to the default list.
+:::
 
 ---
 
@@ -437,3 +504,41 @@ Know these properties before you bill from these reports:
   (`/translate?lang=…`), which sends no token.
 - **A missing usage URL is not an error.** The service writes one warning, and
   then discards all reports quietly.
+
+---
+
+## 6. Troubleshooting
+
+### The client shows no translation control
+
+The client advertises the feature only when it finds the Prosody component
+through service discovery. An enabled `config.js` is not enough. Usually
+there are two causes:
+
+- Prosody does not load the `audio_translation_component`.
+- Prosody loads the component, but the client cannot discover it.
+
+Check that the component is in `prosody.cfg.lua`, and that Prosody logs it at
+startup. The module logs a line that starts with `Starting audio_translation
+for`, and that line gives the subscription cap and the debounce interval.
+
+Two more settings can hide the control. The `live-translation` permission
+governs the room-level flag, and a client without it cannot turn the feature
+on for the room. A deployment can also set the `audioTranslationAvailable`
+key in RoomMetadata to `false`.
+
+### The control works, but no translated audio arrives
+
+Jicofo gets the request map only as an admin occupant of the metadata
+component. Check the `admins` line on that component. The section
+[Make Jicofo an admin on the metadata
+component](#make-jicofo-an-admin-on-the-metadata-component) gives the
+procedure.
+
+### One language fails for every speaker
+
+A target-language code must have 1 to 20 ASCII letters. Prosody refuses a
+meeting-wide request with `bad-request` on the first invalid code, and the
+request then fails for every speaker. Examine
+`audioTranslation.translationLanguages` for a code with a region tag, such as
+`pt-BR`.

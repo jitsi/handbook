@@ -260,6 +260,37 @@ And also one of the following:
 }
 ```
 
+### JitsiMeet class
+
+The `JitsiMeet` singleton controls the React Native runtime that the SDK uses to
+render a conference. Get the singleton with `[JitsiMeet sharedInstance]`.
+
+#### instantiateReactNative
+
+Starts the React Native runtime if the runtime does not run yet. Call this method
+before `join:`, so that the runtime is ready before the first `JitsiMeetView`
+joins a conference. This call is optional. `join:` starts the runtime when it
+does not run.
+
+#### destroyReactNative
+
+Stops the React Native runtime and releases its resources. Call this method only
+after the conference ends and you remove every `JitsiMeetView` from the view
+hierarchy. The next `join:` starts a new runtime.
+
+```objc
+// Before you join.
+[[JitsiMeet sharedInstance] instantiateReactNative];
+[jitsiMeetView join:options];
+
+// After the conference view is gone.
+- (void)readyToClose:(NSDictionary *)data {
+    [self dismissViewControllerAnimated:YES completion:^{
+        [[JitsiMeet sharedInstance] destroyReactNative];
+    }];
+}
+```
+
 ### JitsiMeetViewDelegate
 
 This delegate is optional, and can be set on the `JitsiMeetView` instance using

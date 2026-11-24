@@ -35,20 +35,41 @@ follow these steps:
    ```
 
 1. Create required `CONFIG` directories
-   * For linux:
+
+   :::note
+   This directory layout applies to release `stable-11146` and newer, where the containers run
+   rootless with a read-only filesystem. Earlier releases use a different layout: they have no
+   `storage` or `tmp` directories, and keep the transcripts in `~/.jitsi-meet-cfg/transcripts`.
+   :::
+
+   * For Linux:
 
    ```bash
-   mkdir -p ~/.jitsi-meet-cfg/{web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri}
+   mkdir -p ~/.jitsi-meet-cfg/{web,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri,transcriber}
+   mkdir -p ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+   mkdir -p ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
+   chmod 777 ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+   chmod 777 ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
    ```
 
-   * For Windows:
+   * For Windows (PowerShell):
 
-   ```bash
-   echo web,transcripts,prosody/config,prosody/prosody-plugins-custom,jicofo,jvb,jigasi,jibri
+   ```powershell
+   $dirs = "web","prosody/config","prosody/prosody-plugins-custom","jicofo","jvb","jigasi","jibri","transcriber","storage/jibri","storage/prosody","storage/transcripts","storage/web","tmp/web-crontabs","tmp/web-load-test"
+   $dirs | ForEach-Object { New-Item -ItemType Directory -Force -Path "$HOME/.jitsi-meet-cfg/$_" }
    ```
-   ```bash
-    mkdir "~/.jitsi-meet-cfg/$_"
-   ```
+
+   The `chmod` step has no equivalent on Docker Desktop for Windows and is not needed there.
+
+   :::caution
+   The containers run as an unprivileged user (uid/gid 1000), so the `storage` and `tmp`
+   directories must be writable by that user. Create them yourself before the first start and run
+   the `chmod` commands above. Leaving them to be created automatically results in directories the
+   containers cannot write to.
+
+   Containers that need one of these directories refuse to start with an explicit error if it is
+   missing or not writable.
+   :::
 
 1. Run ``docker compose up -d``
 1. Access the web UI at [``https://localhost:8443``](https://localhost:8443) (or a different port, in case you edited the `.env` file).
@@ -112,7 +133,7 @@ docker compose -f docker-compose.yml -f transcriber.yml -f jigasi.yml -f jibri.y
 For the log analysis project, you will need both log-analyser.yml and grafana.yml files. This project allows you to analyze docker logs in grafana. If you want to run the log analyzer, run the Docker files as follows:
 
 ```bash
-docker-compose -f docker-compose.yml -f log-analyser.yml -f grafana.yml up -d
+docker compose -f docker-compose.yml -f log-analyser.yml -f grafana.yml up -d
 ```
 Follow [this](https://jitsi.github.io/handbook/docs/devops-guide/devops-guide-log-analyser) document for detailed information on log analysis.
 
@@ -129,6 +150,31 @@ again (just like how you initially downloaded Jitsi). Then unzip and overwrite a
 ```bash
 unzip <filename>
 ```
+
+#### Updating from a release older than `stable-11146`
+
+You can keep your existing `CONFIG` directory, but the release that introduced the rootless
+containers added new directories and moved some paths. Create the new directories and make them
+writable by the container user before starting the updated containers:
+
+```bash
+mkdir -p ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+mkdir -p ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
+chmod 777 ~/.jitsi-meet-cfg/storage/{jibri,prosody,transcripts,web}
+chmod 777 ~/.jitsi-meet-cfg/tmp/{web-crontabs,web-load-test}
+```
+
+The following paths moved:
+
+What | Old location | New location | Migration
+--- | --- | --- | ---
+Prosody data | `${CONFIG}/prosody/config/data` | `${CONFIG}/storage/prosody/data` | Automatic on the first start
+Web TLS material | `${CONFIG}/web` | `${CONFIG}/storage/web` | Automatic on the first start
+Jibri recordings and logs | `${CONFIG}/jibri/recordings`, `${CONFIG}/jibri/logs` | `${CONFIG}/storage/jibri` | Move the existing files yourself if you want to keep them
+Transcripts | `${CONFIG}/transcripts` | `${CONFIG}/storage/transcripts` | Move the existing files yourself if you want to keep them
+Web crontabs and load test | `${CONFIG}/web/crontabs`, `${CONFIG}/web/load-test` | `${CONFIG}/tmp/web-crontabs`, `${CONFIG}/tmp/web-load-test` | Recreated when needed, nothing to move
+
+The old directories are left untouched and can be removed once the new setup works.
 
 ### Testing development / unstable builds
 
@@ -240,6 +286,34 @@ Instead, it's kept completely sealed, and routing of XMPP traffic only happens o
 The XMPP server can be exposed to the outside world,
 but that's out of the scope of this project.
 
+### Rootless and read-only containers
+
+Since release `stable-11146` the Jitsi containers are hardened:
+
+* Every service runs as an unprivileged user (uid/gid 1000) instead of root, with no effective
+  Linux capabilities.
+* The container filesystem is mounted read-only. `/run` and `/tmp` are writable `tmpfs` mounts,
+  sized per service in the Compose files.
+* The configuration under `/config` is treated as input only. On startup each service renders its
+  effective configuration into `/run/<service>/config`, so nothing is written back to `/config`
+  at runtime.
+
+As a result the `CONFIG` directory is split into three kinds of directory:
+
+Directory | Purpose | Written by the containers
+--- | --- | ---
+`${CONFIG}/<service>` | Configuration read at startup, for example `web` or `prosody/config` | No
+`${CONFIG}/storage/*` | Persistent state, for example recordings, Prosody data and TLS material | Yes
+`${CONFIG}/tmp/*` | Runtime files that can be regenerated, for example the web crontabs | Yes
+
+Every directory the containers write to must be writable by uid 1000. A service refuses to start,
+with an explicit error naming the directory, when one of them is missing or not writable.
+
+:::note
+Despite the name, `${CONFIG}/tmp` is a regular directory on the host and is not cleared
+automatically. It holds the Let's Encrypt renewal cron job, among other things.
+:::
+
 ## Configuration
 
 The configuration is performed via environment variables contained in a ``.env`` file.
@@ -285,7 +359,7 @@ Let's Encrypt once you are done testing.
 
 :::note
 When you move away from `LETSENCRYPT_USE_STAGING`,
-you will have to manually clear the certificates from `.jitsi-meet-cfg/web`.
+you will have to manually clear the certificates from `.jitsi-meet-cfg/storage/web`.
 :::
 
 For more information on Let's Encrypt's rate limits, visit:
@@ -313,6 +387,27 @@ services:
             - /path/to/your/cert.fullchain:/config/keys/cert.crt
             - /path/to/your/cert.key:/config/keys/cert.key
 ```
+
+On startup the `web` container copies these files into its `storage` volume and uses them instead
+of generating a self-signed certificate.
+
+#### Trusting custom CA certificates
+
+If a service connects to an internal server that uses a certificate from a
+private CA, put the root CA certificate into `${CONFIG}/<service>/custom-ca`
+and restart the service. `<service>` is one of `web`, `prosody`, `jicofo`,
+`jvb`, `jigasi` or `jibri`.
+
+Files can be `*.crt`, `*.cer` or `*.pem`, in PEM (one or more certificates) or
+DER format. They are trusted next to the system CAs. An invalid file stops the
+container with an error that names the file.
+
+To share one folder between services, use a symlink:
+
+```bash
+ln -s ../custom-ca ${CONFIG}/jigasi/custom-ca
+```
+
 ### Features configuration (config.js)  
 
 Variable | Description | Example
@@ -451,6 +546,13 @@ For using multiple Jibri instances, you have to select different loopback interf
 
 </details>
 
+Jibri writes its recordings and logs to the `/storage` volume, which is
+`${CONFIG}/storage/jibri` on the host. This directory must exist and be writable by the container
+user before Jibri is started, otherwise the container refuses to start.
+
+Jibri no longer needs the `SYS_ADMIN` capability. Chrome runs without the sandbox instead, and
+`jibri.yml` gives the container the shared memory it needs with `shm_size: '2gb'`.
+
 If you want to enable Jibri these options are required:
 
 Variable | Description | Example
@@ -463,25 +565,30 @@ Variable | Description | Example
 --- | --- | ---
 `JIBRI_RECORDER_USER` | Internal recorder user for Jibri client connections | recorder
 `JIBRI_RECORDER_PASSWORD` | Internal recorder password for Jibri client connections | `<unset>`
-`JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /config/recordings
+`JIBRI_RECORDING_DIR` | Directory for recordings inside Jibri container | /storage/recordings
 `JIBRI_FINALIZE_RECORDING_SCRIPT_PATH` | The finalizing script. Will run after recording is complete | /config/finalize.sh
 `JIBRI_XMPP_USER` | Internal user for Jibri client connections. | jibri
 `JIBRI_STRIP_DOMAIN_JID` | Prefix domain for strip inside Jibri (please see env.example for details) | muc
 `JIBRI_BREWERY_MUC` | MUC name for the Jibri pool | jibribrewery
+`JIBRI_BREWERY_XMPP_SERVER` | Comma separated list of additional XMPP servers (`host[:port]`, e.g. the JVB brewery Prosody) on which Jibri joins the Jibri pool, in addition to `XMPP_SERVER` | xmpp.jvb.meet.jitsi,10.0.0.2:6223
+`JIBRI_BREWERY_XMPP_PORT` | Default port for `JIBRI_BREWERY_XMPP_SERVER` entries without one | 6222
+`JIBRI_BREWERY_XMPP_AUTH_DOMAIN` | XMPP domain Jibri logs in to on `JIBRI_BREWERY_XMPP_SERVER` | auth.jvb.`<XMPP_DOMAIN>`
+`JIBRI_BREWERY_XMPP_INTERNAL_MUC_DOMAIN` | MUC domain of the Jibri pool on `JIBRI_BREWERY_XMPP_SERVER` | muc.jvb.`<XMPP_DOMAIN>`
+`JIBRI_BREWERY_XMPP_ONLY` | Join the Jibri pool only on `JIBRI_BREWERY_XMPP_SERVER`, not on `XMPP_SERVER` (ignored when `JIBRI_BREWERY_XMPP_SERVER` is unset) | false
 `JIBRI_PENDING_TIMEOUT` | MUC connection timeout | 90
 
 ### Jitsi Meet configuration
 
 Jitsi-Meet uses two configuration files for changing default settings within
-the web interface: ``config.js`` and ``interface_config.js``. The files are
-located within the ``CONFIG/web/`` directory configured within your environment file.
+the web interface: ``config.js`` and ``interface_config.js``.
 
-These files are re-created on every container restart.
-If you'd like to provide your own settings, create your own config files:
+Both files are generated inside the container on every start and are not written to the host,
+so editing them directly is not possible. If you'd like to provide your own settings, create your
+own config files in the ``CONFIG/web/`` directory configured within your environment file:
 ``custom-config.js`` and ``custom-interface_config.js``.
 
 It's enough to provide your relevant settings only, the docker scripts will
-append your custom files to the default ones!
+append your custom files to the generated ones!
 
 ### Authentication
 
@@ -519,7 +626,7 @@ docker compose exec prosody /bin/bash
 Once in the container, run the following command to create a user:
 
 ```bash
-prosodyctl --config /config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
+prosodyctl --config /run/prosody/config/prosody.cfg.lua register TheDesiredUsername meet.jitsi TheDesiredPassword
 ```
 
 Note that the command produces no output.
@@ -527,13 +634,13 @@ Note that the command produces no output.
 To delete a user, run the following command in the container:
 
 ```bash
-prosodyctl --config /config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
+prosodyctl --config /run/prosody/config/prosody.cfg.lua unregister TheDesiredUsername meet.jitsi
 ```
 
 To list all users, run the following command in the container:
 
 ```bash
-find /config/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
+find /var/lib/prosody/data/meet%2ejitsi/accounts -type f -exec basename {} .dat \;
 ```
 
 #### Authentication using LDAP
@@ -743,10 +850,6 @@ Variable | Description | Default value
 `LOG_LEVEL` | Controls which logs are output from prosody and associated modules | info
 `ENABLE_HSTS` | Send a `strict-transport-security` header to force browsers to use a secure and trusted connection. Recommended for production use. | 1
 `ENABLE_IPV6` | Provides means to disable IPv6 in environments that don't support it | 1
-`ENABLE_COLIBRI_WEBSOCKET_UNSAFE_REGEX` | Enabled older unsafe regex for JVB colibri-ws URLs. WARNING: Enable with caution, this regex allows connections to arbitrary internal IP addresses and is not recommended for production use.  Unsafe regex is defined as `[a-zA-Z0-9-\._]+` | 0
-`COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` | DNS name to look up JVB IP address, used for default value of `COLIBRI_WEBSOCKET_REGEX` | jvb
-`COLIBRI_WEBSOCKET_REGEX` | Overrides the colibri regex used for proxying to JVB.  Recommended to override in production with values matching possible JVB IP ranges | defaults to `dig $COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` unless `DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP` is set to true
-`DISABLE_COLIBRI_WEBSOCKET_JVB_LOOKUP` | Controls whether to run `dig $COLIBRI_WEBSOCKET_JVB_LOOKUP_NAME` when defining COLIBRI_WEBSOCKET_REGEX | 0
 
 #### Advanced Prosody options
 
@@ -757,6 +860,7 @@ Variable | Description | Default value
 `PROSODY_AUTH_TYPE` | Select authentication type for Prosody (internal, jwt or ldap) | `AUTH_TYPE`
 `PROSODY_ENABLE_METRICS` | Enables the http_openmetrics module which exposes Prometheus metrics at `/metrics` | false
 `PROSODY_METRICS_ALLOWED_CIDR` | CIDR block permitted to access metrics | 172.16.0.0/12
+`PROSODY_ENABLE_FILTER_MESSAGES` | Loads `mod_filter_messages` on the main and the breakout rooms MUC components, which enforces the chat and shared video permissions that moderators set (see `showChatPermissionsModeratorSetting` and `showSharedVideoPermissionsModeratorSetting`) | false
 
 #### Advanced Jicofo options
 
@@ -778,7 +882,6 @@ Variable | Description | Default value
 `JVB_AUTH_PASSWORD` | XMPP password for JVB MUC client connections | `<unset>`
 `JVB_STUN_SERVERS` | STUN servers used to discover the server's public IP | stun.l.google.com:19302, stun1.l.google.com:19302, stun2.l.google.com:19302
 `JVB_PORT` | UDP port for media used by Jitsi Videobridge | 10000
-`JVB_COLIBRI_PORT` | COLIBRI REST API port of JVB exposed to localhost | 8080
 `JVB_BREWERY_MUC` | MUC name for the JVB pool | jvbbrewery
 `COLIBRI_REST_ENABLED` | Enable the COLIBRI REST API | true
 `SHUTDOWN_REST_ENABLED` | Enable the shutdown REST API | true
@@ -916,26 +1019,24 @@ ENABLE_LETSENCRYPT=0
 
 By default, the `HTTP_PORT` and `HTTPS_PORT` are binding to any ip address, so are publicly open unless a firewall blocks them. When using a reverse proxy, this is not necessary. This can be changed by updating the web container's ports configuration:
 ```yaml
-            - '127.0.0.1:${HTTP_PORT}:80'
-            - '127.0.0.1:${HTTPS_PORT}:443'
+            - '127.0.0.1:${HTTP_PORT}:8000'
+            - '127.0.0.1:${HTTPS_PORT}:8443'
 ```
 instead of
 ```yaml
-            - '${HTTP_PORT}:80'
-            - '${HTTPS_PORT}:443'
+            - '${HTTP_PORT}:8000'
+            - '${HTTPS_PORT}:8443'
 ```
 
 ### Reverse proxy configuration
 
-By default this setup is using WebSocket connections for 2 core components:
+By default this setup is using WebSocket connections for:
 
 * Signalling (XMPP)
-* Bridge channel (colibri)
 
-Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. There 2 routes require such treatment:
+Due to the hop-by-hop nature of WebSockets the reverse proxy must properly terminate and forward WebSocket connections. This route requires such treatment:
 
 * `/xmpp-websocket`
-* `/colibri-ws`
 
 The other HTTP requests must be handled by the web container.
 
@@ -947,13 +1048,6 @@ With nginx, these routes can be forwarded using the following config snippet:
 
 ```nginx
 location /xmpp-websocket {
-    proxy_pass http://localhost:8000$request_uri;
-    proxy_http_version 1.1;
-    proxy_set_header Upgrade $http_upgrade;
-    proxy_set_header Connection "upgrade";
-}
-
-location /colibri-ws {
     proxy_pass http://localhost:8000$request_uri;
     proxy_http_version 1.1;
     proxy_set_header Upgrade $http_upgrade;
@@ -977,7 +1071,6 @@ The reverse proxy can be configured using the following config snippet:
     <IfModule mod_proxy_wstunnel.c>
         ProxyTimeout 900
         ProxyPass /xmpp-websocket ws://localhost:8000/xmpp-websocket
-        ProxyPass /colibri-ws/ ws://localhost:8000/colibri-ws/
         ProxyPass / http://localhost:8000/
         ProxyPassReverse / http://localhost:8000/
     </IfModule>
@@ -994,7 +1087,6 @@ If using WebSockets is not an option, these environment variables can be set to 
 
 ```bash
 ENABLE_SCTP=1
-ENABLE_COLIBRI_WEBSOCKET=0
 ENABLE_XMPP_WEBSOCKET=0
 ```
 

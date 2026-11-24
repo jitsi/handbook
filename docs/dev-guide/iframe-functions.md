@@ -26,10 +26,16 @@ api.captureCameraPicture(
 
 Captures a screenshot for the participant in the large video view (on stage).
 
+The promise rejects when there is no large video to capture, for example when the participant on stage has no video
+track, such as when they joined with their video muted. The rejection value is an object with a `message` field, not an
+`Error` instance.
+
 ```javascript
 api.captureLargeVideoScreenshot().then(data => {
     // data is an Object with only one param, dataURL
     // data.dataURL = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAA..."
+}).catch(error => {
+    // error.message = "No large video found!"
 });
 ```
 
@@ -193,7 +199,7 @@ Returns an array of available rooms and details of it:
     - `displayName`
     - `userContext`
     - `isJigasi`
-    - `isJibri`
+    - `isHidden`
     - `audioMuted`
     - `videoMuted`
 
@@ -225,7 +231,7 @@ Response example structure:
             "id": "google-oauth2|12345678901234567890"
           },
           "isJigasi": false,
-          "isJibri": true,
+          "isHidden": true,
           "audioMuted": true,
           "videoMuted": true
         },
@@ -238,7 +244,7 @@ Response example structure:
             "id": "400e45d607256777df4e0f3a6a447901"
           },
           "isJigasi": true,
-          "isJibri": false,
+          "isHidden": false,
           "audioMuted": false,
           "videoMuted": false
         }
@@ -595,8 +601,9 @@ Invite the given array of participants to the meeting:
 ```javascript
 api.invite([ {...}, {...}, {...} ]).then(() => {
     // success
-}).catch(() => {
+}).catch(error => {
     // failure
+    // error.message = "One or more invites failed!"
 });
 ```
 **NOTE:** The invitee format in the array depends on the invite service used in the deployment.

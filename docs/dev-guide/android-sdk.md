@@ -269,6 +269,72 @@ public class MainActivity extends FragmentActivity implements JitsiMeetActivityI
 
 </details>
 
+### JitsiMeet
+
+The static methods of `JitsiMeet` control the React Native runtime that the SDK
+uses to render a conference.
+
+#### instantiateReactNative(context)
+
+Starts the React Native runtime if the runtime does not run yet. The SDK uses
+the application context of `context`. Call this method before you launch
+`JitsiMeetActivity` or call `join()`, so that the runtime is ready before the
+conference starts. This call is optional. `join()` starts the runtime when it
+does not run.
+
+#### destroyReactNative()
+
+Stops the React Native runtime and releases its resources. The teardown is
+asynchronous. Call this method only after you dispose every `JitsiMeetView`.
+The next `join()` starts a new runtime.
+
+If your activity holds a `JitsiMeetView`, call `destroyReactNative()` after you
+dispose the view:
+
+```java
+// Before you join.
+JitsiMeet.instantiateReactNative(this);
+jitsiMeetView.join(options);
+
+// After the last view is disposed.
+@Override
+protected void onDestroy() {
+    super.onDestroy();
+    jitsiMeetView.dispose();
+    JitsiMeet.destroyReactNative();
+}
+```
+
+If you use `JitsiMeetActivity`, its `JitsiMeetView` disposes itself when the
+activity window detaches. The window detaches after `onDestroy()` returns. To
+call `destroyReactNative()` after that, listen for the destroy event of the
+activity and post the call to the main thread:
+
+```java
+private final Application.ActivityLifecycleCallbacks jitsiActivityCallbacks
+        = new Application.ActivityLifecycleCallbacks() {
+    @Override
+    public void onActivityDestroyed(@NonNull Activity activity) {
+        // Skip a configuration change, because the activity comes back.
+        if (activity instanceof JitsiMeetActivity && !activity.isChangingConfigurations()) {
+            new Handler(Looper.getMainLooper()).post(JitsiMeet::destroyReactNative);
+        }
+    }
+
+    // Leave the other callbacks empty.
+    ...
+};
+
+// In the onCreate() method of the activity that launches the meeting.
+getApplication().registerActivityLifecycleCallbacks(jitsiActivityCallbacks);
+
+// Before you launch the meeting.
+JitsiMeet.instantiateReactNative(this);
+JitsiMeetActivity.launch(this, options);
+```
+
+Unregister the callbacks in the `onDestroy()` method of the same activity.
+
 ### JitsiMeetActivity
 
 This class encapsulates a high level API in the form of an Android `FragmentActivity`

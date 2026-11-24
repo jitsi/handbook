@@ -73,6 +73,18 @@ Demo: https://jitok.emrah.com/
 
 Discussion: https://community.jitsi.org/t/jitok-jitsi-token-generator/94683
 
+## Jitsi Music Bot
+
+Headless stereo music bot for Jitsi Meet with YouTube autoplay and remote control via Telegram or in-meeting chat. Uses Playwright and WebAudio to inject high-bitrate stereo audio directly into the WebRTC pipeline without browser AEC/AGC filters. Works with public and self-hosted deployments.
+
+GitHub: https://github.com/mikhailde/jitsi-music-bot
+
+## Jitsi RTMP to Conference
+
+Publish RTMP/FLV/RTSP/HLS streams or OBS feeds directly into Jitsi Meet as a native participant (Go + WebRTC + FFmpeg, no browser).
+
+GitHub: https://github.com/SbinFZ/jitsi_rtmp_to_conference
+
 ## Jitsi-Admin
 
 An open-source platform to organize your meetings. Includes all functions we
@@ -186,6 +198,17 @@ generator.
 
 Github: https://github.com/Renater/Jitsi-SAML2JWT
 
+## Sangam
+
+Native Jitsi Meet client for macOS, iPadOS, and iOS. It connects to a Jitsi
+deployment directly (XMPP over WebSocket, Jingle, Colibri, and native WebRTC)
+rather than embedding the Jitsi Meet web app. Works with self-hosted
+deployments, including password, lobby, and JWT-authenticated rooms.
+
+https://twarge.com/sangam/
+
+GitHub: https://github.com/twarge/sangam
+
 ## Unity plugin
 
 Plugin for using lib-jitsi-meet in a Unity environment (WebGL).
@@ -205,3 +228,5 @@ authentication.
 Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-SAML-adapter
 
 Github: https://github.com/aadpM2hhdixoJm3u/jitsi-OIDC-adapter
+
+Github: https://github.com/badsmoke/jitsi-openid

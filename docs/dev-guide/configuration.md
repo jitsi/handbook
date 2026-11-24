@@ -814,6 +814,36 @@ Websocket URL
 websocket: 'wss://jitsi-meet.example.com/xmpp-websocket'
 ```
 
+## Device permissions
+
+### disablePermissionGuidanceDialog
+
+type: `Boolean`
+
+Disables the dialog that guides the user through unblocking the microphone or camera after access to them was denied.
+The dialog says whether the browser, the OS or the page's permissions policy blocks the device, and how to allow it.
+When disabled, the permission-denied notification shows instead.
+
+Default: `false`
+
+```javascript
+disablePermissionGuidanceDialog: false
+```
+
+### disablePermissionPromptDialog
+
+type: `Boolean`
+
+Disables the dialog that explains why the microphone and camera are needed before the browser asks for access to
+them, on the pre-join screen and when the user turns on the microphone or camera in the meeting. When disabled, the
+browser asks right away.
+
+Default: `false`
+
+```javascript
+disablePermissionPromptDialog: false
+```
+
 ## Etherpad
 
 ### etherpad_base
@@ -1099,6 +1129,39 @@ Default: `false`
 disableRemoteMute: true
 ```
 
+### showChatPermissionsModeratorSetting
+
+type: `Boolean`
+
+Shows the moderator settings that restrict group chat and private chat to the participants with the `send-groupchat`
+and `send-private-message` features. A moderator sets the restrictions for the room they are in, and every room has its
+own, a breakout room as well.
+
+The restrictions are enforced by the `mod_filter_messages` Prosody module. Enable this only when that module is loaded on
+the main MUC component and on the breakout rooms MUC component.
+
+Default: `false`
+
+```javascript
+showChatPermissionsModeratorSetting: true
+```
+
+### showSharedVideoPermissionsModeratorSetting
+
+type: `Boolean`
+
+Shows the moderator setting that restricts video sharing to the participants with the `share-video` feature. A
+moderator sets the restriction for the room they are in, and every room has its own, a breakout room as well.
+
+The restriction is enforced by the `mod_filter_messages` Prosody module. Enable this only when that module is loaded on
+the main MUC component and on the breakout rooms MUC component.
+
+Default: `false`
+
+```javascript
+showSharedVideoPermissionsModeratorSetting: true
+```
+
 ## Notifications
 
 ### notifications
@@ -1350,6 +1413,36 @@ Properties:
 screenshotCapture: {
     enabled: true,
     mode: 'recording'
+}
+```
+
+## Second screen
+### secondScreen
+
+type: `Object`
+
+Options related to rendering meeting surfaces on additional physical displays.
+When enabled, an embedder can drive one or more extra windows through the
+[`setSecondScreen`](dev-guide-iframe-commands#setsecondscreen) command, and
+participants get in-app controls to send a tile to another display.
+
+The feature requires the
+[Window Management API](https://developer.mozilla.org/en-US/docs/Web/API/Window_Management_API),
+so it is Chromium-only. It is aimed at managed or kiosk room appliances, which
+also need the `window-management` browser permission granted by policy, and the
+`automatic-fullscreen` permission if the second window is to go fullscreen on
+its own. On a browser without the API the feature stays off and the command
+reports [`secondScreenError`](dev-guide-iframe-events#secondscreenerror) with
+`second-screen-disabled` rather than doing nothing silently.
+
+Default: **unset** (disabled)
+
+Properties:
+* `enabled` - Whether the feature is enabled or not.
+
+```javascript
+secondScreen: {
+    enabled: true
 }
 ```
 

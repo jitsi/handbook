@@ -165,7 +165,8 @@ module.exports = {
             "devops-guide/cloud-api",
             "devops-guide/file-sharing",
             "devops-guide/transcription",
-            "devops-guide/voice-agents"
+            "devops-guide/voice-agents",
+            "devops-guide/live-audio-translation"
           ],
         },
         "devops-guide/devops-guide-videotutorials"
